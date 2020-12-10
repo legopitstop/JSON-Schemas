@@ -1,0 +1,7 @@
+
+**What are schemas?**
+Schemas are JSON files that will help and aid you in creating your code and
+will show you any errors that will come up when loading up your mod. A good example
+is the Minecraft Bedrock Addon Schemas. If you have that schema installed in VSC it will help
+you by suggesting things to be added into the code. It also provides useful tooltips when you hover over
+the text to tell you what it does.
