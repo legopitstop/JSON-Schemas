@@ -1,0 +1,873 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/Minecraft%20Bedrock%20Edition%20Schemas/main_schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "supportedVersions": {
+            "enum": [
+                "1.16",
+                "1.16.0",
+                "1.16.1",
+                "1.16.100",
+                "1.16.2",
+                "1.16.200"
+            ]
+        },
+        "schemaArray": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/properties/minecraft:block/properties/components"
+            }
+        },
+        "stringArray": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "objectArray": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "minItems": 1
+        },
+        "booleanOrObject": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        }
+    },
+    "required": [
+        "format_version"
+    ],
+    "properties": {
+        "credit": {
+            "type": "string",
+            "default": "Thanks to Legopitstop for creating the schema. https://github.com/legopitstop/JSON-Schemas",
+            "title": "credit",
+            "description": ""
+        },
+        "format_version": {
+            "$ref": "#/definitions/supportedVersions",
+            "default": "1.16.1",
+            "title": "format_version",
+            "description": "Specifies the version of the game this entity was made in. If the version is lower than the current version, any changes made to the entity in the vanilla version will be applied to it."
+        },
+        "minecraft:block": {
+            "type": "object",
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
+                    "properties": {
+                        "identifier": {
+                            "type": "string",
+                            "title": "identifier",
+                            "description": "The identifier for this block. The name must include a namespace and must not use the Minecraft namespace unless overriding a Vanilla block.",
+                            "pattern": ":"
+                        },
+                        "properties": {
+                            "type": "object",
+                            "title": "properties",
+                            "description": "The properties for this block. block_properties."
+                        }
+                    }
+                },
+                "components": {
+                    "type": "object",
+                    "properties": {
+                        "minecraft:block_light_absorption": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "minecraft:block_light_absorption",
+                            "description": "The amount of light this block will absorb."
+                        },
+                        "minecraft:block_light_emission": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "minecraft:block_light_emission",
+                            "description": "The amount of light this block will emit in a range [0.0, 1.0]."
+                        },
+                        "minecraft:breakonpush": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "minecraft:breakonpush",
+                            "description": "When pushed by a piston the block breaks"
+                        },
+                        "minecraft:breathability": {
+                            "enum": [
+                                "solid",
+                                "air"
+                            ],
+                            "default": "solid",
+                            "title": "minecraft:breathability",
+                            "description": "Property describing the breathability of this block and whether it is treated as a solid or as air."
+                        },
+                        "minecraft:destroy_time": {
+                            "type": "integer",
+                            "default": 0.0,
+                            "title": "minecraft:destroy_time",
+                            "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times."
+                        },
+                        "minecraft:display_name": {
+                            "type": "string",
+                            "title": "minecraft:display_name",
+                            "description": "Specifies the display name id for the block."
+                        },
+                        "minecraft:entity_collision": {
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ],
+                            "default": false,
+                            "title": "minecraft:entity_collision",
+                            "description": "Can only be set to false, it disables the collision of the block with entities",
+                            "properties": {
+                                "origin": {
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "title": "origin",
+                                    "description": "Minimal position Bounds of the collision box"
+                                },
+                                "size": {
+                                    "type": "array",
+                                    "default": [
+                                        16.0,
+                                        16.0,
+                                        16.0
+                                    ],
+                                    "title": "origin",
+                                    "description": "Size of each side of the box of the component"
+                                }
+                            }
+                        },
+                        "minecraft:explosion_resistance": {
+                            "type": "integer",
+                            "default": 0.0,
+                            "title": "minecraft:explosion_resistance",
+                            "description": "Sets the explosion resistance for this block."
+                        },
+                        "minecraft:flammable": {
+                            "type": "object",
+                            "title": "minecraft:flammable",
+                            "description": "Describes the flammable properties for this block.",
+                            "properties": {
+                                "burn_odds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "burn_odds",
+                                    "description": "How likely the block will be destroyed by flames when on fire."
+                                },
+                                "flame_odds": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "title": "flame_odds",
+                                    "description": "How likely the block will be destroyed by flames when on fire.How likely the block will catch flame when next to a fire."
+                                }
+                            }
+                        },
+                        "minecraft:friction": {
+                            "type": "integer",
+                            "default": 0.1,
+                            "title": "minecraft:friction",
+                            "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block."
+                        },
+                        "minecraft:geometry": {
+                            "type": "string",
+                            "title": "minecraft:geometry",
+                            "description": "The geometry definition name to use."
+                        },
+                        "minecraft:immovable": {
+                            "type": "boolean",
+                            "title": "minecraft:immovable",
+                            "description": "An Immovable block cannot be pushed by pistons"
+                        },
+                        "minecraft:map_color": {
+                            "type": "string",
+                            "pattern": "#",
+                            "title": "minecraft:map_color",
+                            "description": "A color represented as a hex value. This will be the color rendered to a map."
+                        },
+                        "minecraft:material_instances": {
+                            "type": "object",
+                            "title": "minecraft:material_instances",
+                            "description": "Maps face or material_instance names in a geometry file to an actual material instance. Material instance can either be a full material instance or a name to another already defined instance"
+                        },
+                        "minecraft:onlypistonpush": {
+                            "type": "boolean",
+                            "title": "minecraft:onlypistonpush",
+                            "description": "Blocks with those components won't stick to stickyPistons"
+                        },
+                        "minecraft:pick_collision": {
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object"
+                                }
+                            ],
+                            "default": false,
+                            "title": "minecraft:pick_collision",
+                            "description": "Can only be set to false, it disables the collision of the block with entities",
+                            "properties": {
+                                "origin": {
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "title": "origin",
+                                    "description": "Minimal position Bounds of the collision box"
+                                },
+                                "size": {
+                                    "type": "array",
+                                    "default": [
+                                        16.0,
+                                        16.0,
+                                        16.0
+                                    ],
+                                    "title": "origin",
+                                    "description": "Size of each side of the box of the component"
+                                }
+                            }
+                        },
+                        "minecraft:placement_filter": {
+                            "type": "object",
+                            "title": "minecraft:placement_filter",
+                            "description": "Sets rules for under what conditions the block can be placed/survive",
+                            "properties": {
+                                "conditions": {
+                                    "type": "array",
+                                    "title": "conditions",
+                                    "description": "List of conditions where the block can be placed/survive",
+                                    "properties": {
+                                        "allowed_faces": {
+                                            "$ref": "#/definitions/stringArray",
+                                            "title": "allowed_faces",
+                                            "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
+                                        },
+                                        "block_filter": {
+                                            "$ref": "#/definitions/stringArray",
+                                            "title": "block_filter",
+                                            "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:preventsjumping": {
+                            "type": "boolean",
+                            "title": "minecraft:preventsjumping",
+                            "description": "this component makes it so actors can't jump when walking on this block"
+                        },
+                        "minecraft:random_ticking": {
+                            "type": "object",
+                            "title": "minecraft:random_ticking",
+                            "description": "Describes the component that will trigger an even at a regular interval between two values",
+                            "properties": {
+                                "on_tick": {
+                                    "type": "object",
+                                    "properties": {
+                                        "condition": {
+                                            "type": "string",
+                                            "default": 1,
+                                            "title": "condition",
+                                            "description": "The condition of event to be executed on the block."
+                                        },
+                                        "event": {
+                                            "type": "string",
+                                            "default": "set_block_property",
+                                            "title": "event",
+                                            "description": "The type of event executed on the block."
+                                        },
+                                        "range": {
+                                            "type": "array",
+                                            "default": [
+                                                10,
+                                                10
+                                            ],
+                                            "title": "range",
+                                            "description": "The Range between which the component will trigger his event."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target of event executed on the block."
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:rotation": {
+                            "type": "array",
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "title": "minecraft:rotation",
+                            "description": "This is the block's rotation around the center of the cube in degrees. The rotation order is x-y-z."
+                        },
+                        "minecraft:ticking": {
+                            "type": "object",
+                            "title": "minecraft:ticking",
+                            "description": "Describes the component that will trigger an even at a regular interval between two values",
+                            "properties": {
+                                "looping": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "title": "looping",
+                                    "description": "Does the event loop"
+                                },
+                                "range": {
+                                    "type": "array",
+                                    "default": [
+                                        10,
+                                        10
+                                    ],
+                                    "title": "range",
+                                    "description": "The Range between which the component will trigger his event."
+                                },
+                                "on_tick": {
+                                    "type": "object",
+                                    "properties": {
+                                        "condition": {
+                                            "type": "string",
+                                            "default": 1,
+                                            "title": "condition",
+                                            "description": "The condition of event to be executed on the block."
+                                        },
+                                        "event": {
+                                            "type": "string",
+                                            "default": "set_block_property",
+                                            "title": "event",
+                                            "description": "The type of event executed on the block."
+                                        },
+                                        "range": {
+                                            "type": "array",
+                                            "default": [
+                                                10,
+                                                10
+                                            ],
+                                            "title": "range",
+                                            "description": "The Range between which the component will trigger his event."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target of event executed on the block."
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:unit_cube": {
+                            "type": "string",
+                            "title": "minecraft:unit_cube",
+                            "description": "Specifies that a unit cube is to be used with tessellation."
+                        },
+                        "minecraft:unwalkable": {
+                            "type": "boolean",
+                            "title": "minecraft:unwalkable",
+                            "description": "this component sets a block as unwalkable. Most mobs will not try to jump over it if the value is set to true"
+                        },
+                        "minecraft:on_fall_on": {
+                            "type": "object",
+                            "title": "minecraft:on_fall_on",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "min_fall_distance": {
+                                    "type": "integer",
+                                    "default": 0.0,
+                                    "title": "min_fall_distance",
+                                    "description": "The minimum distance in blocks that an actor needs to fall to trigger this event."
+                                },
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        },
+                        "minecraft:on_interact": {
+                            "type": "object",
+                            "title": "minecraft:on_interact",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        },
+                        "minecraft:on_placed": {
+                            "type": "object",
+                            "title": "minecraft:on_placed",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        },
+                        "minecraft:on_player_destroyed": {
+                            "type": "object",
+                            "title": "minecraft:on_player_destroyed",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        },
+                        "minecraft:on_player_placing": {
+                            "type": "object",
+                            "title": "minecraft:on_player_placing",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        },
+                        "minecraft:on_step_off": {
+                            "type": "object",
+                            "title": "minecraft:on_step_off",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        },
+                        "minecraft:on_step_on": {
+                            "type": "object",
+                            "title": "minecraft:on_step_on",
+                            "description": "Describes event for this block.",
+                            "properties": {
+                                "condition": {
+                                    "type": "string",
+                                    "title": "condition",
+                                    "description": "The condition of event to be executed on the block."
+                                },
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event executed on the block."
+                                },
+                                "target": {
+                                    "type": "string",
+                                    "default": "self",
+                                    "title": "target",
+                                    "description": "The target of event executed on the block."
+                                }
+                            }
+                        }
+                    }
+                },
+                "permutations": {
+                    "type": "array",
+                    "title": "permutations",
+                    "description": "Add multiple components with optional condition to create blockstates.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "condition": {
+                                "type": "string",
+                                "title": "condition",
+                                "description": "The condition of event to be executed on the block."
+                            },
+                            "components": {
+                                "type": "object",
+                                "$ref": "#/properties/minecraft:block/properties/components"
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "type": "object",
+                    "properties": {
+                        "": {
+                            "type": "object",
+                            "properties": {
+                                "add_mob_effect": {
+                                    "type": "object",
+                                    "title": "add_mob_effect",
+                                    "description": "Apply mob effect to target.",
+                                    "properties": {
+                                        "amplifier": {
+                                            "type": "integer",
+                                            "default": 0,
+                                            "title": "amplifier",
+                                            "description": "The amplifier for the mob effect."
+                                        },
+                                        "duration": {
+                                            "type": "integer",
+                                            "default": 0.0,
+                                            "title": "duration",
+                                            "description": "The duration of the mob effect."
+                                        },
+                                        "effect": {
+                                            "type": "string",
+                                            "title": "effect",
+                                            "description": "The mob effect to apply."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "damage": {
+                                    "type": "object",
+                                    "title": "damage",
+                                    "description": "Deals damage to the target.",
+                                    "properties": {
+                                        "amount": {
+                                            "type": "integer",
+                                            "default": 0,
+                                            "title": "amount",
+                                            "description": "The amount of damage to deal."
+                                        },
+                                        "type": {
+                                            "type": "string", // add enum?
+                                            "title": "type",
+                                            "description": "The type of damage to deal."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "decrement_stack": {
+                                    "type": "object",
+                                    "title": "decrement_stack",
+                                    "description": "Decrement item stack."
+                                },
+                                "die": {
+                                    "type": "object",
+                                    "title": "die",
+                                    "description": "Kill target. If target is self and this is run from a block then destroy the block.",
+                                    "properties": {
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "play_effect": {
+                                    "type": "object",
+                                    "title": "play_effect",
+                                    "description": "Spawns a particle effect relative to target position.",
+                                    "properties": {
+                                        "data": {
+                                            "type": "integer",
+                                            "default": 0,
+                                            "title": "data",
+                                            "description": "Particle data value."
+                                        },
+                                        "effect": {
+                                            "type": "string",
+                                            "title": "effect",
+                                            "description": "The name of the particle effect to create."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "play_sound": {
+                                    "type": "object",
+                                    "title": "play_sound",
+                                    "description": "Play a sound relative to target position.",
+                                    "properties": {
+                                        "sound": {
+                                            "type": "string",
+                                            "title": "sound",
+                                            "description": "The name of the sound to play."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "remove_mob_effect": {
+                                    "type": "object",
+                                    "title": "remove_mob_effect",
+                                    "description": "Removes mob effect from target.",
+                                    "properties": {
+                                        "effect": {
+                                            "type": "string",
+                                            "title": "effect",
+                                            "description": "The mob effect to remove. Use 'all' to remove all mob effects from target."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "run_command": {
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "pattern": "/",
+                                    "title": "run_command",
+                                    "description": "Triggers a slash command or a list of slash commands.",
+                                    "properties": {
+                                        "command": {
+                                            "type": "array",
+                                            "title": "command",
+                                            "description": "List of slash commands to run."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "set_block": {
+                                    "type": "object",
+                                    "title": "set_block",
+                                    "description": "Sets this block to another block type.",
+                                    "properties": {
+                                        "block_type": {
+                                            "type": "string",
+                                            "title": "block_type",
+                                            "description": "The type of block to set."
+                                        }
+                                    }
+                                },
+                                "set_block_at_pos": {
+                                    "type": "object",
+                                    "title": "set_block_at_pos",
+                                    "description": "Sets a block relative to this block to another block type.",
+                                    "properties": {
+                                        "block_type": {
+                                            "type": "string",
+                                            "title": "block_type",
+                                            "description": "The type of block to set."
+                                        },
+                                        "block_offset": {
+                                            "type": "array",
+                                            "default": [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                            "title": "block_offset",
+                                            "description": "The offset from the block's center."
+                                        }
+                                    }
+                                },
+                                "set_block_property": {
+                                    "type": "object",
+                                    "title": "set_block_property",
+                                    "description": "Sets a block property on this block.",
+                                    "properties": {
+                                        "property": {
+                                            "type": "string",
+                                            "title": "property",
+                                            "description": "Block property to set on the block."
+                                        }
+                                    }
+                                },
+                                "spawn_loot": {
+                                    "type": "object",
+                                    "title": "spawn_loot",
+                                    "description": "Spawn loot from block.",
+                                    "properties": {
+                                        "table": {
+                                            "type": "string",
+                                            "title": "table",
+                                            "description": "File path, relative to the Behavior Pack's path, to the loot table file."
+                                        }
+                                    }
+                                },
+                                "swing": {
+                                    "type": "object",
+                                    "title": "swing",
+                                    "description": "Event causes the actor to swing."
+                                },
+                                "teleport": {
+                                    "type": "object",
+                                    "title": "teleport",
+                                    "description": "Teleport target randomly around destination point.",
+                                    "properties": {
+                                        "avoid_water": {
+                                            "type": "boolean",
+                                            "default": true,
+                                            "title": "avoid_water",
+                                            "description": "Determines if the teleport avoids putting the target in water."
+                                        },
+                                        "destination": {
+                                            "type": "array",
+                                            "default": [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                            "title": "destination",
+                                            "description": "Origin destination of the teleport."
+                                        },
+                                        "land_on_block": {
+                                            "type": "boolean",
+                                            "default": true,
+                                            "title": "land_on_block",
+                                            "description": "Determines if the teleport places the target on a block."
+                                        },
+                                        "max_range": {
+                                            "type": "array",
+                                            "default": [
+                                                8.0,
+                                                8.0,
+                                                8.0
+                                            ],
+                                            "title": "max_range",
+                                            "description": "Max range the target can teleport relative to the origin destination."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "default": "self",
+                                            "title": "target",
+                                            "description": "The target context to execute against."
+                                        }
+                                    }
+                                },
+                                "transform_item": {
+                                    "type": "object",
+                                    "title": "transform_item",
+                                    "description": "Transforms item into another item.",
+                                    "properties": {
+                                        "transform": {
+                                            "type": "string",
+                                            "title": "transform",
+                                            "description": "Name of the item it should transform into"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "default": {}
+}
