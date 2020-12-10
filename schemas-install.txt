@@ -20,3 +20,17 @@
 }
 
 **Coming Soon! - Bedrock Addon Schemas**
+{
+    "json.schemas": [
+
+        {
+            "fileMatch": [
+                "com.mojang/development_behavior_packs/*.json",
+                "com.mojang/development_resource_packs/*.json",
+                "com.mojang/behavior_packs/*.json",
+                "com.mojang/resource_packs/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json"
+        }
+    ]
+}
