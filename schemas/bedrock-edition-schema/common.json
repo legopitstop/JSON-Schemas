@@ -24,6 +24,11 @@
                 "supernatural"
             ]
         },
+        "useAnimation": {
+            "enum": [
+                "eat"
+            ]
+        },
         "recipeTags": {
             "enum": [
                 "furnace",
