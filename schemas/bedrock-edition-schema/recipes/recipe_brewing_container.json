@@ -19,7 +19,7 @@
             "title": "tags",
             "description": "Item used as input for the furnace recipe.",
             "items": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/recipeTags"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/recipeTags"
             }
         },
         "input": {

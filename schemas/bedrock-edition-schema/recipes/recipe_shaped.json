@@ -19,7 +19,7 @@
             "title": "tags",
             "description": "Item used as input for the furnace recipe.",
             "items": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/recipeTags"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/recipeTags"
             }
         },
         "priority": {
@@ -40,11 +40,11 @@
             "title": "key",
             "description": "patten key character mapped to item names.",
             "additionalProperties": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemData"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemData"
             }
         },
         "result": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemDataCount",
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
             "title": "result",
             "description": "when input items match the pattern then these items are the result."
         }

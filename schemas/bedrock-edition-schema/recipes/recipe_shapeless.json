@@ -22,7 +22,7 @@
             "title": "tags",
             "description": "Item used as input for the furnace recipe.",
             "items": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/recipeTags"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/recipeTags"
             }
         },
         "priority": {
@@ -34,12 +34,12 @@
             "anyOf": [
                 {
                     "type": "object",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemDataCount"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                 },
                 {
                     "type": "array",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemDataCount"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                     }
                 }
             ],
@@ -47,7 +47,7 @@
             "description": "items used as input (without a shape) for the recipe."
         },
         "result": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemDataCount",
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
             "title": "result",
             "description": "when input items match the pattern then these items are the result."
         }

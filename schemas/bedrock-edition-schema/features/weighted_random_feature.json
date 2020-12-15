@@ -23,7 +23,7 @@
                 "type": "array",
                 "items": [
                     {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/nameSpaceID",
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
                         "description": "The feature name"
                     },
                     {

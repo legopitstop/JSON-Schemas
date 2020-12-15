@@ -10,7 +10,7 @@
         "description": {
             "properties": {
                 "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/nameSpaceID",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
                     "title": "identifier",
                     "description": "The identifier is used to register the entity with the server. In the Client Entity Definitions JSON the identifier sets the appearance of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors."
                 },
@@ -69,12 +69,12 @@
                         "description": "This component allows players determine what mobs spawn when certain difficulty levels are set.",
                         "properties": {
                             "min": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/difficulty",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
                                 "title": "min",
                                 "description": "This is the minimum difficulty level that a mob spawns"
                             },
                             "max": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/difficulty",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
                                 "title": "max",
                                 "description": "This is the maximum difficulty level that a mob spawns"
                             }
@@ -141,10 +141,10 @@
                         "description": "This component allows the players to specify which biomes the mob spawns in. Check below to see which Biome Tags exist, and what each biome is tagged as.",
                         "properties": {
                             "test": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/biomeFiltertest"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
                             },
                             "operator": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/operator"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                             },
                             "value": {
                                 "type": "string"
