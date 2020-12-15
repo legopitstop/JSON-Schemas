@@ -12,7 +12,7 @@
             "title": "credit"
         },
         "format_version": {
-            "$ref": "#/definitions/supportedVersions",
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema.json#/definitions/supportedVersions",
             "default": "1.16.1",
             "title": "format_version",
             "description": "Specifies the version of the game this entity was made in. If the version is lower than the current version, any changes made to the entity in the vanilla version will be applied to it."
@@ -155,7 +155,7 @@
                     "description": "The license of the pack"
                 },
                 "url": {
-                    "$ref": "#/definitions/urlRegex",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema.json#/definitions/urlRegex",
                     "title": "url",
                     "description": "The home website of your pack"
                 }
