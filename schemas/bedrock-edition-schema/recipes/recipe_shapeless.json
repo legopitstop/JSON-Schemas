@@ -1,0 +1,55 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "required": [
+        "description"
+    ],
+    "type": "object",
+    "title": "minecraft:recipe_shapeless",
+    "description": "Represents a shapeless crafting recipe..",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "pattern": ":"
+                }
+            }
+        },
+        "tags": {
+            "type": "array",
+            "title": "tags",
+            "description": "Item used as input for the furnace recipe.",
+            "items": {
+                "$ref": "#/definitions/recipeTags"
+            }
+        },
+        "priority": {
+            "type": "integer",
+            "title": "priority",
+            "description": "Item used as output for the furnace recipe."
+        },
+        "ingredients": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "$ref": "#/definitions/itemDataCount"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/itemDataCount"
+                    }
+                }
+            ],
+            "title": "ingredients",
+            "description": "items used as input (without a shape) for the recipe."
+        },
+        "result": {
+            "$ref": "#/definitions/itemDataCount",
+            "title": "result",
+            "description": "when input items match the pattern then these items are the result."
+        }
+    }
+}

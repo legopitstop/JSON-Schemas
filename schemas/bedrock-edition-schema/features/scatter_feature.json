@@ -1,0 +1,123 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Data for Minecraft Bedrock Edition addons.",
+    "required": [
+        "format_version"
+    ],
+    "type": "object",
+    "title": "minecraft:scatter_feature",
+    "description": "'minecraft:scatter_feature' scatters a feature throughout a chunk. The 'x', 'y', and 'z' fields are per-coordinate parameters. Note that coordinates represent an offset from the input position, not an absolute position. Coordinates may be a single value, a random distribution, or molang expression that resolves to a numeric value. The 'coordinate_eval_order' field is provided for finer control of coordinate resolution (particularly when using the 'grid' distribution). 'iterations' controls how many individual placements should occur if the 'scatter_chance' check succeeds. The 'scatter_chance' check happens once, so either all placements will run or none will.Succeeds if: At least one feature placement succeeds.Fails if: All feature placements fail.",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "pattern": ":"
+                }
+            }
+        },
+        "project_input_to_floor": {
+            "type": "boolean"
+        },
+        "places_feature": {
+            "type": "string"
+        },
+        "iterations": {
+            "type": "number"
+        },
+        "scatter_chance": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "numerator": {
+                            "type": "number",
+                            "minimum": 1
+                        },
+                        "denominator": {
+                            "type": "number",
+                            "minimum": 1
+                        }
+                    }
+                }
+            ]
+        },
+        "x": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "distribution": {
+                            "enum": [
+                                "uniform"
+                            ]
+                        },
+                        "extent": {
+                            "type": "array",
+                            "maxItems": 2,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "y": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "distribution": {
+                            "enum": [
+                                "uniform"
+                            ]
+                        },
+                        "extent": {
+                            "type": "array",
+                            "maxItems": 2,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "z": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "distribution": {
+                            "enum": [
+                                "uniform"
+                            ]
+                        },
+                        "extent": {
+                            "type": "array",
+                            "maxItems": 2,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Data for Minecraft Bedrock Edition addons.",
+    "required": [
+        "format_version"
+    ],
+    "type": "object",
+    "title": "minecraft:weighted_random_feature",
+    "description": "'minecraft:weighted_random_feature' randomly selects and places a feature based on a weight value. Weights are relative, with higher values making selection more likely.Succeeds if: The selected feature is placed.Fails if: The selected feature fails to be placed.",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "pattern": ":"
+                }
+            }
+        },
+        "features": {
+            "type": "array",
+            "items": {
+                "type": "array",
+                "items": [
+                    {
+                        "$ref": "#/definitions/nameSpaceID",
+                        "description": "The feature name"
+                    },
+                    {
+                        "type": "number",
+                        "description": "The weight of the features"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
 {
+    "$comment": "This is the older Schema that has everything in one file, moved to mulitple files to make it easier to update.",
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Data for Minecraft Bedrock Edition addons.",

@@ -1,0 +1,556 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "supportedVersions": {
+            "enum": [
+                "1.12",
+                "1.16",
+                "1.16.0",
+                "1.16.1",
+                "1.16.100",
+                "1.16.2",
+                "1.16.200",
+                1,
+                2
+            ]
+        },
+        "recipeTags": {
+            "enum": [
+                "furnace",
+                "smoker",
+                "campfire",
+                "soul_campfire",
+                "crafting_table",
+                "brewing_stand"
+            ]
+        },
+        "itemDataCount": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "title": "item",
+                            "description": "The items id"
+                        },
+                        "data": {
+                            "type": "number",
+                            "title": "data",
+                            "description": "The items data. (if any)"
+                        },
+                        "count": {
+                            "type": "number",
+                            "default": 1,
+                            "maximum": 64,
+                            "minimum": 1,
+                            "title": "count",
+                            "description": "Number of these items"
+                        }
+                    }
+                }
+            ]
+        },
+        "urlRegex": {
+            "$ref": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/url-regex.json"
+        },
+        "nameSpaceID": {
+            "type": "string",
+            "pattern": ":"
+        },
+        "difficulty": {
+            "type": "string",
+            "enum": [
+                "easy",
+                "hard",
+                "normal"
+            ]
+        },
+        "hexColor": {
+            "$ref": "http://raw.githubusercontent.com/oasis-open/cti-stix2-json-schemas/stix2.1/schemas/common/hex.json"
+        },
+        "biomeFiltertest": {
+            "enum": [
+                "has_biome_tag"
+            ]
+        },
+        "operator": {
+            "default": "equals",
+            "enum": [
+                "!=",
+                "<",
+                "<=",
+                "<>",
+                "=",
+                "==",
+                ">",
+                ">=",
+                "equals",
+                "not"
+            ]
+        },
+        "itemData": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "item": {
+                            "type": "string",
+                            "title": "item",
+                            "description": "The items id"
+                        },
+                        "data": {
+                            "type": "number",
+                            "title": "data",
+                            "description": "The items data. (if any)"
+                        }
+                    }
+                }
+            ]
+        },
+        "descriptionIdentifier": {
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "type": "string",
+                            "pattern": ":"
+                        }
+                    }
+                }
+            }
+        },
+        "floatMolang": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                }
+            ]
+        },
+        "schemaArray": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "#/properties/minecraft:block/properties/components"
+            }
+        },
+        "stringArray": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "objectArray": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "minItems": 1
+        },
+        "booleanOrObject": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        },
+        "Events": {
+            "type": "object",
+            "description": "This is the name of the event.",
+            "properties": {
+                "add_mob_effect": {
+                    "type": "object",
+                    "default": {
+                        "amplifier": 0,
+                        "duration": 0.0,
+                        "effect": "",
+                        "target": "self"
+                    },
+                    "title": "add_mob_effect",
+                    "description": "Apply mob effect to target.",
+                    "properties": {
+                        "amplifier": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "amplifier",
+                            "description": "The amplifier for the mob effect."
+                        },
+                        "duration": {
+                            "type": "integer",
+                            "default": 0.0,
+                            "title": "duration",
+                            "description": "The duration of the mob effect."
+                        },
+                        "effect": {
+                            "type": "string",
+                            "title": "effect",
+                            "description": "The mob effect to apply."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "damage": {
+                    "type": "object",
+                    "default": {
+                        "amount": 0,
+                        "type": "none",
+                        "target": "self"
+                    },
+                    "title": "damage",
+                    "description": "Deals damage to the target.",
+                    "properties": {
+                        "amount": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "amount",
+                            "description": "The amount of damage to deal."
+                        },
+                        "type": {
+                            "$ref": "#/definitions/DamageSource",
+                            "title": "type",
+                            "description": "The type of damage to deal."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "decrement_stack": {
+                    "type": "object",
+                    "default": {},
+                    "title": "decrement_stack",
+                    "description": "Decrement item stack."
+                },
+                "die": {
+                    "type": "object",
+                    "default": {
+                        "target": "self"
+                    },
+                    "title": "die",
+                    "description": "Kill target. If target is self and this is run from a block then destroy the block.",
+                    "properties": {
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "play_effect": {
+                    "type": "object",
+                    "default": {
+                        "data": 0,
+                        "effect": "",
+                        "target": "self"
+                    },
+                    "title": "play_effect",
+                    "description": "Spawns a particle effect relative to target position.",
+                    "properties": {
+                        "data": {
+                            "type": "integer",
+                            "default": 0,
+                            "title": "data",
+                            "description": "Particle data value."
+                        },
+                        "effect": {
+                            "type": "string",
+                            "title": "effect",
+                            "description": "The name of the particle effect to create."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "play_sound": {
+                    "type": "object",
+                    "default": {
+                        "sound": "",
+                        "target": "self"
+                    },
+                    "title": "play_sound",
+                    "description": "Play a sound relative to target position.",
+                    "properties": {
+                        "sound": {
+                            "type": "string",
+                            "title": "sound",
+                            "description": "The name of the sound to play."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "remove_mob_effect": {
+                    "type": "object",
+                    "default": {
+                        "effect": "",
+                        "target": "self"
+                    },
+                    "title": "remove_mob_effect",
+                    "description": "Removes mob effect from target.",
+                    "properties": {
+                        "effect": {
+                            "type": "string",
+                            "title": "effect",
+                            "description": "The mob effect to remove. Use 'all' to remove all mob effects from target."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "run_command": {
+                    "type": "object",
+                    "uniqueItems": true,
+                    "title": "run_command",
+                    "description": "Triggers a slash command or a list of slash commands.",
+                    "properties": {
+                        "command": {
+                            "anyOf": [
+                                {
+                                    "type": "array"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "default": "",
+                            "title": "command",
+                            "description": "List of slash commands to run."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "set_block": {
+                    "type": "object",
+                    "default": {
+                        "block_type": ""
+                    },
+                    "title": "set_block",
+                    "description": "Sets this block to another block type.",
+                    "properties": {
+                        "block_type": {
+                            "type": "string",
+                            "title": "block_type",
+                            "description": "The type of block to set."
+                        }
+                    }
+                },
+                "set_block_at_pos": {
+                    "type": "object",
+                    "default": {
+                        "block_type": "",
+                        "block_offset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    "title": "set_block_at_pos",
+                    "description": "Sets a block relative to this block to another block type.",
+                    "properties": {
+                        "block_type": {
+                            "type": "string",
+                            "title": "block_type",
+                            "description": "The type of block to set."
+                        },
+                        "block_offset": {
+                            "type": "array",
+                            "default": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "title": "block_offset",
+                            "description": "The offset from the block's center."
+                        }
+                    }
+                },
+                "set_block_property": {
+                    "type": "object",
+                    "default": {
+                        "property": ""
+                    },
+                    "title": "set_block_property",
+                    "description": "Sets a block property on this block.",
+                    "properties": {
+                        "property": {
+                            "type": "string",
+                            "title": "property",
+                            "description": "Block property to set on the block."
+                        }
+                    }
+                },
+                "spawn_loot": {
+                    "type": "object",
+                    "default": {
+                        "table": ""
+                    },
+                    "title": "spawn_loot",
+                    "description": "Spawn loot from block.",
+                    "properties": {
+                        "table": {
+                            "type": "string",
+                            "title": "table",
+                            "description": "File path, relative to the Behavior Pack's path, to the loot table file."
+                        }
+                    }
+                },
+                "swing": {
+                    "type": "object",
+                    "title": "swing",
+                    "description": "Event causes the actor to swing."
+                },
+                "teleport": {
+                    "type": "object",
+                    "default": {
+                        "avoid_water": true,
+                        "destination": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "land_on_block": true,
+                        "max_range": [
+                            8.0,
+                            8.0,
+                            8.0
+                        ],
+                        "target": "self"
+                    },
+                    "title": "teleport",
+                    "description": "Teleport target randomly around destination point.",
+                    "properties": {
+                        "avoid_water": {
+                            "type": "boolean",
+                            "default": true,
+                            "title": "avoid_water",
+                            "description": "Determines if the teleport avoids putting the target in water."
+                        },
+                        "destination": {
+                            "type": "array",
+                            "default": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "title": "destination",
+                            "description": "Origin destination of the teleport."
+                        },
+                        "land_on_block": {
+                            "type": "boolean",
+                            "default": true,
+                            "title": "land_on_block",
+                            "description": "Determines if the teleport places the target on a block."
+                        },
+                        "max_range": {
+                            "type": "array",
+                            "default": [
+                                8.0,
+                                8.0,
+                                8.0
+                            ],
+                            "title": "max_range",
+                            "description": "Max range the target can teleport relative to the origin destination."
+                        },
+                        "target": {
+                            "type": "string",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "transform_item": {
+                    "type": "object",
+                    "default": {
+                        "transform": ""
+                    },
+                    "title": "transform_item",
+                    "description": "Transforms item into another item.",
+                    "properties": {
+                        "transform": {
+                            "type": "string",
+                            "title": "transform",
+                            "description": "Name of the item it should transform into"
+                        }
+                    }
+                }
+            }
+        },
+        "DamageSource": {
+            "enum": [
+                "all",
+                "anvil",
+                "block_explosion",
+                "charging",
+                "contact",
+                "drowning",
+                "entity_attack",
+                "entity_explosion",
+                "fall",
+                "falling_block",
+                "fire",
+                "fire_tick",
+                "fireworks",
+                "fly_into_wall",
+                "lava",
+                "lightning",
+                "magic",
+                "magma",
+                "none",
+                "override",
+                "piston",
+                "projectile",
+                "starve",
+                "suffocation",
+                "suicide",
+                "temperature",
+                "thorns",
+                "void",
+                "wither"
+            ]
+        }
+    },
+    "default": {}
+}

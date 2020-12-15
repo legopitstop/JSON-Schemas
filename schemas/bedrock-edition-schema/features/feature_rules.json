@@ -1,0 +1,95 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Data for Minecraft Bedrock Edition addons.",
+    "required": [
+        "format_version"
+    ],
+    "type": "object",
+    "title": "minecraft:feature_rules",
+    "description": "Feature rules are separate JSON definition files found in the \"feature_rules\" subfolder of behavior packs. Feature rules follow the same filename rules as features. Each feature rule controls exactly one feature and serves as the root of a chain of feature data. To attach a feature to a biome with a feature rule, the \"conditions\" object must include the \"minecraft:biome_filter\" field. This is a list of filter tests that are performed on each biome to determine if the feature should be attached. Most relevant is the \"has_biome_tag\" test.",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "$ref": "#/definitions/nameSpaceID"
+                },
+                "places_feature": {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            }
+        },
+        "conditions": {
+            "type": "object",
+            "properties": {
+                "placement_pass": {
+                    "enum": [
+                        "first_pass",
+                        "before_underground_pass",
+                        "underground_pass",
+                        "after_underground_pass",
+                        "before_surface_pass",
+                        "surface_pass",
+                        "after_surface_pass",
+                        "before_sky_pass",
+                        "sky_pass",
+                        "after_sky_pass",
+                        "final_pass"
+                    ]
+                },
+                "minecraft:biome_filter": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "test": {
+                                "$ref": "#/definitions/biomeFiltertest"
+                            },
+                            "operator": {
+                                "$ref": "#/definitions/operator"
+                            },
+                            "value": {
+                                "type": "string"
+                            },
+                            "all_of": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "test": {
+                                            "$ref": "#/definitions/biomeFiltertest"
+                                        },
+                                        "operator": {
+                                            "$ref": "#/definitions/operator"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "distribution": {
+            "type": "object",
+            "properties": {
+                "iterations": {
+                    "type": "number"
+                },
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                },
+                "z": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
