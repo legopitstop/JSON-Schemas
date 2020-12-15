@@ -22,7 +22,7 @@
             "title": "tags",
             "description": "Item used as input for the furnace recipe.",
             "items": {
-                "$ref": "#/definitions/recipeTags"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/recipeTags"
             }
         },
         "priority": {
@@ -31,12 +31,12 @@
             "description": "Item used as output for the furnace recipe."
         },
         "input": {
-            "$ref": "#/definitions/itemDataCount",
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemDataCount",
             "title": "input",
             "description": "Items used as input for the furnace recipe."
         },
         "output": {
-            "$ref": "#/definitions/itemDataCount",
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/itemDataCount",
             "title": "output",
             "description": "Items used as output for the furnace recipe."
         }

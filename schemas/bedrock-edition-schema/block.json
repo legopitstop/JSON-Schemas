@@ -200,12 +200,12 @@
                             "description": "List of conditions where the block can be placed/survive",
                             "properties": {
                                 "allowed_faces": {
-                                    "$ref": "#/definitions/stringArray",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
                                     "title": "allowed_faces",
                                     "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
                                 },
                                 "block_filter": {
-                                    "$ref": "#/definitions/stringArray",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
                                     "title": "block_filter",
                                     "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
                                 }
@@ -517,7 +517,7 @@
                     },
                     "components": {
                         "type": "object",
-                        "$ref": "#/properties/minecraft:block/properties/components"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/properties/minecraft:block/properties/components"
                     }
                 }
             }
@@ -525,7 +525,7 @@
         "events": {
             "type": "object",
             "additionalProperties": {
-                "$ref": "#/definitions/Events"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events"
             },
             "default": {}
         }

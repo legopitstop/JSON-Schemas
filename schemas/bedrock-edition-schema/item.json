@@ -559,7 +559,7 @@
         "events": {
             "type": "object",
             "additionalProperties": {
-                "$ref": "#/definitions/Events"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events"
             },
             "default": {}
         }

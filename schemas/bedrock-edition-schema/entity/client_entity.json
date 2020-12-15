@@ -9,12 +9,12 @@
         "description": {
             "properties": {
                 "identifier": {
-                    "$ref": "#/definitions/nameSpaceID",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/nameSpaceID",
                     "title": "identifier",
                     "description": "The identifier is used to register the entity with the server. In the Client Entity Definitions JSON the identifier sets the appearance of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors."
                 },
                 "min_engine_version": {
-                    "$ref": "#/definitions/supportedVersions",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/supportedVersions",
                     "title": "min_engine_version",
                     "description": "When present, players can set the min version needed to allow the JSON to be parsed. The version in the definition is compared to the engine version for which the top resource pack was built.If a definition's min_engine_version is newer than that pack's engine version then the definition is not parsed.Multiple definition files may use the same identifier, in which case only one of those definitions will be loaded. The definition with the same or closest and not greater min_engine_version, as compared to the top resource pack's engine version, will be parsed; all other definitions with the same identifier will not be parsed.This can be useful for continuing to support an older version of an entity, when an older resource pack is used at the top of the resource pack stack, while also supporting a newer version of the entity in all other cases."
                 },
@@ -118,10 +118,10 @@
                             "type": "number"
                         },
                         "base_color": {
-                            "$ref": "#/definitions/hexColor"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/hexColor"
                         },
                         "overlay_color": {
-                            "$ref": "#/definitions/hexColor"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/hexColor"
                         }
                     }
                 }

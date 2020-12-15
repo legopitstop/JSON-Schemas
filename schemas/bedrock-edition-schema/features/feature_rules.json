@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Data for Minecraft Bedrock Edition addons.",
     "required": [
         "format_version"
     ],
@@ -13,10 +12,10 @@
             "type": "object",
             "properties": {
                 "identifier": {
-                    "$ref": "#/definitions/nameSpaceID"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/nameSpaceID"
                 },
                 "places_feature": {
-                    "$ref": "#/definitions/nameSpaceID"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/nameSpaceID"
                 }
             }
         },
@@ -44,10 +43,10 @@
                         "type": "object",
                         "properties": {
                             "test": {
-                                "$ref": "#/definitions/biomeFiltertest"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/biomeFiltertest"
                             },
                             "operator": {
-                                "$ref": "#/definitions/operator"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/operator"
                             },
                             "value": {
                                 "type": "string"
@@ -58,10 +57,10 @@
                                     "type": "object",
                                     "properties": {
                                         "test": {
-                                            "$ref": "#/definitions/biomeFiltertest"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/biomeFiltertest"
                                         },
                                         "operator": {
-                                            "$ref": "#/definitions/operator"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray#/definitions/operator"
                                         },
                                         "value": {
                                             "type": "string"
