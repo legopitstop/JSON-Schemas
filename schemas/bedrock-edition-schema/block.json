@@ -514,7 +514,7 @@
                     },
                     "components": {
                         "type": "object",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/properties/minecraft:block/properties/components"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json#/properties/components"
                     }
                 }
             }
