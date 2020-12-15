@@ -170,6 +170,16 @@
                         }
                     }
                 },
+                "minecraft:use_animation": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation",
+                    "title": "minecraft:use_animation",
+                    "description": "What it will look like while your using the item."
+                },
+                "minecraft:use_duration": {
+                    "type": "number",
+                    "title": "minecraft:use_duration",
+                    "description": "How long it takes to use the item."
+                },
                 "minecraft:food": {
                     "type": "object",
                     "title": "minecraft:food",
@@ -192,7 +202,14 @@
                             "description": ""
                         },
                         "saturation_modifier": {
-                            "type": "integer",
+                            "anyOf": [
+                                {
+                                    "type": "integer"
+                                },
+                                {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier"
+                                }
+                            ],
                             "title": "saturation_modifier",
                             "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
                         },
@@ -221,7 +238,7 @@
                                         "description": "The name of the effect that the consumer will get"
                                     },
                                     "chance": {
-                                        "type": "integer",
+                                        "type": "number",
                                         "default": 1.0,
                                         "title": "chance",
                                         "description": "The chance that the conumer will get the effect. 1.0 for 100% of the time."
