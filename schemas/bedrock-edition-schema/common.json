@@ -15,6 +15,15 @@
                 2
             ]
         },
+        "saturationModifier": {
+            "enum": [
+                "poor",
+                "low",
+                "normal",
+                "good",
+                "supernatural"
+            ]
+        },
         "recipeTags": {
             "enum": [
                 "furnace",
