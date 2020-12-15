@@ -4,6 +4,7 @@
     "definitions": {
         "supportedVersions": {
             "enum": [
+                "1.10",
                 "1.12",
                 "1.16",
                 "1.16.0",
@@ -36,7 +37,8 @@
                 "campfire",
                 "soul_campfire",
                 "crafting_table",
-                "brewing_stand"
+                "brewing_stand",
+                "stonecutter"
             ]
         },
         "itemDataCount": {
