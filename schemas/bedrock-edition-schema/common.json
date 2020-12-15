@@ -142,7 +142,7 @@
             "type": "array",
             "minItems": 1,
             "items": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema.json#/properties/minecraft:block/properties/components"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json#/properties/components"
             }
         },
         "stringArray": {
@@ -227,7 +227,7 @@
                             "description": "The amount of damage to deal."
                         },
                         "type": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema.json#/definitions/DamageSource",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/DamageSource",
                             "title": "type",
                             "description": "The type of damage to deal."
                         },
