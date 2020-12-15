@@ -48,6 +48,14 @@
                         }
                     }
                 },
+                "minecraft:max_stack_size": {
+                    "type": "integer",
+                    "maximum": 64,
+                    "minimum": 1,
+                    "default": 64,
+                    "title": "minecraft:max_stack_size",
+                    "description": "The max amount of items that can be in one slot. usually is 64, 16, or 1 for not stackable."
+                },
                 "minecraft:block_placer": {
                     "type": "object",
                     "title": "minecraft:block_placer",
