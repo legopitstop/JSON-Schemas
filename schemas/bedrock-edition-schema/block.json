@@ -172,43 +172,6 @@
                     "description": "Maps face or material_instance names in a geometry file to an actual material instance. Material instance can either be a full material instance or a name to another already defined instance",
                     "additionalProperties": {
                         "$ref": "#/definitions/materialInstances"
-                    },
-                    "properties": {
-                        "*": {
-                            "title": "*",
-                            "description": "All face texture and render method.",
-                            "type": "object"
-                        },
-                        "up": {
-                            "title": "up",
-                            "description": "top face texture and render method.",
-                            "type": "object"
-                        },
-                        "down": {
-                            "title": "down",
-                            "description": "down face texture and render method.",
-                            "type": "object"
-                        },
-                        "north": {
-                            "title": "north",
-                            "description": "north face texture and render method.",
-                            "type": "object"
-                        },
-                        "south": {
-                            "title": "south",
-                            "description": "south face texture and render method.",
-                            "type": "object"
-                        },
-                        "east": {
-                            "title": "east",
-                            "description": "east face texture and render method.",
-                            "type": "object"
-                        },
-                        "west": {
-                            "title": "west",
-                            "description": "west face texture and render method.",
-                            "type": "object"
-                        }
                     }
                 },
                 "minecraft:onlypistonpush": {
