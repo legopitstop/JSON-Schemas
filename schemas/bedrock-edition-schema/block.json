@@ -6,9 +6,13 @@
         "materialInstances": {
             "properties": {
                 "texture": {
+                    "title": "texture",
+                    "description": "Texture name referenced in terrain_texture",
                     "type": "string"
                 },
                 "render_method": {
+                    "title": "render_method",
+                    "description": "The render method to use. will make the block invisable or not.",
                     "anyOf": [
                         {
                             "type": "string"
