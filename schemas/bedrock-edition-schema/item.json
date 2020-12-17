@@ -13,8 +13,22 @@
                 },
                 "category": {
                     "enum": [
+                        "search",
+                        "search.filter",
+                        "construction",
+                        "nature",
+                        "equipment",
+                        "items",
+                        "survival",
+                        "armor",
+                        "All",
+                        "Craftable",
+                        "Construction",
+                        "Nature",
+                        "Equipment",
                         "Items",
-                        "Equipment"
+                        "Inventory",
+                        "Armor"
                     ],
                     "default": "Item",
                     "title": "category",
