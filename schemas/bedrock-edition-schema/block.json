@@ -13,15 +13,11 @@
                 "render_method": {
                     "title": "render_method",
                     "description": "The render method to use. will make the block invisable or not.",
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "enum": [
-                                "alpha_test"
-                            ]
-                        }
+                    "enum": [
+                        "double_sided",
+                        "blend",
+                        "opaque",
+                        "alpha_test"
                     ]
                 }
             }
