@@ -551,7 +551,7 @@
                 "properties": {
                     "condition": {
                         "type": "string",
-                        "default": "query.block_property('${1:<property>}') == '${2:<property>}'",
+                        "default": "query.block_property('MOD_ID:property_type') == 'property'",
                         "title": "condition",
                         "description": "The condition of event to be executed on the block."
                     },
