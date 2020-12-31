@@ -45,6 +45,26 @@
         "components": {
             "type": "object",
             "properties": {
+                "minecraft:camera": {
+                    "type": "object",
+                    "properties": {
+                        "black_bars_duration": {
+                            "type": "number"
+                        },
+                        "black_bars_screen_ratio": {
+                            "type": "number"
+                        },
+                        "shutter_duration": {
+                            "type": "number"
+                        },
+                        "picture_duration": {
+                            "type": "number"
+                        },
+                        "slide_away_duration": {
+                            "type": "number"
+                        }
+                    }
+                },
                 "minecraft:armor": {
                     "type": "object",
                     "title": "minecraft:armor",
@@ -218,10 +238,42 @@
                             "title": "nutrition",
                             "description": "How much nutrition does this food item give the player when eaten."
                         },
+                        "on_use_action": {
+                            "enum": [
+                                "chorus_teleport"
+                            ],
+                            "title": "on_use_action",
+                            "description": "built-in actions to run."
+                        },
                         "on_consume": {
                             "type": "object",
                             "title": "on_consume",
-                            "description": ""
+                            "description": "Runs event when you consume the item.",
+                            "properties": {
+                                "event": {
+                                    "type": "string",
+                                    "title": "event",
+                                    "description": "The event to run."
+                                }
+                            }
+                        },
+                        "on_use_range":{
+                            "type": "array",
+                            "title": "on_use_range",
+                            "description": "Used for \"chorus_teleport\" action.",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "cooldown_type": {
+                            "enum": ["chorusfruit"],
+                            "title": "cooldown_type",
+                            "description": "The type of cooldown to use."
+                        },
+                        "cooldown_time": {
+                            "type": "number",
+                            "title": "cooldown_time",
+                            "description": "How long of a cooldown until the player can consume another."
                         },
                         "saturation_modifier": {
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
@@ -229,48 +281,23 @@
                             "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
                         },
                         "using_converts_to": {
-                            "type": "object",
                             "title": "using_converts_to",
                             "description": "When used, convert the *this* item to the one specified by 'using_converts_to'.",
-                            "properties": {
-                                "item": {
-                                    "type": "string",
-                                    "title": "item",
-                                    "description": "The item that it will become."
-                                }
-                            }
-                        },
-                        "effects": {
-                            "type": "array",
-                            "title": "effects",
-                            "description": "The effects that the player will get when consumed.",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "title": "name",
-                                        "description": "The name of the effect that the consumer will get"
-                                    },
-                                    "chance": {
-                                        "type": "number",
-                                        "default": 1.0,
-                                        "title": "chance",
-                                        "description": "The chance that the conumer will get the effect. 1.0 for 100% of the time."
-                                    },
-                                    "duration": {
-                                        "type": "integer",
-                                        "title": "duration",
-                                        "description": "How long the effect will last in ticks. (20 ticks = 1 sec)"
-                                    },
-                                    "amplifier": {
-                                        "type": "integer",
-                                        "default": 0,
-                                        "title": "amplifier",
-                                        "description": "Makes the effect more powerful."
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "item": {
+                                            "type": "string",
+                                            "title": "item",
+                                            "description": "The item that it will become."
+                                        }
                                     }
                                 }
-                            }
+                            ]
                         }
                     }
                 },
@@ -539,32 +566,22 @@
                             "title": "dispensable"
                         },
                         "slot": {
-                            "type": "object",
                             "title": "slot",
                             "description": "Slot where you can place the armor piece in/on.",
-                            "properties": {
-                                "equipment_slot": {
-                                    "type": "array",
-                                    "items": {
-                                        "enum": [
-                                            "slot.weapon.mainhand",
-                                            "slot.weapon.offhand",
-                                            "slot.armor.head",
-                                            "slot.armor.chest",
-                                            "slot.armor.legs",
-                                            "slot.armor.feet",
-                                            "slot.hotbar",
-                                            "slot.inventory",
-                                            "slot.enderchest",
-                                            "slot.saddle",
-                                            "slot.armor",
-                                            "slot.chest"
-                                        ]
-                                    },
-                                    "title": "",
-                                    "description": ""
-                                }
-                            }
+                            "enum": [
+                                "slot.weapon.mainhand",
+                                "slot.weapon.offhand",
+                                "slot.armor.head",
+                                "slot.armor.chest",
+                                "slot.armor.legs",
+                                "slot.armor.feet",
+                                "slot.hotbar",
+                                "slot.inventory",
+                                "slot.enderchest",
+                                "slot.saddle",
+                                "slot.armor",
+                                "slot.chest"
+                            ]
                         }
                     }
                 },

@@ -17,12 +17,19 @@
             ]
         },
         "saturationModifier": {
-            "enum": [
-                "poor",
-                "low",
-                "normal",
-                "good",
-                "supernatural"
+            "anyOf": [
+                {
+                    "enum": [
+                        "poor",
+                        "low",
+                        "normal",
+                        "good",
+                        "supernatural"
+                    ]
+                },
+                {
+                    "type": "number"
+                }
             ]
         },
         "useAnimation": {

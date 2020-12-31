@@ -35,13 +35,28 @@
                 "properties": {
                     "type": "object",
                     "title": "properties",
-                    "description": "The properties for this block. block_properties."
+                    "description": "The properties for this block. block_properties. like blockstates.",
+                    "additionalProperties": {
+                        "anyOf": [
+                            {
+                                "type": "number"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
+                    }
                 }
             }
         },
         "components": {
             "type": "object",
             "properties": {
+                "minecraft:loot": {
+                    "type": "string",
+                    "title": "minecraft:loot",
+                    "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\""
+                },
                 "minecraft:block_light_absorption": {
                     "type": "integer",
                     "default": 0,
@@ -86,34 +101,34 @@
                             "type": "boolean"
                         },
                         {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "origin": {
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "title": "origin",
+                                    "description": "Minimal position Bounds of the collision box"
+                                },
+                                "size": {
+                                    "type": "array",
+                                    "default": [
+                                        16.0,
+                                        16.0,
+                                        16.0
+                                    ],
+                                    "title": "size",
+                                    "description": "Size of each side of the box of the component"
+                                }
+                            }
                         }
                     ],
                     "default": false,
                     "title": "minecraft:entity_collision",
-                    "description": "Can only be set to false, it disables the collision of the block with entities",
-                    "properties": {
-                        "origin": {
-                            "type": "array",
-                            "default": [
-                                -8.0,
-                                0.0,
-                                -8.0
-                            ],
-                            "title": "origin",
-                            "description": "Minimal position Bounds of the collision box"
-                        },
-                        "size": {
-                            "type": "array",
-                            "default": [
-                                16.0,
-                                16.0,
-                                16.0
-                            ],
-                            "title": "origin",
-                            "description": "Size of each side of the box of the component"
-                        }
-                    }
+                    "description": "Can only be set to false, it disables the collision of the block with entities"
                 },
                 "minecraft:explosion_resistance": {
                     "type": "number",
@@ -148,8 +163,9 @@
                 },
                 "minecraft:geometry": {
                     "type": "string",
+                    "pattern": "geometry.",
                     "title": "minecraft:geometry",
-                    "description": "The geometry definition name to use."
+                    "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning."
                 },
                 "minecraft:immovable": {
                     "type": "boolean",
@@ -181,34 +197,34 @@
                             "type": "boolean"
                         },
                         {
-                            "type": "object"
+                            "type": "object",
+                            "properties": {
+                                "origin": {
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "title": "origin",
+                                    "description": "Minimal position Bounds of the collision box"
+                                },
+                                "size": {
+                                    "type": "array",
+                                    "default": [
+                                        16.0,
+                                        16.0,
+                                        16.0
+                                    ],
+                                    "title": "size",
+                                    "description": "Size of each side of the box of the component"
+                                }
+                            }
                         }
                     ],
                     "default": false,
                     "title": "minecraft:pick_collision",
-                    "description": "Can only be set to false, it disables the collision of the block with entities",
-                    "properties": {
-                        "origin": {
-                            "type": "array",
-                            "default": [
-                                -8.0,
-                                0.0,
-                                -8.0
-                            ],
-                            "title": "origin",
-                            "description": "Minimal position Bounds of the collision box"
-                        },
-                        "size": {
-                            "type": "array",
-                            "default": [
-                                16.0,
-                                16.0,
-                                16.0
-                            ],
-                            "title": "origin",
-                            "description": "Size of each side of the box of the component"
-                        }
-                    }
+                    "description": "Can only be set to false, it disables the collision of the block with entities"
                 },
                 "minecraft:placement_filter": {
                     "type": "object",
@@ -225,7 +241,7 @@
                                     "title": "allowed_faces",
                                     "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
                                 },
-                                "block_filter": {
+                                "allowed_blocks": {
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
                                     "title": "block_filter",
                                     "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
