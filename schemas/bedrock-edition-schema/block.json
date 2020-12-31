@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Data for Minecraft Bedrock Edition addons.",
     "definitions": {
         "materialInstances": {
             "properties": {
@@ -37,14 +36,16 @@
                     "title": "properties",
                     "description": "The properties for this block. block_properties. like blockstates.",
                     "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "type": "number"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ]
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "number"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
                     }
                 }
             }
@@ -550,6 +551,7 @@
                 "properties": {
                     "condition": {
                         "type": "string",
+                        "default": "query.block_property('${1:<property>}') == '${2:<property>}'",
                         "title": "condition",
                         "description": "The condition of event to be executed on the block."
                     },
