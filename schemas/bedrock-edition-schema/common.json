@@ -16,6 +16,11 @@
                 2
             ]
         },
+        "itemCount": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 54
+        },
         "saturationModifier": {
             "anyOf": [
                 {
@@ -90,7 +95,8 @@
             "enum": [
                 "easy",
                 "hard",
-                "normal"
+                "normal",
+                "peaceful"
             ]
         },
         "hexColor": {

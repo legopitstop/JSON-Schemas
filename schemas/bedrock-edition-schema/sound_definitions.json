@@ -1,0 +1,71 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "properties": {
+            "category": {
+                "title": "category",
+                "description": "The category to play the sound. This may effect where it is used in custom blocks or items.",
+                "enum": [
+                    "ambient",
+                    "weather",
+                    "neutral",
+                    "block",
+                    "bottle",
+                    "bucket",
+                    "player"
+                ]
+            },
+            "max_distance": {
+                "type": "number",
+                "title": "max_distance",
+                "description": "The max amount of blocks the player can hear the sound."
+            },
+            "sounds": {
+                "type": "array",
+                "title": "sounds",
+                "description": "The sound location to use.",
+                "items": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "properties": {
+                                "load_on_low_memory": {
+                                    "type": "boolean",
+                                    "title": "load_on_low_memory",
+                                    "description": "If the users device has limited memory it will force the sound to play when true."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "title": "name",
+                                    "description": "The location of the sound."
+                                },
+                                "volume": {
+                                    "type": "number",
+                                    "title": "volume",
+                                    "description": "The volume to play the sound."
+                                }
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "description": "The location of the sound."
+                        }
+                    ]
+                }
+            },
+            "__use_legacy_max_distance": {
+                "type": "boolean",
+                "title": "__use_legacy_max_distance",
+                "description": "Use the built-in legacy max distance."
+            },
+            "min_distance": {
+                "type": "number",
+                "title": "min_distance",
+                "description": "The min amount of blocks the player can hear the sound."
+            }
+        }
+    }
+}

@@ -1,0 +1,203 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "type": "string",
+                    "pattern": ":"
+                }
+            }
+        },
+        "components": {
+            "type": "object",
+            "properties": {
+                "minecraft:climate": {
+                    "type": "object",
+                    "title": "minecraft:climate",
+                    "description": "Describes temperature, humidity, precipitation, etc.  Biomes without this component will have default values.",
+                    "properties": {
+                        "downfall": {
+                            "type": "number"
+                        },
+                        "snow_accumulation": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "temperature": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "minecraft:overworld_height": {
+                    "type": "object",
+                    "title": "minecraft:overworld_height",
+                    "description": "Noise parameters used to drive terrain height in the Overworld.",
+                    "properties": {
+                        "noise_params": {},
+                        "noise_type": {
+                            "enum": [
+                                "stone_beach",
+                                "deep_ocean",
+                                "default",
+                                "default_mutated",
+                                "lowlands",
+                                "river",
+                                "ocean",
+                                "taiga",
+                                "mountains",
+                                "highlands",
+                                "mushroom",
+                                "less_extreme",
+                                "extreme",
+                                "beach",
+                                "swamp"
+                            ]
+                        }
+                    }
+                },
+                "minecraft:overworld_surface": {
+                    "type": "object",
+                    "properties": {
+                        "floor_depth": {
+                            "type": "number"
+                        },
+                        "floor_material": {
+                            "type": "string",
+                            "pattern": ":"
+                        },
+                        "foundation_material": {
+                            "type": "string",
+                            "pattern": ":"
+                        },
+                        "mid_material": {
+                            "type": "string",
+                            "pattern": ":"
+                        },
+                        "top_material": {
+                            "type": "string",
+                            "pattern": ":"
+                        }
+                    }
+                },
+                "minecraft:world_generation_rules": {
+                    "type": "object",
+                    "title": "minecraft:world_generation_rules",
+                    "description": "Control how this biome is instantiated (and then potentially modified) during world generation of the overworld.",
+                    "properties": {
+                        "hills_transformation": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        },
+                        "generate_for_climates": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "minecraft:forced_features": {
+                    "type": "object",
+                    "title": "minecraft:forced_features",
+                    "description": ""
+                },
+                "minecraft:ignore_automatic_features": {
+                    "type": "object",
+                    "title": "minecraft:ignore_automatic_features",
+                    "description": ""
+                },
+                "minecraft:surface_parameters": {
+                    "type": "object",
+                    "title": "minecraft:surface_parameters",
+                    "description": ""
+                },
+                "minecraft:surface_material_adjustments": {
+                    "type": "object",
+                    "title": "minecraft:surface_material_adjustments",
+                    "description": ""
+                },
+                "minecraft:swamp_surface": {
+                    "type": "object",
+                    "title": "minecraft:swamp_surface",
+                    "description": ""
+                },
+                "minecraft:frozen_ocean_surface": {
+                    "type": "object",
+                    "title": "minecraft:frozen_ocean_surface",
+                    "description": ""
+                },
+                "minecraft:mesa_surface": {
+                    "type": "object",
+                    "title": "minecraft:mesa_surface",
+                    "description": ""
+                },
+                "minecraft:nether_surface": {
+                    "type": "object",
+                    "title": "minecraft:nether_surface",
+                    "description": ""
+                },
+                "minecraft:the_end_surface": {
+                    "type": "object",
+                    "title": "minecraft:the_end_surface",
+                    "description": ""
+                },
+                "minecraft:capped_surface": {
+                    "type": "object",
+                    "title": "minecraft:capped_surface",
+                    "description": ""
+                },
+                "minecraft:overworld_generation_rules": {
+                    "type": "object",
+                    "title": "minecraft:overworld_generation_rules",
+                    "description": ""
+                },
+                "minecraft:nether_generation_rules": {
+                    "type": "object",
+                    "title": "minecraft:nether_generation_rules",
+                    "description": ""
+                },
+                "animal": {
+                    "type": "object",
+                    "default": {}
+                },
+                "bamboo": {
+                    "type": "object",
+                    "default": {}
+                },
+                "jungle": {
+                    "type": "object",
+                    "default": {}
+                },
+                "monster": {
+                    "type": "object",
+                    "default": {}
+                },
+                "overworld": {
+                    "type": "object",
+                    "default": {}
+                }
+            }
+        }
+    }
+}

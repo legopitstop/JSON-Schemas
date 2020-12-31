@@ -265,6 +265,21 @@
         },
         "minecraft:spawn_rules": {
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json"
+        },
+        "minecraft:spawn_groups": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_groups.json"
+        },
+        "tiers": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/trades.json"
+        },
+        "minecraft:attachable": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/attachable.json"
+        },
+        "sound_definitions": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/sound_definitions.json"
+        },
+        "minecraft:biome": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json"
         }
     },
     "default": {}

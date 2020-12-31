@@ -13,7 +13,10 @@
                 },
                 "population_control": {
                     "enum": [
-                        "monster"
+                        "monster",
+                        "animal",
+                        "water_animal",
+                        "ambient"
                     ]
                 }
             }
@@ -133,20 +136,41 @@
                         }
                     },
                     "minecraft:biome_filter": {
-                        "type": "object",
-                        "title": "minecraft:biome_filter",
-                        "description": "This component allows the players to specify which biomes the mob spawns in. Check below to see which Biome Tags exist, and what each biome is tagged as.",
-                        "properties": {
-                            "test": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                        "anyOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "test": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                    },
+                                    "operator": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                    },
+                                    "value": {
+                                        "type": "string"
+                                    }
+                                }
                             },
-                            "operator": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
-                            },
-                            "value": {
-                                "type": "string"
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "test": {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                        },
+                                        "operator": {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
                             }
-                        }
+                        ],
+                        "title": "minecraft:biome_filter",
+                        "description": "This component allows the players to specify which biomes the mob spawns in. Check below to see which Biome Tags exist, and what each biome is tagged as."
                     }
                 }
             }
