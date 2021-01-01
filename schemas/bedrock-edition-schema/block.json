@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "materialInstances": {
+            "required": ["texture"],
             "properties": {
                 "texture": {
                     "title": "texture",
@@ -34,7 +35,7 @@
                 "properties": {
                     "type": "object",
                     "title": "properties",
-                    "description": "The properties for this block. block_properties. like blockstates.",
+                    "description": "The indexed properties for this block. block_properties. like blockstates.",
                     "additionalProperties": {
                         "items": {
                             "anyOf": [
@@ -59,13 +60,13 @@
                     "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\""
                 },
                 "minecraft:block_light_absorption": {
-                    "type": "integer",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                     "default": 0,
                     "title": "minecraft:block_light_absorption",
                     "description": "The amount of light this block will absorb."
                 },
                 "minecraft:block_light_emission": {
-                    "type": "integer",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                     "default": 0,
                     "title": "minecraft:block_light_emission",
                     "description": "The amount of light this block will emit in a range [0.0, 1.0]."
@@ -86,7 +87,7 @@
                     "description": "Property describing the breathability of this block and whether it is treated as a solid or as air."
                 },
                 "minecraft:destroy_time": {
-                    "type": "number",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                     "default": 0.0,
                     "title": "minecraft:destroy_time",
                     "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times."
@@ -103,6 +104,7 @@
                         },
                         {
                             "type": "object",
+                            "required": ["origin","size"],
                             "properties": {
                                 "origin": {
                                     "type": "array",
@@ -132,7 +134,7 @@
                     "description": "Can only be set to false, it disables the collision of the block with entities"
                 },
                 "minecraft:explosion_resistance": {
-                    "type": "number",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                     "default": 0.0,
                     "title": "minecraft:explosion_resistance",
                     "description": "Sets the explosion resistance for this block."
@@ -141,15 +143,16 @@
                     "type": "object",
                     "title": "minecraft:flammable",
                     "description": "Describes the flammable properties for this block.",
+                    "required": ["burn_odds","flame_odds"],
                     "properties": {
                         "burn_odds": {
-                            "type": "integer",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                             "default": 0,
                             "title": "burn_odds",
                             "description": "How likely the block will be destroyed by flames when on fire."
                         },
                         "flame_odds": {
-                            "type": "integer",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                             "default": 0,
                             "title": "flame_odds",
                             "description": "How likely the block will be destroyed by flames when on fire.How likely the block will catch flame when next to a fire."
@@ -157,7 +160,7 @@
                     }
                 },
                 "minecraft:friction": {
-                    "type": "integer",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
                     "default": 0.1,
                     "title": "minecraft:friction",
                     "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block."
@@ -199,6 +202,7 @@
                         },
                         {
                             "type": "object",
+                            "required": ["origin","size"],
                             "properties": {
                                 "origin": {
                                     "type": "array",
@@ -254,15 +258,17 @@
                 "minecraft:preventsjumping": {
                     "type": "boolean",
                     "title": "minecraft:preventsjumping",
-                    "description": "this component makes it so actors can't jump when walking on this block"
+                    "description": "This component makes it so actors can't jump when walking on this block"
                 },
                 "minecraft:random_ticking": {
                     "type": "object",
                     "title": "minecraft:random_ticking",
                     "description": "Describes the component that will trigger an even at a regular interval between two values",
+                    "required": ["on_tick"],
                     "properties": {
                         "on_tick": {
                             "type": "object",
+                            "required": ["event","range"],
                             "properties": {
                                 "condition": {
                                     "type": "string",
@@ -309,6 +315,7 @@
                     "type": "object",
                     "title": "minecraft:ticking",
                     "description": "Describes the component that will trigger an even at a regular interval between two values",
+                    "required": ["looping","range","on_tick"],
                     "properties": {
                         "looping": {
                             "type": "boolean",
@@ -327,6 +334,7 @@
                         },
                         "on_tick": {
                             "type": "object",
+                            "required": ["event","range"],
                             "properties": {
                                 "condition": {
                                     "type": "string",
@@ -374,6 +382,7 @@
                     "type": "object",
                     "title": "minecraft:on_fall_on",
                     "description": "Describes event for this block.",
+                    "required": ["min_fall_distance","event"],
                     "properties": {
                         "min_fall_distance": {
                             "type": "integer",
@@ -403,6 +412,7 @@
                     "type": "object",
                     "title": "minecraft:on_interact",
                     "description": "Describes event for this block.",
+                    "required": ["event"],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -426,6 +436,7 @@
                     "type": "object",
                     "title": "minecraft:on_placed",
                     "description": "Describes event for this block.",
+                    "required": ["event"],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -449,6 +460,7 @@
                     "type": "object",
                     "title": "minecraft:on_player_destroyed",
                     "description": "Describes event for this block.",
+                    "required": ["event"],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -472,6 +484,7 @@
                     "type": "object",
                     "title": "minecraft:on_player_placing",
                     "description": "Describes event for this block.",
+                    "required": ["event"],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -495,6 +508,7 @@
                     "type": "object",
                     "title": "minecraft:on_step_off",
                     "description": "Describes event for this block.",
+                    "required": ["event"],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -518,6 +532,7 @@
                     "type": "object",
                     "title": "minecraft:on_step_on",
                     "description": "Describes event for this block.",
+                    "required": ["event"],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -548,6 +563,7 @@
             "description": "Add multiple components with optional condition to create blockstates.",
             "items": {
                 "type": "object",
+                "required": ["components","condition"],
                 "properties": {
                     "condition": {
                         "type": "string",
