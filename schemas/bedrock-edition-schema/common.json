@@ -18,8 +18,8 @@
         },
         "NumberMax1": {
             "type": "number",
-            "minimum": 1.0,
-            "maximum": 0.0
+            "minimum": 0.0,
+            "maximum": 1.0
         },
         "itemCount": {
             "type": "number",
