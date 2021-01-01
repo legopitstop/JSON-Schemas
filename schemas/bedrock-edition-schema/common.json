@@ -493,9 +493,6 @@
                 },
                 "set_block_property": {
                     "type": "object",
-                    "required": [
-                        "property"
-                    ],
                     "default": {
                         "property": ""
                     },

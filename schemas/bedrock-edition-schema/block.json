@@ -268,7 +268,7 @@
                     "properties": {
                         "on_tick": {
                             "type": "object",
-                            "required": ["event","range"],
+                            "required": ["event"],
                             "properties": {
                                 "condition": {
                                     "type": "string",
@@ -334,7 +334,7 @@
                         },
                         "on_tick": {
                             "type": "object",
-                            "required": ["event","range"],
+                            "required": ["event"],
                             "properties": {
                                 "condition": {
                                     "type": "string",
