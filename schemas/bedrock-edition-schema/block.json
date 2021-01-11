@@ -3,7 +3,9 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "materialInstances": {
-            "required": ["texture"],
+            "required": [
+                "texture"
+            ],
             "properties": {
                 "texture": {
                     "title": "texture",
@@ -54,6 +56,33 @@
         "components": {
             "type": "object",
             "properties": {
+                "minecraft:crafting_table": {
+                    "type": "object",
+                    "title": "minecraft:crafting_table",
+                    "description": "Specifies that a crafting table UI is to be used with tessellation.",
+                    "properties": {
+                        "grid_size": {
+                            "type": "number",
+                            "minimum": 3,
+                            "maximum": 3,
+                            "title": "grid_size",
+                            "description": "The size of the crafting grid, Currently only supports '3'"
+                        },
+                        "custom_description": {
+                            "type": "string",
+                            "title": "custom_description",
+                            "description": "The name of the UI that shows up at the top."
+                        },
+                        "crafting_tags": {
+                            "type": "array",
+                            "title": "crafting_tags",
+                            "description": "The tags inside the recipe files to use.",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
                 "minecraft:loot": {
                     "type": "string",
                     "title": "minecraft:loot",
@@ -104,7 +133,10 @@
                         },
                         {
                             "type": "object",
-                            "required": ["origin","size"],
+                            "required": [
+                                "origin",
+                                "size"
+                            ],
                             "properties": {
                                 "origin": {
                                     "type": "array",
@@ -143,7 +175,10 @@
                     "type": "object",
                     "title": "minecraft:flammable",
                     "description": "Describes the flammable properties for this block.",
-                    "required": ["burn_odds","flame_odds"],
+                    "required": [
+                        "burn_odds",
+                        "flame_odds"
+                    ],
                     "properties": {
                         "burn_odds": {
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
@@ -160,7 +195,8 @@
                     }
                 },
                 "minecraft:friction": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                    "minimum": 0.100000,
+                    "maximum": 340282346638528859811704183484516925440.000000,
                     "default": 0.1,
                     "title": "minecraft:friction",
                     "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block."
@@ -202,7 +238,10 @@
                         },
                         {
                             "type": "object",
-                            "required": ["origin","size"],
+                            "required": [
+                                "origin",
+                                "size"
+                            ],
                             "properties": {
                                 "origin": {
                                     "type": "array",
@@ -264,11 +303,15 @@
                     "type": "object",
                     "title": "minecraft:random_ticking",
                     "description": "Describes the component that will trigger an even at a regular interval between two values",
-                    "required": ["on_tick"],
+                    "required": [
+                        "on_tick"
+                    ],
                     "properties": {
                         "on_tick": {
                             "type": "object",
-                            "required": ["event"],
+                            "required": [
+                                "event"
+                            ],
                             "properties": {
                                 "condition": {
                                     "type": "string",
@@ -315,7 +358,11 @@
                     "type": "object",
                     "title": "minecraft:ticking",
                     "description": "Describes the component that will trigger an even at a regular interval between two values",
-                    "required": ["looping","range","on_tick"],
+                    "required": [
+                        "looping",
+                        "range",
+                        "on_tick"
+                    ],
                     "properties": {
                         "looping": {
                             "type": "boolean",
@@ -334,7 +381,9 @@
                         },
                         "on_tick": {
                             "type": "object",
-                            "required": ["event"],
+                            "required": [
+                                "event"
+                            ],
                             "properties": {
                                 "condition": {
                                     "type": "string",
@@ -382,7 +431,10 @@
                     "type": "object",
                     "title": "minecraft:on_fall_on",
                     "description": "Describes event for this block.",
-                    "required": ["min_fall_distance","event"],
+                    "required": [
+                        "min_fall_distance",
+                        "event"
+                    ],
                     "properties": {
                         "min_fall_distance": {
                             "type": "integer",
@@ -412,7 +464,9 @@
                     "type": "object",
                     "title": "minecraft:on_interact",
                     "description": "Describes event for this block.",
-                    "required": ["event"],
+                    "required": [
+                        "event"
+                    ],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -436,7 +490,9 @@
                     "type": "object",
                     "title": "minecraft:on_placed",
                     "description": "Describes event for this block.",
-                    "required": ["event"],
+                    "required": [
+                        "event"
+                    ],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -460,7 +516,9 @@
                     "type": "object",
                     "title": "minecraft:on_player_destroyed",
                     "description": "Describes event for this block.",
-                    "required": ["event"],
+                    "required": [
+                        "event"
+                    ],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -484,7 +542,9 @@
                     "type": "object",
                     "title": "minecraft:on_player_placing",
                     "description": "Describes event for this block.",
-                    "required": ["event"],
+                    "required": [
+                        "event"
+                    ],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -508,7 +568,9 @@
                     "type": "object",
                     "title": "minecraft:on_step_off",
                     "description": "Describes event for this block.",
-                    "required": ["event"],
+                    "required": [
+                        "event"
+                    ],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -532,7 +594,9 @@
                     "type": "object",
                     "title": "minecraft:on_step_on",
                     "description": "Describes event for this block.",
-                    "required": ["event"],
+                    "required": [
+                        "event"
+                    ],
                     "properties": {
                         "condition": {
                             "type": "string",
@@ -563,7 +627,10 @@
             "description": "Add multiple components with optional condition to create blockstates.",
             "items": {
                 "type": "object",
-                "required": ["components","condition"],
+                "required": [
+                    "components",
+                    "condition"
+                ],
                 "properties": {
                     "condition": {
                         "type": "string",
