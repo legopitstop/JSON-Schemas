@@ -47,7 +47,22 @@
             "description": "items used as input (without a shape) for the recipe."
         },
         "result": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                },
+                {
+                    "type": "object",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                    }
+                }
+            ],
             "title": "result",
             "description": "when input items match the pattern then these items are the result."
         }
