@@ -23,20 +23,6 @@
                     ]
                 }
             }
-        },
-        "blockTarget": {
-            "enum": [
-                "self",
-                "holder",
-                "baby",
-                "other",
-                "player",
-                "target",
-                "parent",
-                "block",
-                "damager",
-                "item"
-            ]
         }
     },
     "type": "object",
@@ -349,7 +335,7 @@
                                     "description": "The Range between which the component will trigger his event."
                                 },
                                 "target": {
-                                    "$ref": "#/definitions/blockTarget",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "title": "target",
                                     "description": "The target of event executed on the block."
@@ -421,7 +407,7 @@
                                     "description": "The Range between which the component will trigger his event."
                                 },
                                 "target": {
-                                    "$ref": "#/definitions/blockTarget",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "title": "target",
                                     "description": "The target of event executed on the block."
@@ -467,7 +453,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -493,7 +479,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -519,7 +505,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -545,7 +531,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -571,7 +557,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -597,7 +583,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -623,7 +609,7 @@
                             "description": "The event executed on the block."
                         },
                         "target": {
-                            "$ref": "#/definitions/blockTarget",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
