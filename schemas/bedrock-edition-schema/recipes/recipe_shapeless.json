@@ -39,6 +39,7 @@
                 {
                     "type": "array",
                     "items": {
+                        "type": "object",
                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                     }
                 }
@@ -49,18 +50,19 @@
         "result": {
             "anyOf": [
                 {
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
-                },
-                {
                     "type": "object",
                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                 },
                 {
                     "type": "array",
                     "items": {
+                        "type": "object",
                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                     }
+                },
+                {
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                 }
             ],
             "title": "result",
