@@ -279,16 +279,18 @@
                             "type": "array",
                             "title": "conditions",
                             "description": "List of conditions where the block can be placed/survive",
-                            "properties": {
-                                "allowed_faces": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
-                                    "title": "allowed_faces",
-                                    "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
-                                },
-                                "allowed_blocks": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
-                                    "title": "block_filter",
-                                    "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
+                            "items": {
+                                "properties": {
+                                    "allowed_faces": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
+                                        "title": "allowed_faces",
+                                        "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
+                                    },
+                                    "allowed_blocks": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
+                                        "title": "block_filter",
+                                        "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
+                                    }
                                 }
                             }
                         }
