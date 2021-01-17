@@ -23,6 +23,18 @@
                     ]
                 }
             }
+        },
+        "allowedBlockFaces": {
+            "enum": [
+                "all",
+                "north",
+                "south",
+                "west",
+                "east",
+                "up",
+                "down",
+                "side"
+            ]
         }
     },
     "type": "object",
@@ -282,12 +294,16 @@
                             "items": {
                                 "properties": {
                                     "allowed_faces": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
+                                        "items": {
+                                            "$ref": "#/definitions/allowedBlockFaces"
+                                        },
                                         "title": "allowed_faces",
                                         "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
                                     },
                                     "allowed_blocks": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/stringArray",
+                                        "items": {
+                                            "type": "string"
+                                        },
                                         "title": "block_filter",
                                         "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
                                     }
