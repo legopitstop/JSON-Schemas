@@ -332,7 +332,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "type": "string",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "default": 1,
                                     "title": "condition",
                                     "description": "The condition of event to be executed on the block."
@@ -404,7 +404,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "type": "string",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "default": 1,
                                     "title": "condition",
                                     "description": "The condition of event to be executed on the block."
@@ -461,7 +461,7 @@
                             "description": "The minimum distance in blocks that an actor needs to fall to trigger this event."
                         },
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -487,7 +487,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -513,7 +513,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -539,7 +539,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -565,7 +565,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -591,7 +591,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -617,7 +617,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -651,7 +651,7 @@
                 ],
                 "properties": {
                     "condition": {
-                        "type": "string",
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                         "default": "query.block_property('MOD_ID:property_type') == 'property'",
                         "title": "condition",
                         "description": "The condition of event to be executed on the block."
