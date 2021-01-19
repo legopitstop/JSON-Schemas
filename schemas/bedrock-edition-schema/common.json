@@ -208,7 +208,7 @@
                 }
             ]
         },
-        "Molang": {
+        "MoLang": {
             "type": "string",
             "pattern": "query."
         },
@@ -255,11 +255,11 @@
                 },
                 "sequence": {
                     "type": "array",
-                    "default": {},
+                    "default": [{}],
                     "title": "sequence",
                     "description": "Run events in order from top to bottom.",
                     "items": {
-                        "$ref": "#/definitions/Events/properties"
+                        "$ref": "#/definitions/Events"
                     }
                 },
                 "trigger": {
