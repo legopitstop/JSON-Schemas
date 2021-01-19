@@ -248,20 +248,18 @@
             "type": "object",
             "description": "This is the name of the event.",
             "properties": {
+                "condition": {
+                    "$ref": "#/definitions/MoLang",
+                    "title": "condition",
+                    "description": "The condition of event to be executed on the block."
+                },
                 "sequence": {
                     "type": "array",
+                    "default": {},
                     "title": "sequence",
-                    "description": "Run events in a certain order.",
+                    "description": "Run events in order from top to bottom.",
                     "items": {
-                        "type": "object",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events",
-                        "properties": {
-                            "condition": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                "title": "condition",
-                                "description": "The condition of event to be executed on the block."
-                            }
-                        }
+                        "$ref": "#/definitions/Events/properties"
                     }
                 },
                 "trigger": {
@@ -273,7 +271,7 @@
                     ],
                     "properties": {
                         "condition": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                            "$ref": "#/definitions/MoLang",
                             "title": "condition",
                             "description": "The condition of event to be executed on the block."
                         },
@@ -283,7 +281,7 @@
                             "description": "The type of event executed on the block."
                         },
                         "target": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                            "$ref": "#/definitions/eventTarget",
                             "default": "self",
                             "title": "target",
                             "description": "The target of event executed on the block."
@@ -352,7 +350,7 @@
                             "description": "The amount of damage to deal."
                         },
                         "type": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/DamageSource",
+                            "$ref": "#/definitions/DamageSource",
                             "title": "type",
                             "description": "The type of damage to deal."
                         },
