@@ -51,6 +51,8 @@
                     "title": "properties",
                     "description": "The indexed properties for this block. block_properties. like blockstates.",
                     "additionalProperties": {
+                        "description": "Property name. must contain a namespace example; 'custom:weardo_direction'",
+                        "type": "array",
                         "items": {
                             "maxItems": 16,
                             "minItems": 2,
