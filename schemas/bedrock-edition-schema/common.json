@@ -216,7 +216,7 @@
             "type": "string",
             "pattern": "query.",
             "examples": [
-                "query.block_property('MOD_ID:PROPERTY') == 'PROPERTY'",
+                "query.block_property('${1:MOD_ID}:${1:PROPERTY}') == '${1:PROPERTY}'",
                 "query.get_equipped_item_name =='ITEM'"
             ]
         },
