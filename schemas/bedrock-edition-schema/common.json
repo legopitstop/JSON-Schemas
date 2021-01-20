@@ -210,7 +210,11 @@
         },
         "MoLang": {
             "type": "string",
-            "pattern": "query."
+            "pattern": "query.",
+            "examples": [
+                "query.block_property('MOD_ID:PROPERTY') == 'PROPERTY'",
+                "query.get_equipped_item_name =='ITEM'"
+            ]
         },
         "schemaArray": {
             "type": "array",
@@ -255,7 +259,9 @@
                 },
                 "sequence": {
                     "type": "array",
-                    "default": [{}],
+                    "default": [
+                        {}
+                    ],
                     "title": "sequence",
                     "description": "Run events in order from top to bottom.",
                     "items": {
@@ -566,7 +572,13 @@
                         "property": {
                             "type": "string",
                             "title": "property",
-                            "description": "Block property to set on the block."
+                            "description": "Block property to set on the block. Can use MoLang only if it is contained inside '(...)'",
+                            "examples": [
+                                "(query.cardinal_player_facing)",
+                                "(query.cardinal_facing_2d)",
+                                "(query.cardinal_block_face_placed_on)",
+                                "'PROPERTY'"
+                            ]
                         }
                     }
                 },
@@ -583,6 +595,7 @@
                     "properties": {
                         "table": {
                             "type": "string",
+                            "pattern": "^[a-zA-Z0-9._/]*.json$",
                             "title": "table",
                             "description": "File path, relative to the Behavior Pack's path, to the loot table file."
                         }

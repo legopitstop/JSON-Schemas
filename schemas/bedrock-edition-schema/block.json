@@ -64,7 +64,7 @@
                                 },
                                 {
                                     "type": "string",
-                                    "pattern": ""
+                                    "pattern": "^[^\\s]*$"
                                 },
                                 {
                                     "type": "boolean"
@@ -107,6 +107,7 @@
                 },
                 "minecraft:loot": {
                     "type": "string",
+                    "pattern": "^[a-zA-Z0-9._/]*.json$",
                     "title": "minecraft:loot",
                     "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\""
                 },
