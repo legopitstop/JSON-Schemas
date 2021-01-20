@@ -53,16 +53,20 @@
                     "additionalProperties": {
                         "description": "Property name. must contain a namespace example; 'custom:weardo_direction'",
                         "type": "array",
+                        "uniqueItems": true,
                         "items": {
                             "maxItems": 16,
+                            "maximum": 16,
                             "minItems": 2,
+                            "minimum": 2,
                             "description": "A list of this blocks valid properties.",
                             "anyOf": [
                                 {
                                     "type": "number"
                                 },
                                 {
-                                    "type": "string"
+                                    "type": "string",
+                                    "pattern": ""
                                 },
                                 {
                                     "type": "boolean"
