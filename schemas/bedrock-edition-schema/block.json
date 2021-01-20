@@ -52,12 +52,18 @@
                     "description": "The indexed properties for this block. block_properties. like blockstates.",
                     "additionalProperties": {
                         "items": {
+                            "maxItems": 16,
+                            "minItems": 2,
+                            "description": "A list of this blocks valid properties.",
                             "anyOf": [
                                 {
                                     "type": "number"
                                 },
                                 {
                                     "type": "string"
+                                },
+                                {
+                                    "type": "boolean"
                                 }
                             ]
                         }
