@@ -12,8 +12,7 @@
             "type": "object",
             "properties": {
                 "identifier": {
-                    "type": "string",
-                    "pattern": ":"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                 }
             }
         },

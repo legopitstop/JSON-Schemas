@@ -1,0 +1,52 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "file_path_json": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._/]*.json$",
+            "description": "File path. Must contain '.json' at the end"
+        },
+        "website_url": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/website_url",
+            "type": "string",
+            "format": "uri",
+            "description": "Must be a URL"
+        },
+        "hex_color": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color",
+            "type": "string",
+            "description": "Must be a Hex code. ex; #00ff00",
+            "pattern": "^#([a-fA-F0-9]{2})+$"
+        },
+        "array_string": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/array_string",
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "array_object": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/array_object",
+            "type": "array",
+            "items": {
+                "type": "object"
+            },
+            "minItems": 1
+        },
+        "boolean_or_object": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/boolean_or_object",
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "object"
+                }
+            ]
+        }
+    }
+}

@@ -43,8 +43,7 @@
             "type": "object",
             "properties": {
                 "identifier": {
-                    "type": "string",
-                    "pattern": ":"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                 },
                 "properties": {
                     "type": "object",
@@ -107,7 +106,7 @@
                 },
                 "minecraft:loot": {
                     "type": "string",
-                    "pattern": "^[a-zA-Z0-9._/]*.json$",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
                     "title": "minecraft:loot",
                     "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\""
                 },
@@ -237,7 +236,7 @@
                 },
                 "minecraft:map_color": {
                     "type": "string",
-                    "pattern": "#",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color",
                     "title": "minecraft:map_color",
                     "description": "A color represented as a hex value. This will be the color rendered to a map."
                 },

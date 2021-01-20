@@ -1,8 +1,9 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "supportedVersions": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/supportedVersions",
             "enum": [
                 "1.10",
                 "1.12",
@@ -21,6 +22,7 @@
             ]
         },
         "eventTarget": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
             "enum": [
                 "self",
                 "holder",
@@ -35,16 +37,19 @@
             ]
         },
         "NumberMax1": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
             "type": "number",
             "minimum": 0.0,
             "maximum": 1.0
         },
         "itemCount": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemCount",
             "type": "number",
             "minimum": 0,
             "maximum": 64
         },
         "saturationModifier": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
             "anyOf": [
                 {
                     "enum": [
@@ -61,11 +66,13 @@
             ]
         },
         "useAnimation": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation",
             "enum": [
                 "eat"
             ]
         },
         "recipeTags": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/recipeTags",
             "enum": [
                 "furnace",
                 "smoker",
@@ -77,6 +84,7 @@
             ]
         },
         "itemDataCount": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
             "anyOf": [
                 {
                     "type": "string"
@@ -88,7 +96,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "type": "string",
+                            "$ref": "#/definitions/nameSpaceID",
                             "title": "item",
                             "description": "The items id"
                         },
@@ -109,17 +117,40 @@
                 }
             ]
         },
-        "urlRegex": {
-            "title": "url-regex",
-            "description": "Must be a URL",
-            "type": "string",
-            "format": "uri"
+        "itemData": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemData",
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "item"
+                    ],
+                    "properties": {
+                        "item": {
+                            "$ref": "#/definitions/nameSpaceID",
+                            "title": "item",
+                            "description": "The items id"
+                        },
+                        "data": {
+                            "type": "number",
+                            "title": "data",
+                            "description": "The items data. (if any)"
+                        }
+                    }
+                }
+            ]
         },
         "nameSpaceID": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
             "type": "string",
-            "pattern": ":"
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+            "description": "Item or block namespace id. must not contain Minecraft namespace. example; custom:stone"
         },
         "difficulty": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
             "type": "string",
             "enum": [
                 "easy",
@@ -128,18 +159,14 @@
                 "peaceful"
             ]
         },
-        "hexColor": {
-            "type": "string",
-            "title": "Hex",
-            "description": "Must be a Hex code. ex; #00ff00",
-            "pattern": "^([a-fA-F0-9]{2})+$"
-        },
         "biomeFiltertest": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest",
             "enum": [
                 "has_biome_tag"
             ]
         },
         "operator": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator",
             "default": "equals",
             "enum": [
                 "!=",
@@ -154,32 +181,8 @@
                 "not"
             ]
         },
-        "itemData": {
-            "anyOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "object",
-                    "required": [
-                        "item"
-                    ],
-                    "properties": {
-                        "item": {
-                            "type": "string",
-                            "title": "item",
-                            "description": "The items id"
-                        },
-                        "data": {
-                            "type": "number",
-                            "title": "data",
-                            "description": "The items data. (if any)"
-                        }
-                    }
-                }
-            ]
-        },
         "descriptionIdentifier": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/descriptionIdentifier",
             "required": [
                 "description"
             ],
@@ -191,14 +194,14 @@
                     ],
                     "properties": {
                         "identifier": {
-                            "type": "string",
-                            "pattern": ":"
+                            "$ref": "#/definitions/nameSpaceID"
                         }
                     }
                 }
             }
         },
         "floatMolang": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang",
             "anyOf": [
                 {
                     "type": "number"
@@ -209,6 +212,7 @@
             ]
         },
         "MoLang": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
             "type": "string",
             "pattern": "query.",
             "examples": [
@@ -217,38 +221,49 @@
             ]
         },
         "schemaArray": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/schemaArray",
             "type": "array",
             "minItems": 1,
             "items": {
                 "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json#/properties/components"
             }
         },
-        "stringArray": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "minItems": 1,
-            "uniqueItems": true
-        },
-        "objectArray": {
-            "type": "array",
-            "items": {
-                "type": "object"
-            },
-            "minItems": 1
-        },
-        "booleanOrObject": {
-            "anyOf": [
-                {
-                    "type": "boolean"
-                },
-                {
-                    "type": "object"
-                }
+        "DamageSource": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/DamageSource",
+            "enum": [
+                "all",
+                "anvil",
+                "block_explosion",
+                "charging",
+                "contact",
+                "drowning",
+                "entity_attack",
+                "entity_explosion",
+                "fall",
+                "falling_block",
+                "fire",
+                "fire_tick",
+                "fireworks",
+                "fly_into_wall",
+                "lava",
+                "lightning",
+                "magic",
+                "magma",
+                "none",
+                "override",
+                "piston",
+                "projectile",
+                "starve",
+                "suffocation",
+                "suicide",
+                "temperature",
+                "thorns",
+                "void",
+                "wither"
             ]
         },
         "Events": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events",
             "type": "object",
             "description": "This is the name of the event.",
             "properties": {
@@ -521,7 +536,7 @@
                     "description": "Sets this block to another block type.",
                     "properties": {
                         "block_type": {
-                            "type": "string",
+                            "$ref": "#/definitions/nameSpaceID",
                             "title": "block_type",
                             "description": "The type of block to set."
                         }
@@ -545,7 +560,7 @@
                     "description": "Sets a block relative to this block to another block type.",
                     "properties": {
                         "block_type": {
-                            "type": "string",
+                            "$ref": "#/definitions/nameSpaceID",
                             "title": "block_type",
                             "description": "The type of block to set."
                         },
@@ -568,18 +583,16 @@
                     },
                     "title": "set_block_property",
                     "description": "Sets a block property on this block.",
-                    "properties": {
-                        "property": {
-                            "type": "string",
-                            "title": "property",
-                            "description": "Block property to set on the block. Can use MoLang only if it is contained inside '(...)'",
-                            "examples": [
-                                "(query.cardinal_player_facing)",
-                                "(query.cardinal_facing_2d)",
-                                "(query.cardinal_block_face_placed_on)",
-                                "'PROPERTY'"
-                            ]
-                        }
+                    "additionalProperties": {
+                        "type": "string",
+                        "title": "property",
+                        "description": "Block property to set on the block. Can use MoLang only if it is contained inside '(...)'",
+                        "examples": [
+                            "(query.cardinal_player_facing)",
+                            "(query.cardinal_facing_2d)",
+                            "(query.cardinal_block_face_placed_on)",
+                            "'PROPERTY'"
+                        ]
                     }
                 },
                 "spawn_loot": {
@@ -678,47 +691,13 @@
                     "description": "Transforms item into another item.",
                     "properties": {
                         "transform": {
-                            "type": "string",
+                            "$ref": "#/definitions/nameSpaceID",
                             "title": "transform",
                             "description": "Name of the item it should transform into"
                         }
                     }
                 }
             }
-        },
-        "DamageSource": {
-            "enum": [
-                "all",
-                "anvil",
-                "block_explosion",
-                "charging",
-                "contact",
-                "drowning",
-                "entity_attack",
-                "entity_explosion",
-                "fall",
-                "falling_block",
-                "fire",
-                "fire_tick",
-                "fireworks",
-                "fly_into_wall",
-                "lava",
-                "lightning",
-                "magic",
-                "magma",
-                "none",
-                "override",
-                "piston",
-                "projectile",
-                "starve",
-                "suffocation",
-                "suicide",
-                "temperature",
-                "thorns",
-                "void",
-                "wither"
-            ]
         }
-    },
-    "default": {}
+    }
 }
