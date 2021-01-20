@@ -5,7 +5,6 @@
         "MinecraftItemExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
             "examples": [
-                "minecraft:",
                 "minecraft:acacia_boat",
                 "minecraft:acacia_button",
                 "minecraft:acacia_door",

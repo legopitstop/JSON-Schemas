@@ -5,7 +5,6 @@
         "MinecraftBlockExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples",
             "examples": [
-                "minecraft:",
                 "minecraft:acacia_button",
                 "minecraft:acacia_door",
                 "minecraft:acacia_fence_gate",
