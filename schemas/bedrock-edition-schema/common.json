@@ -143,11 +143,47 @@
                 }
             ]
         },
+        "nameSpaceIDItem": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
+            "description": "Item namespace id. must not contain Minecraft namespace. example; custom:stone",
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
+                },
+                {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            ]
+        },
+        "nameSpaceIDBlock": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
+            "description": "Block namespace id. must not contain Minecraft namespace. example; custom:stone",
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                },
+                {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            ]
+        },
+        "nameSpaceIDEntity": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
+            "description": "Entity namespace id. must not contain Minecraft namespace. example; custom:zombie",
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                },
+                {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            ]
+        },
         "nameSpaceID": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
             "type": "string",
             "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
-            "description": "Item or block namespace id. must not contain Minecraft namespace. example; custom:stone"
+            "description": "Namespace id. must not contain Minecraft namespace. example; custom:stone"
         },
         "difficulty": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
@@ -216,7 +252,7 @@
             "type": "string",
             "pattern": "query.",
             "examples": [
-                "query.block_property('${1:MOD_ID}:${1:PROPERTY}') == '${1:PROPERTY}'",
+                "query.block_property('MOD_ID:1:PROPERTY') == 'PROPERTY'",
                 "query.get_equipped_item_name =='ITEM'"
             ]
         },
@@ -536,7 +572,7 @@
                     "description": "Sets this block to another block type.",
                     "properties": {
                         "block_type": {
-                            "$ref": "#/definitions/nameSpaceID",
+                            "$ref": "#/definitions/nameSpaceIDBlock",
                             "title": "block_type",
                             "description": "The type of block to set."
                         }
@@ -560,7 +596,7 @@
                     "description": "Sets a block relative to this block to another block type.",
                     "properties": {
                         "block_type": {
-                            "$ref": "#/definitions/nameSpaceID",
+                            "$ref": "#/definitions/nameSpaceIDBlock",
                             "title": "block_type",
                             "description": "The type of block to set."
                         },
@@ -607,8 +643,7 @@
                     "description": "Spawn loot from block.",
                     "properties": {
                         "table": {
-                            "type": "string",
-                            "pattern": "^[a-zA-Z0-9._/]*.json$",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
                             "title": "table",
                             "description": "File path, relative to the Behavior Pack's path, to the loot table file."
                         }
@@ -691,7 +726,7 @@
                     "description": "Transforms item into another item.",
                     "properties": {
                         "transform": {
-                            "$ref": "#/definitions/nameSpaceID",
+                            "$ref": "#/definitions/nameSpaceIDItem",
                             "title": "transform",
                             "description": "Name of the item it should transform into"
                         }

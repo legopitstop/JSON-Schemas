@@ -43,7 +43,7 @@
             "type": "object",
             "properties": {
                 "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
                 },
                 "properties": {
                     "type": "object",
@@ -312,7 +312,7 @@
                                     },
                                     "allowed_blocks": {
                                         "items": {
-                                            "type": "string"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
                                         },
                                         "title": "block_filter",
                                         "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
