@@ -54,11 +54,9 @@
                         "description": "Property name. must contain a namespace example; 'custom:weardo_direction'",
                         "type": "array",
                         "uniqueItems": true,
+                        "maxItems": 16,
+                        "minItems": 2,
                         "items": {
-                            "maxItems": 16,
-                            "maximum": 16,
-                            "minItems": 2,
-                            "minimum": 2,
                             "description": "A list of this blocks valid properties.",
                             "anyOf": [
                                 {
