@@ -8,7 +8,7 @@
             ],
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/manifest.json"
         },
-        // behavior
+        // behavior (server side)
         {
             "fileMatch": [
                 "development_behavior_packs/*/blocks/*.json",
@@ -72,7 +72,7 @@
             ],
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json"
         },
-        // resource
+        // resource (client side)
         {
             "fileMatch": [
                 "development_resource_packs/*/attachables/*.json",
@@ -100,6 +100,6 @@
                 "resource_packs/*/texture_sets/*.json"
             ],
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/texture_set.json"
-        },
+        }
     ]
 }
