@@ -1,103 +1,286 @@
 {
-    "version": 1.0,
-    "schemas": [
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/manifest.json",
-                "behavior_packs/*/manifest.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/manifest.json"
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Data for Minecraft Bedrock Edition addons.",
+    "required": [
+        "format_version"
+    ],
+    "properties": {
+        "credit": {
+            "type": "string",
+            "default": "Thanks to Legopitstop for creating the schema. https://github.com/legopitstop/JSON-Schemas",
+            "title": "credit"
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/blocks/*.json",
-                "behavior_packs/*/blocks/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json"
+        "format_version": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/supportedVersions",
+            "default": "1.16.1",
+            "title": "format_version",
+            "description": "Specifies the version of the game this entity was made in. If the version is lower than the current version, any changes made to the entity in the vanilla version will be applied to it."
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/items/*.json",
-                "behavior_packs/*/items/*.json"
+        "header": {
+            "type": "object",
+            "required": [
+                "name",
+                "uuid"
             ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json"
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "title": "description",
+                    "description": "This is a short description of the pack. It will appear in the game below the name of the pack. We recommend keeping it to 1-2 lines."
+                },
+                "name": {
+                    "type": "string",
+                    "title": "name",
+                    "description": "This is the name of the pack as it appears within Minecraft. This is a required field."
+                },
+                "uuid": {
+                    "type": "string",
+                    "title": "uuid",
+                    "description": "This is a special type of identifier that uniquely identifies this pack from any other pack. UUIDs are written in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx where each x is a hexadecimal value (0-9 or a-f). We recommend using an online service to generate this and guarantee their uniqueness (just bing UUID Generator to find some)"
+                },
+                "version": {
+                    "type": "array",
+                    "title": "version",
+                    "description": "This is the version of your pack in the format [majorVersion, minorVersion, revision]. The version number is used when importing a pack that has been imported before. The new pack will replace the old one if the version is higher, and ignored if it's the same or lower",
+                    "items": [
+                        {
+                            "type": "number"
+                        }
+                    ]
+                },
+                "min_engine_version": {
+                    "type": "array",
+                    "title": "min_engine_version",
+                    "description": "This is the minimum version of the game that this pack was written for. This is a required field for resource and behavior packs. This helps the game identify whether any backwards compatibility is needed for your pack. You should always use the highest version currently available when creating packs",
+                    "items": [
+                        {
+                            "type": "number"
+                        }
+                    ]
+                },
+                "base_game_version": {
+                    "type": "array",
+                    "title": "base_game_version",
+                    "description": "This is the version of the base game your world template requires, specified as [majorVersion, minorVersion, revision]. We use this to determine what version of the base game resource and behavior packs to apply when your content is used.",
+                    "items": [
+                        {
+                            "type": "number"
+                        }
+                    ]
+                },
+                "lock_template_options": {
+                    "type": "boolean",
+                    "title": "lock_template_options",
+                    "description": "This option is required for any world templates. This will lock the player from modifying the options of the world."
+                }
+            }
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/recipes/*.json",
-                "behavior_packs/*/recipes/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes.json"
+        "modules": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "title": "description",
+                        "description": "This is a short description of the module. This is not user-facing at the moment but is a good place to remind yourself why the module is defined"
+                    },
+                    "type": {
+                        "enum": [
+                            "resources",
+                            "data",
+                            "client_data",
+                            "interface",
+                            "world_template"
+                        ],
+                        "title": "type",
+                        "description": "This is the type of the module. Can be any of the following: resources, data, client_data, interface, world_template"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "title": "uuid",
+                        "description": "This is a unique identifier for the module in the same format as the pack's UUID in the header. This should be different from the pack's UUID, and different for every module"
+                    },
+                    "version": {
+                        "type": "array",
+                        "title": "version",
+                        "description": "This is the version of the module in the same format as the pack's version in the header. This can be used to further identify changes in your pack",
+                        "items": [
+                            {
+                                "type": "number"
+                            }
+                        ]
+                    }
+                }
+            }
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/features/*.json",
-                "behavior_packs/*/features/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features.json"
+        "dependencies": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "title": "uuid",
+                        "description": "This is the unique identifier of the pack that this pack depends on. It needs to be the exact same UUID that the pack has defined in the header section of it's manifest file"
+                    },
+                    "version": {
+                        "type": "array",
+                        "title": "version",
+                        "description": "This is the specific version of the pack that your pack depends on. Should match the version the other pack has in its manifest file",
+                        "items": [
+                            {
+                                "type": "number"
+                            }
+                        ]
+                    }
+                }
+            }
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/feature_rules/*.json",
-                "behavior_packs/*/feature_rules/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/feature_rules.json"
+        "metadata": {
+            "type": "object",
+            "properties": {
+                "authors": {
+                    "type": "array",
+                    "title": "authors",
+                    "description": "Name of the author(s) of the pack",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "license": {
+                    "type": "string",
+                    "title": "license",
+                    "description": "The license of the pack"
+                },
+                "url": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/website_url",
+                    "title": "url",
+                    "description": "The home website of your pack"
+                }
+            }
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/spawn_rules/*.json",
-                "behavior_packs/*/spawn_rules/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json"
+        "capabilities": {
+            "type": "object",
+            "title": "capabilities",
+            "description": "Their isnt much info about 'capabilities' other than the names.",
+            "properties": {
+                "experimental_custom_ui": {
+                    "title": "experimental_custom_ui",
+                    "description": ""
+                },
+                "chemistry": {
+                    "title": "chemistry",
+                    "description": ""
+                },
+                "raytraced": {
+                    "title": "raytraced",
+                    "description": ""
+                }
+            }
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/spawn_rules/*.json",
-                "behavior_packs/*/spawn_rules/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_groups.json"
+        "subpacks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "folder_name": {
+                        "type": "string",
+                        "title": "folder_name",
+                        "description": "This is the folder that it will look into. directory is 'manifest.json/subpacks/<your file(s)>'"
+                    },
+                    "name": {
+                        "type": "string",
+                        "title": "name",
+                        "description": "The display name that will show up in-game."
+                    },
+                    "memory_tier": {
+                        "type": "integer",
+                        "title": "memory_tier",
+                        "description": "This is the order that they will show up in the settings screen."
+                    }
+                }
+            }
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/trades/*.json",
-                "behavior_packs/*/trades/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/trades.json"
+        "minecraft:block": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json"
         },
-        {
-            "fileMatch": [
-                "development_behavior_packs/*/biomes/*.json",
-                "behavior_packs/*/biomes/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json"
+        "minecraft:item": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json"
         },
-        {
-            "fileMatch": [
-                "development_resource_packs/*/attachables/*.json",
-                "resource_packs/*/attachables/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/attachable.json"
+        "minecraft:texture_set": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/texture_set.json"
         },
-        {
-            "fileMatch": [
-                "development_resource_packs/*/partiles/*.json",
-                "resource_packs/*/partiles/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/partile_effect.json"
+        "minecraft:recipe_furnace": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes/recipe_furnace.json"
         },
-        {
-            "fileMatch": [
-                "development_resource_packs/*/sounds/*/sound_definitions.json",
-                "resource_packs/*/sounds/*/sound_definitions.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/sound_definitions.json"
+        "minecraft:recipe_shaped": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes/recipe_shaped.json"
         },
-        {
-            "fileMatch": [
-                "development_resource_packs/*/texture_sets/*.json",
-                "resource_packs/*/texture_sets/*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/texture_set.json"
+        "minecraft:recipe_shapeless": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes/recipe_shapeless.json"
+        },
+        "minecraft:recipe_brewing_mix": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes/recipe_brewing_mix.json"
+        },
+        "minecraft:recipe_brewing_container": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes/recipe_brewing_container.json"
+        },
+        "particle_effect":{
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/particle_effect.json"
+        },
+        "minecraft:ore_feature": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/ore_feature.json"
+        },
+        "minecraft:aggregate_feature":{
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/aggregate_feature.json"
+        },
+        "minecraft:sequence_feature":{
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/sequence_feature.json"
+        },
+        "minecraft:scatter_feature": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/scatter_feature.json"
+        },
+        "minecraft:search_feature": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/search_feature.json"
+        },
+        "minecraft:single_block_feature": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/single_block_feature.json"
+        },
+        "minecraft:structure_template_feature":{
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/structure_template_feature.json"
+        },
+        "minecraft:tree_feature": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/tree_feature.json"
+        },
+        "minecraft:weighted_random_feature": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/weighted_random_feature.json"
+        },
+        "minecraft:feature_rules": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/feature_rules.json"
+        },
+        "minecraft:client_entity": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/client_entity.json"
+        },
+        "minecraft:spawn_rules": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json"
+        },
+        "minecraft:spawn_groups": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_groups.json"
+        },
+        "tiers": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/trades.json"
+        },
+        "minecraft:attachable": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/attachable.json"
+        },
+        "sound_definitions": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/sound_definitions.json"
+        },
+        "minecraft:biome": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json"
         }
-    ]
+    },
+    "default": {}
 }

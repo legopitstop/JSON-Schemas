@@ -1,0 +1,103 @@
+{
+    "version": 1.0,
+    "schemas": [
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/manifest.json",
+                "behavior_packs/*/manifest.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/manifest.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/blocks/*.json",
+                "behavior_packs/*/blocks/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/items/*.json",
+                "behavior_packs/*/items/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/recipes/*.json",
+                "behavior_packs/*/recipes/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/features/*.json",
+                "behavior_packs/*/features/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/feature_rules/*.json",
+                "behavior_packs/*/feature_rules/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/feature_rules.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/spawn_rules/*.json",
+                "behavior_packs/*/spawn_rules/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/spawn_rules/*.json",
+                "behavior_packs/*/spawn_rules/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_groups.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/trades/*.json",
+                "behavior_packs/*/trades/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/trades.json"
+        },
+        {
+            "fileMatch": [
+                "development_behavior_packs/*/biomes/*.json",
+                "behavior_packs/*/biomes/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json"
+        },
+        {
+            "fileMatch": [
+                "development_resource_packs/*/attachables/*.json",
+                "resource_packs/*/attachables/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/attachable.json"
+        },
+        {
+            "fileMatch": [
+                "development_resource_packs/*/partiles/*.json",
+                "resource_packs/*/partiles/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/partile_effect.json"
+        },
+        {
+            "fileMatch": [
+                "development_resource_packs/*/sounds/*/sound_definitions.json",
+                "resource_packs/*/sounds/*/sound_definitions.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/sound_definitions.json"
+        },
+        {
+            "fileMatch": [
+                "development_resource_packs/*/texture_sets/*.json",
+                "resource_packs/*/texture_sets/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/texture_set.json"
+        }
+    ]
+}
