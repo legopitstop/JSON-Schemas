@@ -1,176 +1,179 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Data for Minecraft Bedrock Edition addons.",
-    "type": "object",
     "properties": {
-        "description": {
+        "minecraft:spawn_rules": {
+            "type": "object",
             "properties": {
-                "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
-                    "title": "identifier",
-                    "description": "The identifier is used to register the entity with the server. In the Client Entity Definitions JSON the identifier sets the appearance of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors."
+                "description": {
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
+                            "title": "identifier",
+                            "description": "The identifier is used to register the entity with the server. In the Client Entity Definitions JSON the identifier sets the appearance of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors."
+                        },
+                        "population_control": {
+                            "enum": [
+                                "monster",
+                                "animal",
+                                "water_animal",
+                                "ambient"
+                            ]
+                        }
+                    }
                 },
-                "population_control": {
-                    "enum": [
-                        "monster",
-                        "animal",
-                        "water_animal",
-                        "ambient"
-                    ]
-                }
-            }
-        },
-        "conditions": {
-            "type": "array",
-            "title": "conditions",
-            "description": "Conditions contain different components that players can use to customize natural biome spawning.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "minecraft:spawns_on_surface": {
+                "conditions": {
+                    "type": "array",
+                    "title": "conditions",
+                    "description": "Conditions contain different components that players can use to customize natural biome spawning.",
+                    "items": {
                         "type": "object",
-                        "title": "minecraft:spawns_on_surface",
-                        "description": "This component allows the mob to spawn on the ground. Adding the component causes it to be true, removing it causes the mob to stop spawning on the surface."
-                    },
-                    "minecraft:spawns_underwater": {
-                        "type": "object",
-                        "title": "minecraft:spawns_underwater",
-                        "description": "This component allows the mob to spawn underwater. Adding the component causes it to be true, removing it causes the mob to stop spawning underwater."
-                    },
-                    "minecraft:brightness_filter": {
-                        "type": "object",
-                        "title": "minecraft:brightness_filter",
-                        "description": "This component allows players to set the light level range that causes the mob to spawn.",
                         "properties": {
-                            "min": {
-                                "type": "number",
-                                "default": 0.0,
-                                "title": "min",
-                                "description": "This is the minimum light level value that allows the mob to spawn"
-                            },
-                            "max": {
-                                "type": "number",
-                                "default": 15.0,
-                                "title": "max",
-                                "description": "This is the maximum light level value that allows the mob to spawn"
-                            },
-                            "adjust_for_weather": {
-                                "type": "boolean",
-                                "default": false,
-                                "title": "adjust_for_weather",
-                                "description": "This determines if weather can affect the light level conditions that cause the mob to spawn (e.g. Allowing hostile mobs to spawn during the day when it rains.)"
-                            }
-                        }
-                    },
-                    "minecraft:difficulty_filter": {
-                        "type": "object",
-                        "title": "minecraft:difficulty_filter",
-                        "description": "This component allows players determine what mobs spawn when certain difficulty levels are set.",
-                        "properties": {
-                            "min": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
-                                "title": "min",
-                                "description": "This is the minimum difficulty level that a mob spawns"
-                            },
-                            "max": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
-                                "title": "max",
-                                "description": "This is the maximum difficulty level that a mob spawns"
-                            }
-                        }
-                    },
-                    "minecraft:weight": {
-                        "type": "object",
-                        "title": "minecraft:weight",
-                        "description": "This component allows players to give a priority to how often that mob should spawn. Mobs with lower weight values have a higher chance to spawn than mobs with higher weight values.",
-                        "properties": {
-                            "default": {
-                                "type": "number",
-                                "default": 0.0,
-                                "title": "default",
-                                "description": "This is the priority of the mob spawning"
-                            }
-                        }
-                    },
-                    "minecraft:herd": {
-                        "type": "object",
-                        "title": "minecraft:herd",
-                        "description": "This component allows players to determine the herd size of animals.",
-                        "properties": {
-                            "event": {
-                                "type": "string",
-                                "title": "event",
-                                "description": "This is an event that can be triggered from spawning"
-                            },
-                            "event_skip_count": {
-                                "type": "number",
-                                "title": "event_skip_count",
-                                "description": "This is the number of mobs spawned before the specified event is triggered"
-                            },
-                            "min_size": {
-                                "type": "number",
-                                "title": "min_size",
-                                "description": "This is the minimum number of mobs that spawn in a herd"
-                            },
-                            "max_size": {
-                                "type": "number",
-                                "title": "max_size",
-                                "description": "This is the maximum number of mobs that spawn in a herd"
-                            }
-                        }
-                    },
-                    "minecraft:permute_type": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "weight": {
-                                    "type": "number"
-                                },
-                                "entity_type": {
-                                    "type": "string",
-                                    "pattern": ":"
-                                }
-                            }
-                        }
-                    },
-                    "minecraft:biome_filter": {
-                        "anyOf": [
-                            {
+                            "minecraft:spawns_on_surface": {
                                 "type": "object",
+                                "title": "minecraft:spawns_on_surface",
+                                "description": "This component allows the mob to spawn on the ground. Adding the component causes it to be true, removing it causes the mob to stop spawning on the surface."
+                            },
+                            "minecraft:spawns_underwater": {
+                                "type": "object",
+                                "title": "minecraft:spawns_underwater",
+                                "description": "This component allows the mob to spawn underwater. Adding the component causes it to be true, removing it causes the mob to stop spawning underwater."
+                            },
+                            "minecraft:brightness_filter": {
+                                "type": "object",
+                                "title": "minecraft:brightness_filter",
+                                "description": "This component allows players to set the light level range that causes the mob to spawn.",
                                 "properties": {
-                                    "test": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                    "min": {
+                                        "type": "number",
+                                        "default": 0.0,
+                                        "title": "min",
+                                        "description": "This is the minimum light level value that allows the mob to spawn"
                                     },
-                                    "operator": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                    "max": {
+                                        "type": "number",
+                                        "default": 15.0,
+                                        "title": "max",
+                                        "description": "This is the maximum light level value that allows the mob to spawn"
                                     },
-                                    "value": {
-                                        "type": "string"
+                                    "adjust_for_weather": {
+                                        "type": "boolean",
+                                        "default": false,
+                                        "title": "adjust_for_weather",
+                                        "description": "This determines if weather can affect the light level conditions that cause the mob to spawn (e.g. Allowing hostile mobs to spawn during the day when it rains.)"
                                     }
                                 }
                             },
-                            {
+                            "minecraft:difficulty_filter": {
+                                "type": "object",
+                                "title": "minecraft:difficulty_filter",
+                                "description": "This component allows players determine what mobs spawn when certain difficulty levels are set.",
+                                "properties": {
+                                    "min": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
+                                        "title": "min",
+                                        "description": "This is the minimum difficulty level that a mob spawns"
+                                    },
+                                    "max": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
+                                        "title": "max",
+                                        "description": "This is the maximum difficulty level that a mob spawns"
+                                    }
+                                }
+                            },
+                            "minecraft:weight": {
+                                "type": "object",
+                                "title": "minecraft:weight",
+                                "description": "This component allows players to give a priority to how often that mob should spawn. Mobs with lower weight values have a higher chance to spawn than mobs with higher weight values.",
+                                "properties": {
+                                    "default": {
+                                        "type": "number",
+                                        "default": 0.0,
+                                        "title": "default",
+                                        "description": "This is the priority of the mob spawning"
+                                    }
+                                }
+                            },
+                            "minecraft:herd": {
+                                "type": "object",
+                                "title": "minecraft:herd",
+                                "description": "This component allows players to determine the herd size of animals.",
+                                "properties": {
+                                    "event": {
+                                        "type": "string",
+                                        "title": "event",
+                                        "description": "This is an event that can be triggered from spawning"
+                                    },
+                                    "event_skip_count": {
+                                        "type": "number",
+                                        "title": "event_skip_count",
+                                        "description": "This is the number of mobs spawned before the specified event is triggered"
+                                    },
+                                    "min_size": {
+                                        "type": "number",
+                                        "title": "min_size",
+                                        "description": "This is the minimum number of mobs that spawn in a herd"
+                                    },
+                                    "max_size": {
+                                        "type": "number",
+                                        "title": "max_size",
+                                        "description": "This is the maximum number of mobs that spawn in a herd"
+                                    }
+                                }
+                            },
+                            "minecraft:permute_type": {
                                 "type": "array",
                                 "items": {
                                     "type": "object",
                                     "properties": {
-                                        "test": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                        "weight": {
+                                            "type": "number"
                                         },
-                                        "operator": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
-                                        },
-                                        "value": {
-                                            "type": "string"
+                                        "entity_type": {
+                                            "type": "string",
+                                            "pattern": ":"
                                         }
                                     }
                                 }
+                            },
+                            "minecraft:biome_filter": {
+                                "anyOf": [
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "test": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                            },
+                                            "operator": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "test": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                                },
+                                                "operator": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                                },
+                                                "value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                "title": "minecraft:biome_filter",
+                                "description": "This component allows the players to specify which biomes the mob spawns in. Check below to see which Biome Tags exist, and what each biome is tagged as."
                             }
-                        ],
-                        "title": "minecraft:biome_filter",
-                        "description": "This component allows the players to specify which biomes the mob spawns in. Check below to see which Biome Tags exist, and what each biome is tagged as."
+                        }
                     }
                 }
             }
