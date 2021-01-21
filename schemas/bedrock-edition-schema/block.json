@@ -670,7 +670,7 @@
                             },
                             "components": {
                                 "type": "object",
-                                "$ref": "#/properties/minecraft:block/components"
+                                "$ref": "#/properties/minecraft:block/properties/components"
                             }
                         }
                     }
