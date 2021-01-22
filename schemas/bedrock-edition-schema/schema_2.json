@@ -1,6 +1,6 @@
 {
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema_2.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Data for Minecraft Bedrock Edition.",
     "schemas": [
         {
             "fileMatch": [
