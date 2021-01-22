@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Data for Minecraft Bedrock Edition.",
     "version": 1.0,
     "schemas": [
