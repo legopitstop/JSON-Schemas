@@ -228,7 +228,7 @@
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes/recipe_brewing_container.json"
         },
         "particle_effect":{
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/particle_effect.json#/properties/minecraft:partile_effect"
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/particle_effect.json#/properties/minecraft:particle_effect"
         },
         "minecraft:ore_feature": {
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/ore_feature.json"

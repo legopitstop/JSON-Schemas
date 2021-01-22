@@ -2,7 +2,7 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/partile_effect.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
-        "minecraft:partile_effect": {
+        "minecraft:particle_effect": {
             "type": "object",
             "properties": {
                 "description": {
