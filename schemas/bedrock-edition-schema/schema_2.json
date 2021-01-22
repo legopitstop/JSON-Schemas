@@ -1,8 +1,11 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema_2.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json.schemastore.org/schema-catalog",
+    "version": 1.0,
     "schemas": [
         {
+            "name": "manifest.json",
+            "description": "Minecraft Bedrock Edition manifest file.",
             "fileMatch": [
                 "development_behavior_packs/*/manifest.json",
                 "behavior_packs/*/manifest.json"
@@ -10,6 +13,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/manifest.json"
         },
         {
+            "name": "minecraft:block",
+            "description": "Minecraft Bedrock Edition file to add blocks",
             "fileMatch": [
                 "development_behavior_packs/*/blocks/*.json",
                 "behavior_packs/*/blocks/*.json"
@@ -17,6 +22,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json"
         },
         {
+            "name": "minecraft:item",
+            "description": "Minecraft Bedrock Edition file to add items",
             "fileMatch": [
                 "development_behavior_packs/*/items/*.json",
                 "behavior_packs/*/items/*.json"
@@ -24,6 +31,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json"
         },
         {
+            "name": "recipes",
+            "description": "Minecraft Bedrock Edition file to add recipes",
             "fileMatch": [
                 "development_behavior_packs/*/recipes/*.json",
                 "behavior_packs/*/recipes/*.json"
@@ -31,6 +40,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/recipes.json"
         },
         {
+            "name": "features",
+            "description": "Minecraft Bedrock Edition file to add world generation",
             "fileMatch": [
                 "development_behavior_packs/*/features/*.json",
                 "behavior_packs/*/features/*.json"
@@ -38,6 +49,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features.json"
         },
         {
+            "name": "feature_rules",
+            "description": "Minecraft Bedrock Edition file to determin the world generation",
             "fileMatch": [
                 "development_behavior_packs/*/feature_rules/*.json",
                 "behavior_packs/*/feature_rules/*.json"
@@ -45,6 +58,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/feature_rules.json"
         },
         {
+            "name": "spawn_rules",
+            "description": "Minecraft Bedrock Edition file to make mobs spawn",
             "fileMatch": [
                 "development_behavior_packs/*/spawn_rules/*.json",
                 "behavior_packs/*/spawn_rules/*.json"
@@ -52,13 +67,17 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json"
         },
         {
+            "name": "spawn_groups",
+            "description": "Minecraft Bedrock Edition file to make groups of mobs spawn",
             "fileMatch": [
-                "development_behavior_packs/*/spawn_rules/*.json",
-                "behavior_packs/*/spawn_rules/*.json"
+                "development_behavior_packs/*/spawn_groups/*.json",
+                "behavior_packs/*/spawn_groups/*.json"
             ],
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_groups.json"
         },
         {
+            "name": "trades",
+            "description": "Minecraft Bedtock Edition file for trades",
             "fileMatch": [
                 "development_behavior_packs/*/trades/*.json",
                 "behavior_packs/*/trades/*.json"
@@ -66,6 +85,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/trades.json"
         },
         {
+            "name": "biomes",
+            "description": "Minecraft Bedrock Edition file for biomes",
             "fileMatch": [
                 "development_behavior_packs/*/biomes/*.json",
                 "behavior_packs/*/biomes/*.json"
@@ -73,6 +94,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json"
         },
         {
+            "name": "attachables",
+            "description": "Minecraft Bedrock Edition file for armor",
             "fileMatch": [
                 "development_resource_packs/*/attachables/*.json",
                 "resource_packs/*/attachables/*.json"
@@ -80,6 +103,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/attachable.json"
         },
         {
+            "name": "particles",
+            "description": "Minecraft Bedrock Edition file for partiles",
             "fileMatch": [
                 "development_resource_packs/*/partiles/*.json",
                 "resource_packs/*/partiles/*.json"
@@ -87,6 +112,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/partile_effect.json"
         },
         {
+            "name": "sounds",
+            "description": "Minecraft Bedrock Edition file for sounds",
             "fileMatch": [
                 "development_resource_packs/*/sounds/*/sound_definitions.json",
                 "resource_packs/*/sounds/*/sound_definitions.json"
@@ -94,6 +121,8 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/sound_definitions.json"
         },
         {
+            "name": "texture_sets",
+            "description": "Minecraft Bedrock Edition file for sets of textures.",
             "fileMatch": [
                 "development_resource_packs/*/texture_sets/*.json",
                 "resource_packs/*/texture_sets/*.json"
