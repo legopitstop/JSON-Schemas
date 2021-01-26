@@ -347,6 +347,15 @@
                         }
                     }
                 },
+                "condition": {
+                    "$ref": "#/definitions/MoLang",
+                    "title": "condition",
+                    "description": "The condition of event to be executed on the block. (Only applyable to 'sequence' event)"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "The weight of event to be executed on the block. (Only applyable to 'randomize' event)"
+                },
                 "sequence": {
                     "type": "array",
                     "default": [
@@ -354,15 +363,8 @@
                     ],
                     "title": "sequence",
                     "description": "Used to sequence event functions.",
-                    "additionalItems": {
-                        "$ref": "#/definitions/Events"
-                    },
                     "items": {
-                        "condition": {
-                            "$ref": "#/definitions/MoLang",
-                            "title": "condition",
-                            "description": "The condition of event to be executed on the block. (Only applyable to 'sequence')"
-                        }
+                        "$ref": "#/definitions/Events"
                     }
                 },
                 "randomize": {
@@ -372,13 +374,8 @@
                     ],
                     "title": "randomize",
                     "description": "Used to randomize event functions",
-                    "additionalItems": {
-                        "$ref": "#/definitions/Events"
-                    },
                     "items": {
-                        "weight": {
-                            "type": "integer"
-                        }
+                        "$ref": "#/definitions/Events"
                     }
                 },
                 "trigger": {
