@@ -278,12 +278,13 @@
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entity_queries.json#/definitions/MinecraftEntityQueryExamples",
             "type": "string",
-            "pattern": "query.",
             "description": "Molang can be quite complex, or simple. It depends on your needs. More Info: https://bedrock.dev/docs/beta/MoLang",
             "examples": [
                 "query.block_property('MOD_ID:PROPERTY') == 'PROPERTY'",
                 "query.get_equipped_item_name =='ITEM'",
-                "query.any_tag('example:my_tag', 'stone', 'metal')"
+                "query.any_tag('example:my_tag', 'stone', 'metal')",
+                "context.other -> query.remaining_health + 0.12 * context.other -> query.max-damage",
+                "query.max_damage * 0.25"
             ]
         },
         "schemaArray": {

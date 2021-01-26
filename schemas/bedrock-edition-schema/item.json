@@ -769,7 +769,23 @@
                                     "title": "repair_items",
                                     "description": "Repair item entries.",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                        "type": "object",
+                                        "required": [
+                                            "items",
+                                            "repair_amount"
+                                        ],
+                                        "properties": {
+                                            "items": {
+                                                "type": "array",
+                                                "uniqueItems": true,
+                                                "items": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                }
+                                            },
+                                            "repair_amount": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMoLang"
+                                            }
+                                        }
                                     }
                                 }
                             }
