@@ -1031,7 +1031,7 @@
                                         "itemGroup.name.walls",
                                         "itemGroup.name.wood",
                                         "itemGroup.name.wool",
-                                        "itemGroup.name.woolCarpet",
+                                        "itemGroup.name.woolCarpet"
                                     ],
                                     "title": "parent",
                                     "description": "Premade itemGroups."
