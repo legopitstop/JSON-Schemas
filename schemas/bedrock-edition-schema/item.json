@@ -11,7 +11,8 @@
                 "description": {
                     "type": "object",
                     "required": [
-                        "identifier","category"
+                        "identifier",
+                        "category"
                     ],
                     "properties": {
                         "identifier": {
@@ -432,20 +433,29 @@
                         "minecraft:durability": {
                             "type": "object",
                             "required": [
-                                "damage_chance",
                                 "max_durability"
                             ],
                             "title": "minecraft:durability",
                             "description": "Durability item component: how much damage can this item take before breaking.",
                             "properties": {
                                 "damage_chance": {
-                                    "type": "integer",
-                                    "title": "damage_chance",
+                                    "type": "object",
+                                    "required": [
+                                        "min",
+                                        "max"
+                                    ],
+                                    "properties": {
+                                        "min": {
+                                            "type": "number"
+                                        },
+                                        "max": {
+                                            "type": "number"
+                                        }
+                                    },
                                     "description": "Damage chance."
                                 },
                                 "max_durability": {
                                     "type": "integer",
-                                    "title": "max_durability",
                                     "description": "Max durability is the amount of damage that this item can take before breaking."
                                 }
                             }
