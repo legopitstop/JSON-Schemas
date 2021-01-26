@@ -354,14 +354,14 @@
                     ],
                     "title": "sequence",
                     "description": "Used to sequence event functions.",
+                    "additionalItems": {
+                        "$ref": "#/definitions/Events"
+                    },
                     "items": {
-                        "$ref": "#/definitions/Events",
-                        "properties": {
-                            "condition": {
-                                "$ref": "#/definitions/MoLang",
-                                "title": "condition",
-                                "description": "The condition of event to be executed on the block."
-                            }
+                        "condition": {
+                            "$ref": "#/definitions/MoLang",
+                            "title": "condition",
+                            "description": "The condition of event to be executed on the block. (Only applyable to 'sequence')"
                         }
                     }
                 },
@@ -372,12 +372,12 @@
                     ],
                     "title": "randomize",
                     "description": "Used to randomize event functions",
+                    "additionalItems": {
+                        "$ref": "#/definitions/Events"
+                    },
                     "items": {
-                        "$ref": "#/definitions/Events",
-                        "properties": {
-                            "weight": {
-                                "type": "integer"
-                            }
+                        "weight": {
+                            "type": "integer"
                         }
                     }
                 },
