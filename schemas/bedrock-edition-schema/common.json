@@ -276,7 +276,6 @@
         },
         "MoLang": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entity_queries.json#/definitions/MinecraftEntityQueryExamples",
             "type": "string",
             "description": "Molang can be quite complex, or simple. It depends on your needs. More Info: https://bedrock.dev/docs/beta/MoLang",
             "examples": [
