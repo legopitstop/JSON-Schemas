@@ -43,9 +43,20 @@
             }
         },
         "result": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
             "title": "result",
-            "description": "when input items match the pattern then these items are the result."
+            "description": "when input items match the pattern then this item(s) are the result.",
+            "anyOf": [
+                {
+                    "type": ["string","object"],
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                    }
+                }
+            ]
         }
     }
 }

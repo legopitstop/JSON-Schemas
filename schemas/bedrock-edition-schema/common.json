@@ -114,7 +114,8 @@
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
             "anyOf": [
                 {
-                    "type": "string"
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
                 },
                 {
                     "type": "object",
@@ -123,7 +124,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "$ref": "#/definitions/nameSpaceID",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
                             "title": "item",
                             "description": "The items id"
                         },
@@ -148,7 +149,8 @@
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemData",
             "anyOf": [
                 {
-                    "type": "string"
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
                 },
                 {
                     "type": "object",
@@ -157,7 +159,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "$ref": "#/definitions/nameSpaceID",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
                             "title": "item",
                             "description": "The items id"
                         },
