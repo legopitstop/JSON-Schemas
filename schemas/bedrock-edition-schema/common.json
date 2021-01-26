@@ -342,7 +342,7 @@
                         "launch_power": {
                             "type": "number"
                         },
-                        "angle_offeset": {
+                        "angle_offset": {
                             "type": "number"
                         }
                     }

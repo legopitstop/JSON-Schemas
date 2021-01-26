@@ -392,12 +392,56 @@
                                 "destroy_speeds",
                                 "use_efficiency"
                             ],
-                            "description": "Digger item. Component put on items that dig.",
+                            "description": "Digger item compoent. Make this item dig up blocks at diffrent speeds.",
                             "properties": {
                                 "destroy_speeds": {
-                                    "type": "object",
+                                    "type": "array",
                                     "title": "destroy_speeds",
-                                    "description": "Destroy speed per block."
+                                    "description": "Destroy speed per block.",
+                                    "items": {
+                                        "properties": {
+                                            "block": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "any_tag": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "examples": [
+                                                                        "wood",
+                                                                        "pumpkin",
+                                                                        "plant",
+                                                                        "stone",
+                                                                        "metal",
+                                                                        "dirt",
+                                                                        "sand",
+                                                                        "gravel",
+                                                                        "grass",
+                                                                        "snow",
+                                                                        "diamond_pick_diggable",
+                                                                        "gold_pick_diggable",
+                                                                        "iron_pick_diggable",
+                                                                        "stone_pick_diggable",
+                                                                        "wood_pick_diggable"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "speed": {
+                                                "type": "integer",
+                                                "description": "The speed to dig this block. Higher the number the faster it will dig."
+                                            }
+                                        }
+                                    }
                                 },
                                 "on_dig": {
                                     "type": "string",
@@ -408,7 +452,7 @@
                                     "type": "boolean",
                                     "default": false,
                                     "title": "use_efficiency",
-                                    "description": "Use efficiency? Default is set to false."
+                                    "description": "Use efficiency enchantment? Default is set to false."
                                 }
                             }
                         },
