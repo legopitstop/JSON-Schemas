@@ -49,6 +49,28 @@
             "minimum": 0,
             "maximum": 64
         },
+        "TextColors": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/TextColors",
+            "type": "string",
+            "enum": [
+                "black",
+                "dark_blue",
+                "dark_green",
+                "dark_aqua",
+                "dark_red",
+                "dark_purple",
+                "gold",
+                "gray",
+                "dark_gray",
+                "blue",
+                "green",
+                "aqua",
+                "red",
+                "light_purple",
+                "yellow",
+                "white"
+            ]
+        },
         "saturationModifier": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
             "anyOf": [
@@ -58,6 +80,7 @@
                         "low",
                         "normal",
                         "good",
+                        "high",
                         "supernatural"
                     ]
                 },
@@ -69,7 +92,9 @@
         "useAnimation": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation",
             "enum": [
-                "eat"
+                "eat",
+                "drink",
+                "camera"
             ]
         },
         "recipeTags": {
@@ -256,8 +281,9 @@
             "pattern": "query.",
             "description": "Molang can be quite complex, or simple. It depends on your needs. More Info: https://bedrock.dev/docs/beta/MoLang",
             "examples": [
-                "query.block_property('MOD_ID:1:PROPERTY') == 'PROPERTY'",
-                "query.get_equipped_item_name =='ITEM'"
+                "query.block_property('MOD_ID:PROPERTY') == 'PROPERTY'",
+                "query.get_equipped_item_name =='ITEM'",
+                "query.any_tag('example:my_tag', 'stone', 'metal')"
             ]
         },
         "schemaArray": {
@@ -307,10 +333,19 @@
             "type": "object",
             "description": "This is the name of the event.",
             "properties": {
-                "condition": {
-                    "$ref": "#/definitions/MoLang",
-                    "title": "condition",
-                    "description": "The condition of event to be executed on the block."
+                "shoot": {
+                    "description": "Shoots a projectile.",
+                    "properties": {
+                        "projectile": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                        },
+                        "launch_power": {
+                            "type": "number"
+                        },
+                        "angle_offeset": {
+                            "type": "number"
+                        }
+                    }
                 },
                 "sequence": {
                     "type": "array",
@@ -318,9 +353,32 @@
                         {}
                     ],
                     "title": "sequence",
-                    "description": "Run events in order from top to bottom.",
+                    "description": "Used to sequence event functions.",
                     "items": {
-                        "$ref": "#/definitions/Events"
+                        "$ref": "#/definitions/Events",
+                        "properties": {
+                            "condition": {
+                                "$ref": "#/definitions/MoLang",
+                                "title": "condition",
+                                "description": "The condition of event to be executed on the block."
+                            }
+                        }
+                    }
+                },
+                "randomize": {
+                    "type": "array",
+                    "default": [
+                        {}
+                    ],
+                    "title": "randomize",
+                    "description": "Used to randomize event functions",
+                    "items": {
+                        "$ref": "#/definitions/Events",
+                        "properties": {
+                            "weight": {
+                                "type": "integer"
+                            }
+                        }
                     }
                 },
                 "trigger": {

@@ -15,7 +15,11 @@
                     "block",
                     "bottle",
                     "bucket",
-                    "player"
+                    "player",
+                    "ui",
+                    "hostile",
+                    "music",
+                    "record"
                 ]
             },
             "max_distance": {

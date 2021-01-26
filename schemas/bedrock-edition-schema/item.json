@@ -11,7 +11,7 @@
                 "description": {
                     "type": "object",
                     "required": [
-                        "identifier"
+                        "identifier","category"
                     ],
                     "properties": {
                         "identifier": {
@@ -19,22 +19,10 @@
                         },
                         "category": {
                             "enum": [
-                                "search",
-                                "search.filter",
-                                "construction",
-                                "nature",
-                                "equipment",
-                                "items",
-                                "survival",
-                                "armor",
-                                "All",
-                                "Craftable",
-                                "Construction",
                                 "Nature",
-                                "Equipment",
                                 "Items",
-                                "Inventory",
-                                "Armor"
+                                "Equipment",
+                                "Construction"
                             ],
                             "default": "Item",
                             "title": "category",
@@ -51,8 +39,250 @@
                 "components": {
                     "type": "object",
                     "properties": {
+                        "minecraft:fertilizer": {
+                            "description": "fertilizer item.",
+                            "properties": {
+                                "type": {
+                                    "enum": [
+                                        "bonemeal",
+                                        "rapid"
+                                    ]
+                                }
+                            }
+                        },
+                        "minecraft:enchantable": {
+                            "description": "Enchantable item.",
+                            "properties": {
+                                "slot": {
+                                    "enum": [
+                                        "bow",
+                                        "armor_feet",
+                                        "armor_torso",
+                                        "armor_head",
+                                        "armor_legs",
+                                        "hoe",
+                                        "axe",
+                                        "pickaxe",
+                                        "shovel",
+                                        "sword",
+                                        "elytra",
+                                        "fishing_rod",
+                                        "flintsteel",
+                                        "shears",
+                                        "cosmetic_head"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:allow_off_hand": {
+                            "type": "boolean",
+                            "description": "This will allow the item to be held in the offhand slot. Example items; firework rocket, nautilus shell, shield, totem of undying"
+                        },
+                        "minecraft:animates_in_toolbar": {
+                            "type": "boolean",
+                            "description": "This means this item has a animation. Example items; bow, clock, compass, crossbow, lodestone compass"
+                        },
+                        "minecraft:bucket": {
+                            "type": "object",
+                            "description": "This is a empty bucket item. Example item; bucket",
+                            "default": {}
+                        },
+                        "minecraft:can_destroy_in_creative": {
+                            "type": "boolean",
+                            "description": "This means you cannot break blocks with it while in creative mode. Example items: diamond sword, golden sword, iron sword, netherite sword, stone sword, wooden sword, trident",
+                            "default": true
+                        },
+                        "minecraft:carrot_on_a_stick": {
+                            "type": "object",
+                            "description": "Carrot on a stick item. Example item; carrot on a stick",
+                            "default": {}
+                        },
+                        "minecraft:coal": {
+                            "type": "object",
+                            "description": "Coal item. Example item: coal",
+                            "default": {}
+                        },
+                        "minecraft:damage": {
+                            "type": "integer",
+                            "description": "The amount of damage the item does."
+                        },
+                        "minecraft:dyeable": {
+                            "type": "object",
+                            "description": "An item that can be dyed. Example items; leather boots, leather chestplate, firework star, leather helmet, leather horse armor, leather leggings",
+                            "required": [
+                                "default_color"
+                            ],
+                            "properties": {
+                                "default_color": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                                }
+                            }
+                        },
+                        "minecraft:explodable": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Will the item not survive explosions. Example item; nether star"
+                        },
+                        "minecraft:foil": {
+                            "type": "boolean",
+                            "description": "Gives the item an enchanted look. Example items; enchanted golden apple, experience bottle, end crystal, lodestone compass, nether star",
+                            "default": false
+                        },
+                        "minecraft:frame_count": {
+                            "type": "integer",
+                            "description": "How many frame the item has. Example items; bow, clock, compass, crossbow, lodestone compass"
+                        },
+                        "minecraft:ignores_permission": {
+                            "type": "boolean",
+                            "description": "When true any player can have the item.",
+                            "default": true
+                        },
+                        "minecraft:liquid_clipped": {
+                            "type": "boolean",
+                            "description": "Example items; all boats, all spawn eggs"
+                        },
+                        "minecraft:map": {
+                            "type": "object",
+                            "description": "A map item. Example items; locator map, map",
+                            "required": [
+                                "empty"
+                            ],
+                            "properties": {
+                                "empty": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "minecraft:mirrored_art": {
+                            "type": "boolean",
+                            "description": "Will mirror both sides of the item. Example items; carrot on a stick, warped fungus on a stick"
+                        },
+                        "minecraft:mob_spawner_placer": {
+                            "type": "object",
+                            "description": "This will make the block. Example items; spawn eggs",
+                            "required": [
+                                "entity"
+                            ],
+                            "properties": {
+                                "entity": {
+                                    "description": "The entity for the spawner to spawn.",
+                                    "type": "string",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                                },
+                                "block": {
+                                    "type": "object",
+                                    "description": "The blocks to apply the spawning functionalty to.",
+                                    "properties": {
+                                        "any_tag": {
+                                            "type": "array",
+                                            "default": [
+                                                "minecraft:mob_spawer"
+                                            ],
+                                            "items": {
+                                                "type": "string",
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:record": {
+                            "type": "object",
+                            "description": "Can place inside a jukebox and play the sound track. Example items: all music discs",
+                            "required": [
+                                "sound_event",
+                                "duration",
+                                "comparator_signal"
+                            ],
+                            "properties": {
+                                "sound_event": {
+                                    "description": "The sound track to play",
+                                    "enum": [
+                                        "13",
+                                        "cat",
+                                        "11",
+                                        "wait",
+                                        "pigstep",
+                                        "blocks",
+                                        "chrip",
+                                        "far",
+                                        "mall",
+                                        "mellohi",
+                                        "stal",
+                                        "strad",
+                                        "ward"
+                                    ]
+                                },
+                                "duration": {
+                                    "description": "How long to spawn particles for. Should be the same duration as the track.",
+                                    "type": "number"
+                                },
+                                "comparator_signal": {
+                                    "description": "Strength of the comparator output.",
+                                    "type": "integer",
+                                    "minimum": -1,
+                                    "maximum": 15
+                                }
+                            }
+                        },
+                        "minecraft:requires_interact": {
+                            "type": "boolean",
+                            "description": "This means the item needs to be clicked. Example items; writable book, carrot on a stick, locator map, map, warped fungus on a stick"
+                        },
+                        "minecraft:seed": {
+                            "type": "object",
+                            "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
+                            "required": [
+                                "crop_result"
+                            ],
+                            "properties": {
+                                "plant_at": {
+                                    "default": "minecraft:farmland",
+                                    "description": "Blocks that the crop can be placed on. common blocks are; farmland, soul_sand, grass, dirt, podzol",
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "uniqueItems": true,
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "crop_result": {
+                                    "type": "string",
+                                    "description": "The name of the crop block to place.",
+                                    "uniqueItems": true,
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                }
+                            }
+                        },
+                        "minecraft:shears": {
+                            "type": "object",
+                            "description": "A shear item. Example item; shears",
+                            "default": {}
+                        },
+                        "minecraft:should_despawn": {
+                            "type": "boolean",
+                            "description": "Will the item not naturally despawn. Example item; nether star",
+                            "default": true
+                        },
+                        "minecraft:stacked_by_data": {
+                            "type": "boolean",
+                            "default": true
+                        },
                         "minecraft:portfolio": {
                             "type": "object",
+                            "description": "",
                             "default": {}
                         },
                         "minecraft:camera": {
@@ -123,6 +353,9 @@
                                     "title": "block",
                                     "description": "block: Set the placement block name for the planter item."
                                 },
+                                "use_block_description": {
+                                    "type": "boolean"
+                                },
                                 "on_use": {
                                     "type": "array",
                                     "title": "on_use",
@@ -178,6 +411,9 @@
                                 }
                             }
                         },
+                        "minecraft:hover_text_color": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/TextColors"
+                        },
                         "minecraft:display_name": {
                             "type": "object",
                             "required": [
@@ -224,7 +460,22 @@
                             "properties": {
                                 "color": {
                                     "enum": [
-                                        "dye_color"
+                                        "white",
+                                        "brown",
+                                        "black",
+                                        "blue",
+                                        "cyan",
+                                        "gray",
+                                        "green",
+                                        "lightblue",
+                                        "silver",
+                                        "lime",
+                                        "magenta",
+                                        "orange",
+                                        "pink",
+                                        "purple",
+                                        "red",
+                                        "yellow"
                                     ],
                                     "title": "color",
                                     "description": "Defines what color the dye is."
@@ -302,6 +553,11 @@
                                             "type": "string",
                                             "title": "event",
                                             "description": "The event to run."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "title": "target",
+                                            "description": "The target to execute agenst."
                                         }
                                     }
                                 },
@@ -560,7 +816,14 @@
                         },
                         "minecraft:throwable": {
                             "type": "object",
-                            "required": ["do_swing_animation","launch_power_scale","max_draw_duration","max_launch_power","min_draw_duration","scale_power_by_draw_duration"],
+                            "required": [
+                                "do_swing_animation",
+                                "launch_power_scale",
+                                "max_draw_duration",
+                                "max_launch_power",
+                                "min_draw_duration",
+                                "scale_power_by_draw_duration"
+                            ],
                             "title": "minecraft:throwable",
                             "description": "Throwable item component. Throwable items, such as a snowball.",
                             "properties": {
@@ -609,7 +872,9 @@
                             "properties": {
                                 "on_hit_block": {
                                     "type": "object",
-                                    "required": ["event"],
+                                    "required": [
+                                        "event"
+                                    ],
                                     "title": "on_hit_block",
                                     "description": "Trigger for letting you know when this item is used to hit a block",
                                     "properties": {
@@ -622,7 +887,9 @@
                                 },
                                 "on_hurt_entity": {
                                     "type": "object",
-                                    "required": ["event"],
+                                    "required": [
+                                        "event"
+                                    ],
                                     "title": "on_hurt_entity",
                                     "description": "Trigger for letting you know when this item is used to hurt another mob",
                                     "properties": {
@@ -635,7 +902,9 @@
                                 },
                                 "on_not_hurt_entity": {
                                     "type": "object",
-                                    "required": ["event"],
+                                    "required": [
+                                        "event"
+                                    ],
                                     "title": "on_not_hurt_entity",
                                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
                                     "properties": {
@@ -650,7 +919,10 @@
                         },
                         "minecraft:wearable": {
                             "type": "object",
-                            "required": ["dispensable","slot"],
+                            "required": [
+                                "dispensable",
+                                "slot"
+                            ],
                             "title": "minecraft:wearable",
                             "description": "Wearable item component.",
                             "properties": {
@@ -681,12 +953,86 @@
                         },
                         "minecraft:creative_category": {
                             "type": "object",
-                            "required": ["parent"],
+                            "required": [
+                                "parent"
+                            ],
                             "title": "minecraft:creative_category",
                             "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
                             "properties": {
                                 "parent": {
-                                    "type": "string",
+                                    "enum": [
+                                        "itemGroup.name.anvil",
+                                        "itemGroup.name.arrow",
+                                        "itemGroup.name.axe",
+                                        "itemGroup.name.banner",
+                                        "itemGroup.name.banner_pattern",
+                                        "itemGroup.name.bed",
+                                        "itemGroup.name.boat",
+                                        "itemGroup.name.boots",
+                                        "itemGroup.name.buttons",
+                                        "itemGroup.name.chalkboard",
+                                        "itemGroup.name.chest",
+                                        "itemGroup.name.chestplate",
+                                        "itemGroup.name.concrete",
+                                        "itemGroup.name.concretePowder",
+                                        "itemGroup.name.cookedFood",
+                                        "itemGroup.name.coral",
+                                        "itemGroup.name.coral_decorations",
+                                        "itemGroup.name.crop",
+                                        "itemGroup.name.door",
+                                        "itemGroup.name.dye",
+                                        "itemGroup.name.enchantedBook",
+                                        "itemGroup.name.fence",
+                                        "itemGroup.name.fenceGate",
+                                        "itemGroup.name.firework",
+                                        "itemGroup.name.fireworkStars",
+                                        "itemGroup.name.flower",
+                                        "itemGroup.name.glass",
+                                        "itemGroup.name.glassPane",
+                                        "itemGroup.name.glazedTerracotta",
+                                        "itemGroup.name.grass",
+                                        "itemGroup.name.helmet",
+                                        "itemGroup.name.hoe",
+                                        "itemGroup.name.horseArmor",
+                                        "itemGroup.name.leaves",
+                                        "itemGroup.name.leggings",
+                                        "itemGroup.name.lingeringPotion",
+                                        "itemGroup.name.log",
+                                        "itemGroup.name.minecart",
+                                        "itemGroup.name.miscFood",
+                                        "itemGroup.name.mobEgg",
+                                        "itemGroup.name.monsterStoneEgg",
+                                        "itemGroup.name.mushroom",
+                                        "itemGroup.name.netherWartBlock",
+                                        "itemGroup.name.ore",
+                                        "itemGroup.name.permission",
+                                        "itemGroup.name.pickaxe",
+                                        "itemGroup.name.planks",
+                                        "itemGroup.name.potion",
+                                        "itemGroup.name.pressurePlate",
+                                        "itemGroup.name.rail",
+                                        "itemGroup.name.rawFood",
+                                        "itemGroup.name.record",
+                                        "itemGroup.name.sandstone",
+                                        "itemGroup.name.sapling",
+                                        "itemGroup.name.seed",
+                                        "itemGroup.name.shovel",
+                                        "itemGroup.name.shulkerBox",
+                                        "itemGroup.name.sign",
+                                        "itemGroup.name.skull",
+                                        "itemGroup.name.slab",
+                                        "itemGroup.name.splashPotion",
+                                        "itemGroup.name.stainedClay",
+                                        "itemGroup.name.stairs",
+                                        "itemGroup.name.stone",
+                                        "itemGroup.name.stoneBrick",
+                                        "itemGroup.name.sword",
+                                        "itemGroup.name.trapdoor",
+                                        "itemGroup.name.walls",
+                                        "itemGroup.name.wood",
+                                        "itemGroup.name.wool",
+                                        "itemGroup.name.woolCarpet",
+                                    ],
                                     "title": "parent",
                                     "description": "Premade itemGroups."
                                 }
