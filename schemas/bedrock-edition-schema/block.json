@@ -14,7 +14,7 @@
                 },
                 "render_method": {
                     "title": "render_method",
-                    "description": "The render method to use. will make the block invisable or not.",
+                    "description": "The render method to use. \n'double_sided' double sided is a blending material without “backface culling”.\n'blend' Used for a block like stained glass. Allows for transparency and translucency (slightly transparent pixels).\n'opaque' Used for a normal block texture without an alpha layer. Does not allow for transparency or translucency \n'alpha_test' Used for a block like the vanilla (unstained) glass. Does not allow for translucency, only either fully opaque or fully transparent pixels.",
                     "enum": [
                         "double_sided",
                         "blend",
@@ -221,7 +221,7 @@
                         "minecraft:friction": {
                             "minimum": 0.100000,
                             "maximum": 340282346638528859811704183484516925440.000000,
-                            "default": 0.1,
+                            "default": 0.6,
                             "title": "minecraft:friction",
                             "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block."
                         },
