@@ -1,6 +1,77 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "RenderOffsets": {
+            "type": "object",
+            "properties": {
+                "first_person": {
+                    "type": "object",
+                    "properties": {
+                        "position": {
+                            "type": "array",
+                            "description": "Specifies the position of the model according to the scheme [x, y, z].",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "rotation": {
+                            "type": "array",
+                            "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "scale": {
+                            "type": "array",
+                            "description": "Specifies the scale of the model according to the scheme [x, y, z].",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "third_person": {
+                    "type": "object",
+                    "properties": {
+                        "position": {
+                            "type": "array",
+                            "description": "Specifies the position of the model according to the scheme [x, y, z].",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "rotation": {
+                            "type": "array",
+                            "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "number"
+                            }
+                        },
+                        "scale": {
+                            "type": "array",
+                            "description": "Specifies the scale of the model according to the scheme [x, y, z].",
+                            "minItems": 3,
+                            "maxItems": 3,
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
     "properties": {
         "minecraft:item": {
             "type": "object",
@@ -40,6 +111,25 @@
                 "components": {
                     "type": "object",
                     "properties": {
+                        "minecraft:render_offsets": {
+                            "type": "object",
+                            "title": "minecraft:render_offsets",
+                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
+                            "properties": {
+                                "main_hand": {
+                                    "description": "Right hand transform data.",
+                                    "additionalProperties": {
+                                        "$ref": "#/definitions/RenderOffsets"
+                                    }
+                                },
+                                "off_hand": {
+                                    "description": "Left hand transform data.",
+                                    "additionalProperties": {
+                                        "$ref": "#/definitions/RenderOffsets"
+                                    }
+                                }
+                            }
+                        },
                         "minecraft:fertilizer": {
                             "description": "fertilizer item.",
                             "properties": {
