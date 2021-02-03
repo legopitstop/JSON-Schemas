@@ -4,7 +4,11 @@
     "definitions": {
         "supportedVersions": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/supportedVersions",
-            "enum": [
+            "type": [
+                "string",
+                "number"
+            ],
+            "examples": [
                 "1.10",
                 "1.12",
                 "1.13",
@@ -18,6 +22,7 @@
                 "1.16.2",
                 "1.16.200",
                 "1.16.210.56",
+                "1.16.210.58",
                 1,
                 2
             ]
