@@ -4,12 +4,16 @@
     "definitions": {
         "RenderOffsets": {
             "type": "object",
+            "default": {},
             "properties": {
                 "first_person": {
                     "type": "object",
+                    "description": "First person render offset.",
+                    "default": {},
                     "properties": {
                         "position": {
                             "type": "array",
+                            "default": [0,0,0],
                             "description": "Specifies the position of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -19,6 +23,7 @@
                         },
                         "rotation": {
                             "type": "array",
+                            "default": [0,0,0],
                             "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -28,6 +33,7 @@
                         },
                         "scale": {
                             "type": "array",
+                            "default": [0,0,0],
                             "description": "Specifies the scale of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -39,9 +45,12 @@
                 },
                 "third_person": {
                     "type": "object",
+                    "description": "First person render offset.",
+                    "default": {},
                     "properties": {
                         "position": {
                             "type": "array",
+                            "default": [0,0,0],
                             "description": "Specifies the position of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -51,6 +60,7 @@
                         },
                         "rotation": {
                             "type": "array",
+                            "default": [0,0,0],
                             "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -60,6 +70,7 @@
                         },
                         "scale": {
                             "type": "array",
+                            "default": [0,0,0],
                             "description": "Specifies the scale of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -118,15 +129,11 @@
                             "properties": {
                                 "main_hand": {
                                     "description": "Right hand transform data.",
-                                    "additionalProperties": {
-                                        "$ref": "#/definitions/RenderOffsets"
-                                    }
+                                    "$ref": "#/definitions/RenderOffsets"
                                 },
                                 "off_hand": {
                                     "description": "Left hand transform data.",
-                                    "additionalProperties": {
-                                        "$ref": "#/definitions/RenderOffsets"
-                                    }
+                                    "$ref": "#/definitions/RenderOffsets"
                                 }
                             }
                         },
