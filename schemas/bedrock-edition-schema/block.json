@@ -312,7 +312,7 @@
                                                 "title": "allowed_faces",
                                                 "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
                                             },
-                                            "allowed_blocks": {
+                                            "block_filter": {
                                                 "items": {
                                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
                                                 },
