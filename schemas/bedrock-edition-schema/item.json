@@ -1128,6 +1128,7 @@
                             "properties": {
                                 "parent": {
                                     "enum": [
+                                        "itemGroup.search",
                                         "itemGroup.name.anvil",
                                         "itemGroup.name.arrow",
                                         "itemGroup.name.axe",
