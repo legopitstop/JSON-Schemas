@@ -277,6 +277,7 @@
                     "type": "number"
                 },
                 {
+                    "type": "string",
                     "$ref": "#/definitions/MoLang"
                 }
             ]
