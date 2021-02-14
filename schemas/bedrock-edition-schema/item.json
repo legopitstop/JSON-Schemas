@@ -924,7 +924,7 @@
                                                 }
                                             },
                                             "repair_amount": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
                                             }
                                         }
                                     }
