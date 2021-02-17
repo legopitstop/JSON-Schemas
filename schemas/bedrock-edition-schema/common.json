@@ -54,9 +54,43 @@
             "minimum": 0,
             "maximum": 64
         },
-        "mobEffects": {
+        "mobEffectsEnum": {
             "type": "string",
             "enum": [
+                "speed",
+                "slowness",
+                "haste",
+                "mining_fatigue",
+                "strength",
+                "instant_health",
+                "instant_damage",
+                "jump_boost",
+                "nausea",
+                "regeneration",
+                "resistance",
+                "fire_resistance",
+                "water_breathing",
+                "invisibility",
+                "blindness",
+                "night_vision",
+                "hunger",
+                "weakness",
+                "poison",
+                "wither",
+                "health_boost",
+                "absorption",
+                "saturation",
+                "levitation",
+                "fatal_poison",
+                "conduit_power",
+                "slow_falling",
+                "bad_omen",
+                "village_hero"
+            ]
+        },
+        "mobEffectsExample": {
+            "type": "string",
+            "examples": [
                 "speed",
                 "slowness",
                 "haste",
@@ -475,7 +509,7 @@
                             "description": "The duration of the mob effect. (In seconds)"
                         },
                         "effect": {
-                            "$ref": "#/definitions/mobEffects",
+                            "$ref": "#/definitions/mobEffectsEnum",
                             "title": "effect",
                             "description": "The mob effect to apply."
                         },
@@ -623,7 +657,7 @@
                     "description": "Removes mob effect from target.",
                     "properties": {
                         "effect": {
-                            "type": "string",
+                            "$ref": "#/definitions/mobEffectsExample",
                             "title": "effect",
                             "description": "The mob effect to remove. Use 'all' to remove all mob effects from target."
                         },
