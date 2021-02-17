@@ -54,6 +54,40 @@
             "minimum": 0,
             "maximum": 64
         },
+        "mobEffects": {
+            "type": "string",
+            "enum": [
+                "speed",
+                "slowness",
+                "haste",
+                "mining_fatigue",
+                "strength",
+                "instant_health",
+                "instant_damage",
+                "jump_boost",
+                "nausea",
+                "regeneration",
+                "resistance",
+                "fire_resistance",
+                "water_breathing",
+                "invisibility",
+                "blindness",
+                "night_vision",
+                "hunger",
+                "weakness",
+                "poison",
+                "wither",
+                "health_boost",
+                "absorption",
+                "saturation",
+                "levitation",
+                "fatal_poison",
+                "conduit_power",
+                "slow_falling",
+                "bad_omen",
+                "village_hero"
+            ]
+        },
         "TextColors": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/TextColors",
             "type": "string",
@@ -421,7 +455,7 @@
                     ],
                     "default": {
                         "amplifier": 0,
-                        "duration": 0.0,
+                        "duration": 0,
                         "effect": "",
                         "target": "self"
                     },
@@ -438,10 +472,10 @@
                             "type": "integer",
                             "default": 0.0,
                             "title": "duration",
-                            "description": "The duration of the mob effect."
+                            "description": "The duration of the mob effect. (In seconds)"
                         },
                         "effect": {
-                            "type": "string",
+                            "$ref": "#/definitions/mobEffects",
                             "title": "effect",
                             "description": "The mob effect to apply."
                         },
