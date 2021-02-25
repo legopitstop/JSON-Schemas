@@ -13,7 +13,11 @@
                     "properties": {
                         "position": {
                             "type": "array",
-                            "default": [0,0,0],
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
                             "description": "Specifies the position of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -23,7 +27,11 @@
                         },
                         "rotation": {
                             "type": "array",
-                            "default": [0,0,0],
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
                             "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -33,7 +41,11 @@
                         },
                         "scale": {
                             "type": "array",
-                            "default": [0,0,0],
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
                             "description": "Specifies the scale of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -50,7 +62,11 @@
                     "properties": {
                         "position": {
                             "type": "array",
-                            "default": [0,0,0],
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
                             "description": "Specifies the position of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -60,7 +76,11 @@
                         },
                         "rotation": {
                             "type": "array",
-                            "default": [0,0,0],
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
                             "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -70,7 +90,11 @@
                         },
                         "scale": {
                             "type": "array",
-                            "default": [0,0,0],
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
                             "description": "Specifies the scale of the model according to the scheme [x, y, z].",
                             "minItems": 3,
                             "maxItems": 3,
@@ -937,15 +961,40 @@
                             "description": "Shooter Item Component.",
                             "required": [
                                 "ammunition",
-                                "charge_on_draw",
-                                "launch_power_scale",
-                                "max_draw_duration",
-                                "max_launch_power",
-                                "scale_power_by_draw_duration"
+                                "scale_power_by_draw_duration",
+                                "max_draw_duration"
                             ],
                             "properties": {
                                 "ammunition": {
-                                    "type": "string",
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "item": {
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                    },
+                                                    "use_offhand": {
+                                                        "type": "boolean",
+                                                        "description": "Can it be used in the offhand."
+                                                    },
+                                                    "search_inventory": {
+                                                        "type": "boolean",
+                                                        "description": ""
+                                                    },
+                                                    "use_in_creative": {
+                                                        "type": "boolean",
+                                                        "description": "Can it be used in creative gamemode."
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
                                     "title": "ammunition",
                                     "description": "Ammunition."
                                 },
