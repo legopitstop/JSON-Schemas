@@ -132,13 +132,11 @@
                                 "Construction"
                             ],
                             "default": "Item",
-                            "title": "category",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands."
                         },
                         "is_experimental": {
                             "type": "boolean",
                             "default": false,
-                            "title": "is_experimental",
                             "description": "If this item is experimental, it will only be registered if the world is marked as experimental."
                         }
                     }
@@ -444,12 +442,10 @@
                             "properties": {
                                 "protection": {
                                     "type": "integer",
-                                    "title": "protection",
                                     "description": "How much protection does the armor item have."
                                 },
                                 "texture_type": {
                                     "type": "string",
-                                    "title": "texture_type",
                                     "description": "Texture Type to apply for the armor. Note that Horse armor is restricted to leather, iron, gold, or diamond."
                                 }
                             }
@@ -472,7 +468,6 @@
                             "properties": {
                                 "block": {
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
-                                    "title": "block",
                                     "description": "block: Set the placement block name for the planter item."
                                 },
                                 "use_block_description": {
@@ -480,7 +475,6 @@
                                 },
                                 "on_use": {
                                     "type": "array",
-                                    "title": "on_use",
                                     "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
                                 }
                             }
@@ -496,12 +490,10 @@
                             "properties": {
                                 "category": {
                                     "type": "string",
-                                    "title": "properties",
                                     "description": "The type of cool down for this item."
                                 },
                                 "duration": {
                                     "type": "integer",
-                                    "title": "duration",
                                     "description": "The duration of time this item will spend cooling down before becoming usable again."
                                 }
                             }
@@ -517,7 +509,6 @@
                             "properties": {
                                 "destroy_speeds": {
                                     "type": "array",
-                                    "title": "destroy_speeds",
                                     "description": "Destroy speed per block.",
                                     "items": {
                                         "properties": {
@@ -566,13 +557,11 @@
                                 },
                                 "on_dig": {
                                     "type": "string",
-                                    "title": "on_dig",
                                     "description": "Trigger for when you dig a block that isn't listed in destroy_speeds"
                                 },
                                 "use_efficiency": {
                                     "type": "boolean",
                                     "default": false,
-                                    "title": "use_efficiency",
                                     "description": "Use efficiency enchantment? Default is set to false."
                                 }
                             }
@@ -590,7 +579,6 @@
                             "properties": {
                                 "value": {
                                     "type": "string",
-                                    "title": "value",
                                     "description": "Set the display name for an item."
                                 }
                             }
@@ -652,7 +640,6 @@
                                         "red",
                                         "yellow"
                                     ],
-                                    "title": "color",
                                     "description": "Defines what color the dye is."
                                 }
                             }
@@ -667,17 +654,14 @@
                             "properties": {
                                 "dispense_on": {
                                     "type": "array",
-                                    "title": "dispense_on",
                                     "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
                                 },
                                 "entity": {
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
-                                    "title": "entity",
                                     "description": "The entity to be placed in the world."
                                 },
                                 "use_on": {
                                     "type": "array",
-                                    "title": "use_on",
                                     "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
                                 }
                             }
@@ -704,41 +688,34 @@
                                 "can_always_eat": {
                                     "type": "boolean",
                                     "default": false,
-                                    "title": "can_always_eat",
                                     "description": "If true you can always eat this item (even when not hungry), defaults to false."
                                 },
                                 "nutrition": {
                                     "type": "integer",
-                                    "title": "nutrition",
                                     "description": "How much nutrition does this food item give the player when eaten."
                                 },
                                 "on_use_action": {
                                     "enum": [
                                         "chorus_teleport"
                                     ],
-                                    "title": "on_use_action",
                                     "description": "built-in actions to run."
                                 },
                                 "on_consume": {
                                     "type": "object",
-                                    "title": "on_consume",
                                     "description": "Runs event when you consume the item.",
                                     "properties": {
                                         "event": {
                                             "type": "string",
-                                            "title": "event",
                                             "description": "The event to run."
                                         },
                                         "target": {
                                             "type": "string",
-                                            "title": "target",
                                             "description": "The target to execute agenst."
                                         }
                                     }
                                 },
                                 "on_use_range": {
                                     "type": "array",
-                                    "title": "on_use_range",
                                     "description": "Used for \"chorus_teleport\" action.",
                                     "items": {
                                         "type": "number"
@@ -748,21 +725,17 @@
                                     "enum": [
                                         "chorusfruit"
                                     ],
-                                    "title": "cooldown_type",
                                     "description": "The type of cooldown to use."
                                 },
                                 "cooldown_time": {
                                     "type": "number",
-                                    "title": "cooldown_time",
                                     "description": "How long of a cooldown until the player can consume another."
                                 },
                                 "saturation_modifier": {
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
-                                    "title": "saturation_modifier",
                                     "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
                                 },
                                 "using_converts_to": {
-                                    "title": "using_converts_to",
                                     "description": "When used, convert the *this* item to the one specified by 'using_converts_to'.",
                                     "anyOf": [
                                         {
@@ -773,7 +746,6 @@
                                             "properties": {
                                                 "item": {
                                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
-                                                    "title": "item",
                                                     "description": "The item that it will become."
                                                 }
                                             }
@@ -792,7 +764,6 @@
                             "properties": {
                                 "duration": {
                                     "type": "number",
-                                    "title": "duration",
                                     "description": "How long in seconds will this fuel cook items for."
                                 }
                             }
@@ -808,17 +779,14 @@
                                 "frame": {
                                     "type": "integer",
                                     "default": 0,
-                                    "title": "frame",
                                     "description": "An index or expression for which frame of the icon to display. Default resolves to 0."
                                 },
                                 "legacy_id": {
                                     "type": "string",
-                                    "title": "legacy_id",
                                     "description": "Legacy texture id for older item icons"
                                 },
                                 "texture": {
                                     "type": "string",
-                                    "title": "texture",
                                     "description": "The key from the resource_pack/textures/item_texture.json 'texture_data' object associated with the texture file Example: blaze_powder"
                                 }
                             }
@@ -834,7 +802,6 @@
                                 "protection": {
                                     "type": "integer",
                                     "maximum": 1.0,
-                                    "title": "protection",
                                     "description": "Amount of knockback resistance provided with the total maximum protection being 1.0"
                                 }
                             }
@@ -855,12 +822,10 @@
                                     "properties": {
                                         "event": {
                                             "type": "string",
-                                            "title": "event",
                                             "description": "Event trigger for when the item is used."
                                         },
                                         "target": {
                                             "type": "string",
-                                            "title": "target",
                                             "description": "The target to execute agenst."
                                         }
                                     }
@@ -883,12 +848,10 @@
                                     "properties": {
                                         "event": {
                                             "type": "string",
-                                            "title": "event",
                                             "description": "Event trigger for when the item is used."
                                         },
                                         "target": {
                                             "type": "string",
-                                            "title": "target",
                                             "description": "The target to execute agenst."
                                         }
                                     }
@@ -906,12 +869,10 @@
                             "properties": {
                                 "minimum_critical_power": {
                                     "type": "integer",
-                                    "title": "minimum_critical_power",
                                     "description": "How long you must charge a projectile for it to critically hit."
                                 },
                                 "projectile_entity": {
                                     "type": "string",
-                                    "title": "projectile_entity",
                                     "description": "The entity to be fired as a projectile."
                                 }
                             }
@@ -926,12 +887,10 @@
                             "properties": {
                                 "on_repaired": {
                                     "type": "string",
-                                    "title": "on_repaired",
                                     "description": "Event that is called when this item has been repaired."
                                 },
                                 "repair_items": {
                                     "type": "array",
-                                    "title": "repair_items",
                                     "description": "Repair item entries.",
                                     "items": {
                                         "type": "object",
@@ -995,37 +954,31 @@
                                             }
                                         }
                                     ],
-                                    "title": "ammunition",
                                     "description": "Ammunition."
                                 },
                                 "charge_on_draw": {
                                     "type": "boolean",
                                     "default": false,
-                                    "title": "charge_on_draw",
                                     "description": "Charge on draw? Default is set to false."
                                 },
                                 "launch_power_scale": {
                                     "type": "integer",
                                     "default": 1.0,
-                                    "title": "launch_power_scale",
                                     "description": "Launch power scale. Default is set to 1.0."
                                 },
                                 "max_draw_duration": {
                                     "type": "integer",
                                     "default": 0,
-                                    "title": "max_draw_duration",
                                     "description": "Draw Duration. Default is set to 0."
                                 },
                                 "max_launch_power": {
                                     "type": "integer",
                                     "default": 1.0,
-                                    "title": "max_launch_power",
                                     "description": "Launch power. Default is set to 1.0."
                                 },
                                 "scale_power_by_draw_duration": {
                                     "type": "boolean",
                                     "default": false,
-                                    "title": "scale_power_by_draw_duration",
                                     "description": "Scale power by draw duration? Default is set to false."
                                 }
                             }
@@ -1046,37 +999,31 @@
                                 "do_swing_animation": {
                                     "type": "boolean",
                                     "default": false,
-                                    "title": "do_swing_animation",
                                     "description": "Whether the item should use the swing animation when thrown. Default is set to false."
                                 },
                                 "launch_power_scale": {
                                     "type": "integer",
                                     "default": 1.0,
-                                    "title": "launch_power_scale",
                                     "description": "The scale at which the power of the throw increases. Default is set to 1.0."
                                 },
                                 "max_draw_duration": {
                                     "type": "integer",
                                     "default": 0.0,
-                                    "title": "max_draw_duration",
                                     "description": "The maximum duration to draw a throwable item. Default is set to 0.0."
                                 },
                                 "max_launch_power": {
                                     "type": "integer",
                                     "default": 1.0,
-                                    "title": "max_launch_power",
                                     "description": "The maximum power to launch the throwable item. Default is set to 1.0."
                                 },
                                 "min_draw_duration": {
                                     "type": "integer",
                                     "default": 0.0,
-                                    "title": "min_draw_duration",
                                     "description": "The minimum duration to draw a throwable item. Default is set to 0.0."
                                 },
                                 "scale_power_by_draw_duration": {
                                     "type": "boolean",
                                     "default": false,
-                                    "title": "scale_power_by_draw_duration",
                                     "description": "Whether or not the power of the throw increases with duration charged. Default is set to false."
                                 }
                             }
@@ -1091,12 +1038,10 @@
                                     "required": [
                                         "event"
                                     ],
-                                    "title": "on_hit_block",
                                     "description": "Trigger for letting you know when this item is used to hit a block",
                                     "properties": {
                                         "event": {
                                             "type": "string",
-                                            "title": "event",
                                             "description": "Event to run when triggered."
                                         }
                                     }
@@ -1106,12 +1051,10 @@
                                     "required": [
                                         "event"
                                     ],
-                                    "title": "on_hurt_entity",
                                     "description": "Trigger for letting you know when this item is used to hurt another mob",
                                     "properties": {
                                         "event": {
                                             "type": "string",
-                                            "title": "event",
                                             "description": "Event to run when triggered."
                                         }
                                     }
@@ -1121,12 +1064,10 @@
                                     "required": [
                                         "event"
                                     ],
-                                    "title": "on_not_hurt_entity",
                                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
                                     "properties": {
                                         "event": {
                                             "type": "string",
-                                            "title": "event",
                                             "description": "Event to run when triggered."
                                         }
                                     }
@@ -1144,11 +1085,9 @@
                             "properties": {
                                 "dispensable": {
                                     "type": "boolean",
-                                    "default": false,
-                                    "title": "dispensable"
+                                    "default": false
                                 },
                                 "slot": {
-                                    "title": "slot",
                                     "description": "Slot where you can place the armor piece in/on.",
                                     "enum": [
                                         "slot.weapon.mainhand",
@@ -1250,7 +1189,6 @@
                                         "itemGroup.name.wool",
                                         "itemGroup.name.woolCarpet"
                                     ],
-                                    "title": "parent",
                                     "description": "Premade itemGroups."
                                 }
                             }
