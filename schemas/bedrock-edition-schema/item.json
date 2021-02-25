@@ -956,7 +956,7 @@
                             }
                         },
                         "minecraft:shooter": {
-                            "type": "array",
+                            "type": "object",
                             "title": "minecraft:shooter",
                             "description": "Shooter Item Component.",
                             "required": [
