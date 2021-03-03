@@ -13,7 +13,7 @@
             }
         },
         "XYZ-scheme": {
-            "default": "[x, y, z]",
+            "default": [x, y, z],
             "type": "array",
             "minItems": 3,
             "maxItems": 3,
