@@ -5,6 +5,7 @@
     "definitions": {
         "XZ-scheme": {
             "description": "[x, z]",
+            "default": [1, 2],
             "type": "array",
             "minItems": 2,
             "maxItems": 2,
@@ -13,7 +14,7 @@
             }
         },
         "XYZ-scheme": {
-            "default": [x, y, z],
+            "default": [1, 2, 3],
             "type": "array",
             "minItems": 3,
             "maxItems": 3,
@@ -43,6 +44,7 @@
                 "uv": {
                     "description": "Defines the area of the texture to use according to the scheme [x1, y1, x2, y2]. If unset, it defaults to values equal to xyz position of the element. The texture behavior is inconsistent if UV extends below 0 or above 16. If the numbers of x1 and x2 are swapped (e.g. from 0, 0, 16, 16 to 16, 0, 0, 16), the texture flips. UV is optional, and if not supplied it automatically generates based on the element's position.",
                     "type": "array",
+                    "default": [1, 2, 3, 4],
                     "minItems": 4,
                     "maxItems": 4,
                     "items": {
@@ -160,6 +162,7 @@
                     "from": {
                         "description": "Start point of a cube according to the scheme [x, y, z]. Values must be between -16 and 32.",
                         "type": "array",
+                        "default": [1, 2, 3],
                         "minItems": 3,
                         "maxItems": 3,
                         "items": {
@@ -171,6 +174,7 @@
                     "to": {
                         "description": "Stop point of a cube according to the scheme [x, y, z]. Values must be between -16 and 32.",
                         "type": "array",
+                        "default": [1, 2, 3],
                         "minItems": 3,
                         "maxItems": 3,
                         "items": {
@@ -202,6 +206,7 @@
                                 "enum": [
                                     -45,
                                     -22.5,
+                                    0,
                                     22.5,
                                     45
                                 ]
