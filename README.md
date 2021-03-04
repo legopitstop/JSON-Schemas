@@ -60,6 +60,32 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "json.schemas": [
         {
             "name": "Java Edition Schema",
+            "description": "Loot Tables",
+            "fileMatch": [
+                "data/*/loot_tables/*/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/loot_tables/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "Item Models",
+            "fileMatch": [
+                "assets/*/models/item/*.json",
+                "assets/*/models/items/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/item-models/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "Block Models",
+            "fileMatch": [
+                "assets/*/models/block/*.json",
+                "assets/*/models/blocks/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/block-models/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
             "description": "Schema for Java Edition datapack and resourcepacks.",
             "fileMatch": [
                 "*.json"
