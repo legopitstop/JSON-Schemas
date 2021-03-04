@@ -196,7 +196,7 @@
             "type": "string"
         },
         "keybind": {
-            "description": "A keybind identifier, to be displayed as the name of the button that is currently bound to that action. For example, {\"keybind": \"key.inventory\"} displays \"e\" if the player is using the default control scheme.",
+            "description": "A keybind identifier, to be displayed as the name of the button that is currently bound to that action. For example, {\"keybind\": \"key.inventory\"} displays \"e\" if the player is using the default control scheme.",
             "enum": [
                 "key.jump",
                 "key.sneak",
