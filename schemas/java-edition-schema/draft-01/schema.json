@@ -673,7 +673,6 @@
                         ]
                     },
                     // The following is additional info needed for `function`
-                    "*": {},
                     //"minecraft:apply_bonus"
                     "enchantment": {
                         "description": "Enchantment ID used for level calculation.",
@@ -988,7 +987,7 @@
                             "banner_green",
                             "banner_red",
                             "banner_black",
-                            "red_x",
+                            "red_x"
                         ]
                     },
                     "zoom": {
