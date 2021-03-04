@@ -1,6 +1,7 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/models/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
     "description": "Data for Minecraft Java Edition addons.",
     "definitions": {
         "XYZ-scheme": {
@@ -101,6 +102,7 @@
         "display": {
             "description": "Holds the different places where item models are displayed.",
             "type": "object",
+            "default": {},
             "properties": {
                 "thirdperson_righthand": {
                     "description": "3rd person, right hand.",
@@ -139,6 +141,7 @@
         "textures": {
             "description": "Holds the textures of the model, in form of namespaced ID or can be another texture variable.",
             "type": "object",
+            "default": {},
             "additionalProperties": {
                 "description": "Defines a texture variable and assigns a texture.",
                 "type": "string"
@@ -163,6 +166,7 @@
             "type": "array",
             "items": {
                 "type": "object",
+                "default": {},
                 "properties": {
                     "from": {
                         "description": "Start point of a cube according to the scheme [x, y, z]. Values must be between -16 and 32.",
@@ -238,6 +242,7 @@
                     },
                     "faces": {
                         "type": "object",
+                        "default": {},
                         "description": "Holds all the faces of the cube. If a face is left out, it does not render.",
                         "properties": {
                             "north": {
@@ -265,121 +270,6 @@
                                 "$ref": "#/definitions/ModelElementFace"
                             }
                         }
-                    }
-                }
-            }
-        },
-        "gui_light": {
-            "description": "Can be \"front\" or \"side\". If set to \"side\", the model is rendered like a block. If set to \"front\", model is shaded like a flat item.",
-            "enum": [
-                "front",
-                "side"
-            ]
-        },
-        "overrides": {
-            "description": "Determines cases in which a different model should be used based on item tags. All cases are evaluated in order from top to bottom and last predicate that matches overrides. However, overrides are ignored if it has been already overridden once, for example this avoids recursion on overriding to the same model.",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "predicate": {
-                        "description": "Holds the cases",
-                        "properties": {
-                            "angle": {
-                                "description": "Used on compasses to determine the current angle, expressed in a decimal value of less than one.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "blocking": {
-                                "description": "Used on shields to determine if currently blocking. If 1, the player is blocking.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "broken": {
-                                "description": "Used on Elytra to determine if broken. If 1, the Elytra is broken.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "cast": {
-                                "description": "Used on fishing rods to determine if the fishing rod has been cast. If 1, the fishing rod has been cast.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "cooldown": {
-                                "description": "Used on ender pearls and chorus fruit to determine the remaining cooldown, expressed in a decimal value between 0 and 1.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "damage": {
-                                "description": "Used on items with durability to determine the amount of damage, expressed in a decimal value between 0 and 1.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "damaged": {
-                                "description": "Used on items with durability to determine if it is damaged. If 1, the item is damaged. Note that if an item has the unbreakable tag, this may be 0 while the item has a non-zero \"damage\" tag.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "lefthanded": {
-                                "description": "Determines the model used by left handed players. It affects the item they see in inventories, along with the item players see them holding or wearing.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "pull": {
-                                "description": "Determines the amount a bow or crossbow has been pulled, expressed in a decimal value of less than one.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "pulling": {
-                                "description": "Used on bows and crossbows to determine if the bow is being pulled. If 1, the bow is currently being pulled.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "charged": {
-                                "description": "Used on crossbows to determine if they are charged with any projectile. If 1, the crossbow is charged",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "firework": {
-                                "description": "Used on crossbows. If 1, the crossbow is charged with a firework rocket.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "throwing": {
-                                "description": "Used on the trident to determine if the trident is ready to be thrown by the player. If 1, the trident is ready for fire.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "time": {
-                                "description": "Used on clocks to determine the current time, expressed in a decimal value of less than one.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 1
-                            },
-                            "custom_model_data": {
-                                "description": "Used on any item and is compared to the tag.CustomModelData NBT, expressed in an integer value. The number is still internally converted to float, causing a precision loss for some numbers above 16 million. If the value read from the item data is greater than or equal to the value used for the predicate, the predicate is positive.",
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 16777216
-                            }
-                        }
-                    },
-                    "model": {
-                        "description": "The path to the model to use if the case is met, in form of namespaced ID.",
-                        "type": "string"
                     }
                 }
             }

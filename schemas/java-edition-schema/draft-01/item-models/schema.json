@@ -1,6 +1,7 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/models/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
     "description": "Data for Minecraft Java Edition addons.",
     "definitions": {
         "XYZ-scheme": {
@@ -93,14 +94,10 @@
             "type": "string",
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/parent_models.json#/definitions/MinecraftBuiltInParentModels"
         },
-        "ambientocclusion": {
-            "default": true,
-            "description": "Whether to use shading",
-            "type": "boolean"
-        },
         "display": {
             "description": "Holds the different places where item models are displayed.",
             "type": "object",
+            "default": {},
             "properties": {
                 "thirdperson_righthand": {
                     "description": "3rd person, right hand.",
@@ -139,6 +136,7 @@
         "textures": {
             "description": "Holds the textures of the model, in form of namespaced ID or can be another texture variable.",
             "type": "object",
+            "default": {},
             "additionalProperties": {
                 "description": "Defines a texture variable and assigns a texture.",
                 "type": "string"
@@ -163,6 +161,7 @@
             "type": "array",
             "items": {
                 "type": "object",
+                "default": {},
                 "properties": {
                     "from": {
                         "description": "Start point of a cube according to the scheme [x, y, z]. Values must be between -16 and 32.",
@@ -238,6 +237,7 @@
                     },
                     "faces": {
                         "type": "object",
+                        "default": {},
                         "description": "Holds all the faces of the cube. If a face is left out, it does not render.",
                         "properties": {
                             "north": {
@@ -281,6 +281,7 @@
             "type": "array",
             "items": {
                 "type": "object",
+                "default": {},
                 "properties": {
                     "predicate": {
                         "description": "Holds the cases",

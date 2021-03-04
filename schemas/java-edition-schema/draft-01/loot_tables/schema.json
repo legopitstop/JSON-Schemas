@@ -12,6 +12,7 @@
                 },
                 {
                     "type": "object",
+                    "default": {},
                     "properties": {
                         "type": {
                             "description": "The number provider type.",
@@ -56,6 +57,7 @@
                                 },
                                 {
                                     "type": "object",
+                                    "default": {},
                                     "properties": {
                                         "type": {
                                             "description": "Resource location. Either `fixed` or `context`",
@@ -96,6 +98,7 @@
         "CommonItemTags": {
             "$id": "#/definitions/CommonItemTags",
             "type": "object",
+            "default": {},
             "properties": {
                 "count": {
                     "description": "Amount of the item.",
@@ -126,6 +129,7 @@
                         },
                         {
                             "type": "object",
+                            "default": {},
                             "properties": {
                                 "min": {
                                     "description": "The minimum value.",
@@ -144,6 +148,7 @@
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "default": {},
                         "properties": {
                             "enchantment": {
                                 "description": "An enchantment ID.",
@@ -157,6 +162,7 @@
                                     },
                                     {
                                         "type": "object",
+                                        "default": {},
                                         "properties": {
                                             "min": {
                                                 "description": "The minimum value.",
@@ -178,6 +184,7 @@
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "default": {},
                         "properties": {
                             "enchantment": {
                                 "description": "An enchantment ID.",
@@ -191,6 +198,7 @@
                                     },
                                     {
                                         "type": "object",
+                                        "default": {},
                                         "properties": {
                                             "min": {
                                                 "description": "The minimum value.",
@@ -253,6 +261,7 @@
             "type": "array",
             "items": {
                 "type": "object",
+                "default": {},
                 "properties": {
                     "function": {
                         "description": "Namespaced ID of the function to apply.",
@@ -299,6 +308,7 @@
                     "parameters": {
                         "description": "Values required for the formula.",
                         "type": "object",
+                        "default": {},
                         "properties": {
                             "extra": {
                                 "description": "For formula 'binomial_with_bonus_count', the extra value.",
@@ -329,6 +339,7 @@
                             },
                             {
                                 "type": "object",
+                                "default": {},
                                 "properties": {
                                     "type": {
                                         "description": "Nbt provider type. One of `context`, `storage`",
@@ -353,6 +364,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
+                            "default": {},
                             "properties": {
                                 "source": {
                                     "description": "The nbt path to copy from.",
@@ -398,6 +410,7 @@
                             },
                             {
                                 "type": "object",
+                                "default": {},
                                 "properties": {
                                     "minecraft:aqua_affinity": {
                                         "description": "Number provider specifying the enchantment level.",
@@ -639,6 +652,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
+                            "default": {},
                             "properties": {
                                 "name": {
                                     "description": "Name of the modifier.",
@@ -703,6 +717,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
+                            "default": {},
                             "properties": {
                                 "pattern": {
                                     "description": "The pattern type. For example `square_bottom_left`.",
@@ -800,6 +815,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
+                            "default": {},
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
                         }
                     },
@@ -812,12 +828,14 @@
                     "set_stew_effect": {
                         "description": "Sets the status effects for suspicious stew.",
                         "type": "object",
+                        "default": {},
                         "properties": {
                             "effects": {
                                 "description": "The effects to apply.",
                                 "type": "array",
                                 "items": {
                                     "type": "object",
+                                    "default": {},
                                     "properties": {
                                         "type": {
                                             "description": "The effect ID.",
@@ -838,6 +856,7 @@
                         "type": "array",
                         "items": {
                             "type": "object",
+                            "default": {},
                             "properties": {
                                 "condition": {
                                     "description": "Namespaced ID of condition.",
@@ -874,12 +893,14 @@
                                 },
                                 "properties": {
                                     "description": "(Optional) A map of block property names to values. All values are strings. The test fails if the block doesn't match.",
-                                    "type": "object"
+                                    "type": "object",
+                                    "default": {}
                                 },
                                 //"minecraft:damage_source_properties"
                                 "predicate": {
                                     "description": "Predicate applied to the damage source.",
                                     "type": "object",
+                                    "default": {},
                                     "properties": {
                                         "bypasses_armor": {
                                             "description": "Checks if the damage bypassed the armor of the player (suffocation damage predominantly).",
@@ -916,12 +937,15 @@
                                         "direct_entity": {
                                             "description": "The entity that was the direct cause of the damage.",
                                             "type": "object",
+                                            "default": {},
                                             "properties": {
                                                 "distance": {
                                                     "type": "object",
+                                                    "default": {},
                                                     "properties": {
                                                         "absolute": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "max": {
                                                                     "description": "The maximum value.",
@@ -935,6 +959,7 @@
                                                         },
                                                         "horizontal": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "max": {
                                                                     "description": "The maximum value.",
@@ -948,6 +973,7 @@
                                                         },
                                                         "x": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "max": {
                                                                     "description": "The maximum value.",
@@ -961,6 +987,7 @@
                                                         },
                                                         "y": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "max": {
                                                                     "description": "The maximum value.",
@@ -974,6 +1001,7 @@
                                                         },
                                                         "z": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "max": {
                                                                     "description": "The maximum value.",
@@ -989,9 +1017,11 @@
                                                 },
                                                 "effects": {
                                                     "type": "object",
+                                                    "default": {},
                                                     "properties": {
                                                         "*": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "ambient": {
                                                                     "description": "Whether the effect is from a beacon.",
@@ -1005,6 +1035,7 @@
                                                                         },
                                                                         {
                                                                             "type": "object",
+                                                                            "default": {},
                                                                             "properties": {
                                                                                 "min": {
                                                                                     "description": "The minimum value.",
@@ -1026,6 +1057,7 @@
                                                                         },
                                                                         {
                                                                             "type": "object",
+                                                                            "default": {},
                                                                             "properties": {
                                                                                 "min": {
                                                                                     "description": "The minimum value.",
@@ -1049,6 +1081,7 @@
                                                 },
                                                 "equipment": {
                                                     "type": "object",
+                                                    "default": {},
                                                     "properties": {
                                                         "mainhand": {
                                                             "$ref": "#/definitions/CommonItemTags"
@@ -1072,6 +1105,7 @@
                                                 },
                                                 "flags": {
                                                     "type": "object",
+                                                    "default": {},
                                                     "properties": {
                                                         "is_on_fire": {
                                                             "description": "Test whether the entity is or is not on fire.",
@@ -1097,6 +1131,7 @@
                                                 },
                                                 "location": {
                                                     "type": "object",
+                                                    "default": {},
                                                     "properties": {
                                                         "biome": {
                                                             "type": "string",
@@ -1130,6 +1165,7 @@
                                                                             },
                                                                             {
                                                                                 "type": "object",
+                                                                                "default": {},
                                                                                 "properties": {
                                                                                     "min": {
                                                                                         "description": "A minimum value.",
@@ -1157,6 +1193,7 @@
                                                         },
                                                         "fluid": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "fluid": {
                                                                     "description": "The fluid ID.",
@@ -1179,6 +1216,7 @@
                                                                             },
                                                                             {
                                                                                 "type": "object",
+                                                                                "default": {},
                                                                                 "properties": {
                                                                                     "min": {
                                                                                         "description": "A minimum value.",
@@ -1198,6 +1236,7 @@
                                                         "light": {
                                                             "description": "The light at the location.",
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "light": {
                                                                     "description": "The light Level of visible light. Calculated using: (max(sky-darkening,block)).",
@@ -1207,6 +1246,7 @@
                                                                         },
                                                                         {
                                                                             "type": "object",
+                                                                            "default": {},
                                                                             "properties": {
                                                                                 "min": {
                                                                                     "description": "A minimum value.",
@@ -1224,6 +1264,7 @@
                                                         },
                                                         "position": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "properties": {
                                                                 "x": {
                                                                     "description": "The x position.",
@@ -1233,6 +1274,7 @@
                                                                         },
                                                                         {
                                                                             "type": "object",
+                                                                            "default": {},
                                                                             "properties": {
                                                                                 "min": {
                                                                                     "description": "A minimum value.",
@@ -1254,6 +1296,7 @@
                                                                         },
                                                                         {
                                                                             "type": "object",
+                                                                            "default": {},
                                                                             "properties": {
                                                                                 "min": {
                                                                                     "description": "A minimum value.",
@@ -1275,6 +1318,7 @@
                                                                         },
                                                                         {
                                                                             "type": "object",
+                                                                            "default": {},
                                                                             "properties": {
                                                                                 "min": {
                                                                                     "description": "A minimum value.",
@@ -1303,9 +1347,11 @@
                                                 "player": {
                                                     "description": "Player properties to be checked. Fails when entity is not a player.",
                                                     "type": "object",
+                                                    "default": {},
                                                     "properties": {
                                                         "advancements": {
                                                             "type": "object",
+                                                            "default": {},
                                                             "additionalProperties": {
                                                                 "description": "An advancement ID.",
                                                                 "anyOf": [
@@ -1314,6 +1360,7 @@
                                                                     },
                                                                     {
                                                                         "type": "object",
+                                                                        "default": {},
                                                                         "additionalProperties": {
                                                                             "description": "A criteria ID of the advancement.",
                                                                             "type": "boolean"
@@ -1339,6 +1386,7 @@
                                                                 },
                                                                 {
                                                                     "type": "object",
+                                                                    "default": {},
                                                                     "properties": {
                                                                         "min": {
                                                                             "description": "The minimum value.",
@@ -1364,6 +1412,7 @@
                                                             "type": "array",
                                                             "items": {
                                                                 "type": "object",
+                                                                "default": {},
                                                                 "properties": {
                                                                     "type": {
                                                                         "description": "The statistic base",
@@ -1391,6 +1440,7 @@
                                                                             },
                                                                             {
                                                                                 "type": "object",
+                                                                                "default": {},
                                                                                 "properties": {
                                                                                     "min": {
                                                                                         "description": "The minimum value.",
@@ -1529,6 +1579,7 @@
             "type": "array",
             "items": {
                 "type": "object",
+                "default": {},
                 "properties": {
                     "conditions": {
                         "$ref": "#/properties/functions/items/properties/conditions"
