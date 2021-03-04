@@ -1,6 +1,7 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Definitions for all Vanilla Minecraft entity queries (Bedrock Edition)",
     "definitions": {
         "MinecraftEntityQueryExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entity_queries.json#/definitions/MinecraftEntityQueryExamples",

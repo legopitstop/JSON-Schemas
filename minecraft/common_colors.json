@@ -1,6 +1,7 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Definitions for all Vanilla Minecraft common colors (Java Edition)",
     "definitions": {
         "MinecraftCommonColorExamples": {
             "type": "string",

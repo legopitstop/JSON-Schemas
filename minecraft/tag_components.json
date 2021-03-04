@@ -1,6 +1,7 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/tag_components.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Definitions for all Vanilla Minecraft tag_compoents (Bedrock Edition)",
     "definitions": {
         "TagItemComponents": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/tag_components.json#/definitions/TagItemComponents",

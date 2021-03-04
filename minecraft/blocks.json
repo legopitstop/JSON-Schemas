@@ -1,6 +1,7 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Definitions for all Vanilla Minecraft blocks (Bedrock Edition)",
     "definitions": {
         "MinecraftBlockExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples",
