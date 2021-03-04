@@ -1839,7 +1839,7 @@
                                 //"minecraft:inverted"
                                 "term": {
                                     "description": "The condition to be negated.",
-                                    "$ref": "#/properties/functions/items/properties/conditions/items/properties"
+                                    "$ref": "#/properties/functions/items/properties/conditions/items"
                                 },
                                 //"minecraft:killed_by_player"
                                 "inverse": {
