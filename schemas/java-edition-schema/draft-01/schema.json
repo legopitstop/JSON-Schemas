@@ -676,7 +676,7 @@
                     //"minecraft:apply_bonus"
                     "enchantment": {
                         "description": "Enchantment ID used for level calculation.",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftEnchantmentEnum"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                     },
                     "formula": {
                         "description": "Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count * (max(0; random(0..Level + 2) - 1)+1)).",
@@ -783,7 +783,7 @@
                                 "type": "array",
                                 "description": "List of enchantment IDs to choose from. If omitted, all enchantments applicable to the item are possible.",
                                 "items": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftEnchantmentEnum"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                                 }
                             },
                             {
@@ -1879,7 +1879,7 @@
                                 //"minecraft:table_bonus"
                                 "enchantment": {
                                     "description": "Id of enchantment.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftEnchantmentEnum"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                                 },
                                 "chances": {
                                     "description": "List of probabilities for enchantment level, indexed from 0.",

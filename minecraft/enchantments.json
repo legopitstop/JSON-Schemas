@@ -1,5 +1,5 @@
 {
-    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json",
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Definitions for all Vanilla Minecraft enchantments (Java Edition)",
     "definitions": {
