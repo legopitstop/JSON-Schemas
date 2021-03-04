@@ -1,0 +1,94 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "MinecraftCommonColorExamples": {
+            "type": "string",
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonColorExamples",
+            "examples": [
+                "white",
+                "orange",
+                "magenta",
+                "light_blue",
+                "yellow",
+                "lime",
+                "pink",
+                "gray",
+                "light_gray",
+                "cyan",
+                "purple",
+                "blue",
+                "brown",
+                "green",
+                "red",
+                "black"
+            ]
+        },
+        "MinecraftCommonColorEnum": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonColorEnum",
+            "enum": [
+                "white",
+                "orange",
+                "magenta",
+                "light_blue",
+                "yellow",
+                "lime",
+                "pink",
+                "gray",
+                "light_gray",
+                "cyan",
+                "purple",
+                "blue",
+                "brown",
+                "green",
+                "red",
+                "black"
+            ]
+        },
+        "MinecraftCommonTextColorExample": {
+            "type": "string",
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonTextColorExample",
+            "examples": [
+                "black",
+                "dark_blue",
+                "dark_green",
+                "dark_aqua",
+                "dark_red",
+                "dark_purple",
+                "gold",
+                "gray",
+                "dark_gray",
+                "blue",
+                "green",
+                "aqua",
+                "red",
+                "light_purple",
+                "yellow",
+                "white",
+                "reset"
+            ]
+        },
+        "MinecraftCommonTextColorEnum": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonTextColorEnum",
+            "enum": [
+                "black",
+                "dark_blue",
+                "dark_green",
+                "dark_aqua",
+                "dark_red",
+                "dark_purple",
+                "gold",
+                "gray",
+                "dark_gray",
+                "blue",
+                "green",
+                "aqua",
+                "red",
+                "light_purple",
+                "yellow",
+                "white",
+                "reset"
+            ]
+        }
+    }
+}

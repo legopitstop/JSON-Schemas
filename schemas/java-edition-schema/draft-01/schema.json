@@ -94,9 +94,99 @@
                     "type": "integer"
                 }
             }
+        },
+        "LootTableNumberProvider": {
+            "description": "Number provider",
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "description": "The number provider type.",
+                            "enum": [
+                                "minecraft:constant",
+                                "minecraft:uniform",
+                                "minecraft:binomial",
+                                "minecraft:score"
+                            ]
+                        },
+                        "value": {
+                            "description": "type=constant The exact value",
+                            "type": "integer"
+                        },
+                        "min": {
+                            "description": "type=uniform Number provider. The minimum value.",
+                            "$ref": "#/definitions/LootTableNumberProvider"
+                        },
+                        "max": {
+                            "description": "type=uniform Number provider. The maximum value.",
+                            "$ref": "#/definitions/LootTableNumberProvider"
+                        },
+                        "n": {
+                            "description": "type=binomial Number provider. The amount of trials.",
+                            "$ref": "#/definitions/LootTableNumberProvider"
+                        },
+                        "p": {
+                            "description": "type=binomial Number provider. The probability of success on an individual trial.",
+                            "$ref": "#/definitions/LootTableNumberProvider"
+                        },
+                        "target": {
+                            "description": "type=score Scoreboard name provider. One of `this`, `killer`, `direct_killer`, `player_killer`.",
+                            "anyOf": [
+                                {
+                                    "type": "string",
+                                    "enum": [
+                                        "this",
+                                        "killer",
+                                        "direct_killer",
+                                        "player_killer"
+                                    ]
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "description": "Resource location. Either `fixed` or `context`",
+                                            "enum": [
+                                                "fixed",
+                                                "context"
+                                            ]
+                                        },
+                                        "name": {
+                                            "description": "type=fixed A UUID or playername.",
+                                            "type": "string"
+                                        },
+                                        "target": {
+                                            "description": "type=context Scoreboard name provider. One of this, killer, direct_killer, player_killer.",
+                                            "enum": [
+                                                "this",
+                                                "killer",
+                                                "direct_killer",
+                                                "player_killer"
+                                            ]
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "score": {
+                            "description": "type=score The scoreboard objective.",
+                            "type": "string"
+                        },
+                        "scale": {
+                            "description": "type=score Optional. Scale to multiply the score before returning it.",
+                            "type": "number"
+                        }
+                    }
+                }
+            ]
         }
     },
     "properties": {
+        // models
         "credit": {
             "description": "Credit to the creator of this file.",
             "type": "string"
@@ -393,6 +483,728 @@
                     "model": {
                         "description": "The path to the model to use if the case is met, in form of namespaced ID.",
                         "type": "string"
+                    }
+                }
+            }
+        },
+        // Loot_table
+        "type": {
+            "description": "Optional type of the loot table.",
+            "enum": [
+                "minecraft:empty",
+                "minecraft:entity",
+                "minecraft:block",
+                "minecraft:chest",
+                "minecraft:fishing",
+                "minecraft:gift",
+                "minecraft:advancement_reward ",
+                "minecraft:barter",
+                "minecraft:command ",
+                "minecraft:selector",
+                "minecraft:advancement_entity",
+                "minecraft:generic"
+            ]
+        },
+        "functions": {
+            "description": "Applies functions to all item stacks produced by this table. Functions are applied in order, so for example `looting_enchant` must be after `set_count` to work correctly.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "function": {
+                        "description": "Namespaced ID of the function to apply.",
+                        "enum": [
+                            "minecraft:apply_bonus",
+                            "minecraft:copy_name",
+                            "minecraft:copy_nbt",
+                            "minecraft:copy_state",
+                            "minecraft:enchant_randomly",
+                            "minecraft:enchant_with_levels",
+                            "minecraft:exploration_map",
+                            "minecraft:explosion_decay",
+                            "minecraft:furnace_smelt",
+                            "minecraft:fill_player_head",
+                            "minecraft:limit_count",
+                            "minecraft:looting_enchant",
+                            "minecraft:set_attributes",
+                            "minecraft:set_banner_pattern‌",
+                            "minecraft:set_contents",
+                            "minecraft:set_count",
+                            "minecraft:set_damage",
+                            "minecraft:set_enchantments‌",
+                            "minecraft:set_loot_table",
+                            "minecraft:set_lore",
+                            "minecraft:set_name",
+                            "minecraft:set_nbt",
+                            "minecraft:set_stew_effect"
+                        ]
+                    },
+                    // The following is additional info needed for `function`
+                    "*": {},
+                    //"minecraft:apply_bonus"
+                    "enchantment": {
+                        "description": "Enchantment ID used for level calculation.",
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftEnchantmentEnum"
+                    },
+                    "formula": {
+                        "description": "Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count * (max(0; random(0..Level + 2) - 1)+1)).",
+                        "enum": [
+                            "minecraft:binomial_with_bonus_count",
+                            "minecraft:uniform_bonus_count",
+                            "minecraft:ore_drops"
+                        ]
+                    },
+                    "parameters": {
+                        "description": "Values required for the formula.",
+                        "type": "object",
+                        "properties": {
+                            "extra": {
+                                "description": "For formula 'binomial_with_bonus_count', the extra value.",
+                                "type": "number"
+                            },
+                            "probability": {
+                                "description": "For formula 'binomial_with_bonus_count', the probability.",
+                                "type": "number"
+                            },
+                            "bonusMultiplier": {
+                                "description": "For formula 'uniform_bonus_count', the bonus multiplier.",
+                                "type": "number"
+                            }
+                        }
+                    },
+                    //"minecraft:copy_name"
+                    "source": {
+                        "description": "Needs to be set to `block_entity` for `copy_name`. Specifies the source. Set to block_entity for the block entity of the destroyed block, this to use the entity that died or the player that gained the advancement, opened the container or broke the block, killer for the killer, or killer_player for a killer that is a player.",
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "enum": [
+                                    "block_entity",
+                                    "this",
+                                    "killer",
+                                    "killer_player"
+                                ]
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "type": {
+                                        "description": "Nbt provider type. One of `context`, `storage`",
+                                        "enum": [
+                                            "minecraft:context",
+                                            "minecraft:storage"
+                                        ]
+                                    },
+                                    "target": {
+                                        "description": "type=context Same as source above."
+                                    },
+                                    "source": {
+                                        "description": "type=storage A resource location specifying the storage ID."
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    //"minecraft:copy_nbt"
+                    "ops": {
+                        "description": "A list of copy operations.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "source": {
+                                    "description": "The nbt path to copy from.",
+                                    "type": "string"
+                                },
+                                "target": {
+                                    "description": " The nbt path to copy to, starting from the item's `tag` tag.",
+                                    "type": "string"
+                                },
+                                "op": {
+                                    "description": "Can be `replace` to replace any existing contents of the target, `append` to append to a list, or `merge` to merge into a compound tag.",
+                                    "enum": [
+                                        "replace",
+                                        "append",
+                                        "merge"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    //"minecraft:copy_state"
+                    "block": {
+                        "description": "A block ID. Function fails if the block doesn't match",
+                        "type": "string"
+                    },
+                    "properties": {
+                        "description": "A list of property names to copy.",
+                        "type": "array",
+                        "items": {
+                            "description": "A block state name to copy.",
+                            "type": "string"
+                        }
+                    },
+                    //"minecraft:enchant_randomly"
+                    "enchantments": {
+                        "anyOf": [
+                            {
+                                "type": "array",
+                                "description": "List of enchantment IDs to choose from. If omitted, all enchantments applicable to the item are possible.",
+                                "items": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftEnchantmentEnum"
+                                }
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "minecraft:aqua_affinity": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:bane_of_arthropods": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:binding_curse": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:blast_protection": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:channeling": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:depth_strider": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:efficiency": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:feather_falling": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:fire_aspect": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:fire_protection": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:flame": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:fortune": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:frost_walker": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:impaling": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:infinity": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:knockback": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:looting": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:loyalty": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:luck_of_the_sea": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:lure": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:mending": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:multishot": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:piercing": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:power": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:projectile_protection": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:protection": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:punch": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:quick_charge": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:respiration": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:riptide": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:sharpness": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:silk_touch": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:smite": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:soul_speed": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:sweeping": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:thorns": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:unbreaking": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    },
+                                    "minecraft:vanishing_curse": {
+                                        "description": "Number provider specifying the enchantment level.",
+                                        "$ref": "#/definitions/LootTableNumberProvider"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    //"minecraft:enchant_with_levels"
+                    "treasure": {
+                        "description": "Determines whether treasure enchantments are allowed on",
+                        "type": "boolean"
+                    },
+                    "levels": {
+                        "description": "Number provider. Specifies the exact enchantment level to use.",
+                        "$ref": "#/definitions/LootTableNumberProvider"
+                    },
+                    //"minecraft:exploration_map"
+                    "destination": {
+                        "description": "The type of generated structure to locate. Accepts any of the StructureTypes used by the /locate command (case insensitive)",
+                        "type": "string"
+                    },
+                    "decoration": {
+                        "description": "The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive). If `mansion` or `monument` is used, the color of the lines on the item texture changes to match the corresponding explorer map.",
+                        "enum": [
+                            "player",
+                            "frame",
+                            "blue_marker",
+                            "target_x",
+                            "target_point",
+                            "player_off_map",
+                            "player_off_limits",
+                            "mansion",
+                            "monument",
+                            "banner_white",
+                            "banner_orange",
+                            "banner_magenta",
+                            "banner_light_blue",
+                            "banner_yellow",
+                            "banner_lime",
+                            "banner_pink",
+                            "banner_gray",
+                            "banner_light_gray",
+                            "banner_cyan",
+                            "banner_purple",
+                            "banner_blue",
+                            "banner_brown",
+                            "banner_green",
+                            "banner_red",
+                            "banner_black",
+                            "red_x",
+                        ]
+                    },
+                    "zoom": {
+                        "description": "The zoom level of the resulting map. Defaults to 2.",
+                        "default": 2,
+                        "type": "integer"
+                    },
+                    "search_radius": {
+                        "description": "The size, in chunks, of the area to search for structures. The area checked is square, not circular. Radius 0 causes only the current chunk to be searched, radius 1 causes the current chunk and eight adjacent chunks to be searched, and so on. Defaults to 50.",
+                        "type": "integer",
+                        "default": 50
+                    },
+                    "skip_existing_chunks": {
+                        "description": "",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    //"minecraft:fill_player_head"
+                    "entity": {
+                        "description": "Specifies an entity to be used for the player head. Set to this to use the entity that died or the player that gained the advancement, opened the container or broke the block, killer for the killer, or killer_player for a killer that is a player.",
+                        "enum": [
+                            "this",
+                            "killer",
+                            "killer_player"
+                        ]
+                    },
+                    //"minecraft:limit_count"
+                    "limit": {
+                        "description": "Number provider. Specifies the number of additional items per level of looting. Note the number may be fractional, rounded after multiplying by the looting level.",
+                        "$ref": "#/definitions/LootTableNumberProvider"
+                    },
+                    //"minecraft:looting_enchant"
+                    "count": {
+                        "description": "Specifies the number of additional items per level of looting. Note the number may be fractional, rounded after multiplying by the looting level. Specifies the stack size to set.",
+                        "$ref": "#/definitions/LootTableNumberProvider"
+                    },
+                    //"minecraft:set_attributes"
+                    "modifiers": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "description": "Name of the modifier.",
+                                    "type": "string"
+                                },
+                                "attribute": {
+                                    "description": "The name of the attribute this modifier is to act upon.",
+                                    "type": "string"
+                                },
+                                "operation": {
+                                    "description": "Must be either \"addition\", \"multiply_base\" or \"multiply_total\".",
+                                    "enum": [
+                                        "addition",
+                                        "multiply_base",
+                                        "multiply_total"
+                                    ]
+                                },
+                                "amount": {
+                                    "description": "Number provider. Specifies the amount of the modifier.",
+                                    "$ref": "#/definitions/LootTableNumberProvider"
+                                },
+                                "id": {
+                                    "description": "Optional : UUID of the modifier following. If none specified, a new UUID is generated.",
+                                    "type": "string"
+                                },
+                                "slot": {
+                                    "description": "Slots the item must be in for the modifier to take effect, this value can be one of the following : \"mainhand\", \"offhand\", \"feet\", \"legs\", \"chest\", or \"head\".",
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "enum": [
+                                                "mainhand",
+                                                "offhand",
+                                                "feet",
+                                                "legs",
+                                                "chest",
+                                                "head"
+                                            ]
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "mainhand",
+                                                    "offhand",
+                                                    "feet",
+                                                    "legs",
+                                                    "chest",
+                                                    "head"
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    //"minecraft:set_banner_pattern‌"
+                    "patterns": {
+                        "description": "List of patterns.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "pattern": {
+                                    "description": "The pattern type. For example `square_bottom_left`.",
+                                    "enum": [
+                                        "base",
+                                        "square_bottom_left",
+                                        "square_bottom_right",
+                                        "square_top_left",
+                                        "square_top_right",
+                                        "stripe_bottom",
+                                        "stripe_top",
+                                        "stripe_left",
+                                        "stripe_right",
+                                        "stripe_center",
+                                        "stripe_middle",
+                                        "stripe_downright",
+                                        "stripe_downleft",
+                                        "small_stripes",
+                                        "cross",
+                                        "straight_cross",
+                                        "triangle_bottom",
+                                        "triangle_top",
+                                        "triangles_bottom",
+                                        "triangles_top",
+                                        "diagonal_left",
+                                        "diagonal_up_right",
+                                        "diagonal_up_left",
+                                        "diagonal_right",
+                                        "circle",
+                                        "rhombus",
+                                        "half_vertical",
+                                        "half_horizontal",
+                                        "half_vertical_right",
+                                        "half_horizontal_bottom",
+                                        "border",
+                                        "curly_border",
+                                        "gradient",
+                                        "gradient_up",
+                                        "bricks",
+                                        "globe",
+                                        "creeper",
+                                        "skull",
+                                        "flower",
+                                        "mojang",
+                                        "piglin"
+                                    ]
+                                },
+                                "color": {
+                                    "description": "The color for this pattern. One of `white`, `orange`, `magenta`, `light_blue`, `yellow`, `lime`, `pink`, `gray`, `light_gray`, `cyan`, `purple`, `blue`, `brown`, `green`, `red`, `black`.",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonColorEnum"
+                                }
+                            }
+                        }
+                    },
+                    "append": {
+                        "description": "Optional. If true, new patterns will be appended to existing ones.",
+                        "type": "boolean"
+                    },
+                    //"minecraft:set_contents"
+                    "entries": {
+                        "description": "The entries to use as contents.",
+                        "type": "array"
+                    },
+                    //"minecraft:set_count"
+                    "add": {
+                        "description": "Optional. If `true`, change will be relative to current count/damage.",
+                        "type": "boolean"
+                    },
+                    //"minecraft:set_damage"
+                    "damage": {
+                        "description": "Number provider. Specifies the damage fraction to set (1.0 is undamaged, 0.0 is zero durability left).",
+                        "$ref": "#/definitions/LootTableNumberProvider"
+                    },
+                    //"minecraft:set_loot_table"
+                    "name": {
+                        "anyOf": [
+                            {
+                                "description": "function=set_loot_table Specifies the resource location of the loot table to be used.",
+                                "type": "string"
+                            },
+                            {
+                                "description": "function=set_name A JSON text component name, allowing color, translations, etc.",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                            }
+                        ]
+                    },
+                    "seed": {
+                        "description": "Optional. Specifies the loot table seed. If absent or set to 0, a random seed will be used.",
+                        "type": "integer",
+                        "default": 0
+                    },
+                    //"minecraft:set_lore"
+                    "lore": {
+                        "description": "List of JSON text components. Each list entry represents one line of the lore.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                        }
+                    },
+                    //"minecraft:set_nbt"
+                    "tag": {
+                        "description": "Tag string to add, similar to those used by commands. Note that the first bracket is required and quotation marks need to be escaped using a backslash (\\)",
+                        "type":"string"
+                    },
+                    //"minecraft:set_stew_effect"
+                    "set_stew_effect": {
+                        "description": "Sets the status effects for suspicious stew.",
+                        "type": "object",
+                        "properties": {
+                            "effects": {
+                                "description": "The effects to apply.",
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "type": {
+                                            "description": "The effect ID.",
+                                            "type": "string"
+                                        },
+                                        "duration": {
+                                            "description": " Number provider. The duration of the effect.",
+                                            "$ref": "#/definitions/LootTableNumberProvider"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    // optional conditions
+                    "conditions": {
+                        "description": "Determines conditions for this function to be applied. If multiple conditions are specified, all must pass.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "condition": {
+                                    "description": "Namespaced ID of condition.",
+                                    "enum": [
+                                        "minecraft:alternative",
+                                        "minecraft:block_state_property",
+                                        "minecraft:damage_source_properties",
+                                        "minecraft:entity_properties",
+                                        "minecraft:entity_scores",
+                                        "minecraft:inverted",
+                                        "minecraft:killed_by_player",
+                                        "minecraft:location_check",
+                                        "minecraft:match_tool",
+                                        "minecraft:random_chance",
+                                        "minecraft:random_chance_with_looting",
+                                        "minecraft:reference",
+                                        "minecraft:survives_explosion",
+                                        "minecraft:table_bonus",
+                                        "minecraft:time_check",
+                                        "minecraft:weather_check",
+                                        "minecraft:value_check"
+                                    ]
+                                },
+                                // The following is additional info needed for `condition`
+                                "*": {}
+                                //"minecraft:alternative"
+                                //"minecraft:block_state_property"
+                                //"minecraft:damage_source_properties"
+                                //"minecraft:entity_properties"
+                                //"minecraft:entity_scores"
+                                //"minecraft:inverted"
+                                //"minecraft:killed_by_player"
+                                //"minecraft:location_check"
+                                //"minecraft:match_tool"
+                                //"minecraft:random_chance"
+                                //"minecraft:random_chance_with_looting"
+                                //"minecraft:reference"
+                                //"minecraft:survives_explosion"
+                                //"minecraft:table_bonus"
+                                //"minecraft:time_check"
+                                //"minecraft:weather_check"
+                                //"minecraft:value_check"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "pools": {
+            "description": "A list of all pools for this loot table. Each pool used generates items from its list of items based on the number of rolls. Pools are applied in",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "conditions": {
+                        "$ref": "#/properties/functions/items/properties/conditions"
+                    },
+                    "functions": {
+                        "$ref": "#/properties/functions"
+                    },
+                    "rolls": {
+                        "description": "Number Provider. Specifies the number of rolls on the pool."
+                    },
+                    "bonus_rolls": {
+                        "description": "Number Provider. Specifies the number of bonus rolls on the pool per point of luck. Rounded down after multiplying."
+                    },
+                    "entries": {
+                        "description": "A list of all things that can be produced by this pool. One entry is chosen per roll as a weighted random selection from all entries without failing conditions.",
+                        "properties": {
+                            "conditions": {
+                                "$ref": "#/properties/functions/items/properties/conditions"
+                            },
+                            "functions": {
+                                "$ref": "#/properties/functions"
+                            },
+                            "type": {
+                                "description": "Namespaced ID type of entry. Can be `item` for item entries, `tag` for item tags, `loot_table` to produce items from another loot table, `group` for child entries, `alternatives` to select one sub-entry from a list, `sequence` to select sub-entries until one entry cannot be granted, `dynamic` to generate block specific drops, or `empty` for an entry that generates nothing.",
+                                "enum": [
+                                    "minecraft:item",
+                                    "minecraft:tag",
+                                    "minecraft:loot_table",
+                                    "minecraft:group",
+                                    "minecraft:alternatives",
+                                    "minecraft:sequence",
+                                    "minecraft:dynamic",
+                                    "minecraft:empty"
+                                ]
+                            },
+                            "name": {
+                                "description": "For type 'item', ID name of the item to be produced, e.g. diamond. The default, if not changed by functions, is a stack of 1 of the default instance of the item.\nFor type 'tag' item tag to be used, e.g. arrows.\nFor type 'loot_table', loot table to be used, e.g. gameplay/fishing/junk.\nFor type 'dynamic', can be contents for block entity contents or self for banners and player skulls.",
+                                "type": "string"
+                            },
+                            "children": {
+                                "description": "For type 'group' a list of entries that are used to generate loot. Can be used for convenience, e.g. if one condition applies for multiple entries.\nFor type 'alternatives' a list of entries of which the first, and only the first, successful entry gets generated.\nFor type 'sequence' a list of entries that are used until the first entry fails. After an entry fails, no more entries of this list are generated",
+                                "type": "string"
+                            },
+                            "expand": {
+                                "description": "For type 'tag', if set to true, it chooses one item of the tag, each with the same weight and quality. If false, it generates one of each of the items in the tag. Required when type is 'tag'.",
+                                "type": "boolean"
+                            },
+                            "weight": {
+                                "description": "Determines how often this entry is chosen out of all the entries in the pool. Entries with higher weights are used more often (chance is this entry's weight⁄total of all considered entries' weights).",
+                                "type": "integer"
+                            },
+                            "quality": {
+                                "description": "Modifies the entry's weight based on the killing/opening/fishing player's luck attribute. Formula is floor( weight + (quality * generic.luck)).",
+                                "type": "integer"
+                            }
+                        }
                     }
                 }
             }
