@@ -1,4 +1,3 @@
-
 # **INFO**
 ## [What are Schemas?](https://json-schema.org/understanding-json-schema/about.html)
 Schemas are JSON files that will help and aid you in creating your code and
