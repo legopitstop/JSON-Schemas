@@ -1,0 +1,105 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/shaders_post/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Data for Minecraft Java Edition addons.",
+    "properties": {
+        "targets": {
+            "description": "A list of render targets. It doesn't really matter what name you give them, but it is necessary for specifying the intarget and outtarget of a render pass.",
+            "type": "array",
+            "items": {
+                "anyOf": [
+                    {
+                        "description": "The name of a render target. The size defaults to screen resolution.",
+                        "type": "string"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "description": "The name of the render target to add.",
+                                "type": "string"
+                            },
+                            "width": {
+                                "description": "The width of the render target.",
+                                "type": "integer"
+                            },
+                            "height": {
+                                "description": "The height of the render target.",
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "passes": {
+            "description": "A list of passes.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "The name of a program shader to apply on the input and post into the output. Use \"blit\" to copy the data from intarget to outtarget.",
+                        "type": "string"
+                    },
+                    "intarget": {
+                        "description": "The name of a render target to use as an input. Use minecraft:main to specify the main screen.",
+                        "type": "string"
+                    },
+                    "outtarget": {
+                        "description": "The name of a render target to output to. It should not be the same as intarget. Use minecraft:main to specify the main screen.",
+                        "type": "string"
+                    },
+                    "auxtargets": {
+                        "description": "A list of auxiliary targets.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "description": "The auxiliary target's name that is passed into the \"Program\" JSON.",
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "description": " The auxiliary target's id. Either points into the name of a buffer that is defined in targets or into the location of a texture under assets/<namespace>/textures/effect (use a namespaced id to reference it).",
+                                    "type": "string"
+                                },
+                                "width": {
+                                    "description": "Required if id references a texture. Describes the width of the texture in pixels.",
+                                    "type": "integer"
+                                },
+                                "height": {
+                                    "description": "Required if id references a texture. Describes the height of the texture in pixels.",
+                                    "type": "integer"
+                                },
+                                "bilinear": {
+                                    "description": "Required if id references a texture. Determines whether the scaling algorithm used for the image is bilinear or nearest neighbour.",
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    },
+                    "uniforms": {
+                        "description": "A list of overrides that change the values in the uniforms list in the \"Program\" JSON.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "description": "The name of the field that should be changed.",
+                                    "type": "string"
+                                },
+                                "values": {
+                                    "description": "The values that the field should be changed to.",
+                                    "type": "array"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "default": {}
+}

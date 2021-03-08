@@ -2,23 +2,21 @@
 Java Edition schemas that are planned to add support for.
 
 ## Added
+- [pack.mcmeta](https://minecraft.gamepedia.com/Resource_Pack#Contents)
 ### assets
 - [assets/models/item/*.json](https://minecraft.gamepedia.com/Model#Item_models)
 - [assets/models/block/*.json](https://minecraft.gamepedia.com/Model#Block_models)
 - [assets/blockstates/*.json](https://minecraft.gamepedia.com/Model#Block_states)
+- [assets/font/*.json](https://minecraft.gamepedia.com/Resource_Pack#Fonts)
+- [assets/textures/*.png.mcmeta](https://minecraft.gamepedia.com/Resource_Pack#Animation) *(formated as json)*
+- [assets/shaders/post/*.json](https://minecraft.gamepedia.com/Resource_Pack#Shaders)
+- [assets/shaders/program/*.json](https://minecraft.gamepedia.com/Resource_Pack#Shaders)
+- [assets/sounds.json](https://minecraft.gamepedia.com/Sounds.json#File_structure)
 ### data
 - [data/loot_tables/*.json](https://minecraft.gamepedia.com/Loot_table)
 
 ## Not added
-- [pack.mcmeta](https://minecraft.gamepedia.com/Resource_Pack#Contents)
 ### assets
-- [assets/font/*.json](https://minecraft.gamepedia.com/Resource_Pack#Fonts)
-- [assets/particles/*.json]()
-- [assets/shaders/post/*.json](https://minecraft.gamepedia.com/Resource_Pack#Shaders)
-- [assets/shaders/program/*.json](https://minecraft.gamepedia.com/Resource_Pack#Shaders)
-- [assets/textures/*.png.mcmeta](https://minecraft.gamepedia.com/Resource_Pack#Animation) *(formated as json)*
-- [assets/sounds.json](https://minecraft.gamepedia.com/Sounds.json#File_structure)
-- [assets/gpu_warnlist.json]() ??
 ### data
 - [data/predicate/*.json](https://minecraft.gamepedia.com/Predicate#JSON%20structure)
 - [data/advancements/*.json](https://minecraft.gamepedia.com/Advancement/JSON_format#File_format)
