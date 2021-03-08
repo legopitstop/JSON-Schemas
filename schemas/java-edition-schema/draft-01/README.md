@@ -5,14 +5,13 @@ Java Edition schemas that are planned to add support for.
 ### assets
 - [assets/models/item/*.json](https://minecraft.gamepedia.com/Model#Item_models)
 - [assets/models/block/*.json](https://minecraft.gamepedia.com/Model#Block_models)
+- [assets/blockstates/*.json](https://minecraft.gamepedia.com/Model#Block_states)
 ### data
 - [data/loot_tables/*.json](https://minecraft.gamepedia.com/Loot_table)
 
-
 ## Not added
-### assets
 - [pack.mcmeta](https://minecraft.gamepedia.com/Resource_Pack#Contents)
-- [assets/blockstates/*.json](https://minecraft.gamepedia.com/Model#Block_states)
+### assets
 - [assets/font/*.json](https://minecraft.gamepedia.com/Resource_Pack#Fonts)
 - [assets/particles/*.json]()
 - [assets/shaders/post/*.json](https://minecraft.gamepedia.com/Resource_Pack#Shaders)
@@ -21,10 +20,7 @@ Java Edition schemas that are planned to add support for.
 - [assets/sounds.json](https://minecraft.gamepedia.com/Sounds.json#File_structure)
 - [assets/gpu_warnlist.json]() ??
 ### data
-- [pack.mcmeta](https://minecraft.gamepedia.com/Data_Pack#pack.mcmeta)
 - [data/predicate/*.json](https://minecraft.gamepedia.com/Predicate#JSON%20structure)
-- [data/asd/*.json]()
-
 - [data/advancements/*.json](https://minecraft.gamepedia.com/Advancement/JSON_format#File_format)
 - [data/recipes/*.json](https://minecraft.gamepedia.com/Recipe#JSON_format)
 - [data/tags/*/*.json](https://minecraft.gamepedia.com/Tag#JSON_format)
