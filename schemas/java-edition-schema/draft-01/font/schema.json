@@ -29,7 +29,7 @@
                     },
                     "ascent": {
                         "description": "type=bitmap The ascent of the character, measured in pixels. This value adds a vertical shift to the displayed result.",
-                        "type": "string"
+                        "type": "integer"
                     },
                     "chars": {
                         "description": "type=bitmap  A list of strings containing the characters replaced by this provider, as well as their order within the texture. All elements must describe the same number of characters. The texture is split into one equally sized row for each element of this list. Each row is split into one equally sized character for each character within one list element.",
