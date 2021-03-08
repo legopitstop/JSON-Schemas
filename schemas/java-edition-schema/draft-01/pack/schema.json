@@ -14,7 +14,19 @@
                 },
                 "description": {
                     "description": "Text shown below the pack name in the resource pack menu. The text is shown on two lines. If the text is too long it is truncated. Contains a raw JSON text object that is shown instead as the pack description in the resource pack menu. Same behavior as the string version of the description tag, but they cannot exist together.",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                            }
+                        }
+                    ]
                 }
             }
         },
