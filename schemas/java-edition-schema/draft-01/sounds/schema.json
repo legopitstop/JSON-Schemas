@@ -2,7 +2,7 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/sounds/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "description": "Data for Minecraft Java Edition addons.",
+    "description": "sounds for Minecraft Java Edition",
     "additionalProperties": {
         "description": "A sound event. The name is usually separated in categories (such as entity.enderman.stare). All default sound events are listed in the table below. (To get a different namespace than minecraft the file must be under a different namespace; not defining it here.)",
         "properties": {
@@ -37,7 +37,8 @@
                                 },
                                 "stream": {
                                     "description": "true/false. True if this sound should be streamed from its file. It is recommended that this is set to \"true\" for sounds that have a duration longer than a few seconds to avoid lag. Used for all sounds in the \"music\" and \"record\" categories (except Note Block sounds), as (almost) all the sounds that belong to those categories are over a minute long. Optional. If undefined, defaults to \"false\". Setting this to false allows many more instances of the sound to be ran at the same time while setting it to true only allows 4 instances (of that type) to be ran at the same time.",
-                                    "type": "boolean"
+                                    "type": "boolean",
+                                    "default": false
                                 },
                                 "attenuation_distance": {
                                     "description": "Modify sound reduction rate based on distance. Used by portals, beacons, and conduits. Defaults to 16.",
@@ -50,7 +51,11 @@
                                 },
                                 "type": {
                                     "description": "Two values are available: \"sound\" and \"event\"; \"sound\" causes the value of \"name\" to be interpreted as the name of a file, while \"event\" causes the value of \"name\" to be interpreted as the name of an already defined event. If undefined, defaults to \"sound\".",
-                                    "enum": ["sound","event"]
+                                    "enum": [
+                                        "sound",
+                                        "event"
+                                    ],
+                                    "default": "sound"
                                 }
                             }
                         }

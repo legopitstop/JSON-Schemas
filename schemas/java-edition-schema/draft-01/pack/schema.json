@@ -2,7 +2,7 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/pack/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "description": "Data for Minecraft Java Edition addons.",
+    "description": "pack for Minecraft Java Edition",
     "properties": {
         "pack": {
             "description": "Holds the resource pack information",
