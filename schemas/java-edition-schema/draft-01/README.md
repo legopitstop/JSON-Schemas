@@ -15,8 +15,8 @@ Java Edition schemas that are planned to add support for.
 ### data
 - [data/loot_tables/*.json](https://minecraft.gamepedia.com/Loot_table)
 
+
 ## Not added
-### assets
 ### data
 - [data/predicate/*.json](https://minecraft.gamepedia.com/Predicate#JSON%20structure)
 - [data/advancements/*.json](https://minecraft.gamepedia.com/Advancement/JSON_format#File_format)
