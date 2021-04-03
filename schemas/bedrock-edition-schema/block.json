@@ -134,7 +134,7 @@
                             "description": "Property describing the breathability of this block and whether it is treated as a solid or as air."
                         },
                         "minecraft:destroy_time": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                            "type": "number",
                             "default": 0.0,
                             "title": "minecraft:destroy_time",
                             "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times."
@@ -182,7 +182,7 @@
                             "description": "Can only be set to false, it disables the collision of the block with entities"
                         },
                         "minecraft:explosion_resistance": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                            "type": "number",
                             "default": 0.0,
                             "title": "minecraft:explosion_resistance",
                             "description": "Sets the explosion resistance for this block."
