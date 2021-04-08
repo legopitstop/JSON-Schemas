@@ -24,20 +24,6 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 4. Paste the below code into that JSON.
 5. Save it. Thats it your done!
 
-**MORE NBT DATAPACK**
-
-```json
-{
-    "json.schemas": [
-        {
-            "fileMatch": [
-                "*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/more%20NBT%20Datapack%20Schemas/schema.json"
-        }
-    ]
-}
-```
 **BEDROCK ADDON SCHEMAS**
 ```json
 {
