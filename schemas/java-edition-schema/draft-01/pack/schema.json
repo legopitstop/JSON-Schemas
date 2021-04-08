@@ -1,0 +1,53 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/pack/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "pack for Minecraft Java Edition",
+    "properties": {
+        "pack": {
+            "description": "Holds the resource pack information",
+            "type": "object",
+            "properties": {
+                "pack_format": {
+                    "description": "Pack version. If this number does not match the current required number, the resource pack displays an error and required additional confirmation to load the pack. Requires 1 for 1.6.1–1.8.9, 2 for 1.9–1.10.2, 3 for 1.11–1.12.2, 4 for 1.13–1.14.4, 5 for 1.15–1.16.1, 6 for 1.16.2–1.16.5, and 7 for 1.17.",
+                    "type": "integer"
+                },
+                "description": {
+                    "description": "Text shown below the pack name in the resource pack menu. The text is shown on two lines. If the text is too long it is truncated. Contains a raw JSON text object that is shown instead as the pack description in the resource pack menu. Same behavior as the string version of the description tag, but they cannot exist together.",
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "language": {
+            "description": "Contains additional languages to add to the language menu",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "description": "The full name of the language",
+                    "type": "string"
+                },
+                "region": {
+                    "description": "The country or region name",
+                    "type": "string"
+                },
+                "bidirectional": {
+                    "description": "If true, the language reads right to left.",
+                    "type": "boolean"
+                }
+            }
+        }
+    },
+    "default": {}
+}

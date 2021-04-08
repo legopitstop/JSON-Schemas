@@ -1,7 +1,7 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/loot_tables/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Data for Minecraft Java Edition addons.",
+    "description": "Loot tables for Minecraft Java Edition",
     "definitions": {
         "LootTableNumberProvider": {
             "$id": "#/definitions/LootTableNumberProvider",

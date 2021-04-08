@@ -1,0 +1,175 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/blockstates/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Blockstates for Minecraft Java Edition",
+    "definitions": {
+        "XYZ-scheme": {
+            "default": [
+                1,
+                2,
+                3
+            ],
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+                "type": "number"
+            }
+        },
+        "ModelDisplayPosition": {
+            "description": "Place where an item model is displayed. Holds its rotation, translation and scale for the specified situation. fixed refers to item frames, while the rest are as their name states. Note that translations are applied to the model before rotations.",
+            "properties": {
+                "rotation": {
+                    "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
+                    "$ref": "#/definitions/XYZ-scheme"
+                },
+                "translation": {
+                    "description": "Specifies the position of the model according to the scheme [x, y, z]. If the value is greater than 80, it is displayed as 80. If the value is less than -80, it is displayed as -80.",
+                    "$ref": "#/definitions/XYZ-scheme"
+                },
+                "scale": {
+                    "description": "Specifies the scale of the model according to the scheme [x, y, z]. If the value is greater than 4, it is displayed as 4.",
+                    "$ref": "#/definitions/XYZ-scheme"
+                }
+            }
+        },
+        "ModelElementFace": {
+            "properties": {
+                "uv": {
+                    "description": "Defines the area of the texture to use according to the scheme [x1, y1, x2, y2]. If unset, it defaults to values equal to xyz position of the element. The texture behavior is inconsistent if UV extends below 0 or above 16. If the numbers of x1 and x2 are swapped (e.g. from 0, 0, 16, 16 to 16, 0, 0, 16), the texture flips. UV is optional, and if not supplied it automatically generates based on the element's position.",
+                    "type": "array",
+                    "default": [
+                        1,
+                        2,
+                        3,
+                        4
+                    ],
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                        "type": "number"
+                    }
+                },
+                "texture": {
+                    "description": "Specifies the texture in form of the texture variable prepended with a #.",
+                    "type": "string",
+                    "pattern": "#"
+                },
+                "cullface": {
+                    "description": "Specifies whether a face does not need to be rendered when there is a block touching it in the specified position. The position can be: down, up, north, south, west, or east. It also determines the side of the block to use the light level from for lighting the face, and if unset, defaults to the side.",
+                    "enum": [
+                        "north",
+                        "south",
+                        "west",
+                        "east",
+                        "up",
+                        "down"
+                    ]
+                },
+                "rotation": {
+                    "description": "Rotates the texture by the specified number of degrees. Can be 0, 90, 180, or 270. Defaults to 0. Rotation does not affect which part of the texture is used. Instead, it amounts to permutation of the selected texture vertexes (selected implicitly, or explicitly though uv).",
+                    "enum": [
+                        0,
+                        90,
+                        180,
+                        270
+                    ],
+                    "default": 0
+                },
+                "tintindex": {
+                    "description": "Determines whether to tint the texture using a hardcoded tint index. The default is not using the tint, and any number causes it to use tint. Note that only certain blocks have a tint index; all others are unaffected.",
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "properties": {
+        "variants": {
+            "description": "Holds the names of all the variants of the block.",
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+                "required": [
+                    "model"
+                ],
+                "properties": {
+                    "model": {
+                        "description": "Specifies the path to the model file of the block, in form of namespaced ID.",
+                        "type": "string"
+                    },
+                    "x": {
+                        "description": "Rotation of the model on the x-axis in increments of 90 degrees.",
+                        "enum": [
+                            -360,
+                            -270,
+                            -180,
+                            -90,
+                            0,
+                            90,
+                            180,
+                            270,
+                            360
+                        ]
+                    },
+                    "y": {
+                        "description": "Rotation of the model on the y-axis in increments of 90 degrees.",
+                        "enum": [
+                            -360,
+                            -270,
+                            -180,
+                            -90,
+                            0,
+                            90,
+                            180,
+                            270,
+                            360
+                        ]
+                    },
+                    "uvlock": {
+                        "description": "Can be true or false (default). Locks the rotation of the texture of a block, if set to true. This way the texture does not rotate with the block when using the x and y-tags above.",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "weight": {
+                        "description": "Sets the probability of the model for being used in the game, defaults to 1 (=100%). If more than one model is used for the same variant, the probability is calculated by dividing the individual model's weight by the sum of the weights of all models. (For example, if three models are used with weights 1, 1, and 2, then their combined weight would be 4 (1+1+2). The probability of each model being used would then be determined by dividing each weight by 4: 1/4, 1/4 and 2/4, or 25%, 25% and 50%, respectively.)",
+                        "type": "integer"
+                    }
+                }
+            }
+        },
+        "multipart": {
+            "description": "Used instead of variants to combine models based on block state attributes.",
+            "type": "array",
+            "default": [{}],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "apply": {
+                        "description": "Determines the model(s) to apply and its properties. There can be one model or an array of models. If set to an array, the model is chosen randomly from the options given, with each option being specified in separate subsidiary -tags.",
+                        "anyOf": [
+                            {
+                                "type": "object",
+                                "$ref": "#/properties/variants/additionalProperties/properties"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/properties/variants/additionalProperties/properties"
+                                }
+                            }
+                        ]
+                    },
+                    "when": {
+                        "description": "A list of cases that have to be met for the model to be applied. If unset, the model always applies.",
+                        "type": "object",
+                        "additionalProperties": {
+                            "description": "A list of cases that all have to match the block to return true."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "default": {}
+}

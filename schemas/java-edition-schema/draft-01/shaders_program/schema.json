@@ -1,0 +1,104 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/shaders_program/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "program shaders for Minecraft Java Edition",
+    "properties": {
+        "blend": {
+            "description": "Settings for OpenGL blending.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "func": {
+                    "description": "Operator to be used when blending. Can be add, subtract, reversesubtract, reverse_subtract, min, or max. Not case sensitive. Defaults to add. Used as mode parameter of glBlendEquation",
+                    "type": "string"
+                },
+                "srcrgb": {
+                    "description": "Used as sfactor parameter of glBlendFunc or srcRGB parameter of glBlendFuncSeparate. Can be 0, 1, srccolor, 1-srccolor, dstcolor, 1-dstcolor, srcalpha, 1-srcalpha, dstalpha, or1-dstalpha. Case insensitive. Ignores \"_\". \"1\", \"0\", \"-\" can be replaced by \"one\", \"zero\", \"minus\".",
+                    "type": "string"
+                },
+                "dstrgb": {
+                    "description": "Used as dfactor parameter of glBlendFunc or dstRGB parameter of glBlendFuncSeparate. Can be 0, 1, srccolor, 1-srccolor, dstcolor, 1-dstcolor, srcalpha, 1-srcalpha, dstalpha, or1-dstalpha. Case insensitive. Ignores \"_\". \"1\", \"0\", \"-\" can be replaced by \"one\", \"zero\", \"minus\".",
+                    "type": "string"
+                },
+                "srcalpha": {
+                    "description": " Used as srcRGB parameter of glBlendFuncSeparate. Can be 0, 1, srccolor, 1-srccolor, dstcolor, 1-dstcolor, srcalpha, 1-srcalpha, dstalpha, or1-dstalpha. Case insensitive. Ignores \"_\". \"1\", \"0\", \"-\" can be replaced by \"one\", \"zero\", \"minus\".",
+                    "type": "string"
+                },
+                "dstalpha": {
+                    "description": "Used as dstRGB parameter of glBlendFuncSeparate. Can be 0, 1, srccolor, 1-srccolor, dstcolor, 1-dstcolor, srcalpha, 1-srcalpha, dstalpha, or1-dstalpha. Case insensitive. Ignores \"_\". \"1\", \"0\", \"-\" can be replaced by \"one\", \"zero\", \"minus\".",
+                    "type": "string"
+                }
+            }
+        },
+        "cull": {
+            "description": "If true, run glEnable(GL_CULL_FACE). If false, run glDisable(GL_CULL_FACE). Defaults to true.",
+            "type": "boolean",
+            "default": true
+        },
+        "vertex": {
+            "description": "The name (without file extension) of the vertex shader to be used.",
+            "type": "string"
+        },
+        "fragment": {
+            "description": "The name (without file extension) of the fragment shader to be used.",
+            "type": "string"
+        },
+        "attributes": {
+            "description": "Attributes to be used by the vertex shader.",
+            "type": "array",
+            "items": {
+                "enum": [
+                    "Position"
+                ]
+            }
+        },
+        "samplers": {
+            "description": "A list of samplers that may be used in the shaders.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "name": {
+                        "description": "The samplers name.",
+                        "type": "string"
+                    },
+                    "file": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "uniforms": {
+            "description": "A list of uniforms that can be used in the shaders.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "name": {
+                    "description": "The name of the uniform as referenced in the GLSL code.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the uniform. Can be one of int, float, matrix4x4, matrix3x3 and matrix2x2. int can also be interpreted as ivec2, ivec3 or ivec4 depending on how many values are actually included in values. float can also be interpreted as vec2, vec3 or vec4 depending on how many values are actually included in values.",
+                    "enum": [
+                        "int",
+                        "float",
+                        "matrix4x4",
+                        "matrix3x3",
+                        "matrix2x2"
+                    ]
+                },
+                "count": {
+                    "description": " The number of values included in values.",
+                    "type": "integer"
+                },
+                "values": {
+                    "description": "The value of the uniform, given as a list of floats. The length of the list should be the same as count.",
+                    "type": "array"
+                }
+            }
+        }
+    },
+    "default": {}
+}
