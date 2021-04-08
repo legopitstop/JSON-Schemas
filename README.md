@@ -97,5 +97,15 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     ]
 }
 ```
+# Test Schemas
+Want to get the lastest indev schemas? To get the indev version change the `main` part inside the url to `test`. example:
 
-# [**UPDATES**](UPDATES.md#)
+Before (not replacing `main`)
+```
+https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/schema.json
+```
+After (replacing `main` with `test`)
+```
+https://raw.githubusercontent.com/legopitstop/JSON-Schemas/test/schemas/java-edition-schema/draft-01/schema.json
+```
+## [**UPDATES**](UPDATES.md#)
