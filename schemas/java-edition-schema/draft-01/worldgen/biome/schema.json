@@ -1,0 +1,155 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/worldgen/biome/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "default": {},
+    "description": "biome worldgen for Minecraft Java Edition",
+    "properties": {
+        "scale": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "effects": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "mood_sound": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "sound": {
+                            "type": "string"
+                        },
+                        "tick_delay": {
+                            "type": "number"
+                        },
+                        "block_search_extent": {
+                            "type": "number"
+                        },
+                        "offset": {
+                            "type": "number",
+                            "minimum": 0.0,
+                            "maximum": 1.0
+                        }
+                    }
+                },
+                "sky_color": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color"
+                },
+                "foliage_color": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color"
+                },
+                "grass_color": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color"
+                },
+                "fog_color": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color"
+                },
+                "water_color": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color"
+                },
+                "water_fog_color": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color"
+                }
+            }
+        },
+        "surface_builder": {
+            "type": "string"
+        },
+        "carvers": {
+            "type": "object",
+            "default": {}
+        },
+        "features": {
+            "type": "array",
+            "items": {
+                "properties": {}
+            }
+        },
+        "starts": {
+            "type": "array",
+            "items": {
+                "properties": {}
+            }
+        },
+        "spawners": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "monster": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "creature": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "ambient": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "underground_water_creature": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "water_creature": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "water_ambient": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "misc": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "spawn_costs": {
+            "type": "object",
+            "default": {}
+        },
+        "player_spawn_friendly": {
+            "type": "boolean"
+        },
+        "precipitation": {
+            "enum": [
+                "none"
+            ]
+        },
+        "temperature": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "downfall": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "category": {
+            "type": "string"
+        },
+        "depth": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        }
+    }
+}

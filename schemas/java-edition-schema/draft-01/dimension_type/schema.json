@@ -1,0 +1,54 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/dimension_type/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "default": {},
+    "description": "dimension_type for Minecraft Java Edition",
+    "properties": {
+        "logical_height": {
+            "type": "number"
+        },
+        "infiniburn": {
+            "type": "string"
+        },
+        "effects": {
+            "type": "string"
+        },
+        "ambient_light": {
+            "type": "number"
+        },
+        "respawn_anchor_works": {
+            "type": "boolean"
+        },
+        "has_raids": {
+            "type": "boolean"
+        },
+        "min_y": {
+            "type": "number"
+        },
+        "height": {
+            "type": "number"
+        },
+        "natural": {
+            "type": "boolean"
+        },
+        "coordinate_scale": {
+            "type": "number"
+        },
+        "piglin_safe": {
+            "type": "boolean"
+        },
+        "bed_works": {
+            "type": "boolean"
+        },
+        "has_skylight": {
+            "type": "boolean"
+        },
+        "has_ceiling": {
+            "type": "boolean"
+        },
+        "ultrawarm": {
+            "type": "boolean"
+        }
+    }
+}
