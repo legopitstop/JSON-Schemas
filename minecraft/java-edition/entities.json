@@ -123,6 +123,7 @@
         },
         "MinecraftEntityEnums": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/entities.json#/definitions/MinecraftEntityEnums",
+            "type": "string",
             "enum": [
                 "minecraft:area_effect_cloud",
                 "minecraft:armor_stand",
