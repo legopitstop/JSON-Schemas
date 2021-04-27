@@ -1,0 +1,177 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/worldgen/noise_settings/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "default": {},
+    "description": "noise_settings worldgen for Minecraft Java Edition",
+    "properties": {
+        "aquifers_enabled": {
+            "type": "boolean"
+        },
+        "noise_caves_enabled": {
+            "type": "boolean"
+        },
+        "deepslate_enabled": {
+            "type": "boolean"
+        },
+        "ore_veins_enabled": {
+            "type": "boolean"
+        },
+        "sea_level": {
+            "type": "number"
+        },
+        "min_surface_level": {
+            "type": "number"
+        },
+        "disable_mob_generation": {
+            "type": "boolean"
+        },
+        "default_fluid": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "Properties": {
+                    "type": "object",
+                    "default": {}
+                },
+                "Name": {
+                    "type": "string"
+                }
+            }
+        },
+        "bedrock_roof_position": {
+            "type": "number"
+        },
+        "bedrock_floor_position": {
+            "type": "number"
+        },
+        "structures": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "stronghold": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "distance": {
+                            "type": "number"
+                        },
+                        "spread": {
+                            "type": "number"
+                        },
+                        "count": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "structures": {
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": {
+                        "properties": {
+                            "spacing": {
+                                "type": "number"
+                            },
+                            "separation": {
+                                "type": "number"
+                            },
+                            "salt": {
+                                "type": "number"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "noise": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "simplex_surface_noise": {
+                    "type": "boolean"
+                },
+                "random_density_offset": {
+                    "type": "boolean"
+                },
+                "amplified": {
+                    "type": "boolean"
+                },
+                "size_vertical": {
+                    "type": "number"
+                },
+                "density_factor": {
+                    "type": "number"
+                },
+                "density_offset": {
+                    "type": "number"
+                },
+                "top_slide": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "target": {
+                            "type": "number"
+                        },
+                        "size": {
+                            "type": "number"
+                        },
+                        "offset": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "bottom_slide": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "target": {
+                            "type": "number"
+                        },
+                        "size": {
+                            "type": "number"
+                        },
+                        "offset": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "size_horizontal": {
+                    "type": "number"
+                },
+                "min_y": {
+                    "type": "number"
+                },
+                "height": {
+                    "type": "number"
+                },
+                "sampling": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "xz_scale": {
+                            "type": "number"
+                        },
+                        "y_scale": {
+                            "type": "number"
+                        },
+                        "xz_factor": {
+                            "type": "number"
+                        },
+                        "y_factor": {
+                            "type": "number"
+                        }
+                    }
+                }
+            }
+        },
+        "default_block": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "Name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

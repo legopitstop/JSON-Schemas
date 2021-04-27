@@ -1,0 +1,157 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/dimension/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "default": {},
+    "description": "dimension for Minecraft Java Edition",
+    "properties": {
+        "type": {
+            "enum": [
+                "minectraft:overworld",
+                "minecraft:the_end",
+                "minecraft:the_nether"
+            ]
+        },
+        "generator": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "biome_source": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "humidity_noise": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "firstOctave": {
+                                    "type": "number"
+                                },
+                                "amplitudes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number",
+                                        "minimum": 2,
+                                        "maximum": 2
+                                    }
+                                }
+                            }
+                        },
+                        "altitude_noise": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "firstOctave": {
+                                    "type": "number"
+                                },
+                                "amplitudes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number",
+                                        "minimum": 2,
+                                        "maximum": 2
+                                    }
+                                }
+                            }
+                        },
+                        "weirdness_noise": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "firstOctave": {
+                                    "type": "number"
+                                },
+                                "amplitudes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number",
+                                        "minimum": 2,
+                                        "maximum": 2
+                                    }
+                                }
+                            }
+                        },
+                        "seed": {
+                            "type": "number"
+                        },
+                        "biomes": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "default": {},
+                                "properties": {
+                                    "parameters": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "altitude": {
+                                                "type": "number"
+                                            },
+                                            "weirdness": {
+                                                "type": "number"
+                                            },
+                                            "offset": {
+                                                "type": "number"
+                                            },
+                                            "temperature": {
+                                                "type": "number"
+                                            },
+                                            "humidity": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "biome": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "temperature_noise": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "firstOctave": {
+                                    "type": "number"
+                                },
+                                "amplitudes": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number",
+                                        "minimum": 2,
+                                        "maximum": 2
+                                    }
+                                }
+                            }
+                        },
+                        "type": {
+                            "enum": [
+                                "minecraft:multi_noise",
+                                "minecraft:vanilla_layered",
+                                "minecraft:the_end"
+                            ]
+                        }
+                    }
+                },
+                "seed": {
+                    "type": "number"
+                },
+                "settings": {
+                    "enum": [
+                        "minectraft:overworld",
+                        "minecraft:the_end",
+                        "minecraft:the_nether"
+                    ]
+                },
+                "large_biomes": {
+                    "type": "boolean"
+                },
+                "type": {
+                    "enum": [
+                        "minecraft:noise"
+                    ]
+                }
+            }
+        }
+    }
+}
