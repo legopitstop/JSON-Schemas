@@ -5,6 +5,8 @@
     "definitions": {
         "MinecraftBlockExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/blocks.json#/definitions/MinecraftBlockExamples",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
             "examples": [
                 "minecraft:acacia_button",
                 "minecraft:acacia_door",
