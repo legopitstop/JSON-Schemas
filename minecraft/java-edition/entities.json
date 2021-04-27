@@ -5,6 +5,8 @@
     "definitions": {
         "MinecraftEntityExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/entities.json#/definitions/MinecraftEntityExamples",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
             "examples": [
                 "minecraft:area_effect_cloud",
                 "minecraft:armor_stand",

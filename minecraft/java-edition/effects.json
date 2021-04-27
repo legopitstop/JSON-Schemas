@@ -5,6 +5,8 @@
     "definitions": {
         "MinecraftEffectExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/effects.json#/definitions/MinecraftEffectExamples",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
             "examples": [
                 "minecraft:speed",
                 "minecraft:slowness",
@@ -42,6 +44,8 @@
         },
         "MinecraftEffectEnums": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/effects.json#/definitions/MinecraftEffectEnums",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
             "enum": [
                 "minecraft:speed",
                 "minecraft:slowness",

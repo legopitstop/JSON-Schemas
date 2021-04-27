@@ -5,6 +5,8 @@
     "definitions": {
         "MinecraftSoundExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/sounds.json#/definitions/MinecraftSoundExamples",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
             "examples": [
                 "minecraft:ambient.cave",
                 "minecraft:ambient.basalt_deltas.loop",
