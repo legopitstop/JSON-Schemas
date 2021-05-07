@@ -2,6 +2,12 @@
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "SemanticVersioning": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/SemanticVersioning",
+            "description": "Semantic Versioning is often used for versioning (which has the format MAJOR.MINOR.PATCH)",
+            "type": "string",
+            "pattern": "^([0-9]|[1-9][0-9]*).([0-9]|[1-9][0-9]*).([0-9]|[1-9][0-9]*)(?:-([0-9A-Za-z-]+(?:.[0-9A-Za-z-]+)*))?(?:+[0-9A-Za-z-]+)?$"
+        },
         "decimal_color": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/decimal_color",
             "type": "number"
