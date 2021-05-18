@@ -88,24 +88,9 @@
                         },
                         "iterations": {
                             "description": "Number of scattered positions to generate (clumps the features in one area.)",
-                            "anyOf": [
-                                {
-                                    "type": "integer"
-                                },
-                                {
-                                    "description": "Probability numerator / denominator that this scatter will occur.  Not evaluated each iteration; either no iterations will run, or all will.",
-                                    "type": "object",
-                                    "properties": {
-                                        "numerator": {
-                                            "type": "integer",
-                                            "minimum": 1
-                                        },
-                                        "denominator": {
-                                            "type": "integer",
-                                            "minimum": 1
-                                        }
-                                    }
-                                }
+                            "type": [
+                                "integer",
+                                "string"
                             ]
                         },
                         "scatter_chance": {
