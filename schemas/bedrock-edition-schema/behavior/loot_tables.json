@@ -8,7 +8,7 @@
             "description": "Number provider",
             "anyOf": [
                 {
-                    "type": "integer"
+                    "type": "number"
                 },
                 {
                     "type": "object",
@@ -25,7 +25,7 @@
                         },
                         "value": {
                             "description": "type=constant The exact value",
-                            "type": "integer"
+                            "type": "number"
                         },
                         "min": {
                             "description": "type=uniform Number provider. The minimum value.",
@@ -104,18 +104,24 @@
                     "description": "Amount of the item.",
                     "anyOf": [
                         {
-                            "type": "integer"
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 64
                         },
                         {
                             "type": "object",
                             "properties": {
                                 "min": {
                                     "description": "The minimum value.",
-                                    "type": "integer"
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 64
                                 },
                                 "max": {
                                     "description": "The maximum value.",
-                                    "type": "integer"
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "maximum": 64
                                 }
                             }
                         }
@@ -844,23 +850,23 @@
                                 "condition": {
                                     "description": "Namespaced ID of condition.",
                                     "enum": [
-                                        "minecraft:alternative",
-                                        "minecraft:block_state_property",
-                                        "minecraft:damage_source_properties",
-                                        "minecraft:entity_properties",
-                                        "minecraft:entity_scores",
-                                        "minecraft:inverted",
-                                        "minecraft:killed_by_player",
-                                        "minecraft:location_check",
-                                        "minecraft:match_tool",
-                                        "minecraft:random_chance",
-                                        "minecraft:random_chance_with_looting",
-                                        "minecraft:reference",
-                                        "minecraft:survives_explosion",
-                                        "minecraft:table_bonus",
-                                        "minecraft:time_check",
-                                        "minecraft:weather_check",
-                                        "minecraft:value_check"
+                                        "alternative",
+                                        "block_state_property",
+                                        "damage_source_properties",
+                                        "entity_properties",
+                                        "entity_scores",
+                                        "inverted",
+                                        "killed_by_player",
+                                        "location_check",
+                                        "match_tool",
+                                        "random_chance",
+                                        "random_chance_with_looting",
+                                        "reference",
+                                        "survives_explosion",
+                                        "table_bonus",
+                                        "time_check",
+                                        "weather_check",
+                                        "value_check"
                                     ]
                                 },
                                 // The following is additional info needed for `condition`
@@ -1505,7 +1511,7 @@
                                 //"minecraft:random_chance"
                                 "chance": {
                                     "description": "Success rate as a number 0.0–1.0.",
-                                    "type": "integer",
+                                    "type": "number",
                                     "minimum": 0,
                                     "maximum": 1
                                 },
@@ -1609,7 +1615,7 @@
                                     },
                                     "children": {
                                         "description": "For type 'group' a list of entries that are used to generate loot. Can be used for convenience, e.g. if one condition applies for multiple entries.\nFor type 'alternatives' a list of entries of which the first, and only the first, successful entry gets generated.\nFor type 'sequence' a list of entries that are used until the first entry fails. After an entry fails, no more entries of this list are generated",
-                                        "type": "string"
+                                        "$ref": "#/properties/pools"
                                     },
                                     "expand": {
                                         "description": "For type 'tag', if set to true, it chooses one item of the tag, each with the same weight and quality. If false, it generates one of each of the items in the tag. Required when type is 'tag'.",
