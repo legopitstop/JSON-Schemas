@@ -1660,7 +1660,7 @@
                                         },
                                         "children": {
                                             "description": "For type 'group' a list of entries that are used to generate loot. Can be used for convenience, e.g. if one condition applies for multiple entries.\nFor type 'alternatives' a list of entries of which the first, and only the first, successful entry gets generated.\nFor type 'sequence' a list of entries that are used until the first entry fails. After an entry fails, no more entries of this list are generated",
-                                            "type": "string"
+                                            "$ref": "#/properties/pools"
                                         },
                                         "expand": {
                                             "description": "For type 'tag', if set to true, it chooses one item of the tag, each with the same weight and quality. If false, it generates one of each of the items in the tag. Required when type is 'tag'.",
