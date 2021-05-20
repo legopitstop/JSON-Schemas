@@ -200,6 +200,10 @@
                 }
             }
         },
+        // loot_tables
+        "pools": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/loot_tables.json#/properties/pools"
+        },
         "minecraft:block": {
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json#/properties/minecraft:block"
         },
