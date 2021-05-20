@@ -1,7 +1,7 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/loot_tables/schema.json",
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/loot_tables.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Loot tables for Minecraft Java Edition",
+    "description": "Loot tables for Minecraft Bedrock Edition",
     "definitions": {
         "LootTableNumberProvider": {
             "$id": "#/definitions/LootTableNumberProvider",
@@ -238,23 +238,6 @@
         "credit": {
             "description": "Credit to the creator of this file.",
             "type": "string"
-        },
-        "type": {
-            "description": "Optional type of the loot table.",
-            "enum": [
-                "minecraft:empty",
-                "minecraft:entity",
-                "minecraft:block",
-                "minecraft:chest",
-                "minecraft:fishing",
-                "minecraft:gift",
-                "minecraft:advancement_reward ",
-                "minecraft:barter",
-                "minecraft:command ",
-                "minecraft:selector",
-                "minecraft:advancement_entity",
-                "minecraft:generic"
-            ]
         },
         "functions": {
             "description": "Applies functions to all item stacks produced by this table. Functions are applied in order, so for example `looting_enchant` must be after `set_count` to work correctly.",
@@ -1597,47 +1580,98 @@
                     },
                     "entries": {
                         "description": "A list of all things that can be produced by this pool. One entry is chosen per roll as a weighted random selection from all entries without failing conditions.",
-                        "properties": {
-                            "conditions": {
-                                "$ref": "#/properties/functions/items/properties/conditions"
+                        "anyOf": [
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "conditions": {
+                                        "$ref": "#/properties/functions/items/properties/conditions"
+                                    },
+                                    "functions": {
+                                        "$ref": "#/properties/functions"
+                                    },
+                                    "type": {
+                                        "description": "Namespaced ID type of entry. Can be `item` for item entries, `tag` for item tags, `loot_table` to produce items from another loot table, `group` for child entries, `alternatives` to select one sub-entry from a list, `sequence` to select sub-entries until one entry cannot be granted, `dynamic` to generate block specific drops, or `empty` for an entry that generates nothing.",
+                                        "enum": [
+                                            "item",
+                                            "tag",
+                                            "loot_table",
+                                            "group",
+                                            "alternatives",
+                                            "sequence",
+                                            "dynamic",
+                                            "empty"
+                                        ]
+                                    },
+                                    "name": {
+                                        "description": "For type 'item', ID name of the item to be produced, e.g. diamond. The default, if not changed by functions, is a stack of 1 of the default instance of the item.\nFor type 'tag' item tag to be used, e.g. arrows.\nFor type 'loot_table', loot table to be used, e.g. gameplay/fishing/junk.\nFor type 'dynamic', can be contents for block entity contents or self for banners and player skulls.",
+                                        "type": "string"
+                                    },
+                                    "children": {
+                                        "description": "For type 'group' a list of entries that are used to generate loot. Can be used for convenience, e.g. if one condition applies for multiple entries.\nFor type 'alternatives' a list of entries of which the first, and only the first, successful entry gets generated.\nFor type 'sequence' a list of entries that are used until the first entry fails. After an entry fails, no more entries of this list are generated",
+                                        "type": "string"
+                                    },
+                                    "expand": {
+                                        "description": "For type 'tag', if set to true, it chooses one item of the tag, each with the same weight and quality. If false, it generates one of each of the items in the tag. Required when type is 'tag'.",
+                                        "type": "boolean"
+                                    },
+                                    "weight": {
+                                        "description": "Determines how often this entry is chosen out of all the entries in the pool. Entries with higher weights are used more often (chance is this entry's weight⁄total of all considered entries' weights).",
+                                        "type": "integer"
+                                    },
+                                    "quality": {
+                                        "description": "Modifies the entry's weight based on the killing/opening/fishing player's luck attribute. Formula is floor( weight + (quality * generic.luck)).",
+                                        "type": "integer"
+                                    }
+                                }
                             },
-                            "functions": {
-                                "$ref": "#/properties/functions"
-                            },
-                            "type": {
-                                "description": "Namespaced ID type of entry. Can be `item` for item entries, `tag` for item tags, `loot_table` to produce items from another loot table, `group` for child entries, `alternatives` to select one sub-entry from a list, `sequence` to select sub-entries until one entry cannot be granted, `dynamic` to generate block specific drops, or `empty` for an entry that generates nothing.",
-                                "enum": [
-                                    "minecraft:item",
-                                    "minecraft:tag",
-                                    "minecraft:loot_table",
-                                    "minecraft:group",
-                                    "minecraft:alternatives",
-                                    "minecraft:sequence",
-                                    "minecraft:dynamic",
-                                    "minecraft:empty"
-                                ]
-                            },
-                            "name": {
-                                "description": "For type 'item', ID name of the item to be produced, e.g. diamond. The default, if not changed by functions, is a stack of 1 of the default instance of the item.\nFor type 'tag' item tag to be used, e.g. arrows.\nFor type 'loot_table', loot table to be used, e.g. gameplay/fishing/junk.\nFor type 'dynamic', can be contents for block entity contents or self for banners and player skulls.",
-                                "type": "string"
-                            },
-                            "children": {
-                                "description": "For type 'group' a list of entries that are used to generate loot. Can be used for convenience, e.g. if one condition applies for multiple entries.\nFor type 'alternatives' a list of entries of which the first, and only the first, successful entry gets generated.\nFor type 'sequence' a list of entries that are used until the first entry fails. After an entry fails, no more entries of this list are generated",
-                                "type": "string"
-                            },
-                            "expand": {
-                                "description": "For type 'tag', if set to true, it chooses one item of the tag, each with the same weight and quality. If false, it generates one of each of the items in the tag. Required when type is 'tag'.",
-                                "type": "boolean"
-                            },
-                            "weight": {
-                                "description": "Determines how often this entry is chosen out of all the entries in the pool. Entries with higher weights are used more often (chance is this entry's weight⁄total of all considered entries' weights).",
-                                "type": "integer"
-                            },
-                            "quality": {
-                                "description": "Modifies the entry's weight based on the killing/opening/fishing player's luck attribute. Formula is floor( weight + (quality * generic.luck)).",
-                                "type": "integer"
+                            {
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "conditions": {
+                                            "$ref": "#/properties/functions/items/properties/conditions"
+                                        },
+                                        "functions": {
+                                            "$ref": "#/properties/functions"
+                                        },
+                                        "type": {
+                                            "description": "Namespaced ID type of entry. Can be `item` for item entries, `tag` for item tags, `loot_table` to produce items from another loot table, `group` for child entries, `alternatives` to select one sub-entry from a list, `sequence` to select sub-entries until one entry cannot be granted, `dynamic` to generate block specific drops, or `empty` for an entry that generates nothing.",
+                                            "enum": [
+                                                "minecraft:item",
+                                                "minecraft:tag",
+                                                "minecraft:loot_table",
+                                                "minecraft:group",
+                                                "minecraft:alternatives",
+                                                "minecraft:sequence",
+                                                "minecraft:dynamic",
+                                                "minecraft:empty"
+                                            ]
+                                        },
+                                        "name": {
+                                            "description": "For type 'item', ID name of the item to be produced, e.g. diamond. The default, if not changed by functions, is a stack of 1 of the default instance of the item.\nFor type 'tag' item tag to be used, e.g. arrows.\nFor type 'loot_table', loot table to be used, e.g. gameplay/fishing/junk.\nFor type 'dynamic', can be contents for block entity contents or self for banners and player skulls.",
+                                            "type": "string"
+                                        },
+                                        "children": {
+                                            "description": "For type 'group' a list of entries that are used to generate loot. Can be used for convenience, e.g. if one condition applies for multiple entries.\nFor type 'alternatives' a list of entries of which the first, and only the first, successful entry gets generated.\nFor type 'sequence' a list of entries that are used until the first entry fails. After an entry fails, no more entries of this list are generated",
+                                            "type": "string"
+                                        },
+                                        "expand": {
+                                            "description": "For type 'tag', if set to true, it chooses one item of the tag, each with the same weight and quality. If false, it generates one of each of the items in the tag. Required when type is 'tag'.",
+                                            "type": "boolean"
+                                        },
+                                        "weight": {
+                                            "description": "Determines how often this entry is chosen out of all the entries in the pool. Entries with higher weights are used more often (chance is this entry's weight⁄total of all considered entries' weights).",
+                                            "type": "integer"
+                                        },
+                                        "quality": {
+                                            "description": "Modifies the entry's weight based on the killing/opening/fishing player's luck attribute. Formula is floor( weight + (quality * generic.luck)).",
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
                             }
-                        }
+                        ]
                     }
                 }
             }
