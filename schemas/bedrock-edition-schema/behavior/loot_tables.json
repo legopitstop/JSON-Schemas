@@ -249,29 +249,29 @@
                     "function": {
                         "description": "Namespaced ID of the function to apply.",
                         "enum": [
-                            "minecraft:apply_bonus",
-                            "minecraft:copy_name",
-                            "minecraft:copy_nbt",
-                            "minecraft:copy_state",
-                            "minecraft:enchant_randomly",
-                            "minecraft:enchant_with_levels",
-                            "minecraft:exploration_map",
-                            "minecraft:explosion_decay",
-                            "minecraft:furnace_smelt",
-                            "minecraft:fill_player_head",
-                            "minecraft:limit_count",
-                            "minecraft:looting_enchant",
-                            "minecraft:set_attributes",
-                            "minecraft:set_banner_pattern‌",
-                            "minecraft:set_contents",
-                            "minecraft:set_count",
-                            "minecraft:set_damage",
-                            "minecraft:set_enchantments‌",
-                            "minecraft:set_loot_table",
-                            "minecraft:set_lore",
-                            "minecraft:set_name",
-                            "minecraft:set_nbt",
-                            "minecraft:set_stew_effect"
+                            "apply_bonus",
+                            "copy_name",
+                            "copy_nbt",
+                            "copy_state",
+                            "enchant_randomly",
+                            "enchant_with_levels",
+                            "exploration_map",
+                            "explosion_decay",
+                            "furnace_smelt",
+                            "fill_player_head",
+                            "limit_count",
+                            "looting_enchant",
+                            "set_attributes",
+                            "set_banner_pattern‌",
+                            "set_contents",
+                            "set_count",
+                            "set_damage",
+                            "set_enchantments‌",
+                            "set_loot_table",
+                            "set_lore",
+                            "set_name",
+                            "set_nbt",
+                            "set_stew_effect"
                         ]
                     },
                     // The following is additional info needed for `function`
@@ -283,9 +283,9 @@
                     "formula": {
                         "description": "Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count * (max(0; random(0..Level + 2) - 1)+1)).",
                         "enum": [
-                            "minecraft:binomial_with_bonus_count",
-                            "minecraft:uniform_bonus_count",
-                            "minecraft:ore_drops"
+                            "binomial_with_bonus_count",
+                            "uniform_bonus_count",
+                            "ore_drops"
                         ]
                     },
                     "parameters": {
@@ -1638,14 +1638,14 @@
                                         "type": {
                                             "description": "Namespaced ID type of entry. Can be `item` for item entries, `tag` for item tags, `loot_table` to produce items from another loot table, `group` for child entries, `alternatives` to select one sub-entry from a list, `sequence` to select sub-entries until one entry cannot be granted, `dynamic` to generate block specific drops, or `empty` for an entry that generates nothing.",
                                             "enum": [
-                                                "minecraft:item",
-                                                "minecraft:tag",
-                                                "minecraft:loot_table",
-                                                "minecraft:group",
-                                                "minecraft:alternatives",
-                                                "minecraft:sequence",
-                                                "minecraft:dynamic",
-                                                "minecraft:empty"
+                                                "item",
+                                                "tag",
+                                                "loot_table",
+                                                "group",
+                                                "alternatives",
+                                                "sequence",
+                                                "dynamic",
+                                                "empty"
                                             ]
                                         },
                                         "name": {
