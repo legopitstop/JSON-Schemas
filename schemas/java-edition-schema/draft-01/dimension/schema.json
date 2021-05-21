@@ -7,7 +7,7 @@
     "properties": {
         "type": {
             "enum": [
-                "minectraft:overworld",
+                "minecraft:overworld",
                 "minecraft:the_end",
                 "minecraft:the_nether"
             ]
@@ -138,7 +138,7 @@
                 },
                 "settings": {
                     "enum": [
-                        "minectraft:overworld",
+                        "minecraft:overworld",
                         "minecraft:the_end",
                         "minecraft:the_nether"
                     ]
