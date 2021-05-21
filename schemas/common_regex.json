@@ -2,6 +2,12 @@
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "TAG_Double": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/TAG_Double",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 2.0
+        },
         "SemanticVersioning": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/SemanticVersioning",
             "description": "Semantic Versioning is often used for versioning (which has the format MAJOR.MINOR.PATCH)",
