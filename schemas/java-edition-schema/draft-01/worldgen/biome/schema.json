@@ -328,7 +328,8 @@
                 "river",
                 "swamp",
                 "mushroom",
-                "nether"
+                "nether",
+                "underground"
             ]
         },
         "depth": {
