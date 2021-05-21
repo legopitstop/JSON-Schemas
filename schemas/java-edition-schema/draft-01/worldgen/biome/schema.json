@@ -203,7 +203,19 @@
                 "description": "Their must be 10 arrays!",
                 "type": "array",
                 "items": {
-                    "type": "string"
+                    "type": "string",
+                    "examples": [
+                        "RAW_GENERATION",
+                        "LAKES",
+                        "LOCAL_MODIFICATIONS",
+                        "UNDERGROUND_STRUCTURES",
+                        "SURFACE_STRUCTURES",
+                        "STRONGHOLDS",
+                        "UNDERGROUND_ORES",
+                        "UNDERGROUND_DECORATION",
+                        "VEGETAL_DECORATION",
+                        "TOP_LAYER_MODIFICATION"
+                    ]
                 }
             }
         },
@@ -219,54 +231,29 @@
             "description": "Entity spawning settings.",
             "type": "object",
             "default": {},
-            "properties": {
-                "monster": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "creature": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "ambient": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "underground_water_creature": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "water_creature": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "water_ambient": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "misc": {
-                    "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
-                    "type": "array",
-                    "items": {
-                        "type": "string"
+            "additionalProperties": {
+                "description": "One of monster, creature, ambient, water_creature, water_ambient, or misc.",
+                "type": "array",
+                "items": {
+                    "description": "The spawner data for a single mob.",
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "description": "The namespaced entity id of the mob.",
+                            "type": "string"
+                        },
+                        "weight": {
+                            "description": "How often this mob should spawn, higher values produce more spawns.",
+                            "type": "integer"
+                        },
+                        "minCount": {
+                            "description": "The minimum count of mobs to spawn in a pack.",
+                            "type": "integer"
+                        },
+                        "maxCount": {
+                            "description": "The maximum count of mobs to spawn in a pack.",
+                            "type": "integer"
+                        }
                     }
                 }
             }
