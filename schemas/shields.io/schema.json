@@ -179,6 +179,28 @@
                 "Yellow",
                 "YellowGreen"
             ]
+        },
+        "NamedLogo": {
+            "examples": [
+                "instagram",
+                "youtube",
+                "twitter",
+                "discord",
+                "patreon",
+                "tiktok",
+                "facebook",
+                "curseforge",
+                "paypal",
+                "github",
+                "kofi",
+                "steam",
+                "twitch",
+                "minecraft",
+                "github",
+                "github-actions",
+                "github-sponsors",
+                "visual-studio-code"
+            ]
         }
     },
     "properties": {
@@ -214,7 +236,8 @@
         },
         "namedLogo": {
             "description": "One of the named logos supported by Shields or simple-icons. Can be overridden by the query string. https://simpleicons.org/",
-            "type": "string"
+            "type": "string",
+            "$ref": "#/definitions/NamedLogo"
         },
         "logoSvg": {
             "description": "An SVG string containing a custom logo.",
