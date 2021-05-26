@@ -1,0 +1,69 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/shields.io/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "default": {},
+    "required": ["schemaVersion","label","message"],
+    "description": "Schema for shields.io JSON endpoints. https://shields.io/endpoint",
+    "properties": {
+        "schemaVersion": {
+            "description": "Always the number 1",
+            "default": 1,
+            "type": "integer"
+        },
+        "label": {
+            "description": "The left text, or the empty string to omit the left side of the badge.",
+            "type": "string"
+        },
+        "message": {
+            "description": "Can't be empty. The right text.",
+            "type": "string"
+        },
+        "color": {
+            "description": "The right color. Supports the eight named colors above, as well as hex, rgb, rgba, hsl, hsla and css named colors. This can be overridden by the query string.",
+            "default": "lightgrey",
+            "type": "string"
+        },
+        "labelColor": {
+            "description": "The left color. This can be overridden by the query string.",
+            "type": "string",
+            "default": "grey"
+        },
+        "inError": {
+            "description": "true to treat this as an error badge. This prevents the user from overriding the color. In the future it may affect cache behavior.",
+            "type": "boolean",
+            "default": false
+        },
+        "namedLogo": {
+            "description": "One of the named logos supported by Shields or simple-icons. Can be overridden by the query string. https://simpleicons.org/",
+            "type": "string"
+        },
+        "logoSvg": {
+            "description": "An SVG string containing a custom logo.",
+            "type": "string"
+        },
+        "logoColor": {
+            "description": "Same meaning as the query string. Can be overridden by the query string. Only works for named logos.",
+            "type": "string"
+        },
+        "logoWidth": {
+            "description": "Same meaning as the query string. Can be overridden by the query string.",
+            "type": "string"
+        },
+        "logoPosition": {
+            "description": "Same meaning as the query string. Can be overridden by the query string.",
+            "type": "string"
+        },
+        "style": {
+            "description": "The default template to use. Can be overridden by the query string.",
+            "type": "string",
+            "default": "flat"
+        },
+        "cacheSeconds": {
+            "description": "Set the HTTP cache lifetime in seconds, which should be respected by the Shields' CDN and downstream users. Values below 300 will be ignored. This lets you tune performance and traffic vs. responsiveness. The value you specify can be overridden by the user via the query string, but only to a longer value.",
+            "type": "integer",
+            "default": 300,
+            "minimum": 300
+        }
+    }
+}
