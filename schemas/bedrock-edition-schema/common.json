@@ -371,6 +371,7 @@
             }
         },
         "DamageSource": {
+            "description": "Damage source 1.17",
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/DamageSource",
             "enum": [
                 "all",
@@ -387,6 +388,7 @@
                 "fire_tick",
                 "fireworks",
                 "fly_into_wall",
+                "freezing",
                 "lava",
                 "lightning",
                 "magic",
@@ -395,6 +397,8 @@
                 "override",
                 "piston",
                 "projectile",
+                "stalactite",
+                "stalagmite",
                 "starve",
                 "suffocation",
                 "suicide",
