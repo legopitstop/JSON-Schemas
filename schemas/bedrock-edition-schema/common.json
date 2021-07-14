@@ -357,9 +357,9 @@
             "examples": [
                 "query.block_property('MOD_ID:PROPERTY') == 'PROPERTY'",
                 "query.get_equipped_item_name =='ITEM'",
-                "query.any_tag('example:my_tag', 'stone', 'metal')",
                 "context.other -> query.remaining_health + 0.12 * context.other -> query.max-damage",
-                "query.max_damage * 0.25"
+                "query.max_damage * 0.25",
+                "query.any_tag('')"
             ]
         },
         "schemaArray": {
