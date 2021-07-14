@@ -157,22 +157,34 @@
                                     ],
                                     "properties": {
                                         "origin": {
+                                            "description": "Minimal position Bounds of the collision box",
                                             "type": "array",
+                                            "minItems": 3,
+                                            "maxItems": 3,
                                             "default": [
                                                 -8.0,
                                                 0.0,
                                                 -8.0
                                             ],
-                                            "description": "Minimal position Bounds of the collision box"
+                                            "items": {
+                                                "maximum": 16,
+                                                "minimum": -8
+                                            }
                                         },
                                         "size": {
+                                            "description": "Size of each side of the box of the component",
                                             "type": "array",
+                                            "minItems": 3,
+                                            "maxItems": 3,
                                             "default": [
                                                 16.0,
                                                 16.0,
                                                 16.0
                                             ],
-                                            "description": "Size of each side of the box of the component"
+                                            "items": {
+                                                "maximum": 16,
+                                                "minimum": -8
+                                            }
                                         }
                                     }
                                 }
@@ -299,8 +311,20 @@
                                                 "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
                                             },
                                             "block_filter": {
+                                                "type": "array",
                                                 "items": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
+                                                    "type": [
+                                                        "string",
+                                                        "object"
+                                                    ],
+                                                    "properties": {
+                                                        "tags": {
+                                                            "description": "Molang",
+                                                            "type": "string",
+                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                                        }
+                                                    }
                                                 },
                                                 "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
                                             }
