@@ -2,6 +2,96 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "BlockCategory": {
+            "enum": [
+                "Commands",
+                "Construction",
+                "Equipment",
+                "Items",
+                "Nature",
+                "None"
+            ]
+        },
+        "BlockGroup": {
+            "enum": [
+                "itemGroup.name.anvil",
+                "itemGroup.name.arrow",
+                "itemGroup.name.axe",
+                "itemGroup.name.banner",
+                "itemGroup.name.banner_pattern",
+                "itemGroup.name.bed",
+                "itemGroup.name.boat",
+                "itemGroup.name.boots",
+                "itemGroup.name.buttons",
+                "itemGroup.name.chalkboard",
+                "itemGroup.name.chest",
+                "itemGroup.name.chestplate",
+                "itemGroup.name.concrete",
+                "itemGroup.name.concretePowder",
+                "itemGroup.name.cookedFood",
+                "itemGroup.name.coral",
+                "itemGroup.name.coral_decorations",
+                "itemGroup.name.crop",
+                "itemGroup.name.door",
+                "itemGroup.name.dye",
+                "itemGroup.name.enchantedBook",
+                "itemGroup.name.fence",
+                "itemGroup.name.fenceGate",
+                "itemGroup.name.firework",
+                "itemGroup.name.fireworkStars",
+                "itemGroup.name.flower",
+                "itemGroup.name.glass",
+                "itemGroup.name.glassPane",
+                "itemGroup.name.glazedTerracotta",
+                "itemGroup.name.grass",
+                "itemGroup.name.helmet",
+                "itemGroup.name.hoe",
+                "itemGroup.name.horseArmor",
+                "itemGroup.name.leaves",
+                "itemGroup.name.leggings",
+                "itemGroup.name.lingeringPotion",
+                "itemGroup.name.log",
+                "itemGroup.name.minecart",
+                "itemGroup.name.miscFood",
+                "itemGroup.name.mobEgg",
+                "itemGroup.name.monsterStoneEgg",
+                "itemGroup.name.mushroom",
+                "itemGroup.name.netherWartBlock",
+                "itemGroup.name.ore",
+                "itemGroup.name.permission",
+                "itemGroup.name.pickaxe",
+                "itemGroup.name.planks",
+                "itemGroup.name.potion",
+                "itemGroup.name.pressurePlate",
+                "itemGroup.name.rail",
+                "itemGroup.name.rawFood",
+                "itemGroup.name.record",
+                "itemGroup.name.sandstone",
+                "itemGroup.name.sapling",
+                "itemGroup.name.seed",
+                "itemGroup.name.shovel",
+                "itemGroup.name.shulkerBox",
+                "itemGroup.name.sign",
+                "itemGroup.name.skull",
+                "itemGroup.name.slab",
+                "itemGroup.name.splashPotion",
+                "itemGroup.name.stainedClay",
+                "itemGroup.name.stairs",
+                "itemGroup.name.stone",
+                "itemGroup.name.stoneBrick",
+                "itemGroup.name.sword",
+                "itemGroup.name.trapdoor",
+                "itemGroup.name.walls",
+                "itemGroup.name.wood",
+                "itemGroup.name.wool",
+                "itemGroup.name.woolCarpet"
+            ]
+        },
+        "VanillaTags": {
+            "description": "built-in tag. https://wiki.bedrock.dev/blocks/block-tags.html#vanilla-tags",
+            "type": "object",
+            "default": {}
+        },
         "materialInstances": {
             "required": [
                 "texture"
@@ -19,6 +109,16 @@
                         "opaque",
                         "alpha_test"
                     ]
+                },
+                "face_dimming": {
+                    "description": "Refers to whether or not block is affected by lighting",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "ambient_occlusion": {
+                    "description": "Refers to whether or not faces have smooth lighting",
+                    "default": true,
+                    "type": "boolean"
                 }
             }
         },
@@ -76,10 +176,90 @@
                 "components": {
                     "type": "object",
                     "properties": {
-                        "minecraft:crafting_table": {
+                        "minecraft:loot": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\"",
+                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json"
+                        },
+                        "minecraft:block_light_absorption": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "The amount of light this block will absorb.",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                            "default": 0
+                        },
+                        "minecraft:block_light_emission": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "The amount of light this block will emit in a range [0.0, 1.0].",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                            "default": 0
+                        },
+                        "minecraft:destroy_time": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times.",
+                            "type": "number",
+                            "default": 0.0
+                        },
+                        "minecraft:explosion_resistance": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "Sets the explosion resistance for this block.",
+                            "type": "number",
+                            "default": 0.0
+                        },
+                        "minecraft:flammable": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "Describes the flammable properties for this block.",
                             "type": "object",
-                            "title": "minecraft:crafting_table",
+                            "required": [
+                                "burn_odds",
+                                "flame_odds"
+                            ],
+                            "properties": {
+                                "burn_odds": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                                    "default": 0,
+                                    "description": "How likely the block will be destroyed by flames when on fire."
+                                },
+                                "flame_odds": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                                    "default": 0,
+                                    "description": "How likely the block will be destroyed by flames when on fire.How likely the block will catch flame when next to a fire."
+                                }
+                            }
+                        },
+                        "minecraft:friction": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block.",
+                            "minimum": 0.100000,
+                            "maximum": 340282346638528859811704183484516925440.000000,
+                            "default": 0.6
+                        },
+                        "minecraft:map_color": {
+                            "title": "STABLE (1.10 format version)",
+                            "description": "A color represented as a hex value. This will be the color rendered to a map.",
+                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                        },
+                        "minecraft:creative_category": {
+                            "title": "BETA",
+                            "description": "Your custom block will not show up in the Creative Inventory if you don't have this component.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "category": {
+                                    "description": "The tab in the creative invetory to place this block.",
+                                    "$ref": "#/definitions/BlockCategory"
+                                },
+                                "group": {
+                                    "description": "The group in the category tab to place this block.",
+                                    "$ref": "#/definitions/BlockGroup"
+                                }
+                            }
+                        },
+                        "minecraft:crafting_table": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Specifies that a crafting table UI is to be used with tessellation.",
+                            "type": "object",
                             "properties": {
                                 "grid_size": {
                                     "type": "number",
@@ -100,51 +280,30 @@
                                 }
                             }
                         },
-                        "minecraft:loot": {
-                            "type": "string",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
-                            "title": "minecraft:loot",
-                            "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\""
-                        },
-                        "minecraft:block_light_absorption": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
-                            "default": 0,
-                            "title": "minecraft:block_light_absorption",
-                            "description": "The amount of light this block will absorb."
-                        },
-                        "minecraft:block_light_emission": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
-                            "default": 0,
-                            "title": "minecraft:block_light_emission",
-                            "description": "The amount of light this block will emit in a range [0.0, 1.0]."
-                        },
                         "minecraft:breakonpush": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "When pushed by a piston the block breaks",
                             "type": "boolean",
-                            "default": false,
-                            "title": "minecraft:breakonpush",
-                            "description": "When pushed by a piston the block breaks"
+                            "default": false
                         },
                         "minecraft:breathability": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "Property describing the breathability of this block and whether it is treated as a solid or as air.",
                             "enum": [
                                 "solid",
                                 "air"
                             ],
-                            "default": "solid",
-                            "title": "minecraft:breathability",
-                            "description": "Property describing the breathability of this block and whether it is treated as a solid or as air."
-                        },
-                        "minecraft:destroy_time": {
-                            "type": "number",
-                            "default": 0.0,
-                            "title": "minecraft:destroy_time",
-                            "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times."
+                            "default": "solid"
                         },
                         "minecraft:display_name": {
-                            "type": "string",
                             "title": "minecraft:display_name",
-                            "description": "Specifies the display name id for the block."
+                            "description": "Specifies the display name id for the block. It's recomeneded to not use this.",
+                            "type": "string"
                         },
                         "minecraft:entity_collision": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "Can only be set to false, it disables the collision of the block with entities",
+                            "default": false,
                             "anyOf": [
                                 {
                                     "type": "boolean"
@@ -188,76 +347,36 @@
                                         }
                                     }
                                 }
-                            ],
-                            "default": false,
-                            "title": "minecraft:entity_collision",
-                            "description": "Can only be set to false, it disables the collision of the block with entities"
-                        },
-                        "minecraft:explosion_resistance": {
-                            "type": "number",
-                            "default": 0.0,
-                            "title": "minecraft:explosion_resistance",
-                            "description": "Sets the explosion resistance for this block."
-                        },
-                        "minecraft:flammable": {
-                            "type": "object",
-                            "title": "minecraft:flammable",
-                            "description": "Describes the flammable properties for this block.",
-                            "required": [
-                                "burn_odds",
-                                "flame_odds"
-                            ],
-                            "properties": {
-                                "burn_odds": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
-                                    "default": 0,
-                                    "description": "How likely the block will be destroyed by flames when on fire."
-                                },
-                                "flame_odds": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
-                                    "default": 0,
-                                    "description": "How likely the block will be destroyed by flames when on fire.How likely the block will catch flame when next to a fire."
-                                }
-                            }
-                        },
-                        "minecraft:friction": {
-                            "minimum": 0.100000,
-                            "maximum": 340282346638528859811704183484516925440.000000,
-                            "default": 0.6,
-                            "title": "minecraft:friction",
-                            "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block."
+                            ]
                         },
                         "minecraft:geometry": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
                             "type": "string",
-                            "pattern": "geometry.",
-                            "title": "minecraft:geometry",
-                            "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning."
+                            "pattern": "geometry."
                         },
                         "minecraft:immovable": {
-                            "type": "boolean",
-                            "title": "minecraft:immovable",
-                            "description": "An Immovable block cannot be pushed by pistons"
-                        },
-                        "minecraft:map_color": {
-                            "type": "string",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color",
-                            "title": "minecraft:map_color",
-                            "description": "A color represented as a hex value. This will be the color rendered to a map."
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "An Immovable block cannot be pushed by pistons",
+                            "type": "boolean"
                         },
                         "minecraft:material_instances": {
-                            "type": "object",
-                            "title": "minecraft:material_instances",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Maps face or material_instance names in a geometry file to an actual material instance. Material instance can either be a full material instance or a name to another already defined instance",
+                            "type": "object",
                             "additionalProperties": {
                                 "$ref": "#/definitions/materialInstances"
                             }
                         },
                         "minecraft:onlypistonpush": {
-                            "type": "boolean",
-                            "title": "minecraft:onlypistonpush",
-                            "description": "Blocks with those components won't stick to stickyPistons"
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "Blocks with those components won't stick to stickyPistons",
+                            "type": "boolean"
                         },
                         "minecraft:pick_collision": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "Can only be set to false, it disables the collision of the block with entities",
+                            "default": false,
                             "anyOf": [
                                 {
                                     "type": "boolean"
@@ -289,15 +408,12 @@
                                         }
                                     }
                                 }
-                            ],
-                            "default": false,
-                            "title": "minecraft:pick_collision",
-                            "description": "Can only be set to false, it disables the collision of the block with entities"
+                            ]
                         },
                         "minecraft:placement_filter": {
-                            "type": "object",
-                            "title": "minecraft:placement_filter",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Sets rules for under what conditions the block can be placed/survive",
+                            "type": "object",
                             "properties": {
                                 "conditions": {
                                     "type": "array",
@@ -305,28 +421,32 @@
                                     "items": {
                                         "properties": {
                                             "allowed_faces": {
+                                                "description": "List of any of the following strings: up, down, north, south, east, west, side, all",
                                                 "items": {
                                                     "$ref": "#/definitions/allowedBlockFaces"
-                                                },
-                                                "description": "List of any of the following strings: up, down, north, south, east, west, side, all"
+                                                }
                                             },
                                             "block_filter": {
+                                                "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction",
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
-                                                    "type": [
-                                                        "string",
-                                                        "object"
-                                                    ],
-                                                    "properties": {
-                                                        "tags": {
-                                                            "description": "Molang",
+                                                    "anyOf": [
+                                                        {
                                                             "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
+                                                        },
+                                                        {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "tags": {
+                                                                    "description": "Molang",
+                                                                    "type": "string",
+                                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                                                }
+                                                            }
                                                         }
-                                                    }
-                                                },
-                                                "description": "List of blocks (can use tags to specify them) that this block can be placed against in the allowed_faces direction"
+                                                    ]
+                                                }
                                             }
                                         }
                                     }
@@ -334,14 +454,14 @@
                             }
                         },
                         "minecraft:preventsjumping": {
-                            "type": "boolean",
-                            "title": "minecraft:preventsjumping",
-                            "description": "This component makes it so actors can't jump when walking on this block"
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "This component makes it so actors can't jump when walking on this block",
+                            "type": "boolean"
                         },
                         "minecraft:random_ticking": {
-                            "type": "object",
-                            "title": "minecraft:random_ticking",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes the component that will trigger an even at a regular interval between two values",
+                            "type": "object",
                             "required": [
                                 "on_tick"
                             ],
@@ -362,14 +482,6 @@
                                             "default": "set_block_property",
                                             "description": "The type of event executed on the block."
                                         },
-                                        "range": {
-                                            "type": "array",
-                                            "default": [
-                                                10,
-                                                10
-                                            ],
-                                            "description": "The Range between which the component will trigger his event."
-                                        },
                                         "target": {
                                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                             "default": "self",
@@ -380,19 +492,19 @@
                             }
                         },
                         "minecraft:rotation": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "This is the block's rotation around the center of the cube in degrees. The rotation order is x-y-z.",
                             "type": "array",
                             "default": [
                                 0,
                                 0,
                                 0
-                            ],
-                            "title": "minecraft:rotation",
-                            "description": "This is the block's rotation around the center of the cube in degrees. The rotation order is x-y-z."
+                            ]
                         },
                         "minecraft:ticking": {
-                            "type": "object",
-                            "title": "minecraft:ticking",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes the component that will trigger an even at a regular interval between two values",
+                            "type": "object",
                             "required": [
                                 "looping",
                                 "range",
@@ -410,6 +522,11 @@
                                         10,
                                         10
                                     ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2,
                                     "description": "The Range between which the component will trigger his event."
                                 },
                                 "on_tick": {
@@ -428,14 +545,6 @@
                                             "default": "set_block_property",
                                             "description": "The type of event executed on the block."
                                         },
-                                        "range": {
-                                            "type": "array",
-                                            "default": [
-                                                10,
-                                                10
-                                            ],
-                                            "description": "The Range between which the component will trigger his event."
-                                        },
                                         "target": {
                                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                             "default": "self",
@@ -446,20 +555,20 @@
                             }
                         },
                         "minecraft:unit_cube": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "Specifies that a unit cube is to be used with tessellation.",
                             "type": "object",
-                            "default": {},
-                            "title": "minecraft:unit_cube",
-                            "description": "Specifies that a unit cube is to be used with tessellation."
+                            "default": {}
                         },
                         "minecraft:unwalkable": {
-                            "type": "boolean",
-                            "title": "minecraft:unwalkable",
-                            "description": "this component sets a block as unwalkable. Most mobs will not try to jump over it if the value is set to true"
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "this component sets a block as unwalkable. Most mobs will not try to jump over it if the value is set to true",
+                            "type": "boolean"
                         },
                         "minecraft:on_fall_on": {
-                            "type": "object",
-                            "title": "minecraft:on_fall_on",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "min_fall_distance",
                                 "event"
@@ -486,9 +595,9 @@
                             }
                         },
                         "minecraft:on_interact": {
-                            "type": "object",
-                            "title": "minecraft:on_interact",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "event"
                             ],
@@ -509,9 +618,9 @@
                             }
                         },
                         "minecraft:on_placed": {
-                            "type": "object",
-                            "title": "minecraft:on_placed",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "event"
                             ],
@@ -532,9 +641,9 @@
                             }
                         },
                         "minecraft:on_player_destroyed": {
-                            "type": "object",
-                            "title": "minecraft:on_player_destroyed",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "event"
                             ],
@@ -555,9 +664,9 @@
                             }
                         },
                         "minecraft:on_player_placing": {
-                            "type": "object",
-                            "title": "minecraft:on_player_placing",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "event"
                             ],
@@ -578,9 +687,9 @@
                             }
                         },
                         "minecraft:on_step_off": {
-                            "type": "object",
-                            "title": "minecraft:on_step_off",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "event"
                             ],
@@ -601,9 +710,9 @@
                             }
                         },
                         "minecraft:on_step_on": {
-                            "type": "object",
-                            "title": "minecraft:on_step_on",
+                            "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "Describes event for this block.",
+                            "type": "object",
                             "required": [
                                 "event"
                             ],
@@ -622,6 +731,95 @@
                                     "description": "The target of event executed on the block."
                                 }
                             }
+                        },
+                        "tag:wood": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:pumpkin": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:plant": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:stone": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:metal": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:diamond_pick_diggable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:gold_pick_diggable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:iron_pick_diggable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:stone_pick_diggable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:wood_pick_diggable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:dirt": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:sand": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:gravel": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:grass": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:snow": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:rail": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:water": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:mob_spawner": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:lush_plants_replaceable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:azalea_log_replaceable": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:acacia": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:birch": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:dark_oak": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:jungle": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:log": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:oak": {
+                            "$ref": "#/definitions/VanillaTags"
+                        },
+                        "tag:spruce": {
+                            "$ref": "#/definitions/VanillaTags"
+                        }
+                    },
+                    "patternProperties": {
+                        "tag:.*": {
+                            "title": "EXPERIMETAL (1.16.100 format version)",
+                            "description": "The custom tag to apply to this block.",
+                            "type": "object",
+                            "default": {}
                         }
                     }
                 },
