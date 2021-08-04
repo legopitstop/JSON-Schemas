@@ -766,7 +766,10 @@
                     "title": "set_block_property",
                     "description": "(Blocks Only) Sets a block property on this block.",
                     "additionalProperties": {
-                        "type": "string",
+                        "type": [
+                            "string",
+                            "integer"
+                        ],
                         "title": "property",
                         "description": "Block property to set on the block. Can use MoLang only if it is contained inside '(...)'",
                         "examples": [
