@@ -216,12 +216,14 @@
                             ],
                             "properties": {
                                 "burn_odds": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                                    "type": "integer",
+                                    "minimum": 0,
                                     "default": 0,
                                     "description": "How likely the block will be destroyed by flames when on fire."
                                 },
                                 "flame_odds": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+                                    "type": "integer",
+                                    "minimum": 0,
                                     "default": 0,
                                     "description": "How likely the block will be destroyed by flames when on fire.How likely the block will catch flame when next to a fire."
                                 }
