@@ -352,14 +352,19 @@
         },
         "MoLang": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-            "type": "string",
+            "type": [
+                "string",
+                "number"
+            ],
             "description": "Molang can be quite complex, or simple. It depends on your needs. More Info: https://bedrock.dev/docs/beta/MoLang",
             "examples": [
-                "query.block_property('MOD_ID:PROPERTY') == 'PROPERTY'",
-                "query.get_equipped_item_name =='ITEM'",
-                "context.other -> query.remaining_health + 0.12 * context.other -> query.max-damage",
-                "query.max_damage * 0.25",
-                "query.any_tag('')"
+                "q.block_property('MOD_ID:PROPERTY') == 'VALUE'",
+                "q.block_property('MOD_ID:PROPERTY') ? 'true' : 'false'",
+                "q.get_equipped_item_name == 'ITEM'",
+                "geometry.texture_name",
+                "q.max_damage * 0.25",
+                "q.any_tag('')",
+                "c.other -> q.remaining_health + 0.12 * c.other -> q.max-damage"
             ]
         },
         "schemaArray": {
