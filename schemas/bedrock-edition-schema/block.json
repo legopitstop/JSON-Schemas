@@ -354,8 +354,7 @@
                         "minecraft:geometry": {
                             "title": "EXPERIMETAL (1.16.100 format version)",
                             "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
-                            "type": "string",
-                            "pattern": "geometry."
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                         },
                         "minecraft:immovable": {
                             "title": "EXPERIMETAL (1.16.100 format version)",
