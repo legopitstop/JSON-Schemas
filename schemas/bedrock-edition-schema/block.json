@@ -198,13 +198,17 @@
                             "title": "STABLE (1.10 format version)",
                             "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times.",
                             "type": "number",
-                            "default": 0.0
+                            "default": 0.0,
+                            "minimum": 0.000000,
+                            "maximum": 340282346638528859811704183484516925440.000000
                         },
                         "minecraft:explosion_resistance": {
                             "title": "STABLE (1.10 format version)",
                             "description": "Sets the explosion resistance for this block.",
                             "type": "number",
-                            "default": 0.0
+                            "default": 0.0,
+                            "minimum": 0.000000,
+                            "maximum": 340282346638528859811704183484516925440.000000
                         },
                         "minecraft:flammable": {
                             "title": "STABLE (1.10 format version)",
