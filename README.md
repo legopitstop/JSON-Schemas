@@ -32,10 +32,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
             "name": "Bedrock Edition Schema",
             "description": "Schema for Bedrock Edition behavior, and resourcepacks.",
             "fileMatch": [
-                "com.mojang/development_behavior_packs/*.json",
-                "com.mojang/development_resource_packs/*.json",
-                "com.mojang/behavior_packs/*.json",
-                "com.mojang/resource_packs/*.json"
+                "com.mojang/**.json"
             ],
             "url": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/schema.json"
         }
