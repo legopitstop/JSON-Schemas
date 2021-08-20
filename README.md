@@ -48,11 +48,108 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "json.schemas": [
         {
             "name": "Java Edition Schema",
+            "description": "Advancements",
+            "fileMatch": [
+                "data/*/advancements/*/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/advancements/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "dimension",
+            "fileMatch": [
+                "data/*/dimension/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/dimension/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "dimension_type",
+            "fileMatch": [
+                "data/*/dimension_type/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/dimension_type/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "worldgen/biome",
+            "fileMatch": [
+                "data/*/worldgen/biome/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/worldgen/biome/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "worldgen/noise_settings",
+            "fileMatch": [
+                "data/*/worldgen/noise_settings/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/worldgen/noise_settings/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
             "description": "Loot Tables",
             "fileMatch": [
                 "data/*/loot_tables/*/*.json"
             ],
             "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/loot_tables/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "Animations",
+            "fileMatch": [
+                "assets/*/textures/*/*.mcmeta"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/animation/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "blockstates",
+            "fileMatch": [
+                "assets/*/blockstates/*/*.mcmeta"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/blockstates/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "font",
+            "fileMatch": [
+                "assets/*/font/*/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/font/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "pack",
+            "fileMatch": [
+                "assets/pack.mcmeta",
+                "data/pack.mcmeta"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/pack/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "shaders_post",
+            "fileMatch": [
+                "assets/*/shaders_post/*/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/shaders_post/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "shaders_program",
+            "fileMatch": [
+                "assets/*/shaders_program/*/*.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/shaders_program/schema.json"
+        },
+        {
+            "name": "Java Edition Schema",
+            "description": "sounds",
+            "fileMatch": [
+                "assets/*/sounds.json"
+            ],
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/sounds/schema.json"
         },
         {
             "name": "Java Edition Schema",
