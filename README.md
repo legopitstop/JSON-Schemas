@@ -1,4 +1,4 @@
-# **INFO**
+# INFO
 ## [What are Schemas?](https://json-schema.org/understanding-json-schema/about.html)
 Schemas are JSON files that will help and aid you in creating your code and
 will show you any errors that will come up when loading up your mod. A good example
@@ -24,7 +24,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 4. Paste the below code into that JSON.
 5. Save it. Thats it your done!
 
-**BEDROCK ADDON SCHEMAS**
+### BEDROCK ADDON SCHEMAS
 ```json
 {
     "json.schemas": [
@@ -37,12 +37,12 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
                 "com.mojang/behavior_packs/*.json",
                 "com.mojang/resource_packs/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/schema.json"
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/schema.json"
         }
     ]
 }
 ```
-**JAVA EDITION SCHEMAS**
+### JAVA EDITION SCHEMAS
 ```json
 {
     "json.schemas": [
@@ -52,7 +52,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
             "fileMatch": [
                 "data/*/loot_tables/*/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/loot_tables/schema.json"
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/loot_tables/schema.json"
         },
         {
             "name": "Java Edition Schema",
@@ -61,7 +61,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
                 "assets/*/models/item/*.json",
                 "assets/*/models/items/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/item-models/schema.json"
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/item_models/schema.json"
         },
         {
             "name": "Java Edition Schema",
@@ -70,28 +70,10 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
                 "assets/*/models/block/*.json",
                 "assets/*/models/blocks/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/block-models/schema.json"
-        },
-        {
-            "name": "Java Edition Schema",
-            "description": "Schema for Java Edition datapack and resourcepacks.",
-            "fileMatch": [
-                "*.json"
-            ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/schema.json"
+            "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/block_models/schema.json"
         }
     ]
 }
 ```
-# Test Schemas
-Want to get the lastest indev schemas? To get the indev version change the `main` part inside the url to `test`. example:
-
-Before (not replacing `main`)
-```
-https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/java-edition-schema/draft-01/schema.json
-```
-After (replacing `main` with `test`)
-```
-https://raw.githubusercontent.com/legopitstop/JSON-Schemas/test/schemas/java-edition-schema/draft-01/schema.json
-```
-## [**UPDATES**](UPDATES.md#)
+## UPDATES
+Find the latest news about this schema via the [UPDATES](UPDATES.md) page
