@@ -4,12 +4,12 @@
     "definitions": {
         "BlockCategory": {
             "enum": [
-                "Commands",
-                "Construction",
-                "Equipment",
-                "Items",
-                "Nature",
-                "None"
+                "commands",
+                "construction",
+                "equipment",
+                "items",
+                "nature",
+                "none"
             ]
         },
         "BlockGroup": {
@@ -17,8 +17,8 @@
                 "itemGroup.name.anvil",
                 "itemGroup.name.arrow",
                 "itemGroup.name.axe",
-                "itemGroup.name.banner",
                 "itemGroup.name.banner_pattern",
+                "itemGroup.name.banner",
                 "itemGroup.name.bed",
                 "itemGroup.name.boat",
                 "itemGroup.name.boots",
@@ -29,8 +29,9 @@
                 "itemGroup.name.concrete",
                 "itemGroup.name.concretePowder",
                 "itemGroup.name.cookedFood",
-                "itemGroup.name.coral",
+                "itemGroup.name.copper",
                 "itemGroup.name.coral_decorations",
+                "itemGroup.name.coral",
                 "itemGroup.name.crop",
                 "itemGroup.name.door",
                 "itemGroup.name.dye",
@@ -247,7 +248,7 @@
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
                         },
                         "minecraft:creative_category": {
-                            "title": "BETA",
+                            "title": "EXPERIMETAL (1.17.3 format version)",
                             "description": "Your custom block will not show up in the Creative Inventory if you don't have this component.",
                             "type": "object",
                             "default": {},
