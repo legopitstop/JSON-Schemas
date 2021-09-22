@@ -126,12 +126,12 @@
                         },
                         "category": {
                             "enum": [
-                                "Nature",
-                                "Items",
-                                "Equipment",
-                                "Construction"
+                                "nature",
+                                "items",
+                                "equipment",
+                                "construction"
                             ],
-                            "default": "Item",
+                            "default": "item",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands."
                         },
                         "is_experimental": {
@@ -1189,6 +1189,7 @@
                                         "itemGroup.name.wool",
                                         "itemGroup.name.woolCarpet"
                                     ],
+                                    "default": "itemGroup.search",
                                     "description": "Premade itemGroups."
                                 }
                             }
