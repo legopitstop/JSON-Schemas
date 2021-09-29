@@ -22,6 +22,11 @@
         "invertAxis": {
             "description": "Axis to invert, for example \"xyz\" inverts all axes",
             "enum": [
+                "x",
+                "y",
+                "z",
+                "xy",
+                "yz",
                 "xyz"
             ]
         },
