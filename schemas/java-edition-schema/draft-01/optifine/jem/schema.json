@@ -1,0 +1,80 @@
+{
+    "$id": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/optifine/jem/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Json Entity Model",
+    "description": "Reference configuration for OptiFine's feature Custom Entity Models https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/cem_model.txt",
+    "type": "object",
+    "default": {},
+    "required": [
+        "models"
+    ],
+    "properties": {
+        "texture": {
+            "description": "Texture used by the entity model",
+            "type": "string"
+        },
+        "textureSize": {
+            "description": "Texture size in pixels",
+            "type": "array",
+            "default": [],
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+                "type": "number"
+            }
+        },
+        "shadowSize": {
+            "description": "Model shadow size (0.0 - 1.0)",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "models": {
+            "description": "List of models",
+            "type": "array",
+            "default": {},
+            "items": {
+                "type": "object",
+                "default": {},
+                "required": ["part"],
+                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/optifine/jpm/schema.json#/properties",
+                "properties": {
+                    "baseId": {
+                        "description": "Model parent ID, all parent properties are inherited",
+                        "type": "string"
+                    },
+                    "model": {
+                        "description": "Part model file, from which to load the part model definition",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Model ID, can be used to reference the model as parent",
+                        "type": "string"
+                    },
+                    "part": {
+                        "description": "Entity part to which the part model is atached",
+                        "type": "string"
+                    },
+                    "attach": {
+                        "description": "True: attach to the entity part, False: replace it",
+                        "type": "boolean"
+                    },
+                    "scale": {
+                        "description": "Render scale, default is 1.0",
+                        "type": "number",
+                        "default": 1.0
+                    },
+                    "animations": {
+                        "description": "",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
