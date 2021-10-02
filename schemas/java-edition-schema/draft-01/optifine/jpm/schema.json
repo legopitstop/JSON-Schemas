@@ -57,7 +57,7 @@
             "type": "array",
             "items": {
                 "type": "object",
-                "required": ["textureOffset","coordinates"],
+                "required": ["coordinates"],
                 "properties": {
                     "textureOffset": {
                         "description": "Texture offset for box format, see \"model_box.png\"",
