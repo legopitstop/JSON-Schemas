@@ -42,8 +42,8 @@
                 "item"
             ]
         },
-        "NumberMax1": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/NumberMax1",
+        "Decimal": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
             "type": "number",
             "minimum": 0.0,
             "maximum": 1.0

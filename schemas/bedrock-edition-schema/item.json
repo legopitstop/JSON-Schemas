@@ -145,9 +145,9 @@
                     "type": "object",
                     "properties": {
                         "minecraft:render_offsets": {
-                            "type": "object",
-                            "title": "minecraft:render_offsets",
+                            "title": "STABLE",
                             "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
+                            "type": "object",
                             "properties": {
                                 "main_hand": {
                                     "description": "Right hand transform data.",
@@ -160,6 +160,7 @@
                             }
                         },
                         "minecraft:fertilizer": {
+                            "title": "STABLE",
                             "description": "fertilizer item.",
                             "properties": {
                                 "type": {
@@ -171,6 +172,7 @@
                             }
                         },
                         "minecraft:enchantable": {
+                            "title": "STABLE",
                             "description": "Enchantable item.",
                             "properties": {
                                 "slot": {
@@ -198,40 +200,48 @@
                             }
                         },
                         "minecraft:allow_off_hand": {
-                            "type": "boolean",
-                            "description": "This will allow the item to be held in the offhand slot. Example items; firework rocket, nautilus shell, shield, totem of undying"
+                            "title": "STABLE",
+                            "description": "This will allow the item to be held in the offhand slot. Example items; firework rocket, nautilus shell, shield, totem of undying",
+                            "type": "boolean"
                         },
                         "minecraft:animates_in_toolbar": {
-                            "type": "boolean",
-                            "description": "This means this item has a animation. Example items; bow, clock, compass, crossbow, lodestone compass"
+                            "title": "STABLE",
+                            "description": "This means this item has a animation. Example items; bow, clock, compass, crossbow, lodestone compass",
+                            "type": "boolean"
                         },
                         "minecraft:bucket": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "This is a empty bucket item. Example item; bucket",
+                            "type": "object",
                             "default": {}
                         },
                         "minecraft:can_destroy_in_creative": {
-                            "type": "boolean",
+                            "title": "STABLE",
                             "description": "This means you cannot break blocks with it while in creative mode. Example items: diamond sword, golden sword, iron sword, netherite sword, stone sword, wooden sword, trident",
+                            "type": "boolean",
                             "default": true
                         },
                         "minecraft:carrot_on_a_stick": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "Carrot on a stick item. Example item; carrot on a stick",
+                            "type": "object",
                             "default": {}
                         },
                         "minecraft:coal": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "Coal item. Example item: coal",
+                            "type": "object",
                             "default": {}
                         },
                         "minecraft:damage": {
-                            "type": "integer",
-                            "description": "The amount of damage the item does."
+                            "title": "STABLE",
+                            "description": "The amount of damage the item does.",
+                            "type": "integer"
                         },
                         "minecraft:dyeable": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "An item that can be dyed. Example items; leather boots, leather chestplate, firework star, leather helmet, leather horse armor, leather leggings",
+                            "type": "object",
                             "required": [
                                 "default_color"
                             ],
@@ -242,31 +252,37 @@
                             }
                         },
                         "minecraft:explodable": {
+                            "title": "STABLE",
+                            "description": "Will the item not survive explosions. Example item; nether star",
                             "type": "boolean",
-                            "default": true,
-                            "description": "Will the item not survive explosions. Example item; nether star"
+                            "default": true
                         },
                         "minecraft:foil": {
-                            "type": "boolean",
+                            "title": "STABLE",
                             "description": "Gives the item an enchanted look. Example items; enchanted golden apple, experience bottle, end crystal, lodestone compass, nether star",
+                            "type": "boolean",
                             "default": false
                         },
                         "minecraft:frame_count": {
-                            "type": "integer",
-                            "description": "How many frame the item has. Example items; bow, clock, compass, crossbow, lodestone compass"
+                            "description": "How many frame the item has. Example items; bow, clock, compass, crossbow, lodestone compass",
+                            "title": "STABLE",
+                            "type": "integer"
                         },
                         "minecraft:ignores_permission": {
-                            "type": "boolean",
+                            "title": "STABLE",
                             "description": "When true any player can have the item.",
+                            "type": "boolean",
                             "default": true
                         },
                         "minecraft:liquid_clipped": {
-                            "type": "boolean",
-                            "description": "Example items; all boats, all spawn eggs"
+                            "title": "STABLE",
+                            "description": "Example items; all boats, all spawn eggs",
+                            "type": "boolean"
                         },
                         "minecraft:map": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "A map item. Example items; locator map, map",
+                            "type": "object",
                             "required": [
                                 "empty"
                             ],
@@ -277,12 +293,14 @@
                             }
                         },
                         "minecraft:mirrored_art": {
-                            "type": "boolean",
-                            "description": "Will mirror both sides of the item. Example items; carrot on a stick, warped fungus on a stick"
+                            "title": "STABLE",
+                            "description": "Will mirror both sides of the item. Example items; carrot on a stick, warped fungus on a stick",
+                            "type": "boolean"
                         },
                         "minecraft:mob_spawner_placer": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "This will make the block. Example items; spawn eggs",
+                            "type": "object",
                             "required": [
                                 "entity"
                             ],
@@ -311,8 +329,9 @@
                             }
                         },
                         "minecraft:record": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "Can place inside a jukebox and play the sound track. Example items: all music discs",
+                            "type": "object",
                             "required": [
                                 "sound_event",
                                 "duration",
@@ -350,12 +369,14 @@
                             }
                         },
                         "minecraft:requires_interact": {
-                            "type": "boolean",
-                            "description": "This means the item needs to be clicked. Example items; writable book, carrot on a stick, locator map, map, warped fungus on a stick"
+                            "title": "STABLE",
+                            "description": "This means the item needs to be clicked. Example items; writable book, carrot on a stick, locator map, map, warped fungus on a stick",
+                            "type": "boolean"
                         },
                         "minecraft:seed": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
+                            "type": "object",
                             "required": [
                                 "crop_result"
                             ],
@@ -387,25 +408,29 @@
                             }
                         },
                         "minecraft:shears": {
-                            "type": "object",
+                            "title": "STABLE",
                             "description": "A shear item. Example item; shears",
+                            "type": "object",
                             "default": {}
                         },
                         "minecraft:should_despawn": {
-                            "type": "boolean",
+                            "title": "STABLE",
                             "description": "Will the item not naturally despawn. Example item; nether star",
+                            "type": "boolean",
                             "default": true
                         },
                         "minecraft:stacked_by_data": {
+                            "title": "STABLE",
                             "type": "boolean",
                             "default": true
                         },
                         "minecraft:portfolio": {
+                            "title": "STABLE",
                             "type": "object",
-                            "description": "",
                             "default": {}
                         },
                         "minecraft:camera": {
+                            "title": "STABLE",
                             "type": "object",
                             "required": [
                                 "black_bars_duration",
@@ -433,12 +458,12 @@
                             }
                         },
                         "minecraft:armor": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The armor item componenent determines the amount of protection you have in your armor item.",
                             "type": "object",
                             "required": [
                                 "protection"
                             ],
-                            "title": "minecraft:armor",
-                            "description": "The armor item componenent determines the amount of protection you have in your armor item.",
                             "properties": {
                                 "protection": {
                                     "type": "integer",
@@ -451,668 +476,35 @@
                             }
                         },
                         "minecraft:max_stack_size": {
+                            "title": "STABLE",
+                            "description": "The max amount of items that can be in one slot. usually is 64, 16, or 1 for not stackable.",
                             "type": "number",
                             "maximum": 64,
                             "minimum": 1,
-                            "default": 64,
-                            "title": "minecraft:max_stack_size",
-                            "description": "The max amount of items that can be in one slot. usually is 64, 16, or 1 for not stackable."
-                        },
-                        "minecraft:block_placer": {
-                            "type": "object",
-                            "required": [
-                                "block"
-                            ],
-                            "title": "minecraft:block_placer",
-                            "description": "Planter item component. planter items are items that can be planted.",
-                            "properties": {
-                                "block": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
-                                    "description": "block: Set the placement block name for the planter item."
-                                },
-                                "use_block_description": {
-                                    "type": "boolean"
-                                },
-                                "on_use": {
-                                    "type": "array",
-                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
-                                }
-                            }
-                        },
-                        "minecraft:cooldown": {
-                            "type": "object",
-                            "required": [
-                                "category",
-                                "duration"
-                            ],
-                            "title": "minecraft:cooldown",
-                            "description": "Cool down time for a component. After you use an item it becomes unusable for the duration specified by the 'cool down time' setting in this component.",
-                            "properties": {
-                                "category": {
-                                    "type": "string",
-                                    "description": "The type of cool down for this item."
-                                },
-                                "duration": {
-                                    "type": "integer",
-                                    "description": "The duration of time this item will spend cooling down before becoming usable again."
-                                }
-                            }
-                        },
-                        "minecraft:digger": {
-                            "type": "object",
-                            "title": "minecraft:digger",
-                            "required": [
-                                "destroy_speeds",
-                                "use_efficiency"
-                            ],
-                            "description": "Digger item compoent. Make this item dig up blocks at diffrent speeds.",
-                            "properties": {
-                                "destroy_speeds": {
-                                    "type": "array",
-                                    "description": "Destroy speed per block.",
-                                    "items": {
-                                        "properties": {
-                                            "block": {
-                                                "anyOf": [
-                                                    {
-                                                        "type": "string",
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
-                                                    },
-                                                    {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "any_tag": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string",
-                                                                    "examples": [
-                                                                        "wood",
-                                                                        "pumpkin",
-                                                                        "plant",
-                                                                        "stone",
-                                                                        "metal",
-                                                                        "dirt",
-                                                                        "sand",
-                                                                        "gravel",
-                                                                        "grass",
-                                                                        "snow",
-                                                                        "diamond_pick_diggable",
-                                                                        "gold_pick_diggable",
-                                                                        "iron_pick_diggable",
-                                                                        "stone_pick_diggable",
-                                                                        "wood_pick_diggable"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                ]
-                                            },
-                                            "speed": {
-                                                "type": "integer",
-                                                "description": "The speed to dig this block. Higher the number the faster it will dig."
-                                            }
-                                        }
-                                    }
-                                },
-                                "on_dig": {
-                                    "type": "string",
-                                    "description": "Trigger for when you dig a block that isn't listed in destroy_speeds"
-                                },
-                                "use_efficiency": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "Use efficiency enchantment? Default is set to false."
-                                }
-                            }
+                            "default": 64
                         },
                         "minecraft:hover_text_color": {
+                            "title": "STABLE",
+                            "description": "The color of the name.",
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/TextColors"
                         },
-                        "minecraft:display_name": {
-                            "type": "object",
-                            "required": [
-                                "value"
-                            ],
-                            "title": "minecraft:display_name",
-                            "description": "Display Name item component. Display Names display the name of an item.",
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "description": "Set the display name for an item."
-                                }
-                            }
-                        },
-                        "minecraft:durability": {
-                            "type": "object",
-                            "required": [
-                                "max_durability"
-                            ],
-                            "title": "minecraft:durability",
-                            "description": "Durability item component: how much damage can this item take before breaking.",
-                            "properties": {
-                                "damage_chance": {
-                                    "type": "object",
-                                    "required": [
-                                        "min",
-                                        "max"
-                                    ],
-                                    "properties": {
-                                        "min": {
-                                            "type": "number"
-                                        },
-                                        "max": {
-                                            "type": "number"
-                                        }
-                                    },
-                                    "description": "Damage chance."
-                                },
-                                "max_durability": {
-                                    "type": "integer",
-                                    "description": "Max durability is the amount of damage that this item can take before breaking."
-                                }
-                            }
-                        },
-                        "minecraft:dye_powder": {
-                            "type": "object",
-                            "required": [
-                                "color"
-                            ],
-                            "title": "minecraft:dye_powder",
-                            "description": "Dye powder, there are 16 kinds of dye.",
-                            "properties": {
-                                "color": {
-                                    "enum": [
-                                        "white",
-                                        "brown",
-                                        "black",
-                                        "blue",
-                                        "cyan",
-                                        "gray",
-                                        "green",
-                                        "lightblue",
-                                        "silver",
-                                        "lime",
-                                        "magenta",
-                                        "orange",
-                                        "pink",
-                                        "purple",
-                                        "red",
-                                        "yellow"
-                                    ],
-                                    "description": "Defines what color the dye is."
-                                }
-                            }
-                        },
-                        "minecraft:entity_placer": {
-                            "type": "object",
-                            "required": [
-                                "entity"
-                            ],
-                            "title": "minecraft:entity_placer",
-                            "description": "Entity placer item component. You can specifiy allowed blocks that the item is restricted to.",
-                            "properties": {
-                                "dispense_on": {
-                                    "type": "array",
-                                    "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
-                                },
-                                "entity": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
-                                    "description": "The entity to be placed in the world."
-                                },
-                                "use_on": {
-                                    "type": "array",
-                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
-                                }
-                            }
-                        },
                         "minecraft:use_animation": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation",
-                            "title": "minecraft:use_animation",
-                            "description": "What it will look like while your using the item."
+                            "title": "STABLE",
+                            "description": "What it will look like while your using the item.",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation"
                         },
                         "minecraft:use_duration": {
-                            "type": "number",
-                            "title": "minecraft:use_duration",
-                            "description": "How long it takes to use the item."
-                        },
-                        "minecraft:food": {
-                            "type": "object",
-                            "required": [
-                                "nutrition",
-                                "saturation_modifier"
-                            ],
-                            "title": "minecraft:food",
-                            "description": "When an item has a food component, it becomes edible to the player.",
-                            "properties": {
-                                "can_always_eat": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "If true you can always eat this item (even when not hungry), defaults to false."
-                                },
-                                "nutrition": {
-                                    "type": "integer",
-                                    "description": "How much nutrition does this food item give the player when eaten."
-                                },
-                                "on_use_action": {
-                                    "enum": [
-                                        "chorus_teleport"
-                                    ],
-                                    "description": "built-in actions to run."
-                                },
-                                "on_consume": {
-                                    "type": "object",
-                                    "description": "Runs event when you consume the item.",
-                                    "properties": {
-                                        "event": {
-                                            "type": "string",
-                                            "description": "The event to run."
-                                        },
-                                        "target": {
-                                            "type": "string",
-                                            "description": "The target to execute agenst."
-                                        }
-                                    }
-                                },
-                                "on_use_range": {
-                                    "type": "array",
-                                    "description": "Used for \"chorus_teleport\" action.",
-                                    "items": {
-                                        "type": "number"
-                                    }
-                                },
-                                "cooldown_type": {
-                                    "enum": [
-                                        "chorusfruit"
-                                    ],
-                                    "description": "The type of cooldown to use."
-                                },
-                                "cooldown_time": {
-                                    "type": "number",
-                                    "description": "How long of a cooldown until the player can consume another."
-                                },
-                                "saturation_modifier": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
-                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
-                                },
-                                "using_converts_to": {
-                                    "description": "When used, convert the *this* item to the one specified by 'using_converts_to'.",
-                                    "anyOf": [
-                                        {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "item": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
-                                                    "description": "The item that it will become."
-                                                }
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        "minecraft:fuel": {
-                            "type": "object",
-                            "required": [
-                                "duration"
-                            ],
-                            "title": "minecraft:fuel",
-                            "description": "Fuel component. Allows this item to be used as fuel in a furnace to 'cook' other items.",
-                            "properties": {
-                                "duration": {
-                                    "type": "number",
-                                    "description": "How long in seconds will this fuel cook items for."
-                                }
-                            }
-                        },
-                        "minecraft:icon": {
-                            "type": "object",
-                            "required": [
-                                "texture"
-                            ],
-                            "title": "minecraft:icon",
-                            "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
-                            "properties": {
-                                "frame": {
-                                    "type": "integer",
-                                    "default": 0,
-                                    "description": "An index or expression for which frame of the icon to display. Default resolves to 0."
-                                },
-                                "legacy_id": {
-                                    "type": "string",
-                                    "description": "Legacy texture id for older item icons"
-                                },
-                                "texture": {
-                                    "type": "string",
-                                    "description": "The key from the resource_pack/textures/item_texture.json 'texture_data' object associated with the texture file Example: blaze_powder"
-                                }
-                            }
-                        },
-                        "minecraft:knockback_resistance": {
-                            "type": "object",
-                            "required": [
-                                "protection"
-                            ],
-                            "title": "minecraft:knockback_resistance",
-                            "description": "Knockback Resistance Item. Component put on items that provide knockback resistance.",
-                            "properties": {
-                                "protection": {
-                                    "type": "integer",
-                                    "maximum": 1.0,
-                                    "description": "Amount of knockback resistance provided with the total maximum protection being 1.0"
-                                }
-                            }
-                        },
-                        "minecraft:on_use": {
-                            "type": "object",
-                            "required": [
-                                "on_use"
-                            ],
-                            "title": "minecraft:on_use",
-                            "description": "The on_use item component allows you to receive an event when the item is used.",
-                            "properties": {
-                                "on_use": {
-                                    "type": "object",
-                                    "required": [
-                                        "event"
-                                    ],
-                                    "properties": {
-                                        "event": {
-                                            "type": "string",
-                                            "description": "Event trigger for when the item is used."
-                                        },
-                                        "target": {
-                                            "type": "string",
-                                            "description": "The target to execute agenst."
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "minecraft:on_use_on": {
-                            "type": "object",
-                            "required": [
-                                "on_use_on"
-                            ],
-                            "title": "minecraft:on_use_on",
-                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
-                            "properties": {
-                                "on_use_on": {
-                                    "type": "object",
-                                    "required": [
-                                        "event"
-                                    ],
-                                    "properties": {
-                                        "event": {
-                                            "type": "string",
-                                            "description": "Event trigger for when the item is used."
-                                        },
-                                        "target": {
-                                            "type": "string",
-                                            "description": "The target to execute agenst."
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "minecraft:projectile": {
-                            "type": "object",
-                            "required": [
-                                "minimum_critical_power",
-                                "projectile_entity"
-                            ],
-                            "title": "minecraft:projectile",
-                            "description": "Projectile item component. projectile items shoot out, like an arrow.",
-                            "properties": {
-                                "minimum_critical_power": {
-                                    "type": "integer",
-                                    "description": "How long you must charge a projectile for it to critically hit."
-                                },
-                                "projectile_entity": {
-                                    "type": "string",
-                                    "description": "The entity to be fired as a projectile."
-                                }
-                            }
-                        },
-                        "minecraft:repairable": {
-                            "type": "object",
-                            "required": [
-                                "repair_items"
-                            ],
-                            "title": "minecraft:repairable",
-                            "description": "Repairable item component: how much damage can this item repair, what items can repair it.",
-                            "properties": {
-                                "on_repaired": {
-                                    "type": "string",
-                                    "description": "Event that is called when this item has been repaired."
-                                },
-                                "repair_items": {
-                                    "type": "array",
-                                    "description": "Repair item entries.",
-                                    "items": {
-                                        "type": "object",
-                                        "required": [
-                                            "items",
-                                            "repair_amount"
-                                        ],
-                                        "properties": {
-                                            "items": {
-                                                "type": "array",
-                                                "uniqueItems": true,
-                                                "items": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
-                                                }
-                                            },
-                                            "repair_amount": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "minecraft:shooter": {
-                            "type": "object",
-                            "title": "minecraft:shooter",
-                            "description": "Shooter Item Component.",
-                            "required": [
-                                "ammunition",
-                                "scale_power_by_draw_duration",
-                                "max_draw_duration"
-                            ],
-                            "properties": {
-                                "ammunition": {
-                                    "anyOf": [
-                                        {
-                                            "type": "string",
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
-                                        },
-                                        {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "item": {
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
-                                                    },
-                                                    "use_offhand": {
-                                                        "type": "boolean",
-                                                        "description": "Can it be used in the offhand."
-                                                    },
-                                                    "search_inventory": {
-                                                        "type": "boolean",
-                                                        "description": ""
-                                                    },
-                                                    "use_in_creative": {
-                                                        "type": "boolean",
-                                                        "description": "Can it be used in creative gamemode."
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    ],
-                                    "description": "Ammunition."
-                                },
-                                "charge_on_draw": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "Charge on draw? Default is set to false."
-                                },
-                                "launch_power_scale": {
-                                    "type": "integer",
-                                    "default": 1.0,
-                                    "description": "Launch power scale. Default is set to 1.0."
-                                },
-                                "max_draw_duration": {
-                                    "type": "integer",
-                                    "default": 0,
-                                    "description": "Draw Duration. Default is set to 0."
-                                },
-                                "max_launch_power": {
-                                    "type": "integer",
-                                    "default": 1.0,
-                                    "description": "Launch power. Default is set to 1.0."
-                                },
-                                "scale_power_by_draw_duration": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "Scale power by draw duration? Default is set to false."
-                                }
-                            }
-                        },
-                        "minecraft:throwable": {
-                            "type": "object",
-                            "required": [
-                                "do_swing_animation",
-                                "launch_power_scale",
-                                "max_draw_duration",
-                                "max_launch_power",
-                                "min_draw_duration",
-                                "scale_power_by_draw_duration"
-                            ],
-                            "title": "minecraft:throwable",
-                            "description": "Throwable item component. Throwable items, such as a snowball.",
-                            "properties": {
-                                "do_swing_animation": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "Whether the item should use the swing animation when thrown. Default is set to false."
-                                },
-                                "launch_power_scale": {
-                                    "type": "integer",
-                                    "default": 1.0,
-                                    "description": "The scale at which the power of the throw increases. Default is set to 1.0."
-                                },
-                                "max_draw_duration": {
-                                    "type": "integer",
-                                    "default": 0.0,
-                                    "description": "The maximum duration to draw a throwable item. Default is set to 0.0."
-                                },
-                                "max_launch_power": {
-                                    "type": "integer",
-                                    "default": 1.0,
-                                    "description": "The maximum power to launch the throwable item. Default is set to 1.0."
-                                },
-                                "min_draw_duration": {
-                                    "type": "integer",
-                                    "default": 0.0,
-                                    "description": "The minimum duration to draw a throwable item. Default is set to 0.0."
-                                },
-                                "scale_power_by_draw_duration": {
-                                    "type": "boolean",
-                                    "default": false,
-                                    "description": "Whether or not the power of the throw increases with duration charged. Default is set to false."
-                                }
-                            }
-                        },
-                        "minecraft:weapon": {
-                            "type": "object",
-                            "title": "minecraft:weapon",
-                            "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
-                            "properties": {
-                                "on_hit_block": {
-                                    "type": "object",
-                                    "required": [
-                                        "event"
-                                    ],
-                                    "description": "Trigger for letting you know when this item is used to hit a block",
-                                    "properties": {
-                                        "event": {
-                                            "type": "string",
-                                            "description": "Event to run when triggered."
-                                        }
-                                    }
-                                },
-                                "on_hurt_entity": {
-                                    "type": "object",
-                                    "required": [
-                                        "event"
-                                    ],
-                                    "description": "Trigger for letting you know when this item is used to hurt another mob",
-                                    "properties": {
-                                        "event": {
-                                            "type": "string",
-                                            "description": "Event to run when triggered."
-                                        }
-                                    }
-                                },
-                                "on_not_hurt_entity": {
-                                    "type": "object",
-                                    "required": [
-                                        "event"
-                                    ],
-                                    "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                                    "properties": {
-                                        "event": {
-                                            "type": "string",
-                                            "description": "Event to run when triggered."
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "minecraft:wearable": {
-                            "type": "object",
-                            "required": [
-                                "dispensable",
-                                "slot"
-                            ],
-                            "title": "minecraft:wearable",
-                            "description": "Wearable item component.",
-                            "properties": {
-                                "dispensable": {
-                                    "type": "boolean",
-                                    "default": false
-                                },
-                                "slot": {
-                                    "description": "Slot where you can place the armor piece in/on.",
-                                    "enum": [
-                                        "slot.weapon.mainhand",
-                                        "slot.weapon.offhand",
-                                        "slot.armor.head",
-                                        "slot.armor.chest",
-                                        "slot.armor.legs",
-                                        "slot.armor.feet",
-                                        "slot.hotbar",
-                                        "slot.inventory",
-                                        "slot.enderchest",
-                                        "slot.saddle",
-                                        "slot.armor",
-                                        "slot.chest"
-                                    ]
-                                }
-                            }
+                            "title": "STABLE",
+                            "description": "How long it takes to use the item.",
+                            "type": "number"
                         },
                         "minecraft:creative_category": {
+                            "title": "STABLE",
+                            "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
                             "type": "object",
                             "required": [
                                 "parent"
                             ],
-                            "title": "minecraft:creative_category",
-                            "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
                             "properties": {
                                 "parent": {
                                     "enum": [
@@ -1195,10 +587,646 @@
                             }
                         },
                         "minecraft:hand_equipped": {
+                            "title": "STABLE",
+                            "description": "Will rotate the texture to look like an equipped item. ex; stick, sword",
                             "type": "boolean",
-                            "default": false,
-                            "title": "minecraft:hand_equipped",
-                            "description": "Will rotate the texture to look like an equipped item. ex; stick, sword"
+                            "default": false
+                        },
+
+                        "minecraft:block_placer": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Planter item component. planter items are items that can be planted.",
+                            "type": "object",
+                            "required": [
+                                "block"
+                            ],
+                            "properties": {
+                                "block": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
+                                    "description": "block: Set the placement block name for the planter item."
+                                },
+                                "use_block_description": {
+                                    "type": "boolean"
+                                },
+                                "on_use": {
+                                    "type": "array",
+                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
+                                }
+                            }
+                        },
+                        "minecraft:cooldown": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Cool down time for a component. After you use an item it becomes unusable for the duration specified by the 'cool down time' setting in this component.",
+                            "type": "object",
+                            "required": [
+                                "category",
+                                "duration"
+                            ],
+                            "properties": {
+                                "category": {
+                                    "type": "string",
+                                    "description": "The type of cool down for this item."
+                                },
+                                "duration": {
+                                    "type": "integer",
+                                    "description": "The duration of time this item will spend cooling down before becoming usable again."
+                                }
+                            }
+                        },
+                        "minecraft:digger": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Digger item compoent. Make this item dig up blocks at diffrent speeds.",
+                            "type": "object",
+                            "required": [
+                                "destroy_speeds",
+                                "use_efficiency"
+                            ],
+                            "properties": {
+                                "destroy_speeds": {
+                                    "type": "array",
+                                    "description": "Destroy speed per block.",
+                                    "items": {
+                                        "properties": {
+                                            "block": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                    },
+                                                    {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "any_tag": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string",
+                                                                    "examples": [
+                                                                        "wood",
+                                                                        "pumpkin",
+                                                                        "plant",
+                                                                        "stone",
+                                                                        "metal",
+                                                                        "dirt",
+                                                                        "sand",
+                                                                        "gravel",
+                                                                        "grass",
+                                                                        "snow",
+                                                                        "diamond_pick_diggable",
+                                                                        "gold_pick_diggable",
+                                                                        "iron_pick_diggable",
+                                                                        "stone_pick_diggable",
+                                                                        "wood_pick_diggable"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "speed": {
+                                                "type": "integer",
+                                                "description": "The speed to dig this block. Higher the number the faster it will dig."
+                                            }
+                                        }
+                                    }
+                                },
+                                "on_dig": {
+                                    "type": "string",
+                                    "description": "Trigger for when you dig a block that isn't listed in destroy_speeds"
+                                },
+                                "use_efficiency": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Use efficiency enchantment? Default is set to false."
+                                }
+                            }
+                        },
+                        "minecraft:display_name": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Display Name item component. Display Names display the name of an item.",
+                            "type": "object",
+                            "required": [
+                                "value"
+                            ],
+                            "properties": {
+                                "value": {
+                                    "type": "string",
+                                    "description": "Set the display name for an item."
+                                }
+                            }
+                        },
+                        "minecraft:durability": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Durability item component: how much damage can this item take before breaking.",
+                            "type": "object",
+                            "required": [
+                                "max_durability"
+                            ],
+                            "properties": {
+                                "damage_chance": {
+                                    "type": "object",
+                                    "required": [
+                                        "min",
+                                        "max"
+                                    ],
+                                    "properties": {
+                                        "min": {
+                                            "type": "number"
+                                        },
+                                        "max": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "description": "Damage chance."
+                                },
+                                "max_durability": {
+                                    "type": "integer",
+                                    "description": "Max durability is the amount of damage that this item can take before breaking."
+                                }
+                            }
+                        },
+                        "minecraft:dye_powder": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Dye powder, there are 16 kinds of dye.",
+                            "type": "object",
+                            "required": [
+                                "color"
+                            ],
+                            "properties": {
+                                "color": {
+                                    "enum": [
+                                        "white",
+                                        "brown",
+                                        "black",
+                                        "blue",
+                                        "cyan",
+                                        "gray",
+                                        "green",
+                                        "lightblue",
+                                        "silver",
+                                        "lime",
+                                        "magenta",
+                                        "orange",
+                                        "pink",
+                                        "purple",
+                                        "red",
+                                        "yellow"
+                                    ],
+                                    "description": "Defines what color the dye is."
+                                }
+                            }
+                        },
+                        "minecraft:entity_placer": {
+                            "title": "Holiday Creator Features",
+                            "description": "Entity placer item component. You can specifiy allowed blocks that the item is restricted to.",
+                            "type": "object",
+                            "required": [
+                                "entity"
+                            ],
+                            "properties": {
+                                "dispense_on": {
+                                    "type": "array",
+                                    "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
+                                },
+                                "entity": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
+                                    "description": "The entity to be placed in the world."
+                                },
+                                "use_on": {
+                                    "type": "array",
+                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
+                                }
+                            }
+                        },
+                        "minecraft:food": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "When an item has a food component, it becomes edible to the player.",
+                            "type": "object",
+                            "required": [
+                                "nutrition",
+                                "saturation_modifier"
+                            ],
+                            "properties": {
+                                "can_always_eat": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "If true you can always eat this item (even when not hungry), defaults to false."
+                                },
+                                "nutrition": {
+                                    "type": "integer",
+                                    "description": "How much nutrition does this food item give the player when eaten."
+                                },
+                                "on_use_action": {
+                                    "enum": [
+                                        "chorus_teleport"
+                                    ],
+                                    "description": "built-in actions to run."
+                                },
+                                "on_consume": {
+                                    "type": "object",
+                                    "description": "Runs event when you consume the item.",
+                                    "properties": {
+                                        "event": {
+                                            "type": "string",
+                                            "description": "The event to run."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "description": "The target to execute agenst."
+                                        }
+                                    }
+                                },
+                                "on_use_range": {
+                                    "type": "array",
+                                    "description": "Used for \"chorus_teleport\" action.",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "cooldown_type": {
+                                    "enum": [
+                                        "chorusfruit"
+                                    ],
+                                    "description": "The type of cooldown to use."
+                                },
+                                "cooldown_time": {
+                                    "type": "number",
+                                    "description": "How long of a cooldown until the player can consume another."
+                                },
+                                "saturation_modifier": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
+                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
+                                },
+                                "using_converts_to": {
+                                    "description": "When used, convert the *this* item to the one specified by 'using_converts_to'.",
+                                    "anyOf": [
+                                        {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "item": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
+                                                    "description": "The item that it will become."
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "minecraft:fuel": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Fuel component. Allows this item to be used as fuel in a furnace to 'cook' other items.",
+                            "type": "object",
+                            "required": [
+                                "duration"
+                            ],
+                            "properties": {
+                                "duration": {
+                                    "type": "number",
+                                    "description": "How long in seconds will this fuel cook items for."
+                                }
+                            }
+                        },
+                        "minecraft:icon": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
+                            "type": "object",
+                            "required": [
+                                "texture"
+                            ],
+                            "properties": {
+                                "frame": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "description": "An index or expression for which frame of the icon to display. Default resolves to 0."
+                                },
+                                "legacy_id": {
+                                    "type": "string",
+                                    "description": "Legacy texture id for older item icons"
+                                },
+                                "texture": {
+                                    "type": "string",
+                                    "description": "The key from the resource_pack/textures/item_texture.json 'texture_data' object associated with the texture file Example: blaze_powder"
+                                }
+                            }
+                        },
+                        "minecraft:knockback_resistance": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Knockback Resistance Item. Component put on items that provide knockback resistance.",
+                            "type": "object",
+                            "required": [
+                                "protection"
+                            ],
+                            "properties": {
+                                "protection": {
+                                    "type": "integer",
+                                    "maximum": 1.0,
+                                    "description": "Amount of knockback resistance provided with the total maximum protection being 1.0"
+                                }
+                            }
+                        },
+                        "minecraft:on_use": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The on_use item component allows you to receive an event when the item is used.",
+                            "type": "object",
+                            "required": [
+                                "on_use"
+                            ],
+                            "properties": {
+                                "on_use": {
+                                    "type": "object",
+                                    "required": [
+                                        "event"
+                                    ],
+                                    "properties": {
+                                        "event": {
+                                            "type": "string",
+                                            "description": "Event trigger for when the item is used."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "description": "The target to execute agenst."
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:on_use_on": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
+                            "type": "object",
+                            "required": [
+                                "on_use_on"
+                            ],
+                            "properties": {
+                                "on_use_on": {
+                                    "type": "object",
+                                    "required": [
+                                        "event"
+                                    ],
+                                    "properties": {
+                                        "event": {
+                                            "type": "string",
+                                            "description": "Event trigger for when the item is used."
+                                        },
+                                        "target": {
+                                            "type": "string",
+                                            "description": "The target to execute agenst."
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:projectile": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Projectile item component. projectile items shoot out, like an arrow.",
+                            "type": "object",
+                            "required": [
+                                "minimum_critical_power",
+                                "projectile_entity"
+                            ],
+                            "properties": {
+                                "minimum_critical_power": {
+                                    "type": "integer",
+                                    "description": "How long you must charge a projectile for it to critically hit."
+                                },
+                                "projectile_entity": {
+                                    "type": "string",
+                                    "description": "The entity to be fired as a projectile."
+                                }
+                            }
+                        },
+                        "minecraft:repairable": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Repairable item component: how much damage can this item repair, what items can repair it.",
+                            "type": "object",
+                            "required": [
+                                "repair_items"
+                            ],
+                            "properties": {
+                                "on_repaired": {
+                                    "type": "string",
+                                    "description": "Event that is called when this item has been repaired."
+                                },
+                                "repair_items": {
+                                    "type": "array",
+                                    "description": "Repair item entries.",
+                                    "items": {
+                                        "type": "object",
+                                        "required": [
+                                            "items",
+                                            "repair_amount"
+                                        ],
+                                        "properties": {
+                                            "items": {
+                                                "type": "array",
+                                                "uniqueItems": true,
+                                                "items": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                }
+                                            },
+                                            "repair_amount": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:shooter": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Shooter Item Component.",
+                            "type": "object",
+                            "required": [
+                                "ammunition",
+                                "scale_power_by_draw_duration",
+                                "max_draw_duration"
+                            ],
+                            "properties": {
+                                "ammunition": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "item": {
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                    },
+                                                    "use_offhand": {
+                                                        "type": "boolean",
+                                                        "description": "Can it be used in the offhand."
+                                                    },
+                                                    "search_inventory": {
+                                                        "type": "boolean",
+                                                        "description": ""
+                                                    },
+                                                    "use_in_creative": {
+                                                        "type": "boolean",
+                                                        "description": "Can it be used in creative gamemode."
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "description": "Ammunition."
+                                },
+                                "charge_on_draw": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Charge on draw? Default is set to false."
+                                },
+                                "launch_power_scale": {
+                                    "type": "integer",
+                                    "default": 1.0,
+                                    "description": "Launch power scale. Default is set to 1.0."
+                                },
+                                "max_draw_duration": {
+                                    "type": "integer",
+                                    "default": 0,
+                                    "description": "Draw Duration. Default is set to 0."
+                                },
+                                "max_launch_power": {
+                                    "type": "integer",
+                                    "default": 1.0,
+                                    "description": "Launch power. Default is set to 1.0."
+                                },
+                                "scale_power_by_draw_duration": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Scale power by draw duration? Default is set to false."
+                                }
+                            }
+                        },
+                        "minecraft:throwable": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Throwable item component. Throwable items, such as a snowball.",
+                            "type": "object",
+                            "required": [
+                                "do_swing_animation",
+                                "launch_power_scale",
+                                "max_draw_duration",
+                                "max_launch_power",
+                                "min_draw_duration",
+                                "scale_power_by_draw_duration"
+                            ],
+                            "properties": {
+                                "do_swing_animation": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Whether the item should use the swing animation when thrown. Default is set to false."
+                                },
+                                "launch_power_scale": {
+                                    "type": "integer",
+                                    "default": 1.0,
+                                    "description": "The scale at which the power of the throw increases. Default is set to 1.0."
+                                },
+                                "max_draw_duration": {
+                                    "type": "integer",
+                                    "default": 0.0,
+                                    "description": "The maximum duration to draw a throwable item. Default is set to 0.0."
+                                },
+                                "max_launch_power": {
+                                    "type": "integer",
+                                    "default": 1.0,
+                                    "description": "The maximum power to launch the throwable item. Default is set to 1.0."
+                                },
+                                "min_draw_duration": {
+                                    "type": "integer",
+                                    "default": 0.0,
+                                    "description": "The minimum duration to draw a throwable item. Default is set to 0.0."
+                                },
+                                "scale_power_by_draw_duration": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Whether or not the power of the throw increases with duration charged. Default is set to false."
+                                }
+                            }
+                        },
+                        "minecraft:weapon": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
+                            "type": "object",
+                            "properties": {
+                                "on_hit_block": {
+                                    "type": "object",
+                                    "required": [
+                                        "event"
+                                    ],
+                                    "description": "Trigger for letting you know when this item is used to hit a block",
+                                    "properties": {
+                                        "event": {
+                                            "type": "string",
+                                            "description": "Event to run when triggered."
+                                        }
+                                    }
+                                },
+                                "on_hurt_entity": {
+                                    "type": "object",
+                                    "required": [
+                                        "event"
+                                    ],
+                                    "description": "Trigger for letting you know when this item is used to hurt another mob",
+                                    "properties": {
+                                        "event": {
+                                            "type": "string",
+                                            "description": "Event to run when triggered."
+                                        }
+                                    }
+                                },
+                                "on_not_hurt_entity": {
+                                    "type": "object",
+                                    "required": [
+                                        "event"
+                                    ],
+                                    "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
+                                    "properties": {
+                                        "event": {
+                                            "type": "string",
+                                            "description": "Event to run when triggered."
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:wearable": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Wearable item component.",
+                            "type": "object",
+                            "required": [
+                                "dispensable",
+                                "slot"
+                            ],
+                            "properties": {
+                                "dispensable": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "slot": {
+                                    "description": "Slot where you can place the armor piece in/on.",
+                                    "enum": [
+                                        "slot.weapon.mainhand",
+                                        "slot.weapon.offhand",
+                                        "slot.armor.head",
+                                        "slot.armor.chest",
+                                        "slot.armor.legs",
+                                        "slot.armor.feet",
+                                        "slot.hotbar",
+                                        "slot.inventory",
+                                        "slot.enderchest",
+                                        "slot.saddle",
+                                        "slot.armor",
+                                        "slot.chest"
+                                    ]
+                                }
+                            }
                         }
                     }
                 },
