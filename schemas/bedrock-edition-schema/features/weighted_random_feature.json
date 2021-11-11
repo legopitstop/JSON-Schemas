@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "title": "minecraft:weighted_random_feature",
@@ -9,7 +9,7 @@
             "type": "object",
             "properties": {
                 "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                 }
             }
         },
@@ -19,7 +19,7 @@
                 "type": "array",
                 "items": [
                     {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
+                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
                         "description": "The feature name"
                     },
                     {

@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/block.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "BlockCategory": {
@@ -147,7 +147,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
                         },
                         "properties": {
                             "type": "object",
@@ -184,18 +184,18 @@
                             "title": "STABLE",
                             "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\"",
                             "type": "string",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json"
                         },
                         "minecraft:block_light_absorption": {
                             "title": "STABLE",
                             "description": "The amount of light this block will absorb.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
                             "default": 0
                         },
                         "minecraft:block_light_emission": {
                             "title": "STABLE",
                             "description": "The amount of light this block will emit in a range [0.0, 1.0].",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
                             "maximum": 1.0
                         },
                         "minecraft:destroy_time": {
@@ -247,7 +247,7 @@
                             "title": "STABLE",
                             "description": "A color represented as a hex value. This will be the color rendered to a map.",
                             "type": "string",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
                         },
                         "minecraft:creative_category": {
                             "title": "STABLE",
@@ -361,7 +361,7 @@
                         "minecraft:geometry": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                         },
                         "minecraft:immovable": {
                             "title": "STABLE",
@@ -388,7 +388,7 @@
                             "additionalProperties": {
                                 "description": "The bone id to render true/false",
                                 "type": "string",
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                             }
                         },
                         "minecraft:pick_collision": {
@@ -451,7 +451,7 @@
                                                     "anyOf": [
                                                         {
                                                             "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
+                                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
                                                         },
                                                         {
                                                             "type": "object",
@@ -459,7 +459,7 @@
                                                                 "tags": {
                                                                     "description": "Molang",
                                                                     "type": "string",
-                                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                                                 }
                                                             }
                                                         }
@@ -491,7 +491,7 @@
                                     ],
                                     "properties": {
                                         "condition": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                             "default": 1,
                                             "description": "The condition of event to be executed on the block."
                                         },
@@ -501,7 +501,7 @@
                                             "description": "The type of event executed on the block."
                                         },
                                         "target": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                             "default": "self",
                                             "description": "The target of event executed on the block."
                                         }
@@ -554,7 +554,7 @@
                                     ],
                                     "properties": {
                                         "condition": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                             "default": 1,
                                             "description": "The condition of event to be executed on the block."
                                         },
@@ -564,7 +564,7 @@
                                             "description": "The type of event executed on the block."
                                         },
                                         "target": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                             "default": "self",
                                             "description": "The target of event executed on the block."
                                         }
@@ -598,7 +598,7 @@
                                     "description": "The minimum distance in blocks that an actor needs to fall to trigger this event."
                                 },
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -606,7 +606,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -621,7 +621,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -629,7 +629,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -644,7 +644,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -652,7 +652,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -667,7 +667,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -675,7 +675,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -690,7 +690,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -698,7 +698,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -713,7 +713,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -721,7 +721,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -736,7 +736,7 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                     "description": "The condition of event to be executed on the block."
                                 },
                                 "event": {
@@ -744,7 +744,7 @@
                                     "description": "The event executed on the block."
                                 },
                                 "target": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
                                     "default": "self",
                                     "description": "The target of event executed on the block."
                                 }
@@ -855,13 +855,13 @@
                         ],
                         "properties": {
                             "condition": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                 "default": "query.block_property('MOD_ID:property_type') == 'property'",
                                 "description": "The condition of event to be executed on the block."
                             },
                             "components": {
                                 "type": "object",
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/block.json#/properties/minecraft:block/properties/components"
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/block.json#/properties/minecraft:block/properties/components"
                             }
                         }
                     }
@@ -869,7 +869,7 @@
                 "events": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events"
+                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Events"
                     },
                     "default": {}
                 }

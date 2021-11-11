@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/item.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "RenderOffsets": {
@@ -122,7 +122,7 @@
                     ],
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                         },
                         "category": {
                             "enum": [
@@ -247,7 +247,7 @@
                             ],
                             "properties": {
                                 "default_color": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
                                 }
                             }
                         },
@@ -308,7 +308,7 @@
                                 "entity": {
                                     "description": "The entity for the spawner to spawn.",
                                     "type": "string",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/entities.json#/definitions/MinecraftEntityExamples"
                                 },
                                 "block": {
                                     "type": "object",
@@ -321,7 +321,7 @@
                                             ],
                                             "items": {
                                                 "type": "string",
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                             }
                                         }
                                     }
@@ -387,14 +387,14 @@
                                     "anyOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
                                                 "uniqueItems": true,
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                             }
                                         }
                                     ]
@@ -403,7 +403,7 @@
                                     "type": "string",
                                     "description": "The name of the crop block to place.",
                                     "uniqueItems": true,
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                 }
                             }
                         },
@@ -486,12 +486,12 @@
                         "minecraft:hover_text_color": {
                             "title": "STABLE",
                             "description": "The color of the name.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/TextColors"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/TextColors"
                         },
                         "minecraft:use_animation": {
                             "title": "STABLE",
                             "description": "What it will look like while your using the item.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation"
                         },
                         "minecraft:use_duration": {
                             "title": "STABLE",
@@ -602,7 +602,7 @@
                             ],
                             "properties": {
                                 "block": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
                                     "description": "block: Set the placement block name for the planter item."
                                 },
                                 "use_block_description": {
@@ -651,7 +651,7 @@
                                                 "anyOf": [
                                                     {
                                                         "type": "string",
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                                     },
                                                     {
                                                         "type": "object",
@@ -789,7 +789,7 @@
                                     "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
                                 },
                                 "entity": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
                                     "description": "The entity to be placed in the world."
                                 },
                                 "use_on": {
@@ -854,20 +854,20 @@
                                     "description": "How long of a cooldown until the player can consume another."
                                 },
                                 "saturation_modifier": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
                                     "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
                                 },
                                 "using_converts_to": {
                                     "description": "When used, convert the *this* item to the one specified by 'using_converts_to'.",
                                     "anyOf": [
                                         {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                         },
                                         {
                                             "type": "object",
                                             "properties": {
                                                 "item": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
+                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
                                                     "description": "The item that it will become."
                                                 }
                                             }
@@ -1025,11 +1025,11 @@
                                                 "type": "array",
                                                 "uniqueItems": true,
                                                 "items": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                                 }
                                             },
                                             "repair_amount": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
+                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
                                             }
                                         }
                                     }
@@ -1050,7 +1050,7 @@
                                     "anyOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                         },
                                         {
                                             "type": "array",
@@ -1058,7 +1058,7 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "item": {
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                                     },
                                                     "use_offhand": {
                                                         "type": "boolean",
@@ -1233,7 +1233,7 @@
                 "events": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events"
+                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Events"
                     },
                     "default": {}
                 }

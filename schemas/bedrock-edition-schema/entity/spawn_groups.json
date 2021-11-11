@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_groups.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/entity/spawn_groups.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:spawn_groups": {
@@ -9,7 +9,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -45,12 +45,12 @@
                                 "type": "object",
                                 "properties": {
                                     "min": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
+                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
                                         "title": "min",
                                         "description": "This is the minimum difficulty level that a mob spawns"
                                     },
                                     "max": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
+                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
                                         "title": "max",
                                         "description": "This is the maximum difficulty level that a mob spawns"
                                     }

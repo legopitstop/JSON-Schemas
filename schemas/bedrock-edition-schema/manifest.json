@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Data for Minecraft Bedrock Edition addons.",
     "properties": {
@@ -33,7 +33,7 @@
                 },
                 "uuid": {
                     "description": "This is a special type of identifier that uniquely identifies this pack from any other pack. UUIDs are written in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx where each x is a hexadecimal value (0-9 or a-f). We recommend using an online service to generate this and guarantee their uniqueness (just bing UUID Generator to find some)",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/UUID4"
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/UUID4"
                 },
                 "version": {
                     "description": "This is the version of your pack in the format [majorVersion, minorVersion, revision]. The version number is used when importing a pack that has been imported before. The new pack will replace the old one if the version is higher, and ignored if it's the same or lower",
@@ -153,7 +153,7 @@
                     "description": "The license of the pack"
                 },
                 "url": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/website_url",
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/website_url",
                     "title": "url",
                     "description": "The home website of your pack"
                 }

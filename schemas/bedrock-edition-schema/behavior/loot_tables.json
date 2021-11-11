@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/loot_tables.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/behavior/loot_tables.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Loot tables for Minecraft Bedrock Edition",
     "definitions": {
@@ -280,11 +280,9 @@
                             "set_stew_effect"
                         ]
                     },
-                    // The following is additional info needed for `function`
-                    //"minecraft:apply_bonus"
                     "enchantment": {
                         "description": "Enchantment ID used for level calculation.",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
+                        "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                     },
                     "formula": {
                         "description": "Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count * (max(0; random(0..Level + 2) - 1)+1)).",
@@ -313,7 +311,6 @@
                             }
                         }
                     },
-                    //"minecraft:copy_name"
                     "source": {
                         "description": "Needs to be set to `block_entity` for `copy_name`. Specifies the source. Set to block_entity for the block entity of the destroyed block, this to use the entity that died or the player that gained the advancement, opened the container or broke the block, killer for the killer, or killer_player for a killer that is a player.",
                         "anyOf": [
@@ -347,7 +344,6 @@
                             }
                         ]
                     },
-                    //"minecraft:copy_nbt"
                     "ops": {
                         "description": "A list of copy operations.",
                         "type": "array",
@@ -374,7 +370,6 @@
                             }
                         }
                     },
-                    //"minecraft:copy_state"
                     "block": {
                         "description": "A block ID. Function fails if the block doesn't match",
                         "type": "string"
@@ -387,14 +382,13 @@
                             "type": "string"
                         }
                     },
-                    //"minecraft:enchant_randomly"
                     "enchantments": {
                         "anyOf": [
                             {
                                 "type": "array",
                                 "description": "List of enchantment IDs to choose from. If omitted, all enchantments applicable to the item are possible.",
                                 "items": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                                 }
                             },
                             {
@@ -557,7 +551,6 @@
                             }
                         ]
                     },
-                    //"minecraft:enchant_with_levels"
                     "treasure": {
                         "description": "Determines whether treasure enchantments are allowed on",
                         "type": "boolean"
@@ -566,7 +559,6 @@
                         "description": "Number provider. Specifies the exact enchantment level to use.",
                         "$ref": "#/definitions/LootTableNumberProvider"
                     },
-                    //"minecraft:exploration_map"
                     "destination": {
                         "description": "The type of generated structure to locate. Accepts any of the StructureTypes used by the /locate command (case insensitive)",
                         "type": "string"
@@ -617,7 +609,6 @@
                         "type": "boolean",
                         "default": true
                     },
-                    //"minecraft:fill_player_head"
                     "entity": {
                         "description": "Specifies an entity to be used for the player head. Set to this to use the entity that died or the player that gained the advancement, opened the container or broke the block, killer for the killer, or killer_player for a killer that is a player.",
                         "enum": [
@@ -626,17 +617,14 @@
                             "killer_player"
                         ]
                     },
-                    //"minecraft:limit_count"
                     "limit": {
                         "description": "Number provider. Specifies the number of additional items per level of looting. Note the number may be fractional, rounded after multiplying by the looting level.",
                         "$ref": "#/definitions/LootTableNumberProvider"
                     },
-                    //"minecraft:looting_enchant"
                     "count": {
                         "description": "Specifies the number of additional items per level of looting. Note the number may be fractional, rounded after multiplying by the looting level. Specifies the stack size to set.",
                         "$ref": "#/definitions/LootTableNumberProvider"
                     },
-                    //"minecraft:set_attributes"
                     "modifiers": {
                         "type": "array",
                         "items": {
@@ -700,7 +688,6 @@
                             }
                         }
                     },
-                    //"minecraft:set_banner_pattern‌"
                     "patterns": {
                         "description": "List of patterns.",
                         "type": "array",
@@ -756,7 +743,7 @@
                                 },
                                 "color": {
                                     "description": "The color for this pattern. One of `white`, `orange`, `magenta`, `light_blue`, `yellow`, `lime`, `pink`, `gray`, `light_gray`, `cyan`, `purple`, `blue`, `brown`, `green`, `red`, `black`.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonColorEnum"
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/common_colors.json#/definitions/MinecraftCommonColorEnum"
                                 }
                             }
                         }
@@ -765,22 +752,18 @@
                         "description": "Optional. If true, new patterns will be appended to existing ones.",
                         "type": "boolean"
                     },
-                    //"minecraft:set_contents"
                     "entries": {
                         "description": "The entries to use as contents.",
                         "type": "array"
                     },
-                    //"minecraft:set_count"
                     "add": {
                         "description": "Optional. If `true`, change will be relative to current count/damage.",
                         "type": "boolean"
                     },
-                    //"minecraft:set_damage"
                     "damage": {
                         "description": "Number provider. Specifies the damage fraction to set (1.0 is undamaged, 0.0 is zero durability left).",
                         "$ref": "#/definitions/LootTableNumberProvider"
                     },
-                    //"minecraft:set_loot_table"
                     "name": {
                         "anyOf": [
                             {
@@ -789,7 +772,7 @@
                             },
                             {
                                 "description": "function=set_name A JSON text component name, allowing color, translations, etc.",
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/raw_text_format.json"
                             }
                         ]
                     },
@@ -798,22 +781,19 @@
                         "type": "integer",
                         "default": 0
                     },
-                    //"minecraft:set_lore"
                     "lore": {
                         "description": "List of JSON text components. Each list entry represents one line of the lore.",
                         "type": "array",
                         "items": {
                             "type": "object",
                             "default": {},
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/raw_text_format.json"
                         }
                     },
-                    //"minecraft:set_nbt"
                     "tag": {
                         "description": "Tag string to add, similar to those used by commands. Note that the first bracket is required and quotation marks need to be escaped using a backslash (\\)",
                         "type": "string"
                     },
-                    //"minecraft:set_stew_effect"
                     "set_stew_effect": {
                         "description": "Sets the status effects for suspicious stew.",
                         "type": "object",
@@ -839,7 +819,6 @@
                             }
                         }
                     },
-                    // optional conditions
                     "conditions": {
                         "description": "Determines conditions for this function to be applied. If multiple conditions are specified, all must pass.",
                         "type": "array",
@@ -869,13 +848,10 @@
                                         "value_check"
                                     ]
                                 },
-                                // The following is additional info needed for `condition`
-                                //"minecraft:alternative"
                                 "terms": {
                                     "description": "A list of conditions to join using 'or'.",
                                     "$ref": "#/properties/functions/items/properties/conditions/items/properties"
                                 },
-                                //"minecraft:block_state_property"
                                 "block": {
                                     "description": "A block ID. The test fails if the block doesn't match.",
                                     "type": "string"
@@ -885,7 +861,6 @@
                                     "type": "object",
                                     "default": {}
                                 },
-                                //"minecraft:damage_source_properties"
                                 "predicate": {
                                     "description": "Predicate applied to the damage source.",
                                     "type": "object",
@@ -1124,7 +1099,7 @@
                                                     "properties": {
                                                         "biome": {
                                                             "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/biomes.json#/definitions/MinecraftBiomeEnum"
+                                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/biomes.json#/definitions/MinecraftBiomeEnum"
                                                         },
                                                         "block": {
                                                             "type": "string",
@@ -1178,7 +1153,7 @@
                                                         "feature": {
                                                             "description": "Name of a structure.",
                                                             "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/structure_features.json#/definitions/MinecraftStructureEnum"
+                                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/structure_features.json#/definitions/MinecraftStructureEnum"
                                                         },
                                                         "fluid": {
                                                             "type": "object",
@@ -1472,12 +1447,10 @@
                                         }
                                     }
                                 },
-                                //"minecraft:entity_properties"
                                 "entity": {
                                     "description": "Specifies the entity to check for the condition. Set to this to use the entity that died or the player that gained the advancement, opened the container or broke the block, killer for the killer, or killer_player for a killer that is a player.",
                                     "enum": ["this","killer","killer_player"]
                                 },
-                                //"minecraft:entity_scores"
                                 "scores": {
                                     "description": "Scores to check. All specified scores must pass for the condition to pass.",
                                     "additionalProperties": {
@@ -1485,17 +1458,14 @@
                                         "$ref": "#/definitions/LootTableNumberProvider"
                                     }
                                 },
-                                //"minecraft:inverted"
                                 "term": {
                                     "description": "The condition to be negated.",
                                     "$ref": "#/properties/functions/items/properties/conditions/items"
                                 },
-                                //"minecraft:killed_by_player"
                                 "inverse": {
                                     "description": "If true, the condition passes if killer_player is not available.",
                                     "type": "boolean"
                                 },
-                                //"minecraft:location_check"
                                 "offsetx": {
                                     "description": "optional offsets to location",
                                     "type": "integer"
@@ -1508,33 +1478,28 @@
                                     "description": "optional offsets to location",
                                     "type": "integer"
                                 },
-                                //"minecraft:random_chance"
                                 "chance": {
                                     "description": "Success rate as a number 0.0–1.0.",
                                     "type": "number",
                                     "minimum": 0,
                                     "maximum": 1
                                 },
-                                //"minecraft:random_chance_with_looting"
                                 "looting_multiplier": {
                                     "description": "Looting adjustment to the base success rate. Formula is chance + (looting_level * looting_multiplier)",
                                     "type": "number"
                                 },
-                                //"minecraft:reference"
                                 "name": {
                                     "description": "The namespaced ID of the condition (predicate) referred to. A cyclic reference causes a parsing failure.",
                                     "type": "string"
                                 },
-                                //"minecraft:table_bonus"
                                 "enchantment": {
                                     "description": "Id of enchantment.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                                 },
                                 "chances": {
                                     "description": "List of probabilities for enchantment level, indexed from 0.",
                                     "type": "array"
                                 },
-                                //"minecraft:time_check",
                                 "value": {
                                     "description": "The time value in ticks.",
                                     "$ref": "#/definitions/LootTableNumberProvider"
@@ -1543,7 +1508,6 @@
                                     "description": "If present, time gets modulo-divided by this value (for example, if set to 24000, value operates on a time period of daytime ticks just like /time query daytime).",
                                     "type": "integer"
                                 },
-                                //"minecraft:weather_check"
                                 "raining": {
                                     "description": "If true, the condition evaluates to true only if it's raining.",
                                     "type": "boolean"
@@ -1552,7 +1516,6 @@
                                     "description": "If true, the condition evaluates to true only if it's thundering.",
                                     "type": "boolean"
                                 },
-                                //"minecraft:value_check"
                                 "range": {
                                     "description": "The range to check the value.",
                                     "$ref": "#/definitions/LootTableNumberProvider"

@@ -1,33 +1,33 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:ore_feature": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/ore_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/ore_feature.json"
         },
         "minecraft:aggregate_feature":{
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/aggregate_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/aggregate_feature.json"
         },
         "minecraft:sequence_feature":{
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/sequence_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/sequence_feature.json"
         },
         "minecraft:scatter_feature": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/scatter_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/scatter_feature.json"
         },
         "minecraft:search_feature": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/search_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/search_feature.json"
         },
         "minecraft:single_block_feature": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/single_block_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/single_block_feature.json"
         },
         "minecraft:structure_template_feature":{
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/structure_template_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/structure_template_feature.json"
         },
         "minecraft:tree_feature": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/tree_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/tree_feature.json"
         },
         "minecraft:weighted_random_feature": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/features/weighted_random_feature.json"
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/weighted_random_feature.json"
         }
     }
 }

@@ -1,17 +1,17 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Data for Minecraft Bedrock Edition addons.",
     "properties": {
         "description": {
             "properties": {
                 "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
                     "title": "identifier",
                     "description": "The identifier is used to register the entity with the server. In the Client Entity Definitions JSON the identifier sets the appearance of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors."
                 },
                 "min_engine_version": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/supportedVersions",
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/supportedVersions",
                     "title": "min_engine_version",
                     "description": "When present, players can set the min version needed to allow the JSON to be parsed. The version in the definition is compared to the engine version for which the top resource pack was built.If a definition's min_engine_version is newer than that pack's engine version then the definition is not parsed.Multiple definition files may use the same identifier, in which case only one of those definitions will be loaded. The definition with the same or closest and not greater min_engine_version, as compared to the top resource pack's engine version, will be parsed; all other definitions with the same identifier will not be parsed.This can be useful for continuing to support an older version of an entity, when an older resource pack is used at the top of the resource pack stack, while also supporting a newer version of the entity in all other cases."
                 },
@@ -115,10 +115,10 @@
                             "type": "number"
                         },
                         "base_color": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
                         },
                         "overlay_color": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
                         }
                     }
                 }

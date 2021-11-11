@@ -1,5 +1,5 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/ui.json",
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/ui.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "definitions": {
@@ -506,7 +506,7 @@
                 "trade_item_2",
                 "sell_item",
                 "trades",
-                "trade_tiers",
+                "trade_tiers"
             ]
         },
         "HardcodedBindingNames": {
@@ -1354,7 +1354,6 @@
                     "panorama_renderer"
                 ]
             },
-            // properties
             "size": {
                 "description": "Width and height of the element [width, height].",
                 "type": "array",
@@ -1488,7 +1487,6 @@
                 "description": "Bind and work with hardcoded values in the element",
                 "type": "array"
             },
-            // focus properties
             "focus_identifier": {
                 "type": "string"
             },
@@ -1570,7 +1568,6 @@
             "focus_container_custom_right": {
                 "type": "array"
             },
-            // tts properties
             "tts_name": {
                 "type": "string"
             },
@@ -1595,7 +1592,6 @@
             "tts_inherit_siblings": {
                 "type": "boolean"
             },
-            // bindings properties
             "binding_type": {
                 "enum": [
                     "collection",
@@ -1641,7 +1637,6 @@
             "resolve_sibling_scope": {
                 "type": "boolean"
             },
-            // button mappings properties
             "from_button_id": {
                 "description": "Button mappings can be applied to any kind of input elements (button, toggle, slider and input_panel) Button (action) id that fires"
             },
@@ -1683,7 +1678,6 @@
                 "description": "Button mappings can be applied to any kind of input elements (button, toggle, slider and input_panel)",
                 "type": "boolean"
             },
-            // Animations
             "anim_type": {
                 "enum": [
                     "wait",
@@ -1767,12 +1761,11 @@
                 "description": "Name of the event when the animation ends",
                 "type": "string"
             },
-            // Property Bag Property Names
             "#visible": {
                 "type": "boolean"
             },
             "#hyperlink": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/website_url"
+                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/website_url"
             },
             "#tts_dialog_title": {
                 "type": "string"
