@@ -871,6 +871,7 @@
                             "q.cardinal_facing",
                             "q.cardinal_facing_2d",
                             "q.cardinal_player_facing",
+                            "q.cardinal_block_face_placed_on",
                             "PROPERTY"
                         ]
                     }
