@@ -93,9 +93,12 @@
                     "properties": {
                         "minecraft:loot": {
                             "title": "STABLE",
-                            "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/chests/simple_dungeon.json\"",
+                            "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/blocks/simple_dungeon.json\"",
                             "type": "string",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json"
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json",
+                            "examples": [
+                                "loot_tables/blocks/BLOCK.json"
+                            ]
                         },
                         "minecraft:block_light_absorption": {
                             "title": "STABLE",
