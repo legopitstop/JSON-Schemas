@@ -200,7 +200,6 @@
                 }
             }
         },
-        // loot_tables
         "pools": {
             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/behavior/loot_tables.json#/properties/pools"
         },
@@ -257,6 +256,48 @@
         },
         "minecraft:weighted_random_feature": {
             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/weighted_random_feature.json"
+        },
+        "minecraft:beards_and_shavers": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/beards_and_shavers.json"
+        },
+        "minecraft:catalyst_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/catalyst_feature.json"
+        },
+        "minecraft:cave_carver_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/cave_carver_feature.json"
+        },
+        "minecraft:conditional_list": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/conditional_list.json"
+        },
+        "minecraft:geode_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/geode_feature.json"
+        },
+        "minecraft:growing_plant_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/growing_plant_feature.json"
+        },
+        "minecraft:hell_cave_carver_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/hell_cave_carver_feature.json"
+        },
+        "minecraft:multiface_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/multiface_feature.json"
+        },
+        "minecraft:rect_layout": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/rect_layout.json"
+        },
+        "minecraft:scan_surface": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/scan_surface.json"
+        },
+        "minecraft:sculk_patch_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/sculk_patch_feature.json"
+        },
+        "minecraft:snap_to_surface_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/snap_to_surface_feature.json"
+        },
+        "minecraft:underwater_cave_carver_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/underwater_cave_carver_feature.json"
+        },
+        "minecraft:vegetation_patch_feature": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/vegetation_patch_feature.json"
         },
         "minecraft:feature_rules": {
             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/features/feature_rules.json#/properties/minecraft:feature_rules"
