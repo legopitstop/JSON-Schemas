@@ -2,7 +2,7 @@
     "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "title": "minecraft:growing_plant_feature",
+    "title": "minecraft:geode_feature",
     "description": "'minecraft:geode_feature' generates a rock formation to simulate a geode. Each layer of, and block within, the geode can be replaced. Succeeds if: At least one block within the geode is placed.",
     "properties": {
         "description": {
