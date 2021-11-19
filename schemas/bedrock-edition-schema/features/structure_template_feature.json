@@ -14,44 +14,68 @@
             }
         },
         "structure_name": {
+            "description": "Reference to the structure to be placed.",
             "type": "string"
         },
         "adjustment_radius": {
-            "type": "number"
+            "description": "How far the structure is allowed to move when searching for a valid placement position. Search is radial, stopping when the nearest valid position is found. Defaults to 0 if omitted.",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16
         },
         "facing_direction": {
+            "description": "Direction the structure will face when placed in the world. Defaults to \"random\" if omitted.",
             "enum": [
-                "random",
                 "north",
                 "south",
                 "east",
-                "west"
+                "west",
+                "random"
             ]
         },
         "constraints": {
+            "description": "Specific constraints that must be satisfied when placing this structure.",
             "type": "object",
             "properties": {
+                "grounded": {
+                    "description": "When specified, ensures the structure is on the ground.",
+                    "type": "object",
+                    "default": {}
+                },
                 "unburied": {
-                    "type": "object"
+                    "description": "When specified, ensures the structure has air above it.",
+                    "type": "object",
+                    "default": {}
                 },
                 "block_intersection": {
+                    "description": "When specified, ensures the structure only intersects with allowlisted blocks.",
                     "type": "object",
-                    "properties": {
-                        "block_whitelist": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "uniqueItems": true
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "block_allowlist": {
+                                    "description": "List of blocks the owning structure is allowed to intersect with.",
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
                             }
                         },
-                        "block_blacklist": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "uniqueItems": true
+                        {
+                            "properties": {
+                                "block_whitelist": {
+                                    "description": "List of blocks the owning structure is allowed to intersect with.",
+                                    "type": "array",
+                                    "uniqueItems": true,
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
                             }
                         }
-                    }
+                    ]
                 }
             }
         }

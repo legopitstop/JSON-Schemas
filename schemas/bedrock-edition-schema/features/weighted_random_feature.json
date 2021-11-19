@@ -16,7 +16,10 @@
         "features": {
             "type": "array",
             "items": {
+                "description": "Collection of weighted features that placement will select from.",
                 "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
                 "items": [
                     {
                         "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",

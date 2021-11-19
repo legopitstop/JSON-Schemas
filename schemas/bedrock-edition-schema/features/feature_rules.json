@@ -17,9 +17,11 @@
                     }
                 },
                 "conditions": {
+                    "description": "Parameters to control where and when the feature will be placed.",
                     "type": "object",
                     "properties": {
                         "placement_pass": {
+                            "description": "When the feature should be placed relative to others. Earlier passes in the list are guaranteed to occur before later passes. Order is not guaranteed within each pass.",
                             "enum": [
                                 "first_pass",
                                 "before_underground_pass",
@@ -35,6 +37,7 @@
                             ]
                         },
                         "minecraft:biome_filter": {
+                            "description": "List of filter tests to determine which biomes this rule will attach to.",
                             "type": "array",
                             "items": {
                                 "type": "object",
@@ -89,14 +92,13 @@
                             ]
                         },
                         "iterations": {
-                            "description": "Number of scattered positions to generate (clumps the features in one area.)",
+                            "description": "Number of scattered positions to generate",
                             "type": [
                                 "integer",
                                 "string"
                             ]
                         },
                         "scatter_chance": {
-                            "description": "Number of scattered positions to generate",
                             "anyOf": [
                                 {
                                     "description": "Probability (0-100] that this scatter will occur.  Not evaluated each iteration; either no iterations will run, or all will.",
@@ -125,12 +127,11 @@
                             "anyOf": [
                                 {
                                     "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
-                                    "type": "number",
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ],
                                     "minimum": 1
-                                },
-                                {
-                                    "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
-                                    "type": "string"
                                 },
                                 {
                                     "description": "Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.",
@@ -147,7 +148,7 @@
                                             ]
                                         },
                                         "step_size": {
-                                            "description": "When the distribution type is grid, defines the distance between steps along this axis",
+                                            "description": " When the distribution type is grid, defines the distance between steps along this axis",
                                             "type": "integer",
                                             "minimum": 1
                                         },
@@ -157,7 +158,7 @@
                                             "minimum": 0
                                         },
                                         "extent": {
-                                            "description": "Lower bound (inclusive) of the scatter range, as an offset from the input point to scatter around, Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
+                                            "description": "Lower / Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
                                             "type": "array",
                                             "items": {
                                                 "anyOf": [
@@ -180,12 +181,11 @@
                             "anyOf": [
                                 {
                                     "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
-                                    "type": "number",
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ],
                                     "minimum": 1
-                                },
-                                {
-                                    "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
-                                    "type": "string"
                                 },
                                 {
                                     "description": "Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.",
@@ -202,7 +202,7 @@
                                             ]
                                         },
                                         "step_size": {
-                                            "description": "When the distribution type is grid, defines the distance between steps along this axis",
+                                            "description": " When the distribution type is grid, defines the distance between steps along this axis",
                                             "type": "integer",
                                             "minimum": 1
                                         },
@@ -212,7 +212,7 @@
                                             "minimum": 0
                                         },
                                         "extent": {
-                                            "description": "Lower bound (inclusive) of the scatter range, as an offset from the input point to scatter around, Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
+                                            "description": "Lower / Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
                                             "type": "array",
                                             "items": {
                                                 "anyOf": [
@@ -235,12 +235,11 @@
                             "anyOf": [
                                 {
                                     "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
-                                    "type": "number",
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ],
                                     "minimum": 1
-                                },
-                                {
-                                    "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
-                                    "type": "string"
                                 },
                                 {
                                     "description": "Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.",
@@ -257,7 +256,7 @@
                                             ]
                                         },
                                         "step_size": {
-                                            "description": "When the distribution type is grid, defines the distance between steps along this axis",
+                                            "description": " When the distribution type is grid, defines the distance between steps along this axis",
                                             "type": "integer",
                                             "minimum": 1
                                         },
@@ -267,7 +266,7 @@
                                             "minimum": 0
                                         },
                                         "extent": {
-                                            "description": "Lower bound (inclusive) of the scatter range, as an offset from the input point to scatter around, Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
+                                            "description": "Lower / Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
                                             "type": "array",
                                             "items": {
                                                 "anyOf": [

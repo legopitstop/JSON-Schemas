@@ -14,17 +14,21 @@
             }
         },
         "places_feature": {
+            "description": "Named reference of feature to be placed",
             "type": "string"
         },
         "search_volume": {
+            "description": "Axis-aligned bounding box that will be searched for valid placement positions. Expressed as offsets from the input position.",
             "type": "object",
             "properties": {
                 "min": {
+                    "description": "Minimum extent of the bounding volume expressed as [ x, y, z ]",
                     "type": "number",
                     "maxItems": 3,
                     "minItems": 3
                 },
                 "max": {
+                    "description": "Maxium extent of the bounding volume expressed as [ x, y, z ]",
                     "type": "number",
                     "maxItems": 3,
                     "minItems": 3
@@ -32,14 +36,20 @@
             }
         },
         "search_axis": {
+            "description": "Axis that the search will sweep along through the 'search_volume'",
             "enum": [
-                "x",
-                "y",
-                "z",
                 "-x",
+                "+x",
                 "-y",
-                "-z"
+                "+y",
+                "-z",
+                "+z"
             ]
+        },
+        "required_successes": {
+            "description": "Number of valid positions the search must find in order to place the referenced feature",
+            "minimum": 1,
+            "default": 1
         }
     }
 }
