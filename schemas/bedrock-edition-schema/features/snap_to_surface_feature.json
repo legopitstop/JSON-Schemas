@@ -1,0 +1,34 @@
+{
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "minecraft:growing_plant_feature",
+    "description": "'minecraft:snap_to_surface_feature' snaps the y-value of a feature placement pos to the floor or the ceiling within the provided 'vertical_search_range'. The placement biome is preserved. If the snap position goes outside of the placement biome, placement will fail.",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                }
+            }
+        },
+        "feature_to_snap": {
+            "description": "Named reference of feature to be snapped",
+            "type": "string"
+        },
+        "vertical_search_range": {
+            "description": "Range to search for a floor or ceiling for snaping the feature.",
+            "type": "integer"
+        },
+        "surface": {
+            "description": "Defines the surface that the y-value of the placement position will be snapped to. Valid values: 'ceiling', 'floor' and 'random_horizontal'",
+            "type":"string"
+        },
+        "allow_underwater_placement": {
+            "description": "Features can be snapped through water as well as air.}",
+            "type":"boolean",
+            "default": true
+        }
+    }
+}

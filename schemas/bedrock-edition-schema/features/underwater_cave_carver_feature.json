@@ -1,0 +1,29 @@
+{
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "minecraft:growing_plant_feature",
+    "description": "'minecraft:underwater_cave_carver_feature' carves a cave through the world in the current chunk, and in every chunk around the current chunk in an 8 radial pattern.This feature will specifically target creating caves only below sea level.",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                }
+            }
+        },
+        "fill_with": {
+            "description": "Reference to the block to fill the cave with.",
+            "type": "string"
+        },
+        "width_modifier": {
+            "description": "How many blocks to increase the cave radius by, from the center point of the cave.",
+            "type": "number"
+        },
+        "replace_air_with": {
+            "description": "Reference to the block to replace air blocks with.",
+            "type": "string"
+        }
+    }
+}
