@@ -499,7 +499,8 @@
                 "temperature",
                 "thorns",
                 "void",
-                "wither"
+                "wither",
+                "durability"
             ]
         },
         "Events": {
