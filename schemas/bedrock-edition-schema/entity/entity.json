@@ -19,7 +19,11 @@
                 },
                 {
                     "required": [
-                        "all_of",
+                        "all_of"
+                    ]
+                },
+                {
+                    "required": [
                         "any_of"
                     ]
                 }
@@ -83,8 +87,12 @@
             "description": "Event",
             "type": [
                 "object",
-                "string"
+                "string",
+                "array"
             ],
+            "items": {
+                "$ref": "#/definitions/events"
+            },
             "properties": {
                 "filters": {
                     "$ref": "#/definitions/filter"
@@ -3748,14 +3756,31 @@
                                     "description": "List of blocks to watch for being broken to fire off a specified event. If a block is in multiple lists, multiple events will fire.",
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ],
+                                        "default": {},
+                                        "properties": {
+                                            "block_list": {
+                                                "type": "array",
+                                                "default": [],
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "on_block_broken": {
+                                                "description": "Event to run when a block has been broken",
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 },
                                 "sensor_radius": {
                                     "description": "The maximum radial distance in which a specified block can be detected. The biggest radius is 32.0.",
                                     "type": "number",
                                     "default": 16.0,
-                                    "minimum": 32.0
+                                    "maximum": 32.0
                                 }
                             }
                         },
@@ -4242,7 +4267,8 @@
                                         },
                                         "max_optimized_distance": {
                                             "description": "The maximum distance considered during bandwidth optimizations. Any value below the max is interpolated to find optimization, and any value greater than or equal to this max results in max optimization.",
-                                            "type": "integer"
+                                            "type": "number",
+                                            "default": 0.0
                                         },
                                         "use_motion_prediction_hints": {
                                             "description": "When set to true, smaller motion packets will be sent during drop packet intervals, resulting in the same amount of packets being sent as without optimizations but with much less data being sent. This should be used when actors are travelling very quickly or teleporting to prevent visual oddities.",
