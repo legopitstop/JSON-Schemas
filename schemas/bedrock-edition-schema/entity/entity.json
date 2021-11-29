@@ -13,7 +13,6 @@
                 {
                     "required": [
                         "test",
-                        "operator",
                         "value"
                     ]
                 },
@@ -51,7 +50,9 @@
                         "in_lava",
                         "in_water",
                         "in_water_or_rain",
-                        "is_family"
+                        "is_family",
+                        "in_contact_with_water",
+                        "is_brightness"
                     ]
                 },
                 "subject": {
@@ -71,7 +72,8 @@
                         ">",
                         "<",
                         "!="
-                    ]
+                    ],
+                    "default": "=="
                 },
                 "value": {
                     "description": "The value to apply",
@@ -4233,8 +4235,14 @@
                             "properties": {
                                 "conditional_values": {
                                     "description": "The object containing the conditional bandwidth optimization values.",
-                                    "type": "object",
+                                    "type": [
+                                        "object",
+                                        "array"
+                                    ],
                                     "default": {},
+                                    "items": {
+                                        "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:conditional_bandwidth_optimization/properties/conditional_values"
+                                    },
                                     "properties": {
                                         "conditional_values": {
                                             "description": "Conditions that must be met for these optimization values to be used.",
@@ -4577,21 +4585,22 @@
                             "properties": {
                                 "triggers": {
                                     "description": "The list of triggers that fire when the environment conditions match the given filter criteria.",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "object",
+                                        "string"
+                                    ],
                                     "items": {
-                                        "type": [
-                                            "string",
-                                            "object"
-                                        ],
-                                        "properties": {
-                                            "filters": {
-                                                "description": "The filder",
-                                                "$ref": "#/definitions/filter"
-                                            },
-                                            "event": {
-                                                "description": "The event",
-                                                "type": "string"
-                                            }
+                                        "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:environment_sensor/properties/triggers"
+                                    },
+                                    "properties": {
+                                        "filters": {
+                                            "description": "The filder",
+                                            "$ref": "#/definitions/filter"
+                                        },
+                                        "event": {
+                                            "description": "The event",
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -5066,7 +5075,37 @@
                                     "description": "List of blocks, with certain block states, that we are monitoring to see if the entity is inside.",
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ],
+                                        "default": {},
+                                        "properties": {
+                                            "block": {
+                                                "description": "The block and its states",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "name": {
+                                                        "description": "The name of the block",
+                                                        "type": "string"
+                                                    },
+                                                    "states": {
+                                                        "description": "The block state",
+                                                        "type": "object",
+                                                        "default": {}
+                                                    }
+                                                }
+                                            },
+                                            "entered_block_event": {
+                                                "description": "Event when the entity has entered the block",
+                                                "$ref": "#/definitions/events"
+                                            },
+                                            "exited_block_event": {
+                                                "description": "Event whent the entity has exited the block",
+                                                "$ref": "#/definitions/events"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -6679,45 +6718,44 @@
                                     "type": "array",
                                     "default": [],
                                     "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "lock_rider_rotation": {
-                                                "description": "Angle in degrees that a rider is allowed to rotate while riding this entity. Omit this property for no limit",
-                                                "type": "number",
-                                                "default": 181
-                                            },
-                                            "max_rider_count": {
-                                                "description": "Defines the maximum number of riders that can be riding this entity for this seat to be valid",
-                                                "type": "integer",
-                                                "default": 1
-                                            },
-                                            "min_rider_count": {
-                                                "description": "Defines the minimum number of riders that need to be riding this entity before this seat can be used",
-                                                "type": "integer",
-                                                "default": 0
-                                            },
-                                            "position": {
-                                                "description": "Position of this seat relative to this entity's position",
-                                                "type": "array",
-                                                "minItems": 3,
-                                                "maxItems": 3,
-                                                "default": [
-                                                    0,
-                                                    0,
-                                                    0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                }
-                                            },
-                                            "rotate_rider_by": {
-                                                "description": "Offset to rotate riders by",
-                                                "type": [
-                                                    "string",
-                                                    "number"
-                                                ]
+                                        "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:rideable/properties/seats"
+                                    },
+                                    "properties": {
+                                        "lock_rider_rotation": {
+                                            "description": "Angle in degrees that a rider is allowed to rotate while riding this entity. Omit this property for no limit",
+                                            "type": "number",
+                                            "default": 181
+                                        },
+                                        "max_rider_count": {
+                                            "description": "Defines the maximum number of riders that can be riding this entity for this seat to be valid",
+                                            "type": "integer",
+                                            "default": 1
+                                        },
+                                        "min_rider_count": {
+                                            "description": "Defines the minimum number of riders that need to be riding this entity before this seat can be used",
+                                            "type": "integer",
+                                            "default": 0
+                                        },
+                                        "position": {
+                                            "description": "Position of this seat relative to this entity's position",
+                                            "type": "array",
+                                            "minItems": 3,
+                                            "maxItems": 3,
+                                            "default": [
+                                                0,
+                                                0,
+                                                0
+                                            ],
+                                            "items": {
+                                                "type": "number"
                                             }
+                                        },
+                                        "rotate_rider_by": {
+                                            "description": "Offset to rotate riders by",
+                                            "type": [
+                                                "string",
+                                                "number"
+                                            ]
                                         }
                                     }
                                 }
@@ -7165,7 +7203,10 @@
                                 },
                                 "time": {
                                     "description": "Amount of time in seconds for the timer. Can be specified as a number or a pair of numbers (min and max). Incompatible with random_time_choices.",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "number"
+                                    ],
                                     "minItems": 2,
                                     "maxItems": 2,
                                     "default": [
