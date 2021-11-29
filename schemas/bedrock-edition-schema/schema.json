@@ -305,6 +305,9 @@
         "minecraft:client_entity": {
             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/entity/client_entity.json"
         },
+        "minecraft:entity": {
+            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/entity/entity.json#/properties/minecraft:entity"
+        },
         "minecraft:spawn_rules": {
             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/entity/spawn_rules.json#/properties/minecraft:spawn_rules"
         },
