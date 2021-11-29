@@ -1,4 +1,5 @@
 {
+    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/entity/entity.json",
     "$schema": "http://json-schema.org/draft-07/schema",
     "description": "JSON schema for data-driven entities",
     "type": "object",
