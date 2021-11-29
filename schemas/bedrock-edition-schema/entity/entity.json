@@ -3898,7 +3898,7 @@
                                         "object"
                                     ],
                                     "items": {
-                                        "$ref": "#/properties/minecraft:entity/properties/components/minecraft:breedable/properties/breeds_with"
+                                        "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:breedable/properties/breeds_with"
                                     },
                                     "properties": {
                                         "baby_type": {
