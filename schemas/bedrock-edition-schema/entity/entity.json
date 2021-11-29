@@ -48,6 +48,26 @@
                     ]
                 }
             }
+        },
+        "events": {
+            "description": "Event",
+            "type": [
+                "object",
+                "string"
+            ],
+            "properties": {
+                "filters": {
+                    "$ref": "#/definitions/filter"
+                },
+                "events": {
+                    "description": "The event",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "The target",
+                    "type": "string"
+                }
+            }
         }
     },
     "properties": {
@@ -261,7 +281,7 @@
                                 },
                                 "on_celebration_end_event": {
                                     "description": "The event to trigger when the goal's duration expires.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "sound_interval": {
                                     "description": "The range of time in seconds to randomly wait before playing the sound again.",
@@ -824,7 +844,7 @@
                                 },
                                 "within_radius_event": {
                                     "description": "Event to run when target is within the radius. This event is broadcasted if broadcast is true.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -1645,8 +1665,11 @@
                                 },
                                 "entity_types": {
                                     "description": "Filters which types of targets are valid for this entity.",
-                                    "type": "object",
+                                    "type": ["object","array"],
                                     "default": {},
+                                    "items": {
+                                        "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:behavior.nearest_attackable_target/properties/entity_types"
+                                    },
                                     "properties": {
                                         "filters": {
                                             "description": "Conditions that make this target a valid type.",
@@ -3055,7 +3078,7 @@
                                             },
                                             "start_sound_event": {
                                                 "description": "The sound event to play when using this spell",
-                                                "type": "string"
+                                                "$ref": "#/definitions/events"
                                             },
                                             "weight": {
                                                 "description": "The weight of this spell. Controls how likely the mob is to choose this spell when casting one",
@@ -3354,7 +3377,7 @@
                             "properties": {
                                 "damage": {
                                     "description": "Range of the random amount of damage the melee attack deals. A negative value can heal the entity instead of hurting it",
-                                    "type": "array",
+                                    "type": ["array","integer"],
                                     "minItems": 2,
                                     "maxItems": 2,
                                     "items": {
@@ -3431,7 +3454,7 @@
                                 },
                                 "spawn_event": {
                                     "description": "The spawn event that will be used when the riding entity is created.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -3473,14 +3496,30 @@
                                 },
                                 "feed_items": {
                                     "description": "List of items that can be fed to the entity. Includes 'item' for the item name and 'growth' to define how much time it grows up by",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "string"
+                                    ],
                                     "items": {
                                         "type": "string"
                                     }
                                 },
                                 "grow_up": {
                                     "description": "Event to run when this entity grows up.",
-                                    "type": "string"
+                                    "type": [
+                                        "string",
+                                        "object"
+                                    ],
+                                    "properties": {
+                                        "event": {
+                                            "description": "The event to run",
+                                            "type": "string"
+                                        },
+                                        "target": {
+                                            "description": "The target",
+                                            "type": "string"
+                                        }
+                                    }
                                 },
                                 "transform_to_item": {
                                     "description": "The feed item used will transform to this item upon successful interaction. Format: itemName:auxValue",
@@ -3531,7 +3570,7 @@
                                 },
                                 "calm_event": {
                                     "description": "Event to run after the number of seconds specified in duration expires (when the entity stops being 'angry')",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "duration": {
                                     "description": "The amount of time in seconds that the entity will be angry",
@@ -3620,7 +3659,7 @@
                             "properties": {
                                 "attack_cooldown_complete_event": {
                                     "description": "Event to be runned when the cooldown is complete.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "attack_cooldown_time": {
                                     "description": "Amount of time in seconds for the cooldown. Can be specified as a number or a pair of numbers (min and max).",
@@ -3844,30 +3883,35 @@
                                 },
                                 "breed_items": {
                                     "description": "The list of items that can be used to get the entity into the 'love' state",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "string"
+                                    ],
                                     "items": {
                                         "type": "string"
                                     }
                                 },
                                 "breeds_with": {
                                     "description": "The list of entity definitions that this entity can breed with.",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "object"
+                                    ],
                                     "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "baby_type": {
-                                                "description": "The entity definition of this entity's babies.",
-                                                "type": "string"
-                                            },
-                                            "breed_event": {
-                                                "description": "Event to run when this entity breeds.",
-                                                "type": "string"
-                                            },
-                                            "mate_type": {
-                                                "description": "The entity definition of this entity's mate.",
-                                                "type": "string"
-                                            }
+                                        "$ref": "#/properties/minecraft:entity/properties/components/minecraft:breedable/properties/breeds_with"
+                                    },
+                                    "properties": {
+                                        "baby_type": {
+                                            "description": "The entity definition of this entity's babies.",
+                                            "type": "string"
+                                        },
+                                        "breed_event": {
+                                            "description": "Event to run when this entity breeds.",
+                                            "$ref": "#/definitions/events"
+                                        },
+                                        "mate_type": {
+                                            "description": "The entity definition of this entity's mate.",
+                                            "type": "string"
                                         }
                                     }
                                 },
@@ -4138,7 +4182,8 @@
                                         },
                                         "max_optimized_distance": {
                                             "description": "The maximum distance considered during bandwidth optimizations. Any value below the max is interpolated to find optimization, and any value greater than or equal to this max results in max optimization.",
-                                            "type": "integer"
+                                            "type": "number",
+                                            "default": 0.0
                                         },
                                         "use_motion_prediction_hints": {
                                             "description": "When set to true, smaller motion packets will be sent during drop packet intervals, resulting in the same amount of packets being sent as without optimizations but with much less data being sent. This should be used when actors are travelling very quickly or teleporting to prevent visual oddities.",
@@ -4241,7 +4286,7 @@
                                         },
                                         "on_damage_sound_event": {
                                             "description": "Defines what sound to play, if any, when the on_damage filters are met.",
-                                            "type": "string"
+                                            "$ref": "#/definitions/events"
                                         }
                                     }
                                 }
@@ -4314,15 +4359,15 @@
                             "properties": {
                                 "dried_out_event": {
                                     "description": "Event to fire when the drying out time runs out.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "recover_after_dried_out_event": {
                                     "description": "Event to fire when entity was already dried out but received increase in water supply.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "stopped_drying_out_event": {
                                     "description": "Event to fire when entity stopped drying out, for example got into water or under rain.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "total_time": {
                                     "description": "Amount of time in seconds to dry out fully.",
@@ -4469,7 +4514,20 @@
                                     "description": "The list of triggers that fire when the environment conditions match the given filter criteria.",
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": [
+                                            "string",
+                                            "object"
+                                        ],
+                                        "properties": {
+                                            "filters": {
+                                                "description": "The filder",
+                                                "$ref": "#/definitions/filter"
+                                            },
+                                            "event": {
+                                                "description": "The event",
+                                                "type": "string"
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -4744,7 +4802,7 @@
                                                 "properties": {
                                                     "birth_event": {
                                                         "description": "Event to run when this mob is created and matches the allele conditions.",
-                                                        "type": "string"
+                                                        "$ref": "#/definitions/events"
                                                     },
                                                     "both_allele": {
                                                         "description": "If this value is non-negative, compare both the mob's main and hidden alleles with this value for a match with both. Can also be a range of integers.",
@@ -5215,7 +5273,7 @@
                                 },
                                 "look_event": {
                                     "description": "The event identifier to run when the entities specified in filters look at this entity.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "search_radius": {
                                     "description": "Maximum distance this entity will look for another entity looking at it.",
@@ -6332,7 +6390,8 @@
                                     "minItems": 3,
                                     "maxItems": 3,
                                     "items": {
-                                        "type": "integer"
+                                        "type": "number",
+                                        "default": 0.0
                                     }
                                 },
                                 "on_fire_time": {
@@ -6427,7 +6486,7 @@
                             "properties": {
                                 "triggered_event": {
                                     "description": "Event to run we attempt to trigger a raid on the village.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -6745,11 +6804,11 @@
                             "properties": {
                                 "sit_event": {
                                     "description": "Event to run when the entity enters the 'sit' state",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "stand_event": {
                                     "description": "Event to run when the entity exits the 'sit' state",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -6794,7 +6853,7 @@
                                 },
                                 "spawn_event": {
                                     "description": "Event to call when the entity is spawned.",
-                                    "type": "string",
+                                    "$ref": "#/definitions/events",
                                     "default": "minecraft:entity_born"
                                 },
                                 "spawn_item": {
@@ -6827,7 +6886,7 @@
                                 },
                                 "tame_event": {
                                     "description": "Event to run when this entity becomes tamed",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "tame_items": {
                                     "description": "The list of items that can be used to tame this entity",
@@ -6897,7 +6956,7 @@
                                 },
                                 "tame_event": {
                                     "description": "Event that triggers when the entity becomes tamed.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -7055,7 +7114,7 @@
                                 },
                                 "time_down_event": {
                                     "description": "Event to fire when the time on the timer runs out.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -7240,7 +7299,7 @@
                                 },
                                 "trust_event": {
                                     "description": "Event to run when this entity becomes trusting.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "trust_items": {
                                     "description": "The list of items that can be used to get the entity to trust players.",
