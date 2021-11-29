@@ -6,10 +6,48 @@
     "default": {},
     "definitions": {
         "filter": {
-            "test": "in_lava",
-            "subject": "self",
-            "operator": "==",
-            "value": true
+            "description": "Minecraft Filter",
+            "type": "object",
+            "default": {},
+            "required": [
+                "test",
+                "subject",
+                "operator",
+                "value"
+            ],
+            "properties": {
+                "test": {
+                    "description": "The test",
+                    "enum": [
+                        "in_lava"
+                    ]
+                },
+                "subject": {
+                    "description": "The target",
+                    "enum": [
+                        "self"
+                    ]
+                },
+                "operator": {
+                    "description": "The operator",
+                    "enum": [
+                        "==",
+                        "<=",
+                        ">=",
+                        "><",
+                        ">",
+                        "<"
+                    ]
+                },
+                "value": {
+                    "description": "The value to apply",
+                    "type": [
+                        "boolean",
+                        "string",
+                        "number"
+                    ]
+                }
+            }
         }
     },
     "properties": {
@@ -4169,39 +4207,41 @@
                             "properties": {
                                 "triggers": {
                                     "description": "List of triggers with the events to call when taking specific kinds of damage.",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "object"
+                                    ],
                                     "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "cause": {
-                                                "description": "Type of damage that triggers the events.",
-                                                "type": "string",
-                                                "default": "none"
-                                            },
-                                            "damage_modifier": {
-                                                "description": "A modifier that adds to/removes from the base damage from the damage cause. It does not reduce damage to less than 0.",
-                                                "type": "number",
-                                                "default": 0.0
-                                            },
-                                            "damage_multiplier": {
-                                                "description": "A multiplier that modifies the base damage from the damage cause. If deals_damage is true the multiplier can only reduce the damage the entity will take to a minimum of 1.",
-                                                "type": "number",
-                                                "default": 1.0
-                                            },
-                                            "deals_damage": {
-                                                "description": "If true, the damage dealt to the entity will take away health from it, set to false to make the entity ignore that damage.",
-                                                "type": "boolean",
-                                                "default": true
-                                            },
-                                            "on_damage": {
-                                                "description": "Specifies filters for entity definitions and events.",
-                                                "$ref": "#/definitions/filter"
-                                            },
-                                            "on_damage_sound_event": {
-                                                "description": "Defines what sound to play, if any, when the on_damage filters are met.",
-                                                "type": "string"
-                                            }
+                                        "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:damage_sensor/properties/triggers"
+                                    },
+                                    "properties": {
+                                        "cause": {
+                                            "description": "Type of damage that triggers the events.",
+                                            "type": "string",
+                                            "default": "none"
+                                        },
+                                        "damage_modifier": {
+                                            "description": "A modifier that adds to/removes from the base damage from the damage cause. It does not reduce damage to less than 0.",
+                                            "type": "number",
+                                            "default": 0.0
+                                        },
+                                        "damage_multiplier": {
+                                            "description": "A multiplier that modifies the base damage from the damage cause. If deals_damage is true the multiplier can only reduce the damage the entity will take to a minimum of 1.",
+                                            "type": "number",
+                                            "default": 1.0
+                                        },
+                                        "deals_damage": {
+                                            "description": "If true, the damage dealt to the entity will take away health from it, set to false to make the entity ignore that damage.",
+                                            "type": "boolean",
+                                            "default": true
+                                        },
+                                        "on_damage": {
+                                            "description": "Specifies filters for entity definitions and events.",
+                                            "$ref": "#/definitions/filter"
+                                        },
+                                        "on_damage_sound_event": {
+                                            "description": "Defines what sound to play, if any, when the on_damage filters are met.",
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -7837,7 +7877,14 @@
                             }
                         }
                     }
-                }
+                },
+                "component_groups": {
+                    "description": "Compoennts",
+                    "additionalProperties": {
+                        "$ref": "#/properties/minecraft:entity/properties/components"
+                    }
+                },
+                "events": {}
             }
         }
     }
