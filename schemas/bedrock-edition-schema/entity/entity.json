@@ -9,23 +9,52 @@
             "description": "Minecraft Filter",
             "type": "object",
             "default": {},
-            "required": [
-                "test",
-                "subject",
-                "operator",
-                "value"
+            "anyOf": [
+                {
+                    "required": [
+                        "test",
+                        "operator",
+                        "value"
+                    ]
+                },
+                {
+                    "required": [
+                        "all_of",
+                        "any_of"
+                    ]
+                }
             ],
             "properties": {
+                "all_of": {
+                    "description": "Must match all filters",
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/filter/properties"
+                    }
+                },
+                "any_of": {
+                    "description": "Must at least one of the filters",
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/filter/properties"
+                    }
+                },
                 "test": {
                     "description": "The test",
                     "enum": [
-                        "in_lava"
+                        "in_lava",
+                        "in_water",
+                        "in_water_or_rain",
+                        "is_family"
                     ]
                 },
                 "subject": {
                     "description": "The target",
                     "enum": [
-                        "self"
+                        "self",
+                        "other"
                     ]
                 },
                 "operator": {
@@ -36,7 +65,8 @@
                         ">=",
                         "><",
                         ">",
-                        "<"
+                        "<",
+                        "!="
                     ]
                 },
                 "value": {
@@ -785,7 +815,7 @@
                                 },
                                 "on_home": {
                                     "description": "Event to run when this mob gets home.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "speed_multiplier": {
                                     "description": "Movement speed multiplier of the mob when using this AI Goal",
@@ -1015,7 +1045,7 @@
                                 },
                                 "on_lay": {
                                     "description": "Event to run when this mob lays the egg.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "search_height": {
                                     "description": "Height in blocks the mob will look for sand block to move towards",
@@ -1335,11 +1365,11 @@
                                 },
                                 "on_reach": {
                                     "description": "Event to run on block reached.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_stay_completed": {
                                     "description": "Event to run on completing a stay of stay_duration at the block.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "search_height": {
                                     "description": "The height in blocks that the mob will look for the block.",
@@ -1665,7 +1695,10 @@
                                 },
                                 "entity_types": {
                                     "description": "Filters which types of targets are valid for this entity.",
-                                    "type": ["object","array"],
+                                    "type": [
+                                        "object",
+                                        "array"
+                                    ],
                                     "default": {},
                                     "items": {
                                         "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:behavior.nearest_attackable_target/properties/entity_types"
@@ -3345,7 +3378,7 @@
                                 },
                                 "on_arrival": {
                                     "description": "Event to run when the mob reaches their jobsite and finishes working.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "sound_delay_max": {
                                     "description": "The max interval in which a sound will play",
@@ -3377,7 +3410,10 @@
                             "properties": {
                                 "damage": {
                                     "description": "Range of the random amount of damage the melee attack deals. A negative value can heal the entity instead of hurting it",
-                                    "type": ["array","integer"],
+                                    "type": [
+                                        "array",
+                                        "integer"
+                                    ],
                                     "minItems": 2,
                                     "maxItems": 2,
                                     "items": {
@@ -3663,7 +3699,10 @@
                                 },
                                 "attack_cooldown_time": {
                                     "description": "Amount of time in seconds for the cooldown. Can be specified as a number or a pair of numbers (min and max).",
-                                    "type": "array",
+                                    "type": [
+                                        "array",
+                                        "number"
+                                    ],
                                     "minItems": 2,
                                     "maxItems": 2,
                                     "default": [
@@ -4568,11 +4607,11 @@
                                             },
                                             "on_equip": {
                                                 "description": "Event to trigger when this entity is equipped with this item.",
-                                                "type": "string"
+                                                "$ref": "#/definitions/events"
                                             },
                                             "on_unequip": {
                                                 "description": "Event to trigger when this item is removed from this entity.",
-                                                "type": "string"
+                                                "$ref": "#/definitions/events"
                                             },
                                             "slot": {
                                                 "description": "The slot number of this slot.",
@@ -4865,7 +4904,7 @@
                                 },
                                 "on_give": {
                                     "description": "Event to fire when the correct item is given.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -5070,7 +5109,7 @@
                                 },
                                 "on_interact": {
                                     "description": "Event to fire when the interaction occurs.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "particle_on_start": {
                                     "description": "Particle effect that will be triggered at the start of the interaction.",
@@ -5230,11 +5269,11 @@
                                 },
                                 "on_leash": {
                                     "description": "Event to call when this entity is leashed.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_unleash": {
                                     "description": "Event to call when this entity is unleashed.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "soft_distance": {
                                     "description": "Distance in blocks at which the 'spring' effect starts acting to keep this entity close to the entity that leashed it.",
@@ -5484,7 +5523,7 @@
                                         },
                                         "on_named": {
                                             "description": "Event to be called when this entity acquires the name specified in 'name_filter'",
-                                            "type": "string"
+                                            "$ref": "#/definitions/events"
                                         }
                                     }
                                 }
@@ -6239,15 +6278,15 @@
                             "properties": {
                                 "on_close": {
                                     "description": "Event to call when the entity is done peeking.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_open": {
                                     "description": "Event to call when the entity starts peeking.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_target_open": {
                                     "description": "Event to call when the entity's target entity starts peeking.",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 }
                             }
                         },
@@ -6525,11 +6564,11 @@
                                 },
                                 "on_activate": {
                                     "description": "Event to call when the rail is activated",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_deactivate": {
                                     "description": "Event to call when the rail is deactivated",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "tick_command_block_on_activate": {
                                     "description": "If true, command blocks will start ticking when passing over an activated rail",
@@ -6978,15 +7017,15 @@
                                 },
                                 "on_inside_range": {
                                     "description": "Event to call when an entity gets in the inside range. Can specify 'event' for the name of the event and 'target' for the target of the event",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_outside_range": {
                                     "description": "Event to call when an entity gets in the outside range. Can specify 'event' for the name of the event and 'target' for the target of the event",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "on_vision_lost_inside_range": {
                                     "description": "Event to call when an entity exits visual range. Can specify 'event' for the name of the event and 'target' for the target of the event",
-                                    "type": "string"
+                                    "$ref": "#/definitions/events"
                                 },
                                 "outside_range": {
                                     "description": "Maximum distance in blocks that another entity will be considered in the 'outside' range",
