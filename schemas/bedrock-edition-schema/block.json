@@ -102,7 +102,7 @@
                         },
                         "minecraft:block_light_absorption": {
                             "title": "STABLE",
-                            "description": "The amount of light this block will absorb.",
+                            "description": "The amount of light this block will absorb. (Renamed to 'block_light_filter' in 1.18.10.20)",
                             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
                             "default": 0
                         },

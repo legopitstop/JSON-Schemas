@@ -527,12 +527,12 @@
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock",
                                     "description": "block: Set the placement block name for the planter item."
                                 },
-                                "use_block_description": {
-                                    "type": "boolean"
-                                },
                                 "on_use": {
                                     "type": "array",
-                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
+                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         },
@@ -732,21 +732,16 @@
                                 "can_always_eat": {
                                     "type": "boolean",
                                     "default": false,
-                                    "description": "If true you can always eat this item (even when not hungry), defaults to false."
+                                    "description": "If true you can always eat this item (even when not hungry). Default is set to false."
                                 },
                                 "nutrition": {
                                     "type": "integer",
-                                    "description": "How much nutrition does this food item give the player when eaten."
-                                },
-                                "on_use_action": {
-                                    "enum": [
-                                        "chorus_teleport"
-                                    ],
-                                    "description": "built-in actions to run."
+                                    "description": "The value that is added to the actor's nutrition when the item is used. Default is set to 0.",
+                                    "default": 0
                                 },
                                 "on_consume": {
                                     "type": "object",
-                                    "description": "Runs event when you consume the item.",
+                                    "description": "Event trigger for when the item is consumed.",
                                     "properties": {
                                         "event": {
                                             "type": "string",
@@ -758,29 +753,12 @@
                                         }
                                     }
                                 },
-                                "on_use_range": {
-                                    "type": "array",
-                                    "description": "Used for \"chorus_teleport\" action.",
-                                    "items": {
-                                        "type": "number"
-                                    }
-                                },
-                                "cooldown_type": {
-                                    "enum": [
-                                        "chorusfruit"
-                                    ],
-                                    "description": "The type of cooldown to use."
-                                },
-                                "cooldown_time": {
-                                    "type": "number",
-                                    "description": "How long of a cooldown until the player can consume another."
-                                },
                                 "saturation_modifier": {
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/saturationModifier",
-                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when appling the saturation buff. Which happens when you eat the item."
+                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6."
                                 },
                                 "using_converts_to": {
-                                    "description": "When used, convert the *this* item to the one specified by 'using_converts_to'.",
+                                    "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
                                     "anyOf": [
                                         {
                                             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
