@@ -1421,7 +1421,7 @@
                                         0
                                     ],
                                     "items": {
-                                        "type": "integer"
+                                        "type": "number"
                                     }
                                 },
                                 "target_selection_method": {
@@ -6715,7 +6715,7 @@
                                 },
                                 "seats": {
                                     "description": "The list of positions and number of riders for each position for entities riding this entity",
-                                    "type": "array",
+                                    "type": ["array","object"],
                                     "default": [],
                                     "items": {
                                         "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:rideable/properties/seats"
