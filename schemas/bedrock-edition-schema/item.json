@@ -1027,6 +1027,19 @@
                                 }
                             }
                         },
+                        "minecraft:item_storage": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The Storage Item Component is used for storing Items within an Item's User Data",
+                            "type":"object",
+                            "default": {},
+                            "properties":{
+                                "capacity": {
+                                    "description": "The max capacity of the item. default is 64",
+                                    "type":"integer",
+                                    "default": 64
+                                }
+                            }
+                        },
                         "minecraft:throwable": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "Throwable item component. Throwable items, such as a snowball.",
