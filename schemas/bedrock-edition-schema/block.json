@@ -272,11 +272,6 @@
                                 }
                             ]
                         },
-                        "minecraft:geometry": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
-                        },
                         "minecraft:immovable": {
                             "title": "STABLE",
                             "description": "An Immovable block cannot be pushed by pistons",
@@ -294,53 +289,6 @@
                             "title": "STABLE",
                             "description": "Blocks with those components won't stick to stickyPistons",
                             "type": "boolean"
-                        },
-                        "minecraft:part_visibility": {
-                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
-                            "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-                            "type": "object",
-                            "additionalProperties": {
-                                "description": "The bone id to render true/false",
-                                "type": "string",
-                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
-                            }
-                        },
-                        "minecraft:pick_collision": {
-                            "title": "STABLE",
-                            "description": "Can only be set to false, it disables the collision of the block with entities",
-                            "default": false,
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": [
-                                        "origin",
-                                        "size"
-                                    ],
-                                    "properties": {
-                                        "origin": {
-                                            "type": "array",
-                                            "default": [
-                                                -8.0,
-                                                0.0,
-                                                -8.0
-                                            ],
-                                            "description": "Minimal position Bounds of the collision box"
-                                        },
-                                        "size": {
-                                            "type": "array",
-                                            "default": [
-                                                16.0,
-                                                16.0,
-                                                16.0
-                                            ],
-                                            "description": "Size of each side of the box of the component"
-                                        }
-                                    }
-                                }
-                            ]
                         },
                         "minecraft:placement_filter": {
                             "title": "STABLE",
@@ -485,12 +433,6 @@
                                     }
                                 }
                             }
-                        },
-                        "minecraft:unit_cube": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Specifies that a unit cube is to be used with tessellation.",
-                            "type": "object",
-                            "default": {}
                         },
                         "minecraft:unwalkable": {
                             "title": "STABLE",
@@ -663,6 +605,146 @@
                                     "description": "The target of event executed on the block."
                                 }
                             }
+                        },
+                        "minecraft:block_light_filter": {
+                            "title": "STABLE",
+                            "description": "The amount of light this block will filter out. Higher value means more light will be filtered out (0 - 15).",
+                            "type":"integer",
+                            "minimum": 0,
+                            "maximum": 15,
+                            "default": 0
+                        },
+                        "minecraft:aim_collision": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "If set to false it disables the collision of the block with entities",
+                            "default": false,
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "origin",
+                                        "size"
+                                    ],
+                                    "properties": {
+                                        "origin": {
+                                            "type": "array",
+                                            "default": [
+                                                -8.0,
+                                                0.0,
+                                                -8.0
+                                            ],
+                                            "description": "Minimal position Bounds of the collision box. Origin can't be smaller than (-8, 0, -8) and can't be more than (8, 16, 8)."
+                                        },
+                                        "size": {
+                                            "type": "array",
+                                            "default": [
+                                                16.0,
+                                                16.0,
+                                                16.0
+                                            ],
+                                            "description": "Size of each side of the box of the component. When added to origin it can't make origin smaller than (-8, 0, -8) or more than (0, 16, 8)."
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:block_collision": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "Describes the collision of the block with entities and actors. If set to false, it disables the collision of the block with entities. An origin of [-8.0, 0.0, -8.0] with a size of [16, 16, 16] is a unit cube.",
+                            "default": false,
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "origin",
+                                        "size"
+                                    ],
+                                    "properties": {
+                                        "origin": {
+                                            "type": "array",
+                                            "default": [
+                                                -8.0,
+                                                0.0,
+                                                -8.0
+                                            ],
+                                            "description": "Minimal position Bounds of the collision box"
+                                        },
+                                        "size": {
+                                            "type": "array",
+                                            "default": [
+                                                16.0,
+                                                16.0,
+                                                16.0
+                                            ],
+                                            "description": "Size of each side of the box of the component"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:geometry": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                        },
+                        "minecraft:part_visibility": {
+                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+                            "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
+                            "type": "object",
+                            "additionalProperties": {
+                                "description": "The bone id to render true/false",
+                                "type": "string",
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            }
+                        },
+                        "minecraft:pick_collision": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "Can only be set to false, it disables the collision of the block with entities",
+                            "default": false,
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "origin",
+                                        "size"
+                                    ],
+                                    "properties": {
+                                        "origin": {
+                                            "type": "array",
+                                            "default": [
+                                                -8.0,
+                                                0.0,
+                                                -8.0
+                                            ],
+                                            "description": "Minimal position Bounds of the collision box"
+                                        },
+                                        "size": {
+                                            "type": "array",
+                                            "default": [
+                                                16.0,
+                                                16.0,
+                                                16.0
+                                            ],
+                                            "description": "Size of each side of the box of the component"
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "minecraft:unit_cube": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Specifies that a unit cube is to be used with tessellation.",
+                            "type": "object",
+                            "default": {}
                         },
                         "tag:wood": {
                             "$ref": "#/definitions/VanillaTags"
