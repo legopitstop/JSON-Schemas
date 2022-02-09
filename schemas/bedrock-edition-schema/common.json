@@ -271,7 +271,8 @@
                 "soul_campfire",
                 "crafting_table",
                 "brewing_stand",
-                "stonecutter"
+                "stonecutter",
+                "smithing_table"
             ]
         },
         "itemDataCount": {
