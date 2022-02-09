@@ -511,77 +511,6 @@
             "type": "object",
             "description": "This is the name of the event.",
             "properties": {
-                "shoot": {
-                    "description": "Shoots a projectile.",
-                    "properties": {
-                        "projectile": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/entities.json#/definitions/MinecraftEntityExamples"
-                        },
-                        "launch_power": {
-                            "type": "number"
-                        },
-                        "angle_offset": {
-                            "type": "number"
-                        }
-                    }
-                },
-                "condition": {
-                    "$ref": "#/definitions/MoLang",
-                    "title": "condition",
-                    "description": "The condition of event to be executed on the block. (Only applyable to 'sequence' event)"
-                },
-                "weight": {
-                    "type": "integer",
-                    "description": "The weight of event to be executed on the block. (Only applyable to 'randomize' event)"
-                },
-                "sequence": {
-                    "type": "array",
-                    "default": [
-                        {}
-                    ],
-                    "title": "sequence",
-                    "description": "Used to sequence event functions.",
-                    "items": {
-                        "$ref": "#/definitions/Events"
-                    }
-                },
-                "randomize": {
-                    "type": "array",
-                    "default": [
-                        {}
-                    ],
-                    "title": "randomize",
-                    "description": "Used to randomize event functions",
-                    "items": {
-                        "$ref": "#/definitions/Events"
-                    }
-                },
-                "trigger": {
-                    "type": "object",
-                    "title": "trigger",
-                    "description": "Run another event.",
-                    "required": [
-                        "event"
-                    ],
-                    "properties": {
-                        "condition": {
-                            "$ref": "#/definitions/MoLang",
-                            "title": "condition",
-                            "description": "The condition of event to be executed on the block."
-                        },
-                        "event": {
-                            "type": "string",
-                            "title": "event",
-                            "description": "The type of event executed on the block."
-                        },
-                        "target": {
-                            "$ref": "#/definitions/eventTarget",
-                            "default": "self",
-                            "title": "target",
-                            "description": "The target of event executed on the block."
-                        }
-                    }
-                },
                 "add_mob_effect": {
                     "type": "object",
                     "required": [
@@ -978,6 +907,77 @@
                             "$ref": "#/definitions/nameSpaceIDItem",
                             "title": "transform",
                             "description": "Name of the item it should transform into"
+                        }
+                    }
+                },
+                "shoot": {
+                    "description": "Shoots a projectile.",
+                    "properties": {
+                        "projectile": {
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                        },
+                        "launch_power": {
+                            "type": "number"
+                        },
+                        "angle_offset": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "condition": {
+                    "$ref": "#/definitions/MoLang",
+                    "title": "condition",
+                    "description": "The condition of event to be executed on the block. (Only applyable to 'sequence' event)"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "The weight of event to be executed on the block. (Only applyable to 'randomize' event)"
+                },
+                "sequence": {
+                    "type": "array",
+                    "default": [
+                        {}
+                    ],
+                    "title": "sequence",
+                    "description": "Used to sequence event functions.",
+                    "items": {
+                        "$ref": "#/definitions/Events"
+                    }
+                },
+                "randomize": {
+                    "type": "array",
+                    "default": [
+                        {}
+                    ],
+                    "title": "randomize",
+                    "description": "Used to randomize event functions",
+                    "items": {
+                        "$ref": "#/definitions/Events"
+                    }
+                },
+                "trigger": {
+                    "type": "object",
+                    "title": "trigger",
+                    "description": "Run another event.",
+                    "required": [
+                        "event"
+                    ],
+                    "properties": {
+                        "condition": {
+                            "$ref": "#/definitions/MoLang",
+                            "title": "condition",
+                            "description": "The condition of event to be executed on the block."
+                        },
+                        "event": {
+                            "type": "string",
+                            "title": "event",
+                            "description": "The type of event executed on the block."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "title": "target",
+                            "description": "The target of event executed on the block."
                         }
                     }
                 }

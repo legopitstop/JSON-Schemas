@@ -8,30 +8,32 @@
             "default": {}
         },
         "materialInstances": {
+            "description": "A material instance definition to map to a material instance in a geometry file. The material instance '*' will be used for any materials that don't have a match.",
             "required": [
                 "texture"
             ],
             "properties": {
                 "texture": {
-                    "description": "Texture name referenced in terrain_texture",
+                    "description": "Texture name for the material.",
                     "type": "string"
                 },
                 "render_method": {
-                    "description": "The render method to use. \n'double_sided' double sided is a blending material without “backface culling”.\n'blend' Used for a block like stained glass. Allows for transparency and translucency (slightly transparent pixels).\n'opaque' Used for a normal block texture without an alpha layer. Does not allow for transparency or translucency \n'alpha_test' Used for a block like the vanilla (unstained) glass. Does not allow for translucency, only either fully opaque or fully transparent pixels.",
+                    "description": "The render method to use. Must be one of 'opaque', 'double_sided', 'blend', or 'alpha_test'.",
                     "enum": [
                         "double_sided",
                         "blend",
                         "opaque",
                         "alpha_test"
-                    ]
+                    ],
+                    "default": "opaque"
                 },
                 "face_dimming": {
-                    "description": "Refers to whether or not block is affected by lighting",
+                    "description": "Should this material be dimmed by the direction it's facing.",
                     "default": true,
                     "type": "boolean"
                 },
                 "ambient_occlusion": {
-                    "description": "Refers to whether or not faces have smooth lighting",
+                    "description": "Should this material have ambient occlusion applied when lighting.",
                     "default": true,
                     "type": "boolean"
                 }
@@ -91,26 +93,152 @@
                 "components": {
                     "type": "object",
                     "properties": {
-                        "minecraft:loot": {
-                            "title": "STABLE",
-                            "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/blocks/simple_dungeon.json\"",
-                            "type": "string",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json",
-                            "examples": [
-                                "loot_tables/blocks/BLOCK.json"
+                        "minecraft:aim_collision": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "If set to false it disables the collision of the block with entities",
+                            "default": false,
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "origin",
+                                        "size"
+                                    ],
+                                    "properties": {
+                                        "origin": {
+                                            "type": "array",
+                                            "default": [
+                                                -8.0,
+                                                0.0,
+                                                -8.0
+                                            ],
+                                            "description": "Minimal position Bounds of the collision box. Origin can't be smaller than (-8, 0, -8) and can't be more than (8, 16, 8)."
+                                        },
+                                        "size": {
+                                            "type": "array",
+                                            "default": [
+                                                16.0,
+                                                16.0,
+                                                16.0
+                                            ],
+                                            "description": "Size of each side of the box of the component. When added to origin it can't make origin smaller than (-8, 0, -8) or more than (0, 16, 8)."
+                                        }
+                                    }
+                                }
                             ]
                         },
-                        "minecraft:block_light_absorption": {
-                            "title": "STABLE",
-                            "description": "The amount of light this block will absorb. (Renamed to 'block_light_filter' in 1.18.10.20)",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
-                            "default": 0
+                        "minecraft:block_collision": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "Describes the collision of the block with entities and actors. If set to false, it disables the collision of the block with entities. An origin of [-8.0, 0.0, -8.0] with a size of [16, 16, 16] is a unit cube.",
+                            "default": false,
+                            "anyOf": [
+                                {
+                                    "type": "boolean"
+                                },
+                                {
+                                    "type": "object",
+                                    "required": [
+                                        "origin",
+                                        "size"
+                                    ],
+                                    "properties": {
+                                        "origin": {
+                                            "type": "array",
+                                            "default": [
+                                                -8.0,
+                                                0.0,
+                                                -8.0
+                                            ],
+                                            "description": "Minimal position Bounds of the collision box"
+                                        },
+                                        "size": {
+                                            "type": "array",
+                                            "default": [
+                                                16.0,
+                                                16.0,
+                                                16.0
+                                            ],
+                                            "description": "Size of each side of the box of the component"
+                                        }
+                                    }
+                                }
+                            ]
                         },
                         "minecraft:block_light_emission": {
                             "title": "STABLE",
                             "description": "The amount of light this block will emit in a range [0.0, 1.0].",
                             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Decimal",
                             "maximum": 1.0
+                        },
+                        "minecraft:block_light_filter": {
+                            "title": "STABLE",
+                            "description": "The amount of light this block will filter out. Higher value means more light will be filtered out (0 - 15).",
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 15,
+                            "default": 0
+                        },
+                        "minecraft:breakonpush": {
+                            "title": "STABLE",
+                            "description": "When pushed by a piston the block breaks",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "minecraft:breathability": {
+                            "title": "STABLE",
+                            "description": "The breathing type of this block that affects the breathing state of mobs when they have their breathing points inside this block. Available values: solid, air",
+                            "enum": [
+                                "solid",
+                                "air"
+                            ],
+                            "default": "solid"
+                        },
+                        "minecraft:crafting_table": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "Describes the component of a custom crafting table. This component supports only \"recipe_shaped\" and \"recipe_shapeless\" typed recipes and not others like \"recipe_furnace\" or \"recipe_brewing_mix\". If there are two recipes for one item, the recipe book will pick the first that was parsed. If two input recipes are the same, crafting may assert and the resulting item may vary.",
+                            "type": "object",
+                            "properties": {
+                                "grid_size": {
+                                    "type": "number",
+                                    "minimum": 3,
+                                    "maximum": 3,
+                                    "description": "The size of the crafting grid, Currently only supports '3'"
+                                },
+                                "custom_description": {
+                                    "type": "string",
+                                    "description": "Defines the name in the UI of this table. If not specified, the name of the block will be used."
+                                },
+                                "crafting_tags": {
+                                    "type": "array",
+                                    "description": "Defines the tags recipes should define to be crafted on this table.",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:creative_category": {
+                            "title": "STABLE",
+                            "description": "Specifies the creative group for the block.",
+                            "type": [
+                                "object",
+                                "string"
+                            ],
+                            "default": {},
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup",
+                            "properties": {
+                                "category": {
+                                    "description": "The tab in the creative invetory to place this block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemTab"
+                                },
+                                "group": {
+                                    "description": "The group in the category tab to place this block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup"
+                                }
+                            }
                         },
                         "minecraft:destroy_time": {
                             "title": "STABLE",
@@ -119,6 +247,11 @@
                             "default": 0.0,
                             "minimum": 0.000000,
                             "maximum": 340282346638528859811704183484516925440.000000
+                        },
+                        "minecraft:display_name": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Specifies the language file key that maps to what text will be displayed when you hover over the block.",
+                            "type": "string"
                         },
                         "minecraft:explosion_resistance": {
                             "title": "STABLE",
@@ -152,10 +285,29 @@
                         },
                         "minecraft:friction": {
                             "title": "STABLE",
-                            "description": "Property describing the friction for this block. Friction effects an entities movements when it walks on the block.",
-                            "minimum": 0.100000,
-                            "maximum": 340282346638528859811704183484516925440.000000,
+                            "description": "Property describing the friction for this block in a range of [0.1, 1.0]. Friction affects an entity's movement speed when it travels on the block. Greater value results in less friction.",
+                            "minimum": 0.1,
+                            "maximum": 1.0,
                             "default": 0.6
+                        },
+                        "minecraft:geometry": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                        },
+                        "minecraft:immovable": {
+                            "title": "STABLE",
+                            "description": "An Immovable block cannot be pushed by pistons",
+                            "type": "boolean"
+                        },
+                        "minecraft:loot": {
+                            "title": "STABLE",
+                            "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/blocks/simple_dungeon.json\"",
+                            "type": "string",
+                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json",
+                            "examples": [
+                                "loot_tables/blocks/BLOCK.json"
+                            ]
                         },
                         "minecraft:map_color": {
                             "title": "STABLE",
@@ -163,123 +315,9 @@
                             "type": "string",
                             "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
                         },
-                        "minecraft:creative_category": {
-                            "title": "STABLE",
-                            "description": "Your custom block will not show up in the Creative Inventory if you don't have this component.",
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "category": {
-                                    "description": "The tab in the creative invetory to place this block.",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemTab"
-                                },
-                                "group": {
-                                    "description": "The group in the category tab to place this block.",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup"
-                                }
-                            }
-                        },
-                        "minecraft:crafting_table": {
-                            "title": "STABLE",
-                            "description": "Specifies that a crafting table UI is to be used with tessellation.",
-                            "type": "object",
-                            "properties": {
-                                "grid_size": {
-                                    "type": "number",
-                                    "minimum": 3,
-                                    "maximum": 3,
-                                    "description": "The size of the crafting grid, Currently only supports '3'"
-                                },
-                                "custom_description": {
-                                    "type": "string",
-                                    "description": "The name of the UI that shows up at the top."
-                                },
-                                "crafting_tags": {
-                                    "type": "array",
-                                    "description": "The tags inside the recipe files to use.",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            }
-                        },
-                        "minecraft:breakonpush": {
-                            "title": "STABLE",
-                            "description": "When pushed by a piston the block breaks",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "minecraft:breathability": {
-                            "title": "STABLE",
-                            "description": "Property describing the breathability of this block and whether it is treated as a solid or as air.",
-                            "enum": [
-                                "solid",
-                                "air"
-                            ],
-                            "default": "solid"
-                        },
-                        "minecraft:display_name": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Specifies the display name id for the block. It's recomeneded to not use this.",
-                            "type": "string"
-                        },
-                        "minecraft:entity_collision": {
-                            "title": "STABLE",
-                            "description": "Can only be set to false, it disables the collision of the block with entities",
-                            "default": false,
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": [
-                                        "origin",
-                                        "size"
-                                    ],
-                                    "properties": {
-                                        "origin": {
-                                            "description": "Minimal position Bounds of the collision box",
-                                            "type": "array",
-                                            "minItems": 3,
-                                            "maxItems": 3,
-                                            "default": [
-                                                -8.0,
-                                                0.0,
-                                                -8.0
-                                            ],
-                                            "items": {
-                                                "maximum": 16,
-                                                "minimum": -8
-                                            }
-                                        },
-                                        "size": {
-                                            "description": "Size of each side of the box of the component",
-                                            "type": "array",
-                                            "minItems": 3,
-                                            "maxItems": 3,
-                                            "default": [
-                                                16.0,
-                                                16.0,
-                                                16.0
-                                            ],
-                                            "items": {
-                                                "maximum": 16,
-                                                "minimum": -8
-                                            }
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        "minecraft:immovable": {
-                            "title": "STABLE",
-                            "description": "An Immovable block cannot be pushed by pistons",
-                            "type": "boolean"
-                        },
                         "minecraft:material_instances": {
                             "title": "STABLE",
-                            "description": "Maps face or material_instance names in a geometry file to an actual material instance. Material instance can either be a full material instance or a name to another already defined instance",
+                            "description": "The material instances for a block.Maps face or material_instance names in a geometry file to an actual material instance. Material instance can either be a full material instance or a name to another already defined instance.",
                             "type": "object",
                             "additionalProperties": {
                                 "$ref": "#/definitions/materialInstances"
@@ -289,6 +327,16 @@
                             "title": "STABLE",
                             "description": "Blocks with those components won't stick to stickyPistons",
                             "type": "boolean"
+                        },
+                        "minecraft:part_visibility": {
+                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+                            "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
+                            "type": "object",
+                            "additionalProperties": {
+                                "description": "The bone id to render true/false",
+                                "type": "string",
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            }
                         },
                         "minecraft:placement_filter": {
                             "title": "STABLE",
@@ -434,9 +482,15 @@
                                 }
                             }
                         },
+                        "minecraft:unit_cube": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Specifies that a unit cube is to be used with tessellation.",
+                            "type": "object",
+                            "default": {}
+                        },
                         "minecraft:unwalkable": {
                             "title": "STABLE",
-                            "description": "this component sets a block as unwalkable. Most mobs will not try to jump over it if the value is set to true",
+                            "description": "Sets the block as unwalkable. Mobs would not attempt to path over top of it when the value is set to true.",
                             "type": "boolean"
                         },
                         "minecraft:on_fall_on": {
@@ -448,23 +502,23 @@
                                 "event"
                             ],
                             "properties": {
-                                "min_fall_distance": {
-                                    "type": "integer",
-                                    "default": 0.0,
-                                    "description": "The minimum distance in blocks that an actor needs to fall to trigger this event."
-                                },
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
+                                },
+                                "min_fall_distance": {
+                                    "description": "The minimum distance in blocks that an actor needs to fall to trigger this event.",
+                                    "type": "integer",
+                                    "default": 0.0
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
                         },
@@ -477,17 +531,17 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
                         },
@@ -500,17 +554,17 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
                         },
@@ -523,17 +577,17 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
                         },
@@ -546,17 +600,17 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
                         },
@@ -569,17 +623,17 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
                         },
@@ -592,159 +646,19 @@
                             ],
                             "properties": {
                                 "condition": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
-                                    "description": "The condition of event to be executed on the block."
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                                 },
                                 "event": {
-                                    "type": "string",
-                                    "description": "The event executed on the block."
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
                                 },
                                 "target": {
+                                    "description": "The target of event executed on the block.",
                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/eventTarget",
-                                    "default": "self",
-                                    "description": "The target of event executed on the block."
+                                    "default": "self"
                                 }
                             }
-                        },
-                        "minecraft:block_light_filter": {
-                            "title": "STABLE",
-                            "description": "The amount of light this block will filter out. Higher value means more light will be filtered out (0 - 15).",
-                            "type":"integer",
-                            "minimum": 0,
-                            "maximum": 15,
-                            "default": 0
-                        },
-                        "minecraft:aim_collision": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
-                            "description": "If set to false it disables the collision of the block with entities",
-                            "default": false,
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": [
-                                        "origin",
-                                        "size"
-                                    ],
-                                    "properties": {
-                                        "origin": {
-                                            "type": "array",
-                                            "default": [
-                                                -8.0,
-                                                0.0,
-                                                -8.0
-                                            ],
-                                            "description": "Minimal position Bounds of the collision box. Origin can't be smaller than (-8, 0, -8) and can't be more than (8, 16, 8)."
-                                        },
-                                        "size": {
-                                            "type": "array",
-                                            "default": [
-                                                16.0,
-                                                16.0,
-                                                16.0
-                                            ],
-                                            "description": "Size of each side of the box of the component. When added to origin it can't make origin smaller than (-8, 0, -8) or more than (0, 16, 8)."
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        "minecraft:block_collision": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
-                            "description": "Describes the collision of the block with entities and actors. If set to false, it disables the collision of the block with entities. An origin of [-8.0, 0.0, -8.0] with a size of [16, 16, 16] is a unit cube.",
-                            "default": false,
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": [
-                                        "origin",
-                                        "size"
-                                    ],
-                                    "properties": {
-                                        "origin": {
-                                            "type": "array",
-                                            "default": [
-                                                -8.0,
-                                                0.0,
-                                                -8.0
-                                            ],
-                                            "description": "Minimal position Bounds of the collision box"
-                                        },
-                                        "size": {
-                                            "type": "array",
-                                            "default": [
-                                                16.0,
-                                                16.0,
-                                                16.0
-                                            ],
-                                            "description": "Size of each side of the box of the component"
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        "minecraft:geometry": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
-                        },
-                        "minecraft:part_visibility": {
-                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
-                            "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-                            "type": "object",
-                            "additionalProperties": {
-                                "description": "The bone id to render true/false",
-                                "type": "string",
-                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
-                            }
-                        },
-                        "minecraft:pick_collision": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
-                            "description": "Can only be set to false, it disables the collision of the block with entities",
-                            "default": false,
-                            "anyOf": [
-                                {
-                                    "type": "boolean"
-                                },
-                                {
-                                    "type": "object",
-                                    "required": [
-                                        "origin",
-                                        "size"
-                                    ],
-                                    "properties": {
-                                        "origin": {
-                                            "type": "array",
-                                            "default": [
-                                                -8.0,
-                                                0.0,
-                                                -8.0
-                                            ],
-                                            "description": "Minimal position Bounds of the collision box"
-                                        },
-                                        "size": {
-                                            "type": "array",
-                                            "default": [
-                                                16.0,
-                                                16.0,
-                                                16.0
-                                            ],
-                                            "description": "Size of each side of the box of the component"
-                                        }
-                                    }
-                                }
-                            ]
-                        },
-                        "minecraft:unit_cube": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Specifies that a unit cube is to be used with tessellation.",
-                            "type": "object",
-                            "default": {}
                         },
                         "tag:wood": {
                             "$ref": "#/definitions/VanillaTags"
@@ -826,6 +740,21 @@
                         },
                         "tag:spruce": {
                             "$ref": "#/definitions/VanillaTags"
+                        },
+                        "minecraft:block_light_absorption": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'block_light_filter'",
+                            "default": false
+                        },
+                        "minecraft:entity_collision": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'block_collision'",
+                            "default": false
+                        },
+                        "minecraft:pick_collision": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'block_collision'",
+                            "default": false
                         }
                     },
                     "patternProperties": {
