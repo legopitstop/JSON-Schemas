@@ -1,5 +1,5 @@
 {
-    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/entity/spawn_rules.json",
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/entity/spawn_rules.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:spawn_rules": {
@@ -8,7 +8,7 @@
                 "description": {
                     "properties": {
                         "identifier": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID",
                             "title": "identifier",
                             "description": "The identifier is used to register the entity with the server. In the Client Entity Definitions JSON the identifier sets the appearance of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors."
                         },
@@ -70,12 +70,12 @@
                                 "description": "This component allows players determine what mobs spawn when certain difficulty levels are set.",
                                 "properties": {
                                     "min": {
-                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
                                         "title": "min",
                                         "description": "This is the minimum difficulty level that a mob spawns"
                                     },
                                     "max": {
-                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/difficulty",
                                         "title": "max",
                                         "description": "This is the maximum difficulty level that a mob spawns"
                                     }
@@ -142,10 +142,10 @@
                                         "type": "object",
                                         "properties": {
                                             "test": {
-                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
                                             },
                                             "operator": {
-                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                                             },
                                             "value": {
                                                 "type": "string"
@@ -158,10 +158,10 @@
                                             "type": "object",
                                             "properties": {
                                                 "test": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
                                                 },
                                                 "operator": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                                                 },
                                                 "value": {
                                                     "type": "string"

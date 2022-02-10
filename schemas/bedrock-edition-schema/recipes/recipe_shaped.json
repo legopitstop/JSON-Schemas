@@ -1,5 +1,5 @@
 {
-    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
     "title": "minecraft:recipe_shaped",
@@ -9,7 +9,7 @@
             "type": "object",
             "properties": {
                 "identifier": {
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                 }
             }
         },
@@ -18,7 +18,7 @@
             "title": "tags",
             "description": "Item used as input for the furnace recipe.",
             "items": {
-                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/recipeTags"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/recipeTags"
             }
         },
         "priority": {
@@ -39,7 +39,7 @@
             "title": "key",
             "description": "patten key character mapped to item names.",
             "additionalProperties": {
-                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemData"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemData"
             }
         },
         "result": {
@@ -48,12 +48,12 @@
             "anyOf": [
                 {
                     "type": ["string","object"],
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                 },
                 {
                     "type": "array",
                     "items": {
-                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount"
                     }
                 }
             ]

@@ -1,5 +1,5 @@
 {
-    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/item.json",
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/item.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "RenderOffsets": {
@@ -122,12 +122,12 @@
                     ],
                     "properties": {
                         "identifier": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                         },
                         "category": {
                             "default": "item",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands.",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemTab"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemTab"
                         },
                         "is_experimental": {
                             "type": "boolean",
@@ -167,7 +167,7 @@
                             "properties": {
                                 "block": {
                                     "description": "block: Set the placement block name for the planter item.",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDBlock"
                                 },
                                 "use_on": {
                                     "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
@@ -353,7 +353,7 @@
                                     "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
                                 },
                                 "entity": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDEntity",
                                     "description": "The entity to be placed in the world."
                                 },
                                 "use_on": {
@@ -404,13 +404,13 @@
                                     "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
                                     "anyOf": [
                                         {
-                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                         },
                                         {
                                             "type": "object",
                                             "properties": {
                                                 "item": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem",
                                                     "description": "The item that it will become."
                                                 }
                                             }
@@ -597,11 +597,11 @@
                                                 "type": "array",
                                                 "uniqueItems": true,
                                                 "items": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                                 }
                                             },
                                             "repair_amount": {
-                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/floatMolang"
                                             }
                                         }
                                     }
@@ -622,7 +622,7 @@
                                     "anyOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                         },
                                         {
                                             "type": "array",
@@ -630,7 +630,7 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "item": {
-                                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceIDItem"
                                                     },
                                                     "use_offhand": {
                                                         "type": "boolean",
@@ -1102,12 +1102,12 @@
                         "minecraft:hover_text_color": {
                             "title": "STABLE",
                             "description": "The color of the name.",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/TextColors"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/TextColors"
                         },
                         "minecraft:use_animation": {
                             "title": "STABLE",
                             "description": "What it will look like while your using the item.",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/useAnimation"
                         },
                         "minecraft:use_duration": {
                             "title": "STABLE",
@@ -1125,7 +1125,7 @@
                                 "parent": {
                                     "default": "itemGroup.search",
                                     "description": "Premade itemGroups.",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup"
                                 }
                             }
                         },
@@ -1146,7 +1146,7 @@
                 "events": {
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/Events"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/Events"
                     },
                     "default": {}
                 }

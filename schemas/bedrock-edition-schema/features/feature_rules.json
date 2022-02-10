@@ -1,5 +1,5 @@
 {
-    "id": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema.json",
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:feature_rules": {
@@ -9,10 +9,10 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                         },
                         "places_feature": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -43,10 +43,10 @@
                                 "type": "object",
                                 "properties": {
                                     "test": {
-                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
                                     },
                                     "operator": {
-                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                                     },
                                     "value": {
                                         "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
@@ -58,10 +58,10 @@
                                             "type": "object",
                                             "properties": {
                                                 "test": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/biomeFiltertest"
                                                 },
                                                 "operator": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/common.json#/definitions/operator"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                                                 },
                                                 "value": {
                                                     "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
