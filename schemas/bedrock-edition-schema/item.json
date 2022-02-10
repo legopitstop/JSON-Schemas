@@ -215,7 +215,7 @@
                                                 "anyOf": [
                                                     {
                                                         "type": "string",
-                                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                                     },
                                                     {
                                                         "type": "object",
@@ -889,7 +889,7 @@
                             ],
                             "properties": {
                                 "default_color": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
                                 }
                             }
                         },
@@ -950,7 +950,7 @@
                                 "entity": {
                                     "description": "The entity for the spawner to spawn.",
                                     "type": "string",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
                                 },
                                 "block": {
                                     "type": "object",
@@ -963,7 +963,7 @@
                                             ],
                                             "items": {
                                                 "type": "string",
-                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                             }
                                         }
                                     }
@@ -1029,14 +1029,14 @@
                                     "anyOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
                                                 "uniqueItems": true,
-                                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                             }
                                         }
                                     ]
@@ -1045,7 +1045,7 @@
                                     "type": "string",
                                     "description": "The name of the crop block to place.",
                                     "uniqueItems": true,
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                 }
                             }
                         },

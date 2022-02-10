@@ -282,7 +282,7 @@
                     },
                     "enchantment": {
                         "description": "Enchantment ID used for level calculation.",
-                        "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                     },
                     "formula": {
                         "description": "Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count * (max(0; random(0..Level + 2) - 1)+1)).",
@@ -388,7 +388,7 @@
                                 "type": "array",
                                 "description": "List of enchantment IDs to choose from. If omitted, all enchantments applicable to the item are possible.",
                                 "items": {
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                                 }
                             },
                             {
@@ -743,7 +743,7 @@
                                 },
                                 "color": {
                                     "description": "The color for this pattern. One of `white`, `orange`, `magenta`, `light_blue`, `yellow`, `lime`, `pink`, `gray`, `light_gray`, `cyan`, `purple`, `blue`, `brown`, `green`, `red`, `black`.",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/common_colors.json#/definitions/MinecraftCommonColorEnum"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonColorEnum"
                                 }
                             }
                         }
@@ -772,7 +772,7 @@
                             },
                             {
                                 "description": "function=set_name A JSON text component name, allowing color, translations, etc.",
-                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/raw_text_format.json"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
                             }
                         ]
                     },
@@ -787,7 +787,7 @@
                         "items": {
                             "type": "object",
                             "default": {},
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/raw_text_format.json"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
                         }
                     },
                     "tag": {
@@ -1099,7 +1099,7 @@
                                                     "properties": {
                                                         "biome": {
                                                             "type": "string",
-                                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/biomes.json#/definitions/MinecraftBiomeEnum"
+                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/biomes.json#/definitions/MinecraftBiomeEnum"
                                                         },
                                                         "block": {
                                                             "type": "string",
@@ -1153,7 +1153,7 @@
                                                         "feature": {
                                                             "description": "Name of a structure.",
                                                             "type": "string",
-                                                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/structure_features.json#/definitions/MinecraftStructureEnum"
+                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/structure_features.json#/definitions/MinecraftStructureEnum"
                                                         },
                                                         "fluid": {
                                                             "type": "object",
@@ -1494,7 +1494,7 @@
                                 },
                                 "enchantment": {
                                     "description": "Id of enchantment.",
-                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/enchantments.json#/definitions/MinecraftEnchantmentExample"
                                 },
                                 "chances": {
                                     "description": "List of probabilities for enchantment level, indexed from 0.",

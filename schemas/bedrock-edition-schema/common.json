@@ -280,7 +280,7 @@
             "anyOf": [
                 {
                     "type": "string",
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/items.json#/definitions/MinecraftItemExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
                 },
                 {
                     "type": "object",
@@ -289,7 +289,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/items.json#/definitions/MinecraftItemExamples",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
                             "title": "item",
                             "description": "The items id"
                         },
@@ -315,7 +315,7 @@
             "anyOf": [
                 {
                     "type": "string",
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/items.json#/definitions/MinecraftItemExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
                 },
                 {
                     "type": "object",
@@ -324,7 +324,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/items.json#/definitions/MinecraftItemExamples",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
                             "title": "item",
                             "description": "The items id"
                         },
@@ -342,7 +342,7 @@
             "description": "Item namespace id. must not contain Minecraft namespace. example; custom:stone",
             "allOf": [
                 {
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/items.json#/definitions/MinecraftItemExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
                 },
                 {
                     "$ref": "#/definitions/nameSpaceID"
@@ -354,7 +354,7 @@
             "description": "Block namespace id. must not contain Minecraft namespace. example; custom:stone",
             "allOf": [
                 {
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                 },
                 {
                     "$ref": "#/definitions/nameSpaceID"
@@ -366,7 +366,7 @@
             "description": "Entity namespace id. must not contain Minecraft namespace. example; custom:zombie",
             "allOf": [
                 {
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
                 },
                 {
                     "$ref": "#/definitions/nameSpaceID"
@@ -821,7 +821,7 @@
                     "description": "Spawn loot from block.",
                     "properties": {
                         "table": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
                             "title": "table",
                             "description": "File path, relative to the Behavior Pack's path, to the loot table file."
                         }
@@ -914,7 +914,7 @@
                     "description": "Shoots a projectile.",
                     "properties": {
                         "projectile": {
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
                         },
                         "launch_power": {
                             "type": "number"

@@ -49,7 +49,7 @@
                                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                                     },
                                     "value": {
-                                        "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
                                         "type": "string"
                                     },
                                     "all_of": {
@@ -64,7 +64,7 @@
                                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/operator"
                                                 },
                                                 "value": {
-                                                    "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
                                                     "type": "string"
                                                 }
                                             }

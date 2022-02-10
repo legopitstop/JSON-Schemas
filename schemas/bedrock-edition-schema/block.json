@@ -304,7 +304,7 @@
                             "title": "STABLE",
                             "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/blocks/simple_dungeon.json\"",
                             "type": "string",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/file_path_json",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
                             "examples": [
                                 "loot_tables/blocks/BLOCK.json"
                             ]
@@ -313,7 +313,7 @@
                             "title": "STABLE",
                             "description": "A color represented as a hex value. This will be the color rendered to a map.",
                             "type": "string",
-                            "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/hex_color"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
                         },
                         "minecraft:material_instances": {
                             "title": "STABLE",

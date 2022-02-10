@@ -152,7 +152,7 @@
                     "description": "The license of the pack"
                 },
                 "url": {
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/website_url",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/website_url",
                     "title": "url",
                     "description": "The home website of your pack"
                 }
