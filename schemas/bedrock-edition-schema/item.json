@@ -1137,9 +1137,11 @@
                         },
 
                         "minecraft:max_stack_size": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'item_storage'",
-                            "default": false
+                            "title": "STABLE",
+                            "description": "THe max number of items that can be in one slot.",
+                            "type":"integer",
+                            "minimum": 1,
+                            "maximum": 64
                         }
                     }
                 },

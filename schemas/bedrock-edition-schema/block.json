@@ -95,7 +95,7 @@
                     "properties": {
                         "minecraft:aim_collision": {
                             "title": "EXPERIMENTAL (Holiday Creator Features)",
-                            "description": "If set to false it disables the collision of the block with entities",
+                            "description": "The outline when you are looking at the block.",
                             "default": false,
                             "anyOf": [
                                 {
@@ -753,7 +753,7 @@
                         },
                         "minecraft:pick_collision": {
                             "title": "DEPRECATED",
-                            "description": "Replaced with 'block_collision'",
+                            "description": "Replaced with 'aim_collision'",
                             "default": false
                         }
                     },
