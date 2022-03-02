@@ -371,6 +371,11 @@
                                 "saturation_modifier"
                             ],
                             "properties": {
+                                "is_meat": {
+                                    "description": "If true the item is meat.",
+                                    "type":"boolean",
+                                    "default": true
+                                },
                                 "can_always_eat": {
                                     "description": "If true you can always eat this item (even when not hungry). Default is set to false.",
                                     "type": "boolean",

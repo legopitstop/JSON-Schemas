@@ -223,22 +223,26 @@
                         "minecraft:creative_category": {
                             "title": "STABLE",
                             "description": "Specifies the creative group for the block.",
-                            "type": [
-                                "object",
-                                "string"
-                            ],
                             "default": {},
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup",
-                            "properties": {
-                                "category": {
-                                    "description": "The tab in the creative invetory to place this block.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemTab"
+                            "anyOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "category": {
+                                            "description": "The tab in the creative invetory to place this block.",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemTab"
+                                        },
+                                        "group": {
+                                            "description": "The group in the category tab to place this block.",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup"
+                                        }
+                                    }
                                 },
-                                "group": {
-                                    "description": "The group in the category tab to place this block.",
+                                {
+                                    "type": "string",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemGroup"
                                 }
-                            }
+                            ]
                         },
                         "minecraft:destroy_time": {
                             "title": "STABLE",
