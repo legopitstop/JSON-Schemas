@@ -208,6 +208,7 @@
                                 }
                             }
                         },
+                        
                         "minecraft:behavior.admire_item": {
                             "title": "AI GOALS",
                             "description": "Enables the mob to admire items that have been configured as admirable. Must be used in combination with the admire_item component",
