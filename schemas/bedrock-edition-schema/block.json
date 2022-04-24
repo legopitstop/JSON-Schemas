@@ -210,7 +210,8 @@
                                     "description": "Defines the tags recipes should define to be crafted on this table.",
                                     "items": {
                                         "type": "string"
-                                    }
+                                    },
+                                    "maxItems": 64
                                 }
                             }
                         },
