@@ -299,11 +299,6 @@
                             "description": "The geometry definition name to use. Must have \"geometry.\" at the beginning.",
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
                         },
-                        "minecraft:immovable": {
-                            "title": "STABLE",
-                            "description": "An Immovable block cannot be pushed by pistons",
-                            "type": "boolean"
-                        },
                         "minecraft:loot": {
                             "title": "STABLE",
                             "description": "The loot table to run when the player breaks the block. ex; \"loot_tables/blocks/simple_dungeon.json\"",
