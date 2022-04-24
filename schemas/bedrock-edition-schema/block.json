@@ -316,11 +316,6 @@
                                 "$ref": "#/definitions/materialInstances"
                             }
                         },
-                        "minecraft:onlypistonpush": {
-                            "title": "STABLE",
-                            "description": "Blocks with those components won't stick to stickyPistons",
-                            "type": "boolean"
-                        },
                         "minecraft:part_visibility": {
                             "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
                             "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
