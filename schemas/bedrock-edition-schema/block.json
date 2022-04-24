@@ -181,12 +181,6 @@
                             "maximum": 15,
                             "default": 0
                         },
-                        "minecraft:breakonpush": {
-                            "title": "STABLE",
-                            "description": "When pushed by a piston the block breaks",
-                            "type": "boolean",
-                            "default": false
-                        },
                         "minecraft:breathability": {
                             "title": "STABLE",
                             "description": "The breathing type of this block that affects the breathing state of mobs when they have their breathing points inside this block. Available values: solid, air",
