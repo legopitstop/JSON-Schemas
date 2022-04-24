@@ -369,11 +369,6 @@
                                 }
                             }
                         },
-                        "minecraft:preventsjumping": {
-                            "title": "STABLE",
-                            "description": "This component makes it so actors can't jump when walking on this block",
-                            "type": "boolean"
-                        },
                         "minecraft:random_ticking": {
                             "title": "STABLE",
                             "description": "Describes the component that will trigger an even at a regular interval between two values",
