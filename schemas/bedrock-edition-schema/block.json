@@ -384,6 +384,19 @@
                                         "event"
                                     ],
                                     "properties": {
+                                        "range": {
+                                            "description": "The Range between which the component will trigger his event.",
+                                            "type": "array",
+                                            "default": [
+                                                10,
+                                                10
+                                            ],
+                                            "items": {
+                                                "type": "integer"
+                                            },
+                                            "minItems": 2,
+                                            "maxItems": 2
+                                        },
                                         "condition": {
                                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
                                             "default": 1,
