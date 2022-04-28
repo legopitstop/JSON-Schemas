@@ -901,7 +901,7 @@
                         "transform": ""
                     },
                     "title": "transform_item",
-                    "description": "Transforms item into another item. (Note their is currently a game crash bug with this event. see MCPE-102422)",
+                    "description": "Transforms item into another item.",
                     "properties": {
                         "transform": {
                             "$ref": "#/definitions/nameSpaceIDItem",
