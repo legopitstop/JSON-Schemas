@@ -90,7 +90,8 @@
                             "data",
                             "client_data",
                             "interface",
-                            "world_template"
+                            "world_template",
+                            "skin_pack"
                         ],
                         "title": "type",
                         "description": "This is the type of the module. Can be any of the following: resources, data, client_data, interface, world_template"
