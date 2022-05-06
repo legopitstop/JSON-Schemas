@@ -452,11 +452,10 @@
             "examples": [
                 "q.block_property('MOD_ID:PROPERTY') == 'VALUE'",
                 "q.block_property('MOD_ID:PROPERTY') ? 'true' : 'false'",
-                "q.get_equipped_item_name == 'ITEM'",
-                "geometry.texture_name",
+                "q.is_item_name_any('slot.weapon.mainhand','ITEM')",
                 "q.max_damage * 0.25",
-                "q.any_tag('')",
-                "c.other -> q.remaining_health + 0.12 * c.other -> q.max-damage"
+                "q.any_tag('TAG')",
+                "geometry.texture_name"
             ]
         },
         "schemaArray": {
@@ -512,6 +511,8 @@
             "description": "This is the name of the event.",
             "properties": {
                 "add_mob_effect": {
+                    "title": "add_mob_effect",
+                    "description": "Apply mob effect to target.",
                     "type": "object",
                     "required": [
                         "amplifier",
@@ -524,8 +525,6 @@
                         "effect": "",
                         "target": "self"
                     },
-                    "title": "add_mob_effect",
-                    "description": "Apply mob effect to target.",
                     "properties": {
                         "amplifier": {
                             "type": "integer",
@@ -553,6 +552,8 @@
                     }
                 },
                 "damage": {
+                    "title": "damage",
+                    "description": "Deals damage to the target.",
                     "type": "object",
                     "required": [
                         "amount",
@@ -563,8 +564,6 @@
                         "type": "none",
                         "target": "self"
                     },
-                    "title": "damage",
-                    "description": "Deals damage to the target.",
                     "properties": {
                         "amount": {
                             "type": "integer",
@@ -586,9 +585,9 @@
                     }
                 },
                 "decrement_stack": {
-                    "type": "object",
                     "title": "decrement_stack",
                     "description": "Decrement item stack.",
+                    "type": "object",
                     "properties": {
                         "ignore_game_mode": {
                             "type": "boolean",
@@ -599,6 +598,8 @@
                     }
                 },
                 "die": {
+                    "title": "die",
+                    "description": "Kill target. If target is self and this is run from a block then destroy the block.",
                     "type": "object",
                     "required": [
                         "target"
@@ -606,8 +607,6 @@
                     "default": {
                         "target": "self"
                     },
-                    "title": "die",
-                    "description": "Kill target. If target is self and this is run from a block then destroy the block.",
                     "properties": {
                         "target": {
                             "$ref": "#/definitions/eventTarget",
@@ -618,6 +617,8 @@
                     }
                 },
                 "play_effect": {
+                    "title": "play_effect",
+                    "description": "Spawns a particle effect relative to target position.",
                     "type": "object",
                     "required": [
                         "data",
@@ -628,8 +629,6 @@
                         "effect": "",
                         "target": "self"
                     },
-                    "title": "play_effect",
-                    "description": "Spawns a particle effect relative to target position.",
                     "properties": {
                         "data": {
                             "type": "integer",
@@ -651,6 +650,8 @@
                     }
                 },
                 "play_sound": {
+                    "title": "play_sound",
+                    "description": "Play a sound relative to target position.",
                     "type": "object",
                     "required": [
                         "sound"
@@ -659,8 +660,6 @@
                         "sound": "",
                         "target": "self"
                     },
-                    "title": "play_sound",
-                    "description": "Play a sound relative to target position.",
                     "properties": {
                         "sound": {
                             "type": "string",
@@ -676,6 +675,8 @@
                     }
                 },
                 "remove_mob_effect": {
+                    "title": "remove_mob_effect",
+                    "description": "Removes mob effect from target.",
                     "type": "object",
                     "required": [
                         "effect"
@@ -684,8 +685,6 @@
                         "effect": "",
                         "target": "self"
                     },
-                    "title": "remove_mob_effect",
-                    "description": "Removes mob effect from target.",
                     "properties": {
                         "effect": {
                             "$ref": "#/definitions/mobEffectsExample",
@@ -701,13 +700,13 @@
                     }
                 },
                 "run_command": {
+                    "title": "run_command",
+                    "description": "Triggers a slash command or a list of slash commands.",
                     "type": "object",
                     "required": [
                         "command"
                     ],
                     "uniqueItems": true,
-                    "title": "run_command",
-                    "description": "Triggers a slash command or a list of slash commands.",
                     "properties": {
                         "command": {
                             "anyOf": [
@@ -734,6 +733,8 @@
                     }
                 },
                 "set_block": {
+                    "title": "set_block",
+                    "description": "Sets this block to another block type.",
                     "type": "object",
                     "required": [
                         "block_type"
@@ -741,8 +742,6 @@
                     "default": {
                         "block_type": ""
                     },
-                    "title": "set_block",
-                    "description": "Sets this block to another block type.",
                     "properties": {
                         "block_type": {
                             "$ref": "#/definitions/nameSpaceIDBlock",
@@ -752,6 +751,8 @@
                     }
                 },
                 "set_block_at_pos": {
+                    "title": "set_block_at_pos",
+                    "description": "Sets a block relative to this block to another block type.",
                     "type": "object",
                     "required": [
                         "block_type",
@@ -765,8 +766,6 @@
                             0.0
                         ]
                     },
-                    "title": "set_block_at_pos",
-                    "description": "Sets a block relative to this block to another block type.",
                     "properties": {
                         "block_type": {
                             "$ref": "#/definitions/nameSpaceIDBlock",
@@ -786,12 +785,12 @@
                     }
                 },
                 "set_block_property": {
+                    "title": "set_block_property",
+                    "description": "(Blocks Only) Sets a block property on this block.",
                     "type": "object",
                     "default": {
                         "mod_id:property": ""
                     },
-                    "title": "set_block_property",
-                    "description": "(Blocks Only) Sets a block property on this block.",
                     "additionalProperties": {
                         "type": [
                             "string",
@@ -810,6 +809,8 @@
                     }
                 },
                 "spawn_loot": {
+                    "title": "spawn_loot",
+                    "description": "Spawn loot from block.",
                     "type": "object",
                     "required": [
                         "table"
@@ -817,8 +818,6 @@
                     "default": {
                         "table": ""
                     },
-                    "title": "spawn_loot",
-                    "description": "Spawn loot from block.",
                     "properties": {
                         "table": {
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
@@ -828,11 +827,13 @@
                     }
                 },
                 "swing": {
-                    "type": "object",
                     "title": "swing",
-                    "description": "Event causes the actor to swing."
+                    "description": "Event causes the actor to swing.",
+                    "type": "object"
                 },
                 "teleport": {
+                    "title": "teleport",
+                    "description": "Teleport target randomly around destination point.",
                     "type": "object",
                     "default": {
                         "avoid_water": true,
@@ -849,8 +850,6 @@
                         ],
                         "target": "self"
                     },
-                    "title": "teleport",
-                    "description": "Teleport target randomly around destination point.",
                     "properties": {
                         "avoid_water": {
                             "type": "boolean",
@@ -893,6 +892,8 @@
                     }
                 },
                 "transform_item": {
+                    "title": "transform_item",
+                    "description": "Transforms item into another item.",
                     "type": "object",
                     "required": [
                         "transform"
@@ -900,8 +901,6 @@
                     "default": {
                         "transform": ""
                     },
-                    "title": "transform_item",
-                    "description": "Transforms item into another item.",
                     "properties": {
                         "transform": {
                             "$ref": "#/definitions/nameSpaceIDItem",
@@ -925,40 +924,40 @@
                     }
                 },
                 "condition": {
-                    "$ref": "#/definitions/MoLang",
                     "title": "condition",
-                    "description": "The condition of event to be executed on the block. (Only applyable to 'sequence' event)"
+                    "description": "The condition of event to be executed on the block. (Only applyable to 'sequence' event)",
+                    "$ref": "#/definitions/MoLang"
                 },
                 "weight": {
-                    "type": "integer",
-                    "description": "The weight of event to be executed on the block. (Only applyable to 'randomize' event)"
+                    "description": "The weight of event to be executed on the block. (Only applyable to 'randomize' event)",
+                    "type": "integer"
                 },
                 "sequence": {
+                    "title": "sequence",
+                    "description": "Used to sequence event functions.",
                     "type": "array",
                     "default": [
                         {}
                     ],
-                    "title": "sequence",
-                    "description": "Used to sequence event functions.",
                     "items": {
                         "$ref": "#/definitions/Events"
                     }
                 },
                 "randomize": {
+                    "title": "randomize",
+                    "description": "Used to randomize event functions",
                     "type": "array",
                     "default": [
                         {}
                     ],
-                    "title": "randomize",
-                    "description": "Used to randomize event functions",
                     "items": {
                         "$ref": "#/definitions/Events"
                     }
                 },
                 "trigger": {
-                    "type": "object",
                     "title": "trigger",
                     "description": "Run another event.",
+                    "type": "object",
                     "required": [
                         "event"
                     ],
