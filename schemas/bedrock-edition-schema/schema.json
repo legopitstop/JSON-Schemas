@@ -325,6 +325,9 @@
         },
         "minecraft:biome": {
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json#/properties/minecraft:biome"
+        },
+        "minecraft:dialogue": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/dialogue.json#/properties/minecraft:dialogue"
         }
     },
     "default": {}
