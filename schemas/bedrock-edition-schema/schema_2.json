@@ -130,13 +130,13 @@
             "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/texture_set.json"
         },
         {
-            "name": "minecraft:dialogue",
+            "name": "minecraft:npc_dialogue",
             "description": "Minecraft Bedrock Edition file for sets of dialogue.",
             "fileMatch": [
                 "development_resource_packs/*/dialogue/*.json",
                 "resource_packs/*/dialogue/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/dialogue.json"
+            "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/npc_dialogue.json"
         }
     ]
 }

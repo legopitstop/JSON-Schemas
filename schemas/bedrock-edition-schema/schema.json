@@ -326,8 +326,8 @@
         "minecraft:biome": {
             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/biome.json#/properties/minecraft:biome"
         },
-        "minecraft:dialogue": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/dialogue.json#/properties/minecraft:dialogue"
+        "minecraft:npc_dialogue": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/behavior/npc_dialogue.json#/properties/minecraft:npc_dialogue"
         }
     },
     "default": {}
