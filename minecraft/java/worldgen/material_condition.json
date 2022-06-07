@@ -1,0 +1,20 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/worldgen/material_condition.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft WorldgenMaterial Condition (Java Edition)",
+    "examples": [
+        "minecraft:above_preliminary_surface",
+        "minecraft:biome",
+        "minecraft:hole",
+        "minecraft:noise_threshold",
+        "minecraft:not",
+        "minecraft:steep",
+        "minecraft:stone_depth",
+        "minecraft:temperature",
+        "minecraft:vertical_gradient",
+        "minecraft:water",
+        "minecraft:y_above"
+    ]
+}

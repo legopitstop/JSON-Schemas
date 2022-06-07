@@ -1,0 +1,21 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/block_predicate_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Block Predicate Type (Java Edition)",
+    "examples": [
+        "minecraft:all_of",
+        "minecraft:any_of",
+        "minecraft:has_sturdy_face",
+        "minecraft:inside_world_bounds",
+        "minecraft:matching_block_tag",
+        "minecraft:matching_blocks",
+        "minecraft:matching_fluids",
+        "minecraft:not",
+        "minecraft:replaceable",
+        "minecraft:solid",
+        "minecraft:true",
+        "minecraft:would_survive"
+    ]
+}

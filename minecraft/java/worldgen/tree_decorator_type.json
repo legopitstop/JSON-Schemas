@@ -1,0 +1,15 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/worldgen/tree_decorator_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft WorldgenTree Decorator Type (Java Edition)",
+    "examples": [
+        "minecraft:alter_ground",
+        "minecraft:attached_to_leaves",
+        "minecraft:beehive",
+        "minecraft:cocoa",
+        "minecraft:leave_vine",
+        "minecraft:trunk_vine"
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/menu.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Menu (Java Edition)",
+    "examples": [
+        "minecraft:anvil",
+        "minecraft:beacon",
+        "minecraft:blast_furnace",
+        "minecraft:brewing_stand",
+        "minecraft:cartography_table",
+        "minecraft:crafting",
+        "minecraft:enchantment",
+        "minecraft:furnace",
+        "minecraft:generic_3x3",
+        "minecraft:generic_9x1",
+        "minecraft:generic_9x2",
+        "minecraft:generic_9x3",
+        "minecraft:generic_9x4",
+        "minecraft:generic_9x5",
+        "minecraft:generic_9x6",
+        "minecraft:grindstone",
+        "minecraft:hopper",
+        "minecraft:lectern",
+        "minecraft:loom",
+        "minecraft:merchant",
+        "minecraft:shulker_box",
+        "minecraft:smithing",
+        "minecraft:smoker",
+        "minecraft:stonecutter"
+    ]
+}

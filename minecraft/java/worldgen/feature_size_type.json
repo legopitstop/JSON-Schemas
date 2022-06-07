@@ -1,0 +1,11 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/worldgen/feature_size_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft WorldgenFeature Size Type (Java Edition)",
+    "examples": [
+        "minecraft:three_layers_feature_size",
+        "minecraft:two_layers_feature_size"
+    ]
+}

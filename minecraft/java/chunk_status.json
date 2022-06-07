@@ -1,0 +1,22 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/chunk_status.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Chunk Status (Java Edition)",
+    "examples": [
+        "minecraft:biomes",
+        "minecraft:carvers",
+        "minecraft:empty",
+        "minecraft:features",
+        "minecraft:full",
+        "minecraft:heightmaps",
+        "minecraft:light",
+        "minecraft:liquid_carvers",
+        "minecraft:noise",
+        "minecraft:spawn",
+        "minecraft:structure_references",
+        "minecraft:structure_starts",
+        "minecraft:surface"
+    ]
+}

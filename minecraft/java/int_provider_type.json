@@ -1,0 +1,15 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/int_provider_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Int Provider Type (Java Edition)",
+    "examples": [
+        "minecraft:biased_to_bottom",
+        "minecraft:clamped",
+        "minecraft:clamped_normal",
+        "minecraft:constant",
+        "minecraft:uniform",
+        "minecraft:weighted_list"
+    ]
+}

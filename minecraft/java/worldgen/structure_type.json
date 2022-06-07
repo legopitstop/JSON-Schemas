@@ -1,0 +1,25 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/worldgen/structure_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft WorldgenStructure Type (Java Edition)",
+    "examples": [
+        "minecraft:buried_treasure",
+        "minecraft:desert_pyramid",
+        "minecraft:end_city",
+        "minecraft:fortress",
+        "minecraft:igloo",
+        "minecraft:jigsaw",
+        "minecraft:jungle_temple",
+        "minecraft:mineshaft",
+        "minecraft:nether_fossil",
+        "minecraft:ocean_monument",
+        "minecraft:ocean_ruin",
+        "minecraft:ruined_portal",
+        "minecraft:shipwreck",
+        "minecraft:stronghold",
+        "minecraft:swamp_hut",
+        "minecraft:woodland_mansion"
+    ]
+}

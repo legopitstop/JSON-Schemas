@@ -1,0 +1,13 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/schedule.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Schedule (Java Edition)",
+    "examples": [
+        "minecraft:empty",
+        "minecraft:simple",
+        "minecraft:villager_baby",
+        "minecraft:villager_default"
+    ]
+}

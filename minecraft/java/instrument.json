@@ -1,0 +1,17 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/instrument.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Instrument (Java Edition)",
+    "examples": [
+        "minecraft:admire_goat_horn",
+        "minecraft:call_goat_horn",
+        "minecraft:dream_goat_horn",
+        "minecraft:feel_goat_horn",
+        "minecraft:ponder_goat_horn",
+        "minecraft:seek_goat_horn",
+        "minecraft:sing_goat_horn",
+        "minecraft:yearn_goat_horn"
+    ]
+}

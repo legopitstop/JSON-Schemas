@@ -1,0 +1,15 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/rule_test.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Rule Test (Java Edition)",
+    "examples": [
+        "minecraft:always_true",
+        "minecraft:block_match",
+        "minecraft:blockstate_match",
+        "minecraft:random_block_match",
+        "minecraft:random_blockstate_match",
+        "minecraft:tag_match"
+    ]
+}

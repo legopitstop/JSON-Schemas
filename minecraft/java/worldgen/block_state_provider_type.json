@@ -1,0 +1,16 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/worldgen/block_state_provider_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft WorldgenBlock State Provider Type (Java Edition)",
+    "examples": [
+        "minecraft:dual_noise_provider",
+        "minecraft:noise_provider",
+        "minecraft:noise_threshold_provider",
+        "minecraft:randomized_int_state_provider",
+        "minecraft:rotated_block_provider",
+        "minecraft:simple_state_provider",
+        "minecraft:weighted_state_provider"
+    ]
+}

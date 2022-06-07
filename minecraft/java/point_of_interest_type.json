@@ -1,0 +1,29 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/point_of_interest_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Point Of Interest Type (Java Edition)",
+    "examples": [
+        "minecraft:armorer",
+        "minecraft:bee_nest",
+        "minecraft:beehive",
+        "minecraft:butcher",
+        "minecraft:cartographer",
+        "minecraft:cleric",
+        "minecraft:farmer",
+        "minecraft:fisherman",
+        "minecraft:fletcher",
+        "minecraft:home",
+        "minecraft:leatherworker",
+        "minecraft:librarian",
+        "minecraft:lightning_rod",
+        "minecraft:lodestone",
+        "minecraft:mason",
+        "minecraft:meeting",
+        "minecraft:nether_portal",
+        "minecraft:shepherd",
+        "minecraft:toolsmith",
+        "minecraft:weaponsmith"
+    ]
+}

@@ -1,0 +1,20 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/cat_variant.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Cat Variant (Java Edition)",
+    "examples": [
+        "minecraft:all_black",
+        "minecraft:black",
+        "minecraft:british_shorthair",
+        "minecraft:calico",
+        "minecraft:jellie",
+        "minecraft:persian",
+        "minecraft:ragdoll",
+        "minecraft:red",
+        "minecraft:siamese",
+        "minecraft:tabby",
+        "minecraft:white"
+    ]
+}

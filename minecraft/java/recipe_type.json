@@ -1,0 +1,16 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/recipe_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Recipe Type (Java Edition)",
+    "examples": [
+        "minecraft:blasting",
+        "minecraft:campfire_cooking",
+        "minecraft:crafting",
+        "minecraft:smelting",
+        "minecraft:smithing",
+        "minecraft:smoking",
+        "minecraft:stonecutting"
+    ]
+}
