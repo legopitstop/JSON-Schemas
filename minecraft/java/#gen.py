@@ -7,7 +7,7 @@ opn = open(LOCAL+'/#registries.json', 'r')
 registries = json.load(opn)
 opn.close()
 
-opn = open(LOCAL+'/#README.md','r')
+opn = open(LOCAL+'/README.md','r')
 README = opn.read()
 opn.close()
 
@@ -38,6 +38,6 @@ for registry in registries:
     wrt.write(json.dumps(schema, indent=4))
     wrt.close()
 
-wrt = open(LOCAL+'/#README.md','w')
+wrt = open(LOCAL+'/README.md','w')
 wrt.write(README)
 wrt.close()
