@@ -1,7 +1,8 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/items.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "Definitions for all Vanilla Minecraft items (Java Edition)",
+    "title": "DEPRIVED",
+    "description": "Use: https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/item.json",
     "definitions": {
         "MinecraftItemExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java-edition/blocks.json#/definitions/MinecraftItemExamples",
