@@ -113,8 +113,7 @@
                                     "type": "object",
                                     "default": {},
                                     "required": [
-                                        "name",
-                                        "commands"
+                                        "name"
                                     ],
                                     "properties": {
                                         "name": {
