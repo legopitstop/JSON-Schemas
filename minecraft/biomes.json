@@ -6,6 +6,9 @@
         "MinecraftBiomeExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/biomes.json#/definitions/MinecraftBiomeExamples",
             "examples": [
+                "deep_dark",
+                "mangrove_swamp",
+                
                 "ocean",
                 "deep_ocean",
                 "frozen_ocean",

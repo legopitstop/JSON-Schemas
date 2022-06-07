@@ -6,6 +6,12 @@
         "MinecraftEntityExamples": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples",
             "examples": [
+                "minecraft:allay",
+                "minecraft:frog",
+                "minecraft:tadpole",
+                "minecraft:warden",
+                "minecraft:chest_boat",
+                
                 "minecraft:agent",
                 "minecraft:area_effect_cloud",
                 "minecraft:armor_stand",
