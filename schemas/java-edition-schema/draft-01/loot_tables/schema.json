@@ -265,31 +265,7 @@
                 "properties": {
                     "function": {
                         "description": "Namespaced ID of the function to apply.",
-                        "enum": [
-                            "minecraft:apply_bonus",
-                            "minecraft:copy_name",
-                            "minecraft:copy_nbt",
-                            "minecraft:copy_state",
-                            "minecraft:enchant_randomly",
-                            "minecraft:enchant_with_levels",
-                            "minecraft:exploration_map",
-                            "minecraft:explosion_decay",
-                            "minecraft:furnace_smelt",
-                            "minecraft:fill_player_head",
-                            "minecraft:limit_count",
-                            "minecraft:looting_enchant",
-                            "minecraft:set_attributes",
-                            "minecraft:set_banner_pattern‌",
-                            "minecraft:set_contents",
-                            "minecraft:set_count",
-                            "minecraft:set_damage",
-                            "minecraft:set_enchantments‌",
-                            "minecraft:set_loot_table",
-                            "minecraft:set_lore",
-                            "minecraft:set_name",
-                            "minecraft:set_nbt",
-                            "minecraft:set_stew_effect"
-                        ]
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/loot_function_type.json"
                     },
                     // The following is additional info needed for `function`
                     //"minecraft:apply_bonus"
@@ -860,25 +836,7 @@
                             "properties": {
                                 "condition": {
                                     "description": "Namespaced ID of condition.",
-                                    "enum": [
-                                        "minecraft:alternative",
-                                        "minecraft:block_state_property",
-                                        "minecraft:damage_source_properties",
-                                        "minecraft:entity_properties",
-                                        "minecraft:entity_scores",
-                                        "minecraft:inverted",
-                                        "minecraft:killed_by_player",
-                                        "minecraft:location_check",
-                                        "minecraft:match_tool",
-                                        "minecraft:random_chance",
-                                        "minecraft:random_chance_with_looting",
-                                        "minecraft:reference",
-                                        "minecraft:survives_explosion",
-                                        "minecraft:table_bonus",
-                                        "minecraft:time_check",
-                                        "minecraft:weather_check",
-                                        "minecraft:value_check"
-                                    ]
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/loot_condition_type.json"
                                 },
                                 // The following is additional info needed for `condition`
                                 //"minecraft:alternative"
@@ -889,7 +847,7 @@
                                 //"minecraft:block_state_property"
                                 "block": {
                                     "description": "A block ID. The test fails if the block doesn't match.",
-                                    "type": "string"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/block.json"
                                 },
                                 "properties": {
                                     "description": "(Optional) A map of block property names to values. All values are strings. The test fails if the block doesn't match.",
@@ -1189,7 +1147,7 @@
                                                         "feature": {
                                                             "description": "Name of a structure.",
                                                             "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/structure_features.json#/definitions/MinecraftStructureEnum"
+                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/worldgen/structure_type.json"
                                                         },
                                                         "fluid": {
                                                             "type": "object",
@@ -1197,7 +1155,7 @@
                                                             "properties": {
                                                                 "fluid": {
                                                                     "description": "The fluid ID.",
-                                                                    "type": "string"
+                                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/fluid.json"
                                                                 },
                                                                 "tag": {
                                                                     "description": "The fluid Tag.",
