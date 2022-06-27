@@ -459,6 +459,28 @@
                 "geometry.texture_name"
             ]
         },
+        "EventTrigger": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger",
+            "type": "object",
+            "default": {},
+            "required": [
+                "event"
+            ],
+            "properties": {
+                "condition": {
+                    "description": "Molang to match to run the event",
+                    "$ref": "#/definitions/MoLang"
+                },
+                "event": {
+                    "description": "The event to trigger.",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "The target to execute agenst.",
+                    "type": "string"
+                }
+            }
+        },
         "schemaArray": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/schemaArray",
             "type": "array",
