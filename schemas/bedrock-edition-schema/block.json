@@ -494,33 +494,33 @@
                         "minecraft:on_interact": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                         },
                         "minecraft:on_placed": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                         },
                         "minecraft:on_player_destroyed": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                         },
                         "minecraft:on_player_placing": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                         },
                         "minecraft:on_step_off": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
                             "type": "object",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                         },
                         "minecraft:on_step_on": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                         },
                         "tag:wood": {
                             "$ref": "#/definitions/VanillaTags"
