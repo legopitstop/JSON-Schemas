@@ -23,6 +23,7 @@
                 "1.16.200",
                 "1.16.210.56",
                 "1.16.210.58",
+                "1.18",
                 1,
                 2
             ]
@@ -273,7 +274,8 @@
                 "brewing_stand",
                 "stonecutter",
                 "smithing_table"
-            ]
+            ],
+            "maxLength": 64
         },
         "itemDataCount": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/itemDataCount",
@@ -477,7 +479,8 @@
                 },
                 "target": {
                     "description": "The target to execute agenst.",
-                    "type": "string"
+                    "$ref":"#/definitions/eventTarget",
+                    "default": "self"
                 }
             }
         },

@@ -80,35 +80,47 @@
                 "type": "object",
                 "properties": {
                     "description": {
-                        "type": "string",
-                        "title": "description",
-                        "description": "This is a short description of the module. This is not user-facing at the moment but is a good place to remind yourself why the module is defined"
+                        "description": "This is a short description of the module. This is not user-facing at the moment but is a good place to remind yourself why the module is defined",
+                        "type": "string"
                     },
                     "type": {
+                        "description": "This is the type of the module. Can be any of the following: resources, data, client_data, interface, world_template",
                         "enum": [
                             "resources",
                             "data",
                             "client_data",
                             "interface",
                             "world_template",
-                            "skin_pack"
-                        ],
-                        "title": "type",
-                        "description": "This is the type of the module. Can be any of the following: resources, data, client_data, interface, world_template"
+                            "skin_pack",
+                            "script"
+                        ]
                     },
                     "uuid": {
-                        "type": "string",
-                        "title": "uuid",
-                        "description": "This is a unique identifier for the module in the same format as the pack's UUID in the header. This should be different from the pack's UUID, and different for every module"
+                        "description": "This is a unique identifier for the module in the same format as the pack's UUID in the header. This should be different from the pack's UUID, and different for every module",
+                        "type": "string"
                     },
                     "version": {
-                        "type": "array",
-                        "title": "version",
                         "description": "This is the version of the module in the same format as the pack's version in the header. This can be used to further identify changes in your pack",
+                        "type": "array",
                         "items": [
                             {
                                 "type": "number"
                             }
+                        ],
+                        "minItems": 3,
+                        "maxItems": 3
+                    },
+                    "entry": {
+                        "description": "The path to the main script file.",
+                        "type": "string",
+                        "examples": [
+                            "scripts/main.js"
+                        ]
+                    },
+                    "language": {
+                        "description": "The script language",
+                        "enum": [
+                            "javascript"
                         ]
                     }
                 }
