@@ -148,13 +148,13 @@
                                 "movement_modifier": {
                                     "description": "Modifier value to scale the players movement speed when item is in use.",
                                     "type": "number",
-                                    "minium": 0.0,
-                                    "maxium": 1.0,
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
                                     "default": 0.0
                                 },
                                 "on_complete": {
                                     "description": "Event trigger for when the item has completed its use duration.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 }
                             }
                         },
@@ -285,7 +285,7 @@
                                 },
                                 "on_dig": {
                                     "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 },
                                 "use_efficiency": {
                                     "type": "boolean",
@@ -416,8 +416,9 @@
                                     "default": 0
                                 },
                                 "on_consume": {
-                                    "description": "Event trigger for when the item is consumed.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "title": "DEPRECATED",
+                                    "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
+                                    "default": false
                                 },
                                 "saturation_modifier": {
                                     "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
@@ -520,7 +521,7 @@
                             "properties": {
                                 "on_use": {
                                     "description": "Triggers when the item is used.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 }
                             }
                         },
@@ -534,7 +535,7 @@
                             "properties": {
                                 "on_use_on": {
                                     "description": "Triggered when the item is used on a block",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 }
                             }
                         },
@@ -582,7 +583,7 @@
                             "properties": {
                                 "on_repaired": {
                                     "description": "Event that is called when this item has been repaired.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 },
                                 "repair_items": {
                                     "type": "array",
@@ -730,15 +731,15 @@
                             "properties": {
                                 "on_hit_block": {
                                     "description": "Trigger for letting you know when this item is used to hit a block",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 },
                                 "on_hurt_entity": {
                                     "description": "Trigger for letting you know when this item is used to hurt another mob",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 },
                                 "on_not_hurt_entity": {
                                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 }
                             }
                         },

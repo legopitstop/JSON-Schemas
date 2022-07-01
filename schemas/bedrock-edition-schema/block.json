@@ -335,7 +335,8 @@
                                     "type": "object",
                                     "default": {},
                                     "additionalProperties": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang",
+                                        "default": "true"
                                     }
                                 }
                             }
@@ -416,7 +417,7 @@
                                 },
                                 "on_tick": {
                                     "description": "The event that will be triggered once or on an interval.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 }
                             }
                         },
@@ -430,7 +431,7 @@
                             "properties": {
                                 "on_tick": {
                                     "description": "The event that will be triggered on random ticks.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/EventTrigger"
                                 }
                             }
                         },
@@ -632,7 +633,7 @@
                         },
                         "minecraft:block_collision": {
                             "title": "DEPRECATED",
-                            "description": "Replaced with 'aim_collision'",
+                            "description": "Replaced with 'collision_box'",
                             "default": false
                         },
                         "minecraft:ticking": {
