@@ -1,38 +1,41 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_furnace.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "required": [
-        "description"
-    ],
     "type": "object",
-    "description": "Represents a furnace recipe for a furnace.'Input' items will burn and transform into items specified in 'output'..",
     "properties": {
-        "description": {
+        "minecraft:recipe_furnace": {
+            "description": "Represents a furnace recipe for a furnace.'Input' items will burn and transform into items specified in 'output'..",
             "type": "object",
+            "default": {},
             "properties": {
-                "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "Item used as input for the furnace recipe.",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Item used as output for the furnace recipe."
+                },
+                "input": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
+                    "description": "Items used as input for the furnace recipe."
+                },
+                "output": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
+                    "description": "Items used as output for the furnace recipe."
                 }
             }
-        },
-        "tags": {
-            "type": "array",
-            "description": "Item used as input for the furnace recipe.",
-            "items": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
-            }
-        },
-        "priority": {
-            "type": "integer",
-            "description": "Item used as output for the furnace recipe."
-        },
-        "input": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
-            "description": "Items used as input for the furnace recipe."
-        },
-        "output": {
-            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
-            "description": "Items used as output for the furnace recipe."
         }
     }
 }

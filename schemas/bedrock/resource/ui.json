@@ -769,6 +769,7 @@
     },
     "properties": {
         "namespace": {
+            "title": "UI",
             "type": "string"
         }
     },

@@ -679,7 +679,7 @@
                             },
                             "components": {
                                 "type": "object",
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/block.json#/properties/minecraft:block/properties/components"
+                                "$ref": "#/properties/minecraft:block/properties/components"
                             }
                         }
                     }

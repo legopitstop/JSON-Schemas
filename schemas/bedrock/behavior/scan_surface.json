@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:scan_surface": {
-            "description": "",
+            "description": "scan_surface",
             "type": "object",
             "default": {},
             "properties": {

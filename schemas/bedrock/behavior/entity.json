@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/entity.json",
     "$schema": "http://json-schema.org/draft-07/schema",
-    "description": "JSON schema for data-driven entities",
     "type": "object",
     "default": {},
     "definitions": {
@@ -112,7 +111,7 @@
     },
     "properties": {
         "minecraft:entity": {
-            "description": "A minecraft entity",
+            "description": "JSON schema for data-driven entities",
             "type": "object",
             "default": {},
             "properties": {
@@ -208,7 +207,6 @@
                                 }
                             }
                         },
-                        
                         "minecraft:behavior.admire_item": {
                             "title": "AI GOALS",
                             "description": "Enables the mob to admire items that have been configured as admirable. Must be used in combination with the admire_item component",
@@ -6716,7 +6714,10 @@
                                 },
                                 "seats": {
                                     "description": "The list of positions and number of riders for each position for entities riding this entity",
-                                    "type": ["array","object"],
+                                    "type": [
+                                        "array",
+                                        "object"
+                                    ],
                                     "default": [],
                                     "items": {
                                         "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:rideable/properties/seats"

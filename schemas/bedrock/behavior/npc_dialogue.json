@@ -61,6 +61,7 @@
     },
     "properties": {
         "minecraft:npc_dialogue": {
+            "description": "npc_dialogue",
             "type": "object",
             "required": [
                 "scenes"

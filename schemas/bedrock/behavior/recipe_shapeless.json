@@ -1,66 +1,69 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_shapeless.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "required": [
-        "description"
-    ],
     "type": "object",
-    "description": "Represents a shapeless crafting recipe..",
     "properties": {
-        "description": {
+        "minecraft:recipe_shapeless": {
+            "description": "Represents a shapeless crafting recipe..",
             "type": "object",
+            "default": {},
             "properties": {
-                "identifier": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
-                }
-            }
-        },
-        "tags": {
-            "type": "array",
-            "description": "Item used as input for the furnace recipe.",
-            "items": {
-                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
-            }
-        },
-        "priority": {
-            "type": "integer",
-            "description": "Item used as output for the furnace recipe."
-        },
-        "ingredients": {
-            "anyOf": [
-                {
+                "description": {
                     "type": "object",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
-                },
-                {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
-                    }
-                }
-            ],
-            "description": "items used as input (without a shape) for the recipe."
-        },
-        "result": {
-            "anyOf": [
-                {
-                    "type": "object",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
-                },
-                {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
                     }
                 },
-                {
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                "tags": {
+                    "type": "array",
+                    "description": "Item used as input for the furnace recipe.",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Item used as output for the furnace recipe."
+                },
+                "ingredients": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                            }
+                        }
+                    ],
+                    "description": "items used as input (without a shape) for the recipe."
+                },
+                "result": {
+                    "anyOf": [
+                        {
+                            "type": "object",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                            }
+                        },
+                        {
+                            "type": "string",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                        }
+                    ],
+                    "description": "when input items match the pattern then these items are the result."
                 }
-            ],
-            "description": "when input items match the pattern then these items are the result."
+            }
         }
     }
 }

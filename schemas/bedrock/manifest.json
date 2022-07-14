@@ -1,11 +1,24 @@
 {
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/manifest.json",
     "$schema": "http://json-schema.org/draft-07/schema",
-    "description": "The manifest file contains all the basic information about the pack that Minecraft needs to identify it. The tables below contain all the components of the manifest, their individual properties, and what they mean.",
     "type": "object",
     "default": {},
     "properties": {
+        "format_version": {
+            "title": "GENERAL",
+            "description": "This defines the current version of the manifest. Don't change this unless you have a good reason to",
+            "type": [
+                "string",
+                "integer"
+            ],
+            "examples": [
+                1,
+                2,
+                "1.19.10"
+            ]
+        },
         "capabilities": {
+            "title": "MANIFEST",
             "description": "These are the different features that the pack makes use of that aren't necessarily enabled by default.",
             "type": "object",
             "default": {},
@@ -28,6 +41,7 @@
             }
         },
         "dependencies": {
+            "title": "MANIFEST",
             "description": "This section describes the packs that this pack depends on in order to work. Any packs defined here will be automatically added to the world when this one is added if they are present, or an error will be shown if they aren't.",
             "type": "array",
             "default": [],
@@ -55,19 +69,8 @@
                 }
             }
         },
-        "format_version": {
-            "description": "This defines the current version of the manifest. Don't change this unless you have a good reason to",
-            "type": [
-                "string",
-                "integer"
-            ],
-            "examples": [
-                1,
-                2,
-                "1.19.10"
-            ]
-        },
         "header": {
+            "title": "MANIFEST",
             "description": "This is the heading of the manifest and is required for the manifest to be valid.",
             "type": "object",
             "default": {},
@@ -118,6 +121,7 @@
             }
         },
         "metadata": {
+            "title": "MANIFEST",
             "description": "This section contains additional data about your pack and is otherwise optional.",
             "type": "object",
             "default": {},
@@ -141,6 +145,7 @@
             }
         },
         "modules": {
+            "title": "MANIFEST",
             "description": "This section describes the modules that comprise the pack. Each entry here defines one of the kinds of contents of the pack.",
             "type": "array",
             "default": [],

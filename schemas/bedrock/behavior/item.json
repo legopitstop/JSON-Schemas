@@ -109,6 +109,7 @@
     },
     "properties": {
         "minecraft:item": {
+            "description": "item",
             "type": "object",
             "required": [
                 "description"
