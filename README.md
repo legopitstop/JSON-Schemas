@@ -1,5 +1,7 @@
 # INFO
+
 ## [What are Schemas?](https://json-schema.org/understanding-json-schema/about.html)
+
 Schemas are JSON files that will help and aid you in creating your code and
 will show you any errors that will come up when loading up your mod. A good example
 is the Minecraft Bedrock Addon Schemas. If you have that schema installed in VSC it will help
@@ -18,11 +20,13 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 ![img](https://cdn.discordapp.com/attachments/786714100205092915/789987943900512306/image_2.png "Alerts you if its missing a required bit of code.")
 
 ## How to Install schema for *Visual Studio Code*
+
 1. Open VSC. 
 2. Go to your settings ( `CTRL` + `,` )
 3. At the top corner you should find a button that will open settings (JSON). Click it.
 4. Paste the below code into that JSON.
 5. Save it. Thats it you're done!
+
 ```json
 {
     "json.schemas": [
@@ -32,6 +36,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 ```
 
 ### [Minecraft Bedrock Edition](https://minecraft.fandom.com/wiki/Bedrock_Edition)
+
 ```json
 {
     "name": "Bedrock Edition Schema",
@@ -39,10 +44,12 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "fileMatch": [
         "com.mojang/**.json"
     ],
-    "url": "https://legopitstop.github.io/JSON-Schemas/schemas/bedrock-edition-schema/schema.json"
+    "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json"
 }
 ```
+
 ### [Minecraft Java Edition](https://minecraft.fandom.com/wiki/Java_Edition)
+
 ```json
 {
     "name": "Java Edition Schema",
@@ -168,7 +175,9 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "url": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/block_models/schema.json"
 }
 ```
+
 ### [shields.io](https://shields.io/)
+
 ```json
 {
     "name": "Shields",
@@ -179,7 +188,9 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "url": "https://legopitstop.github.io/JSON-Schemas/schemas/shields.io/schema.json"
 }
 ```
+
 ### [Pack Update Schema](https://legopitstop.github.io/Update_Checker/)
+
 ```json
 {
     "name": "Pack Update JSON",
@@ -192,4 +203,5 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 ```
 
 ## UPDATES
+
 Find the latest news about this schema via the [UPDATES](UPDATES.md) page
