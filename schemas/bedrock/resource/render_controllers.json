@@ -1,0 +1,132 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/render_controllers.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:render_controllers": {
+            "description": "render_controllers",
+            "type": "object",
+            "additionalProperties": {
+                "description": "The id of the render_controller",
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "geometry": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                    },
+                    "materials": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "object",
+                            "default": {},
+                            "additionalProperties": {
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            }
+                        }
+                    },
+                    "textures": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                        }
+                    },
+                    "arrays": {
+                        "$ref": "#/properties/minecraft:render_controllers/additionalProperties"
+                    },
+                    "part_visibility": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "object",
+                            "default": {},
+                            "additionalProperties": {
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                            }
+                        }
+                    },
+                    "overlay_color": {
+                        "type": [
+                            "string",
+                            "object"
+                        ],
+                        "required": [
+                            "r",
+                            "g",
+                            "b",
+                            "a"
+                        ],
+                        "properties": {
+                            "r": {
+                                "description": "red",
+                                "type": "number",
+                                "minium": 0.0,
+                                "maxium": 1.0,
+                                "default": 0.0
+                            },
+                            "g": {
+                                "description": "green",
+                                "type": "number",
+                                "minium": 0.0,
+                                "maxium": 1.0,
+                                "default": 0.0
+                            },
+                            "b": {
+                                "description": "blue",
+                                "type": "number",
+                                "minium": 0.0,
+                                "maxium": 1.0,
+                                "default": 0.0
+                            },
+                            "a": {
+                                "description": "alpha",
+                                "type": "number",
+                                "minium": 0.0,
+                                "maxium": 1.0,
+                                "default": 0.0
+                            }
+                        }
+                    },
+                    "uv_anim": {
+                        "type":"object",
+                        "default": {},
+                        "properties":{
+                            "offset": {
+                                "type":"array",
+                                "default":[],
+                                "items":{
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                                
+                            },
+                            "scale": {
+                                "type":"array",
+                                "default":[],
+                                "items":{
+                                    "type":"number",
+                                    "minium": 0.0,
+                                    "maxium": 1.0,
+                                    "default": 0.0
+                                },
+                                "minItems": 2,
+                                "maxItems": 2
+                            }
+                        }
+                    },
+                    "light_color_multiplier": {
+                        "type":"number",
+                        "minium": 0.0,
+                        "maxium": 1.0,
+                        "default": 0.0
+                    },
+                    "ignore_lighting" : {
+                        "type":"boolean",
+                        "default": true
+                    }
+                }
+            }
+        }
+    }
+}

@@ -25,6 +25,9 @@
         },
         {
             "$ref": "./fog_settings.json"
+        },
+        {
+            "$ref": "./render_controllers.json"
         }
     ]
 }
