@@ -1,0 +1,275 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/fog_settings.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Distance": {
+            "type": "object",
+            "default": {},
+            "required": [
+                "fog_color",
+                "fog_start",
+                "fog_end",
+                "render_distance_type"
+            ],
+            "properties": {
+                "fog_color": {
+                    "description": "The color that the fog will take on.",
+                    "type": "string"
+                },
+                "fog_start": {
+                    "description": "The distance from the player that the fog will begin to appear. 'fog_start' must be less than or equal to 'fog_end'.",
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                },
+                "fog_end": {
+                    "description": "The distance from the player that the fog will become fully opaque. 'fog_end' must be greater than or equal to 'fog_start'.",
+                    "type": "number",
+                    "minium": 0.000000,
+                    "default": 0.0
+                },
+                "render_distance_type": {
+                    "description": "Determines how distance value is used. Fixed distance is measured in blocks. Dynamic distance is multiplied by the current render distance.",
+                    "enum": [
+                        "fixed",
+                        "render"
+                    ]
+                },
+                "transition_fog": {
+                    "description": "Additional fog data which will slowly transition to the distance fog of current biome.",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "init_fog",
+                        "min_percent",
+                        "mid_seconds",
+                        "mid_percent",
+                        "max_seconds"
+                    ],
+                    "properties": {
+                        "init_fog": {
+                            "description": "Initial fog that will slowly transition into water distance fog of the biome when player goes into water.",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "fog_color",
+                                "fog_start",
+                                "fog_end",
+                                "render_distance_type"
+                            ],
+                            "properties": {
+                                "fog_color": {
+                                    "description": "The color that the fog will take on.",
+                                    "type": "string"
+                                },
+                                "fog_start": {
+                                    "description": "The distance from the player that the fog will begin to appear. 'fog_start' must be less than or equal to 'fog_end'.",
+                                    "type": "number",
+                                    "minium": 0.0,
+                                    "maxium": 1.0,
+                                    "default": 0.0
+                                },
+                                "fog_end": {
+                                    "description": "The distance from the player that the fog will become fully opaque. 'fog_end' must be greater than or equal to 'fog_start'.",
+                                    "type": "number",
+                                    "minium": 0.000000,
+                                    "default": 0.0
+                                },
+                                "render_distance_type": {
+                                    "description": "Determines how distance value is used. Fixed distance is measured in blocks. Dynamic distance is multiplied by the current render distance.",
+                                    "enum": [
+                                        "fixed",
+                                        "render"
+                                    ]
+                                }
+                            }
+                        },
+                        "min_percent": {
+                            "description": "The minimum progress of fog transition.",
+                            "type": "number",
+                            "minium": 0.000000,
+                            "maxium": 1.000000,
+                            "default": 0.0
+                        },
+                        "mid_seconds": {
+                            "description": "The time takes to reach certain progress('mid_percent') of fog transition.",
+                            "type": "number",
+                            "minium": 0.000000,
+                            "default": 0.0
+                        },
+                        "mid_percent": {
+                            "description": "The progress of fog transition after 'mid_seconds' seconds.",
+                            "type": "number",
+                            "minium": 0.000000,
+                            "maxium": 1.000000,
+                            "default": 0.0
+                        },
+                        "max_seconds": {
+                            "description": "Total amount of time takes to complete fog transition.",
+                            "type": "number",
+                            "minium": 0.000000,
+                            "default": 0.0
+                        }
+                    }
+                }
+            }
+        },
+        "Density": {
+            "type": "object",
+            "default": {},
+            "required": [
+                "max_density"
+            ],
+            "properties": {
+                "max_density": {
+                    "description": "The maximum amount of opaqueness that the ground fog will take on. A value from [0.0, 1.0].",
+                    "type": "number",
+                    "minium": 0.000000,
+                    "maxium": 1.000000,
+                    "default": 0.0
+                },
+                "max_density_height": {
+                    "description": "The height in blocks that the ground fog will become it's maximum density.",
+                    "type": "number",
+                    "minium": 0.000000,
+                    "maxium": 320.000000,
+                    "default": 0.0
+                },
+                "zero_density_height": {
+                    "description": "The height in blocks that the ground fog will be completely transparent and begin to appear. This value needs to be at least 1 higher than 'max_density_height'.",
+                    "type": "number",
+                    "minium": 0.000000,
+                    "maxium": 320.000000,
+                    "default": 0.0
+                },
+                "uniform": {
+                    "description": "When set to true, the density will be uniform across all heights.",
+                    "type": "boolean"
+                }
+            }
+        },
+        "MediaCoefficients": {
+            "type": "object",
+            "default": {},
+            "required": [
+                "scattering",
+                "absorption"
+            ],
+            "properties": {
+                "scattering": {
+                    "description": "Proportion of light that is scattered per block.",
+                    "type": "string"
+                },
+                "absorption": {
+                    "description": "Proportion of light that is absorbed (lost) per block.",
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "properties": {
+        "minecraft:fog_settings": {
+            "description": "fogs",
+            "type": "object",
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "identifier"
+                    ],
+                    "properties": {
+                        "identifier": {
+                            "description": "The identifier for these fog settings. The identifier must include a namespace.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "distance": {
+                    "description": "The distance fog settings for different camera locations.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "air": {
+                            "description": "The fog settings when the camera is in the air.",
+                            "$ref": "#/definitions/Distance"
+                        },
+                        "weather": {
+                            "description": "The fog settings for when the camera is in the air with active weather (rain, snow, etc..).",
+                            "$ref": "#/definitions/Distance"
+                        },
+                        "water": {
+                            "description": "The fog settings when the camera is in water.",
+                            "$ref": "#/definitions/Distance"
+                        },
+                        "lava": {
+                            "description": "The fog settings when the camera is in lava.",
+                            "$ref": "#/definitions/Distance"
+                        },
+                        "lava_resistance": {
+                            "description": "The fog settings when the camera is in lava and the player has the lava resistance effect active.",
+                            "$ref": "#/definitions/Distance"
+                        },
+                        "powder_snow": {
+                            "description": "The fog settings when the camera is inside a Powder Snow block.",
+                            "$ref": "#/definitions/Distance"
+                        }
+                    }
+                },
+                "volumetric": {
+                    "description": "The volumetric fog settings.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "density": {
+                            "description": "The density settings for different camera locations.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "air": {
+                                    "description": "Fog density values as light passes through air blocks.",
+                                    "$ref": "#/definitions/Density"
+                                },
+                                "water": {
+                                    "description": "Fog density values as light passes through water blocks.",
+                                    "$ref": "#/definitions/Density"
+                                },
+                                "lava": {
+                                    "description": "Fog density values as light passes through lava blocks.",
+                                    "$ref": "#/definitions/Density"
+                                },
+                                "lava_resistance": {
+                                    "description": "Fog density values as light passes through lava blocks while the player has lava resistance.",
+                                    "$ref": "#/definitions/Density"
+                                }
+                            }
+                        },
+                        "media_coefficients": {
+                            "description": "The coefficient settings for the volumetric fog in different blocks.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "air": {
+                                    "description": "Fog coefficient values while light passes through air.",
+                                    "$ref": "#/definitions/MediaCoefficients"
+                                },
+                                "water": {
+                                    "description": "Fog coefficient values while light passes through water.",
+                                    "$ref": "#/definitions/MediaCoefficients"
+                                },
+                                "cloud": {
+                                    "description": "Fog coefficient values while light passes through clouds.",
+                                    "$ref": "#/definitions/MediaCoefficients"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

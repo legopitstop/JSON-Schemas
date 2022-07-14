@@ -22,6 +22,9 @@
         },
         {
             "$ref": "./attachables.json"
+        },
+        {
+            "$ref": "./fog_settings.json"
         }
     ]
 }
