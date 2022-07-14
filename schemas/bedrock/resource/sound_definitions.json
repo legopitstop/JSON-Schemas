@@ -2,66 +2,80 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/sound_definitions.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "type": "object",
-    "additionalProperties": {
-        "description": "sound_definitions",
-        "type": "object",
-        "properties": {
-            "category": {
-                "description": "The category to play the sound. This may effect where it is used in custom blocks or items.",
-                "enum": [
-                    "ambient",
-                    "weather",
-                    "neutral",
-                    "block",
-                    "bottle",
-                    "bucket",
-                    "player",
-                    "ui",
-                    "hostile",
-                    "music",
-                    "record"
-                ]
-            },
-            "max_distance": {
-                "type": "number",
-                "description": "The max amount of blocks the player can hear the sound."
-            },
-            "sounds": {
-                "type": "array",
-                "description": "The sound location to use.",
-                "items": {
-                    "anyOf": [
-                        {
-                            "type": "object",
-                            "properties": {
-                                "load_on_low_memory": {
-                                    "type": "boolean",
-                                    "description": "If the users device has limited memory it will force the sound to play when true."
+    "default": {},
+    "properties": {
+        "sound_definitions": {
+            "additionalProperties": {
+                "description": "sound_definitions",
+                "type": "object",
+                "properties": {
+                    "category": {
+                        "description": "The category to play the sound. This may effect where it is used in custom blocks or items.",
+                        "enum": [
+                            "ambient",
+                            "weather",
+                            "neutral",
+                            "block",
+                            "bottle",
+                            "bucket",
+                            "player",
+                            "ui",
+                            "hostile",
+                            "music",
+                            "record"
+                        ]
+                    },
+                    "max_distance": {
+                        "type": "number",
+                        "description": "The max amount of blocks the player can hear the sound."
+                    },
+                    "sounds": {
+                        "type": "array",
+                        "description": "The sound location to use.",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "load_on_low_memory": {
+                                            "type": "boolean",
+                                            "description": "If the users device has limited memory it will force the sound to play when true."
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "The location of the sound."
+                                        },
+                                        "volume": {
+                                            "type": "number",
+                                            "description": "The volume to play the sound."
+                                        },
+                                        "is3D": {
+                                            "description": "True if this sound is 3D",
+                                            "type":"boolean",
+                                            "default": true
+                                        },
+                                        "weight": {
+                                            "description": "The chance that it will play this sound.",
+                                            "type":"integer"
+                                        }
+                                    }
                                 },
-                                "name": {
+                                {
                                     "type": "string",
                                     "description": "The location of the sound."
-                                },
-                                "volume": {
-                                    "type": "number",
-                                    "description": "The volume to play the sound."
                                 }
-                            }
-                        },
-                        {
-                            "type": "string",
-                            "description": "The location of the sound."
+                            ]
                         }
-                    ]
+                    },
+                    "__use_legacy_max_distance": {
+                        "type": "boolean",
+                        "description": "Use the built-in legacy max distance."
+                    },
+                    "min_distance": {
+                        "type": "number",
+                        "description": "The min amount of blocks the player can hear the sound."
+                    }
                 }
-            },
-            "__use_legacy_max_distance": {
-                "type": "boolean",
-                "description": "Use the built-in legacy max distance."
-            },
-            "min_distance": {
-                "type": "number",
-                "description": "The min amount of blocks the player can hear the sound."
             }
         }
     }
