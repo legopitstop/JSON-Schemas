@@ -14,7 +14,13 @@
             "properties": {
                 "fog_color": {
                     "description": "The color that the fog will take on.",
-                    "type": "string"
+                    "type":["string","array"],
+                    "items": {
+                        "description": "R,G,B,A",
+                        "type": "integer"
+                    },
+                    "maxItems": 4,
+                    "minItems": 3
                 },
                 "fog_start": {
                     "description": "The distance from the player that the fog will begin to appear. 'fog_start' must be less than or equal to 'fog_end'.",
@@ -61,7 +67,13 @@
                             "properties": {
                                 "fog_color": {
                                     "description": "The color that the fog will take on.",
-                                    "type": "string"
+                                    "type":["string","array"],
+                                    "items": {
+                                        "description": "R,G,B,A",
+                                        "type": "integer"
+                                    },
+                                    "maxItems": 4,
+                                    "minItems": 3
                                 },
                                 "fog_start": {
                                     "description": "The distance from the player that the fog will begin to appear. 'fog_start' must be less than or equal to 'fog_end'.",
@@ -159,11 +171,23 @@
             "properties": {
                 "scattering": {
                     "description": "Proportion of light that is scattered per block.",
-                    "type": "string"
+                    "type":["string","array"],
+                    "items": {
+                        "description": "R,G,B,A",
+                        "type": "integer"
+                    },
+                    "maxItems": 4,
+                    "minItems": 3
                 },
                 "absorption": {
                     "description": "Proportion of light that is absorbed (lost) per block.",
-                    "type": "string"
+                    "type":["string","array"],
+                    "items": {
+                        "description": "R,G,B,A",
+                        "type": "integer"
+                    },
+                    "maxItems": 4,
+                    "minItems": 3
                 }
             }
         }
