@@ -115,6 +115,9 @@
         },
         {
             "$ref": "./weighted_random_feature.json"
+        },
+        {
+            "$ref": "./volume.json"
         }
     ]
 }

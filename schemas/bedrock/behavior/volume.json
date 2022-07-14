@@ -1,0 +1,115 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/volume.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "EventTrigger": {
+            "description": "Required array that contains all the triggers.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "required": [
+                    "event"
+                ],
+                "properties": {
+                    "condition": {
+                        "description": "Molang expression to test against the actor. The given event will be triggered if the expression evaluates to true.",
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock-edition-schema/common.json#/definitions/MoLang"
+                    },
+                    "event": {
+                        "description": "Name of the event to run.",
+                        "type": "string"
+                    },
+                    "target": {
+                        "description": "One of \"self\" or \"other\". Self means the event is attached to the volume. Other means the event is attached to the actor.",
+                        "enum": [
+                            "self",
+                            "other"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "properties": {
+        "minecraft:volume": {
+            "description": "Volume",
+            "type": "object",
+            "required": [
+                "description",
+                "components"
+            ],
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "identifier"
+                    ],
+                    "properties": {
+                        "identifier": {
+                            "description": "The unique identifier for this volume. It must be of the form 'namespace:name', where namespace cannot be 'minecraft'.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "components": {
+                    "description": "These are the various possible components for this entity",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "minecraft:fog": {
+                            "description": "Displays the given fog whenever a player enters the volume. Each volume can only have one fog attached.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "fog_identifier": {
+                                    "description": "The identifier of a fog definition. Note that you will not receive any feedback if the definition does not exist.",
+                                    "type": "string"
+                                },
+                                "priority": {
+                                    "description": "The priority for this fog definition setting. Smaller numbers have higher priority. Fogs with equal priority will be combined together.",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "minecraft:on_actor_enter": {
+                            "description": "Component that defines what happens when an actor enters the volume. Can contain multiple json objects.",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "on_enter"
+                            ],
+                            "properties": {
+                                "on_enter": {
+                                    "$ref": "#/definitions/EventTrigger"
+                                }
+                            }
+                        },
+                        "minecraft:on_actor_leave": {
+                            "description": "Component that defines what happens when an actor leaves the volume.",
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "on_leave"
+                            ],
+                            "properties": {
+                                "on_leave": {
+                                    "$ref": "#/definitions/EventTrigger"
+                                }
+                            }
+                        }
+                    }
+                },
+                "events": {
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Events"
+                    }
+                }
+            }
+        }
+    }
+}
