@@ -1,0 +1,52 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/vegetation_patch_feature.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "minecraft:vegetation_patch_feature": {
+            "description": "Feature type 'minecraft:vegetation_patch_feature' has not yet been documented.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "replaceable_blocks": {
+                    "type": "array",
+                    "items": {}
+                },
+                "ground_block": {
+                    "type": "string"
+                },
+                "vegetation_feature": {},
+                "surface": {
+                    "type": "string"
+                },
+                "depth": {},
+                "extra_deep_block_chance": {
+                    "type": "number"
+                },
+                "vertical_range": {
+                    "type": "integer"
+                },
+                "vegetation_chance": {
+                    "type": "number"
+                },
+                "horizontal_radius": {},
+                "extra_edge_column_chance": {
+                    "type": "number",
+                    "minimum": 0.000000
+                },
+                "waterlogged": {
+                    "type": "boolean",
+                    "default": true
+                }
+            }
+        }
+    }
+}

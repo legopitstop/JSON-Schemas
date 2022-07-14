@@ -1,0 +1,956 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "supportedVersions": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/supportedVersions",
+            "type": [
+                "string",
+                "number"
+            ],
+            "examples": [
+                "1.10",
+                "1.12",
+                "1.13",
+                "1.13.0",
+                "1.13.1",
+                "1.13.2",
+                "1.16",
+                "1.16.0",
+                "1.16.1",
+                "1.16.100",
+                "1.16.2",
+                "1.16.200",
+                "1.16.210.56",
+                "1.16.210.58",
+                "1.18",
+                1,
+                2
+            ]
+        },
+        "itemGroup": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemGroup",
+            "enum": [
+                "itemGroup.search",
+                "itemGroup.name.planks",
+                "itemGroup.name.walls",
+                "itemGroup.name.fence",
+                "itemGroup.name.fenceGate",
+                "itemGroup.name.stairs",
+                "itemGroup.name.door",
+                "itemGroup.name.glass",
+                "itemGroup.name.glassPane",
+                "itemGroup.name.permission",
+                "itemGroup.name.slab",
+                "itemGroup.name.stoneBrick",
+                "itemGroup.name.sandstone",
+                "itemGroup.name.wool",
+                "itemGroup.name.woolCarpet",
+                "itemGroup.name.concretePowder",
+                "itemGroup.name.concrete",
+                "itemGroup.name.stainedClay",
+                "itemGroup.name.glazedTerracotta",
+                "itemGroup.name.dye",
+                "itemGroup.name.ore",
+                "itemGroup.name.stone",
+                "itemGroup.name.log",
+                "itemGroup.name.leaves",
+                "itemGroup.name.sapling",
+                "itemGroup.name.seed",
+                "itemGroup.name.crop",
+                "itemGroup.name.grass",
+                "itemGroup.name.flower",
+                "itemGroup.name.rawFood",
+                "itemGroup.name.cookedFood",
+                "itemGroup.name.miscFood",
+                "itemGroup.name.mushroom",
+                "itemGroup.name.monsterStoneEgg",
+                "itemGroup.name.mobEgg",
+                "itemGroup.name.helmet",
+                "itemGroup.name.chestplate",
+                "itemGroup.name.leggings",
+                "itemGroup.name.boots",
+                "itemGroup.name.horseArmor",
+                "itemGroup.name.sword",
+                "itemGroup.name.axe",
+                "itemGroup.name.pickaxe",
+                "itemGroup.name.shovel",
+                "itemGroup.name.hoe",
+                "itemGroup.name.arrow",
+                "itemGroup.name.potion",
+                "itemGroup.name.splashPotion",
+                "itemGroup.name.lingeringPotion",
+                "itemGroup.name.bed",
+                "itemGroup.name.chalkboard",
+                "itemGroup.name.anvil",
+                "itemGroup.name.chest",
+                "itemGroup.name.shulkerBox",
+                "itemGroup.name.record",
+                "itemGroup.name.skull",
+                "itemGroup.name.boat",
+                "itemGroup.name.rail",
+                "itemGroup.name.minecart",
+                "itemGroup.name.pressurePlate",
+                "itemGroup.name.trapdoor",
+                "itemGroup.name.enchantedBook",
+                "itemGroup.name.banner",
+                "itemGroup.name.firework",
+                "itemGroup.name.fireworkStars",
+                "itemGroup.name.coral",
+                "itemGroup.name.coral_decorations",
+                "itemGroup.name.button",
+                "itemGroup.name.sign",
+                "itemGroup.name.wood",
+                "itemGroup.name.banner_pattern",
+                "itemGroup.name.netherWartBlock",
+                "itemGroup.name.candles"
+            ]
+        },
+        "itemTab": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemTab",
+            "enum": [
+                "commands",
+                "construction",
+                "equipment",
+                "items",
+                "nature",
+                "none"
+            ]
+        },
+        "eventTarget": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/eventTarget",
+            "enum": [
+                "self",
+                "holder",
+                "baby",
+                "other",
+                "player",
+                "target",
+                "parent",
+                "block",
+                "damager",
+                "item"
+            ]
+        },
+        "Decimal": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Decimal",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+        },
+        "itemCount": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemCount",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 64
+        },
+        "mobEffectsEnum": {
+            "type": "string",
+            "enum": [
+                "speed",
+                "slowness",
+                "haste",
+                "mining_fatigue",
+                "strength",
+                "instant_health",
+                "instant_damage",
+                "jump_boost",
+                "nausea",
+                "regeneration",
+                "resistance",
+                "fire_resistance",
+                "water_breathing",
+                "invisibility",
+                "blindness",
+                "night_vision",
+                "hunger",
+                "weakness",
+                "poison",
+                "wither",
+                "health_boost",
+                "absorption",
+                "saturation",
+                "levitation",
+                "fatal_poison",
+                "conduit_power",
+                "slow_falling",
+                "bad_omen",
+                "village_hero"
+            ]
+        },
+        "mobEffectsExample": {
+            "type": "string",
+            "examples": [
+                "speed",
+                "slowness",
+                "haste",
+                "mining_fatigue",
+                "strength",
+                "instant_health",
+                "instant_damage",
+                "jump_boost",
+                "nausea",
+                "regeneration",
+                "resistance",
+                "fire_resistance",
+                "water_breathing",
+                "invisibility",
+                "blindness",
+                "night_vision",
+                "hunger",
+                "weakness",
+                "poison",
+                "wither",
+                "health_boost",
+                "absorption",
+                "saturation",
+                "levitation",
+                "fatal_poison",
+                "conduit_power",
+                "slow_falling",
+                "bad_omen",
+                "village_hero"
+            ]
+        },
+        "TextColors": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/TextColors",
+            "type": "string",
+            "enum": [
+                "black",
+                "dark_blue",
+                "dark_green",
+                "dark_aqua",
+                "dark_red",
+                "dark_purple",
+                "gold",
+                "gray",
+                "dark_gray",
+                "blue",
+                "green",
+                "aqua",
+                "red",
+                "light_purple",
+                "yellow",
+                "white"
+            ]
+        },
+        "saturationModifier": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/saturationModifier",
+            "anyOf": [
+                {
+                    "enum": [
+                        "poor",
+                        "low",
+                        "normal",
+                        "good",
+                        "high",
+                        "supernatural"
+                    ]
+                },
+                {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "default": 0.6
+                }
+            ]
+        },
+        "useAnimation": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/useAnimation",
+            "enum": [
+                "eat",
+                "drink",
+                "camera"
+            ]
+        },
+        "recipeTags": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags",
+            "type": "string",
+            "examples": [
+                "furnace",
+                "smoker",
+                "campfire",
+                "soul_campfire",
+                "crafting_table",
+                "brewing_stand",
+                "stonecutter",
+                "smithing_table"
+            ],
+            "maxLength": 64
+        },
+        "itemDataCount": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "item"
+                    ],
+                    "properties": {
+                        "item": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
+                            "description": "The items id"
+                        },
+                        "data": {
+                            "type": "number",
+                            "description": "The items data. (if any)"
+                        },
+                        "count": {
+                            "type": "number",
+                            "default": 1,
+                            "maximum": 64,
+                            "minimum": 1,
+                            "description": "Number of these items"
+                        }
+                    }
+                }
+            ]
+        },
+        "itemData": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemData",
+            "anyOf": [
+                {
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
+                },
+                {
+                    "type": "object",
+                    "required": [
+                        "item"
+                    ],
+                    "properties": {
+                        "item": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
+                            "description": "The items id"
+                        },
+                        "data": {
+                            "type": "number",
+                            "description": "The items data. (if any)"
+                        }
+                    }
+                }
+            ]
+        },
+        "nameSpaceIDItem": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem",
+            "description": "Item namespace id. must not contain Minecraft namespace. example; custom:stone",
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
+                },
+                {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            ]
+        },
+        "nameSpaceIDBlock": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDBlock",
+            "description": "Block namespace id. must not contain Minecraft namespace. example; custom:stone",
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                },
+                {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            ]
+        },
+        "nameSpaceIDEntity": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDEntity",
+            "description": "Entity namespace id. must not contain Minecraft namespace. example; custom:zombie",
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                },
+                {
+                    "$ref": "#/definitions/nameSpaceID"
+                }
+            ]
+        },
+        "nameSpaceID": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID",
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+            "description": "Namespace id. must not contain Minecraft namespace. example; custom:stone"
+        },
+        "difficulty": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/difficulty",
+            "type": "string",
+            "enum": [
+                "easy",
+                "hard",
+                "normal",
+                "peaceful"
+            ]
+        },
+        "biomeFiltertest": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/biomeFiltertest",
+            "enum": [
+                "has_biome_tag"
+            ]
+        },
+        "operator": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/operator",
+            "default": "equals",
+            "enum": [
+                "!=",
+                "<",
+                "<=",
+                "<>",
+                "=",
+                "==",
+                ">",
+                ">=",
+                "equals",
+                "not"
+            ]
+        },
+        "descriptionIdentifier": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/descriptionIdentifier",
+            "required": [
+                "description"
+            ],
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
+                    "properties": {
+                        "identifier": {
+                            "$ref": "#/definitions/nameSpaceID"
+                        }
+                    }
+                }
+            }
+        },
+        "floatMolang": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string",
+                    "$ref": "#/definitions/MoLang"
+                }
+            ]
+        },
+        "MoLang": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang",
+            "type": [
+                "string",
+                "number"
+            ],
+            "description": "Molang can be quite complex, or simple. It depends on your needs. More Info: https://bedrock.dev/docs/beta/MoLang",
+            "examples": [
+                "q.block_neighbor_has_any_tag(X,Y,Z,'TAG')",
+                "q.block_property('MOD_ID:PROPERTY') == 'VALUE'",
+                "q.block_property('MOD_ID:PROPERTY') ? 'true' : 'false'",
+                "q.is_item_name_any('slot.weapon.mainhand','ITEM')",
+                "q.max_damage * 0.25",
+                "q.any_tag('TAG')",
+                "geometry.texture_name"
+            ]
+        },
+        "EventTrigger": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger",
+            "type": "object",
+            "default": {},
+            "required": [
+                "event"
+            ],
+            "properties": {
+                "condition": {
+                    "description": "Molang to match to run the event",
+                    "$ref": "#/definitions/MoLang"
+                },
+                "event": {
+                    "description": "The event to trigger.",
+                    "type": "string"
+                },
+                "target": {
+                    "description": "The target to execute agenst.",
+                    "$ref":"#/definitions/eventTarget",
+                    "default": "self"
+                }
+            }
+        },
+        "schemaArray": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/schemaArray",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/block.json#/properties/components"
+            }
+        },
+        "DamageSource": {
+            "description": "Damage source 1.17",
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/DamageSource",
+            "enum": [
+                "all",
+                "anvil",
+                "block_explosion",
+                "charging",
+                "contact",
+                "drowning",
+                "entity_attack",
+                "entity_explosion",
+                "fall",
+                "falling_block",
+                "fire",
+                "fire_tick",
+                "fireworks",
+                "fly_into_wall",
+                "freezing",
+                "lava",
+                "lightning",
+                "magic",
+                "magma",
+                "none",
+                "override",
+                "piston",
+                "projectile",
+                "stalactite",
+                "stalagmite",
+                "starve",
+                "suffocation",
+                "suicide",
+                "temperature",
+                "thorns",
+                "void",
+                "wither",
+                "durability"
+            ]
+        },
+        "Events": {
+            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Events",
+            "type": "object",
+            "description": "This is the name of the event.",
+            "properties": {
+                "add_mob_effect": {
+                    "description": "Apply mob effect to target.",
+                    "type": "object",
+                    "required": [
+                        "amplifier",
+                        "duration",
+                        "effect"
+                    ],
+                    "default": {
+                        "amplifier": 0,
+                        "duration": 0,
+                        "effect": "",
+                        "target": "self"
+                    },
+                    "properties": {
+                        "amplifier": {
+                            "type": "integer",
+                            "default": 0,
+                            "description": "The amplifier for the mob effect."
+                        },
+                        "duration": {
+                            "type": "integer",
+                            "default": 0.0,
+                            "description": "The duration of the mob effect. (In seconds)"
+                        },
+                        "effect": {
+                            "$ref": "#/definitions/mobEffectsEnum",
+                            "description": "The mob effect to apply."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "damage": {
+                    "description": "Deals damage to the target.",
+                    "type": "object",
+                    "required": [
+                        "amount",
+                        "type"
+                    ],
+                    "default": {
+                        "amount": 0,
+                        "type": "none",
+                        "target": "self"
+                    },
+                    "properties": {
+                        "amount": {
+                            "type": "integer",
+                            "default": 0,
+                            "description": "The amount of damage to deal."
+                        },
+                        "type": {
+                            "$ref": "#/definitions/DamageSource",
+                            "description": "The type of damage to deal."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "decrement_stack": {
+                    "description": "Decrement item stack.",
+                    "type": "object",
+                    "properties": {
+                        "ignore_game_mode": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "set to false by default. If false it will no longer decrease the item stack when playing in Creative by default."
+                        }
+                    }
+                },
+                "die": {
+                    "description": "Kill target. If target is self and this is run from a block then destroy the block.",
+                    "type": "object",
+                    "required": [
+                        "target"
+                    ],
+                    "default": {
+                        "target": "self"
+                    },
+                    "properties": {
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "play_effect": {
+                    "description": "Spawns a particle effect relative to target position.",
+                    "type": "object",
+                    "required": [
+                        "data",
+                        "effect"
+                    ],
+                    "default": {
+                        "data": 0,
+                        "effect": "",
+                        "target": "self"
+                    },
+                    "properties": {
+                        "data": {
+                            "type": "integer",
+                            "default": 0,
+                            "description": "Particle data value."
+                        },
+                        "effect": {
+                            "type": "string",
+                            "description": "The name of the particle effect to create."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "play_sound": {
+                    "description": "Play a sound relative to target position.",
+                    "type": "object",
+                    "required": [
+                        "sound"
+                    ],
+                    "default": {
+                        "sound": "",
+                        "target": "self"
+                    },
+                    "properties": {
+                        "sound": {
+                            "type": "string",
+                            "description": "The name of the sound to play."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "remove_mob_effect": {
+                    "description": "Removes mob effect from target.",
+                    "type": "object",
+                    "required": [
+                        "effect"
+                    ],
+                    "default": {
+                        "effect": "",
+                        "target": "self"
+                    },
+                    "properties": {
+                        "effect": {
+                            "$ref": "#/definitions/mobEffectsExample",
+                            "description": "The mob effect to remove. Use 'all' to remove all mob effects from target."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "run_command": {
+                    "description": "Triggers a slash command or a list of slash commands.",
+                    "type": "object",
+                    "required": [
+                        "command"
+                    ],
+                    "uniqueItems": true,
+                    "properties": {
+                        "command": {
+                            "anyOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ],
+                            "default": "",
+                            "description": "List of slash commands to run."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "set_block": {
+                    "description": "Sets this block to another block type.",
+                    "type": "object",
+                    "required": [
+                        "block_type"
+                    ],
+                    "default": {
+                        "block_type": ""
+                    },
+                    "properties": {
+                        "block_type": {
+                            "$ref": "#/definitions/nameSpaceIDBlock",
+                            "description": "The type of block to set."
+                        }
+                    }
+                },
+                "set_block_at_pos": {
+                    "description": "Sets a block relative to this block to another block type.",
+                    "type": "object",
+                    "required": [
+                        "block_type",
+                        "block_offset"
+                    ],
+                    "default": {
+                        "block_type": "",
+                        "block_offset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ]
+                    },
+                    "properties": {
+                        "block_type": {
+                            "$ref": "#/definitions/nameSpaceIDBlock",
+                            "description": "The type of block to set."
+                        },
+                        "block_offset": {
+                            "type": "array",
+                            "default": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "description": "The offset from the block's center."
+                        }
+                    }
+                },
+                "set_block_property": {
+                    "description": "(Blocks Only) Sets a block property on this block.",
+                    "type": "object",
+                    "default": {
+                        "mod_id:property": ""
+                    },
+                    "additionalProperties": {
+                        "type": [
+                            "string",
+                            "integer",
+                            "boolean"
+                        ],
+                        "description": "Block property to set on the block. Can use MoLang.",
+                        "examples": [
+                            "q.cardinal_facing",
+                            "q.cardinal_facing_2d",
+                            "q.cardinal_player_facing",
+                            "q.cardinal_block_face_placed_on",
+                            "PROPERTY"
+                        ]
+                    }
+                },
+                "spawn_loot": {
+                    "description": "Spawn loot from block.",
+                    "type": "object",
+                    "required": [
+                        "table"
+                    ],
+                    "default": {
+                        "table": ""
+                    },
+                    "properties": {
+                        "table": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/file_path_json",
+                            "description": "File path, relative to the Behavior Pack's path, to the loot table file."
+                        }
+                    }
+                },
+                "swing": {
+                    "description": "Event causes the actor to swing.",
+                    "type": "object"
+                },
+                "teleport": {
+                    "description": "Teleport target randomly around destination point.",
+                    "type": "object",
+                    "default": {
+                        "avoid_water": true,
+                        "destination": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "land_on_block": true,
+                        "max_range": [
+                            8.0,
+                            8.0,
+                            8.0
+                        ],
+                        "target": "self"
+                    },
+                    "properties": {
+                        "avoid_water": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Determines if the teleport avoids putting the target in water."
+                        },
+                        "destination": {
+                            "type": "array",
+                            "default": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "description": "Origin destination of the teleport."
+                        },
+                        "land_on_block": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Determines if the teleport places the target on a block."
+                        },
+                        "max_range": {
+                            "type": "array",
+                            "default": [
+                                8.0,
+                                8.0,
+                                8.0
+                            ],
+                            "description": "Max range the target can teleport relative to the origin destination."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target context to execute against."
+                        }
+                    }
+                },
+                "transform_item": {
+                    "description": "Transforms item into another item.",
+                    "type": "object",
+                    "required": [
+                        "transform"
+                    ],
+                    "default": {
+                        "transform": ""
+                    },
+                    "properties": {
+                        "transform": {
+                            "$ref": "#/definitions/nameSpaceIDItem",
+                            "description": "Name of the item it should transform into"
+                        }
+                    }
+                },
+                "shoot": {
+                    "description": "Shoots a projectile.",
+                    "properties": {
+                        "projectile": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                        },
+                        "launch_power": {
+                            "type": "number"
+                        },
+                        "angle_offset": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "condition": {
+                    "description": "The condition of event to be executed on the block. (Only applyable to 'sequence' event)",
+                    "$ref": "#/definitions/MoLang"
+                },
+                "weight": {
+                    "description": "The weight of event to be executed on the block. (Only applyable to 'randomize' event)",
+                    "type": "integer"
+                },
+                "sequence": {
+                    "description": "Used to sequence event functions.",
+                    "type": "array",
+                    "default": [
+                        {}
+                    ],
+                    "items": {
+                        "$ref": "#/definitions/Events"
+                    }
+                },
+                "randomize": {
+                    "description": "Used to randomize event functions",
+                    "type": "array",
+                    "default": [
+                        {}
+                    ],
+                    "items": {
+                        "$ref": "#/definitions/Events"
+                    }
+                },
+                "trigger": {
+                    "description": "Run another event.",
+                    "type": "object",
+                    "required": [
+                        "event"
+                    ],
+                    "properties": {
+                        "condition": {
+                            "$ref": "#/definitions/MoLang",
+                            "description": "The condition of event to be executed on the block."
+                        },
+                        "event": {
+                            "type": "string",
+                            "description": "The type of event executed on the block."
+                        },
+                        "target": {
+                            "$ref": "#/definitions/eventTarget",
+                            "default": "self",
+                            "description": "The target of event executed on the block."
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/spawn_groups.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:spawn_groups": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "minecraft:mob_event_filter": {
+                                "type": "object",
+                                "properties": {
+                                    "event": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "minecraft:distance_filter": {
+                                "type": "object",
+                                "properties": {
+                                    "min": {
+                                        "type": "number"
+                                    },
+                                    "max": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "minecraft:spawns_on_surface": {
+                                "type": "object",
+                                "default": {}
+                            },
+                            "minecraft:difficulty_filter": {
+                                "type": "object",
+                                "properties": {
+                                    "min": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/difficulty",
+                                        "description": "This is the minimum difficulty level that a mob spawns"
+                                    },
+                                    "max": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/difficulty",
+                                        "description": "This is the maximum difficulty level that a mob spawns"
+                                    }
+                                }
+                            },
+                            "minecraft:herd": {
+                                "type": "object",
+                                "properties": {
+                                    "min_size": {
+                                        "type": "number"
+                                    },
+                                    "max_size": {
+                                        "type": "number"
+                                    },
+                                    "event": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "minecraft:permute_type": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "weight": {
+                                            "type": "number"
+                                        },
+                                        "entity_type": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

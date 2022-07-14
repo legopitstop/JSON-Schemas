@@ -1,0 +1,293 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/feature_rules.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:feature_rules": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        },
+                        "places_feature": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "conditions": {
+                    "description": "Parameters to control where and when the feature will be placed.",
+                    "type": "object",
+                    "properties": {
+                        "placement_pass": {
+                            "description": "When the feature should be placed relative to others. Earlier passes in the list are guaranteed to occur before later passes. Order is not guaranteed within each pass.",
+                            "enum": [
+                                "first_pass",
+                                "before_underground_pass",
+                                "underground_pass",
+                                "after_underground_pass",
+                                "before_surface_pass",
+                                "surface_pass",
+                                "after_surface_pass",
+                                "before_sky_pass",
+                                "sky_pass",
+                                "after_sky_pass",
+                                "final_pass"
+                            ]
+                        },
+                        "minecraft:biome_filter": {
+                            "description": "List of filter tests to determine which biomes this rule will attach to.",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "test": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/biomeFiltertest"
+                                    },
+                                    "operator": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/operator"
+                                    },
+                                    "value": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
+                                        "type": "string"
+                                    },
+                                    "all_of": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "test": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/biomeFiltertest"
+                                                },
+                                                "operator": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/operator"
+                                                },
+                                                "value": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock-edition/biome_tag.json#/definitions/MinecraftBiomeTagExamples",
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "distribution": {
+                    "description": "Parameters controlling the initial scatter of the feature.",
+                    "type": "object",
+                    "properties": {
+                        "coordinate_eval_order": {
+                            "description": "The order in which coordinates will be evaluated. Should be used when a coordinate depends on another. If omitted, defaults to \"xzy\".",
+                            "default": "xzy",
+                            "enum": [
+                                "xyz",
+                                "xzy",
+                                "yxz",
+                                "yzx",
+                                "zxy",
+                                "zyx"
+                            ]
+                        },
+                        "iterations": {
+                            "description": "Number of scattered positions to generate",
+                            "type": [
+                                "integer",
+                                "string"
+                            ]
+                        },
+                        "scatter_chance": {
+                            "anyOf": [
+                                {
+                                    "description": "Probability (0-100] that this scatter will occur.  Not evaluated each iteration; either no iterations will run, or all will.",
+                                    "type": [
+                                        "integer",
+                                        "string"
+                                    ]
+                                },
+                                {
+                                    "description": "Probability numerator / denominator that this scatter will occur.  Not evaluated each iteration; either no iterations will run, or all will.",
+                                    "type": "object",
+                                    "properties": {
+                                        "numerator": {
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "denominator": {
+                                            "type": "integer",
+                                            "minimum": 1
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "x": {
+                            "anyOf": [
+                                {
+                                    "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ],
+                                    "minimum": 1
+                                },
+                                {
+                                    "description": "Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.",
+                                    "type": "object",
+                                    "properties": {
+                                        "distribution": {
+                                            "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
+                                            "enum": [
+                                                "uniform",
+                                                "gaussian",
+                                                "inverse_gaussian",
+                                                "fixed_grid",
+                                                "jittered_grid"
+                                            ]
+                                        },
+                                        "step_size": {
+                                            "description": " When the distribution type is grid, defines the distance between steps along this axis",
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "grid_offset": {
+                                            "description": "When the distribution type is grid, defines the offset along this axis",
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "extent": {
+                                            "description": "Lower / Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
+                                            "type": "array",
+                                            "items": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minItems": 2,
+                                                        "maxItems": 2
+                                                    },
+                                                    {
+                                                        "type": "string"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "y": {
+                            "anyOf": [
+                                {
+                                    "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ],
+                                    "minimum": 1
+                                },
+                                {
+                                    "description": "Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.",
+                                    "type": "object",
+                                    "properties": {
+                                        "distribution": {
+                                            "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
+                                            "enum": [
+                                                "uniform",
+                                                "gaussian",
+                                                "inverse_gaussian",
+                                                "fixed_grid",
+                                                "jittered_grid"
+                                            ]
+                                        },
+                                        "step_size": {
+                                            "description": " When the distribution type is grid, defines the distance between steps along this axis",
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "grid_offset": {
+                                            "description": "When the distribution type is grid, defines the offset along this axis",
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "extent": {
+                                            "description": "Lower / Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
+                                            "type": "array",
+                                            "items": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minItems": 2,
+                                                        "maxItems": 2
+                                                    },
+                                                    {
+                                                        "type": "string"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        },
+                        "z": {
+                            "anyOf": [
+                                {
+                                    "description": "Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.",
+                                    "type": [
+                                        "number",
+                                        "string"
+                                    ],
+                                    "minimum": 1
+                                },
+                                {
+                                    "description": "Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.",
+                                    "type": "object",
+                                    "properties": {
+                                        "distribution": {
+                                            "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
+                                            "enum": [
+                                                "uniform",
+                                                "gaussian",
+                                                "inverse_gaussian",
+                                                "fixed_grid",
+                                                "jittered_grid"
+                                            ]
+                                        },
+                                        "step_size": {
+                                            "description": " When the distribution type is grid, defines the distance between steps along this axis",
+                                            "type": "integer",
+                                            "minimum": 1
+                                        },
+                                        "grid_offset": {
+                                            "description": "When the distribution type is grid, defines the offset along this axis",
+                                            "type": "integer",
+                                            "minimum": 0
+                                        },
+                                        "extent": {
+                                            "description": "Lower / Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around",
+                                            "type": "array",
+                                            "items": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "integer",
+                                                        "minItems": 2,
+                                                        "maxItems": 2
+                                                    },
+                                                    {
+                                                        "type": "string"
+                                                    }
+                                                ]
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

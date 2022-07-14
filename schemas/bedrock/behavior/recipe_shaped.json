@@ -1,0 +1,56 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_shaped.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "description": "Represents a shaped crafting recipe for a crafting table. The key used in the pattern may be any single character except the 'space' character, which is reserved for empty slots in a recipe..",
+    "properties": {
+        "description": {
+            "type": "object",
+            "properties": {
+                "identifier": {
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                }
+            }
+        },
+        "tags": {
+            "type": "array",
+            "description": "Item used as input for the furnace recipe.",
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
+            }
+        },
+        "priority": {
+            "type": "integer",
+            "description": "Item used as output for the furnace recipe."
+        },
+        "pattern": {
+            "type": "array",
+            "description": "characters that represent a pattern to be defined by keys.",
+            "items": {
+                "type": "string"
+            }
+        },
+        "key": {
+            "type": "object",
+            "description": "patten key character mapped to item names.",
+            "additionalProperties": {
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemData"
+            }
+        },
+        "result": {
+            "description": "when input items match the pattern then this item(s) are the result.",
+            "anyOf": [
+                {
+                    "type": ["string","object"],
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                },
+                {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                    }
+                }
+            ]
+        }
+    }
+}

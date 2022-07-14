@@ -1,0 +1,633 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/particle_effect.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:particle_effect": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        },
+                        "basic_render_parameters": {
+                            "type": "object",
+                            "properties": {
+                                "material": {
+                                    "type": "string",
+                                    "description": "Minecraft material to use for emitter"
+                                },
+                                "texture": {
+                                    "type": "string",
+                                    "description": "Minecraft texture to use for emitter"
+                                }
+                            }
+                        }
+                    }
+                },
+                "curves": {
+                    "type": "object",
+                    "description": "curve details"
+                },
+                "events": {
+                    "type": "object",
+                    "description": "events details"
+                },
+                "components": {
+                    "type": "object",
+                    "description": "Contains components that control emissions, emitters, and a ton more info.",
+                    "properties": {
+                        "minecraft:emitter_local_space": {
+                            "type": "object",
+                            "properties": {
+                                "position": {
+                                    "type": "boolean"
+                                },
+                                "rotation": {
+                                    "type": "boolean"
+                                },
+                                "velocity": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "minecraft:emitter_initialization": {
+                            "type": "object",
+                            "properties": {
+                                "creation_expression": {
+                                    "type": "string",
+                                    "description": "this is run once at emitter startup"
+                                },
+                                "per_update_expression": {
+                                    "type": "string",
+                                    "description": "this is run once per emitter update"
+                                }
+                            }
+                        },
+                        "minecraft:emitter_rate_instant": {
+                            "type": "object",
+                            "properties": {
+                                "num_particles": {
+                                    "default": 10,
+                                    "description": "this many particles are emitted at once. evaluated once per particle emitter loop",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                }
+                            }
+                        },
+                        "minecraft:emitter_rate_steady": {
+                            "type": "object",
+                            "properties": {
+                                "spawn_rate": {
+                                    "description": "how often a particle is emitted, in particles/sec. evaluated once per particle emitted",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 1
+                                },
+                                "max_particles": {
+                                    "description": "maximum number of particles that can be active at once for this emitter. evaluated once per particle emitter loop",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 50
+                                }
+                            }
+                        },
+                        "minecraft:emitter_rate_manual": {
+                            "type": "object",
+                            "properties": {
+                                "max_particles": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "description": "evaluated once per particle emitted"
+                                }
+                            }
+                        },
+                        "minecraft:emitter_lifetime_looping": {
+                            "type": "object",
+                            "properties": {
+                                "active_time": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 10,
+                                    "description": "emitter will emit particles for this time per loop. evaluated once per particle emitter loop."
+                                },
+                                "sleep_time": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "emitter will pause emitting particles for this time per loop. evaluated once per particle emitter loop."
+                                }
+                            }
+                        },
+                        "minecraft:emitter_lifetime_once": {
+                            "type": "object",
+                            "properties": {
+                                "active_time": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 10,
+                                    "description": "how long the particles emit for. evaluated once"
+                                }
+                            }
+                        },
+                        "minecraft:emitter_lifetime_expression": {
+                            "type": "object",
+                            "properties": {
+                                "activation_expression": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 1,
+                                    "description": "When the expression is non-zero, the emitter will emit particles. Evaluated every frame"
+                                },
+                                "expiration_expression": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "Emitter will expire if the expression is non-zero. Evaluated every frame"
+                                }
+                            }
+                        },
+                        "minecraft:emitter_lifetime_events": {
+                            "type": "object",
+                            "properties": {
+                                "creation_event": {
+                                    "description": "fires when the emitter is created",
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "expiration_event": {
+                                    "description": "fires when the emitter expires (does not wait for particles to expire)",
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "timeline": {
+                                    "type": "object",
+                                    "description": "a series of times, e.g. 0.0 or 1.0, that trigger the event. these get fired on every loop the emitter goes through. \"time\" is the time, e.g. one line might be: \"0.4\": \"event\"",
+                                    "properties": {
+                                        "time": {
+                                            "anyOf": [
+                                                {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "travel_distance_events": {
+                                    "type": "object",
+                                    "properties": {
+                                        "distance": {
+                                            "description": "a series of distances, e.g. 0.0 or 1.0, that trigger the event. these get fired when the emitter has moved by the specified input. distance, e.g. one line might be: \"0.4\": \"event\"",
+                                            "anyOf": [
+                                                {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                {
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    }
+                                },
+                                "looping_travel_distance_events": {
+                                    "type": "array",
+                                    "items": {
+                                        "description": "a series of events that occur at set intervals. these get fired every time the emitter has moved the specified input. distance from the last time it was fired.",
+                                        "type": "string",
+                                        "properties": {
+                                            "distance": {
+                                                "type": "number"
+                                            },
+                                            "effects": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:emitter_shape_point": {
+                            "type": "object",
+                            "properties": {
+                                "offset": {
+                                    "type": "array",
+                                    "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "direction": {
+                                    "type": "array",
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted.",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                }
+                            }
+                        },
+                        "minecraft:emitter_shape_sphere": {
+                            "type": "object",
+                            "properties": {
+                                "offset": {
+                                    "type": "array",
+                                    "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "radius": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 1,
+                                    "description": "sphere radius. evaluated once per particle emitted."
+                                },
+                                "direction": {
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                            }
+                                        },
+                                        {
+                                            "enum": [
+                                                "inwards",
+                                                "outwards"
+                                            ]
+                                        }
+                                    ],
+                                    "default": "outwards",
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                }
+                            }
+                        },
+                        "minecraft:emitter_shape_box": {
+                            "type": "object",
+                            "properties": {
+                                "offset": {
+                                    "type": "array",
+                                    "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "half_dimensions": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    },
+                                    "default": 1,
+                                    "description": "box dimensions. these are the half dimensions, the box is formed centered on the emitter. with the box extending in the 3 principal x/y/z axes by these values"
+                                },
+                                "surface_only": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "emit only from the surface of the sphere"
+                                },
+                                "direction": {
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                            }
+                                        },
+                                        {
+                                            "enum": [
+                                                "inwards",
+                                                "outwards"
+                                            ]
+                                        }
+                                    ],
+                                    "default": "outwards",
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                }
+                            }
+                        },
+                        "minecraft:emitter_shape_custom": {
+                            "type": "object",
+                            "properties": {
+                                "offset": {
+                                    "type": "array",
+                                    "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "direction": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    },
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                }
+                            }
+                        },
+                        "minecraft:emitter_shape_entity_aabb": {
+                            "type": "object",
+                            "properties": {
+                                "surface_only": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "emit only from the surface of the sphere"
+                                },
+                                "direction": {
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                            }
+                                        },
+                                        {
+                                            "enum": [
+                                                "inwards",
+                                                "outwards"
+                                            ]
+                                        }
+                                    ],
+                                    "default": "outwards",
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                }
+                            }
+                        },
+                        "minecraft:emitter_shape_disc": {
+                            "type": "object",
+                            "properties": {
+                                "offset": {
+                                    "type": "array",
+                                    "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "surface_only": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "emit only from the surface of the sphere"
+                                },
+                                "radius": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 1,
+                                    "description": "sphere radius. evaluated once per particle emitted."
+                                },
+                                "plane_normal": {
+                                    "description": "specifies the normal of the disc plane, the disc will be perpendicular to this direction",
+                                    "default": [
+                                        0,
+                                        1,
+                                        0
+                                    ],
+                                    "anyOf": [
+                                        {
+                                            "description": "custom direction for the normal",
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                            }
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "direction": {
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                            }
+                                        },
+                                        {
+                                            "enum": [
+                                                "inwards",
+                                                "outwards"
+                                            ]
+                                        }
+                                    ],
+                                    "default": "outwards",
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                }
+                            }
+                        },
+                        "minecraft:particle_initial_spin": {
+                            "type": "object",
+                            "properties": {
+                                "rotation": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "specifies the initial rotation in degrees. evaluated once."
+                                },
+                                "rotation_rate": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "specifies the spin rate in degrees/second. evaluated once."
+                                }
+                            }
+                        },
+                        "minecraft:particle_initial_speed": {
+                            "description": "evaluated once",
+                            "anyOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                {
+                                    "type": "string",
+                                    "default": 0,
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                }
+                            ]
+                        },
+                        "minecraft:particle_motion_dynamic": {
+                            "type": "object",
+                            "properties": {
+                                "linear_acceleration": {
+                                    "type": "array",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "description": "the linear acceleration applied to the particle. Units are blocks/sec/sec. An example would be gravity which is [0, -9.8, 0]. evaluated every frame.",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "linear_drag_coefficient": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "using the equation: 'acceleration = -linear_drag_coefficient*velocity'. where velocity is the current direction times speed. Think of this as air-drag.  The higher the value, the more drag. evaluated every frame."
+                                },
+                                "rotation_acceleration": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "acceleration applies to the rotation speed of the particle. think of a disc spinning up or a smoke puff that starts rotating. but slows down over time. evaluated every frame. acceleration is in degrees/sec/sec."
+                                },
+                                "rotation_drag_coefficient": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "default": 0,
+                                    "description": "drag applied to retard rotation. equation is 'rotation_acceleration += -rotation_rate*rotation_drag_coefficient'. useful to slow a rotation, or to limit the rotation acceleration. Think of a disc that speeds up (acceleration). but reaches a terminal speed (drag). Another use is if you have a particle growing in size, having. the rotation slow down due to drag can add \"weight\" to the particle's. motion"
+                                }
+                            }
+                        },
+                        "minecraft:particle_motion_parametric": {
+                            "type": "object",
+                            "properties": {
+                                "relative_position": {
+                                    "type": "array",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "description": "directly set the position relative to the emitter. E.g. a spiral might be: '\"relative_position\": [\"Math.cos(Params.LifeTime)\", 1.0,\"Math.sin(Params.Lifetime)\"]' evaluated every frame.",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "direction": {
+                                    "type": "array",
+                                    "description": "directly set the 3d direction of the particle. doesn't affect direction if not specified. evaluated every frame",
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    }
+                                },
+                                "rotation": {
+                                    "default": 0,
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "description": "directly set the rotation of the particle. evaluated every frame."
+                                }
+                            }
+                        },
+                        "minecraft:particle_motion_collision": {
+                            "type": "object",
+                            "properties": {
+                                "enabled": {
+                                    "anyOf": [
+                                        {
+                                            "type": "boolean"
+                                        },
+                                        {
+                                            "type": "string"
+                                        }
+                                    ],
+                                    "default": true,
+                                    "description": "enables collision when true/non-zero. evaluated every frame"
+                                },
+                                "collision_drag": {
+                                    "type": "number",
+                                    "description": "alters the speed of the particle when it has collided. useful for emulating friction/drag when colliding, e.g a particle that hits the ground would slow to a stop. This drag slows down the particle by this amount in blocks/sec when in contact"
+                                },
+                                "coefficient_of_restitution": {
+                                    "type": "number",
+                                    "description": "used for bouncing/not-bouncing. Set to 0.0 to not bounce, 1.0 to bounce back up to original hight. and in-between to lose speed after bouncing.  Set to >1.0 to gain energy on each bounce"
+                                },
+                                "collision_radius": {
+                                    "type": "number",
+                                    "description": "used to minimize interpenetration of particles with the environment. note that this must be less than or equal to 1/2 block"
+                                },
+                                "expire_on_contact": {
+                                    "type": "boolean",
+                                    "description": "triggers expiration on contact if true"
+                                },
+                                "events": {
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "description": "triggers an event. array of individual events",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "event": {
+                                                        "type": "string",
+                                                        "description": "triggers the specified event if the conditions are met."
+                                                    },
+                                                    "min_speed": {
+                                                        "type": "number",
+                                                        "default": 2,
+                                                        "minimum": 2,
+                                                        "description": "optional minimum speed for event triggering"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "event": {
+                                                    "type": "string",
+                                                    "description": "triggers the specified event if the conditions are met."
+                                                },
+                                                "min_speed": {
+                                                    "type": "number",
+                                                    "default": 2,
+                                                    "minimum": 2,
+                                                    "description": "optional minimum speed for event triggering"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

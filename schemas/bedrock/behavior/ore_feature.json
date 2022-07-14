@@ -1,0 +1,49 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/ore_feature.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "minecraft:ore_feature": {
+            "description": "'minecraft:ore_feature' places a vein of blocks to simulate ore deposits. Despite the name, any block can be placed by this feature. During placement, existing world blocks are checked to see if they can be replaced by the new ore block based on the list provided in the 'may_replace' field. If no 'may_replace' field is specified, the ore block can replace any existing block.Succeeds if: At least one ore block is successfully placed.Fails if: All ore block placements fail.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "count": {
+                    "description": "The number of blocks to be placed.",
+                    "type": "integer",
+                    "minimum": 1,
+                    "default": 1
+                },
+                "replace_rules": {
+                    "description": "Collection of replace rules that will be checked in order of definition. If a rule is resolved, the rest will not be resolved for that block position.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "places_block": {
+                                "description": "Reference to the block to be placed.",
+                                "type": "string"
+                            },
+                            "may_replace": {
+                                "description": "A list of blocks that may be replaced during placement. Omit this field to allow any block to be replaced.",
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

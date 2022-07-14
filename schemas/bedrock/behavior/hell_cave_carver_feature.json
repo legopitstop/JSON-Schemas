@@ -1,0 +1,30 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/hell_cave_carver_feature.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "minecraft:hell_cave_carver_feature": {
+            "description": "'minecraft:hell_cave_carver_feature' places a growing plant in the world. A growing plant is a column that is anchored either to the ceiling or the floor, based on its growth direction. The growing plant has a body and a head, where the head is the tip of the plant, and the body consists of the remainder blocks.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "fill_with": {
+                    "description": "Reference to the block to fill the cave with.",
+                    "type": "string"
+                },
+                "width_modifier": {
+                    "description": "How many blocks to increase the cave radius by, from the center point of the cave.",
+                    "type": "number"
+                }
+            }
+        }
+    }
+}

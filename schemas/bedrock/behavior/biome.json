@@ -1,0 +1,192 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/biome.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:biome": {
+            "type":"object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "components": {
+                    "type": "object",
+                    "properties": {
+                        "minecraft:climate": {
+                            "type": "object",
+                            "description": "Describes temperature, humidity, precipitation, etc.  Biomes without this component will have default values.",
+                            "properties": {
+                                "downfall": {
+                                    "type": "number"
+                                },
+                                "snow_accumulation": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "number"
+                                    }
+                                },
+                                "temperature": {
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "minecraft:overworld_height": {
+                            "type": "object",
+                            "description": "Noise parameters used to drive terrain height in the Overworld.",
+                            "properties": {
+                                "noise_params": {},
+                                "noise_type": {
+                                    "enum": [
+                                        "stone_beach",
+                                        "deep_ocean",
+                                        "default",
+                                        "default_mutated",
+                                        "lowlands",
+                                        "river",
+                                        "ocean",
+                                        "taiga",
+                                        "mountains",
+                                        "highlands",
+                                        "mushroom",
+                                        "less_extreme",
+                                        "extreme",
+                                        "beach",
+                                        "swamp"
+                                    ]
+                                }
+                            }
+                        },
+                        "minecraft:overworld_surface": {
+                            "type": "object",
+                            "properties": {
+                                "floor_depth": {
+                                    "type": "number"
+                                },
+                                "floor_material": {
+                                    "type": "string",
+                                    "pattern": ":"
+                                },
+                                "foundation_material": {
+                                    "type": "string",
+                                    "pattern": ":"
+                                },
+                                "mid_material": {
+                                    "type": "string",
+                                    "pattern": ":"
+                                },
+                                "top_material": {
+                                    "type": "string",
+                                    "pattern": ":"
+                                }
+                            }
+                        },
+                        "minecraft:world_generation_rules": {
+                            "type": "object",
+                            "description": "Control how this biome is instantiated (and then potentially modified) during world generation of the overworld.",
+                            "properties": {
+                                "hills_transformation": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "generate_for_climates": {
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        "minecraft:forced_features": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:ignore_automatic_features": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:surface_parameters": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:surface_material_adjustments": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:swamp_surface": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:frozen_ocean_surface": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:mesa_surface": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:nether_surface": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:the_end_surface": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:capped_surface": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:overworld_generation_rules": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "minecraft:nether_generation_rules": {
+                            "type": "object",
+                            "description": ""
+                        },
+                        "animal": {
+                            "type": "object",
+                            "default": {}
+                        },
+                        "bamboo": {
+                            "type": "object",
+                            "default": {}
+                        },
+                        "jungle": {
+                            "type": "object",
+                            "default": {}
+                        },
+                        "monster": {
+                            "type": "object",
+                            "default": {}
+                        },
+                        "overworld": {
+                            "type": "object",
+                            "default": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

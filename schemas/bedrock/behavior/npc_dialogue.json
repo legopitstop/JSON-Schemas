@@ -1,0 +1,140 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/npc_dialogue.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "RawText": {
+            "type": [
+                "object",
+                "string"
+            ],
+            "default": {},
+            "properties": {
+                "rawtext": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "anyOf": [
+                            {
+                                "required": [
+                                    "translate"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "text"
+                                ]
+                            }
+                        ],
+                        "properties": {
+                            "translate": {
+                                "type": "string"
+                            },
+                            "text": {
+                                "type": "string"
+                            },
+                            "color": {
+                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/common_colors.json#/definitions/MinecraftCommonTextColorExample"
+                            },
+                            "italic": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "bold": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "underlined": {
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "strikethrough": {
+                                "type": "boolean",
+                                "default": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "properties": {
+        "minecraft:npc_dialogue": {
+            "type": "object",
+            "required": [
+                "scenes"
+            ],
+            "properties": {
+                "scenes": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "required": [
+                            "scene_tag"
+                        ],
+                        "properties": {
+                            "scene_tag": {
+                                "description": "The identifier of the scene, used to target the scene.",
+                                "type": "string"
+                            },
+                            "npc_name": {
+                                "description": "The display name of the NPC. Optional, if it is not specified, the name of the NPC entity will be used, which is §eNPC by default.",
+                                "$ref": "#/definitions/RawText",
+                                "default": "§eNPC"
+                            },
+                            "text": {
+                                "description": "The text to display in the speech bubble. Optional.",
+                                "$ref": "#/definitions/RawText"
+                            },
+                            "on_open_commands": {
+                                "description": "Array of command strings to be run when the dialog is opened. Optional.",
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "on_close_commands": {
+                                "description": "Array of command strings to be run when the dialog is closed. Optional.",
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "buttons": {
+                                "description": "An array of objects specifying the buttons to show in the dialog. Optional.",
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "object",
+                                    "default": {},
+                                    "required": [
+                                        "name"
+                                    ],
+                                    "properties": {
+                                        "name": {
+                                            "description": "",
+                                            "$ref": "#/definitions/RawText"
+                                        },
+                                        "commands": {
+                                            "description": "d",
+                                            "type": "array",
+                                            "default": [],
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

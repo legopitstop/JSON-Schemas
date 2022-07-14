@@ -1,0 +1,50 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/rect_layout.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "minecraft:rect_layout": {
+            "description": "'minecraft:rect_layout' scans the surface of a Chunk, calling place() on the surface of each block column.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "ratio_of_empty_space": {
+                    "description": "Ratio of a Chunk to be filled with empty space rather than features.",
+                    "type": "number"
+                },
+                "feature_areas": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 4294967295,
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "feature": {
+                                "description": "Feature to be placed.",
+                                "type": "string"
+                            },
+                            "area_dimensions": {
+                                "description": "Dimensions (size) of the associated Feature.",
+                                "type": "array",
+                                "minItems": 2,
+                                "maxItems": 2,
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

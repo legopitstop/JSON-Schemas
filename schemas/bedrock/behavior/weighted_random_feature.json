@@ -1,0 +1,41 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/weighted_random_feature.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "minecraft:weighted_random_feature": {
+            "description": "'minecraft:weighted_random_feature' randomly selects and places a feature based on a weight value. Weights are relative, with higher values making selection more likely.Succeeds if: The selected feature is placed.Fails if: The selected feature fails to be placed.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                        }
+                    }
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "description": "Collection of weighted features that placement will select from.",
+                        "type": "array",
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "items": [
+                            {
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID",
+                                "description": "The feature name"
+                            },
+                            {
+                                "type": "number",
+                                "description": "The weight of the features"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "description": "JSON schema for Minecraft Bedrock Edition.",
+    "type": "object",
+    "default": {},
+    "anyOf": [
+        {
+            "$ref": "./client_entity.json"
+        },
+        {
+            "$ref": "./sound_definitions.json"
+        },
+        {
+            "$ref": "./ui.json"
+        },
+        {
+            "$ref": "./texture_set.json"
+        },
+        {
+            "$ref": "./particle_effect.json"
+        },
+        {
+            "$ref": "./attachables.json"
+        }
+    ]
+}
