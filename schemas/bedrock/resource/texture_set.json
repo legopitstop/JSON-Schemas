@@ -5,45 +5,40 @@
         "minecraft:texture_set": {
             "description": "Minecraft supports a Physically Based Rendering (PBR) color pipeline (e.g. used for Ray Tracing). This uses more texture data than simply 'color' to enable richer, more realistic visuals. With the PBR approach, you can have layers for different specular reflections, emissivity, normal maps, etc. which goes beyond the Classic color pipeline for Vanilla Minecraft. Texture Sets have been added as the feature for defining multiple PBR layers for a texture resource. Texture sets are data driven from json files.",
             "type": "object",
-            "required": [
-                "color"
-            ],
             "properties": {
                 "color": {
-                    "anyOf": [
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            }
-                        },
-                        {
-                            "type": "string"
-                        }
+                    "description": "This is an RGB 3-channel image (defaults to uniform alpha of 1.0), or an RGBA 4-channel image, or a 4 value array for a uniform color with alpha. This is the only required layer. It is the only layer used by the Classic pipeline. Typically there is lighting baked in the color image.",
+                    "type": [
+                        "string",
+                        "array"
                     ],
-                    "description": "This is an RGB 3-channel image (defaults to uniform alpha of 1.0), or an RGBA 4-channel image, or a 4 value array for a uniform color with alpha. This is the only required layer. It is the only layer used by the Classic pipeline. Typically there is lighting baked in the color image."
-                },
-                "metalness_emissive_roughness": {
-                    "anyOf": [
-                        {
-                            "type": "array",
-                            "items": {
-                                "type": "number"
-                            }
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "description": "3-channel image (or 4-channel where the 4th channel is ignored) or a 3 value array for a uniform MER. RGB images map Red to Metalness, Green to Emissive, and Blue to Roughness."
+                    "items": {
+                        "description": "R,G,B,A",
+                        "type": "integer"
+                    },
+                    "maxItems": 4,
+                    "minItems": 3
                 },
                 "normal": {
-                    "type": "string",
-                    "description": "3-channel normal map image (or 4-channel where the 4th channel is ignored). Mutually exclusive with the `heightmap` layer."
+                    "description": "3-channel normal map image (or 4-channel where the 4th channel is ignored). Mutually exclusive with the `heightmap` layer.",
+                    "type": "string"
                 },
                 "heightmap": {
-                    "type": "string",
-                    "description": "1-channel layer image or a single value in json for a uniform heightmap. Mutually exclusive with the `normal` layer."
+                    "description": "1-channel layer image or a single value in json for a uniform heightmap. Mutually exclusive with the `normal` layer.",
+                    "type": "string"
+                },
+                "metalness_emissive_roughness": {
+                    "description": "3-channel image (or 4-channel where the 4th channel is ignored) or a 3 value array for a uniform MER. RGB images map Red to Metalness, Green to Emissive, and Blue to Roughness.",
+                    "type": [
+                        "string",
+                        "array"
+                    ],
+                    "items": {
+                        "description": "R,G,B,A",
+                        "type": "integer"
+                    },
+                    "maxItems": 4,
+                    "minItems": 3
                 }
             }
         }
