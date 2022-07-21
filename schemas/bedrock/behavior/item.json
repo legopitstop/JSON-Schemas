@@ -135,7 +135,8 @@
                             "default": false,
                             "description": "If this item is experimental, it will only be registered if the world is marked as experimental."
                         }
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 "components": {
                     "description": "The properties of the item.",
@@ -158,7 +159,8 @@
                                     "description": "Event trigger for when the item has completed its use duration.",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:armor": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -186,7 +188,8 @@
                                         "netherite"
                                     ]
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:block_placer": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -207,7 +210,8 @@
                                         "type": "string"
                                     }
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:cooldown": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -226,7 +230,8 @@
                                     "type": "integer",
                                     "description": "The duration of time this item will spend cooling down before becoming usable again."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:digger": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -238,51 +243,39 @@
                             ],
                             "properties": {
                                 "destroy_speeds": {
-                                    "type": "array",
                                     "description": "Destroy speed per block.",
+                                    "type": "array",
                                     "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "required": [
+                                            "block",
+                                            "speed"
+                                        ],
                                         "properties": {
                                             "block": {
-                                                "anyOf": [
-                                                    {
-                                                        "type": "string",
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
-                                                    },
-                                                    {
-                                                        "type": "object",
-                                                        "properties": {
-                                                            "any_tag": {
-                                                                "type": "array",
-                                                                "items": {
-                                                                    "type": "string",
-                                                                    "examples": [
-                                                                        "wood",
-                                                                        "pumpkin",
-                                                                        "plant",
-                                                                        "stone",
-                                                                        "metal",
-                                                                        "dirt",
-                                                                        "sand",
-                                                                        "gravel",
-                                                                        "grass",
-                                                                        "snow",
-                                                                        "diamond_pick_diggable",
-                                                                        "gold_pick_diggable",
-                                                                        "iron_pick_diggable",
-                                                                        "stone_pick_diggable",
-                                                                        "wood_pick_diggable"
-                                                                    ]
-                                                                }
-                                                            }
-                                                        }
+                                                "type": [
+                                                    "string",
+                                                    "object"
+                                                ],
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples",
+                                                "properties": {
+                                                    "tags": {
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
                                                     }
-                                                ]
+                                                },
+                                                "additionalProperties": false
                                             },
                                             "speed": {
-                                                "type": "integer",
-                                                "description": "The speed to dig this block. Higher the number the faster it will dig."
+                                                "description": "The speed to dig this block. Higher the number the faster it will dig.",
+                                                "type": "integer"
+                                            },
+                                            "on_dig": {
+                                                "description": "Trigger for when you dig up this block",
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
                                             }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                     }
                                 },
                                 "on_dig": {
@@ -290,11 +283,12 @@
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
                                 },
                                 "use_efficiency": {
+                                    "description": "Use efficiency enchantment? Default is set to false.",
                                     "type": "boolean",
-                                    "default": false,
-                                    "description": "Use efficiency enchantment? Default is set to false."
+                                    "default": false
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:display_name": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -308,7 +302,8 @@
                                     "type": "string",
                                     "description": "Set the display name for an item."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:durability": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -319,6 +314,7 @@
                             ],
                             "properties": {
                                 "damage_chance": {
+                                    "description": "Damage chance.",
                                     "type": "object",
                                     "required": [
                                         "min",
@@ -332,13 +328,14 @@
                                             "type": "number"
                                         }
                                     },
-                                    "description": "Damage chance."
+                                    "additionalProperties": false
                                 },
                                 "max_durability": {
                                     "type": "integer",
                                     "description": "Max durability is the amount of damage that this item can take before breaking."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:dye_powder": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -369,7 +366,8 @@
                                     ],
                                     "description": "Defines what color the dye is."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:entity_placer": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -388,10 +386,14 @@
                                     "description": "The entity to be placed in the world."
                                 },
                                 "use_on": {
+                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
                                     "type": "array",
-                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed."
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:food": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -445,7 +447,8 @@
                                         }
                                     ]
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:fuel": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -460,7 +463,8 @@
                                     "description": "How long in seconds will this fuel cook items for.",
                                     "minimum": 0.05
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:icon": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -483,7 +487,8 @@
                                     "description": "The key from the resource_pack/textures/item_texture.json 'texture_data' object associated with the texture file Example: blaze_powder",
                                     "type": "string"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:item_storage": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features or Caves and Cliffs internal)",
@@ -496,7 +501,8 @@
                                     "type": "integer",
                                     "default": 64
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:knockback_resistance": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -511,7 +517,8 @@
                                     "maximum": 1.0,
                                     "description": "Amount of knockback resistance provided with the total maximum protection being 1.0"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:on_use": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -525,7 +532,8 @@
                                     "description": "Triggers when the item is used.",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:on_use_on": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -539,7 +547,8 @@
                                     "description": "Triggered when the item is used on a block",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:projectile": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -558,7 +567,8 @@
                                     "type": "string",
                                     "description": "The entity to be fired as a projectile."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:render_offsets": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -573,7 +583,8 @@
                                     "description": "Left hand transform data.",
                                     "$ref": "#/definitions/RenderOffsets"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:repairable": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -607,10 +618,12 @@
                                             "repair_amount": {
                                                 "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
                                             }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                     }
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:shooter": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -679,7 +692,8 @@
                                     "default": false,
                                     "description": "Scale power by draw duration? Default is set to false."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:throwable": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -724,7 +738,8 @@
                                     "default": false,
                                     "description": "Whether or not the power of the throw increases with duration charged. Default is set to false."
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:weapon": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -743,7 +758,8 @@
                                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:wearable": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -777,7 +793,8 @@
                                         "slot.equippable"
                                     ]
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:fertilizer": {
                             "title": "STABLE",
@@ -789,7 +806,8 @@
                                         "rapid"
                                     ]
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:enchantable": {
                             "title": "STABLE",
@@ -817,7 +835,8 @@
                                 "value": {
                                     "type": "number"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:allow_off_hand": {
                             "title": "STABLE",
@@ -869,7 +888,8 @@
                                 "default_color": {
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:explodable": {
                             "title": "STABLE",
@@ -910,7 +930,8 @@
                                 "empty": {
                                     "type": "boolean"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:mirrored_art": {
                             "title": "STABLE",
@@ -946,7 +967,8 @@
                                         }
                                     }
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:record": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -1375,7 +1397,8 @@
                                     "minimum": 1,
                                     "maximum": 13
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:requires_interact": {
                             "title": "STABLE",
@@ -1414,7 +1437,8 @@
                                     "uniqueItems": true,
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:shears": {
                             "title": "STABLE",
@@ -1464,7 +1488,8 @@
                                 "slide_away_duration": {
                                     "type": "number"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:hover_text_color": {
                             "title": "STABLE",
@@ -1494,7 +1519,8 @@
                                     "description": "Premade itemGroups.",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemGroup"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:hand_equipped": {
                             "title": "STABLE",
@@ -1510,7 +1536,7 @@
                             "maximum": 64
                         },
                         "minecraft:mining_speed": {
-                            "type":"integer"
+                            "type": "integer"
                         },
                         "saddle": {}
                     }
