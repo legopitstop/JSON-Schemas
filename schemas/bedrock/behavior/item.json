@@ -138,6 +138,7 @@
                     }
                 },
                 "components": {
+                    "description": "The properties of the item.",
                     "type": "object",
                     "properties": {
                         "minecraft:chargeable": {
