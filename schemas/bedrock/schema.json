@@ -4,7 +4,7 @@
     "description": "JSON schema for Minecraft Bedrock Edition.",
     "type": "object",
     "default": {},
-    "anyOf": [
+    "allOf": [
         {
             "$ref": "./manifest.json"
         },
