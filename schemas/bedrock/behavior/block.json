@@ -93,7 +93,7 @@
                 "components": {
                     "type": "object",
                     "properties": {
-                        "minecraft:aim_collision": {
+                        "minecraft:selection_box": {
                             "title": "EXPERIMENTAL (Holiday Creator Features)",
                             "description": "Describes the collision of the block for raycast and its outline. If set to false it disables the collision of the block with entities. An origin of [-8.0, 0.0, -8.0] with a size of [16, 16, 16] is a unit cube.",
                             "default": false,
@@ -130,11 +130,10 @@
                                 }
                             ]
                         },
-                        "minecraft:block_light_emission": {
+                        "minecraft:light_emission": {
                             "title": "STABLE",
-                            "description": "The amount of light this block will emit in a range [0.0, 1.0].",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Decimal",
-                            "maximum": 1.0
+                            "description": "The amount of light this block will emit].",
+                            "type":"integer"
                         },
                         "minecraft:breathability": {
                             "title": "EXPERIMENTAL (Holiday Creator Features)",
@@ -145,7 +144,7 @@
                             ],
                             "default": "solid"
                         },
-                        "minecraft:light_dampening ": {
+                        "minecraft:light_dampening": {
                             "title": "STABLE",
                             "description": "The amount that light will be dampened when it passes through the block, in a range (0-15). Higher value means the light will be dampened more.",
                             "type": "integer",
@@ -233,26 +232,37 @@
                                 }
                             ]
                         },
-                        "minecraft:destroy_time": {
+                        "minecraft:destructible_by_explosion": {
                             "title": "STABLE",
-                            "description": "Sets the destroy time property for the block. Greater numbers result in greater mining times. Time is measured in seconds with base equipment.",
-                            "type": "number",
-                            "default": 0.0,
-                            "minimum": 0.000000,
-                            "maximum": 340282346638528859811704183484516925440.000000
+                            "description": "Describes the destructible by explosion properties for this block. If set to true, the block will have the default explosion resistance. If set to false, this block is indestructible by explosion. If the component is omitted, the block will have the default explosion resistance.",
+                            "type":["object", "boolean"],
+                            "default": {},
+                            "properties":{
+                                "explosion_resistance": {
+                                    "description": "Sets the explosion resistance for the block. Greater values result in greater resistance to explosions. The scale will be different for different explosion power levels. A negative value or 0 means it will easily explode; larger numbers increase level of resistance.",
+                                    "type":"number",
+                                    "default": 0.0
+                                }
+                            }
+                        },
+                        "minecraft:destructible_by_mining": {
+                            "title": "STABLE",
+                            "description": "Describes the destructible by mining properties for this block. If set to true, the block will have the default destroy time. If set to false, this block is indestructible by mining. If the component is omitted, the block will have the default destroy time.",
+                            "type":["object", "boolean"],
+                            "default": {},
+                            "properties":{
+                                "seconds_to_destroy": {
+                                    "description": "Sets the number of seconds it takes to destroy the block with base equipment. Greater numbers result in greater mining times.",
+                                    "type":"number",
+                                    "default": 0.0
+                                }
+                            }
                         },
                         "minecraft:display_name": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "Specifies the language file key that maps to what text will be displayed when you hover over the block. Key is limited to 256 characters.",
                             "type": "string",
                             "maxLength": 256
-                        },
-                        "minecraft:explosion_resistance": {
-                            "title": "STABLE",
-                            "description": "How much power it can resist from explosion. Bigger the value is, more explosion power it blocks from explosion. If the value is less than remaining power from explosion, the block would destroy.",
-                            "type": "number",
-                            "default": 0.0,
-                            "minimum": 0.0
                         },
                         "minecraft:flammable": {
                             "title": "STABLE",
@@ -336,6 +346,7 @@
                                     "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
                                     "type": "object",
                                     "default": {},
+                                    "maxProperties": 64,
                                     "additionalProperties": {
                                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang",
                                         "default": "true"
@@ -458,12 +469,6 @@
                             "description": "Specifies that a unit cube is to be used with tessellation.",
                             "type": "object",
                             "default": {}
-                        },
-                        "minecraft:unwalkable": {
-                            "title": "STABLE",
-                            "description": "Sets the block as unwalkable. Mobs would not attempt to path over top of it when the value is set to true.",
-                            "type": "boolean",
-                            "default": false
                         },
                         "minecraft:on_fall_on": {
                             "title": "STABLE",
@@ -645,7 +650,32 @@
                         },
                         "minecraft:block_light_filter": {
                             "title": "DEPRECATED",
-                            "description": "Replaced with 'light_dampening'",
+                            "description": "Replaced with 'light_dampening' in 1.19.20",
+                            "default": false
+                        },
+                        "minecraft:aim_collision": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'selection_box' in 1.19.20",
+                            "default": false
+                        },
+                        "minecraft:block_light_emission": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'light_emission' in 1.19.20",
+                            "default": false
+                        },
+                        "minecraft:destroy_time": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'destructible_by_mining' in 1.19.20",
+                            "default": false
+                        },
+                        "minecraft:explosion_resistance": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'destructible_by_explosion' in 1.19.20",
+                            "default": false
+                        },
+                        "minecraft:unwalkable": {
+                            "title": "REMOVED",
+                            "description": "This component has been removed in 1.19.20",
                             "default": false
                         }
                     },
