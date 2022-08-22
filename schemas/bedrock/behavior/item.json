@@ -617,6 +617,9 @@
                                             },
                                             "repair_amount": {
                                                 "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                            },
+                                            "on_repaired": {
+                                                "$ref": "#/properties/minecraft:item/properties/components/properties/minecraft:repairable/properties/on_repaired"
                                             }
                                         },
                                         "additionalProperties": false
