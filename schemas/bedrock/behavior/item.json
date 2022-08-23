@@ -207,7 +207,8 @@
                                     "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
                                     "type": "array",
                                     "items": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
                                     }
                                 }
                             },
