@@ -203,7 +203,7 @@
                                     "description": "block: Set the placement block name for the planter item.",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDBlock"
                                 },
-                                "use_on": {
+                                "on_use": {
                                     "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
                                     "type": "array",
                                     "items": {
