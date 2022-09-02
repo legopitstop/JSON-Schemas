@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "description": "A skins.json schema",
+    "type": "object",
+    "default": {},
+    "properties": {
+        "serialize_name": {
+            "description": "This will be the same and are the localization keys whose value will be defined later in en_US.lang with the full key being skinpack.<localization_name>. That value will be the title of the pack. The key will also always be prepended to each individual skin's localization key.",
+            "type": "string"
+        },
+        "localization_name": {
+            "description": "This will be the same and are the localization keys whose value will be defined later in en_US.lang with the full key being skinpack.<localization_name>. That value will be the title of the pack. The key will also always be prepended to each individual skin's localization key.",
+            "type": "string"
+        },
+        "skins": {
+            "description": "a collection of definitions, each defining a single skin.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "required": [
+                    "type",
+                    "geometry",
+                    "localization_name",
+                    "texture"
+                ],
+                "properties": {
+                    "type": {
+                        "description": "either free or paid. Non-marketplace partners may have any number of free skins but no paid skins, while marketplace partners may have up to 2 free skins and are able to add paid skins.",
+                        "enum": [
+                            "free",
+                            "paid"
+                        ]
+                    },
+                    "geometry": {
+                        "description": "the base model this skin is for. geometry.humanoid.customSlim is the Alex model and geometry.humanoid.custom is the Steve model.",
+                        "type": "string",
+                        "examples": [
+                            "geometry.humanoid.custom",
+                            "geometry.humanoid.customSlim"
+                        ]
+                    },
+                    "localization_name": {
+                        "description": "the localization key whose value is defined later in en_US.lang. The value will be the name of the individual skin.",
+                        "type": "string"
+                    },
+                    "texture": {
+                        "description": "the file name for each of the skin textures as they appear in the root of the skin pack.",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false
+}

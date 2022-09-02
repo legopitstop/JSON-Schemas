@@ -6,6 +6,9 @@
     "default": {},
     "allOf": [
         {
+            "$ref": "./skins.json"
+        },
+        {
             "$ref": "./manifest.json"
         },
         {
