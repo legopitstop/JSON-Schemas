@@ -169,7 +169,8 @@
                             "data",
                             "client_data",
                             "interface",
-                            "world_template"
+                            "world_template",
+                            "skin_pack"
                         ]
                     },
                     "uuid": {
