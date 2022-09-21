@@ -1,19 +1,23 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "description": "A skins.json schema",
+    "description": "A skins.json schema\nSee https://wiki.bedrock.dev/visuals/custom-skin-packs.html#skins-json",
     "type": "object",
     "default": {},
     "properties": {
+        "geometry": {
+            "description": "Must be the same as on the example code in every object. Mojang removed the ability to add custom geometries via skin packs, because the feature was abused.",
+            "type":"string"
+        },
         "serialize_name": {
-            "description": "This will be the same and are the localization keys whose value will be defined later in en_US.lang with the full key being skinpack.<localization_name>. That value will be the title of the pack. The key will also always be prepended to each individual skin's localization key.",
+            "description": "For marketplace.",
             "type": "string"
         },
         "localization_name": {
-            "description": "This will be the same and are the localization keys whose value will be defined later in en_US.lang with the full key being skinpack.<localization_name>. That value will be the title of the pack. The key will also always be prepended to each individual skin's localization key.",
+            "description": "A pack identifier. **Don't use in other skin packs** as it affects translations.",
             "type": "string"
         },
         "skins": {
-            "description": "a collection of definitions, each defining a single skin.",
+            "description": "Where you define your each skin. The skins will be displayed in the same order in minecraft as they are defined here.",
             "type": "array",
             "default": [],
             "items": {
@@ -27,14 +31,14 @@
                 ],
                 "properties": {
                     "type": {
-                        "description": "either free or paid. Non-marketplace partners may have any number of free skins but no paid skins, while marketplace partners may have up to 2 free skins and are able to add paid skins.",
+                        "description": "Only accessible to marketplace partners, leave it as `free`, otherwise it will be locked.",
                         "enum": [
                             "free",
                             "paid"
                         ]
                     },
                     "geometry": {
-                        "description": "the base model this skin is for. geometry.humanoid.customSlim is the Alex model and geometry.humanoid.custom is the Steve model.",
+                        "description": "You can use geometry.humanoid.custom and geometry.humanoid.customSlim here.",
                         "type": "string",
                         "examples": [
                             "geometry.humanoid.custom",
@@ -42,11 +46,11 @@
                         ]
                     },
                     "localization_name": {
-                        "description": "the localization key whose value is defined later in en_US.lang. The value will be the name of the individual skin.",
+                        "description": "Going to be used in the .lang file. Think of it as the skins identifier.",
                         "type": "string"
                     },
                     "texture": {
-                        "description": "the file name for each of the skin textures as they appear in the root of the skin pack.",
+                        "description": "The name of the image file, located in the main skin pack folder.",
                         "type": "string"
                     }
                 },
