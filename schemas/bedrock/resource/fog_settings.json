@@ -194,7 +194,7 @@
     },
     "properties": {
         "minecraft:fog_settings": {
-            "description": "fogs",
+            "description": "fogs\nSee https://bedrock.dev/docs/stable/Fogs",
             "type": "object",
             "required": [
                 "description"

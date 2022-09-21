@@ -6,7 +6,7 @@
     "default": {},
     "properties": {
         "minecraft:client_entity": {
-            "description": "client_entity",
+            "description": "client_entity\nSee https://bedrock.dev/docs/stable/Entities#Client%20Entity%20Documentation",
             "type": "object",
             "default": {},
             "properties": {

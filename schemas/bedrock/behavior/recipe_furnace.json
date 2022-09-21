@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:recipe_furnace": {
-            "description": "Represents a furnace recipe for a furnace.'Input' items will burn and transform into items specified in 'output'..",
+            "description": "Represents a furnace recipe for a furnace.'Input' items will burn and transform into items specified in 'output'.\nSee https://bedrock.dev/docs/stable/Recipes#Furnace%20Recipe",
             "type": "object",
             "default": {},
             "properties": {

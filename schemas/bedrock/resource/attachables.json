@@ -3,7 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:attachables": {
-            "description": "attachables",
+            "description": "attachables\nSee https://wiki.bedrock.dev/items/attachables.html",
             "type": "object",
             "properties": {
                 "description": {

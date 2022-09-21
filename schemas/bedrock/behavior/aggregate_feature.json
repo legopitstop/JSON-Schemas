@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:aggregate_feature": {
-            "description": "'minecraft:aggregate_feature' places a collection of features in an arbitary order. All features in the collection use the same input position. Features should not depend on each other, as there is no guarantee on the order the features will be placed.Succeeds if: At lease one feature is placed successfully.Fails if: All features fail to be placed.",
+            "description": "'minecraft:aggregate_feature' places a collection of features in an arbitary order. All features in the collection use the same input position. Features should not depend on each other, as there is no guarantee on the order the features will be placed.Succeeds if: At lease one feature is placed successfully.Fails if: All features fail to be placed.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aaggregate_feature",
             "type": "object",
             "default": {},
             "properties": {

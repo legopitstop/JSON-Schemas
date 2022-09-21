@@ -34,7 +34,7 @@
     },
     "properties": {
         "minecraft:volume": {
-            "description": "Volume",
+            "description": "Volume\nSee https://bedrock.dev/docs/stable/Volumes",
             "type": "object",
             "required": [
                 "description",

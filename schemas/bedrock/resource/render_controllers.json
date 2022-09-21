@@ -3,7 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:render_controllers": {
-            "description": "render_controllers",
+            "description": "render_controllers\nSee https://wiki.bedrock.dev/entities/render-controllers.html#top",
             "type": "object",
             "additionalProperties": {
                 "description": "The id of the render_controller",

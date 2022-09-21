@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:recipe_shapeless": {
-            "description": "Represents a shapeless crafting recipe..",
+            "description": "Represents a shapeless crafting recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Shapeless%20Recipe",
             "type": "object",
             "default": {},
             "properties": {

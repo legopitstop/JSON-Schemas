@@ -3,7 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:particle_effect": {
-            "description": "particle_effect",
+            "description": "particle_effect\nSee https://bedrock.dev/docs/stable/Particles",
             "type": "object",
             "properties": {
                 "description": {

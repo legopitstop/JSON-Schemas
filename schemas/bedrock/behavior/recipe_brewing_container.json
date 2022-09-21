@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:recipe_brewing_container": {
-            "description": "Represents a Potion Brewing Container Recipe..",
+            "description": "Represents a Potion Brewing Container Recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Potion%20Brewing%20Container%20Recipe",
             "type": "object",
             "default": {},
             "properties": {

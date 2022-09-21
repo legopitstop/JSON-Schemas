@@ -239,6 +239,7 @@
             }
         }
     },
+    "description": "Loot tables are used to select a set of items from a declared collection.\nSee https://wiki.bedrock.dev/loot/loot-tables.html",
     "properties": {
         "functions": {
             "title": "LOOT_TABLE",

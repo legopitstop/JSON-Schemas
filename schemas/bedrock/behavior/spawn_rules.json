@@ -5,7 +5,7 @@
     "default": {},
     "properties": {
         "minecraft:spawn_rules": {
-            "description": "spawn_rules",
+            "description": "spawn_rules\nSee https://bedrock.dev/docs/stable/Entities#Spawn%20Rules",
             "type": "object",
             "properties": {
                 "description": {

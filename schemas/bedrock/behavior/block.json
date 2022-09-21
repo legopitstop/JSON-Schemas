@@ -58,7 +58,7 @@
     },
     "properties": {
         "minecraft:block": {
-            "description": "A data-driven block",
+            "description": "A data-driven block\nSee https://bedrock.dev/docs/stable/Blocks",
             "type": "object",
             "required": ["description"],
             "properties": {

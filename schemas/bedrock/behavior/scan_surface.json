@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:scan_surface": {
-            "description": "scan_surface",
+            "description": "scan_surface\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ascan_surface",
             "type": "object",
             "default": {},
             "properties": {

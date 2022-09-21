@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:recipe_shaped": {
-            "description": "Represents a shaped crafting recipe for a crafting table. The key used in the pattern may be any single character except the 'space' character, which is reserved for empty slots in a recipe..",
+            "description": "Represents a shaped crafting recipe for a crafting table. The key used in the pattern may be any single character except the 'space' character, which is reserved for empty slots in a recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Shaped%20Recipe",
             "type": "object",
             "default": {},
             "properties": {

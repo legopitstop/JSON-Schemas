@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:rect_layout": {
-            "description": "'minecraft:rect_layout' scans the surface of a Chunk, calling place() on the surface of each block column.",
+            "description": "'minecraft:rect_layout' scans the surface of a Chunk, calling place() on the surface of each block column.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Arect_layout",
             "type": "object",
             "default": {},
             "properties": {

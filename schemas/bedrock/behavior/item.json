@@ -109,7 +109,7 @@
     },
     "properties": {
         "minecraft:item": {
-            "description": "item",
+            "description": "item\nSee https://bedrock.dev/docs/stable/Item",
             "type": "object",
             "required": [
                 "description"

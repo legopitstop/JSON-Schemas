@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "minecraft:recipe_brewing_mix": {
-            "description": "Represents a Potion Brewing Mix..",
+            "description": "Represents a Potion Brewing Mix.\nSee https://bedrock.dev/docs/stable/Recipes#Potion%20Brewing%20Mix",
             "type": "object",
             "default": {},
             "properties": {

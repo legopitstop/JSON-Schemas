@@ -111,7 +111,7 @@
     },
     "properties": {
         "minecraft:entity": {
-            "description": "JSON schema for data-driven entities",
+            "description": "JSON schema for data-driven entities\nSee https://bedrock.dev/docs/stable/Entities",
             "type": "object",
             "default": {},
             "properties": {
