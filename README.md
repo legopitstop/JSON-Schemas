@@ -11,14 +11,6 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 <br>
 [View Update Log](UPDATES.md)
 
-## Screenshots
-
-![img](https://cdn.discordapp.com/attachments/786714100205092915/789987247830335508/image.png "Schemas provide useful tool tips to better understand what parameters do what.")
-
-![img](https://cdn.discordapp.com/attachments/786714100205092915/789987365791727646/image_1.png "It suggests parameters as you type.")
-
-![img](https://cdn.discordapp.com/attachments/786714100205092915/789987943900512306/image_2.png "Alerts you if its missing a required bit of code.")
-
 ## How to Install schema for *Visual Studio Code*
 
 1. Open VSC. 

@@ -3,6 +3,10 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Definitions for all Vanilla Minecraft RAW JSON Format (Java Edition)",
     "type": "object",
+    "oneOf": [
+        {"required": ["text"]},
+        {"required": ["translate"]}
+    ],
     "properties": {
         "text": {
             "description": "A string containing plain text to display directly. Can also be a number or boolean that is displayed directly.",
@@ -46,7 +50,7 @@
             "description": "Optional. The color to render the content in. (cancels out the effects of colors used by parent objects).Set to \"#<hex>\" to insert any color in the hexadecimal color format. Example: Using \"#FF0000\" makes the component red. Must be a full 6-digit value, not 3-digit.",
             "anyOf": [
                 {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/common_colors.json#/definitions/MinecraftCommonTextColorExample"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
                 },
                 {
                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
@@ -255,5 +259,6 @@
             "type": "boolean",
             "default": false
         }
-    }
+    },
+    "additionalProperties": false
 }

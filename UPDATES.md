@@ -3,15 +3,19 @@ Get Live updates via my [discord server](https://discord.gg/JbyTHWW)
 
 ## Logs
 
+### (10/28/2022)
+- Removed deprived schemas
+- Java Edition schemas are now deprived and will be removed in the next release. Use [Data-pack helper Plus](https://marketplace.visualstudio.com/items?itemName=SPGoding.datapack-language-server) extension for VSCode.
+
 ### (03/03/2021)
 Added `Java Edition Schemas`
 
 ### (02/03/2021)
-Updates for beta 1.16.210.58. added `"minecraft:render_offsets"` to data driven items. made `"format_version"` take in any string, number instead of enum. it will still recomend common versions.
+Updates for beta 1.16.210.58. added `minecraft:render_offsets` to data-driven items. made `"format_version"` take in any string, or number instead of an enum. it will still recommend common versions.
 https://feedback.minecraft.net/hc/en-us/articles/360056026212
 
 ### (01/20/2021)
-Bunch of other updates including updating for beta 1.16.210.56 added `"ignore_game_mode"` for block event responcse `"decresement_stack"`, set to false by default. Thus `"decrement_stack"` no longer decreases the item stack when playing in Creative by default .
+A bunch of other updates including updating for beta 1.16.210.56 added `"ignore_game_mode"` for block event response `"decresement_stack"`, set to false by default. Thus `"decrement_stack"` no longer decreases the item stack when playing in Creative by default .
 https://feedback.minecraft.net/hc/en-us/articles/360055733571
 
 ### (12/10/2020)

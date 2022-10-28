@@ -16,7 +16,8 @@ for registry in registries:
     filename = registry.replace('minecraft:', '')
     title = filename.title().replace('/','').replace('_', ' ')
 
-    README += f"### [{title}]({filename}.json)\n\nA complete list of all {title} ID's. \n\n```txt\nhttps://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/{filename}.json\n```\n\n***\n\n"""
+    # README += f"### [{title}]({filename}.json)\n\nA complete list of all {title} ID's. \n\n```txt\nhttps://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/{filename}.json\n```\n\n***\n\n"""
+    README +=f'| [{title}](./{filename}.json) | `https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/{filename}.json` |\n'
 
     schema = {
         "$id": f"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/{filename}.json",

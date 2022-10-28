@@ -123,7 +123,7 @@
                     ],
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                         },
                         "category": {
                             "default": "item",
@@ -181,14 +181,14 @@
                             "properties": {
                                 "block": {
                                     "description": "block: Set the placement block name for the planter item.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDBlock"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                 },
                                 "on_use": {
                                     "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
                                     "type": "array",
                                     "items": {
                                         "type": "string",
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                     }
                                 }
                             },
@@ -259,7 +259,7 @@
                                                     "string",
                                                     "object"
                                                 ],
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples",
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
                                                 "properties": {
                                                     "tags": {
                                                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
@@ -383,7 +383,7 @@
                                     "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
                                 },
                                 "entity": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDEntity",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json",
                                     "description": "The entity to be placed in the world."
                                 },
                                 "use_on": {
@@ -435,13 +435,13 @@
                                     "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
                                     "anyOf": [
                                         {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                                         },
                                         {
                                             "type": "object",
                                             "properties": {
                                                 "item": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem",
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
                                                     "description": "The item that it will become."
                                                 }
                                             }
@@ -1043,7 +1043,7 @@
                                                 "type": "array",
                                                 "uniqueItems": true,
                                                 "items": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                                                 }
                                             },
                                             "repair_amount": {
@@ -1073,7 +1073,7 @@
                                     "anyOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                                         },
                                         {
                                             "type": "array",
@@ -1081,7 +1081,7 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "item": {
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem"
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                                                     },
                                                     "use_offhand": {
                                                         "type": "boolean",
@@ -1384,7 +1384,7 @@
                                 "entity": {
                                     "description": "The entity for the spawner to spawn.",
                                     "type": "string",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
                                 },
                                 "block": {
                                     "type": "object",
@@ -1397,7 +1397,7 @@
                                             ],
                                             "items": {
                                                 "type": "string",
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                             }
                                         }
                                     }
@@ -1424,14 +1424,14 @@
                                     "anyOf": [
                                         {
                                             "type": "string",
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                         },
                                         {
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
                                                 "uniqueItems": true,
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                             }
                                         }
                                     ]
@@ -1440,7 +1440,7 @@
                                     "type": "string",
                                     "description": "The name of the crop block to place.",
                                     "uniqueItems": true,
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                 }
                             },
                             "additionalProperties": false
