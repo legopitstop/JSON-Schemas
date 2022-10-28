@@ -1,0 +1,8 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/enchantment.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Enchantment (Bedrock Edition)",
+    "examples": []
+}
