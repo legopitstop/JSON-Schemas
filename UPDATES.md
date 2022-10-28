@@ -5,7 +5,7 @@ Get Live updates via my [discord server](https://discord.gg/JbyTHWW)
 
 ### (10/28/2022)
 - Removed deprived schemas
-- Java Edition schemas are now deprived and will be removed in the next release. Use [Data-pack helper Plus](https://marketplace.visualstudio.com/items?itemName=SPGoding.datapack-language-server) extension for VSCode.
+- Java Edition schemas are now deprived. Use [Data-pack helper Plus](https://marketplace.visualstudio.com/items?itemName=SPGoding.datapack-language-server) extension for VSCode.
 
 ### (03/03/2021)
 Added `Java Edition Schemas`

@@ -1,5 +1,5 @@
 {
-    "$id": "https://legopitstop.github.io/JSON-Schemas/schemas/java-edition-schema/draft-01/optifine/jpm/schema.json",
+    "$id": "https://legopitstop.github.io/JSON-Schemas/schemas/java/optifine/jpm.json",
     "$schema": "http://json-schema.org/draft-07/schema",
     "title": "Json Part Model",
     "description": "Reference configuration for OptiFine's feature Custom Entity Models https://github.com/sp614x/optifine/blob/master/OptiFineDoc/doc/cem_part.txt",
