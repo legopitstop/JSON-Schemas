@@ -412,7 +412,7 @@
                             "description": "The duration of the mob effect. (In seconds)"
                         },
                         "effect": {
-                            "$ref": "#/definitions/mobEffectsEnum",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/mob_effect.json",
                             "description": "The mob effect to apply."
                         },
                         "target": {
