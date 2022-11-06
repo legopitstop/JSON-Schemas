@@ -56,7 +56,7 @@
                     },
                     "uuid": {
                         "description": "This is the unique identifier of the pack that this pack depends on. It needs to be the exact same UUID that the pack has defined in the header section of it's manifest file",
-                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/UUID4"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/UUID4"
                     },
                     "version": {
                         "description": "This is the specific version of the pack that your pack depends on. Should match the version the other pack has in its manifest file",
@@ -113,7 +113,7 @@
                 },
                 "uuid": {
                     "description": "This is a special type of identifier that uniquely identifies this pack from any other pack. UUIDs are written in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx where each x is a hexadecimal value (0-9 or a-f). We recommend using an online service to generate this and guarantee their uniqueness (just bing UUID Generator to find some)",
-                    "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/UUID4"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/UUID4"
                 },
                 "version": {
                     "description": "This is the version of your pack in the format [majorVersion, minorVersion, revision]. The version number is used when importing a pack that has been imported before. The new pack will replace the old one if the version is higher, and ignored if it's the same or lower",
@@ -176,7 +176,7 @@
                     },
                     "uuid": {
                         "description": "This is a unique identifier for the module in the same format as the pack's UUID in the header. This should be different from the pack's UUID, and different for every module",
-                        "$ref": "https://legopitstop.github.io/JSON-Schemas/schemas/common_regex.json#/definitions/UUID4"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/UUID4"
                     },
                     "version": {
                         "description": "This is the version of the module in the same format as the pack's version in the header. This can be used to further identify changes in your pack",

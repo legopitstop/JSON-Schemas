@@ -49,7 +49,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "fileMatch": [
         "shields.io/*.json"
     ],
-    "url": "https://legopitstop.github.io/JSON-Schemas/schemas/shields.io/schema.json"
+    "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/shields.io/schema.json"
 }
 ```
 
@@ -62,7 +62,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
     "fileMatch": [
         "update.json"
     ],
-    "url": "https://legopitstop.github.io/Update_Checker/schema.json"
+    "url": "https://raw.githubusercontent.com/legopitstop/Update_Checker/main/schema.json"
 }
 ```
 

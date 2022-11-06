@@ -35,7 +35,7 @@
                                 "type": "string"
                             },
                             "color": {
-                                "$ref": "https://legopitstop.github.io/JSON-Schemas/minecraft/common_colors.json#/definitions/MinecraftCommonTextColorExample"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
                             },
                             "italic": {
                                 "type": "boolean",

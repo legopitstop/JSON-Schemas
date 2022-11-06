@@ -3,6 +3,9 @@ Get Live updates via my [discord server](https://discord.gg/JbyTHWW)
 
 ## Logs
 
+### (00/00/0000)
+- OptiFine schemas have been moved from `./java/optifine` to `./optifine`
+
 ### (10/28/2022)
 - Removed deprived schemas
 - Java Edition schemas are now deprived. Use [Data-pack helper Plus](https://marketplace.visualstudio.com/items?itemName=SPGoding.datapack-language-server) extension for VSCode.
