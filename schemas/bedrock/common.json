@@ -144,96 +144,6 @@
             "minimum": 0,
             "maximum": 64
         },
-        "mobEffectsEnum": {
-            "type": "string",
-            "enum": [
-                "speed",
-                "slowness",
-                "haste",
-                "mining_fatigue",
-                "strength",
-                "instant_health",
-                "instant_damage",
-                "jump_boost",
-                "nausea",
-                "regeneration",
-                "resistance",
-                "fire_resistance",
-                "water_breathing",
-                "invisibility",
-                "blindness",
-                "night_vision",
-                "hunger",
-                "weakness",
-                "poison",
-                "wither",
-                "health_boost",
-                "absorption",
-                "saturation",
-                "levitation",
-                "fatal_poison",
-                "conduit_power",
-                "slow_falling",
-                "bad_omen",
-                "village_hero"
-            ]
-        },
-        "mobEffectsExample": {
-            "type": "string",
-            "examples": [
-                "speed",
-                "slowness",
-                "haste",
-                "mining_fatigue",
-                "strength",
-                "instant_health",
-                "instant_damage",
-                "jump_boost",
-                "nausea",
-                "regeneration",
-                "resistance",
-                "fire_resistance",
-                "water_breathing",
-                "invisibility",
-                "blindness",
-                "night_vision",
-                "hunger",
-                "weakness",
-                "poison",
-                "wither",
-                "health_boost",
-                "absorption",
-                "saturation",
-                "levitation",
-                "fatal_poison",
-                "conduit_power",
-                "slow_falling",
-                "bad_omen",
-                "village_hero"
-            ]
-        },
-        "TextColors": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/TextColors",
-            "type": "string",
-            "enum": [
-                "black",
-                "dark_blue",
-                "dark_green",
-                "dark_aqua",
-                "dark_red",
-                "dark_purple",
-                "gold",
-                "gray",
-                "dark_gray",
-                "blue",
-                "green",
-                "aqua",
-                "red",
-                "light_purple",
-                "yellow",
-                "white"
-            ]
-        },
         "saturationModifier": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/saturationModifier",
             "anyOf": [
@@ -334,42 +244,6 @@
                 }
             ]
         },
-        "nameSpaceIDItem": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDItem",
-            "description": "Item namespace id. must not contain Minecraft namespace. example; custom:stone",
-            "allOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
-                },
-                {
-                    "$ref": "#/definitions/nameSpaceID"
-                }
-            ]
-        },
-        "nameSpaceIDBlock": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDBlock",
-            "description": "Block namespace id. must not contain Minecraft namespace. example; custom:stone",
-            "allOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/blocks.json#/definitions/MinecraftBlockExamples"
-                },
-                {
-                    "$ref": "#/definitions/nameSpaceID"
-                }
-            ]
-        },
-        "nameSpaceIDEntity": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceIDEntity",
-            "description": "Entity namespace id. must not contain Minecraft namespace. example; custom:zombie",
-            "allOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
-                },
-                {
-                    "$ref": "#/definitions/nameSpaceID"
-                }
-            ]
-        },
         "nameSpaceID": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID",
             "type": "string",
@@ -407,25 +281,6 @@
                 "equals",
                 "not"
             ]
-        },
-        "descriptionIdentifier": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/descriptionIdentifier",
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "#/definitions/nameSpaceID"
-                        }
-                    }
-                }
-            }
         },
         "floatMolang": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
@@ -738,7 +593,7 @@
                     },
                     "properties": {
                         "block_type": {
-                            "$ref": "#/definitions/nameSpaceIDBlock",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
                             "description": "The type of block to set."
                         }
                     }
@@ -760,7 +615,7 @@
                     },
                     "properties": {
                         "block_type": {
-                            "$ref": "#/definitions/nameSpaceIDBlock",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
                             "description": "The type of block to set."
                         },
                         "block_offset": {
@@ -881,7 +736,7 @@
                     },
                     "properties": {
                         "transform": {
-                            "$ref": "#/definitions/nameSpaceIDItem",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
                             "description": "Name of the item it should transform into"
                         }
                     }

@@ -13,3 +13,4 @@ Updated for `1.19`
 | [Entity Type](./entity_type.json) | `https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json` |
 | [Item](./item.json) | `https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json` |
 | [Enchantment](./enchantment.json) | `https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/enchantment.json` |
+| [Mob Effect](./mob_effect.json) | `https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/mob_effect.json` |

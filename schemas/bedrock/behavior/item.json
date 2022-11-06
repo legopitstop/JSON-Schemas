@@ -1499,7 +1499,7 @@
                         "minecraft:hover_text_color": {
                             "title": "STABLE",
                             "description": "The color of the name.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/TextColors"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
                         },
                         "minecraft:use_animation": {
                             "title": "STABLE",
