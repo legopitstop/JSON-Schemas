@@ -192,7 +192,7 @@
             "anyOf": [
                 {
                     "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                 },
                 {
                     "type": "object",
@@ -201,7 +201,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
                             "description": "The items id"
                         },
                         "data": {
@@ -224,7 +224,7 @@
             "anyOf": [
                 {
                     "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                 },
                 {
                     "type": "object",
@@ -233,7 +233,7 @@
                     ],
                     "properties": {
                         "item": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/items.json#/definitions/MinecraftItemExamples",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
                             "description": "The items id"
                         },
                         "data": {
@@ -542,8 +542,8 @@
                     },
                     "properties": {
                         "effect": {
-                            "$ref": "#/definitions/mobEffectsExample",
-                            "description": "The mob effect to remove. Use 'all' to remove all mob effects from target."
+                            "description": "The mob effect to remove. Use 'all' to remove all mob effects from target.",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/mob_effect.json"
                         },
                         "target": {
                             "$ref": "#/definitions/eventTarget",
@@ -745,7 +745,7 @@
                     "description": "Shoots a projectile.",
                     "properties": {
                         "projectile": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/entities.json#/definitions/MinecraftEntityExamples"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
                         },
                         "launch_power": {
                             "type": "number"
