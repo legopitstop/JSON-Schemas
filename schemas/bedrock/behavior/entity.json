@@ -187,11 +187,25 @@
                             "properties": {
                                 "value": {
                                     "description": "The current amount of health the entity has",
-                                    "type": "integer"
+                                    "type": ["integer", "object"],
+                                    "minimum": 0,
+                                    "properties": {
+                                        "range_min": {
+                                            "description": "The minimum health.",
+                                            "type":"integer",
+                                            "minimum": 0
+                                        },
+                                        "range_max": {
+                                            "description": "The maximum health.",
+                                            "type":"integer",
+                                            "minimum": 0
+                                        }
+                                    }
                                 },
                                 "max": {
                                     "description": "The max amount of health the mob has",
-                                    "type": "integer"
+                                    "type": "integer",
+                                    "minimum": 0
                                 }
                             }
                         },
