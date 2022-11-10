@@ -1096,7 +1096,7 @@
                                                     "properties": {
                                                         "biome": {
                                                             "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/biomes.json#/definitions/MinecraftBiomeEnum"
+                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/biomes.json"
                                                         },
                                                         "block": {
                                                             "type": "string",
@@ -1149,8 +1149,7 @@
                                                         },
                                                         "feature": {
                                                             "description": "Name of a structure.",
-                                                            "type": "string",
-                                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/structure_features.json#/definitions/MinecraftStructureEnum"
+                                                            "type": "string"
                                                         },
                                                         "fluid": {
                                                             "type": "object",
