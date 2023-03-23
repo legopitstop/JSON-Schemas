@@ -93,8 +93,46 @@
                 "components": {
                     "type": "object",
                     "properties": {
+                        "minecraft:transformation": {
+                            "description": "Added a new Transformation component for blocks to support rotation, scaling and translation.",
+                            "properties": {
+                                "translation": {
+                                    "description": "Translate the block.",
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "minimum": -8,
+                                    "maximum": 16
+                                },
+                                "scale": {
+                                    "description": "Scale the block.",
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "minimum": -8,
+                                    "maximum": 16
+                                },
+                                "rotation": {
+                                    "description": "Rotate the block.",
+                                    "type": "array",
+                                    "default": [
+                                        -8.0,
+                                        0.0,
+                                        -8.0
+                                    ],
+                                    "minimum": -8,
+                                    "maximum": 16
+                                }
+                            }
+                        },
                         "minecraft:collision_box": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "title": "STABLE (1.19.50)",
                             "description": "Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used.",
                             "default": false,
                             "anyOf": [
@@ -135,7 +173,7 @@
                             ]
                         },
                         "minecraft:crafting_table": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "title": "STABLE (1.19.50)",
                             "description": "Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes. This component supports only \"recipe_shaped\" and \"recipe_shapeless\" typed recipes and not others like \"recipe_furnace\" or \"recipe_brewing_mix\". If there are two recipes for one item, the recipe book will pick the first that was parsed. If two input recipes are the same, crafting may assert and the resulting item may vary.",
                             "type": "object",
                             "properties": {
@@ -181,7 +219,7 @@
                             }
                         },
                         "minecraft:display_name": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "STABLE (1.19.60)",
                             "description": "Specifies the language file key that maps to what text will be displayed when you hover over the block in your inventory and hotbar. If the string given can not be resolved as a loc string, the raw string given will be displayed. If this component is omitted, the name of the block will be used as the display name.",
                             "type": "string",
                             "maxLength": 256
@@ -413,7 +451,7 @@
                             "maxItems": 3
                         },
                         "minecraft:selection_box": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "title": "STABLE (1.19.60)",
                             "description": "Defines the area of the block that is selected by the player's cursor. If set to true, default values are used. If set to false, this block is not selectable by the player's cursor. If this component is omitted, default values are used.",
                             "default": false,
                             "anyOf": [
