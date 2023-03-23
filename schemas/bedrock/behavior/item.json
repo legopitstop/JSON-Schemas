@@ -547,6 +547,7 @@
                                 "on_use_on": {
                                     "description": "Triggered when the item is used on a block",
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    
                                 }
                             },
                             "additionalProperties": false
@@ -565,8 +566,13 @@
                                     "description": "How long you must charge a projectile for it to critically hit."
                                 },
                                 "projectile_entity": {
-                                    "type": "string",
-                                    "description": "The entity to be fired as a projectile."
+                                    "description": "The entity to be fired as a projectile.",
+                                    "type": "string"
+                                },
+                                "lose_target": {
+                                    "description": "Specifys if an entity should unselect its target after shooting the projectile",
+                                    "type": "boolean",
+                                    "default": false
                                 }
                             },
                             "additionalProperties": false
