@@ -1,0 +1,50 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/flipbook_textures.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type":"array",
+    "default":[],
+    "items":{
+        "type":"object",
+        "default": {},
+        "required": ["flipbook_texture"],
+        "properties":{
+            "flipbook_texture": {
+                "description": "Path to texture.",
+                "type":"string"
+            },
+            "atlas_tile": {
+                "description": "The shortname defined in the terrain_textures.json.",
+                "type":"string"
+            },
+            "atlas_index": {
+                "description": "The index of the texture array inside the definition of that shortname.*",
+                "type":"integer"
+            },
+            "atlas_tile_variant": {
+                "description": "The variant of the block's texture array inside the shortname's block variation.",
+                "type":"integer"
+            },
+            "ticks_per_frame": {
+                "description": "How fast frames should be changed. 20 ticks = 1 second.",
+                "type":"integer"
+            },
+            "frames": {
+                "description": "List with numbers of frames which defines their order.",
+                "type":"array",
+                "default":[],
+                "items":{
+                    "type":"string"
+                }
+            },
+            "replicate": {
+                "description": "Sets the size of pixels. Default: 1.**",
+                "type":"integer"
+            },
+            "blend_frames": {
+                "description": "Defines should frames transition be smooth or not. Default: true.",
+                "type":"boolean",
+                "default": true
+            }
+        }
+    }
+}

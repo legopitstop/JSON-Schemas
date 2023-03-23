@@ -1,0 +1,38 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/blocks.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    
+    "properties": {
+        "format_version": {
+            "type":"array",
+            "default":[],
+            "minItems": 3,
+            "maxItems": 3,
+            "items":{
+                "type":"integer"
+            }
+        }
+    },
+    "additionalProperties": {
+        "type":"object",
+        "default": {},
+        "properties":{
+            "sound": {
+                "description": "Sound for the block",
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/sounds"
+            },
+            "textures": {
+                "description": "Textures for this block",
+                "type":["string", "array"],
+                "items": {
+                    "type":"string"
+                }
+            },
+            "blockshape": {
+                "description": "The shape of the block.",
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/blockshape"
+
+            }
+        }
+    }
+}

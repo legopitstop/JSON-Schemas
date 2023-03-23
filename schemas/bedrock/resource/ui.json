@@ -768,15 +768,23 @@
             ]
         }
     },
+    "required": [
+        "namespace"
+    ],
     "properties": {
         "namespace": {
-            "title": "UI",
+            "description": "Namespaces are identifiers for the UI files. They are used to access elements in some files across all other files. When adding a new namespace, it must have a unique name.",
             "type": "string"
         }
     },
     "additionalProperties": {
+        "description": "When referencing elements from different namespaces, it must have the following format: [element_name]@[namespace_reference].[element_name_reference]",
+        "required": [
+            "type"
+        ],
         "properties": {
             "type": {
+                "description": "`label` - for creating text objects\n`image` - for rendering images from a filepath provided\n`button` - for creating interactive and clickable elements\n`panel` - an empty container where you can store all other elements that may overlap to each other\n`stack_panel` - an empty container where you can store all other elements in a stack that doesn't overlap to each other\n`grid` - uses another element as a template, and then renders it repeatedly in multiple rows and columns\n`factory` - renders an element based off of another element, is capable of calling hardcoded values and variables\n`custom` - is paired with another property renderer which renders hardcoded JSON UI elements\n`screen` - elements that are called by the game directly, usually root panel elements",
                 "enum": [
                     "image",
                     "panel",
@@ -796,344 +804,1509 @@
                     "custom"
                 ]
             },
-            "texture": {
-                "description": "type=image Required, a path string",
-                "type": "string"
+            // Control
+            "visable": {
+                "title": "CONTROL",
+                "description": "If the UI element should be visible",
+                "type": "boolean",
+                "default": true
             },
-            "tiled": {
-                "description": "type=image Tiles the image. Can be a boolean or a string with possible values being x and y (which orientation it tiles)",
-                "type": [
-                    "boolean",
-                    "string"
-                ]
+            "enabled": {
+                "title": "CONTROL",
+                "description": "If true and if the UI element or any of its children have the locked state then they will be in the locked",
+                "type": "boolean",
+                "default": true
             },
-            "tiled_scale": {
-                "description": "type=image Sets the scale of the tiles (if tiled property is true)",
-                "type": "array"
+            "layer": {
+                "title": "CONTROL",
+                "description": "Z-Index/Layer (like zindex in CSS) relative to parent element. Higher layers will render above",
+                "type": "integer",
+                "default": 0
             },
-            "bilinear": {
-                "description": "type=image Applies bilinear filtering to the image",
-                "type": "boolean"
+            "alpha": {
+                "title": "CONTROL",
+                "description": "Alpha/transparency of the element. It will only affect the UI element. Its children will be unaffected. If you want the alpha to apply for both the parent and children also use propagate_alpha",
+                "type": "number",
+                "minium": 0.0,
+                "maxium": 1.0,
+                "default": 0.0
             },
-            "grayscale": {
-                "description": "type=image Makes image black and white",
-                "type": "boolean"
+            "propagate_alpha": {
+                "title": "CONTROL",
+                "description": "If alpha should not only apply to the parent if possible but also all its children",
+                "type": "boolean",
+                "default": false
             },
-            "fill": {
-                "description": "type=image",
-                "type": "boolean"
+            "clips_children": {
+                "title": "CONTROL",
+                "description": "Cuts off visually and interactively everything beyond the bounderies of the UI element",
+                "type": "boolean",
+                "default": false
             },
-            "$fit_to_width": {
-                "description": "type=image",
-                "type": "boolean"
+            "allow_clipping": {
+                "title": "CONTROL",
+                "description": "If clips_children works in the UI element. Otherwise, it won't have any effect",
+                "type": "boolean",
+                "default": true
             },
-            "keep_ratio": {
-                "description": "type=image Keep the image ratio",
-                "type": "boolean"
-            },
-            "clip_direction": {
-                "description": "type=image When `#clip_ratio` is used, tells in which direction will clip go (`down` will tell to clip from the top to the bottom)",
-                "enum": [
-                    "up",
-                    "down",
-                    "left",
-                    "right"
-                ]
-            },
-            "uv": {
-                "description": "type=image `[x_offset, y_offset]`",
-                "type": "array"
-            },
-            "uv_size": {
-                "description": "type=image `[width, height]`",
-                "type": "array"
-            },
-            "nineslice_size": {
-                "description": "type=image `[x, y]` or `[x1, y1, x2, y2]`",
-                "type": [
-                    "number",
-                    "array"
-                ]
-            },
-            "base_size": {
-                "description": "type=image `[base_width, base_height]`",
-                "type": "array"
-            },
-            "zip_folder": {
-                "description": "type=image Used with hardcoded paths",
-                "type": "string"
-            },
-            "texture_file_system": {
-                "description": "type=image Used with hardcoded paths",
-                "type": "string"
-            },
-            "force_texture_reload": {
-                "description": "type=image Reload image when the texture path is changed",
-                "type": "boolean"
-            },
-            "orientation": {
-                "description": "type=stack_panel",
-                "enum": [
-                    true,
-                    false,
-                    "vertical ",
-                    "horizontal"
-                ]
-            },
-            "modal": {
-                "description": "type=input_panel",
-                "type": "boolean"
-            },
-            "inline_modal": {
-                "description": "type=input_panel",
-                "type": "boolean"
-            },
-            "hover_enabled": {
-                "description": "type=input_panel",
-                "type": "boolean"
-            },
-            "prevent_touch_input": {
-                "description": "type=input_panel",
-                "type": "boolean"
-            },
-            "gesture_tracking_button": {
-                "description": "type=input_panel Button (action) id",
-                "type": "string"
-            },
-            "always_handle_controller_direction": {
-                "description": "type=input_panel",
-                "type": "boolean"
-            },
-            "grid_dimensions": {
-                "description": "type=grid Number of rows and columns in form of `[x_size, y_size]`",
-                "type": "array"
-            },
-            "maximum_grid_items": {
-                "description": "type=grid Numbers of items the grid has. An alternative to `grid_dimensions`",
-                "type": "number"
-            },
-            "grid_rescaling_type": {
-                "description": "type=grid Grid rescaling orientation",
-                "enum": [
-                    "vertical",
-                    "horizontal"
-                ]
-            },
-            "grid_fill_direction": {
-                "description": "type=grid",
-                "enum": [
-                    "vertical",
-                    "horizontal"
-                ]
-            },
-            "grid_item_template": {
-                "description": "type=grid An element capable of handling collections",
-                "type": "string"
-            },
-            "grid_dimension_binding": {
-                "description": "type=grid Binding name for grid dimensions",
-                "type": "string"
-            },
-            "text": {
-                "description": "type=label Text to display",
-                "type": "string"
-            },
-            "color": {
-                "description": "type=label,image Text color, an array of R,G,B with values from 0.0 to 1.0 (e.g. `[0.0, 0.6, 1.0]`)",
-                "anyOf": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "type": "array",
-                        "maxItems": 3,
-                        "minItems": 3,
-                        "items": {
-                            "type": "integer",
-                            "minimum": 0.0,
-                            "maximum": 1.0
-                        }
-                    }
-                ]
-            },
-            "locked_color": {
-                "description": "type=label Same as `color`. It will be applied instead of `color` if the parent element is locked",
-                "anyOf": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "type": "array",
-                        "maxItems": 3,
-                        "minItems": 3,
-                        "items": {
-                            "type": "integer",
-                            "minimum": 0.0,
-                            "maximum": 1.0
-                        }
-                    }
-                ]
-            },
-            "text_alignment": {
-                "description": "type=label Text alignment",
-                "enum": [
-                    "left",
-                    "right",
-                    "center"
-                ]
-            },
-            "line_padding": {
-                "description": "type=label Space in pixels between lines",
-                "type": "number"
-            },
-            "font_type": {
-                "description": "type=label",
-                "type": "string",
-                "examples": [
-                    "default",
-                    "smooth",
-                    "rune",
-                    "MinecraftSeven",
-                    "MinecraftTen",
-                    "MinecraftTenEmoticon"
-                ]
-            },
-            "font_size": {
-                "description": "type=label",
-                "enum": [
-                    "small",
-                    "normal",
-                    "lage",
-                    "extra-large"
-                ]
-            },
-            "font_scale_factor": {
-                "description": "type=label It scales the size of the text. It’s better to use this rather than `font_size`",
-                "type": "number"
-            },
-            "shadow": {
-                "description": "type=label Adds a shadow to text",
-                "type": "boolean"
-            },
-            "localize": {
-                "description": "type=label Translate the text using the *_*.lang files",
-                "type": "boolean"
-            },
-            "enable_profanity_filter": {
-                "description": "type=label Filters bad words included on the `profanity_filter.wlist` file",
-                "type": "boolean"
-            },
-            "hide_hyphen": {
-                "description": "type=label Hide all hyphens in the text",
-                "type": "boolean"
-            },
-            "notify_on_ellipses": {
-                "description": "type=label Name of the objects it will receive #using_ellipses when the text has `…`",
+            "clip_offset": {
+                "title": "CONTROL",
+                "description": "Offset from the start of the clipping",
                 "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "integer"
+                },
+                "default": [
+                    0,
+                    0
+                ]
+            },
+            "clip_state_change_event": {
+                "title": "CONTROL",
+                "type": "string"
+            },
+            "enable_scissor_test": {
+                "title": "CONTROL",
+                "description": "https://www.khronos.org/opengl/wiki/Scissor_Test",
+                "type": "boolean",
+                "default": true
+            },
+            "property_bag": {
+                "title": "CONTROL",
+                "description": "Property bag contains properties/variables that are more related with the data than the actually structure and look of the UI element",
+                "type": "object",
+                "default": {},
+                "properties": {}
+            },
+            "selected": {
+                "title": "CONTROL",
+                "description": "If the text box is selected by default",
+                "type": "boolean"
+            },
+            "use_child_anchors": {
+                "title": "CONTROL",
+                "description": "Use the anchor_from andanchor_to of the child of the UI element",
+                "type": "boolean",
+                "default": false
+            },
+            "controls": {
+                "title": "CONTROL",
+                "description": "For adding children to the element",
+                "type": "array",
+                "default": [],
+                "items": {}
+            },
+            "anims": {
+                "title": "CONTROL",
+                "description": "Array of the animation names",
+                "type": "array",
+                "default": [],
                 "items": {
                     "type": "string"
                 }
             },
+            "disable_anim_fast_forward": {
+                "title": "CONTROL",
+                "type": "boolean"
+            },
+            "animation_reset_name": {
+                "title": "CONTROL",
+                "type": "string"
+            },
+            "ignored": {
+                "title": "CONTROL",
+                "description": "If the UI element should be ignored",
+                "type": "boolean",
+                "default": false
+            },
+            "variables": {
+                "title": "CONTROL",
+                "description": "A bunch of conditions that change the variables values",
+                "type": [
+                    "array",
+                    "object"
+                ],
+                "default": [],
+                "items": {}
+            },
+            "modifications": {
+                "title": "CONTROL",
+                "description": "Allows to modify the UI files of resource packs below (vanilla being the most bottom one)",
+                "type": "array",
+                "default": [],
+                "items": {}
+            },
+            "grid_position": {
+                "title": "CONTROL",
+                "description": "Position that the control will take inside the grid. This also allows to modify specific grid items of a hardcoded grid",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {}
+            },
+            "collection_index": {
+                "title": "CONTROL",
+                "description": "Index that the control takes in the collection",
+                "type": "integer"
+            },
+            // Layout
+            "size": {
+                "title": "LAYOUT",
+                "description": "Size of the UI element.\nPossible values:\n\"default\" (Default value which is \"100%\")\n0 (Number of pixels)\n\"0px\" (Number of pixels. It's the same as 0 but it's put inside a string with px at the end. It's used when you want to sum or subtract a percentage based value with a specific number of pixels. (e.g. \"75% + 12px\"))\n\"0%\" (Percentage of relative to the parent element)\n\"0%c\" (Percentage of the total width/height of the element children)\n\"0%cm\" (Percentage of the width/height of the biggest visible child of that element)\n\"0%sm\" (Percentage of the width/height of the sibling element)\n\"0%y\" (Percentage of the element height)\n\"0%x\" (Percentage of the element width)\n\"fill\" (Expands to the remaining width/height of the parent element)",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                    "type": "integer"
+                },
+                "default": [
+                    "default",
+                    "default"
+                ]
+            },
+            "max_size": {
+                "title": "LAYOUT",
+                "description": "Maximum size of the UI element can have",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                    "type": "integer"
+                },
+                "default": [
+                    "default",
+                    "default"
+                ]
+            },
+            "min_size": {
+                "title": "LAYOUT",
+                "description": "Minimum size of the UI element can have",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                    "type": "integer"
+                },
+                "default": [
+                    "default",
+                    "default"
+                ]
+            },
+            "offset": {
+                "title": "LAYOUT",
+                "description": "Position of the UI element relative to the parent UI element. It's TopLeft based meaning the coordinates [0, 0] start at the top left of the screen.\n10- pixels\n\"10px\" - pixels\n\"50%\" - Width/height of the parent element\n\"50%x\" - Width of the element\n\"50%y\" - Height of the element",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                    "type": "integer"
+                },
+                "default": [
+                    0,
+                    0
+                ]
+            },
+            "anchor_from": {
+                "title": "LAYOUT",
+                "description": "Anchor point in the parent element.",
+                "enum": [
+                    "center",
+                    "top_left",
+                    "top_middle",
+                    "top_right",
+                    "left_middle",
+                    "right_middle",
+                    "bottom_left",
+                    "bottom_middle",
+                    "bottom_right"
+                ],
+                "default": "center"
+            },
+            "anchor_to": {
+                "title": "LAYOUT",
+                "description": "Anchor point in the element.",
+                "enum": [
+                    "center",
+                    "top_left",
+                    "top_middle",
+                    "top_right",
+                    "left_middle",
+                    "right_middle",
+                    "bottom_left",
+                    "bottom_middle",
+                    "bottom_right"
+                ],
+                "default": "center"
+            },
+            "inherit_max_sibling_width": {
+                "title": "LAYOUT",
+                "description": "Use the maximum width of the sibling element",
+                "type": "boolean",
+                "default": false
+            },
+            "inherit_max_sibling_height": {
+                "title": "LAYOUT",
+                "description": "Use the maximum height of the sibling element",
+                "type": "boolean",
+                "default": false
+            },
+            "use_anchored_offset": {
+                "title": "LAYOUT",
+                "type": "boolean"
+            },
+            "contained": {
+                "title": "LAYOUT",
+                "type": "boolean"
+            },
+            "draggable": {
+                "title": "LAYOUT",
+                "type": "boolean",
+                "default": false
+            },
+            "follows_cursor": {
+                "title": "LAYOUT",
+                "description": "Follows the cursor",
+                "type": "boolean",
+                "default": false
+            },
+            // Data Binding
+            "bindings": {
+                "title": "DATA BINDING",
+                "description": "",
+                "type": "array",
+                "default": [],
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "ignored": {
+                            "description": "If binding should be ignored",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "binding_type": {
+                            "enum": [
+                                "global",
+                                "view",
+                                "collection",
+                                "collection_details",
+                                "none"
+                            ]
+                        },
+                        "binding_name": {
+                            "description": "Stores the value of the data binding name or condition with it",
+                            "type": "string"
+                        },
+                        "binding_name_override": {
+                            "description": "Name of the UI element property that will apply the stored value in binding_name",
+                            "type": "string"
+                        },
+                        "binding_collection_name": {
+                            "description": "Name of the collection of items to be used",
+                            "type": "string"
+                        },
+                        "binding_collection_prefix": {
+                            "type": "string"
+                        },
+                        "binding_condition": {
+                            "description": "Condition for the data binding to happen.",
+                            "enum": [
+                                "always",
+                                "always_when_visible",
+                                "visible",
+                                "once",
+                                "none",
+                                "visibility_changed"
+                            ]
+                        },
+                        "source_control_name": {
+                            "description": "Name of the UI element to observe its property values",
+                            "type": "string"
+                        },
+                        "source_property_name": {
+                            "description": "Store the value of the property value of the UI element refered in source_control_name",
+                            "type": "string"
+                        },
+                        "target_property_name": {
+                            "description": "The UI element property that the stored value in source_property_name will be applied to",
+                            "type": "string"
+                        },
+                        "resolve_sibling_scope": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            // Stack Panel
+            "orientation": {
+                "title": "STACK PANEL",
+                "description": "Direction the elements stack inside stack_panel.",
+                "enum": [
+                    "vertical",
+                    "horizontal"
+                ],
+                "default": "vertical"
+            },
+            // Grid
+            "grid_dimensions": {
+                "title": "GRID",
+                "description": "Number of columns and rows the grid has",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {}
+            },
+            "maximum_grid_items": {
+                "title": "GRID",
+                "description": "Maximum number of items the grid will generate",
+                "type": "integer"
+            },
+            "grid_dimension_binding": {
+                "title": "GRID",
+                "description": "Binding name for grid dimensions",
+                "type": "string"
+            },
+            "grid_rescaling_type": {
+                "title": "GRID",
+                "description": "Grid rescaling orientation.",
+                "enum": [
+                    "vertical",
+                    "horizontal",
+                    "none"
+                ]
+            },
+            "grid_fill_direction": {
+                "title": "GRID",
+                "enum": [
+                    "vertical",
+                    "horizontal",
+                    "none"
+                ]
+            },
+            "grid_item_template": {
+                "title": "GRID",
+                "description": "An element capable of handling collections\n(e.g. \"common.container_item\", \"container_items\", \"inventory_items\" and etc.)",
+                "type": "string"
+            },
+            "precached_grid_item_count": {
+                "title": "GRID",
+                "type": "integer"
+            },
+            // Text
+            "text": {
+                "title": "TEXT",
+                "description": "Text content",
+                "type": "string"
+            },
+            "color": {
+                "title": "TEXT",
+                "description": "Text color. RGB value from 0.0 to 1.0",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 1.0
+                },
+                "default": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "locked_color": {
+                "title": "TEXT",
+                "description": "Text color when a parent has enabled: false",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 1.0
+                },
+                "default": [
+                    1.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "shadow": {
+                "title": "TEXT",
+                "description": "Text shadow",
+                "type": "boolean",
+                "default": false
+            },
+            "hide_hyphen": {
+                "title": "TEXT",
+                "description": "Hide hyphen caused by word breaking",
+                "type": "boolean",
+                "default": false
+            },
+            "notify_on_ellipses": {
+                "title": "TEXT",
+                "description": "Array of names of the controls to notify when text gets or loses ellipses",
+                "type": "array",
+                "default": [],
+                "items": {
+                    "type": "string"
+                }
+            },
+            "enable_profanity_filter": {
+                "title": "TEXT",
+                "description": "If \"bad\" words should be censored",
+                "type": "boolean",
+                "default": false
+            },
+            "locked_alpha": {
+                "title": "TEXT",
+                "description": "Alpha/transparency of label when a parent has enabled: false",
+                "type": "number",
+                "minium": 0.0,
+                "maxium": 1.0,
+                "default": 0.0
+            },
+            "font_size": {
+                "title": "TEXT",
+                "description": "Size of the text.",
+                "enum": [
+                    "small",
+                    "normal",
+                    "large",
+                    "extra_large"
+                ]
+            },
+            "font_scale_factor": {
+                "title": "TEXT",
+                "description": "Scale of the text",
+                "type": "number",
+                "minium": 0.0,
+                "maxium": 1.0,
+                "default": 1.0
+            },
+            "localize": {
+                "title": "TEXT",
+                "description": "If text should be able to be translated",
+                "type": "boolean",
+                "default": false
+            },
+            "line_padding": {
+                "title": "TEXT",
+                "description": "Space between lines",
+                "type": "number"
+            },
+            "font_type": {
+                "title": "TEXT",
+                "description": "Font of the text.",
+                "type": "string",
+                "examples": [
+                    "default",
+                    "rune",
+                    "unicode",
+                    "smooth",
+                    "MinecraftTen"
+                ],
+                "default": "default"
+            },
+            "backup_font_type": {
+                "title": "TEXT",
+                "description": "Font used if font_type didn't work",
+                "type": "string",
+                "examples": [
+                    "default",
+                    "rune",
+                    "unicode",
+                    "smooth",
+                    "MinecraftTen"
+                ],
+                "default": "default"
+            },
+            "text_alignment": {
+                "title": "TEXT",
+                "description": "Text alignment direction. If it's not defined it will adjust automatically based on anchor_from and anchor_to",
+                "enum": [
+                    "center",
+                    "top_left",
+                    "top_middle",
+                    "top_right",
+                    "left_middle",
+                    "right_middle",
+                    "bottom_left",
+                    "bottom_middle",
+                    "bottom_right"
+                ]
+            },
+            // Sprite
+            "texture": {
+                "title": "SPRITE",
+                "description": "Image path starting from pack root. (e.g. \"textures/ui/White\")",
+                "type": "string"
+            },
+            "allow_debug_missing_texture": {
+                "title": "SPRITE",
+                "description": "Display the missing_texture if the texture is not found",
+                "type": "boolean",
+                "default": true
+            },
+            "uv": {
+                "title": "SPRITE",
+                "description": "Start position of the texture mapping",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "integer"
+                }
+            },
+            "uv_size": {
+                "title": "SPRITE",
+                "description": "Size of the texture mapping",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "integer"
+                }
+            },
+            "texture_file_system": {
+                "title": "SPRITE",
+                "type": "string"
+            },
+            "nineslice_size": {
+                "title": "SPRITE",
+                "description": "9-slice. A method that divides an texture into 9 pieces. When resized the corners will stay in place and the rest will stretch",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 4,
+                "items": {
+                    "type": "integer"
+                }
+            },
+            "tiled": {
+                "title": "SPRITE",
+                "description": "If the texture will tile when the size of the UI element is bigger than the texture size.",
+                "type": "boolean",
+                "enum": [
+                    "x",
+                    "y"
+                ]
+            },
+            "tiled_scale": {
+                "title": "SPRITE",
+                "description": "Scale of the tile textures",
+                "type": [
+                    "array",
+                    "boolean"
+                ],
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                },
+                "default": false
+            },
+            "clip_direction": {
+                "title": "SPRITE",
+                "description": "Start point position for the clip_ratio. If down, the image will begin to appear from the bottom.",
+                "enum": [
+                    "left",
+                    "right",
+                    "up",
+                    "down",
+                    "center"
+                ]
+            },
+            "clip_ratio": {
+                "title": "SPRITE",
+                "description": "How much to clip. From 0.0 to 1.0",
+                "type": "number",
+                "minium": 0.0,
+                "maxium": 1.0,
+                "default": 0.0
+            },
+            "clip_pixelperfect": {
+                "title": "SPRITE",
+                "description": "If the clip should try to be the most pixel accurate possible",
+                "type": "boolean"
+            },
+            "keep_ratio": {
+                "title": "SPRITE",
+                "description": "Keep ratio when resizing image",
+                "type": "boolean",
+                "default": true
+            },
+            "bilinear": {
+                "title": "SPRITE",
+                "description": "Use the bilinear function when resizing the image",
+                "type": "boolean",
+                "default": false
+            },
+            "fill": {
+                "title": "SPRITE",
+                "description": "Scratch the image to the size",
+                "type": "boolean",
+                "default": false
+            },
+            "$fit_to_width": {
+                "title": "SPRITE",
+                "type": "boolean"
+            },
+            "zip_folder": {
+                "title": "SPRITE",
+                "type": "string"
+            },
+            "grayscale": {
+                "title": "SPRITE",
+                "description": "Render image in black and white",
+                "type": "boolean",
+                "default": false
+            },
+            "force_texture_reload": {
+                "title": "SPRITE",
+                "description": "Reload image when the texture path is changed",
+                "type": "boolean"
+            },
+            "base_size": {
+                "title": "SPRITE",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {}
+            },
+            // Input
+            "button_mappings": {
+                "title": "INPUT",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "ignored": {
+                            "description": "If mapping should be ignored",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "from_button_id": {
+                            "description": "ID of the action that fires the event",
+                            "type": "string"
+                        },
+                        "to_button_id": {
+                            "description": "ID of the action to be executed when event is fired",
+                            "type": "string"
+                        },
+                        "mapping_type": {
+                            "enum": [
+                                "global",
+                                "pressed",
+                                "double_pressed",
+                                "focused"
+                            ]
+                        },
+                        "scope": {
+                            "enum": [
+                                "view",
+                                "controller"
+                            ]
+                        },
+                        "input_mode_condition": {
+                            "enum": [
+                                "not_gaze",
+                                "not_gamepad",
+                                "gamepad_and_not_gaze"
+                            ]
+                        },
+                        "ignore_input_scope": {
+                            "type": "boolean"
+                        },
+                        "consume_event": {
+                            "type": "boolean"
+                        },
+                        "handle_select": {
+                            "type": "boolean"
+                        },
+                        "handle_deselect": {
+                            "type": "boolean"
+                        },
+                        "button_up_right_of_first_refusal": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            },
+            "modal": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "inline_modal": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "always_listen_to_input": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "always_handle_pointer": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "always_handle_controller_direction": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "hover_enabled": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "prevent_touch_input": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "consume_event": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "consume_hover_events": {
+                "title": "INPUT",
+                "type": "boolean"
+            },
+            "gesture_tracking_button": {
+                "title": "INPUT",
+                "type": "string"
+            },
+            // Focus
+            "default_focus_precedence": {
+                "title": "FOCUS",
+                "type": "integer"
+            },
+            "focus_enabled": {
+                "title": "FOCUS",
+                "description": "If the arrow keys or controller can focus the element",
+                "type": "boolean"
+            },
+            "focus_wrap_enabled": {
+                "title": "FOCUS",
+                "type": "boolean"
+            },
+            "focus_magnet_enabled": {
+                "title": "FOCUS",
+                "type": "boolean"
+            },
+            "focus_identifier": {
+                "title": "FOCUS",
+                "description": "Focus identifier for this element",
+                "type": "string"
+            },
+            "focus_change_down": {
+                "title": "FOCUS",
+                "description": "Identifier (focus_identifier) of the focusable element that will recieve focus when on button.menu_down. If you want to prevent the focus to escape from the bottom use FOCUS_OVERRIDE_STOP",
+                "type": "string"
+            },
+            "focus_change_up": {
+                "title": "FOCUS",
+                "description": "Identifier (focus_identifier) of the focusable element that will recieve focus when on button.menu_up. If you want to prevent the focus to escape from the top use FOCUS_OVERRIDE_STOP",
+                "type": "string"
+            },
+            "focus_change_left": {
+                "title": "FOCUS",
+                "description": "Identifier (focus_identifier) of the focusable element that will recieve focus when on button.menu_left. If you want to prevent the focus to escape from the left use FOCUS_OVERRIDE_STOP",
+                "type": "string"
+            },
+            "focus_change_right": {
+                "title": "FOCUS",
+                "description": "Identifier (focus_identifier) of the focusable element that will recieve focus when on button.menu_right. If you want to prevent the focus to escape from the right use FOCUS_OVERRIDE_STOP",
+                "type": "string"
+            },
+            "focus_mapping": {
+                "title": "FOCUS",
+                "type": "array",
+                "default": [],
+                "items": {}
+            },
+            "focus_container": {
+                "title": "FOCUS",
+                "type": "boolean"
+            },
+            "use_last_focus": {
+                "title": "FOCUS",
+                "type": "boolean"
+            },
+            "focus_navigation_mode_left": {
+                "title": "FOCUS",
+                "enum": [
+                    "none",
+                    "stop",
+                    "custom",
+                    "contained"
+                ]
+            },
+            "focus_navigation_mode_right": {
+                "title": "FOCUS",
+                "enum": [
+                    "none",
+                    "stop",
+                    "custom",
+                    "contained"
+                ]
+            },
+            "focus_navigation_mode_down": {
+                "title": "FOCUS",
+                "enum": [
+                    "none",
+                    "stop",
+                    "custom",
+                    "contained"
+                ]
+            },
+            "focus_navigation_mode_up": {
+                "title": "FOCUS",
+                "enum": [
+                    "none",
+                    "stop",
+                    "custom",
+                    "contained"
+                ]
+            },
+            "focus_container_custom_left": {
+                "title": "FOCUS",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "other_focus_container_name": {
+                            "description": "Name of the UI control that will receive focus when on button.menu_left, button.menu_right, button.menu_up or button.menu_down",
+                            "type": "string"
+                        },
+                        "focus_id_inside": {
+                            "description": "Identifier (focus_identifier) of the focusable child control of the other_focus_container_name that will recieve the focus",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "focus_container_custom_right": {
+                "title": "FOCUS",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "other_focus_container_name": {
+                            "description": "Name of the UI control that will receive focus when on button.menu_left, button.menu_right, button.menu_up or button.menu_down",
+                            "type": "string"
+                        },
+                        "focus_id_inside": {
+                            "description": "Identifier (focus_identifier) of the focusable child control of the other_focus_container_name that will recieve the focus",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "focus_container_custom_down": {
+                "title": "FOCUS",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "other_focus_container_name": {
+                            "description": "Name of the UI control that will receive focus when on button.menu_left, button.menu_right, button.menu_up or button.menu_down",
+                            "type": "string"
+                        },
+                        "focus_id_inside": {
+                            "description": "Identifier (focus_identifier) of the focusable child control of the other_focus_container_name that will recieve the focus",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "focus_container_custom_up": {
+                "title": "FOCUS",
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "other_focus_container_name": {
+                            "description": "Name of the UI control that will receive focus when on button.menu_left, button.menu_right, button.menu_up or button.menu_down",
+                            "type": "string"
+                        },
+                        "focus_id_inside": {
+                            "description": "Identifier (focus_identifier) of the focusable child control of the other_focus_container_name that will recieve the focus",
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            // Button & Slider Box
             "default_control": {
-                "description": "type=button,slider,edit_box Name of the child that will be displayed only in default state.",
+                "title": "BUTTON, SLIDER BOX",
+                "description": "Name of the child control that will be displayed only in the default state",
                 "type": "string"
             },
             "hover_control": {
-                "description": "type=button,slider,edit_box Name of the child that will be displayed only in hover state.",
+                "title": "BUTTON, SLIDER BOX",
+                "description": "Name of the child control that will be displayed only in the hover state",
                 "type": "string"
             },
             "pressed_control": {
-                "description": "type=button,edit_box Name of the child that will be displayed only in pressed state.",
+                "title": "BUTTON",
+                "description": "Name of the child control that will be displayed only in the pressed state",
                 "type": "string"
             },
             "locked_control": {
-                "description": "type=button,edit_box Name of the child that will be displayed only in locked state.",
+                "title": "BUTTON, SLIDER BOX",
+                "description": "Name of the child control that will be displayed only in the locked state",
                 "type": "string"
             },
-            "sound_name": {
-                "description": "type=button,toggle Name of the sound defined in the `sounds/sound_definitions.json` file that plays when the button is clicked",
-                "type": "string"
-            },
-            "sound_volume": {
-                "description": "type=button,toggle",
-                "type": "number"
-            },
-            "sound_pitch": {
-                "description": "type=button,toggle",
-                "type": "number"
+            // Toggle
+            "radio_toggle_group": {
+                "title": "TOGGLE",
+                "type": "boolean"
             },
             "toggle_name": {
-                "description": "type=toggle",
+                "title": "TOGGLE",
+                "description": "Identifier for the toggle group it belongs to. It can be a custom one.",
                 "type": "string"
             },
             "toggle_default_state": {
-                "description": "type=toggle",
-                "type": "boolean"
-            },
-            "radio_toggle_group": {
-                "description": "type=toggle",
+                "title": "TOGGLE",
                 "type": "boolean"
             },
             "toggle_group_forced_index": {
-                "description": "type=toggle",
-                "type": "number"
+                "title": "TOGGLE",
+                "description": "Index of the toggle in its group",
+                "type": "integer"
             },
             "toggle_group_default_selected": {
-                "description": "type=toggle Index of the default toggle of the its group",
-                "type": "number"
+                "title": "TOGGLE",
+                "description": "Index of the default toggle of the its group",
+                "type": "integer"
             },
-            "toggle_grid_collection_name": {
-                "description": "type=toggle Name of the collection the toggle belongs to",
-                "type": "string"
-            },
-            "enable_directional_toggling": {
-                "description": "type=toggle",
+            "reset_on_focus_lost": {
+                "title": "TOGGLE",
                 "type": "boolean"
             },
+            "toggle_on_hover": {
+                "title": "TOGGLE",
+                "type": "string"
+            },
             "toggle_on_button": {
-                "description": "type=toggle Toggle (action) id",
+                "title": "TOGGLE",
                 "type": "string"
             },
             "toggle_off_button": {
-                "description": "type=toggle Toggle (action) id",
+                "title": "TOGGLE",
                 "type": "string"
             },
-            "reset_on_focus_lost": {
-                "description": "type=toggle",
+            "enable_directional_toggling": {
+                "title": "TOGGLE",
                 "type": "boolean"
             },
+            "toggle_grid_collection_name": {
+                "title": "TOGGLE",
+                "description": "Name of the collection the toggle belongs to",
+                "type": "string"
+            },
             "checked_control": {
-                "description": "type=toggle Name of the child that will be displayed only in checked state",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the checked state",
                 "type": "string"
             },
             "unchecked_control": {
-                "description": "type=toggle Name of the child that will be displayed only in unchecked state",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the unchecked state",
                 "type": "string"
             },
             "checked_hover_control": {
-                "description": "type=toggle Name of the child that will be displayed only in checked and hovered state",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the checked hover state",
                 "type": "string"
             },
             "unchecked_hover_control": {
-                "description": "type=toggle Name of the child that will be displayed only in unchecked and hovered state",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the unchecked hover state",
                 "type": "string"
             },
             "checked_locked_control": {
-                "description": "type=toggle Name of the child that will be displayed only in locked state",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the checked locked state",
                 "type": "string"
             },
             "unchecked_locked_control": {
-                "description": "type=toggle Name of the child that will be displayed only in locked state",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the unchecked locked state",
                 "type": "string"
             },
             "checked_locked_hover_control": {
-                "description": "type=toggle Does not work",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the checked locked hover state",
                 "type": "string"
             },
             "unchecked_locked_hover_control": {
-                "description": "type=toggle Does not work",
+                "title": "TOGGLE",
+                "description": "Name of the child control that will be displayed only in the checked locked hover state",
                 "type": "string"
             },
+            // Dropdown
+            "dropdown_name": {
+                "title": "DROPDOWN",
+                "description": "Identifier for the dropdown",
+                "type": "string"
+            },
+            "dropdown_content_control": {
+                "title": "DROPDOWN",
+                "description": "Name of the child control that will behave as the root content panel",
+                "type": "string"
+            },
+            "dropdown_area": {
+                "title": "DROPDOWN",
+                "description": "Name of the child control that will behave as the inside content",
+                "type": "string"
+            },
+            // Sound
+            "sound_name": {
+                "title": "SOUND",
+                "description": "Name of the sound defined in the RP/sounds/sound_definitions.json file that plays when the pressed event is fired",
+                "type": "string"
+            },
+            "sound_volume": {
+                "title": "SOUND",
+                "description": "Volume of the sound",
+                "type": "number",
+                "minium": 0.0,
+                "maxium": 1.0,
+                "default": 0.0
+            },
+            "sound_pitch": {
+                "title": "SOUND",
+                "description": "Pitch of the sound",
+                "type": "number",
+                "minium": 0.0,
+                "maxium": 1.0,
+                "default": 0.0
+            },
+            "sounds": {
+                "title": "SOUND",
+                "description": "Array of the sounds to play when the pressed event is fired",
+                "type": "array",
+                "default": [],
+                "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "sound_name": {
+                            "description": "Name of the sound defined in the RP/sounds/sound_definitions.json file that plays when the pressed event is fired",
+                            "type": "string"
+                        },
+                        "sound_volume": {
+                            "description": "Volume of the sound",
+                            "type": "number",
+                            "minium": 0.0,
+                            "maxium": 1.0,
+                            "default": 0.0
+                        },
+                        "sound_pitch": {
+                            "description": "Pitch of the sound",
+                            "type": "number",
+                            "minium": 0.0,
+                            "maxium": 1.0,
+                            "default": 0.0
+                        },
+                        "min_seconds_between_plays": {
+                            "description": "Seconds of wait before the sound can be played again",
+                            "type": "number",
+                            "minium": 0.0,
+                            "maxium": 1.0,
+                            "default": 0.0
+                        }
+                    }
+                }
+            },
+            // Collection
+            "collection_name": {
+                "title": "COLLECTION",
+                "description": "Name of the collection to be used",
+                "type": "string"
+            },
+            // Text Edit
+            "text_box_name": {
+                "title": "TEXT EDIT",
+                "description": "Identifier for text box",
+                "type": "string"
+            },
+            "text_edit_box_grid_collection_name": {
+                "title": "TEXT EDIT",
+                "description": "Name of the collection the edit_box belongs to",
+                "type": "string"
+            },
+            "constrain_to_rect": {
+                "title": "TEXT EDIT",
+                "type": "boolean"
+            },
+            "enabled_newline": {
+                "title": "TEXT EDIT",
+                "description": "Allows multiline text",
+                "type": "boolean"
+            },
+            "text_type": {
+                "title": "TEXT EDIT",
+                "description": "Type of characters that the user is allowed to type in th text field.",
+                "enum": [
+                    "ExtendedASCII",
+                    "IdentifierChars",
+                    "NumberChars"
+                ]
+            },
+            "max_length": {
+                "title": "TEXT EDIT",
+                "description": "Maximum number of characters allow in the text field",
+                "type": "integer"
+            },
+            "text_control": {
+                "title": "TEXT EDIT",
+                "description": "Name of the child control that will be used for displaying the text",
+                "type": "string"
+            },
+            "place_holder_control": {
+                "title": "TEXT EDIT",
+                "description": "Name of the child control that will be used for display the placeholder text",
+                "type": "string"
+            },
+            "can_be_deselected": {
+                "title": "TEXT EDIT",
+                "type": "boolean"
+            },
+            "always_listening": {
+                "title": "TEXT EDIT",
+                "type": "boolean"
+            },
+            "virtual_keyboard_buffer_control": {
+                "title": "TEXT EDIT",
+                "type": "string"
+            },
+            // Slider
+            "slider_track_button": {
+                "title": "SLIDER",
+                "description": "ID of the action for the slider track",
+                "type": "string"
+            },
+            "slider_small_decrease_button": {
+                "title": "SLIDER",
+                "description": "ID of the action for the decrease slider",
+                "type": "string"
+            },
+            "slider_small_increase_button": {
+                "title": "SLIDER",
+                "description": "ID of the action for the increase slider",
+                "type": "string"
+            },
+            "slider_steps": {
+                "title": "SLIDER",
+                "description": "How many steps (or values) does the slider have",
+                "type": "integer"
+            },
+            "slider_direction": {
+                "title": "SLIDER",
+                "description": "Orientation of the slider movement.",
+                "enum": [
+                    "vertical",
+                    "horizontal"
+                ]
+            },
+            "slider_timeout": {
+                "title": "SLIDER",
+                "type": "number"
+            },
+            "slider_collection_name": {
+                "title": "SLIDER",
+                "description": "Name of the collection the slider belongs to",
+                "type": "string"
+            },
+            "slider_name": {
+                "title": "SLIDER",
+                "description": "Identifier for the slider",
+                "type": "string"
+            },
+            "slider_select_on_hover": {
+                "title": "SLIDER",
+                "description": "Focus slider when it's hovered",
+                "type": "boolean"
+            },
+            "slider_selected_button": {
+                "title": "SLIDER",
+                "description": "ID of the action for when the slider is selected",
+                "type": "string"
+            },
+            "slider_deselected_button": {
+                "title": "SLIDER",
+                "description": "ID of the action for when the slider is deselected",
+                "type": "string"
+            },
+            "slider_box_control": {
+                "title": "SLIDER",
+                "description": "Name of the child control that will behave as the slider thumb",
+                "type": "string"
+            },
+            "background_control": {
+                "title": "SLIDER",
+                "description": "Name of the child control that will behave as the slider background",
+                "type": "string"
+            },
+            "background_hover_control": {
+                "title": "SLIDER",
+                "description": "Name of the child control that will behave as the slider background on hover",
+                "type": "string"
+            },
+            "progress_control": {
+                "title": "SLIDER",
+                "description": "Name of the child control that will behave as the slider background overlay for the slider progress",
+                "type": "string"
+            },
+            "progress_hover_control": {
+                "title": "SLIDER",
+                "description": "Name of the child control that will behave as the slider background overlay for the slider progress on hover",
+                "type": "string"
+            },
+            // Scroll View
+            "scrollbar_track_button": {
+                "title": "SCROLL VIEW",
+                "description": "ID of the action for the track button",
+                "type": "string"
+            },
+            "scrollbar_touch_button": {
+                "title": "SCROLL VIEW",
+                "description": "ID of the action for the touch input",
+                "type": "string"
+            },
+            "scroll_speed": {
+                "title": "SCROLL VIEW",
+                "description": "Scrolling speed",
+                "type": "number"
+            },
+            "gesture_control_enabled": {
+                "title": "SCROLL VIEW",
+                "type": "boolean"
+            },
+            "always_handle_scrolling": {
+                "title": "SCROLL VIEW",
+                "type": "boolean"
+            },
+            "touch_mode": {
+                "title": "SCROLL VIEW",
+                "type": "boolean"
+            },
+            "scrollbar_box": {
+                "title": "SCROLL VIEW",
+                "description": "Name of child UI element or nested UI element that will behave as the scrollbar thumb.",
+                "type": "string"
+            },
+            "scrollbar_track": {
+                "title": "SCROLL VIEW",
+                "description": "Name of child UI element or nested UI element that will behave as the scrollbar track",
+                "type": "string"
+            },
+            "scroll_view_port": {
+                "title": "SCROLL VIEW",
+                "description": "Name of child UI element that will behave as the view port",
+                "type": "string"
+            },
+            "scroll_content": {
+                "title": "SCROLL VIEW",
+                "description": "Name of child UI element that will behave as the content root parent",
+                "type": "string"
+            },
+            "scroll_box_and_track_panel": {
+                "title": "SCROLL VIEW",
+                "description": "Name of child UI element that will contain the scrollbox and track controls",
+                "type": "string"
+            },
+            "jump_to_bottom_on_update": {
+                "title": "SCROLL VIEW",
+                "description": "Jump to the bottom when the scrolling panel has an update. For example, adds more children to it.",
+                "type": "boolean"
+            },
+            // Custom Render
+            "renderer": {
+                "title": "CUSTOM RENDERER",
+                "enum": [
+                    "hover_text_renderer",
+                    "3d_structure_renderer",
+                    "splash_text_renderer",
+                    "ui_holo_cursor",
+                    "trial_time_renderer",
+                    "panorama_renderer",
+                    "actor_portrait_renderer",
+                    "banner_pattern_renderer",
+                    "live_player_renderer",
+                    "web_view_renderer",
+                    "hunger_renderer",
+                    "bubbles_renderer",
+                    "mob_effects_renderer",
+                    "cursor_renderer",
+                    "progress_indicator_renderer",
+                    "camera_renderer",
+                    "horse_jump_renderer",
+                    "armor_renderer",
+                    "horse_heart_renderer",
+                    "heart_renderer",
+                    "hotbar_cooldown_renderer",
+                    "hotbar_renderer",
+                    "hud_player_renderer",
+                    "live_horse_renderer",
+                    "holographic_postrenderer",
+                    "enchanting_book_renderer",
+                    "debug_screen_renderer",
+                    "gradient_renderer",
+                    "paper_doll_renderer",
+                    "name_tag_renderer",
+                    "flying_item_renderer",
+                    "inventory_item_renderer",
+                    "credits_renderer",
+                    "vignette_renderer",
+                    "progress_bar_renderer",
+                    "debug_overlay_renderer",
+                    "background_renderer",
+                    "bohr_model_renderer"
+                ]
+            },
+            // Specific Properties
+            "gradient_direction": {
+                "title": "RENDERER: gradient_renderer",
+                "enum": [
+                    "vertical",
+                    "horizontal"
+                ]
+            },
+            "color1": {
+                "title": "RENDERER: gradient_renderer",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                }
+            },
+            "color2": {
+                "title": "RENDERER: gradient_renderer",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                }
+            },
+            "text_color": {
+                "title": "RENDERER: name_tag_renderer",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                }
+            },
+            "background_color": {
+                "title": "RENDERER: name_tag_renderer",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                }
+            },
+            "primary_color": {
+                "title": "RENDERER: progress_bar_renderer",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                }
+            },
+            "secondary_color": {
+                "title": "RENDERER: progress_bar_renderer",
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 4,
+                "items": {
+                    "type": "number",
+                    "minium": 0.0,
+                    "maxium": 1.0,
+                    "default": 0.0
+                }
+            },
+            "camera_tilt_degrees": {
+                "title": "RENDERER: paper_doll_renderer",
+                "type": "number"
+            },
+            "starting_rotation": {
+                "title": "RENDERER: paper_doll_renderer",
+                "type": "number"
+            },
+            "use_selected_skin": {
+                "title": "RENDERER: paper_doll_renderer",
+                "type": "boolean"
+            },
+            "use_uuid": {
+                "title": "RENDERER: paper_doll_renderer",
+                "type": "boolean"
+            },
+            "use_skin_gui_scale": {
+                "title": "RENDERER: paper_doll_renderer",
+                "type": "boolean"
+            },
+            "use_player_paperdoll": {
+                "title": "RENDERER: paper_doll_renderer",
+                "type": "boolean"
+            },
+            "rotation": {
+                "title": "RENDERER: paper_doll_renderer and panorama_renderer",
+                "enum": [
+                    "auto",
+                    "gesture_x",
+                    "custom_y"
+                ]
+            },
+            "end_event": {
+                "title": "RENDERER: credits_renderer",
+                "type":"string"
+            },
+            // Screen https://wiki.bedrock.dev/json-ui/json-ui-documentation.html#screen
+            // HERE
+            // end
             "tts_toggle_on": {
                 "description": "type=toggle",
                 "type": "string"
@@ -1144,66 +2317,6 @@
             },
             "#toggle_state": {
                 "description": "type=toggle",
-                "type": "boolean"
-            },
-            "slider_name": {
-                "description": "type=slider",
-                "type": "string"
-            },
-            "slider_direction": {
-                "description": "type=slider The orientation of the slider",
-                "type": "string"
-            },
-            "slider_steps": {
-                "description": "type=slider Number of possible values",
-                "type": "number"
-            },
-            "slider_track_button": {
-                "description": "type=slider Button (action) id",
-                "type": "string"
-            },
-            "slider_small_decrease_button": {
-                "description": "type=slider Button (action) id",
-                "type": "string"
-            },
-            "slider_small_increase_button": {
-                "description": "type=slider Button (action) id",
-                "type": "string"
-            },
-            "slider_selected_button": {
-                "description": "type=slider Button (action) id",
-                "type": "string"
-            },
-            "slider_deselected_button": {
-                "description": "type=slider Button (action) id",
-                "type": "string"
-            },
-            "slider_collection_name": {
-                "description": "type=slider Name of the collection the slider belongs to",
-                "type": "string"
-            },
-            "background_control": {
-                "description": "type=slider Name of the object used as the slider background only in default state",
-                "type": "string"
-            },
-            "background_hover_control": {
-                "description": "type=slider Name of the object used as the slide background only in hover state",
-                "type": "string"
-            },
-            "progress_control": {
-                "description": "type=slider Name of the object used as the progress background only in default state",
-                "type": "string"
-            },
-            "progress_hover_control": {
-                "description": "type=slider Name of the object used as the progress background only in hover state",
-                "type": "string"
-            },
-            "slider_box_control": {
-                "description": "type=slider Name of the child that will be used as the scroll “thumb”/button",
-                "type": "string"
-            },
-            "slider_select_on_hover": {
-                "description": "type=slider Focus slider when it’s hovered",
                 "type": "boolean"
             },
             "tts_value_changed": {
@@ -1217,314 +2330,6 @@
             },
             "slider_step_factory": {
                 "description": "type=slider"
-            },
-            "text_box_name": {
-                "description": "type=edit_box",
-                "type": "string"
-            },
-            "text_edit_box_grid_collection_name": {
-                "description": "type=edit_box Name of the collection the `edit_box` belongs to",
-                "type": "string"
-            },
-            "text_type": {
-                "description": "type=edit_box Type of characters that the user is allowed to type in th text field",
-                "type": "string"
-            },
-            "max_length": {
-                "description": "type=edit_box Max number of characters allow in the text field",
-                "type": "number"
-            },
-            "enabled_newline": {
-                "description": "type=edit_box Allows multiline text",
-                "type": "boolean"
-            },
-            "text_control": {
-                "description": "type=edit_box Name of the child that will be used for display the text",
-                "type": "string"
-            },
-            "place_holder_control": {
-                "description": "type=edit_box Name of the child that will be used for display the placeholder text",
-                "type": "string"
-            },
-            "virtual_keyboard_buffer_control": {
-                "description": "type=edit_box",
-                "type": "string"
-            },
-            "scroll_speed": {
-                "description": "type=scroll_view Scrolling speed",
-                "type": "number"
-            },
-            "always_handle_scrolling": {
-                "description": "type=scroll_view",
-                "type": "boolean"
-            },
-            "jump_to_bottom_on_update": {
-                "description": "type=scroll_view",
-                "type": "boolean"
-            },
-            "touch_mode": {
-                "description": "type=scroll_view",
-                "type": "boolean"
-            },
-            "scrollbar_track_button": {
-                "description": "type=scroll_view Button (action) ID",
-                "type": "string"
-            },
-            "scrollbar_touch_button": {
-                "description": "type=scroll_view Button (action) ID",
-                "type": "string"
-            },
-            "scrollbar_track": {
-                "description": "type=scroll_view Name of the child to be used as the scrollbar track",
-                "type": "string"
-            },
-            "scrollbar_box": {
-                "description": "type=scroll_view Name of the child to be used as the scrollbar “thumb”/button",
-                "type": "string"
-            },
-            "scroll_content": {
-                "description": "type=scroll_view Name of the child that will have the scrolling panel content",
-                "type": "string"
-            },
-            "scroll_view_port": {
-                "description": "type=scroll_view Name of the child to be used as the scrolling panel viewport",
-                "type": "string"
-            },
-            "scroll_box_and_track_panel": {
-                "description": "type=scroll_view Name of the child that contains the scroll bar and track",
-                "type": "string"
-            },
-            "draggable": {
-                "description": "type=scrollbar_box Scrolling orientation",
-                "enum": [
-                    "vertical",
-                    "horizontal"
-                ]
-            },
-            "contained": {
-                "description": "type=scrollbar_box",
-                "type": "boolean"
-            },
-            "dropdown_name": {
-                "description": "type=dropdown",
-                "type": "string"
-            },
-            "dropdown_content_control": {
-                "description": "type=dropdown",
-                "type": "string"
-            },
-            "dropdown_area": {
-                "description": "type=dropdown",
-                "type": "string"
-            },
-            "renderer": {
-                "description": "type=custom Name of the hardcoded renderer",
-                "enum": [
-                    "flying_item_renderer",
-                    "inventory_item_renderer",
-                    "credits_renderer",
-                    "vignette_renderer",
-                    "name_tag_renderer",
-                    "paper_doll_renderer",
-                    "debug_screen_renderer",
-                    "enchanting_book_renderer",
-                    "gradient_renderer",
-                    "live_horse_renderer",
-                    "live_player_renderer",
-                    "hud_player_renderer",
-                    "hotbar_renderer",
-                    "hotbar_cooldown_renderer",
-                    "heart_renderer",
-                    "horse_heart_renderer",
-                    "armor_renderer",
-                    "horse_jump_renderer",
-                    "hunger_renderer",
-                    "bubbles_renderer",
-                    "mob_effects_renderer",
-                    "cursor_renderer",
-                    "progress_indicator",
-                    "camera_renderer",
-                    "web_view_renderer",
-                    "banner_pattern_renderer",
-                    "actor_portrait_renderer",
-                    "trial_time_renderer",
-                    "progress_bar_renderer",
-                    "3d_structure_renderer",
-                    "splash_text_renderer",
-                    "hover_text_renderer",
-                    "ui_holo_cursor",
-                    "panorama_renderer"
-                ]
-            },
-            "size": {
-                "description": "Width and height of the element [width, height].",
-                "type": "array",
-                "maxItems": 2,
-                "minItems": 2,
-                "items": {
-                    "type": "string"
-                }
-            },
-            "max_size": {
-                "description": "Max width and height for the element",
-                "type": "array"
-            },
-            "min_size": {
-                "description": "Min width and height the element can have",
-                "type": "array"
-            },
-            "anchor_from": {
-                "description": "Position origin of the element.",
-                "default": "center",
-                "enum": [
-                    "top_left",
-                    "top_middle",
-                    "top_right",
-                    "left_middle",
-                    "center",
-                    "right_middle",
-                    "bottom_left",
-                    "bottom_middle",
-                    "bottom_right"
-                ]
-            },
-            "anchor_to": {
-                "description": "Position origin of the element.",
-                "default": "center",
-                "enum": [
-                    "top_left",
-                    "top_middle",
-                    "top_right",
-                    "left_middle",
-                    "center",
-                    "right_middle",
-                    "bottom_left",
-                    "bottom_middle",
-                    "bottom_right"
-                ]
-            },
-            "offset": {
-                "description": "How far in pixels or percentage from the position origin the element is (`[x_offset, y_offset]`). ",
-                "type": "array"
-            },
-            "clips_children": {
-                "description": "Hides everything inside that is outside of the width and height of the element",
-                "type": "boolean"
-            },
-            "allow_clipping": {
-                "description": "Allows to `clips_children` to clip the element. if false `clips_children` won’t affect the element",
-                "type": "boolean"
-            },
-            "layer": {
-                "description": "(positive or negative). the layer (like z|index in CSS) of the element relative to it’s parent and so on. An element with a greater layer will be in front of an element with a lower layer.",
-                "type": "number"
-            },
-            "visible": {
-                "description": "If false, element takes place, but isn’t rendered (unlike ignored). It’s by default true so you don’t have to mention it every time you create a new element",
-                "type": "boolean"
-            },
-            "ignored": {
-                "description": "Ignores element like if it isn’t there (unlike not visible)",
-                "type": "boolean"
-            },
-            "enabled": {
-                "description": "If false it will disable all input elements inside of it.",
-                "type": "boolean"
-            },
-            "alpha": {
-                "description": "From 0.0 to 1.0. Opacity of the image or text. If it’s defined in any other type it won’t affect any image/text child inside of it. For that you need to enable `propagate_alpha`",
-                "type": "number"
-            },
-            "locked_alpha": {
-                "description": "same as `alpha`. It will be applied instead of `alpha` if the parent element is locked",
-                "type": "number"
-            },
-            "propagate_alpha": {
-                "description": "Propagate the alpha property to any image or text child",
-                "type": "boolean"
-            },
-            "disable_anim_fast_forward": {
-                "type": "boolean"
-            },
-            "anims": {
-                "description": "Name of the animations that will apply to the element",
-                "type": "array"
-            },
-            "animation_reset_name": {
-                "type": "string"
-            },
-            "variables": {
-                "description": "Have conditions that change the variables values.",
-                "anyOf": [
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "requires": {
-                                    "type": "string"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "type": "object",
-                        "properties": {
-                            "requires": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                ]
-            },
-            "property_bag": {
-                "description": "Change some special properties.",
-                "type": "object"
-            },
-            "controls": {
-                "description": "To add children to the element",
-                "type": "array"
-            },
-            "bindings": {
-                "description": "Bind and work with hardcoded values in the element",
-                "type": "array"
-            },
-            "focus_identifier": {
-                "type": "string"
-            },
-            "focus_enabled": {
-                "type": "boolean"
-            },
-            "focus_wrap_enabled": {
-                "type": "boolean"
-            },
-            "focus_magnet_enabled": {
-                "type": "boolean"
-            },
-            "default_focus_precedence": {
-                "type": "number"
-            },
-            "focus_container": {
-                "type": "boolean"
-            },
-            "use_last_focus": {
-                "type": "boolean"
-            },
-            "focus_change_up": {
-                "description": "Possible values: FOCUS_OVERRIDE_STOP or the focus_identifier of the object you want to focus when on button.menu_up",
-                "type": "string"
-            },
-            "focus_change_down": {
-                "description": "Possible values: FOCUS_OVERRIDE_STOP or the focus_identifier of the object you want to focus when on button.menu_up",
-                "type": "string"
-            },
-            "focus_change_left": {
-                "description": "Possible values: FOCUS_OVERRIDE_STOP or the focus_identifier of the object you want to focus when on button.menu_up",
-                "type": "string"
-            },
-            "focus_change_right": {
-                "description": "Possible values: FOCUS_OVERRIDE_STOP or the focus_identifier of the object you want to focus when on button.menu_up",
-                "type": "string"
             },
             "focus_nagivation_mode_up": {
                 "enum": [
@@ -1557,18 +2362,6 @@
                     "custom",
                     "contained"
                 ]
-            },
-            "focus_container_custom_up": {
-                "type": "array"
-            },
-            "focus_container_custom_down": {
-                "type": "array"
-            },
-            "focus_container_custom_left": {
-                "type": "array"
-            },
-            "focus_container_custom_right": {
-                "type": "array"
             },
             "tts_name": {
                 "type": "string"
@@ -1681,12 +2474,17 @@
                 "type": "boolean"
             },
             "anim_type": {
+                "description": "`alpha` - accepts float values, animates the opacity of the element\n`offset` - accepts an array, animates the position of the element relative to its anchor\n`size` - accepts an array, animates the size in ( width, height )\n`flip_book` - accepts integer values, animates the image in flipbook texture or frame by frame\n`uv` - accepts an array, animates the image depending on the UV texture\n`color` - accepts float RGB values from 0.0 to 1.0, animates the color of the element\n`wait` - accepts number values, used for waiting/staying purposes\n`aseprite_flip_book` - like a flip_book animation, uses sprite sheets. More info here\n`clip`",
                 "enum": [
-                    "wait",
-                    "size",
-                    "offset",
                     "alpha",
-                    "flipbook"
+                    "offset",
+                    "size",
+                    "flip_book",
+                    "uv",
+                    "color",
+                    "wait",
+                    "aseprite_flip_book",
+                    "clip"
                 ]
             },
             "initial_uv": {
@@ -1757,10 +2555,6 @@
             },
             "play_event": {
                 "description": "Name of the event when the animation starts",
-                "type": "string"
-            },
-            "end_event": {
-                "description": "Name of the event when the animation ends",
                 "type": "string"
             },
             "#visible": {
