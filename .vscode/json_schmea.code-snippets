@@ -16,11 +16,14 @@
 	"ref:useAnimation": {"scope": "json,jsonu","prefix": "ref:useAnimation","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/useAnimation\""},
 	"ref:saturationModifier": {"scope": "json,jsonu","prefix": "ref:saturationModifier","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/saturationModifier\""},
 	"ref:itemCount": {"scope": "json,jsonu","prefix": "ref:itemCount","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemCount\""},
-	"ref:decimal": {"scope": "json,jsonu","prefix": "ref:decimal","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Decimal\""},
 	"ref:eventTarget": {"scope": "json,jsonu","prefix": "ref:eventTarget","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/eventTarget\""},
 	"ref:itemTab": {"scope": "json,jsonu","prefix": "ref:itemTab","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemTab\""},
 	"ref:itemGroup": {"scope": "json,jsonu","prefix": "ref:itemGroup","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemGroup\""},
 	"ref:sounds": {"scope": "json,jsonu","prefix": "ref:sounds","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/sounds\""},
 	"ref:blockshape": {"scope": "json,jsonu","prefix": "ref:blockshape","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/blockshape\""},
-	"ref:supportedVersions": {"scope": "json,jsonu","prefix": "ref:supportedVersions","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/supportedVersions\""}
+	"ref:supportedVersions": {"scope": "json,jsonu","prefix": "ref:supportedVersions","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/supportedVersions\""},
+	"ref:Filters": {"scope": "json,jsonu","prefix": "ref:Filters","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters\""},
+	"ref:bedrock_items": {"scope": "json,jsonu","prefix": "ref:bedrock_items","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json\""},
+	"ref:bedrock_blocks": {"scope": "json,jsonu","prefix": "ref:bedrock_blocks","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json\""},
+	"ref:bedrock_entity": {"scope": "json,jsonu","prefix": "ref:bedrock_entity","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json\""},
 }
