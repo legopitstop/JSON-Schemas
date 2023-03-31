@@ -1553,6 +1553,7 @@
                     }
                 },
                 "events": {
+                    "description": "A mapping to all events used by this block.",
                     "type": "object",
                     "additionalProperties": {
                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Events"
