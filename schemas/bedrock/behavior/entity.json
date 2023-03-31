@@ -180,6 +180,814 @@
                     "type": "object",
                     "default": {},
                     "properties": {
+                        "minecraft:anger_level": {
+                            "description": "Allows this entity to track anger towards a set of nuisances",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "anger_decrement_interval": {
+                                    "description": "Anger level will decay over time. Defines how often anger towards all nuisances will be decreased by one",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 1.00
+                                },
+                                "angry_boost": {
+                                    "description": "Anger boost applied to angry threshold when mob gets angry",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "default": 20
+                                },
+                                "angry_threshold": {
+                                    "description": "Threshold that define when the mob is considered angry at a nuisance",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "default": 80
+                                },
+                                "default_annoyingness": {
+                                    "description": "The default amount of annoyingness for any given nuisance. Specifies how much to raise anger level on each provocation",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "default": 0
+                                },
+                                "max_anger": {
+                                    "description": "The maximum anger level that can be reached. Applies to any nuisance",
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "default": 100
+                                },
+                                "nuisance_filter": {
+                                    "description": "Filter that is applied to determine if a mob can be a nuisance",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters"
+                                },
+                                "on_increase_sounds": {
+                                    "description": "Sounds to play when the entity is getting provoked. Evaluated in order. First matching condition wins",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "condition": {
+                                                "description": "A Molang expression describing under which conditions to play this sound, given that the entity was provoked",
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                            },
+                                            "sound": {
+                                                "description": "The sound to play",
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "remove_targets_below_angry_threshold": {
+                                    "description": "Defines if the mob should remove target if it falls below 'angry' threshold",
+                                    "type": "boolean",
+                                    "default": true
+                                }
+                            }
+                        },
+                        "minecraft:behavior.delayed_attack": {
+                            "description": "Allows an entity to attack, while also delaying the damage-dealt until a specific time in the attack animation.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "attack_duration": {
+                                    "description": "The entity's attack animation will play out over this duration (in seconds). Also controls attack cooldown.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.75
+                                },
+                                "attack_once": {
+                                    "description": "Allows the entity to use this attack behavior, only once EVER.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "attack_types": {
+                                    "description": "Defines the entity types this entity will attack.",
+                                    "type": "string"
+                                },
+                                "cooldown_time": {
+                                    "description": "Cooldown time (in seconds) between attacks.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 1
+                                },
+                                "hit_delay_pct": {
+                                    "description": "The percentage into the attack animation to apply the damage of the attack (1.0 = 100%).",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.5
+                                },
+                                "inner_boundary_time_increase": {
+                                    "description": "Time (in seconds) to add to attack path recalculation when the target is beyond the \"path_inner_boundary\".",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.5
+                                },
+                                "max_dist": {
+                                    "description": "No effect on \"minecraft:behavior.melee_attack\".",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 1.0
+                                },
+                                "max_path_time": {
+                                    "description": "Maximum base time (in seconds) to recalculate new attack path to target (before increases applied).",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.55
+                                },
+                                "melee_fov": {
+                                    "description": "Field of view (in degrees) when using the sensing component to detect an attack target.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 90
+                                },
+                                "min_path_time": {
+                                    "description": "Minimum base time (in seconds) to recalculate new attack path to target (before increases applied).",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.2
+                                },
+                                "on_attack": {
+                                    "description": "Defines the event to trigger when this entity successfully attacks.",
+                                    "type": "string"
+                                },
+                                "outer_boundary_time_increase": {
+                                    "description": "Time (in seconds) to add to attack path recalculation when the target is beyond the \"path_outer_boundary\".",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.5
+                                },
+                                "path_fail_time_increase": {
+                                    "description": "Time (in seconds) to add to attack path recalculation when this entity cannot move along the current path.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.75
+                                },
+                                "path_inner_boundary": {
+                                    "description": "Distance at which to increase attack path recalculation by \"inner_boundary_tick_increase\".",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 16
+                                },
+                                "path_outer_boundary": {
+                                    "description": "Distance at which to increase attack path recalculation by \"outer_boundary_tick_increase\".",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 32
+                                },
+                                "random_stop_interval": {
+                                    "description": "This entity will have a 1 in N chance to stop it's current attack, where N = \"random_stop_interval\".",
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "reach_multiplier": {
+                                    "description": "Used with the base size of the entity to determine minimum target-distance before trying to deal attack damage.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 2
+                                },
+                                "require_complete_path": {
+                                    "description": "Toggles (on/off) the need to have a full path from the entity to the target when using this melee attack behavior.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "set_persistent": {
+                                    "description": "Allows the actor to be set to persist upon targeting a player",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "speed_multiplier": {
+                                    "description": "This multiplier modifies the attacking entity's speed when moving toward the target.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 1
+                                },
+                                "target_dist": {
+                                    "description": "Unused. No effect on \"minecraft:behavior.melee_attack\".",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0
+                                },
+                                "track_target": {
+                                    "description": "Allows the entity to track the attack target, even if the entity has no sensing.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "x_max_rotation": {
+                                    "description": "Maximum rotation (in degrees), on the X-axis, this entity can rotate while trying to look at the target.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 30
+                                },
+                                "y_max_head_rotation": {
+                                    "description": "Maximum rotation (in degrees), on the Y-axis, this entity can rotate its head while trying to look at the target.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 30
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.croak": {
+                            "description": "Allows the entity to croak at a random time interval with configurable conditions.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "duration": {
+                                    "description": "Random range in seconds after which the croaking stops. Can also be a constant.",
+                                    "type": "array",
+                                    "default": [
+                                        4.5,
+                                        4.5
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "filters": {
+                                    "description": "Conditions for the behavior to start and keep running. The interval between runs only starts after passing the filters.",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters"
+                                },
+                                "interval": {
+                                    "description": "Random range in seconds between runs of this behavior. Can also be a constant.",
+                                    "type": "array",
+                                    "default": [
+                                        10,
+                                        20
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.controlled_by_player": {
+                            "description": "Allows the entity to be controlled by the player using an item in the item_controllable property (required). Also requires the minecraft:movement property, and the minecraft:rideable property. On every tick, the entity will attempt to rotate towards where the player is facing with the control item whilst simultaneously moving forward.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "fractional_rotation": {
+                                    "description": "The entity will attempt to rotate to face where the player is facing each tick. The entity will target this percentage of their difference in their current facing angles each tick (from 0.0 to 1.0 where 1.0 = 100%). This is limited by FractionalRotationLimit. A value of 0.0 will result in the entity no longer turning to where the player is facing.",
+                                    "type": "number",
+                                    "default": 0.5
+                                },
+                                "fractional_rotation_limit": {
+                                    "description": "The entity will attempt to rotate to face where the player is facing each tick. The entity will target this percentage of their difference in their current facing angles each tick (from 0.0 to 1.0 where 1.0 = 100%). This is limited by FractionalRotationLimit. A value of 0.0 will result in the entity no longer turning to where the player is facing.",
+                                    "type": "number",
+                                    "default": 5.0
+                                },
+                                "mount_speed_multiplier": {
+                                    "description": "Speed multiplier of mount when controlled by player.",
+                                    "type": "number",
+                                    "default": 1.0
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.circle_around_anchor": {
+                            "description": "",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "angle_change": {
+                                    "description": "Number of degrees to change this entity's facing by, when the entity selects its next anchor point.",
+                                    "type": "number",
+                                    "default": 15.0
+                                },
+                                "goal_radius": {
+                                    "description": "Maximum distance from the anchor-point in which this entity considers itself to have reached the anchor point. This is to prevent the entity from bouncing back and forth trying to reach a specific spot.",
+                                    "type": "number",
+                                    "default": 0.5
+                                },
+                                "height_above_target_range": {
+                                    "description": "The number of blocks above the target that the next anchor point can be set. This value is used only when the entity is tracking a target.",
+                                    "type": "array",
+                                    "default": [
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "height_adjustment_chance": {
+                                    "description": "Percent chance to determine how often to increase or decrease the current height around the anchor point. 1 = 100%. \"height_change_chance\" is deprecated and has been replaced with \"height_adjustment_chance\".",
+                                    "type": "number",
+                                    "default": 0.002857
+                                },
+                                "height_offset_range": {
+                                    "description": "Vertical distance from the anchor point this entity must stay within, upon a successful height adjustment.",
+                                    "type": "array",
+                                    "default": [
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "radius_adjustment_chance": {
+                                    "description": "Percent chance to determine how often to increase the size of the current movement radius around the anchor point. 1 = 100%. \"radius_change_chance\" is deprecated and has been replaced with \"radius_adjustment_chance\".",
+                                    "type": "number",
+                                    "default": 0.004
+                                },
+                                "radius_change": {
+                                    "description": "The number of blocks to increase the current movement radius by, upon successful \"radius_adjustment_chance\". If the current radius increases over the range maximum, the current radius will be set back to the range minimum and the entity will change between clockwise and counter-clockwise movement..",
+                                    "type": "number",
+                                    "default": 1.0
+                                },
+                                "radius_range": {
+                                    "description": "Horizontal distance from the anchor point this entity must stay within upon a successful radius adjustment.",
+                                    "type": "array",
+                                    "default": [
+                                        5.0,
+                                        15.0
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "speed_multiplier": {
+                                    "description": "Multiplies the speed at which this entity travels to its next desired position.",
+                                    "type": "number",
+                                    "default": 1.0
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.charge_held_item": {
+                            "description": "Allows an entity to charge and use their held item.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "items": {
+                                    "description": "The list of items that can be used to charge the held item. This list is required and must have at least one item in it.",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.charge_attack": {
+                            "description": "Allows this entity to damage a target by using a running attack.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "max_distance": {
+                                    "description": "A charge attack cannot start if the entity is farther than this distance to the target.",
+                                    "type": "number",
+                                    "default": 3
+                                },
+                                "min_distance": {
+                                    "description": "A charge attack cannot start if the entity is closer than this distance to the target.",
+                                    "type": "number",
+                                    "default": 2
+                                },
+                                "speed_multiplier": {
+                                    "description": "Modifies the entity's speed when charging toward the target.",
+                                    "type": "number",
+                                    "default": 1
+                                },
+                                "success_rate": {
+                                    "description": "Percent chance this entity will start a charge attack, if not already attacking (1.0 = 100%)",
+                                    "type": "number",
+                                    "default": 0.1428
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.celebrate_survive": {
+                            "description": "Allows this entity to celebrate surviving a raid by shooting fireworks.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "duration": {
+                                    "description": "The duration in seconds that the celebration lasts for.",
+                                    "type": "number",
+                                    "default": 30.000000
+                                },
+                                "fireworks_interval": {
+                                    "description": "The duration in seconds that the celebration lasts for.",
+                                    "type": "array",
+                                    "default": [
+                                        10,
+                                        20
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "on_celebration_end_event": {
+                                    "description": "The event to trigger when the goal's duration expires.",
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.dig": {
+                            "description": "Allows this entity to dig into the ground before despawning.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "allow_dig_when_named": {
+                                    "description": "If true, this behavior can run when this entity is named. Otherwise not.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "digs_in_daylight": {
+                                    "description": "Indicates that the actor should start digging when it sees daylight",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "duration": {
+                                    "description": "Goal duration in seconds",
+                                    "type": "number",
+                                    "default": 0.0
+                                },
+                                "idle_time": {
+                                    "description": "The minimum idle time in seconds between the last detected disturbance to the start of digging.",
+                                    "type": "number"
+                                },
+                                "on_start": {
+                                    "description": "Event(s) to run when the goal starts.",
+                                    "type": "string"
+                                },
+                                "suspicion_is_disturbance": {
+                                    "description": "If true, finding new suspicious locations count as disturbances that may delay the start of this goal.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "vibration_is_disturbance": {
+                                    "description": "If true, vibrations count as disturbances that may delay the start of this goal.",
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.random_search_and_dig": {
+                            "description": "[EXPERIMENTAL] Allows this entity to locate a random target block that it can path find to. Once found, the entity will move towards it and dig up an item. [Valid target block type: Dirt, Grass, Podzol, DirtWithRoots, MossBlock, Mud, MuddyMangroveRoots].",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "cooldown_range": {
+                                    "description": "Goal cooldown range in seconds.",
+                                    "type": "array",
+                                    "default": [
+                                        0.000000,
+                                        0.000000
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "digging_duration_range": {
+                                    "description": "Digging duration in seconds.",
+                                    "type": "array",
+                                    "default": [
+                                        0.000000,
+                                        0.000000
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "find_valid_position_retries": {
+                                    "description": "Amount of retries to find a valid target position within search range.",
+                                    "type": "number",
+                                    "default": 0.000000
+                                },
+                                "goal_radius": {
+                                    "description": "Distance in blocks within the entity to considers it has reached it's target position.",
+                                    "type": "number",
+                                    "default": 1.500000
+                                },
+                                "item": {
+                                    "description": "The item to spawn on successful dig. Format: itemName:auxValue",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                    }
+                                },
+                                "on_digging_start": {
+                                    "description": "Event to run when the goal ends searching has begins digging.",
+                                    "type": "string"
+                                },
+                                "on_fail_during_digging": {
+                                    "description": "Event to run when the goal failed while in digging state.",
+                                    "type": "string"
+                                },
+                                "on_fail_during_searching": {
+                                    "description": "Event to run when the goal failed while in searching state.",
+                                    "type": "string"
+                                },
+                                "on_item_found": {
+                                    "description": "Event to run when the goal find a item.",
+                                    "type": "string"
+                                },
+                                "on_searching_start": {
+                                    "description": "Event to run when the goal starts searching.",
+                                    "type": "string"
+                                },
+                                "on_success": {
+                                    "description": "Event to run when searching and digging has ended.",
+                                    "type": "string"
+                                },
+                                "search_range_xz": {
+                                    "description": "Width and length of the volume around the entity used to find a valid target position",
+                                    "type": "number",
+                                    "default": 0.000000
+                                },
+                                "search_range_y": {
+                                    "description": "Height of the volume around the entity used to find a valid target position",
+                                    "type": "number",
+                                    "default": 0.000000
+                                },
+                                "spawn_item_after_seconds": {
+                                    "description": "Digging duration before spawning item in seconds.",
+                                    "type": "number",
+                                    "default": 0.000000
+                                },
+                                "spawn_item_pos_offset": {
+                                    "description": "Distance to offset the item's spawn location in the direction the mob is facing.",
+                                    "type": "number",
+                                    "default": 0.000000
+                                },
+                                "speed_multiplier": {
+                                    "description": "Searching movement speed multiplier.",
+                                    "type": "number",
+                                    "default": 1.000000
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.dragonchargeplayer": {
+                            "description": "Allows this entity to attack a player by charging at them. The player is chosen by the \"minecraft:behavior.dragonscanning\". Can only be used by the Ender Dragon.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "active_speed": {
+                                    "description": "The speed this entity moves when this behavior has started or while it's active.",
+                                    "type": "number",
+                                    "default": 1
+                                },
+                                "continue_charge_threshold_time": {
+                                    "description": "If the dragon is outside the \"target_zone\" for longer than \"continue_charge_threshold_time\" seconds, the charge is canceled.",
+                                    "type": "number",
+                                    "default": 0.5
+                                },
+                                "flight_speed": {
+                                    "description": "The speed this entity moves while this behavior is not active.",
+                                    "type": "number",
+                                    "default": 0.6
+                                },
+                                "target_zone": {
+                                    "description": "Minimum and maximum distance, from the target, this entity can use this behavior.",
+                                    "type": "array",
+                                    "default": [
+                                        10,
+                                        150
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "turn_speed": {
+                                    "description": "The speed at which this entity turns while using this behavior.",
+                                    "type": "number",
+                                    "default": 0.7
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.dragonflaming": {
+                            "description": "Allows this entity to use a flame-breath attack. Can only be used by the Ender Dragon.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "cooldown_time": {
+                                    "description": "Time (in seconds), after roar, to breath flame.",
+                                    "type": "number",
+                                    "default": 10
+                                },
+                                "flame_time": {
+                                    "description": "Time (in seconds), after roar, to breath flame.",
+                                    "type": "number",
+                                    "default": 0.5
+                                },
+                                "ground_flame_count": {
+                                    "description": "Time (in seconds), after roar, to breath flame.",
+                                    "type": "integer",
+                                    "default": 4
+                                },
+                                "roar_time": {
+                                    "description": "Time (in seconds) to roar, before breathing flame.",
+                                    "type": "number",
+                                    "default": 2
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.dragonstrafeplayer": {
+                            "description": "Allows the Dragon to fly around in a circle around the center podium. Can only be used by the Ender Dragon.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {},
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.drink_milk": {
+                            "description": "Allows the mob to drink milk based on specified environment conditions.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "cooldown_seconds": {
+                                    "description": "Time (in seconds) that the goal is on cooldown before it can be used again.",
+                                    "type": "number",
+                                    "default": 5.00
+                                },
+                                "filters": {
+                                    "description": "Conditions that need to be met for the behavior to start.",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.eat_block": {
+                            "description": "Allows the entity to consume a block, replace the eaten block with another block, and trigger an event as a result.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "eat_and_replace_block_pairs": {
+                                    "description": "A collection of pairs of blocks; the first (\"eat_block\")is the block the entity should eat, the second (\"replace_block\") is the block that should replace the eaten block.",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "on_eat": {
+                                    "description": "The event to trigger when the block eating animation has completed.",
+                                    "type": "string"
+                                },
+                                "success_chance": {
+                                    "description": "A molang expression defining the success chance the entity has to consume a block.",
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                },
+                                "time_until_eat": {
+                                    "description": "The amount of time (in seconds) it takes for the block to be eaten upon a successful eat attempt.",
+                                    "type": "number",
+                                    "default": 1.8
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.eat_mob": {
+                            "description": "Allows the entity to eat a specified Mob.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "eat_animation_time": {
+                                    "description": "Sets the time in seconds the eat animation should play for.",
+                                    "type": "number",
+                                    "default": 1.000000
+                                },
+                                "eat_mob_sound": {
+                                    "description": "Sets the sound that should play when eating a mob.",
+                                    "type": "string"
+                                },
+                                "loot_table": {
+                                    "description": "The loot table for loot to be dropped when eating a mob.",
+                                    "type": "string"
+                                },
+                                "pull_in_force": {
+                                    "description": "Sets the force which the mob-to-be-eaten is pulled towards the eating mob.",
+                                    "type": "number",
+                                    "default": 1.000000
+                                },
+                                "reach_mob_distance": {
+                                    "description": "Sets the desired distance to be reached before eating the mob.",
+                                    "type": "number",
+                                    "default": 1.000000
+                                },
+                                "run_speed": {
+                                    "description": "Sets the entity's speed when running toward the target.",
+                                    "type": "number",
+                                    "default": 1.000000
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.emerge": {
+                            "description": "Allows this entity to emerge from the ground",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "cooldown_time": {
+                                    "description": "Time in seconds the mob has to wait before using the goal again",
+                                    "type": "integer",
+                                    "default": 0.50
+                                },
+                                "duration": {
+                                    "description": "Goal duration in seconds",
+                                    "type": "number",
+                                    "default": 5.00
+                                },
+                                "on_done": {
+                                    "description": "Trigger to be executed when the goal execution is about to end",
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:behavior.equip_item": {
+                            "description": "The entity puts on the desired equipment.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {}
+                        },
+                        "minecraft:behavior.fertilize_farm_block": {
+                            "description": "Allows the mob to search within an area for a growable crop block. If found, the mob will use any available fertilizer in their inventory on the crop. This goal will not execute if the mob does not have a fertilizer item in its inventory.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "goal_radius": {
+                                    "description": "Distance in blocks within the mob considers it has reached it's target position.",
+                                    "type": "number",
+                                    "default": 1.50
+                                },
+                                "max_fertilizer_usage": {
+                                    "description": "The maximum number of times the mob will use fertilzer on the target block.",
+                                    "type": "integer",
+                                    "default": 1
+                                },
+                                "search_cooldown_max_seconds": {
+                                    "description": "The maximum number of times the mob will use fertilzer on the target block.",
+                                    "type": "number",
+                                    "default": 8.0
+                                },
+                                "search_count": {
+                                    "description": "The number of randomly selected blocks each tick that the mob will check within its search range and height for a valid block to move to. A value of 0 will have the mob check every block within range in one tick.",
+                                    "type": "integer",
+                                    "default": 9
+                                },
+                                "search_height": {
+                                    "description": "The Height in blocks the mob will search within to find a valid target position.",
+                                    "type": "integer",
+                                    "default": 1
+                                },
+                                "search_range": {
+                                    "description": "The distance in blocks the mob will search within to find a valid target position.",
+                                    "type": "integer",
+                                    "default": 1
+                                },
+                                "speed_multiplier": {
+                                    "description": "Movement speed multiplier of the mob when using this Goal.",
+                                    "type": "number",
+                                    "default": 0.50
+                                }
+                            },
+                            "additionalProperties": false
+                        },
                         "minecraft:health": {
                             "description": "The health of the entity.",
                             "type": "object",
@@ -8152,30 +8960,31 @@
                             "properties": {}
                         },
                         "minecraft:behavior.move_towards_dwelling_restriction": {
-                            "description":"undocumented",
-                            "type":"object",
+                            "description": "undocumented",
+                            "type": "object",
                             "default": {},
-                            "properties":{}
+                            "properties": {}
                         },
                         "minecraft:behavior.drop_item_for": {
-                            "description":"undocumented",
-                            "type":"object",
+                            "description": "undocumented",
+                            "type": "object",
                             "default": {},
-                            "properties":{}
+                            "properties": {}
                         },
                         "minecraft:dweller": {
-                            "description":"undocumented",
-                            "type":"object",
+                            "description": "undocumented",
+                            "type": "object",
                             "default": {},
-                            "properties":{}
+                            "properties": {}
                         },
                         "minecraft:behavior.ocelotattack": {
-                            "description":"undocumented",
-                            "type":"object",
+                            "description": "undocumented",
+                            "type": "object",
                             "default": {},
-                            "properties":{}
+                            "properties": {}
                         }
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 "component_groups": {
                     "description": "Compoennts",
@@ -8183,7 +8992,101 @@
                         "$ref": "#/properties/minecraft:entity/properties/components"
                     }
                 },
-                "events": {}
+                "events": {
+                    "description": "A mapping to all events used by this entity.",
+                    "additionalProperties": {
+                        "properties": {
+                            "add": {
+                                "description": "Adds component groups to the current entity. These groups must be defined in the 'component_groups' section of the file. As entities can only have one component of each type active, any components in a group that is being added will replace previously added components. Additionally, adding a component group that is already active will cause those components to be re-initialized. For some types of components like minecraft:is_baby, re-initializing an already active component has no effect, but for other component types the associated logic will start over. For example, an already-added minecraft:timer that is added again will start its timing logic over.",
+                                "type": "object",
+                                "default": {},
+                                "properties": {
+                                    "component_groups": {
+                                        "description": "List of component_groups to enable.",
+                                        "type": "array",
+                                        "default": [],
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "remove": {
+                                "description": "Removes component groups from the current entity. This can be any group you have defined in the 'component_groups' section of the file.",
+                                "type": "object",
+                                "default": {},
+                                "properties": {
+                                    "component_groups": {
+                                        "description": "List of component_groups to disable.",
+                                        "type": "array",
+                                        "default": [],
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            },
+                            "trigger": {
+                                "description": "Triggers additional entity events when hit. For example, you could use a randomize node in minecraft:entity_spawned to choose either an adult or baby event for adding component groups.",
+                                "type": "string"
+                            },
+                            "randomize": {
+                                "description": "The 'randomize' node is an array node that will pick one entry to execute, based on a weight. If no weight is specified, a node will have a weight of 1.0. If you add a weight of 4.0 in one node, and 8.0 in another, then those nodes will have a 33.33% (4 / (4 + 8)) and 66.66% (8 / (4 + 8)) chance of executing, respectively.",
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "object",
+                                    "default": {},
+                                    "properties": {
+                                        "filters": {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters"
+                                        },
+                                        "weight": {
+                                            "type": "number",
+                                            "minimum": 0.0,
+                                            "maximum": 1.0
+                                        },
+                                        "add": {
+                                            "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/add"
+                                        },
+                                        "remove": {
+                                            "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/remove"
+                                        },
+                                        "trigger": {
+                                            "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/trigger"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            },
+                            "sequence": {
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "object",
+                                    "default": {},
+                                    "properties": {
+                                        "filters": {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters"
+                                        },
+                                        "add": {
+                                            "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/add"
+                                        },
+                                        "remove": {
+                                            "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/remove"
+                                        },
+                                        "trigger": {
+                                            "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/trigger"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
