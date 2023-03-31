@@ -279,7 +279,7 @@
                     },
                     "enchantment": {
                         "description": "Enchantment ID used for level calculation.",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/enchantments.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/enchantment.json"
                     },
                     "formula": {
                         "description": "Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count * (max(0; random(0..Level + 2) - 1)+1)).",
