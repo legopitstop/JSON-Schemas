@@ -3088,7 +3088,7 @@
                                     },
                                     "properties": {
                                         "filters": {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters"
                                         }
                                     },
                                     "additionalProperties": false
