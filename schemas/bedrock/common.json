@@ -983,7 +983,10 @@
         },
         "_filter": {
             "description": "Use 'Filters' instead",
-            "type": ["object", "array"],
+            "type": [
+                "object",
+                "array"
+            ],
             "default": {},
             "required": [
                 "test"
@@ -1777,7 +1780,11 @@
                     ]
                 },
                 "value": {
-                    "type": ["string", "boolean", "number"]
+                    "type": [
+                        "string",
+                        "boolean",
+                        "number"
+                    ]
                 }
             },
             "additionalProperties": false
@@ -1793,20 +1800,27 @@
             "items": {
                 "$ref": "#/definitions/_filter"
             },
-            "properties": {
-                "all_of": {
-                    "description": "All tests must pass in order for the group to pass.",
-                    "$ref": "#/definitions/_filter"
+            "anyOf": [
+                {
+                    "properties": {
+                        "all_of": {
+                            "description": "All tests must pass in order for the group to pass.",
+                            "$ref": "#/definitions/_filter"
+                        },
+                        "any_of": {
+                            "description": "One or more tests must pass in order for the group to pass.",
+                            "$ref": "#/definitions/_filter"
+                        },
+                        "none_of": {
+                            "description": "All tests must fail in order for the group to pass.",
+                            "$ref": "#/definitions/_filter"
+                        }
+                    }
                 },
-                "any_of": {
-                    "description": "One or more tests must pass in order for the group to pass.",
-                    "$ref": "#/definitions/_filter"
-                },
-                "none_of": {
-                    "description": "All tests must fail in order for the group to pass.",
-                    "$ref": "#/definitions/_filter"
+                {
+                    "$ref": "#/definitions/_filter/properties"
                 }
-            },
+            ],
             "additionalProperties": false
         }
     }
