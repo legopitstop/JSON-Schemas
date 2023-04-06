@@ -768,9 +768,6 @@
             ]
         }
     },
-    "required": [
-        "namespace"
-    ],
     "properties": {
         "namespace": {
             "description": "Namespaces are identifiers for the UI files. They are used to access elements in some files across all other files. When adding a new namespace, it must have a unique name.",
@@ -779,9 +776,6 @@
     },
     "additionalProperties": {
         "description": "When referencing elements from different namespaces, it must have the following format: [element_name]@[namespace_reference].[element_name_reference]",
-        "required": [
-            "type"
-        ],
         "properties": {
             "type": {
                 "description": "`label` - for creating text objects\n`image` - for rendering images from a filepath provided\n`button` - for creating interactive and clickable elements\n`panel` - an empty container where you can store all other elements that may overlap to each other\n`stack_panel` - an empty container where you can store all other elements in a stack that doesn't overlap to each other\n`grid` - uses another element as a template, and then renders it repeatedly in multiple rows and columns\n`factory` - renders an element based off of another element, is capable of calling hardcoded values and variables\n`custom` - is paired with another property renderer which renders hardcoded JSON UI elements\n`screen` - elements that are called by the game directly, usually root panel elements",

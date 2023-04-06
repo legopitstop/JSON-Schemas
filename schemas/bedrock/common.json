@@ -986,47 +986,559 @@
             "description": "Use 'Filters' instead",
             "type": "object",
             "default": {},
-            "required": ["test"],
+            "required": [
+                "test"
+            ],
             "anyOf": [
-                {"if": {"properties": {"test": {"const": "actor_health"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "bool_property"}}},"then": {"required": ["domain"]}},
-                {"if": {"properties": {"test": {"const": "clock_time"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "distance_to_nearest_player"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "enum_property"}}},"then": {"required": ["domain","value"]}},
-                {"if": {"properties": {"test": {"const": "float_property"}}},"then": {"required": ["domain","value"]}},
-                {"if": {"properties": {"test": {"const": "has_ability"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "has_biome_tag"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "has_component"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "has_damage"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "has_equipment"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "has_property"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "has_ranged_weapon"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "hourly_clock_time"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "inactivity_timer"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "int_property"}}},"then": {"required": ["domain","value"]}},
-                {"if": {"properties": {"test": {"const": "is_altitude"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_biome"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_block"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_brightness"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_color"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_difficulty"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_family"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_game_rule"}}},"then": {"required": ["domain"]}},
-                {"if": {"properties": {"test": {"const": "is_mark_variant"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_skin_id"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_temperature_type"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_temperature_value"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_variant"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_waterlogged"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "is_weather"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "light_level"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "moon_intensity"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "moon_phase"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "random_chance"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "rider_count"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "target_distance"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "weather"}}},"then": {"required": ["value"]}},
-                {"if": {"properties": {"test": {"const": "weather_at_position"}}},"then": {"required": ["value"]}}
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "actor_health"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "bool_property"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "domain"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "clock_time"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "distance_to_nearest_player"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "enum_property"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "domain",
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "float_property"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "domain",
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_ability"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_biome_tag"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_component"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_damage"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_equipment"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_property"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "has_ranged_weapon"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "hourly_clock_time"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "inactivity_timer"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "int_property"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "domain",
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_altitude"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_biome"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_block"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_brightness"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_color"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_difficulty"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_family"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_game_rule"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "domain"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_mark_variant"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_skin_id"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_temperature_type"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_temperature_value"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_variant"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_waterlogged"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "is_weather"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "light_level"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "moon_intensity"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "moon_phase"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "random_chance"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "rider_count"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "target_distance"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "weather"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "test": {
+                                "const": "weather_at_position"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "value"
+                        ]
+                    }
+                }
             ],
             "properties": {
                 "test": {
@@ -1271,27 +1783,29 @@
         "Filters": {
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters",
             "description": "Filters allow data objects to specify test criteria which allows their use.",
-            "type": "array",
-            "default": [],
+            "type": [
+                "array",
+                "object"
+            ],
+            "default": {},
             "items": {
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "all_of": {
-                        "description": "All tests must pass in order for the group to pass.",
-                        "$ref": "#/definitions/_filter"
-                    },
-                    "any_of": {
-                        "description": "One or more tests must pass in order for the group to pass.",
-                        "$ref": "#/definitions/_filter"
-                    },
-                    "none_of": {
-                        "description": "All tests must fail in order for the group to pass.",
-                        "$ref": "#/definitions/_filter"
-                    }
+                "$ref": "#/definitions/_filter"
+            },
+            "properties": {
+                "all_of": {
+                    "description": "All tests must pass in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
                 },
-                "additionalProperties": false
-            }
+                "any_of": {
+                    "description": "One or more tests must pass in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                },
+                "none_of": {
+                    "description": "All tests must fail in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                }
+            },
+            "additionalProperties": false
         }
     }
 }
