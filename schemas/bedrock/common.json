@@ -982,9 +982,8 @@
             }
         },
         "_filter": {
-            "title": "!!!DO NOT USE!!!",
             "description": "Use 'Filters' instead",
-            "type": "object",
+            "type": ["object", "array"],
             "default": {},
             "required": [
                 "test"
@@ -1540,6 +1539,9 @@
                     }
                 }
             ],
+            "items": {
+                "$ref": "#/definitions/_filter/properties"
+            },
             "properties": {
                 "test": {
                     "enumDescriptions": [
@@ -1775,7 +1777,7 @@
                     ]
                 },
                 "value": {
-                    "type": "string"
+                    "type": ["string", "boolean", "number"]
                 }
             },
             "additionalProperties": false
