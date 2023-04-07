@@ -1,0 +1,12 @@
+{
+    "json.schemas": [
+        {
+            "name": "Bedrock Edition Schema",
+            "description": "Schema for Bedrock Edition behavior, and resourcepacks.",
+            "fileMatch": [
+                "tests/**/*.json"
+            ],
+            "url": "/schemas/bedrock/schema.json"
+        }
+    ]
+}
