@@ -982,7 +982,7 @@
             }
         },
         "_filter": {
-            "description": "Use 'Filters' instead",
+            "description": "Filter",
             "type": [
                 "object",
                 "array"
@@ -1785,6 +1785,9 @@
                         "boolean",
                         "number"
                     ]
+                },
+                "other_with_families": {
+                    "type": "string"
                 }
             },
             "additionalProperties": false
@@ -1800,27 +1803,41 @@
             "items": {
                 "$ref": "#/definitions/_filter"
             },
-            "anyOf": [
-                {
-                    "properties": {
-                        "all_of": {
-                            "description": "All tests must pass in order for the group to pass.",
-                            "$ref": "#/definitions/_filter"
-                        },
-                        "any_of": {
-                            "description": "One or more tests must pass in order for the group to pass.",
-                            "$ref": "#/definitions/_filter"
-                        },
-                        "none_of": {
-                            "description": "All tests must fail in order for the group to pass.",
-                            "$ref": "#/definitions/_filter"
-                        }
-                    }
+            "properties": {
+                "all_of": {
+                    "description": "All tests must pass in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
                 },
-                {
-                    "$ref": "#/definitions/_filter/properties"
+                "any_of": {
+                    "description": "One or more tests must pass in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                },
+                "none_of": {
+                    "description": "All tests must fail in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                },
+                "test": {
+                    "$ref": "#/definitions/_filter/properties/test"
+                },
+                "other_with_families": {
+                    "$ref": "#/definitions/_filter/properties/other_with_families"
+                },
+                "name": {
+                    "$ref": "#/definitions/_filter/properties/name"
+                },
+                "domain": {
+                    "$ref": "#/definitions/_filter/properties/domain"
+                },
+                "operator": {
+                    "$ref": "#/definitions/_filter/properties/operator"
+                },
+                "subject": {
+                    "$ref": "#/definitions/_filter/properties/subject"
+                },
+                "value": {
+                    "$ref": "#/definitions/_filter/properties/value"
                 }
-            ],
+            },
             "additionalProperties": false
         }
     }
