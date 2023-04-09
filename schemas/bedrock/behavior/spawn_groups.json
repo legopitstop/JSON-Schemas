@@ -12,7 +12,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -48,11 +48,11 @@
                                 "type": "object",
                                 "properties": {
                                     "min": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/difficulty",
+                                        "$ref": "../common.json#/definitions/difficulty",
                                         "description": "This is the minimum difficulty level that a mob spawns"
                                     },
                                     "max": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/difficulty",
+                                        "$ref": "../common.json#/definitions/difficulty",
                                         "description": "This is the maximum difficulty level that a mob spawns"
                                     }
                                 }

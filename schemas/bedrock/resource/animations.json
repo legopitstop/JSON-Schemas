@@ -1,0 +1,239 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Anim": {
+            "type": [
+                "array",
+                "object",
+                "number",
+                "string"
+            ],
+            "default": [
+                0,
+                0,
+                0
+            ],
+            "items": {
+                "type": [
+                    "number",
+                    "string",
+                    "object"
+                ],
+                "properties": {
+                    "x": {
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "$ref": "../common.json#/definitions/MoLang"
+                    },
+                    "y": {
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "$ref": "../common.json#/definitions/MoLang"
+                    },
+                    "z": {
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "$ref": "../common.json#/definitions/MoLang"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "minItems": 3,
+            "maxItems": 3,
+            "patternProperties": {
+                "^(?:[0-9]+.)?[0-9]+$": {
+                    "description": "Keyframe",
+                    "type": [
+                        "object",
+                        "array"
+                    ],
+                    "default": {},
+                    "properties": {
+                        "post": {
+                            "type": [
+                                "array",
+                                "string"
+                            ],
+                            "default": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "items": {
+                                "type": [
+                                    "number",
+                                    "string"
+                                ],
+                                "$ref": "../common.json#/definitions/MoLang"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "pre": {
+                            "type": [
+                                "array",
+                                "string"
+                            ],
+                            "default": [
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            "items": {
+                                "type": [
+                                    "number",
+                                    "string"
+                                ],
+                                "$ref": "../common.json#/definitions/MoLang"
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "lerp_mode": {
+                            "enum": [
+                                "catmullrom"
+                            ]
+                        }
+                    },
+                    "additionalProperties": false,
+                    "items": {
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "$ref": "../common.json#/definitions/MoLang"
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "animations": {
+            "description": "Something",
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "loop": {
+                        "default": true,
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "enum": [
+                                    "hold_on_last_frame"
+                                ]
+                            }
+                        ]
+                    },
+                    "animation_length": {
+                        "type": "number",
+                        "default": 1.0
+                    },
+                    "override_previous_animation": {
+                        "type": "boolean",
+                        "default": true
+                    },
+                    "anim_time_update": {
+                        "$ref": "../common.json#/definitions/MoLang"
+                    },
+                    "start_delay": {
+                        "type": [
+                            "number",
+                            "string"
+                        ],
+                        "default": 1.0,
+                        "$ref": "../common.json#/definitions/MoLang"
+                    },
+                    "bones": {
+                        "type": "object",
+                        "default": {},
+                        "additionalProperties": {
+                            "description": "Bone name",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "rotation": {
+                                    "description": "Rotate the bone",
+                                    "$ref": "#/definitions/Anim"
+                                },
+                                "position": {
+                                    "description": "Translate the bone",
+                                    "$ref": "#/definitions/Anim"
+                                },
+                                "scale": {
+                                    "description": "Scale the bone",
+                                    "$ref": "#/definitions/Anim"
+                                },
+                                "relative_to": {
+                                    "type": "object",
+                                    "default": {},
+                                    "properties": {
+                                        "rotation": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "sound_effects": {
+                        "type": "object",
+                        "default": {},
+                        "patternProperties": {
+                            "^(?:[0-9]+.)?[0-9]+$": {
+                                "description": "Keyframe",
+                                "type": "object",
+                                "default": {},
+                                "properties": {
+                                    "effect": {
+                                        "type": "string"
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "particle_effects": {
+                        "type": "object",
+                        "default": {},
+                        "patternProperties": {
+                            "^(?:[0-9]+.)?[0-9]+$": {
+                                "description": "Keyframe",
+                                "type": "object",
+                                "default": {},
+                                "properties": {
+                                    "effect": {
+                                        "type": "string"
+                                    },
+                                    "pre_effect_script": {
+                                        "$ref": "../common.json#/definitions/MoLang"
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

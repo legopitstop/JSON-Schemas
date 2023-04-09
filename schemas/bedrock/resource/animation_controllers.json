@@ -1,0 +1,77 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "animation_controllers": {
+            "description": "Somethjing",
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "initial_state": {
+                        "type": "string"
+                    },
+                    "states": {
+                        "additionalProperties": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "animations": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": ["string", "object"],
+                                        "additionalProperties": {
+                                            "$ref": "../common.json#/definitions/MoLang"
+                                        }
+                                    }
+                                },
+                                "blend_via_shortest_path": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "transitions": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "additionalProperties": {
+                                            "$ref": "../common.json#/definitions/MoLang"
+                                        }
+                                    }
+                                },
+                                "blend_transition": {
+                                    "type": "number",
+                                    "default": 1.0
+                                },
+                                "particle_effects": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "effect": {
+                                                "type": "string"
+                                            },
+                                            "locator": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

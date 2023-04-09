@@ -798,7 +798,6 @@
                     "custom"
                 ]
             },
-            // Control
             "visable": {
                 "title": "CONTROL",
                 "description": "If the UI element should be visible",
@@ -945,7 +944,6 @@
                 "description": "Index that the control takes in the collection",
                 "type": "integer"
             },
-            // Layout
             "size": {
                 "title": "LAYOUT",
                 "description": "Size of the UI element.\nPossible values:\n\"default\" (Default value which is \"100%\")\n0 (Number of pixels)\n\"0px\" (Number of pixels. It's the same as 0 but it's put inside a string with px at the end. It's used when you want to sum or subtract a percentage based value with a specific number of pixels. (e.g. \"75% + 12px\"))\n\"0%\" (Percentage of relative to the parent element)\n\"0%c\" (Percentage of the total width/height of the element children)\n\"0%cm\" (Percentage of the width/height of the biggest visible child of that element)\n\"0%sm\" (Percentage of the width/height of the sibling element)\n\"0%y\" (Percentage of the element height)\n\"0%x\" (Percentage of the element width)\n\"fill\" (Expands to the remaining width/height of the parent element)",
@@ -1065,7 +1063,6 @@
                 "type": "boolean",
                 "default": false
             },
-            // Data Binding
             "bindings": {
                 "title": "DATA BINDING",
                 "description": "",
@@ -1133,7 +1130,6 @@
                     }
                 }
             },
-            // Stack Panel
             "orientation": {
                 "title": "STACK PANEL",
                 "description": "Direction the elements stack inside stack_panel.",
@@ -1143,7 +1139,6 @@
                 ],
                 "default": "vertical"
             },
-            // Grid
             "grid_dimensions": {
                 "title": "GRID",
                 "description": "Number of columns and rows the grid has",
@@ -1188,7 +1183,6 @@
                 "title": "GRID",
                 "type": "integer"
             },
-            // Text
             "text": {
                 "title": "TEXT",
                 "description": "Text content",
@@ -1335,7 +1329,6 @@
                     "bottom_right"
                 ]
             },
-            // Sprite
             "texture": {
                 "title": "SPRITE",
                 "description": "Image path starting from pack root. (e.g. \"textures/ui/White\")",
@@ -1475,7 +1468,6 @@
                 "maxItems": 2,
                 "items": {}
             },
-            // Input
             "button_mappings": {
                 "title": "INPUT",
                 "type": "array",
@@ -1577,7 +1569,6 @@
                 "title": "INPUT",
                 "type": "string"
             },
-            // Focus
             "default_focus_precedence": {
                 "title": "FOCUS",
                 "type": "integer"
@@ -1750,7 +1741,6 @@
                     }
                 }
             },
-            // Button & Slider Box
             "default_control": {
                 "title": "BUTTON, SLIDER BOX",
                 "description": "Name of the child control that will be displayed only in the default state",
@@ -1771,7 +1761,6 @@
                 "description": "Name of the child control that will be displayed only in the locked state",
                 "type": "string"
             },
-            // Toggle
             "radio_toggle_group": {
                 "title": "TOGGLE",
                 "type": "boolean"
@@ -1860,7 +1849,6 @@
                 "description": "Name of the child control that will be displayed only in the checked locked hover state",
                 "type": "string"
             },
-            // Dropdown
             "dropdown_name": {
                 "title": "DROPDOWN",
                 "description": "Identifier for the dropdown",
@@ -1876,7 +1864,6 @@
                 "description": "Name of the child control that will behave as the inside content",
                 "type": "string"
             },
-            // Sound
             "sound_name": {
                 "title": "SOUND",
                 "description": "Name of the sound defined in the RP/sounds/sound_definitions.json file that plays when the pressed event is fired",
@@ -1935,13 +1922,11 @@
                     }
                 }
             },
-            // Collection
             "collection_name": {
                 "title": "COLLECTION",
                 "description": "Name of the collection to be used",
                 "type": "string"
             },
-            // Text Edit
             "text_box_name": {
                 "title": "TEXT EDIT",
                 "description": "Identifier for text box",
@@ -1997,7 +1982,6 @@
                 "title": "TEXT EDIT",
                 "type": "string"
             },
-            // Slider
             "slider_track_button": {
                 "title": "SLIDER",
                 "description": "ID of the action for the slider track",
@@ -2080,7 +2064,6 @@
                 "description": "Name of the child control that will behave as the slider background overlay for the slider progress on hover",
                 "type": "string"
             },
-            // Scroll View
             "scrollbar_track_button": {
                 "title": "SCROLL VIEW",
                 "description": "ID of the action for the track button",
@@ -2138,7 +2121,6 @@
                 "description": "Jump to the bottom when the scrolling panel has an update. For example, adds more children to it.",
                 "type": "boolean"
             },
-            // Custom Render
             "renderer": {
                 "title": "CUSTOM RENDERER",
                 "enum": [
@@ -2182,7 +2164,6 @@
                     "bohr_model_renderer"
                 ]
             },
-            // Specific Properties
             "gradient_direction": {
                 "title": "RENDERER: gradient_renderer",
                 "enum": [
@@ -2298,9 +2279,6 @@
                 "title": "RENDERER: credits_renderer",
                 "type":"string"
             },
-            // Screen https://wiki.bedrock.dev/json-ui/json-ui-documentation.html#screen
-            // HERE
-            // end
             "tts_toggle_on": {
                 "description": "type=toggle",
                 "type": "string"

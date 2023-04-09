@@ -12,7 +12,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -20,7 +20,7 @@
                     "type": "array",
                     "description": "Item used as input for the furnace recipe.",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
+                        "$ref": "../common.json#/definitions/recipeTags"
                     }
                 },
                 "priority": {
@@ -28,11 +28,11 @@
                     "description": "Item used as output for the furnace recipe."
                 },
                 "input": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
+                    "$ref": "../common.json#/definitions/itemDataCount",
                     "description": "Items used as input for the furnace recipe."
                 },
                 "output": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
+                    "$ref": "../common.json#/definitions/itemDataCount",
                     "description": "Items used as output for the furnace recipe."
                 }
             }

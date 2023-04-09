@@ -11,7 +11,7 @@
                 "default": {},
                 "properties": {
                     "geometry": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                        "$ref": "../common.json#/definitions/MoLang"
                     },
                     "materials": {
                         "type": "array",
@@ -20,7 +20,7 @@
                             "type": "object",
                             "default": {},
                             "additionalProperties": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                "$ref": "../common.json#/definitions/MoLang"
                             }
                         }
                     },
@@ -28,7 +28,7 @@
                         "type": "array",
                         "default": [],
                         "items": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                            "$ref": "../common.json#/definitions/MoLang"
                         }
                     },
                     "arrays": {
@@ -41,7 +41,7 @@
                             "type": "object",
                             "default": {},
                             "additionalProperties": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                "$ref": "../common.json#/definitions/MoLang"
                             }
                         }
                     },
@@ -95,7 +95,7 @@
                                 "type":"array",
                                 "default":[],
                                 "items":{
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                    "$ref": "../common.json#/definitions/MoLang"
                                 },
                                 "minItems": 2,
                                 "maxItems": 2

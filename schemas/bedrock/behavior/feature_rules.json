@@ -10,10 +10,10 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         },
                         "places_feature": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -44,10 +44,10 @@
                                 "type": "object",
                                 "properties": {
                                     "test": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/biomeFiltertest"
+                                        "$ref": "../common.json#/definitions/biomeFiltertest"
                                     },
                                     "operator": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/operator"
+                                        "$ref": "../common.json#/definitions/operator"
                                     },
                                     "value": {
                                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/biome_tag.json",
@@ -59,10 +59,10 @@
                                             "type": "object",
                                             "properties": {
                                                 "test": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/biomeFiltertest"
+                                                    "$ref": "../common.json#/definitions/biomeFiltertest"
                                                 },
                                                 "operator": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/operator"
+                                                    "$ref": "../common.json#/definitions/operator"
                                                 },
                                                 "value": {
                                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/biome_tag.json",

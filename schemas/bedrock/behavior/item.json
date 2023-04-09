@@ -118,8 +118,7 @@
                 "description": {
                     "type": "object",
                     "required": [
-                        "identifier",
-                        "category"
+                        "identifier"
                     ],
                     "properties": {
                         "identifier": {
@@ -128,7 +127,7 @@
                         "category": {
                             "default": "item",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemTab"
+                            "$ref": "../common.json#/definitions/itemTab"
                         },
                         "is_experimental": {
                             "type": "boolean",
@@ -209,7 +208,7 @@
                                 },
                                 "on_complete": {
                                     "description": "Event trigger for when the item has completed its use duration.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 }
                             },
                             "additionalProperties": false
@@ -262,7 +261,7 @@
                                                 "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
                                                 "properties": {
                                                     "tags": {
-                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                                        "$ref": "../common.json#/definitions/MoLang"
                                                     }
                                                 },
                                                 "additionalProperties": false
@@ -273,7 +272,7 @@
                                             },
                                             "on_dig": {
                                                 "description": "Trigger for when you dig up this block",
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                                "$ref": "../common.json#/definitions/EventTrigger"
                                             }
                                         },
                                         "additionalProperties": false
@@ -281,7 +280,7 @@
                                 },
                                 "on_dig": {
                                     "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 },
                                 "use_efficiency": {
                                     "description": "Use efficiency enchantment? Default is set to false.",
@@ -427,9 +426,22 @@
                                 },
                                 "saturation_modifier": {
                                     "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
-                                    "type": "number",
-                                    "minimum": 0.00,
-                                    "default": 0.6
+                                    "anyOf": [
+                                        {
+                                            "type": "number",
+                                            "minimum": 0.00,
+                                            "default": 0.6
+                                        },
+                                        {
+                                            "enum": [
+                                                "low",
+                                                "supernatural",
+                                                "normal",
+                                                "poor",
+                                                "good"
+                                            ]
+                                        }
+                                    ]
                                 },
                                 "using_converts_to": {
                                     "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
@@ -447,6 +459,72 @@
                                             }
                                         }
                                     ]
+                                },
+                                "on_use_action": {
+                                    "type": "string",
+                                    "examples": [
+                                        "chorus_teleport"
+                                    ]
+                                },
+                                "on_use_range": {
+                                    "type": "array",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 3,
+                                    "maxItems": 3
+                                },
+                                "cooldown_type": {
+                                    "type": "string",
+                                    "examples": [
+                                        "chorusfruit"
+                                    ]
+                                },
+                                "cooldown_time": {
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "remove_effects": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "effects": {
+                                    "title": "OUTDATED",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "required": [
+                                            "name"
+                                        ],
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "chance": {
+                                                "type": "number",
+                                                "default": 1.0
+                                            },
+                                            "duration": {
+                                                "type": "integer",
+                                                "default": 0
+                                            },
+                                            "amplifier": {
+                                                "type": "integer",
+                                                "default": 0
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
                                 }
                             },
                             "additionalProperties": false
@@ -531,7 +609,7 @@
                             "properties": {
                                 "on_use": {
                                     "description": "Triggers when the item is used.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 }
                             },
                             "additionalProperties": false
@@ -546,8 +624,7 @@
                             "properties": {
                                 "on_use_on": {
                                     "description": "Triggered when the item is used on a block",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
-                                    
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 }
                             },
                             "additionalProperties": false
@@ -1033,7 +1110,7 @@
                             "properties": {
                                 "on_repaired": {
                                     "description": "Event that is called when this item has been repaired.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 },
                                 "repair_items": {
                                     "type": "array",
@@ -1053,7 +1130,7 @@
                                                 }
                                             },
                                             "repair_amount": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                                "$ref": "../common.json#/definitions/floatMolang"
                                             },
                                             "on_repaired": {
                                                 "$ref": "#/properties/minecraft:item/properties/components/properties/minecraft:repairable/properties/on_repaired"
@@ -1188,15 +1265,15 @@
                             "properties": {
                                 "on_hit_block": {
                                     "description": "Trigger for letting you know when this item is used to hit a block",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 },
                                 "on_hurt_entity": {
                                     "description": "Trigger for letting you know when this item is used to hurt another mob",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 },
                                 "on_not_hurt_entity": {
                                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger"
+                                    "$ref": "../common.json#/definitions/EventTrigger"
                                 }
                             },
                             "additionalProperties": false
@@ -1236,7 +1313,6 @@
                             },
                             "additionalProperties": false
                         },
-                        
                         "minecraft:fertilizer": {
                             "title": "STABLE",
                             "description": "fertilizer item.",
@@ -1447,6 +1523,16 @@
                                     "description": "The name of the crop block to place.",
                                     "uniqueItems": true,
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                },
+                                
+                                "plant_at_any_solid_surface": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "plant_at_face":  {
+                                    "enum": [
+                                        "DOWN"
+                                    ]
                                 }
                             },
                             "additionalProperties": false
@@ -1510,7 +1596,7 @@
                         "minecraft:use_animation": {
                             "title": "STABLE",
                             "description": "What it will look like while your using the item.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/useAnimation"
+                            "$ref": "../common.json#/definitions/useAnimation"
                         },
                         "minecraft:use_duration": {
                             "title": "STABLE",
@@ -1528,7 +1614,7 @@
                                 "parent": {
                                     "default": "itemGroup.search",
                                     "description": "Premade itemGroups.",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemGroup"
+                                    "$ref": "../common.json#/definitions/itemGroup"
                                 }
                             },
                             "additionalProperties": false
@@ -1556,7 +1642,7 @@
                     "description": "A mapping to all events used by this block.",
                     "type": "object",
                     "additionalProperties": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Events"
+                        "$ref": "../common.json#/definitions/Events"
                     },
                     "default": {}
                 }

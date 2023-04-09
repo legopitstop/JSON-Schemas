@@ -12,7 +12,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -20,7 +20,7 @@
                     "type": "array",
                     "description": "Item used as input for the furnace recipe.",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags"
+                        "$ref": "../common.json#/definitions/recipeTags"
                     }
                 },
                 "priority": {
@@ -37,9 +37,12 @@
                 "key": {
                     "type": "object",
                     "description": "patten key character mapped to item names.",
-                    "additionalProperties": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemData"
-                    }
+                    "patternProperties": {
+                        "^[#0-9a-zA-Z-\\_/|~.]$": {
+                            "$ref": "../common.json#/definitions/itemData"
+                        }
+                    },
+                    "additionalProperties": false
                 },
                 "result": {
                     "description": "when input items match the pattern then this item(s) are the result.",
@@ -49,12 +52,12 @@
                                 "string",
                                 "object"
                             ],
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                            "$ref": "../common.json#/definitions/itemDataCount"
                         },
                         {
                             "type": "array",
                             "items": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount"
+                                "$ref": "../common.json#/definitions/itemDataCount"
                             }
                         }
                     ]

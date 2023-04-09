@@ -3553,7 +3553,10 @@
                                 },
                                 "mingle_partner_type": {
                                     "description": "The entity type that this entity is allowed to mingle with",
-                                    "type": ["array", "string"]
+                                    "type": [
+                                        "array",
+                                        "string"
+                                    ]
                                 },
                                 "speed_multiplier": {
                                     "description": "Movement speed multiplier of the mob when using this AI Goal",
@@ -7783,7 +7786,10 @@
                                 },
                                 "name_actions": {
                                     "description": "Describes the special names for this entity and the events to call when the entity acquires those names",
-                                    "type": ["object", "array"],
+                                    "type": [
+                                        "object",
+                                        "array"
+                                    ],
                                     "default": {},
                                     "properties": {
                                         "name_filter": {
@@ -9261,12 +9267,20 @@
                                 },
                                 "tame_items": {
                                     "description": "The list of items that can be used to tame this entity",
-                                    "type": ["array", "string"],
                                     "default": [],
-                                    "items": {
-                                        "type": "string"
-                                    },
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                    "anyOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                            }
+                                        },
+                                        {
+                                            "type": "string",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -10357,7 +10371,10 @@
                         },
                         "minecraft:follow_range": {
                             "description": "undocumented",
-                            "type": ["object", "number"],
+                            "type": [
+                                "object",
+                                "number"
+                            ],
                             "default": {},
                             "properties": {}
                         },

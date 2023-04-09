@@ -28,6 +28,12 @@
         },
         {
             "$ref": "./render_controllers.json"
+        },
+        {
+            "$ref": "./animation_controllers.json"
+        },
+        {
+            "$ref": "./animations.json"
         }
     ]
 }

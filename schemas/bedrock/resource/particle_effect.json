@@ -10,7 +10,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         },
                         "basic_render_parameters": {
                             "type": "object",
@@ -72,7 +72,7 @@
                                 "num_particles": {
                                     "default": 10,
                                     "description": "this many particles are emitted at once. evaluated once per particle emitter loop",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    "$ref": "../common.json#/definitions/floatMolang"
                                 }
                             }
                         },
@@ -81,12 +81,12 @@
                             "properties": {
                                 "spawn_rate": {
                                     "description": "how often a particle is emitted, in particles/sec. evaluated once per particle emitted",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 1
                                 },
                                 "max_particles": {
                                     "description": "maximum number of particles that can be active at once for this emitter. evaluated once per particle emitter loop",
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 50
                                 }
                             }
@@ -95,7 +95,7 @@
                             "type": "object",
                             "properties": {
                                 "max_particles": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "description": "evaluated once per particle emitted"
                                 }
                             }
@@ -104,12 +104,12 @@
                             "type": "object",
                             "properties": {
                                 "active_time": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 10,
                                     "description": "emitter will emit particles for this time per loop. evaluated once per particle emitter loop."
                                 },
                                 "sleep_time": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "emitter will pause emitting particles for this time per loop. evaluated once per particle emitter loop."
                                 }
@@ -119,7 +119,7 @@
                             "type": "object",
                             "properties": {
                                 "active_time": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 10,
                                     "description": "how long the particles emit for. evaluated once"
                                 }
@@ -129,12 +129,12 @@
                             "type": "object",
                             "properties": {
                                 "activation_expression": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 1,
                                     "description": "When the expression is non-zero, the emitter will emit particles. Evaluated every frame"
                                 },
                                 "expiration_expression": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "Emitter will expire if the expression is non-zero. Evaluated every frame"
                                 }
@@ -241,14 +241,14 @@
                                         0
                                     ],
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "direction": {
                                     "type": "array",
                                     "description": "specifies the direciton of particles. evaluated once per particle emitted.",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 }
                             }
@@ -265,11 +265,11 @@
                                         0
                                     ],
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "radius": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 1,
                                     "description": "sphere radius. evaluated once per particle emitted."
                                 },
@@ -278,7 +278,7 @@
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                                "$ref": "../common.json#/definitions/floatMolang"
                                             }
                                         },
                                         {
@@ -305,13 +305,13 @@
                                         0
                                     ],
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "half_dimensions": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     },
                                     "default": 1,
                                     "description": "box dimensions. these are the half dimensions, the box is formed centered on the emitter. with the box extending in the 3 principal x/y/z axes by these values"
@@ -326,7 +326,7 @@
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                                "$ref": "../common.json#/definitions/floatMolang"
                                             }
                                         },
                                         {
@@ -353,13 +353,13 @@
                                         0
                                     ],
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "direction": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     },
                                     "default": [
                                         0,
@@ -383,7 +383,7 @@
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                                "$ref": "../common.json#/definitions/floatMolang"
                                             }
                                         },
                                         {
@@ -410,7 +410,7 @@
                                         0
                                     ],
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "surface_only": {
@@ -419,7 +419,7 @@
                                     "description": "emit only from the surface of the sphere"
                                 },
                                 "radius": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 1,
                                     "description": "sphere radius. evaluated once per particle emitted."
                                 },
@@ -435,7 +435,7 @@
                                             "description": "custom direction for the normal",
                                             "type": "array",
                                             "items": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                                "$ref": "../common.json#/definitions/floatMolang"
                                             }
                                         },
                                         {
@@ -448,7 +448,7 @@
                                         {
                                             "type": "array",
                                             "items": {
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                                "$ref": "../common.json#/definitions/floatMolang"
                                             }
                                         },
                                         {
@@ -467,12 +467,12 @@
                             "type": "object",
                             "properties": {
                                 "rotation": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "specifies the initial rotation in degrees. evaluated once."
                                 },
                                 "rotation_rate": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "specifies the spin rate in degrees/second. evaluated once."
                                 }
@@ -484,13 +484,13 @@
                                 {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 {
                                     "type": "string",
                                     "default": 0,
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                    "$ref": "../common.json#/definitions/floatMolang"
                                 }
                             ]
                         },
@@ -506,21 +506,21 @@
                                     ],
                                     "description": "the linear acceleration applied to the particle. Units are blocks/sec/sec. An example would be gravity which is [0, -9.8, 0]. evaluated every frame.",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "linear_drag_coefficient": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "using the equation: 'acceleration = -linear_drag_coefficient*velocity'. where velocity is the current direction times speed. Think of this as air-drag.  The higher the value, the more drag. evaluated every frame."
                                 },
                                 "rotation_acceleration": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "acceleration applies to the rotation speed of the particle. think of a disc spinning up or a smoke puff that starts rotating. but slows down over time. evaluated every frame. acceleration is in degrees/sec/sec."
                                 },
                                 "rotation_drag_coefficient": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "default": 0,
                                     "description": "drag applied to retard rotation. equation is 'rotation_acceleration += -rotation_rate*rotation_drag_coefficient'. useful to slow a rotation, or to limit the rotation acceleration. Think of a disc that speeds up (acceleration). but reaches a terminal speed (drag). Another use is if you have a particle growing in size, having. the rotation slow down due to drag can add \"weight\" to the particle's. motion"
                                 }
@@ -538,19 +538,19 @@
                                     ],
                                     "description": "directly set the position relative to the emitter. E.g. a spiral might be: '\"relative_position\": [\"Math.cos(Params.LifeTime)\", 1.0,\"Math.sin(Params.Lifetime)\"]' evaluated every frame.",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "direction": {
                                     "type": "array",
                                     "description": "directly set the 3d direction of the particle. doesn't affect direction if not specified. evaluated every frame",
                                     "items": {
-                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang"
+                                        "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "rotation": {
                                     "default": 0,
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+                                    "$ref": "../common.json#/definitions/floatMolang",
                                     "description": "directly set the rotation of the particle. evaluated every frame."
                                 }
                             }

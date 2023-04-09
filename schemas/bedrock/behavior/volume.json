@@ -15,7 +15,7 @@
                 "properties": {
                     "condition": {
                         "description": "Molang expression to test against the actor. The given event will be triggered if the expression evaluates to true.",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                        "$ref": "../common.json#/definitions/MoLang"
                     },
                     "event": {
                         "description": "Name of the event to run.",
@@ -106,7 +106,7 @@
                     "type": "object",
                     "default": {},
                     "additionalProperties": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Events"
+                        "$ref": "../common.json#/definitions/Events"
                     }
                 }
             }

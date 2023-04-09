@@ -12,7 +12,7 @@
                     "type": "object",
                     "properties": {
                         "identifier": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID"
+                            "$ref": "../common.json#/definitions/nameSpaceID"
                         }
                     }
                 },
@@ -29,7 +29,7 @@
                             },
                             "condition": {
                                 "description": "Condition for placing associated Feature",
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang"
+                                "$ref": "../common.json#/definitions/MoLang"
                             }
                         }
                     }
