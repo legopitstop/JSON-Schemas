@@ -2,7 +2,7 @@
     "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "description": "Definitions for all Vanilla Minecraft items",
-    "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*$",
+    "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*(?::[0-9]{1,})?$",
     "type":"string",
     "examples": [
         "minecraft:tadpole_bucket",
