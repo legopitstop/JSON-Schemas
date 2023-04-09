@@ -1,9 +1,9 @@
 {
-    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json",
+    "$id": "../common.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
         "supportedVersions": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/supportedVersions",
+            "$id": "../common.json#/definitions/supportedVersions",
             "type": [
                 "string",
                 "number"
@@ -29,7 +29,7 @@
             ]
         },
         "blockshape": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/blockshape",
+            "$id": "../common.json#/definitions/blockshape",
             "type": "string",
             "examples": [
                 "invisible",
@@ -122,7 +122,7 @@
             ]
         },
         "sounds": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/sounds",
+            "$id": "../common.json#/definitions/sounds",
             "type": "string",
             "examples": [
                 "amethyst_block",
@@ -203,7 +203,7 @@
             ]
         },
         "itemGroup": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemGroup",
+            "$id": "../common.json#/definitions/itemGroup",
             "enum": [
                 "itemGroup.search",
                 "itemGroup.name.planks",
@@ -281,7 +281,7 @@
             ]
         },
         "itemTab": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemTab",
+            "$id": "../common.json#/definitions/itemTab",
             "enum": [
                 "commands",
                 "construction",
@@ -292,7 +292,7 @@
             ]
         },
         "eventTarget": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/eventTarget",
+            "$id": "../common.json#/definitions/eventTarget",
             "enum": [
                 "self",
                 "holder",
@@ -307,19 +307,19 @@
             ]
         },
         "Decimal": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Decimal",
+            "$id": "../common.json#/definitions/Decimal",
             "type": "number",
             "minimum": 0.0,
             "maximum": 1.0
         },
         "itemCount": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemCount",
+            "$id": "../common.json#/definitions/itemCount",
             "type": "number",
             "minimum": 0,
             "maximum": 64
         },
         "saturationModifier": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/saturationModifier",
+            "$id": "../common.json#/definitions/saturationModifier",
             "anyOf": [
                 {
                     "enum": [
@@ -339,7 +339,7 @@
             ]
         },
         "useAnimation": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/useAnimation",
+            "$id": "../common.json#/definitions/useAnimation",
             "enum": [
                 "eat",
                 "drink",
@@ -347,7 +347,7 @@
             ]
         },
         "recipeTags": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/recipeTags",
+            "$id": "../common.json#/definitions/recipeTags",
             "type": "string",
             "examples": [
                 "furnace",
@@ -362,7 +362,7 @@
             "maxLength": 64
         },
         "itemDataCount": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemDataCount",
+            "$id": "../common.json#/definitions/itemDataCount",
             "anyOf": [
                 {
                     "type": "string",
@@ -370,8 +370,9 @@
                 },
                 {
                     "type": "object",
-                    "required": [
-                        "item"
+                    "anyOf": [
+                        {"required": ["item"]},
+                        {"required": ["tag"]}
                     ],
                     "properties": {
                         "item": {
@@ -381,6 +382,10 @@
                         "data": {
                             "type": "number",
                             "description": "The items data. (if any)"
+                        },
+                        "tag": {
+                            "description": "The item tag to use",
+                            "type": "string"
                         },
                         "count": {
                             "type": "number",
@@ -394,7 +399,7 @@
             ]
         },
         "itemData": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/itemData",
+            "$id": "../common.json#/definitions/itemData",
             "anyOf": [
                 {
                     "type": "string",
@@ -402,13 +407,18 @@
                 },
                 {
                     "type": "object",
-                    "required": [
-                        "item"
+                    "anyOf": [
+                        {"required": ["item"]},
+                        {"required": ["tag"]}
                     ],
                     "properties": {
                         "item": {
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
                             "description": "The items id"
+                        },
+                        "tag": {
+                            "description": "The item tag to use",
+                            "type": "string"
                         },
                         "data": {
                             "type": "number",
@@ -419,13 +429,13 @@
             ]
         },
         "nameSpaceID": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/nameSpaceID",
+            "$id": "../common.json#/definitions/nameSpaceID",
             "type": "string",
-            "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+            "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*$",
             "description": "Namespace id. must not contain Minecraft namespace. example; custom:stone"
         },
         "difficulty": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/difficulty",
+            "$id": "../common.json#/definitions/difficulty",
             "type": "string",
             "enum": [
                 "easy",
@@ -435,13 +445,13 @@
             ]
         },
         "biomeFiltertest": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/biomeFiltertest",
+            "$id": "../common.json#/definitions/biomeFiltertest",
             "enum": [
                 "has_biome_tag"
             ]
         },
         "operator": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/operator",
+            "$id": "../common.json#/definitions/operator",
             "default": "equals",
             "enum": [
                 "!=",
@@ -457,7 +467,7 @@
             ]
         },
         "floatMolang": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/floatMolang",
+            "$id": "../common.json#/definitions/floatMolang",
             "anyOf": [
                 {
                     "type": "number"
@@ -469,7 +479,7 @@
             ]
         },
         "MoLang": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/MoLang",
+            "$id": "../common.json#/definitions/MoLang",
             "type": [
                 "string",
                 "number"
@@ -486,7 +496,7 @@
             ]
         },
         "EventTrigger": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/EventTrigger",
+            "$id": "../common.json#/definitions/EventTrigger",
             "type": "object",
             "default": {},
             "required": [
@@ -509,7 +519,7 @@
             }
         },
         "schemaArray": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/schemaArray",
+            "$id": "../common.json#/definitions/schemaArray",
             "type": "array",
             "minItems": 1,
             "items": {
@@ -518,7 +528,7 @@
         },
         "DamageSource": {
             "description": "Damage source 1.17",
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/DamageSource",
+            "$id": "../common.json#/definitions/DamageSource",
             "enum": [
                 "all",
                 "anvil",
@@ -556,7 +566,7 @@
             ]
         },
         "Events": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Events",
+            "$id": "../common.json#/definitions/Events",
             "type": "object",
             "description": "This is the name of the event.",
             "properties": {
@@ -988,564 +998,22 @@
                 "array"
             ],
             "default": {},
-            "required": [
-                "test"
-            ],
-            "anyOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "actor_health"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "bool_property"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "domain"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "clock_time"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "distance_to_nearest_player"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "enum_property"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "domain",
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "float_property"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "domain",
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_ability"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_biome_tag"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_component"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_damage"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_equipment"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_property"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "has_ranged_weapon"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "hourly_clock_time"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "inactivity_timer"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "int_property"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "domain",
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_altitude"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_biome"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_block"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_brightness"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_color"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_difficulty"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_family"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_game_rule"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "domain"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_mark_variant"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_skin_id"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_temperature_type"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_temperature_value"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_variant"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_waterlogged"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "is_weather"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "light_level"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "moon_intensity"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "moon_phase"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "random_chance"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "rider_count"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "target_distance"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "weather"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "test": {
-                                "const": "weather_at_position"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "value"
-                        ]
-                    }
-                }
-            ],
             "items": {
-                "$ref": "#/definitions/_filter/properties"
+                "$ref": "#/definitions/_filter"
             },
             "properties": {
+                "all_of": {
+                    "description": "All tests must pass in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                },
+                "any_of": {
+                    "description": "One or more tests must pass in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                },
+                "none_of": {
+                    "description": "All tests must fail in order for the group to pass.",
+                    "$ref": "#/definitions/_filter"
+                },
                 "test": {
                     "enumDescriptions": [
                         "Tests the health of an actor.",
@@ -1793,7 +1261,7 @@
             "additionalProperties": false
         },
         "Filters": {
-            "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/common.json#/definitions/Filters",
+            "$id": "../common.json#/definitions/Filters",
             "description": "Filters allow data objects to specify test criteria which allows their use.",
             "type": [
                 "array",
