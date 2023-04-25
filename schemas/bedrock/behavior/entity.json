@@ -6503,8 +6503,8 @@
                                     "properties": {
                                         "cause": {
                                             "description": "Type of damage that triggers the events.",
-                                            "type": "string",
-                                            "default": "none"
+                                            "default": "none",
+                                            "$ref": "../common.json#/definitions/DamageSource"
                                         },
                                         "damage_modifier": {
                                             "description": "A modifier that adds to/removes from the base damage from the damage cause. It does not reduce damage to less than 0.",

@@ -29,6 +29,11 @@
                     "type": "boolean",
                     "default": true
                 },
+                "editorExtension": {
+                    "description": "Indicates that this pack contains extensions for editing",
+                    "type": "boolean",
+                    "default": true
+                },
                 "experimental_custom_ui": {
                     "description": "Allows HTML files in the pack to be used for custom UI, and scripts in the pack to call and manipulate custom UI",
                     "type": "boolean",
@@ -123,6 +128,11 @@
                     "items": {
                         "type": "integer"
                     }
+                },
+                "allow_random_seed": {
+                    "description": "This option will generate a random seed every time a template is loaded and allow the player to change the seed before creating a new world.",
+                    "type": "boolean",
+                    "default": true
                 }
             }
         },

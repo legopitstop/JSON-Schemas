@@ -1108,10 +1108,6 @@
                                 "repair_items"
                             ],
                             "properties": {
-                                "on_repaired": {
-                                    "description": "Event that is called when this item has been repaired.",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                },
                                 "repair_items": {
                                     "type": "array",
                                     "description": "Repair item entries.",
