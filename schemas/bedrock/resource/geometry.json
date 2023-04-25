@@ -1,0 +1,328 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/geometry.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "UV": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "uv": {
+                    "type": "array",
+                    "default": [
+                        0.0,
+                        0.0
+                    ],
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                },
+                "uv_size": {
+                    "type": "array",
+                    "default": [
+                        0.0,
+                        0.0
+                    ],
+                    "items": {
+                        "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "minecraft:geometry": {
+            "description": "geometry\nSee https://bedrock.dev/docs/stable/Addons#Geometry",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "description": {
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "identifier": {
+                                "type": "string"
+                            },
+                            "texture_width": {
+                                "type": "number",
+                                "default": 1.0
+                            },
+                            "texture_height": {
+                                "type": "number",
+                                "default": 1.0
+                            },
+                            "visible_bounds_offset": {
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "number",
+                                    "default": 1.0
+                                },
+                                "minItems": 3,
+                                "maxItems": 3
+                            },
+                            "visible_bounds_width": {
+                                "type": "number",
+                                "default": 1.0
+                            },
+                            "visible_bounds_height": {
+                                "type": "number",
+                                "default": 1.0
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    "bones": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "object",
+                            "default": {},
+                            "required": [
+                                "name"
+                            ],
+                            "properties": {
+                                "binding": {
+                                    "$ref": "../common.json#/definitions/MoLang"
+                                },
+                                "locators": {
+                                    "type": "object",
+                                    "default": {},
+                                    "properties": {
+                                        "lead": {
+                                            "type": "array",
+                                            "default": [
+                                                0.0,
+                                                0.0,
+                                                0.0
+                                            ],
+                                            "items": {
+                                                "type": "number"
+                                            },
+                                            "minItems": 3,
+                                            "maxItems": 3
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "inflate": {
+                                    "type": "number",
+                                    "default": 1.0
+                                },
+                                "rotation": {
+                                    "type": "array",
+                                    "default": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 3,
+                                    "maxItems": 3
+                                },
+                                "reset": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "cubes": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "mirror": {
+                                                "type": "boolean",
+                                                "default": false
+                                            },
+                                            "inflate": {
+                                                "type": "number",
+                                                "default": 1.0
+                                            },
+                                            "origin": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "size": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "pivot": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "rotation": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "uv": {
+                                                "type": [
+                                                    "array",
+                                                    "object"
+                                                ],
+                                                "default": [
+                                                    0.0,
+                                                    0.20
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 2,
+                                                "maxItems": 2,
+                                                "properties": {
+                                                    "north": {
+                                                        "$ref": "#/definitions/UV"
+                                                    },
+                                                    "south": {
+                                                        "$ref": "#/definitions/UV"
+                                                    },
+                                                    "east": {
+                                                        "$ref": "#/definitions/UV"
+                                                    },
+                                                    "west": {
+                                                        "$ref": "#/definitions/UV"
+                                                    },
+                                                    "up": {
+                                                        "$ref": "#/definitions/UV"
+                                                    },
+                                                    "down": {
+                                                        "$ref": "#/definitions/UV"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "parent": {
+                                    "type": "string"
+                                },
+                                "pivot": {
+                                    "type": "array",
+                                    "default": [
+                                        0.0,
+                                        0.0,
+                                        0.0
+                                    ],
+                                    "items": {
+                                        "type": "number"
+                                    },
+                                    "minItems": 3,
+                                    "maxItems": 3
+                                },
+                                "mirror": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "texture_meshes": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "local_pivot": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "position": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "rotation": {
+                                                "type": "array",
+                                                "default": [
+                                                    0.0,
+                                                    0.0,
+                                                    0.0
+                                                ],
+                                                "items": {
+                                                    "type": "number"
+                                                },
+                                                "minItems": 3,
+                                                "maxItems": 3
+                                            },
+                                            "texture": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}
