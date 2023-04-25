@@ -12,18 +12,9 @@
                 "1.10",
                 "1.12",
                 "1.13",
-                "1.13.0",
-                "1.13.1",
-                "1.13.2",
                 "1.16",
-                "1.16.0",
-                "1.16.1",
-                "1.16.100",
-                "1.16.2",
-                "1.16.200",
-                "1.16.210.56",
-                "1.16.210.58",
                 "1.18",
+                "1.19.80",
                 1,
                 2
             ]
@@ -371,8 +362,16 @@
                 {
                     "type": "object",
                     "anyOf": [
-                        {"required": ["item"]},
-                        {"required": ["tag"]}
+                        {
+                            "required": [
+                                "item"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "tag"
+                            ]
+                        }
                     ],
                     "properties": {
                         "item": {
@@ -408,8 +407,16 @@
                 {
                     "type": "object",
                     "anyOf": [
-                        {"required": ["item"]},
-                        {"required": ["tag"]}
+                        {
+                            "required": [
+                                "item"
+                            ]
+                        },
+                        {
+                            "required": [
+                                "tag"
+                            ]
+                        }
                     ],
                     "properties": {
                         "item": {
@@ -561,8 +568,7 @@
                 "temperature",
                 "thorns",
                 "void",
-                "wither",
-                "durability"
+                "wither"
             ]
         },
         "Events": {
