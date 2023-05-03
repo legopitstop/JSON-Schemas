@@ -23,6 +23,7 @@
 	"ref:blockshape": {"scope": "json,jsonu","prefix": "ref:blockshape","body": "\"\\$ref\": \"../common.json#/definitions/blockshape\""},
 	"ref:supportedVersions": {"scope": "json,jsonu","prefix": "ref:supportedVersions","body": "\"\\$ref\": \"../common.json#/definitions/supportedVersions\""},
 	"ref:Filters": {"scope": "json,jsonu","prefix": "ref:Filters","body": "\"\\$ref\": \"../common.json#/definitions/Filters\""},
+	"ref:hex_color": {"scope": "json,jsonu","prefix": "ref:hex_color","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color\""},
 	"ref:bedrock_items": {"scope": "json,jsonu","prefix": "ref:bedrock_items","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json\""},
 	"ref:bedrock_blocks": {"scope": "json,jsonu","prefix": "ref:bedrock_blocks","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json\""},
 	"ref:bedrock_entity": {"scope": "json,jsonu","prefix": "ref:bedrock_entity","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json\""},
