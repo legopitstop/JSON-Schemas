@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/underwater_cave_carver_feature.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
     "properties": {
         "minecraft:underwater_cave_carver_feature": {
             "description": "'minecraft:underwater_cave_carver_feature' carves a cave through the world in the current chunk, and in every chunk around the current chunk in an 8 radial pattern.This feature will specifically target creating caves only below sea level.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aunderwater_cave_carver_feature",

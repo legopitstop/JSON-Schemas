@@ -1,8 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/spawn_groups.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type":"object",
-    "default": {},
     "properties": {
         "minecraft:spawn_groups": {
             "description": "spawn_groups",

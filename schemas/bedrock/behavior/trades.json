@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/trades.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "array",
     "items": {
         "description": "Trade tables represent the fundamental data behind trading item transactions for an entity. Trade tables are not standalone; they must be referenced from an entity component. Using the randomizing properties available to trade tables, trade offers, item counts, and cost calculations may vary across entity instances, even if all would point to the same trade table.\nSee https://wiki.bedrock.dev/loot/trade-tables.html",
         "type": "object",

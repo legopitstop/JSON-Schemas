@@ -1,8 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/sound_definitions.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "default": {},
     "description": "\nSee https://wiki.bedrock.dev/concepts/sounds.html#sound-definitions-json",
     "properties": {
         "sound_definitions": {
@@ -69,8 +67,14 @@
                         }
                     },
                     "__use_legacy_max_distance": {
-                        "type": "boolean",
-                        "description": "Use the built-in legacy max distance."
+                        "description": "Use the built-in legacy max distance.",
+                        "default": true,
+                        "enum": [
+                            "true",
+                            "false",
+                            true,
+                            false
+                        ]
                     },
                     "min_distance": {
                         "type": "number",

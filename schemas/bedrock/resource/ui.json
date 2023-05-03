@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/ui.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
     "description": "\nSee https://wiki.bedrock.dev/json-ui/json-ui-intro.html#top",
     "definitions": {
         "BindingPropertyNames": {
@@ -779,7 +778,40 @@
         "properties": {
             "type": {
                 "description": "`label` - for creating text objects\n`image` - for rendering images from a filepath provided\n`button` - for creating interactive and clickable elements\n`panel` - an empty container where you can store all other elements that may overlap to each other\n`stack_panel` - an empty container where you can store all other elements in a stack that doesn't overlap to each other\n`grid` - uses another element as a template, and then renders it repeatedly in multiple rows and columns\n`factory` - renders an element based off of another element, is capable of calling hardcoded values and variables\n`custom` - is paired with another property renderer which renders hardcoded JSON UI elements\n`screen` - elements that are called by the game directly, usually root panel elements",
+                "enumDescription": [
+                    "image_cycler",
+                    "label_cycler",
+                    "slider_box",
+                    "carousel_label",
+                    "selection_wheel",
+                    "collection_panel",
+                    "screen",
+                    "image",
+                    "panel",
+                    "stack_panel",
+                    "input_panel",
+                    "grid",
+                    "label",
+                    "button",
+                    "toggle",
+                    "slider",
+                    "edit_box",
+                    "scroll_view",
+                    "scroll_track",
+                    "scrollbar_box",
+                    "dropdown",
+                    "factory",
+                    "custom"
+
+                ],
                 "enum": [
+                    "image_cycler",
+                    "label_cycler",
+                    "slider_box",
+                    "carousel_label",
+                    "selection_wheel",
+                    "collection_panel",
+                    "screen",
                     "image",
                     "panel",
                     "stack_panel",
@@ -807,19 +839,19 @@
             "enabled": {
                 "title": "CONTROL",
                 "description": "If true and if the UI element or any of its children have the locked state then they will be in the locked",
-                "type": "boolean",
+                "type": ["boolean", "string"],
                 "default": true
             },
             "layer": {
                 "title": "CONTROL",
                 "description": "Z-Index/Layer (like zindex in CSS) relative to parent element. Higher layers will render above",
-                "type": "integer",
+                "type": ["integer", "string"],
                 "default": 0
             },
             "alpha": {
                 "title": "CONTROL",
                 "description": "Alpha/transparency of the element. It will only affect the UI element. Its children will be unaffected. If you want the alpha to apply for both the parent and children also use propagate_alpha",
-                "type": "number",
+                "type": ["number", "string"],
                 "minium": 0.0,
                 "maxium": 1.0,
                 "default": 0.0
@@ -869,7 +901,7 @@
             "property_bag": {
                 "title": "CONTROL",
                 "description": "Property bag contains properties/variables that are more related with the data than the actually structure and look of the UI element",
-                "type": "object",
+                "type": ["object", "string"],
                 "default": {},
                 "properties": {}
             },
@@ -887,14 +919,14 @@
             "controls": {
                 "title": "CONTROL",
                 "description": "For adding children to the element",
-                "type": "array",
+                "type": ["array", "string"],
                 "default": [],
                 "items": {}
             },
             "anims": {
                 "title": "CONTROL",
                 "description": "Array of the animation names",
-                "type": "array",
+                "type": ["array", "string"],
                 "default": [],
                 "items": {
                     "type": "string"
@@ -911,7 +943,7 @@
             "ignored": {
                 "title": "CONTROL",
                 "description": "If the UI element should be ignored",
-                "type": "boolean",
+                "type": ["boolean", "string"],
                 "default": false
             },
             "variables": {
@@ -919,7 +951,8 @@
                 "description": "A bunch of conditions that change the variables values",
                 "type": [
                     "array",
-                    "object"
+                    "object",
+                    "string"
                 ],
                 "default": [],
                 "items": {}
@@ -947,11 +980,17 @@
             "size": {
                 "title": "LAYOUT",
                 "description": "Size of the UI element.\nPossible values:\n\"default\" (Default value which is \"100%\")\n0 (Number of pixels)\n\"0px\" (Number of pixels. It's the same as 0 but it's put inside a string with px at the end. It's used when you want to sum or subtract a percentage based value with a specific number of pixels. (e.g. \"75% + 12px\"))\n\"0%\" (Percentage of relative to the parent element)\n\"0%c\" (Percentage of the total width/height of the element children)\n\"0%cm\" (Percentage of the width/height of the biggest visible child of that element)\n\"0%sm\" (Percentage of the width/height of the sibling element)\n\"0%y\" (Percentage of the element height)\n\"0%x\" (Percentage of the element width)\n\"fill\" (Expands to the remaining width/height of the parent element)",
-                "type": "array",
-                "minItems": 3,
+                "type": [
+                    "array",
+                    "string"
+                ],
+                "minItems": 2,
                 "maxItems": 3,
                 "items": {
-                    "type": "integer"
+                    "type": [
+                        "number",
+                        "string"
+                    ]
                 },
                 "default": [
                     "default",
@@ -961,11 +1000,11 @@
             "max_size": {
                 "title": "LAYOUT",
                 "description": "Maximum size of the UI element can have",
-                "type": "array",
-                "minItems": 3,
+                "type": ["array", "string"],
+                "minItems": 2,
                 "maxItems": 3,
                 "items": {
-                    "type": "integer"
+                    "type": ["number", "string"]
                 },
                 "default": [
                     "default",
@@ -975,11 +1014,11 @@
             "min_size": {
                 "title": "LAYOUT",
                 "description": "Minimum size of the UI element can have",
-                "type": "array",
-                "minItems": 3,
+                "type": ["array", "string"],
+                "minItems": 2,
                 "maxItems": 3,
                 "items": {
-                    "type": "integer"
+                    "type": ["integer", "string"]
                 },
                 "default": [
                     "default",
@@ -989,11 +1028,14 @@
             "offset": {
                 "title": "LAYOUT",
                 "description": "Position of the UI element relative to the parent UI element. It's TopLeft based meaning the coordinates [0, 0] start at the top left of the screen.\n10- pixels\n\"10px\" - pixels\n\"50%\" - Width/height of the parent element\n\"50%x\" - Width of the element\n\"50%y\" - Height of the element",
-                "type": "array",
-                "minItems": 3,
+                "type": ["array", "string"],
+                "minItems": 2,
                 "maxItems": 3,
                 "items": {
-                    "type": "integer"
+                    "type": [
+                        "number",
+                        "string"
+                    ]
                 },
                 "default": [
                     0,
@@ -1003,7 +1045,8 @@
             "anchor_from": {
                 "title": "LAYOUT",
                 "description": "Anchor point in the parent element.",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "center",
                     "top_left",
                     "top_middle",
@@ -1019,7 +1062,8 @@
             "anchor_to": {
                 "title": "LAYOUT",
                 "description": "Anchor point in the element.",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "center",
                     "top_left",
                     "top_middle",
@@ -1066,7 +1110,7 @@
             "bindings": {
                 "title": "DATA BINDING",
                 "description": "",
-                "type": "array",
+                "type": ["array", "string"],
                 "default": [],
                 "items": {
                     "type": "object",
@@ -1074,11 +1118,12 @@
                     "properties": {
                         "ignored": {
                             "description": "If binding should be ignored",
-                            "type": "boolean",
+                            "type": ["boolean", "string"],
                             "default": false
                         },
                         "binding_type": {
-                            "enum": [
+                            "type": "string",
+                            "examples": [
                                 "global",
                                 "view",
                                 "collection",
@@ -1092,7 +1137,7 @@
                         },
                         "binding_name_override": {
                             "description": "Name of the UI element property that will apply the stored value in binding_name",
-                            "type": "string"
+                            "type": ["boolean","string"]
                         },
                         "binding_collection_name": {
                             "description": "Name of the collection of items to be used",
@@ -1103,7 +1148,8 @@
                         },
                         "binding_condition": {
                             "description": "Condition for the data binding to happen.",
-                            "enum": [
+                            "type": "string",
+                            "examples": [
                                 "always",
                                 "always_when_visible",
                                 "visible",
@@ -1125,7 +1171,7 @@
                             "type": "string"
                         },
                         "resolve_sibling_scope": {
-                            "type": "boolean"
+                            "type": ["boolean", "string"]
                         }
                     }
                 }
@@ -1142,7 +1188,7 @@
             "grid_dimensions": {
                 "title": "GRID",
                 "description": "Number of columns and rows the grid has",
-                "type": "array",
+                "type": ["array", "string"],
                 "minItems": 2,
                 "maxItems": 2,
                 "items": {}
@@ -1150,7 +1196,7 @@
             "maximum_grid_items": {
                 "title": "GRID",
                 "description": "Maximum number of items the grid will generate",
-                "type": "integer"
+                "type": ["integer", "string"]
             },
             "grid_dimension_binding": {
                 "title": "GRID",
@@ -1191,9 +1237,8 @@
             "color": {
                 "title": "TEXT",
                 "description": "Text color. RGB value from 0.0 to 1.0",
-                "type": "array",
                 "minItems": 3,
-                "maxItems": 3,
+                "maxItems": 4,
                 "items": {
                     "type": "number",
                     "minium": 0.0,
@@ -1209,7 +1254,7 @@
             "locked_color": {
                 "title": "TEXT",
                 "description": "Text color when a parent has enabled: false",
-                "type": "array",
+                "type": ["array", "string"],
                 "minItems": 3,
                 "maxItems": 3,
                 "items": {
@@ -1227,7 +1272,7 @@
             "shadow": {
                 "title": "TEXT",
                 "description": "Text shadow",
-                "type": "boolean",
+                "type": ["boolean", "string"],
                 "default": false
             },
             "hide_hyphen": {
@@ -1248,13 +1293,13 @@
             "enable_profanity_filter": {
                 "title": "TEXT",
                 "description": "If \"bad\" words should be censored",
-                "type": "boolean",
+                "type": ["boolean", "string"],
                 "default": false
             },
             "locked_alpha": {
                 "title": "TEXT",
                 "description": "Alpha/transparency of label when a parent has enabled: false",
-                "type": "number",
+                "type": ["number", "string"],
                 "minium": 0.0,
                 "maxium": 1.0,
                 "default": 0.0
@@ -1262,7 +1307,8 @@
             "font_size": {
                 "title": "TEXT",
                 "description": "Size of the text.",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "small",
                     "normal",
                     "large",
@@ -1272,7 +1318,7 @@
             "font_scale_factor": {
                 "title": "TEXT",
                 "description": "Scale of the text",
-                "type": "number",
+                "type": ["number", "string"],
                 "minium": 0.0,
                 "maxium": 1.0,
                 "default": 1.0
@@ -1286,7 +1332,7 @@
             "line_padding": {
                 "title": "TEXT",
                 "description": "Space between lines",
-                "type": "number"
+                "type": ["number", "string"]
             },
             "font_type": {
                 "title": "TEXT",
@@ -1317,7 +1363,8 @@
             "text_alignment": {
                 "title": "TEXT",
                 "description": "Text alignment direction. If it's not defined it will adjust automatically based on anchor_from and anchor_to",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "center",
                     "top_left",
                     "top_middle",
@@ -1326,7 +1373,11 @@
                     "right_middle",
                     "bottom_left",
                     "bottom_middle",
-                    "bottom_right"
+                    "bottom_right",
+                    "left",
+                    "right",
+                    "top",
+                    "bottom"
                 ]
             },
             "texture": {
@@ -1343,7 +1394,7 @@
             "uv": {
                 "title": "SPRITE",
                 "description": "Start position of the texture mapping",
-                "type": "array",
+                "type": ["array", "string"],
                 "minItems": 2,
                 "maxItems": 2,
                 "items": {
@@ -1377,10 +1428,11 @@
             "tiled": {
                 "title": "SPRITE",
                 "description": "If the texture will tile when the size of the UI element is bigger than the texture size.",
-                "type": "boolean",
                 "enum": [
                     "x",
-                    "y"
+                    "y",
+                    true,
+                    false
                 ]
             },
             "tiled_scale": {
@@ -1453,7 +1505,7 @@
             "grayscale": {
                 "title": "SPRITE",
                 "description": "Render image in black and white",
-                "type": "boolean",
+                "type": ["boolean", "string"],
                 "default": false
             },
             "force_texture_reload": {
@@ -1470,16 +1522,14 @@
             },
             "button_mappings": {
                 "title": "INPUT",
-                "type": "array",
-                "minItems": 2,
-                "maxItems": 2,
+                "type": ["array", "string"],
                 "items": {
                     "type": "object",
                     "default": {},
                     "properties": {
                         "ignored": {
                             "description": "If mapping should be ignored",
-                            "type": "boolean",
+                            "type": ["boolean", "string"],
                             "default": false
                         },
                         "from_button_id": {
@@ -1499,7 +1549,8 @@
                             ]
                         },
                         "scope": {
-                            "enum": [
+                            "type": "string",
+                            "examples": [
                                 "view",
                                 "controller"
                             ]
@@ -1524,7 +1575,7 @@
                             "type": "boolean"
                         },
                         "button_up_right_of_first_refusal": {
-                            "type": "boolean"
+                            "type": ["boolean", "string"]
                         }
                     }
                 }
@@ -1563,7 +1614,7 @@
             },
             "consume_hover_events": {
                 "title": "INPUT",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "gesture_tracking_button": {
                 "title": "INPUT",
@@ -1571,20 +1622,20 @@
             },
             "default_focus_precedence": {
                 "title": "FOCUS",
-                "type": "integer"
+                "type": ["integer", "string"]
             },
             "focus_enabled": {
                 "title": "FOCUS",
                 "description": "If the arrow keys or controller can focus the element",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "focus_wrap_enabled": {
                 "title": "FOCUS",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "focus_magnet_enabled": {
                 "title": "FOCUS",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "focus_identifier": {
                 "title": "FOCUS",
@@ -1627,7 +1678,8 @@
             },
             "focus_navigation_mode_left": {
                 "title": "FOCUS",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "none",
                     "stop",
                     "custom",
@@ -1636,7 +1688,8 @@
             },
             "focus_navigation_mode_right": {
                 "title": "FOCUS",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "none",
                     "stop",
                     "custom",
@@ -1645,7 +1698,8 @@
             },
             "focus_navigation_mode_down": {
                 "title": "FOCUS",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "none",
                     "stop",
                     "custom",
@@ -1654,7 +1708,8 @@
             },
             "focus_navigation_mode_up": {
                 "title": "FOCUS",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "none",
                     "stop",
                     "custom",
@@ -1663,8 +1718,8 @@
             },
             "focus_container_custom_left": {
                 "title": "FOCUS",
-                "type": "array",
-                "minItems": 2,
+                "type": ["array", "string"],
+                "minItems": 1,
                 "maxItems": 2,
                 "items": {
                     "type": "object",
@@ -1683,8 +1738,8 @@
             },
             "focus_container_custom_right": {
                 "title": "FOCUS",
-                "type": "array",
-                "minItems": 2,
+                "type": ["array", "string"],
+                "minItems": 1,
                 "maxItems": 2,
                 "items": {
                     "type": "object",
@@ -1703,8 +1758,8 @@
             },
             "focus_container_custom_down": {
                 "title": "FOCUS",
-                "type": "array",
-                "minItems": 2,
+                "type": ["array", "string"],
+                "minItems": 1,
                 "maxItems": 2,
                 "items": {
                     "type": "object",
@@ -1723,8 +1778,8 @@
             },
             "focus_container_custom_up": {
                 "title": "FOCUS",
-                "type": "array",
-                "minItems": 2,
+                "type": ["array", "string"],
+                "minItems": 1,
                 "maxItems": 2,
                 "items": {
                     "type": "object",
@@ -1763,7 +1818,7 @@
             },
             "radio_toggle_group": {
                 "title": "TOGGLE",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "toggle_name": {
                 "title": "TOGGLE",
@@ -1772,17 +1827,17 @@
             },
             "toggle_default_state": {
                 "title": "TOGGLE",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "toggle_group_forced_index": {
                 "title": "TOGGLE",
                 "description": "Index of the toggle in its group",
-                "type": "integer"
+                "type": ["integer", "string"]
             },
             "toggle_group_default_selected": {
                 "title": "TOGGLE",
                 "description": "Index of the default toggle of the its group",
-                "type": "integer"
+                "type": ["integer", "string"]
             },
             "reset_on_focus_lost": {
                 "title": "TOGGLE",
@@ -1802,7 +1857,7 @@
             },
             "enable_directional_toggling": {
                 "title": "TOGGLE",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "toggle_grid_collection_name": {
                 "title": "TOGGLE",
@@ -1949,7 +2004,8 @@
             "text_type": {
                 "title": "TEXT EDIT",
                 "description": "Type of characters that the user is allowed to type in th text field.",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "ExtendedASCII",
                     "IdentifierChars",
                     "NumberChars"
@@ -1958,7 +2014,7 @@
             "max_length": {
                 "title": "TEXT EDIT",
                 "description": "Maximum number of characters allow in the text field",
-                "type": "integer"
+                "type": ["integer", "string"]
             },
             "text_control": {
                 "title": "TEXT EDIT",
@@ -2000,12 +2056,13 @@
             "slider_steps": {
                 "title": "SLIDER",
                 "description": "How many steps (or values) does the slider have",
-                "type": "integer"
+                "type": ["integer", "string"]
             },
             "slider_direction": {
                 "title": "SLIDER",
                 "description": "Orientation of the slider movement.",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "vertical",
                     "horizontal"
                 ]
@@ -2027,7 +2084,7 @@
             "slider_select_on_hover": {
                 "title": "SLIDER",
                 "description": "Focus slider when it's hovered",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "slider_selected_button": {
                 "title": "SLIDER",
@@ -2077,19 +2134,19 @@
             "scroll_speed": {
                 "title": "SCROLL VIEW",
                 "description": "Scrolling speed",
-                "type": "number"
+                "type": ["number", "string"]
             },
             "gesture_control_enabled": {
                 "title": "SCROLL VIEW",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "always_handle_scrolling": {
                 "title": "SCROLL VIEW",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "touch_mode": {
                 "title": "SCROLL VIEW",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "scrollbar_box": {
                 "title": "SCROLL VIEW",
@@ -2119,11 +2176,14 @@
             "jump_to_bottom_on_update": {
                 "title": "SCROLL VIEW",
                 "description": "Jump to the bottom when the scrolling panel has an update. For example, adds more children to it.",
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "renderer": {
                 "title": "CUSTOM RENDERER",
                 "enum": [
+                    "bundle_renderer",
+                    "dash_renderer",
+                    "editor_gizmo_renderer",
                     "hover_text_renderer",
                     "3d_structure_renderer",
                     "splash_text_renderer",
@@ -2173,7 +2233,7 @@
             },
             "color1": {
                 "title": "RENDERER: gradient_renderer",
-                "type": "array",
+                "type": ["array", "string"],
                 "minItems": 3,
                 "maxItems": 4,
                 "items": {
@@ -2185,7 +2245,7 @@
             },
             "color2": {
                 "title": "RENDERER: gradient_renderer",
-                "type": "array",
+                "type": ["array", "string"],
                 "minItems": 3,
                 "maxItems": 4,
                 "items": {
@@ -2269,7 +2329,8 @@
             },
             "rotation": {
                 "title": "RENDERER: paper_doll_renderer and panorama_renderer",
-                "enum": [
+                "type": "string",
+                "examples": [
                     "auto",
                     "gesture_x",
                     "custom_y"
@@ -2277,7 +2338,7 @@
             },
             "end_event": {
                 "title": "RENDERER: credits_renderer",
-                "type":"string"
+                "type": "string"
             },
             "tts_toggle_on": {
                 "description": "type=toggle",
@@ -2345,10 +2406,10 @@
                 "type": "string"
             },
             "tts_control_type_order_priority": {
-                "type": "number"
+                "type": ["number", "string"]
             },
             "tts_index_priority": {
-                "type": "number"
+                "type": ["number", "string"]
             },
             "tts_override_control_value": {
                 "type": "string"
@@ -2357,7 +2418,7 @@
                 "type": "boolean"
             },
             "tts_inherit_siblings": {
-                "type": "boolean"
+                "type": ["boolean", "string"]
             },
             "binding_type": {
                 "enum": [
@@ -2393,7 +2454,8 @@
                 "type": "string"
             },
             "binding_condition": {
-                "enum": [
+                "type": "string",
+                "examples": [
                     "always",
                     "always_when_visable",
                     "once",
@@ -2468,7 +2530,7 @@
                 }
             },
             "frame_count": {
-                "type": "number"
+                "type": ["number", "string"]
             },
             "frame_steps": {
                 "type": "number"
@@ -2493,25 +2555,33 @@
                     "in_expo",
                     "out_expo",
                     "out_cubic",
-                    "out_back"
+                    "out_back",
+                    "in_out_back",
+                    "in_out_expo",
+                    "out_bounce",
+                    "in_bounce",
+                    "in_out_circ",
+                    "out_sine"
                 ]
             },
             "duration": {
                 "description": "Number. Duration of the animation in seconds",
-                "type": "number"
+                "type": ["number", "string"]
             },
             "from": {
                 "description": "Number (`anim_type` alpha) or a size/offset array (`anim_type` size/offset)",
                 "type": [
                     "array",
-                    "number"
+                    "number",
+                    "string"
                 ]
             },
             "to": {
                 "description": "(`anim_type` alpha) or a size/offset array (`anim_type` size/offset)",
                 "type": [
                     "array",
-                    "number"
+                    "number",
+                    "string"
                 ]
             },
             "destroy_at_end": {

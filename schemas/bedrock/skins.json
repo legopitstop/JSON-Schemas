@@ -1,8 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "description": "A skins.json schema\nSee https://wiki.bedrock.dev/visuals/custom-skin-packs.html#skins-json",
-    "type": "object",
-    "default": {},
     "properties": {
         "geometry": {
             "description": "Must be the same as on the example code in every object. Mojang removed the ability to add custom geometries via skin packs, because the feature was abused.",

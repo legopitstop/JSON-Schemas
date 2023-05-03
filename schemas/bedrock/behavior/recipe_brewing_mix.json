@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_brewing_mix.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
     "properties": {
         "minecraft:recipe_brewing_mix": {
             "description": "Represents a Potion Brewing Mix.\nSee https://bedrock.dev/docs/stable/Recipes#Potion%20Brewing%20Mix",

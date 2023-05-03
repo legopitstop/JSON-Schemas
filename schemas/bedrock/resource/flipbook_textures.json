@@ -1,8 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/flipbook_textures.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type":"array",
-    "default":[],
     "items":{
         "type":"object",
         "default": {},
@@ -33,7 +31,7 @@
                 "type":"array",
                 "default":[],
                 "items":{
-                    "type":"string"
+                    "type":["string", "integer"]
                 }
             },
             "replicate": {

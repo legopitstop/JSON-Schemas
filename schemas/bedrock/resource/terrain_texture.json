@@ -1,44 +1,78 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/terrain_texture.json", 
-    "$schema": "http://json-schema.org/draft-07/schema#", 
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/terrain_texture.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
-        "num_mip_levels": {"type": "integer", "default": 0}, 
-        "padding": {"type": "integer", "default": 0}, 
-        "resource_pack_name": {"type": "string", "default": "vanilla"}, 
-        "texture_name": {"type": "string", "default": "atlas.terrain"}, 
+        "num_mip_levels": {
+            "type": "integer",
+            "default": 0
+        },
+        "padding": {
+            "default": 0
+        },
+        "resource_pack_name": {
+            "type": "string",
+            "default": "vanilla"
+        },
+        "texture_name": {
+            "type": "string",
+            "default": "atlas.terrain"
+        },
         "texture_data": {
-            "type": "object", 
-            "default": {}, 
+            "type": "object",
+            "default": {},
             "additionalProperties": {
-                "type": "object", 
-                "default": {}, 
+                "type": "object",
+                "default": {},
+                "required": [
+                    "textures"
+                ],
                 "properties": {
+                    "quad": {
+                        "type": "integer",
+                        "default": 0
+                    },
                     "textures": {
-                        "type": ["object", "string"], 
-                        "default": {}, 
+                        "type": [
+                            "object",
+                            "string",
+                            "array"
+                        ],
+                        "default": {},
                         "properties": {
                             "path": {
-                                "type":"string"
+                                "type": "string"
+                            },
+                            "tint_color": {
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+                            },
+                            "overlay_color": {
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
                             },
                             "variations": {
-                                "type":"array",
-                                "default":[],
-                                "items":{
-                                    "type":"object",
+                                "type": "array",
+                                "default": [],
+                                "items": {
+                                    "type": "object",
                                     "default": {},
-                                    "properties":{
+                                    "properties": {
                                         "path": {
-                                            "type":"string"
+                                            "type": "string"
                                         },
                                         "weight": {
-                                            "type":"integer"
+                                            "type": "integer"
                                         }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                 }
                             }
-                        }
+                        },
+                        "items": {
+                            "$ref": "#/properties/texture_data/additionalProperties/properties/textures"
+                        },
+                        "additionalProperties": false
                     }
-                }
+                },
+                "additionalProperties": false
             }
         }
     }

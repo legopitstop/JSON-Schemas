@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/rect_layout.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
     "properties": {
         "minecraft:rect_layout": {
             "description": "'minecraft:rect_layout' scans the surface of a Chunk, calling place() on the surface of each block column.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Arect_layout",

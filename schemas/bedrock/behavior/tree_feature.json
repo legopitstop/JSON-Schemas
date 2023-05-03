@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/tree_feature.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
     "properties": {
         "minecraft:tree_feature": {
             "description": "Feature type 'minecraft:tree_feature' has not yet been documented.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Atree_feature",

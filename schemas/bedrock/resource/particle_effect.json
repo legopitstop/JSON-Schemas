@@ -629,6 +629,9 @@
                     }
                 }
             }
+        },
+        "particle_effect": {
+            "$ref": "#/properties/minecraft:particle_effect"
         }
     }
 }

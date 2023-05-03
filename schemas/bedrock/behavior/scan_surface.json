@@ -1,7 +1,6 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/scan_surface.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
     "properties": {
         "minecraft:scan_surface": {
             "description": "scan_surface\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ascan_surface",

@@ -2,8 +2,6 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema",
     "description": "JSON schema for Minecraft Bedrock Edition.",
-    "type": "object",
-    "default": {},
     "allOf": [
         {
             "$ref": "./skins.json"

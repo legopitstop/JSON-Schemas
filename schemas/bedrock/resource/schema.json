@@ -2,33 +2,7 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
     "$schema": "http://json-schema.org/draft-07/schema",
     "description": "JSON schema for Minecraft Bedrock Edition.",
-    "type": "object",
-    "default": {},
     "allOf": [
-        {
-            "$ref": "./client_entity.json"
-        },
-        {
-            "$ref": "./sound_definitions.json"
-        },
-        {
-            "$ref": "./ui.json"
-        },
-        {
-            "$ref": "./texture_set.json"
-        },
-        {
-            "$ref": "./particle_effect.json"
-        },
-        {
-            "$ref": "./attachables.json"
-        },
-        {
-            "$ref": "./fog_settings.json"
-        },
-        {
-            "$ref": "./render_controllers.json"
-        },
         {
             "$ref": "./animation_controllers.json"
         },
@@ -36,10 +10,43 @@
             "$ref": "./animations.json"
         },
         {
-            "$ref": "./geometry.json"
+            "$ref": "./attachables.json"
         },
         {
             "$ref": "./block_geometry.json"
+        },
+        {
+            "$ref": "./blocks.json"
+        },
+        {
+            "$ref": "./client_entity.json"
+        },
+        {
+            "$ref": "./flipbook_textures.json"
+        },
+        {
+            "$ref": "./fog_settings.json"
+        },
+        {
+            "$ref": "./geometry.json"
+        },
+        {
+            "$ref": "./particle_effect.json"
+        },
+        {
+            "$ref": "./render_controllers.json"
+        },
+        {
+            "$ref": "./sound_definitions.json"
+        },
+        {
+            "$ref": "./terrain_texture.json"
+        },
+        {
+            "$ref": "./texture_set.json"
+        },
+        {
+            "$ref": "./ui.json"
         }
     ]
 }

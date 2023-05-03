@@ -1,6 +1,7 @@
 {
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/loot_table.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
+    "description": "Loot tables are used to select a set of items from a declared collection.\nSee https://wiki.bedrock.dev/loot/loot-tables.html",
     "definitions": {
         "LootTableNumberProvider": {
             "$id": "#/definitions/LootTableNumberProvider",
@@ -239,7 +240,6 @@
             }
         }
     },
-    "description": "Loot tables are used to select a set of items from a declared collection.\nSee https://wiki.bedrock.dev/loot/loot-tables.html",
     "properties": {
         "functions": {
             "title": "LOOT_TABLE",
@@ -1789,6 +1789,5 @@
                 "additionalProperties": false
             }
         }
-    },
-    "default": {}
+    }
 }
