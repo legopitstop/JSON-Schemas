@@ -139,7 +139,9 @@
                                     "description": "Adds the \"minecraft:cardinal_direction\" and/or \"minecraft:facing_direction\" states and setter function to the block. The values of these states are set when the block is placed.",
                                     "type": "object",
                                     "default": {},
-                                    "required": ["enabled_states"],
+                                    "required": [
+                                        "enabled_states"
+                                    ],
                                     "properties": {
                                         "enabled_states": {
                                             "description": "Which states to enable. Must specify at least one.",
@@ -170,6 +172,30 @@
                                         }
                                     },
                                     "additionalProperties": false
+                                },
+                                "minecraft:placement_position": {
+                                    "type": "object",
+                                    "default": {},
+                                    "properties": {
+                                        "enabled_states": {
+                                            "description": "Which states to enable. Must specify at least one.",
+                                            "type": "array",
+                                            "default": [],
+                                            "items": {
+                                                "enumDescriptions": [
+                                                    "is a six value string state (\"down\", \"up\", \"north\", \"south\", \"east\", \"west\") that contains info on which block face the player clicked on when the block was placed",
+                                                    "is a 2 value string state (\"bottom\", \"top\") with info on whether the block was placed in the lower or upper half of the block position"
+                                                ],
+                                                "enum": [
+                                                    "minecraft:block_face",
+                                                    "minecraft:vertical_half"
+                                                ]
+                                            },
+                                            "minItems": 1,
+                                            "uniqueItems": true
+                                        }
+                                    },
+                                    "additionalProperties": false
                                 }
                             },
                             "additionalProperties": false
@@ -181,6 +207,7 @@
                     "type": "object",
                     "properties": {
                         "minecraft:transformation": {
+                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
                             "description": "Added a new Transformation component for blocks to support rotation, scaling and translation.",
                             "properties": {
                                 "translation": {
@@ -218,6 +245,109 @@
                                 }
                             },
                             "additionalProperties": false
+                        },
+                        "minecraft:bone_visibility": {
+                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+                            "description": "Sets conditions for when the block's different parts are visible.",
+                            "type": "object",
+                            "properties": {
+                                "conditions": {
+                                    "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
+                                    "type": "object",
+                                    "default": {},
+                                    "maxProperties": 64,
+                                    "additionalProperties": {
+                                        "$ref": "../common.json#/definitions/MoLang",
+                                        "default": "true"
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:part_visibility": {
+                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+                            "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false.",
+                            "type": "object",
+                            "properties": {
+                                "conditions": {
+                                    "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
+                                    "type": "object",
+                                    "default": {},
+                                    "maxProperties": 64,
+                                    "additionalProperties": {
+                                        "$ref": "../common.json#/definitions/MoLang",
+                                        "default": "true"
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:queued_ticking": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Triggers the specified event, either once, or at a regular interval equal to a number of ticks randomly chosen from the interval_range provided.",
+                            "type": "object",
+                            "required": [
+                                "looping",
+                                "interval_range",
+                                "on_tick"
+                            ],
+                            "properties": {
+                                "interval_range": {
+                                    "description": "A range of values, specified in ticks, that will be used to decide the interval between times this event triggers. Each interval will be chosen randomly from the range, so the times between this event triggering will differ given an interval_range of two different values. If the values in the interval_range are the same, the event will always be triggered after that number of ticks.",
+                                    "type": "array",
+                                    "default": [
+                                        10,
+                                        10
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 2,
+                                    "maxItems": 2
+                                },
+                                "looping": {
+                                    "description": "Does the event loop? If false, the event will only be triggered once, after a delay equal to a number of ticks randomly chosen from the interval_range. If true, the event will loop, and each interval between events will be equal to a number of ticks randomly chosen from the interval_range.",
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "on_tick": {
+                                    "description": "The event that will be triggered once or on an interval.",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:rotation": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The block's rotation around the center of the cube in degrees. The rotation is specified as [x, y, z]. Angles need to be in factors of 90.",
+                            "type": "array",
+                            "default": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "items": {
+                                "type": "integer",
+                                "multipleOf": 90
+                            },
+                            "minItems": 3,
+                            "maxItems": 3
+                        },
+                        "minecraft:unit_cube": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Specifies that a unit cube is to be used with tessellation.",
+                            "type": "object",
+                            "default": {},
+                            "additionalProperties": false
+                        },
+                        "minecraft:breathability": {
+                            "title": "EXPERIMENTAL (Holiday Creator Features)",
+                            "description": "The breathing type of this block that affects the breathing state of mobs when they have their breathing points inside this block. Available values: solid, air",
+                            "enum": [
+                                "solid",
+                                "air"
+                            ],
+                            "default": "solid"
                         },
                         "minecraft:collision_box": {
                             "title": "STABLE (1.19.50)",
@@ -415,42 +545,6 @@
                                 "$ref": "#/definitions/materialInstances"
                             }
                         },
-                        "minecraft:bone_visibility": {
-                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
-                            "description": "Sets conditions for when the block's different parts are visible.",
-                            "type": "object",
-                            "properties": {
-                                "conditions": {
-                                    "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-                                    "type": "object",
-                                    "default": {},
-                                    "maxProperties": 64,
-                                    "additionalProperties": {
-                                        "$ref": "../common.json#/definitions/MoLang",
-                                        "default": "true"
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:part_visibility": {
-                            "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
-                            "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false.",
-                            "type": "object",
-                            "properties": {
-                                "conditions": {
-                                    "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-                                    "type": "object",
-                                    "default": {},
-                                    "maxProperties": 64,
-                                    "additionalProperties": {
-                                        "$ref": "../common.json#/definitions/MoLang",
-                                        "default": "true"
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:placement_filter": {
                             "title": "STABLE",
                             "description": "Sets rules for under what conditions the block can be placed/survive",
@@ -513,41 +607,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:queued_ticking": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Triggers the specified event, either once, or at a regular interval equal to a number of ticks randomly chosen from the interval_range provided.",
-                            "type": "object",
-                            "required": [
-                                "looping",
-                                "interval_range",
-                                "on_tick"
-                            ],
-                            "properties": {
-                                "interval_range": {
-                                    "description": "A range of values, specified in ticks, that will be used to decide the interval between times this event triggers. Each interval will be chosen randomly from the range, so the times between this event triggering will differ given an interval_range of two different values. If the values in the interval_range are the same, the event will always be triggered after that number of ticks.",
-                                    "type": "array",
-                                    "default": [
-                                        10,
-                                        10
-                                    ],
-                                    "items": {
-                                        "type": "integer"
-                                    },
-                                    "minItems": 2,
-                                    "maxItems": 2
-                                },
-                                "looping": {
-                                    "description": "Does the event loop? If false, the event will only be triggered once, after a delay equal to a number of ticks randomly chosen from the interval_range. If true, the event will loop, and each interval between events will be equal to a number of ticks randomly chosen from the interval_range.",
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "on_tick": {
-                                    "description": "The event that will be triggered once or on an interval.",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:random_ticking": {
                             "title": "STABLE",
                             "description": "Triggers the specified event randomly based on the random tick speed gamerule. The random tick speed determines how often blocks are updated. Some other examples of game mechanics that use random ticking are crop growth and fire spreading.",
@@ -562,22 +621,6 @@
                                 }
                             },
                             "additionalProperties": false
-                        },
-                        "minecraft:rotation": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The block's rotation around the center of the cube in degrees. The rotation is specified as [x, y, z]. Angles need to be in factors of 90.",
-                            "type": "array",
-                            "default": [
-                                0,
-                                0,
-                                0
-                            ],
-                            "items": {
-                                "type": "integer",
-                                "multipleOf": 90
-                            },
-                            "minItems": 3,
-                            "maxItems": 3
                         },
                         "minecraft:selection_box": {
                             "title": "STABLE (1.19.60)",
@@ -621,27 +664,11 @@
                                 }
                             ]
                         },
-                        "minecraft:unit_cube": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Specifies that a unit cube is to be used with tessellation.",
-                            "type": "object",
-                            "default": {},
-                            "additionalProperties": false
-                        },
                         "minecraft:unwalkable": {
                             "title": "STABLE",
                             "description": "Sets the block as unwalkable. Mobs would not attempt to path over top of it when the value is set to true.",
                             "type": "boolean",
                             "default": false
-                        },
-                        "minecraft:breathability": {
-                            "title": "EXPERIMENTAL (Holiday Creator Features)",
-                            "description": "The breathing type of this block that affects the breathing state of mobs when they have their breathing points inside this block. Available values: solid, air",
-                            "enum": [
-                                "solid",
-                                "air"
-                            ],
-                            "default": "solid"
                         },
                         "minecraft:on_fall_on": {
                             "title": "STABLE",
@@ -820,11 +847,6 @@
                         "minecraft:ticking": {
                             "title": "DEPRECATED",
                             "description": "Replaced with 'queued_ticking'",
-                            "default": false
-                        },
-                        "minecraft:light_dampening": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'light_dampening' in 1.19.20",
                             "default": false
                         },
                         "minecraft:aim_collision": {

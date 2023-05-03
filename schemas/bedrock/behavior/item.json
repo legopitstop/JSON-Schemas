@@ -290,53 +290,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:display_name": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Display Name item component. Display Names display the name of an item.",
-                            "type": "object",
-                            "required": [
-                                "value"
-                            ],
-                            "properties": {
-                                "value": {
-                                    "type": "string",
-                                    "description": "Set the display name for an item."
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:durability": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Durability item component: how much damage can this item take before breaking.",
-                            "type": "object",
-                            "required": [
-                                "max_durability"
-                            ],
-                            "properties": {
-                                "damage_chance": {
-                                    "description": "Damage chance.",
-                                    "type": "object",
-                                    "required": [
-                                        "min",
-                                        "max"
-                                    ],
-                                    "properties": {
-                                        "min": {
-                                            "type": "number"
-                                        },
-                                        "max": {
-                                            "type": "number"
-                                        }
-                                    },
-                                    "additionalProperties": false
-                                },
-                                "max_durability": {
-                                    "type": "integer",
-                                    "description": "Max durability is the amount of damage that this item can take before breaking."
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:dye_powder": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "Dye powder, there are 16 kinds of dye.",
@@ -365,32 +318,6 @@
                                         "yellow"
                                     ],
                                     "description": "Defines what color the dye is."
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:entity_placer": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Entity placer item component. You can specifiy allowed blocks that the item is restricted to.",
-                            "type": "object",
-                            "required": [
-                                "entity"
-                            ],
-                            "properties": {
-                                "dispense_on": {
-                                    "type": "array",
-                                    "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
-                                },
-                                "entity": {
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json",
-                                    "description": "The entity to be placed in the world."
-                                },
-                                "use_on": {
-                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
                                 }
                             },
                             "additionalProperties": false
@@ -525,46 +452,6 @@
                                         },
                                         "additionalProperties": false
                                     }
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:fuel": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Allows this item to be used as fuel in a furnace to 'cook' other items.",
-                            "type": "object",
-                            "required": [
-                                "duration"
-                            ],
-                            "properties": {
-                                "duration": {
-                                    "type": "number",
-                                    "description": "How long in seconds will this fuel cook items for.",
-                                    "minimum": 0.05
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:icon": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
-                            "type": "object",
-                            "required": [
-                                "texture"
-                            ],
-                            "properties": {
-                                "frame": {
-                                    "description": "An index or expression for which frame of the icon to display. Default resolves to 0.",
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "legacy_id": {
-                                    "description": "Legacy texture id for older item icons",
-                                    "type": "string"
-                                },
-                                "texture": {
-                                    "description": "The key from the resource_pack/textures/item_texture.json 'texture_data' object associated with the texture file Example: blaze_powder",
-                                    "type": "string"
                                 }
                             },
                             "additionalProperties": false
@@ -1309,6 +1196,120 @@
                             },
                             "additionalProperties": false
                         },
+                        
+                        "minecraft:display_name": {
+                            "title": "STABLE (1.20.0)",
+                            "description": "Display Name item component. Display Names display the name of an item.",
+                            "type": "object",
+                            "required": [
+                                "value"
+                            ],
+                            "properties": {
+                                "value": {
+                                    "type": "string",
+                                    "description": "Set the display name for an item."
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:durability": {
+                            "title": "STABLE (1.20.0)",
+                            "description": "Durability item component: how much damage can this item take before breaking.",
+                            "type": "object",
+                            "required": [
+                                "max_durability"
+                            ],
+                            "properties": {
+                                "damage_chance": {
+                                    "description": "Damage chance.",
+                                    "type": "object",
+                                    "required": [
+                                        "min",
+                                        "max"
+                                    ],
+                                    "properties": {
+                                        "min": {
+                                            "type": "number"
+                                        },
+                                        "max": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                },
+                                "max_durability": {
+                                    "type": "integer",
+                                    "description": "Max durability is the amount of damage that this item can take before breaking."
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:entity_placer": {
+                            "title": "STABLE (1.20.0)",
+                            "description": "Entity placer item component. You can specifiy allowed blocks that the item is restricted to.",
+                            "type": "object",
+                            "required": [
+                                "entity"
+                            ],
+                            "properties": {
+                                "dispense_on": {
+                                    "type": "array",
+                                    "description": "List of block descriptors that contain blocks that this item can be dispensed on. If left empty, all blocks will be allowed."
+                                },
+                                "entity": {
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json",
+                                    "description": "The entity to be placed in the world."
+                                },
+                                "use_on": {
+                                    "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:fuel": {
+                            "title": "STABLE (1.20.0)",
+                            "description": "Allows this item to be used as fuel in a furnace to 'cook' other items.",
+                            "type": "object",
+                            "required": [
+                                "duration"
+                            ],
+                            "properties": {
+                                "duration": {
+                                    "type": "number",
+                                    "description": "How long in seconds will this fuel cook items for.",
+                                    "minimum": 0.05
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:icon": {
+                            "title": "STABLE (1.20.0)",
+                            "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
+                            "type": "object",
+                            "required": [
+                                "texture"
+                            ],
+                            "properties": {
+                                "frame": {
+                                    "description": "An index or expression for which frame of the icon to display. Default resolves to 0.",
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "legacy_id": {
+                                    "description": "Legacy texture id for older item icons",
+                                    "type": "string"
+                                },
+                                "texture": {
+                                    "description": "The key from the resource_pack/textures/item_texture.json 'texture_data' object associated with the texture file Example: blaze_powder",
+                                    "type": "string"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
                         "minecraft:fertilizer": {
                             "title": "STABLE",
                             "description": "fertilizer item.",
@@ -1520,12 +1521,11 @@
                                     "uniqueItems": true,
                                     "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                 },
-                                
                                 "plant_at_any_solid_surface": {
                                     "type": "boolean",
                                     "default": true
                                 },
-                                "plant_at_face":  {
+                                "plant_at_face": {
                                     "enum": [
                                         "DOWN"
                                     ]
