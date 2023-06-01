@@ -1,0 +1,303 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/material.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Common": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "+states": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "+samplerStates": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "samplerIndex": {
+                                "type": "integer",
+                                "default": 0
+                            },
+                            "textureFilter": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "blendSrc": {
+                    "type": "string"
+                },
+                "blendDst": {
+                    "type": "string"
+                },
+                "depthFunc": {
+                    "type": "string"
+                },
+                "vertexShader": {
+                    "type": "string"
+                },
+                "vrGeometryShader": {
+                    "type": "string"
+                },
+                "fragmentShader": {
+                    "type": "string"
+                },
+                "vertexFields": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "field": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "msaaSupport": {
+                    "type": "string"
+                },
+                "+defines": {
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "depthBias": {
+                    "type": "number"
+                },
+                "slopeScaledDepthBias": {
+                    "type": "number"
+                },
+                "depthBiasOGL": {
+                    "type": "number"
+                },
+                "slopeScaledDepthBiasOGL": {
+                    "type": "number"
+                },
+                "frontFace": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "stencilFunc": {
+                            "type": "string"
+                        },
+                        "stencilFailOp": {
+                            "type": "string"
+                        },
+                        "stencilDepthFailOp": {
+                            "type": "string"
+                        },
+                        "stencilPassOp": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "backFace": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "stencilFunc": {
+                            "type": "string"
+                        },
+                        "stencilFailOp": {
+                            "type": "string"
+                        },
+                        "stencilDepthFailOp": {
+                            "type": "string"
+                        },
+                        "stencilPassOp": {
+                            "type": "string"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "stencilReadMask": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "stencilWriteMask": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "stencilRefOverride": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "alphaDst": {
+                    "type": "string"
+                },
+                "isAnimatedTexture": {
+                    "type": "integer",
+                    "default": 0
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "materials": {
+            "title": "resrouce.material",
+            "required": [
+                "version"
+            ],
+            "properties": {
+                "version": {
+                    "type": "string",
+                    "examples": [
+                        "1.0.0"
+                    ]
+                },
+                "balloon:entity_change_color": {
+                    "$ref": "#/definitions/Common"
+                },
+                "dolphin:entity": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ice_bomb:entity_alphatest": {
+                    "$ref": "#/definitions/Common"
+                },
+                "overlay_quad": {
+                    "$ref": "#/definitions/Common"
+                },
+                "debug": {
+                    "$ref": "#/definitions/Common"
+                },
+                "overlay_quad_clear": {
+                    "$ref": "#/definitions/Common"
+                },
+                "sign_text": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holoscreen_monoscopic_quad": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holoscreen_level_quad": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holo_hud_quad": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holoscreen_stereoscopic_quad": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hologram": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hololens_LSRPlane": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hololens_LSRPlaneTextured": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hololens_UICursor": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hololens_UICursor_ingame_pseudoshadow": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hololens_UICursor_ingame_mainpart": {
+                    "$ref": "#/definitions/Common"
+                },
+                "hologram_hit_effect": {
+                    "$ref": "#/definitions/Common"
+                },
+                "reality_frame_cutout": {
+                    "$ref": "#/definitions/Common"
+                },
+                "reality_frame_skyfill": {
+                    "$ref": "#/definitions/Common"
+                },
+                "living_room": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holo_coord_frame": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holo_hand_pointer": {
+                    "$ref": "#/definitions/Common"
+                },
+                "holo_hand": {
+                    "$ref": "#/definitions/Common"
+                },
+                "windowsmr_holo_hand": {
+                    "$ref": "#/definitions/Common"
+                },
+                "rift_mirror_texture": {
+                    "$ref": "#/definitions/Common"
+                },
+                "rift_mirror_logo:rift_mirror_texture": {
+                    "$ref": "#/definitions/Common"
+                },
+                "rift_texture_copy_noalpha": {
+                    "$ref": "#/definitions/Common"
+                },
+                "terrain_inside_block": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_texture_and_color:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_texture_and_color_blur:ui_texture_and_color": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_texture_and_color_tint:ui_texture_and_color": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_fill_color:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_fill_stencil:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_fill_gradient:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_textured:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_textured_premultiplied_alpha:ui_textured": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_textured_and_glcolor:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_textured_and_glcolor_sprite:ui_textured_and_glcolor": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_item:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_invert_overlay:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_cubemap:ui_base": {
+                    "$ref": "#/definitions/Common"
+                },
+                "ui_crosshair:ui_invert_overlay": {
+                    "$ref": "#/definitions/Common"
+                },
+                "animated_texture_blit": {
+                    "$ref": "#/definitions/Common"
+                },
+                "camera_facing_sprite": {
+                    "$ref": "#/definitions/Common"
+                }
+            }
+        }
+    }
+}

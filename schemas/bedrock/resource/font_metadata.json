@@ -1,0 +1,94 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/font_metadata.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "fonts": {
+            "title": "resrouce.font_metadata",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "font_format": {
+                        "enum": [
+                            "ttf",
+                            "otf",
+                            "msdf"
+                        ]
+                    },
+                    "font_name": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "font_file": {
+                        "type": "string"
+                    },
+                    "lowPerformanceCompatible": {
+                        "type": "boolean",
+                        "default": false
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "font_aliases": {
+            "title": "resrouce.font_metadata",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "required": [
+                    "alias",
+                    "fonts"
+                ],
+                "properties": {
+                    "alias": {
+                        "type": "string"
+                    },
+                    "font_scale_factor": {
+                        "type": "number"
+                    },
+                    "fonts": {
+                        "type": "array",
+                        "default": [],
+                        "items": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "font_reference": {
+                                    "type": "string"
+                                },
+                                "font_ranges": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "first": {
+                                                "type": "integer",
+                                                "default": 0
+                                            },
+                                            "last": {
+                                                "type": "integer",
+                                                "default": 0
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    }
+}

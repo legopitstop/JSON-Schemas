@@ -1,0 +1,237 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/behavior_tree.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:behavior_tree": {
+            "title": "behavior.behavior_tree",
+            "description": "Behavior for the education edition agent.",
+            "type": "object",
+            "default": {},
+            "required": [
+                "minecraft:name"
+            ],
+            "properties": {
+                "minecraft:name": {
+                    "type": "string"
+                },
+                "minecraft:root": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "minecraft:sequence": {
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "children": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "minecraft:look_at": {
+                                                "description": "look at",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "block_pos": {
+                                                        "type": "array",
+                                                        "default": [],
+                                                        "items": {
+                                                            "type": "integer",
+                                                            "default": 0
+                                                        },
+                                                        "minItems": 3,
+                                                        "maxItems": 3
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:shoot_bow": {
+                                                "description": "shoot bow",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:wait": {
+                                                "description": "wait",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "wait_duration": {
+                                                        "description": "Time is seconds to wait",
+                                                        "type": "integer",
+                                                        "default": 0
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:attack": {
+                                                "description": "attack",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "num_of_ticks": {
+                                                        "type": "integer",
+                                                        "default": 0
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:find_block": {
+                                                "description": "find block",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "block_name": {
+                                                        "type": "string",
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:break_block": {
+                                                "description": "break block",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "block_pos": {
+                                                        "type": "array",
+                                                        "default": [],
+                                                        "items": {
+                                                            "type": "integer",
+                                                            "default": 0
+                                                        },
+                                                        "minItems": 3,
+                                                        "maxItems": 3
+                                                    },
+                                                    "num_of_ticks": {
+                                                        "type": "integer",
+                                                        "default": 0
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:find_entity": {
+                                                "description": "find entity",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "entity_name": {
+                                                        "type": "string",
+                                                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:move_to": {
+                                                "description": "move to",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "block_pos_id": {
+                                                        "enum": [
+                                                            "target_pos"
+                                                        ]
+                                                    },
+                                                    "distance_epsilon": {
+                                                        "type": "number"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:consume_item": {
+                                                "description": "consume item",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:activate_tool": {
+                                                "description": "activate_tool",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "block_pos": {
+                                                        "type": "array",
+                                                        "default": [],
+                                                        "items": {
+                                                            "type": "integer",
+                                                            "default": 0
+                                                        },
+                                                        "minItems": 3,
+                                                        "maxItems": 3
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:interact": {
+                                                "description": "interact",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:look_at_entity": {
+                                                "description": "look at entity",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:place_block": {
+                                                "description": "place block",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:move": {
+                                                "description": "move",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {
+                                                    "max_number_of_ticks": {
+                                                        "description": "Number of ticks it should take to move",
+                                                        "type": "integer",
+                                                        "default": 0
+                                                    },
+                                                    "desired_direction": {
+                                                        "description": "The direction to move",
+                                                        "enum": [
+                                                            "forward"
+                                                        ]
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:use_entity": {
+                                                "description": "use entity",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            },
+                                            "minecraft:wait_ticks": {
+                                                "description": "wait ticks",
+                                                "type": "object",
+                                                "default": {},
+                                                "properties": {},
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}
