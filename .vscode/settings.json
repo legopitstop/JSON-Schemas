@@ -4,7 +4,8 @@
             "name": "Bedrock Edition Schema",
             "description": "Schema for Bedrock Edition behavior, and resourcepacks.",
             "fileMatch": [
-                "tests/**/*.json"
+                "tests/**/*.json",
+                "tests/**/*.material"
             ],
             "url": "/schemas/bedrock/schema.json"
         }

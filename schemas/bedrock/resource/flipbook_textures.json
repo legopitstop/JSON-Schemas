@@ -2,9 +2,7 @@
     "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/flipbook_textures.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "items":{
-        "type":"object",
-        "default": {},
-        "required": ["flipbook_texture"],
+        "title": "resrouce.flipbook_textures",
         "properties":{
             "flipbook_texture": {
                 "description": "Path to texture.",

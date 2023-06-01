@@ -61,6 +61,7 @@
     },
     "properties": {
         "minecraft:npc_dialogue": {
+            "title": "behavior.npc_dialogue",
             "description": "npc_dialogue\nSee https://wiki.bedrock.dev/entities/npc-dialogs.html",
             "type": "object",
             "required": [

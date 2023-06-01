@@ -56,6 +56,7 @@
     },
     "properties": {
         "minecraft:entity": {
+            "title": "behavior.entity",
             "description": "JSON schema for data-driven entities\nSee https://bedrock.dev/docs/stable/Entities",
             "type": "object",
             "default": {},
@@ -5915,10 +5916,10 @@
                                 "on_break": {
                                     "description": "List of blocks to watch for being broken to fire off a specified event. If a block is in multiple lists, multiple events will fire.",
                                     "type": "array",
+                                    "default": [],
                                     "items": {
                                         "type": [
-                                            "string",
-                                            "object"
+                                            "string"
                                         ],
                                         "default": {},
                                         "properties": {
@@ -5926,7 +5927,7 @@
                                                 "type": "array",
                                                 "default": [],
                                                 "items": {
-                                                    "type": "string"
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                                 }
                                             },
                                             "on_block_broken": {
@@ -5941,6 +5942,14 @@
                                     "type": "number",
                                     "default": 16.0,
                                     "maximum": 32.0
+                                },
+                                "sources": {
+                                    "description": "List of sources that break the block to listen for. If none are specified, all block breaks will be detected.",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         },

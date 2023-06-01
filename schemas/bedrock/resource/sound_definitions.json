@@ -4,6 +4,7 @@
     "description": "\nSee https://wiki.bedrock.dev/concepts/sounds.html#sound-definitions-json",
     "properties": {
         "sound_definitions": {
+            "title": "resrouce.sound_definitions",
             "additionalProperties": {
                 "description": "sound_definitions",
                 "type": "object",

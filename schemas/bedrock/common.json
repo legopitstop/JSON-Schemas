@@ -279,6 +279,11 @@
                 "equipment",
                 "items",
                 "nature",
+                "Commands",
+                "Construction",
+                "Equipment",
+                "Items",
+                "Nature",
                 "none"
             ]
         },
@@ -438,7 +443,7 @@
         "nameSpaceID": {
             "$id": "../common.json#/definitions/nameSpaceID",
             "type": "string",
-            "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*$",
+            "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*(?::[0-9]{1,})?$",
             "description": "Namespace id. must not contain Minecraft namespace. example; custom:stone"
         },
         "difficulty": {

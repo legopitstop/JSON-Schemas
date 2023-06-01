@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:spawn_groups": {
+            "title": "behavior.spawn_groups",
             "description": "spawn_groups",
             "type": "object",
             "properties": {

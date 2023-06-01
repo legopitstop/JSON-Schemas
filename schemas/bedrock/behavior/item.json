@@ -109,6 +109,7 @@
     },
     "properties": {
         "minecraft:item": {
+            "title": "behavior.item",
             "description": "item\nSee https://bedrock.dev/docs/stable/Item",
             "type": "object",
             "required": [
@@ -171,7 +172,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:block_placer": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "STABLE 1.20.10",
                             "description": "Planter item component. planter items are items that can be planted.",
                             "type": "object",
                             "required": [
@@ -209,26 +210,6 @@
                                 "on_complete": {
                                     "description": "Event trigger for when the item has completed its use duration.",
                                     "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:cooldown": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Cool down time for a component. After you use an item it becomes unusable for the duration specified by the 'cool down time' setting in this component.",
-                            "type": "object",
-                            "required": [
-                                "category",
-                                "duration"
-                            ],
-                            "properties": {
-                                "category": {
-                                    "type": "string",
-                                    "description": "The type of cool down for this item."
-                                },
-                                "duration": {
-                                    "type": "integer",
-                                    "description": "The duration of time this item will spend cooling down before becoming usable again."
                                 }
                             },
                             "additionalProperties": false
@@ -542,7 +523,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:record": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "STABLE 1.20.10",
                             "description": "Can place inside a jukebox and play the sound track. Example items: all music discs",
                             "type": "object",
                             "required": [
@@ -987,44 +968,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:repairable": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Repairable item component: how much damage can this item repair, what items can repair it.",
-                            "type": "object",
-                            "required": [
-                                "repair_items"
-                            ],
-                            "properties": {
-                                "repair_items": {
-                                    "type": "array",
-                                    "description": "Repair item entries.",
-                                    "items": {
-                                        "type": "object",
-                                        "required": [
-                                            "items",
-                                            "repair_amount"
-                                        ],
-                                        "properties": {
-                                            "items": {
-                                                "type": "array",
-                                                "uniqueItems": true,
-                                                "items": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                                                }
-                                            },
-                                            "repair_amount": {
-                                                "$ref": "../common.json#/definitions/floatMolang"
-                                            },
-                                            "on_repaired": {
-                                                "$ref": "#/properties/minecraft:item/properties/components/properties/minecraft:repairable/properties/on_repaired"
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:shooter": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "Shooter Item Component.",
@@ -1196,7 +1139,64 @@
                             },
                             "additionalProperties": false
                         },
-                        
+                        "minecraft:repairable": {
+                            "title": "STABLE (1.20.10)",
+                            "description": "Repairable item component: how much damage can this item repair, what items can repair it.",
+                            "type": "object",
+                            "required": [
+                                "repair_items"
+                            ],
+                            "properties": {
+                                "repair_items": {
+                                    "type": "array",
+                                    "description": "Repair item entries.",
+                                    "items": {
+                                        "type": "object",
+                                        "required": [
+                                            "items",
+                                            "repair_amount"
+                                        ],
+                                        "properties": {
+                                            "items": {
+                                                "type": "array",
+                                                "uniqueItems": true,
+                                                "items": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                                }
+                                            },
+                                            "repair_amount": {
+                                                "$ref": "../common.json#/definitions/floatMolang"
+                                            },
+                                            "on_repaired": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:cooldown": {
+                            "title": "STABLE (1.20.10)",
+                            "description": "Cool down time for a component. After you use an item it becomes unusable for the duration specified by the 'cool down time' setting in this component.",
+                            "type": "object",
+                            "required": [
+                                "category",
+                                "duration"
+                            ],
+                            "properties": {
+                                "category": {
+                                    "type": "string",
+                                    "description": "The type of cool down for this item."
+                                },
+                                "duration": {
+                                    "type": "integer",
+                                    "description": "The duration of time this item will spend cooling down before becoming usable again."
+                                }
+                            },
+                            "additionalProperties": false
+                        },
                         "minecraft:display_name": {
                             "title": "STABLE (1.20.0)",
                             "description": "Display Name item component. Display Names display the name of an item.",
@@ -1289,7 +1289,10 @@
                         "minecraft:icon": {
                             "title": "STABLE (1.20.0)",
                             "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
-                            "type": "object",
+                            "type": [
+                                "object",
+                                "string"
+                            ],
                             "required": [
                                 "texture"
                             ],
@@ -1622,7 +1625,7 @@
                             "default": false
                         },
                         "minecraft:max_stack_size": {
-                            "title": "STABLE",
+                            "title": "STABLE 1.20.10",
                             "description": "THe max number of items that can be in one slot.",
                             "type": "integer",
                             "minimum": 1,

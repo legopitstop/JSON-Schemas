@@ -119,7 +119,7 @@
     },
     "properties": {
         "animations": {
-            "description": "Something",
+            "title": "resrouce.animations",
             "type": "object",
             "default": {},
             "additionalProperties": {

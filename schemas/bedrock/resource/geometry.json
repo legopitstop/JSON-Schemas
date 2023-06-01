@@ -32,10 +32,24 @@
                 }
             },
             "additionalProperties": false
+        },
+        "Locator": {
+            "type": "array",
+            "default": [
+                0.0,
+                0.0,
+                0.0
+            ],
+            "items": {
+                "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
         }
     },
     "properties": {
         "minecraft:geometry": {
+            "title": "resrouce.geometry",
             "description": "geometry\nSee https://bedrock.dev/docs/stable/Addons#Geometry",
             "type": "array",
             "default": [],
@@ -97,17 +111,22 @@
                                     "default": {},
                                     "properties": {
                                         "lead": {
-                                            "type": "array",
-                                            "default": [
-                                                0.0,
-                                                0.0,
-                                                0.0
-                                            ],
-                                            "items": {
-                                                "type": "number"
-                                            },
-                                            "minItems": 3,
-                                            "maxItems": 3
+                                            "$ref": "#/definitions/Locator"
+                                        },
+                                        "root_sitting": {
+                                            "$ref": "#/definitions/Locator"
+                                        },
+                                        "root_standing": {
+                                            "$ref": "#/definitions/Locator"
+                                        },
+                                        "driver_seat": {
+                                            "$ref": "#/definitions/Locator"
+                                        },
+                                        "back_seat": {
+                                            "$ref": "#/definitions/Locator"
+                                        },
+                                        "lead_hold": {
+                                            "$ref": "#/definitions/Locator"
                                         }
                                     },
                                     "additionalProperties": false

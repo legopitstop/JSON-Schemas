@@ -58,6 +58,7 @@
     },
     "properties": {
         "minecraft:block": {
+            "title": "behavior.block",
             "description": "A data-driven block\nSee https://bedrock.dev/docs/stable/Blocks",
             "type": "object",
             "required": [
@@ -71,6 +72,11 @@
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                         },
                         "properties": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'states' in 1.20.10.21",
+                            "$ref": "#/properties/minecraft:block/properties/description/properties/states"
+                        },
+                        "states": {
                             "type": "object",
                             "description": "The indexed properties for this block. block_properties. like blockstates.",
                             "additionalProperties": {
@@ -824,6 +830,7 @@
                         "tag:fertilize_area": {
                             "$ref": "#/definitions/VanillaTags"
                         },
+
                         "minecraft:block_light_absorption": {
                             "title": "DEPRECATED",
                             "description": "Replaced with 'light_dampening'",
@@ -831,12 +838,7 @@
                         },
                         "minecraft:entity_collision": {
                             "title": "DEPRECATED",
-                            "description": "Replaced with 'block_collision'",
-                            "default": false
-                        },
-                        "minecraft:pick_collision": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'aim_collision'",
+                            "description": "Replaced with 'collision_box'",
                             "default": false
                         },
                         "minecraft:block_collision": {
@@ -844,14 +846,19 @@
                             "description": "Replaced with 'collision_box'",
                             "default": false
                         },
-                        "minecraft:ticking": {
+                        "minecraft:pick_collision": {
                             "title": "DEPRECATED",
-                            "description": "Replaced with 'queued_ticking'",
+                            "description": "Replaced with 'selection_box'",
                             "default": false
                         },
                         "minecraft:aim_collision": {
                             "title": "DEPRECATED",
                             "description": "Replaced with 'selection_box' in 1.19.20",
+                            "default": false
+                        },
+                        "minecraft:ticking": {
+                            "title": "DEPRECATED",
+                            "description": "Replaced with 'queued_ticking'",
                             "default": false
                         },
                         "minecraft:block_light_emission": {

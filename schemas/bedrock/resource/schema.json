@@ -4,6 +4,30 @@
     "description": "JSON schema for Minecraft Bedrock Edition.",
     "allOf": [
         {
+            "$ref": "./piece_meta.json"
+        },
+        {
+            "$ref": "./piece_store_info.json"
+        },
+        {
+            "$ref": "./music_definitions.json"
+        },
+        {
+            "$ref": "./sounds.json"
+        },
+        {
+            "$ref": "./material.json"
+        },
+        {
+            "$ref": "./font_metadata.json"
+        },
+        {
+            "$ref": "./biomes_client.json"
+        },
+        {
+            "$ref": "./camera_entity.json"
+        },
+        {
             "$ref": "./animation_controllers.json"
         },
         {

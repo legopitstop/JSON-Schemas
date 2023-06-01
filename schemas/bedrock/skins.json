@@ -3,18 +3,22 @@
     "description": "A skins.json schema\nSee https://wiki.bedrock.dev/visuals/custom-skin-packs.html#skins-json",
     "properties": {
         "geometry": {
+            "title": "skins",
             "description": "Must be the same as on the example code in every object. Mojang removed the ability to add custom geometries via skin packs, because the feature was abused.",
             "type":"string"
         },
         "serialize_name": {
+            "title": "skins",
             "description": "For marketplace.",
             "type": "string"
         },
         "localization_name": {
+            "title": "skins",
             "description": "A pack identifier. **Don't use in other skin packs** as it affects translations.",
             "type": "string"
         },
         "skins": {
+            "title": "skins",
             "description": "Where you define your each skin. The skins will be displayed in the same order in minecraft as they are defined here.",
             "type": "array",
             "default": [],
@@ -32,7 +36,8 @@
                         "description": "Only accessible to marketplace partners, leave it as `free`, otherwise it will be locked.",
                         "enum": [
                             "free",
-                            "paid"
+                            "paid",
+                            "custom"
                         ]
                     },
                     "geometry": {

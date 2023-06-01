@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:vegetation_patch_feature": {
+            "title": "behavior.vegetation_patch_feature",
             "description": "Feature type 'minecraft:vegetation_patch_feature' has not yet been documented.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Avegetation_patch_feature",
             "type": "object",
             "default": {},

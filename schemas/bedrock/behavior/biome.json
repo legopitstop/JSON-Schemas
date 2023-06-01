@@ -11,6 +11,7 @@
     },
     "properties": {
         "minecraft:biome": {
+            "title": "behavior.biome",
             "description": "See https://bedrock.dev/docs/stable/Biomes",
             "type": "object",
             "properties": {

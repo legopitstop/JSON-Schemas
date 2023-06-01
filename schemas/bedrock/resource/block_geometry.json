@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "elements": {
+            "title": "resrouce.block_geometry",
             "description": "List of elements that make up the geometry of this block",
             "type": "array",
             "default": [],
@@ -137,14 +138,14 @@
             }
         },
         "materials": {
+            "title": "resrouce.block_geometry",
             "description": "List of materials used by this model",
-            "type": "array",
-            "default": [],
             "items": {
                 "type": "string"
             }
         },
         "parent": {
+            "title": "resrouce.block_geometry",
             "description": "Parent model of this model",
             "type": "string"
         }

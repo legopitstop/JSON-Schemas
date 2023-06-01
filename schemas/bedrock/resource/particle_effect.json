@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:particle_effect": {
+            "title": "resrouce.particle_effect",
             "description": "particle_effect\nSee https://bedrock.dev/docs/stable/Particles",
             "type": "object",
             "properties": {
@@ -95,8 +96,8 @@
                             "type": "object",
                             "properties": {
                                 "max_particles": {
-                                    "$ref": "../common.json#/definitions/floatMolang",
-                                    "description": "evaluated once per particle emitted"
+                                    "description": "evaluated once per particle emitted",
+                                    "$ref": "../common.json#/definitions/floatMolang"
                                 }
                             }
                         },
@@ -104,14 +105,14 @@
                             "type": "object",
                             "properties": {
                                 "active_time": {
+                                    "description": "emitter will emit particles for this time per loop. evaluated once per particle emitter loop.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 10,
-                                    "description": "emitter will emit particles for this time per loop. evaluated once per particle emitter loop."
+                                    "default": 10
                                 },
                                 "sleep_time": {
+                                    "description": "emitter will pause emitting particles for this time per loop. evaluated once per particle emitter loop.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "emitter will pause emitting particles for this time per loop. evaluated once per particle emitter loop."
+                                    "default": 0
                                 }
                             }
                         },
@@ -119,9 +120,9 @@
                             "type": "object",
                             "properties": {
                                 "active_time": {
+                                    "description": "how long the particles emit for. evaluated once",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 10,
-                                    "description": "how long the particles emit for. evaluated once"
+                                    "default": 10
                                 }
                             }
                         },
@@ -129,14 +130,14 @@
                             "type": "object",
                             "properties": {
                                 "activation_expression": {
+                                    "description": "When the expression is non-zero, the emitter will emit particles. Evaluated every frame",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 1,
-                                    "description": "When the expression is non-zero, the emitter will emit particles. Evaluated every frame"
+                                    "default": 1
                                 },
                                 "expiration_expression": {
+                                    "description": "Emitter will expire if the expression is non-zero. Evaluated every frame",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "Emitter will expire if the expression is non-zero. Evaluated every frame"
+                                    "default": 0
                                 }
                             }
                         },
@@ -233,8 +234,8 @@
                             "type": "object",
                             "properties": {
                                 "offset": {
-                                    "type": "array",
                                     "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "type": "array",
                                     "default": [
                                         0,
                                         0,
@@ -245,8 +246,8 @@
                                     }
                                 },
                                 "direction": {
-                                    "type": "array",
                                     "description": "specifies the direciton of particles. evaluated once per particle emitted.",
+                                    "type": "array",
                                     "items": {
                                         "$ref": "../common.json#/definitions/floatMolang"
                                     }
@@ -257,8 +258,8 @@
                             "type": "object",
                             "properties": {
                                 "offset": {
-                                    "type": "array",
                                     "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "type": "array",
                                     "default": [
                                         0,
                                         0,
@@ -269,11 +270,12 @@
                                     }
                                 },
                                 "radius": {
+                                    "description": "sphere radius. evaluated once per particle emitted.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 1,
-                                    "description": "sphere radius. evaluated once per particle emitted."
+                                    "default": 1
                                 },
                                 "direction": {
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted.",
                                     "anyOf": [
                                         {
                                             "type": "array",
@@ -288,8 +290,7 @@
                                             ]
                                         }
                                     ],
-                                    "default": "outwards",
-                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                    "default": "outwards"
                                 }
                             }
                         },
@@ -297,8 +298,8 @@
                             "type": "object",
                             "properties": {
                                 "offset": {
-                                    "type": "array",
                                     "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "type": "array",
                                     "default": [
                                         0,
                                         0,
@@ -309,19 +310,20 @@
                                     }
                                 },
                                 "half_dimensions": {
+                                    "description": "box dimensions. these are the half dimensions, the box is formed centered on the emitter. with the box extending in the 3 principal x/y/z axes by these values",
                                     "type": "array",
                                     "items": {
                                         "$ref": "../common.json#/definitions/floatMolang"
                                     },
-                                    "default": 1,
-                                    "description": "box dimensions. these are the half dimensions, the box is formed centered on the emitter. with the box extending in the 3 principal x/y/z axes by these values"
+                                    "default": 1
                                 },
                                 "surface_only": {
+                                    "description": "emit only from the surface of the sphere",
                                     "type": "boolean",
-                                    "default": false,
-                                    "description": "emit only from the surface of the sphere"
+                                    "default": false
                                 },
                                 "direction": {
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted.",
                                     "anyOf": [
                                         {
                                             "type": "array",
@@ -336,8 +338,7 @@
                                             ]
                                         }
                                     ],
-                                    "default": "outwards",
-                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                    "default": "outwards"
                                 }
                             }
                         },
@@ -345,8 +346,8 @@
                             "type": "object",
                             "properties": {
                                 "offset": {
-                                    "type": "array",
                                     "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "type": "array",
                                     "default": [
                                         0,
                                         0,
@@ -357,6 +358,7 @@
                                     }
                                 },
                                 "direction": {
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted.",
                                     "type": "array",
                                     "items": {
                                         "$ref": "../common.json#/definitions/floatMolang"
@@ -365,8 +367,7 @@
                                         0,
                                         0,
                                         0
-                                    ],
-                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                    ]
                                 }
                             }
                         },
@@ -374,11 +375,12 @@
                             "type": "object",
                             "properties": {
                                 "surface_only": {
+                                    "description": "emit only from the surface of the sphere",
                                     "type": "boolean",
-                                    "default": false,
-                                    "description": "emit only from the surface of the sphere"
+                                    "default": false
                                 },
                                 "direction": {
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted.",
                                     "anyOf": [
                                         {
                                             "type": "array",
@@ -393,8 +395,7 @@
                                             ]
                                         }
                                     ],
-                                    "default": "outwards",
-                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                    "default": "outwards"
                                 }
                             }
                         },
@@ -402,8 +403,8 @@
                             "type": "object",
                             "properties": {
                                 "offset": {
-                                    "type": "array",
                                     "description": "specifies the offset from the emitter to emit the particles. evaluated once per particle emitted",
+                                    "type": "array",
                                     "default": [
                                         0,
                                         0,
@@ -414,14 +415,14 @@
                                     }
                                 },
                                 "surface_only": {
+                                    "description": "emit only from the surface of the sphere",
                                     "type": "boolean",
-                                    "default": false,
-                                    "description": "emit only from the surface of the sphere"
+                                    "default": false
                                 },
                                 "radius": {
+                                    "description": "sphere radius. evaluated once per particle emitted.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 1,
-                                    "description": "sphere radius. evaluated once per particle emitted."
+                                    "default": 1
                                 },
                                 "plane_normal": {
                                     "description": "specifies the normal of the disc plane, the disc will be perpendicular to this direction",
@@ -444,6 +445,7 @@
                                     ]
                                 },
                                 "direction": {
+                                    "description": "specifies the direciton of particles. evaluated once per particle emitted.",
                                     "anyOf": [
                                         {
                                             "type": "array",
@@ -458,8 +460,7 @@
                                             ]
                                         }
                                     ],
-                                    "default": "outwards",
-                                    "description": "specifies the direciton of particles. evaluated once per particle emitted."
+                                    "default": "outwards"
                                 }
                             }
                         },
@@ -467,14 +468,14 @@
                             "type": "object",
                             "properties": {
                                 "rotation": {
+                                    "description": "specifies the initial rotation in degrees. evaluated once.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "specifies the initial rotation in degrees. evaluated once."
+                                    "default": 0
                                 },
                                 "rotation_rate": {
+                                    "description": "specifies the spin rate in degrees/second. evaluated once.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "specifies the spin rate in degrees/second. evaluated once."
+                                    "default": 0
                                 }
                             }
                         },
@@ -491,6 +492,9 @@
                                     "type": "string",
                                     "default": 0,
                                     "$ref": "../common.json#/definitions/floatMolang"
+                                },
+                                {
+                                    "type": "number"
                                 }
                             ]
                         },
@@ -498,31 +502,31 @@
                             "type": "object",
                             "properties": {
                                 "linear_acceleration": {
+                                    "description": "the linear acceleration applied to the particle. Units are blocks/sec/sec. An example would be gravity which is [0, -9.8, 0]. evaluated every frame.",
                                     "type": "array",
                                     "default": [
                                         0,
                                         0,
                                         0
                                     ],
-                                    "description": "the linear acceleration applied to the particle. Units are blocks/sec/sec. An example would be gravity which is [0, -9.8, 0]. evaluated every frame.",
                                     "items": {
                                         "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "linear_drag_coefficient": {
+                                    "description": "using the equation: 'acceleration = -linear_drag_coefficient*velocity'. where velocity is the current direction times speed. Think of this as air-drag.  The higher the value, the more drag. evaluated every frame.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "using the equation: 'acceleration = -linear_drag_coefficient*velocity'. where velocity is the current direction times speed. Think of this as air-drag.  The higher the value, the more drag. evaluated every frame."
+                                    "default": 0
                                 },
                                 "rotation_acceleration": {
+                                    "description": "acceleration applies to the rotation speed of the particle. think of a disc spinning up or a smoke puff that starts rotating. but slows down over time. evaluated every frame. acceleration is in degrees/sec/sec.",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "acceleration applies to the rotation speed of the particle. think of a disc spinning up or a smoke puff that starts rotating. but slows down over time. evaluated every frame. acceleration is in degrees/sec/sec."
+                                    "default": 0
                                 },
                                 "rotation_drag_coefficient": {
+                                    "description": "drag applied to retard rotation. equation is 'rotation_acceleration += -rotation_rate*rotation_drag_coefficient'. useful to slow a rotation, or to limit the rotation acceleration. Think of a disc that speeds up (acceleration). but reaches a terminal speed (drag). Another use is if you have a particle growing in size, having. the rotation slow down due to drag can add \"weight\" to the particle's. motion",
                                     "$ref": "../common.json#/definitions/floatMolang",
-                                    "default": 0,
-                                    "description": "drag applied to retard rotation. equation is 'rotation_acceleration += -rotation_rate*rotation_drag_coefficient'. useful to slow a rotation, or to limit the rotation acceleration. Think of a disc that speeds up (acceleration). but reaches a terminal speed (drag). Another use is if you have a particle growing in size, having. the rotation slow down due to drag can add \"weight\" to the particle's. motion"
+                                    "default": 0
                                 }
                             }
                         },
@@ -530,28 +534,28 @@
                             "type": "object",
                             "properties": {
                                 "relative_position": {
+                                    "description": "directly set the position relative to the emitter. E.g. a spiral might be: '\"relative_position\": [\"Math.cos(Params.LifeTime)\", 1.0,\"Math.sin(Params.Lifetime)\"]' evaluated every frame.",
                                     "type": "array",
                                     "default": [
                                         0,
                                         0,
                                         0
                                     ],
-                                    "description": "directly set the position relative to the emitter. E.g. a spiral might be: '\"relative_position\": [\"Math.cos(Params.LifeTime)\", 1.0,\"Math.sin(Params.Lifetime)\"]' evaluated every frame.",
                                     "items": {
                                         "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "direction": {
-                                    "type": "array",
                                     "description": "directly set the 3d direction of the particle. doesn't affect direction if not specified. evaluated every frame",
+                                    "type": "array",
                                     "items": {
                                         "$ref": "../common.json#/definitions/floatMolang"
                                     }
                                 },
                                 "rotation": {
+                                    "description": "directly set the rotation of the particle. evaluated every frame.",
                                     "default": 0,
-                                    "$ref": "../common.json#/definitions/floatMolang",
-                                    "description": "directly set the rotation of the particle. evaluated every frame."
+                                    "$ref": "../common.json#/definitions/floatMolang"
                                 }
                             }
                         },
@@ -559,70 +563,49 @@
                             "type": "object",
                             "properties": {
                                 "enabled": {
-                                    "anyOf": [
-                                        {
-                                            "type": "boolean"
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ],
+                                    "description": "enables collision when true/non-zero. evaluated every frame",
                                     "default": true,
-                                    "description": "enables collision when true/non-zero. evaluated every frame"
+                                    "type": [
+                                        "boolean",
+                                        "string",
+                                        "integer"
+                                    ]
                                 },
                                 "collision_drag": {
-                                    "type": "number",
-                                    "description": "alters the speed of the particle when it has collided. useful for emulating friction/drag when colliding, e.g a particle that hits the ground would slow to a stop. This drag slows down the particle by this amount in blocks/sec when in contact"
+                                    "description": "alters the speed of the particle when it has collided. useful for emulating friction/drag when colliding, e.g a particle that hits the ground would slow to a stop. This drag slows down the particle by this amount in blocks/sec when in contact",
+                                    "type": "number"
                                 },
                                 "coefficient_of_restitution": {
-                                    "type": "number",
-                                    "description": "used for bouncing/not-bouncing. Set to 0.0 to not bounce, 1.0 to bounce back up to original hight. and in-between to lose speed after bouncing.  Set to >1.0 to gain energy on each bounce"
+                                    "description": "used for bouncing/not-bouncing. Set to 0.0 to not bounce, 1.0 to bounce back up to original hight. and in-between to lose speed after bouncing.  Set to >1.0 to gain energy on each bounce",
+                                    "type": "number"
                                 },
                                 "collision_radius": {
-                                    "type": "number",
-                                    "description": "used to minimize interpenetration of particles with the environment. note that this must be less than or equal to 1/2 block"
+                                    "description": "used to minimize interpenetration of particles with the environment. note that this must be less than or equal to 1/2 block",
+                                    "type": "number"
                                 },
                                 "expire_on_contact": {
-                                    "type": "boolean",
-                                    "description": "triggers expiration on contact if true"
+                                    "description": "triggers expiration on contact if true",
+                                    "type": "boolean"
                                 },
                                 "events": {
-                                    "anyOf": [
-                                        {
-                                            "type": "array",
-                                            "description": "triggers an event. array of individual events",
-                                            "items": {
-                                                "type": "object",
-                                                "properties": {
-                                                    "event": {
-                                                        "type": "string",
-                                                        "description": "triggers the specified event if the conditions are met."
-                                                    },
-                                                    "min_speed": {
-                                                        "type": "number",
-                                                        "default": 2,
-                                                        "minimum": 2,
-                                                        "description": "optional minimum speed for event triggering"
-                                                    }
-                                                }
-                                            }
+                                    "type": [
+                                        "array",
+                                        "object"
+                                    ],
+                                    "default": [],
+                                    "items": {
+                                        "$ref": "#/properties/minecraft:particle_effect/properties/components/properties/minecraft:particle_motion_collision/properties/events"
+                                    },
+                                    "properties": {
+                                        "event": {
+                                            "description": "triggers the specified event if the conditions are met.",
+                                            "type": "string"
                                         },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "event": {
-                                                    "type": "string",
-                                                    "description": "triggers the specified event if the conditions are met."
-                                                },
-                                                "min_speed": {
-                                                    "type": "number",
-                                                    "default": 2,
-                                                    "minimum": 2,
-                                                    "description": "optional minimum speed for event triggering"
-                                                }
-                                            }
+                                        "min_speed": {
+                                            "description": "optional minimum speed for event triggering",
+                                            "type": "number"
                                         }
-                                    ]
+                                    }
                                 }
                             }
                         }

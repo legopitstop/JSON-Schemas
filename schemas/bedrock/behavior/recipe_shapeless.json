@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:recipe_shapeless": {
+            "title": "behavior.recipe_shapeless",
             "description": "Represents a shapeless crafting recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Shapeless%20Recipe",
             "type": "object",
             "default": {},

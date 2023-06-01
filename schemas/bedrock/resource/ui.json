@@ -769,11 +769,13 @@
     },
     "properties": {
         "namespace": {
+            "title": "resrouce.ui",
             "description": "Namespaces are identifiers for the UI files. They are used to access elements in some files across all other files. When adding a new namespace, it must have a unique name.",
             "type": "string"
         }
     },
     "additionalProperties": {
+        "title": "resrouce.ui",
         "description": "When referencing elements from different namespaces, it must have the following format: [element_name]@[namespace_reference].[element_name_reference]",
         "properties": {
             "type": {

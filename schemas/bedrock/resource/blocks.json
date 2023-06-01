@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "format_version": {
+            "title": "resrouce.blocks",
             "type": ["array", "string", "integer"],
             "default": [],
             "minItems": 3,
@@ -13,6 +14,7 @@
         }
     },
     "additionalProperties": {
+        "title": "resrouce.blocks",
         "properties": {
             "sound": {
                 "description": "Sound for the block",

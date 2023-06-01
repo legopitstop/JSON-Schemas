@@ -4,6 +4,18 @@
     "description": "JSON schema for Minecraft Bedrock Edition.",
     "allOf": [
         {
+            "$ref": "./behavior_tree.json"
+        },
+        {
+            "$ref": "./contents.json"
+        },
+        {
+            "$ref": "./camera_preset.json"
+        },
+        {
+            "$ref": "./camera_list.json"
+        },
+        {
             "$ref": "./block.json"
         },
         {
@@ -23,6 +35,9 @@
         },
         {
             "$ref": "./spawn_rules.json"
+        },
+        {
+            "$ref": "./recipe_material_reduction.json"
         },
         {
             "$ref": "./recipe_brewing_container.json"

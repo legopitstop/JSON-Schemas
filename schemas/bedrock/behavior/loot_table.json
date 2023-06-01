@@ -242,7 +242,7 @@
     },
     "properties": {
         "functions": {
-            "title": "LOOT_TABLE",
+            "title": "behavior.loot_table",
             "description": "Applies functions to all item stacks produced by this table. Functions are applied in order, so for example `looting_enchant` must be after `set_count` to work correctly.",
             "type": "array",
             "items": {
@@ -1682,7 +1682,7 @@
             }
         },
         "pools": {
-            "title": "LOOT_TABLE",
+            "title": "behavior.loot_table",
             "description": "A list of all pools for this loot table. Each pool used generates items from its list of items based on the number of rolls. Pools are applied in",
             "type": "array",
             "items": {

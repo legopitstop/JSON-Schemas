@@ -3,21 +3,26 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "num_mip_levels": {
+            "title": "resrouce.terrain_texture",
             "type": "integer",
             "default": 0
         },
         "padding": {
+            "title": "resrouce.terrain_texture",
             "default": 0
         },
         "resource_pack_name": {
+            "title": "resrouce.terrain_texture",
             "type": "string",
             "default": "vanilla"
         },
         "texture_name": {
+            "title": "resrouce.terrain_texture",
             "type": "string",
             "default": "atlas.terrain"
         },
         "texture_data": {
+            "title": "resrouce.terrain_texture",
             "type": "object",
             "default": {},
             "additionalProperties": {

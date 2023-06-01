@@ -6,6 +6,7 @@
         "type": "object",
         "properties": {
             "trades": {
+                "title": "behavior.trades",
                 "type": "array",
                 "items": {
                     "type": "object",

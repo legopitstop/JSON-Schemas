@@ -3,6 +3,7 @@
     "$schema": "http://json-schema.org/draft-07/schema#",
     "properties": {
         "minecraft:conditional_list": {
+            "title": "behavior.conditional_list",
             "description": "Feature type 'minecraft:conditional_list' has not yet been documented.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aconditional_list",
             "type": "object",
             "default": {},
