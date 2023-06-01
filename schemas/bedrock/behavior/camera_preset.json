@@ -1,0 +1,48 @@
+{
+    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/camera_preset.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "minecraft:camera_preset": {
+            "title": "behavior.camera_preset",
+            "type": "object",
+            "default": {},
+            "required": [
+                "identifier"
+            ],
+            "properties": {
+                "identifier": {
+                    "type": "string"
+                },
+                "inherit_from": {
+                    "type": "string"
+                },
+                "pos_y": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "rot_x": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "rot_y": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "pos_x": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "pos_z": {
+                    "type": "integer",
+                    "default": 0
+                },
+                "listener": {
+                    "enum": [
+                        "player"
+                    ]
+                }
+            },
+            "additionalProperties": false
+        }
+    }
+}
