@@ -2,6 +2,86 @@
     "$id": "../common.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "UnlockRecipe": {
+            "$id": "../common.json#/definitions/UnlockRecipe",
+            "description": "Unlock this recipe",
+            "type": [
+                "object",
+                "array"
+            ],
+            "default": {},
+            "properties": {
+                "context": {
+                    "description": "Context to unlock the recipe.",
+                    "type": "string",
+                    "examples": [
+                        "PlayerInWater",
+                        "PlayerHasManyItems",
+                        "AlwaysUnlocked",
+                        "None"
+                    ]
+                },
+                "item": {
+                    "description": "The item needed to unlock the recipe.",
+                    "type": "string",
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                },
+                "data": {
+                    "description": "The items data. (if any)",
+                    "type": "integer",
+                    "default": 0
+                },
+                "tag": {
+                    "description": "The item tag to use",
+                    "type": "string",
+                    "enum": [
+                        "minecraft:soul_fire_base_blocks",
+                        "minecraft:stone_tool_materials",
+                        "minecraft:stone_crafting_materials",
+                        "minecraft:planks",
+                        "minecraft:wooden_slabs"
+                    ]
+                }
+            },
+            "additionalProperties": false,
+            "items": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "context": {
+                        "description": "Context to unlock the recipe.",
+                        "type": "string",
+                        "examples": [
+                            "PlayerInWater",
+                            "PlayerHasManyItems",
+                            "AlwaysUnlocked",
+                            "None"
+                        ]
+                    },
+                    "item": {
+                        "description": "The item needed to unlock the recipe.",
+                        "type": "string",
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                    },
+                    "data": {
+                        "description": "The items data. (if any)",
+                        "type": "integer",
+                        "default": 0
+                    },
+                    "tag": {
+                        "description": "The item tag to use",
+                        "type": "string",
+                        "enum": [
+                            "minecraft:soul_fire_base_blocks",
+                            "minecraft:stone_tool_materials",
+                            "minecraft:stone_crafting_materials",
+                            "minecraft:planks",
+                            "minecraft:wooden_slabs"
+                        ]
+                    }
+                }
+            }
+        },
         "supportedVersions": {
             "$id": "../common.json#/definitions/supportedVersions",
             "type": [
@@ -429,12 +509,11 @@
                             "description": "The items id"
                         },
                         "tag": {
-                            "description": "The item tag to use",
-                            "type": "string"
+                            "description": "The item tag to use"
                         },
                         "data": {
-                            "type": "number",
-                            "description": "The items data. (if any)"
+                            "description": "The items data. (if any)",
+                            "type": "number"
                         }
                     }
                 }

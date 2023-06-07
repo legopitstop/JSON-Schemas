@@ -271,38 +271,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:dye_powder": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Dye powder, there are 16 kinds of dye.",
-                            "type": "object",
-                            "required": [
-                                "color"
-                            ],
-                            "properties": {
-                                "color": {
-                                    "enum": [
-                                        "white",
-                                        "brown",
-                                        "black",
-                                        "blue",
-                                        "cyan",
-                                        "gray",
-                                        "green",
-                                        "lightblue",
-                                        "silver",
-                                        "lime",
-                                        "magenta",
-                                        "orange",
-                                        "pink",
-                                        "purple",
-                                        "red",
-                                        "yellow"
-                                    ],
-                                    "description": "Defines what color the dye is."
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:food": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "When an item has a food component, it becomes edible to the player.",
@@ -447,22 +415,6 @@
                                     "description": "The max capacity of the item. default is 64",
                                     "type": "integer",
                                     "default": 64
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:knockback_resistance": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Knockback Resistance Item. Component put on items that provide knockback resistance.",
-                            "type": "object",
-                            "required": [
-                                "protection"
-                            ],
-                            "properties": {
-                                "protection": {
-                                    "type": "integer",
-                                    "maximum": 1.0,
-                                    "description": "Amount of knockback resistance provided with the total maximum protection being 1.0"
                                 }
                             },
                             "additionalProperties": false
@@ -1279,8 +1231,8 @@
                             ],
                             "properties": {
                                 "duration": {
-                                    "type": "number",
                                     "description": "How long in seconds will this fuel cook items for.",
+                                    "type": "number",
                                     "minimum": 0.05
                                 }
                             },
@@ -1633,6 +1585,16 @@
                         },
                         "minecraft:mining_speed": {
                             "type": "integer"
+                        },
+                        "minecraft:knockback_resistance": {
+                            "title": "REMOVED (1.20.10)",
+                            "type": "object",
+                            "default": {}
+                        },
+                        "minecraft:dye_powder": {
+                            "title": "REMOVED (1.20.10)",
+                            "type": "object",
+                            "default": {}
                         },
                         "saddle": {}
                     }

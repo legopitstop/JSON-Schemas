@@ -67,6 +67,9 @@
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
@@ -142,7 +145,7 @@
                             "default": {},
                             "properties": {
                                 "minecraft:placement_direction": {
-                                    "description": "Adds the \"minecraft:cardinal_direction\" and/or \"minecraft:facing_direction\" states and setter function to the block. The values of these states are set when the block is placed.",
+                                    "description": "Can enable the \"minecraft:cardinal_direction\" and/or \"minecraft:facing_direction\" states on a block.",
                                     "type": "object",
                                     "default": {},
                                     "required": [
@@ -155,8 +158,8 @@
                                             "default": [],
                                             "items": {
                                                 "enumDescriptions": [
-                                                    "Defines the cardinal placement direction of a block. 0 = South, 1 = West, 2 = North, 3 = East",
-                                                    "Defines all placement directions of a block. 0 = Down, 1 = Up, 2 = South, 3 = West, 4 = North, 5 = East"
+                                                    "is a four value string state [\"north\", \"south\", \"east\", \"west\"] that describes what cardinal direction the player was facing when they placed the block.",
+                                                    "is a six value string state [\"down\", \"up\", \"north\", \"south\", \"east\", \"west\"] that describes what direction the player was facing when they placed the block."
                                                 ],
                                                 "enum": [
                                                     "minecraft:cardinal_direction",
@@ -180,6 +183,7 @@
                                     "additionalProperties": false
                                 },
                                 "minecraft:placement_position": {
+                                    "description": "Can enable the \"minecraft:block_face\" and/or \"minecraft:vertical_half\" states on a block.",
                                     "type": "object",
                                     "default": {},
                                     "properties": {
@@ -189,8 +193,8 @@
                                             "default": [],
                                             "items": {
                                                 "enumDescriptions": [
-                                                    "is a six value string state (\"down\", \"up\", \"north\", \"south\", \"east\", \"west\") that contains info on which block face the player clicked on when the block was placed",
-                                                    "is a 2 value string state (\"bottom\", \"top\") with info on whether the block was placed in the lower or upper half of the block position"
+                                                    "is a six value string state [\"down\", \"up\", \"north\", \"south\", \"east\", \"west\"] that describes what face the block was placed on.",
+                                                    "is a two value string state [\"bottom\", \"top\"] that describes whether the block was placed in the upper or lower half of a block position."
                                                 ],
                                                 "enum": [
                                                     "minecraft:block_face",
@@ -202,7 +206,10 @@
                                         }
                                     },
                                     "additionalProperties": false
-                                }
+                                },
+
+                                "minecraft:cardinal_direction": {},
+                                "minecraft:facing_direction": {}
                             },
                             "additionalProperties": false
                         }
@@ -830,7 +837,6 @@
                         "tag:fertilize_area": {
                             "$ref": "#/definitions/VanillaTags"
                         },
-
                         "minecraft:block_light_absorption": {
                             "title": "DEPRECATED",
                             "description": "Replaced with 'light_dampening'",
