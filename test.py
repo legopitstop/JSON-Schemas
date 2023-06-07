@@ -1,13 +1,12 @@
 # Test all files in test/** and log any errors
 # python test.py -all
-# TODO
-# - Add progressbar
 import logging
 import os
 import sys
 import glob
 import json
 import jsonschema
+import urllib
 from jsonschema.exceptions import RefResolutionError
 from progress.bar import IncrementalBar
 import argparse
@@ -16,6 +15,36 @@ from multiprocessing import Pool
 PATH = os.path.dirname(os.path.realpath(__file__))
 logging.basicConfig(format='[%(asctime)s] [%(name)s/%(levelname)s]: %(message)s', datefmt='%I:%M:%S',handlers=[logging.FileHandler(os.path.join(PATH, 'latest.log'),mode='w'),logging.StreamHandler(sys.stdout)], level=logging.INFO)
 
+class ExtendedRefResolver(jsonschema.RefResolver):
+    def resolve_remote(self, uri:str):
+        path = None
+        if uri.startswith('file:'):
+            path = uri[len('file:'):]
+            if path.startswith('//'):
+                path = path[len('///'):]
+        
+        elif os.path.isfile(uri):
+            path = uri
+        
+        if path is not None:
+            return self.resolve_local(path)
+        else:
+            return super().resolve_remote(uri)
+    
+    def resolve_local(self, path: str):
+        realpath = urllib.parse.unquote(path)
+        if path == 'common.json': path = os.path.join(PATH, 'schemas', 'bedrock','common.json')
+        schema = {}
+        try:
+            with open(realpath, encoding="utf8") as file:
+                schema = json.load(file)
+        except FileNotFoundError as err:
+            print(f'FileNotFoundError {err}')
+        
+        if self.cache_remote:
+            self.store[path] = schema
+        return schema
+    
 def fix(obj:dict):
     if isinstance(obj, dict):
         for key in obj:
@@ -41,7 +70,8 @@ def _path(*args):
 
     return res
 
-with open(os.path.join(PATH, 'schemas', 'bedrock', 'schema.json'), 'r') as r:
+schema_path = os.path.join(PATH, 'schemas', 'bedrock', 'schema.json')
+with open(schema_path, 'r') as r:
     try:
         SCHEMA = json.load(r)
         fix(SCHEMA)
@@ -51,7 +81,6 @@ with open(os.path.join(PATH, 'schemas', 'bedrock', 'schema.json'), 'r') as r:
 
 def test(name:str, instance:list):
     res = True
-    
     bar = None
     if args.all is False:
         bar = IncrementalBar(name, max=len(instance))
@@ -62,7 +91,7 @@ def test(name:str, instance:list):
                 filename = fp.replace('\\', '/')
                 try:
                     data = json.load(r)
-                    jsonschema.validate(data, SCHEMA)
+                    jsonschema.validate(data, SCHEMA, resolver=ExtendedRefResolver(base_uri='file://', referrer=SCHEMA))
                     
                 except RefResolutionError as err:
                     logging.error(f'{name} RefResolutionError: {err}')
@@ -354,6 +383,8 @@ def smap(f, *args):
 
 def main():
     with Pool(30) as p:
+        # TODO: This should instead compile all JSON files that it should validate.
+        # p.map(smap, glob.glob(...))
         p.map(smap, [callback1,
                     callback2,
                     callback3,
