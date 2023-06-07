@@ -7,9 +7,15 @@
             "description": "Represents a Material Reducer Recipe",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"

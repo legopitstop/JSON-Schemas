@@ -7,9 +7,15 @@
             "description": "scan_surface\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ascan_surface",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"

@@ -6,8 +6,16 @@
             "title": "behavior.spawn_rules",
             "description": "spawn_rules\nSee https://bedrock.dev/docs/stable/Entities#Spawn%20Rules",
             "type": "object",
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID",
@@ -24,7 +32,8 @@
                                 "cat"
                             ]
                         }
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 "conditions": {
                     "type": "array",

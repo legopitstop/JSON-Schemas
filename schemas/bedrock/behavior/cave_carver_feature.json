@@ -7,9 +7,15 @@
             "description": "'minecraft:cave_carver_feature' carves a cave through the world in the current chunk, and in every chunk around the current chunk in an 8 radial pattern.This feature will also only work when placed specifically in the pass \"pregeneration_pass\".\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Acave_carver_feature",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"

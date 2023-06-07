@@ -60,11 +60,17 @@
             "description": "JSON schema for data-driven entities\nSee https://bedrock.dev/docs/stable/Entities",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "description": "Description properties for the entity.",
                     "type": "object",
                     "default": {},
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "description": "Sets the name for this entity's description.",

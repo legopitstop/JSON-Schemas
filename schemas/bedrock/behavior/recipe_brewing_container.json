@@ -7,9 +7,15 @@
             "description": "Represents a Potion Brewing Container Recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Potion%20Brewing%20Container%20Recipe",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"

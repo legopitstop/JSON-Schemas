@@ -7,9 +7,15 @@
             "description": "'minecraft:geode_feature' generates a rock formation to simulate a geode. Each layer of, and block within, the geode can be replaced. Succeeds if: At least one block within the geode is placed.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ageode_feature",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"

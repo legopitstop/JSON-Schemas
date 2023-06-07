@@ -7,9 +7,15 @@
             "description": "Feature type 'minecraft:conditional_list' has not yet been documented.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aconditional_list",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"

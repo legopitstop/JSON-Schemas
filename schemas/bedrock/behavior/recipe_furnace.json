@@ -7,9 +7,15 @@
             "description": "Represents a furnace recipe for a furnace.'Input' items will burn and transform into items specified in 'output'.\nSee https://bedrock.dev/docs/stable/Recipes#Furnace%20Recipe",
             "type": "object",
             "default": {},
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"
@@ -32,8 +38,8 @@
                     "description": "Items used as input for the furnace recipe."
                 },
                 "output": {
-                    "$ref": "../common.json#/definitions/itemDataCount",
-                    "description": "Items used as output for the furnace recipe."
+                    "description": "Items used as output for the furnace recipe.",
+                    "$ref": "../common.json#/definitions/itemDataCount"
                 }
             }
         }

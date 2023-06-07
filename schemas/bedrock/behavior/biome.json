@@ -14,9 +14,15 @@
             "title": "behavior.biome",
             "description": "See https://bedrock.dev/docs/stable/Biomes",
             "type": "object",
+            "required": [
+                "description"
+            ],
             "properties": {
                 "description": {
                     "type": "object",
+                    "required": [
+                        "identifier"
+                    ],
                     "properties": {
                         "identifier": {
                             "$ref": "../common.json#/definitions/nameSpaceID"
@@ -139,85 +145,87 @@
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:ignore_automatic_features": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:surface_parameters": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:surface_material_adjustments": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:swamp_surface": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:frozen_ocean_surface": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:mesa_surface": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:nether_surface": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:the_end_surface": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:capped_surface": {
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "minecraft:overworld_generation_rules": {
                             "description": "UNDOCUMENTED",
-                            "type":"object",
+                            "type": "object",
                             "default": {},
-                            "properties":{
+                            "properties": {
                                 "generate_for_climates": {
-                                    "type":"array",
-                                    "default":[],
-                                    "items":{
-                                        "type":"array",
-                                        "default":[],
-                                        "items":{
-                                            "type":["integer"],
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "array",
+                                        "default": [],
+                                        "items": {
+                                            "type": [
+                                                "integer"
+                                            ],
                                             "enum": [
                                                 "cold"
                                             ]
@@ -225,10 +233,10 @@
                                     }
                                 },
                                 "hills_transformation": {
-                                    "type":"string"
+                                    "type": "string"
                                 },
                                 "shore_transformation": {
-                                    "type":"string"
+                                    "type": "string"
                                 }
                             },
                             "additionalProperties": false
@@ -237,7 +245,7 @@
                             "description": "UNDOCUMENTED",
                             "type": "object",
                             "default": {},
-                            "properties":{},
+                            "properties": {},
                             "additionalProperties": false
                         },
                         "animal": {
