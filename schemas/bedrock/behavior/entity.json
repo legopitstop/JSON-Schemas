@@ -8956,6 +8956,11 @@
                                     "description": "The text to display when the player can interact with the entity when playing with Touch-screen controls",
                                     "type": "string"
                                 },
+                                "passenger_max_width": {
+                                    "description": "The max width a mob can be to be a passenger. A value of 0 ignores this parameter.",
+                                    "type": "number",
+                                    "default": 0.00
+                                },
                                 "priority": {
                                     "description": "This field may exist in old data but isn't used by minecraft:rideable.",
                                     "type": "integer",
