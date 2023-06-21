@@ -11,10 +11,23 @@
             ],
             "properties": {
                 "identifier": {
+                    "description": "ID of this cemera preset",
                     "type": "string"
                 },
                 "inherit_from": {
-                    "type": "string"
+                    "description": "The parent camera preset.",
+                    "type": "string",
+                    "examples": [
+                        "minecraft:free",
+                        "minecraft:first_person",
+                        "minecraft:third_person_front",
+                        "minecraft:third_person"
+                    ]
+                },
+                "player_effects": {
+                    "description": "Causes game rendering to use player effect state (for example night vision) when this preset is active.",
+                    "type": "boolean",
+                    "default": true
                 },
                 "pos_y": {
                     "type": "integer",
