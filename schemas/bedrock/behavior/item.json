@@ -142,35 +142,6 @@
                     "description": "The properties of the item.",
                     "type": "object",
                     "properties": {
-                        "minecraft:armor": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The armor item component determines the amount of protection you have in your armor item.",
-                            "type": "object",
-                            "required": [
-                                "protection"
-                            ],
-                            "properties": {
-                                "protection": {
-                                    "description": "How much protection does the armor item have.",
-                                    "type": "integer"
-                                },
-                                "texture_type": {
-                                    "description": "Texture Type to apply for the armor. Note that Horse armor is restricted to leather, iron, gold, or diamond.",
-                                    "enum": [
-                                        "leather",
-                                        "none",
-                                        "chain",
-                                        "iron",
-                                        "diamond",
-                                        "gold",
-                                        "elytra",
-                                        "turtle",
-                                        "netherite"
-                                    ]
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:block_placer": {
                             "title": "STABLE 1.20.10",
                             "description": "Planter item component. planter items are items that can be planted.",
@@ -194,263 +165,8 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:chargeable": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Allows an item to be used over a duration. (Like apples or bows)",
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "movement_modifier": {
-                                    "description": "Modifier value to scale the players movement speed when item is in use.",
-                                    "type": "number",
-                                    "minimum": 0.0,
-                                    "maximum": 1.0,
-                                    "default": 0.0
-                                },
-                                "on_complete": {
-                                    "description": "Event trigger for when the item has completed its use duration.",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:digger": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Digger item compoent. Make this item dig up blocks at diffrent speeds.",
-                            "type": "object",
-                            "required": [
-                                "destroy_speeds",
-                                "use_efficiency"
-                            ],
-                            "properties": {
-                                "destroy_speeds": {
-                                    "description": "Destroy speed per block.",
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "required": [
-                                            "block",
-                                            "speed"
-                                        ],
-                                        "properties": {
-                                            "block": {
-                                                "type": [
-                                                    "string",
-                                                    "object"
-                                                ],
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
-                                                "properties": {
-                                                    "tags": {
-                                                        "$ref": "../common.json#/definitions/MoLang"
-                                                    }
-                                                },
-                                                "additionalProperties": false
-                                            },
-                                            "speed": {
-                                                "description": "The speed to dig this block. Higher the number the faster it will dig.",
-                                                "type": "integer"
-                                            },
-                                            "on_dig": {
-                                                "description": "Trigger for when you dig up this block",
-                                                "$ref": "../common.json#/definitions/EventTrigger"
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                },
-                                "on_dig": {
-                                    "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                },
-                                "use_efficiency": {
-                                    "description": "Use efficiency enchantment? Default is set to false.",
-                                    "type": "boolean",
-                                    "default": false
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:food": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "When an item has a food component, it becomes edible to the player.",
-                            "type": "object",
-                            "required": [
-                                "nutrition",
-                                "saturation_modifier"
-                            ],
-                            "properties": {
-                                "is_meat": {
-                                    "description": "If true the item is meat.",
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "can_always_eat": {
-                                    "description": "If true you can always eat this item (even when not hungry). Default is set to false.",
-                                    "type": "boolean",
-                                    "default": false
-                                },
-                                "nutrition": {
-                                    "description": "The value that is added to the actor's nutrition when the item is used. Default is set to 0.",
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "on_consume": {
-                                    "title": "DEPRECATED",
-                                    "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
-                                    "default": false
-                                },
-                                "saturation_modifier": {
-                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
-                                    "anyOf": [
-                                        {
-                                            "type": "number",
-                                            "minimum": 0.00,
-                                            "default": 0.6
-                                        },
-                                        {
-                                            "enum": [
-                                                "low",
-                                                "supernatural",
-                                                "normal",
-                                                "poor",
-                                                "good"
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "using_converts_to": {
-                                    "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
-                                    "anyOf": [
-                                        {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "item": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
-                                                    "description": "The item that it will become."
-                                                }
-                                            }
-                                        }
-                                    ]
-                                },
-                                "on_use_action": {
-                                    "type": "string",
-                                    "examples": [
-                                        "chorus_teleport"
-                                    ]
-                                },
-                                "on_use_range": {
-                                    "type": "array",
-                                    "default": [
-                                        0,
-                                        0,
-                                        0
-                                    ],
-                                    "items": {
-                                        "type": "integer"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                },
-                                "cooldown_type": {
-                                    "type": "string",
-                                    "examples": [
-                                        "chorusfruit"
-                                    ]
-                                },
-                                "cooldown_time": {
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "remove_effects": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "effects": {
-                                    "title": "OUTDATED",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "required": [
-                                            "name"
-                                        ],
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "chance": {
-                                                "type": "number",
-                                                "default": 1.0
-                                            },
-                                            "duration": {
-                                                "type": "integer",
-                                                "default": 0
-                                            },
-                                            "amplifier": {
-                                                "type": "integer",
-                                                "default": 0
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:item_storage": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features or Caves and Cliffs internal)",
-                            "description": "The Storage Item Component is used for storing Items within an Item's User Data",
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "capacity": {
-                                    "description": "The max capacity of the item. default is 64",
-                                    "type": "integer",
-                                    "default": 64
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:on_use": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The on_use item component allows you to receive an event when the item is used.",
-                            "type": "object",
-                            "required": [
-                                "on_use"
-                            ],
-                            "properties": {
-                                "on_use": {
-                                    "description": "Triggers when the item is used.",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:on_use_on": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
-                            "type": "object",
-                            "required": [
-                                "on_use_on"
-                            ],
-                            "properties": {
-                                "on_use_on": {
-                                    "description": "Triggered when the item is used on a block",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:projectile": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "STABLE 1.20.10",
                             "description": "Projectile item component. projectile items shoot out, like an arrow.",
                             "type": "object",
                             "required": [
@@ -904,24 +620,8 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:render_offsets": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
-                            "type": "object",
-                            "properties": {
-                                "main_hand": {
-                                    "description": "Right hand transform data.",
-                                    "$ref": "#/definitions/RenderOffsets"
-                                },
-                                "off_hand": {
-                                    "description": "Left hand transform data.",
-                                    "$ref": "#/definitions/RenderOffsets"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:shooter": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "STABLE 1.20.10",
                             "description": "Shooter Item Component.",
                             "type": "object",
                             "required": [
@@ -991,7 +691,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:throwable": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "STABLE 1.20.10",
                             "description": "Throwable item component. Throwable items, such as a snowball.",
                             "type": "object",
                             "required": [
@@ -1036,63 +736,19 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:weapon": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
-                            "type": "object",
-                            "properties": {
-                                "on_hit_block": {
-                                    "description": "Trigger for letting you know when this item is used to hit a block",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                },
-                                "on_hurt_entity": {
-                                    "description": "Trigger for letting you know when this item is used to hurt another mob",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                },
-                                "on_not_hurt_entity": {
-                                    "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
+                        "minecraft:can_destroy_in_creative": {
+                            "title": "STABLE 1.20.10",
+                            "description": "This means you cannot break blocks with it while in creative mode. Example items: diamond sword, golden sword, iron sword, netherite sword, stone sword, wooden sword, trident",
+                            "type": "boolean",
+                            "default": true
                         },
-                        "minecraft:wearable": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Wearable item component.",
-                            "type": "object",
-                            "required": [
-                                "dispensable",
-                                "slot"
-                            ],
-                            "properties": {
-                                "dispensable": {
-                                    "type": "boolean",
-                                    "default": false
-                                },
-                                "slot": {
-                                    "description": "Slot where you can place the armor piece in/on.",
-                                    "enum": [
-                                        "slot.weapon.mainhand",
-                                        "none",
-                                        "slot.weapon.offhand",
-                                        "slot.armor.head",
-                                        "slot.armor.chest",
-                                        "slot.armor.legs",
-                                        "slot.armor.feet",
-                                        "slot.hotbar",
-                                        "slot.inventory",
-                                        "slot.enderchest",
-                                        "slot.saddle",
-                                        "slot.armor",
-                                        "slot.chest",
-                                        "slot.equippable"
-                                    ]
-                                }
-                            },
-                            "additionalProperties": false
+                        "minecraft:hover_text_color": {
+                            "title": "STABLE 1.20.10",
+                            "description": "The color of the name.",
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
                         },
                         "minecraft:repairable": {
-                            "title": "STABLE (1.20.10)",
+                            "title": "STABLE 1.20.10",
                             "description": "Repairable item component: how much damage can this item repair, what items can repair it.",
                             "type": "object",
                             "required": [
@@ -1118,9 +774,6 @@
                                             },
                                             "repair_amount": {
                                                 "$ref": "../common.json#/definitions/floatMolang"
-                                            },
-                                            "on_repaired": {
-                                                "type": "string"
                                             }
                                         },
                                         "additionalProperties": false
@@ -1130,7 +783,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:cooldown": {
-                            "title": "STABLE (1.20.10)",
+                            "title": "STABLE 1.20.10",
                             "description": "Cool down time for a component. After you use an item it becomes unusable for the duration specified by the 'cool down time' setting in this component.",
                             "type": "object",
                             "required": [
@@ -1150,7 +803,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:display_name": {
-                            "title": "STABLE (1.20.0)",
+                            "title": "STABLE 1.20.0",
                             "description": "Display Name item component. Display Names display the name of an item.",
                             "type": "object",
                             "required": [
@@ -1165,7 +818,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:durability": {
-                            "title": "STABLE (1.20.0)",
+                            "title": "STABLE 1.20.0",
                             "description": "Durability item component: how much damage can this item take before breaking.",
                             "type": "object",
                             "required": [
@@ -1196,8 +849,24 @@
                             },
                             "additionalProperties": false
                         },
+                        "minecraft:fuel": {
+                            "title": "STABLE 1.20.0",
+                            "description": "Allows this item to be used as fuel in a furnace to 'cook' other items.",
+                            "type": "object",
+                            "required": [
+                                "duration"
+                            ],
+                            "properties": {
+                                "duration": {
+                                    "description": "How long in seconds will this fuel cook items for.",
+                                    "type": "number",
+                                    "minimum": 0.05
+                                }
+                            },
+                            "additionalProperties": false
+                        },
                         "minecraft:entity_placer": {
-                            "title": "STABLE (1.20.0)",
+                            "title": "STABLE 1.20.0",
                             "description": "Entity placer item component. You can specifiy allowed blocks that the item is restricted to.",
                             "type": "object",
                             "required": [
@@ -1222,24 +891,8 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:fuel": {
-                            "title": "STABLE (1.20.0)",
-                            "description": "Allows this item to be used as fuel in a furnace to 'cook' other items.",
-                            "type": "object",
-                            "required": [
-                                "duration"
-                            ],
-                            "properties": {
-                                "duration": {
-                                    "description": "How long in seconds will this fuel cook items for.",
-                                    "type": "number",
-                                    "minimum": 0.05
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:icon": {
-                            "title": "STABLE (1.20.0)",
+                            "title": "STABLE 1.20.0",
                             "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
                             "type": [
                                 "object",
@@ -1264,6 +917,13 @@
                                 }
                             },
                             "additionalProperties": false
+                        },
+                        "minecraft:max_stack_size": {
+                            "title": "STABLE 1.20.10",
+                            "description": "THe max number of items that can be in one slot.",
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 64
                         },
                         "minecraft:fertilizer": {
                             "title": "STABLE",
@@ -1322,12 +982,6 @@
                             "description": "This is a empty bucket item. Example item; bucket",
                             "type": "object",
                             "default": {}
-                        },
-                        "minecraft:can_destroy_in_creative": {
-                            "title": "STABLE",
-                            "description": "This means you cannot break blocks with it while in creative mode. Example items: diamond sword, golden sword, iron sword, netherite sword, stone sword, wooden sword, trident",
-                            "type": "boolean",
-                            "default": true
                         },
                         "minecraft:carrot_on_a_stick": {
                             "title": "STABLE",
@@ -1539,11 +1193,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:hover_text_color": {
-                            "title": "STABLE",
-                            "description": "The color of the name.",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
-                        },
                         "minecraft:use_animation": {
                             "title": "STABLE",
                             "description": "What it will look like while your using the item.",
@@ -1576,12 +1225,362 @@
                             "type": "boolean",
                             "default": false
                         },
-                        "minecraft:max_stack_size": {
-                            "title": "STABLE 1.20.10",
-                            "description": "THe max number of items that can be in one slot.",
-                            "type": "integer",
-                            "minimum": 1,
-                            "maximum": 64
+
+
+                        "minecraft:render_offsets": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
+                            "type": "object",
+                            "properties": {
+                                "main_hand": {
+                                    "description": "Right hand transform data.",
+                                    "$ref": "#/definitions/RenderOffsets"
+                                },
+                                "off_hand": {
+                                    "description": "Left hand transform data.",
+                                    "$ref": "#/definitions/RenderOffsets"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:weapon": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
+                            "type": "object",
+                            "properties": {
+                                "on_hit_block": {
+                                    "description": "Trigger for letting you know when this item is used to hit a block",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                },
+                                "on_hurt_entity": {
+                                    "description": "Trigger for letting you know when this item is used to hurt another mob",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                },
+                                "on_not_hurt_entity": {
+                                    "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:wearable": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Wearable item component.",
+                            "type": "object",
+                            "required": [
+                                "dispensable",
+                                "slot"
+                            ],
+                            "properties": {
+                                "dispensable": {
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "slot": {
+                                    "description": "Slot where you can place the armor piece in/on.",
+                                    "enum": [
+                                        "slot.weapon.mainhand",
+                                        "none",
+                                        "slot.weapon.offhand",
+                                        "slot.armor.head",
+                                        "slot.armor.chest",
+                                        "slot.armor.legs",
+                                        "slot.armor.feet",
+                                        "slot.hotbar",
+                                        "slot.inventory",
+                                        "slot.enderchest",
+                                        "slot.saddle",
+                                        "slot.armor",
+                                        "slot.chest",
+                                        "slot.equippable"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:on_use": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The on_use item component allows you to receive an event when the item is used.",
+                            "type": "object",
+                            "required": [
+                                "on_use"
+                            ],
+                            "properties": {
+                                "on_use": {
+                                    "description": "Triggers when the item is used.",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:on_use_on": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
+                            "type": "object",
+                            "required": [
+                                "on_use_on"
+                            ],
+                            "properties": {
+                                "on_use_on": {
+                                    "description": "Triggered when the item is used on a block",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:item_storage": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features or Caves and Cliffs internal)",
+                            "description": "The Storage Item Component is used for storing Items within an Item's User Data",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "capacity": {
+                                    "description": "The max capacity of the item. default is 64",
+                                    "type": "integer",
+                                    "default": 64
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:armor": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The armor item component determines the amount of protection you have in your armor item.",
+                            "type": "object",
+                            "required": [
+                                "protection"
+                            ],
+                            "properties": {
+                                "protection": {
+                                    "description": "How much protection does the armor item have.",
+                                    "type": "integer"
+                                },
+                                "texture_type": {
+                                    "description": "Texture Type to apply for the armor. Note that Horse armor is restricted to leather, iron, gold, or diamond.",
+                                    "enum": [
+                                        "leather",
+                                        "none",
+                                        "chain",
+                                        "iron",
+                                        "diamond",
+                                        "gold",
+                                        "elytra",
+                                        "turtle",
+                                        "netherite"
+                                    ]
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:chargeable": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Allows an item to be used over a duration. (Like apples or bows)",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "movement_modifier": {
+                                    "description": "Modifier value to scale the players movement speed when item is in use.",
+                                    "type": "number",
+                                    "minimum": 0.0,
+                                    "maximum": 1.0,
+                                    "default": 0.0
+                                },
+                                "on_complete": {
+                                    "description": "Event trigger for when the item has completed its use duration.",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:digger": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "Digger item compoent. Make this item dig up blocks at diffrent speeds.",
+                            "type": "object",
+                            "required": [
+                                "destroy_speeds",
+                                "use_efficiency"
+                            ],
+                            "properties": {
+                                "destroy_speeds": {
+                                    "description": "Destroy speed per block.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "required": [
+                                            "block",
+                                            "speed"
+                                        ],
+                                        "properties": {
+                                            "block": {
+                                                "type": [
+                                                    "string",
+                                                    "object"
+                                                ],
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
+                                                "properties": {
+                                                    "tags": {
+                                                        "$ref": "../common.json#/definitions/MoLang"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
+                                            "speed": {
+                                                "description": "The speed to dig this block. Higher the number the faster it will dig.",
+                                                "type": "integer"
+                                            },
+                                            "on_dig": {
+                                                "description": "Trigger for when you dig up this block",
+                                                "$ref": "../common.json#/definitions/EventTrigger"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "on_dig": {
+                                    "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                },
+                                "use_efficiency": {
+                                    "description": "Use efficiency enchantment? Default is set to false.",
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:food": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "When an item has a food component, it becomes edible to the player.",
+                            "type": "object",
+                            "required": [
+                                "nutrition",
+                                "saturation_modifier"
+                            ],
+                            "properties": {
+                                "is_meat": {
+                                    "description": "If true the item is meat.",
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "can_always_eat": {
+                                    "description": "If true you can always eat this item (even when not hungry). Default is set to false.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "nutrition": {
+                                    "description": "The value that is added to the actor's nutrition when the item is used. Default is set to 0.",
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "on_consume": {
+                                    "title": "DEPRECATED",
+                                    "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
+                                    "default": false
+                                },
+                                "saturation_modifier": {
+                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
+                                    "anyOf": [
+                                        {
+                                            "type": "number",
+                                            "minimum": 0.00,
+                                            "default": 0.6
+                                        },
+                                        {
+                                            "enum": [
+                                                "low",
+                                                "supernatural",
+                                                "normal",
+                                                "poor",
+                                                "good"
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "using_converts_to": {
+                                    "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
+                                    "anyOf": [
+                                        {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "item": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
+                                                    "description": "The item that it will become."
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "on_use_action": {
+                                    "type": "string",
+                                    "examples": [
+                                        "chorus_teleport"
+                                    ]
+                                },
+                                "on_use_range": {
+                                    "type": "array",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 3,
+                                    "maxItems": 3
+                                },
+                                "cooldown_type": {
+                                    "type": "string",
+                                    "examples": [
+                                        "chorusfruit"
+                                    ]
+                                },
+                                "cooldown_time": {
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "remove_effects": {
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "effects": {
+                                    "title": "OUTDATED",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "required": [
+                                            "name"
+                                        ],
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "chance": {
+                                                "type": "number",
+                                                "default": 1.0
+                                            },
+                                            "duration": {
+                                                "type": "integer",
+                                                "default": 0
+                                            },
+                                            "amplifier": {
+                                                "type": "integer",
+                                                "default": 0
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:mining_speed": {
                             "type": "integer"
