@@ -34,7 +34,7 @@
                 "tag": {
                     "description": "The item tag to use",
                     "type": "string",
-                    "enum": [
+                    "examples": [
                         "minecraft:soul_fire_base_blocks",
                         "minecraft:stone_tool_materials",
                         "minecraft:stone_crafting_materials",
@@ -71,7 +71,7 @@
                     "tag": {
                         "description": "The item tag to use",
                         "type": "string",
-                        "enum": [
+                        "examples": [
                             "minecraft:soul_fire_base_blocks",
                             "minecraft:stone_tool_materials",
                             "minecraft:stone_crafting_materials",
