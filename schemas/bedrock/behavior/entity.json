@@ -108,7 +108,8 @@
                                     "description": "Internal (to the entity) name of this animation entry",
                                     "type": "string"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "scripts": {
                             "description": "Sets the mapping of internal animation controller references to actual animation controller. This is a JSON Array of name/animation-controller pairs",
@@ -123,9 +124,11 @@
                                     "description": "Internal (to the entity) name of this animation entry",
                                     "type": "string"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         }
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 "components": {
                     "description": "Properties to customize your entity.",
@@ -381,7 +384,10 @@
                             "additionalProperties": false
                         },
                         "minecraft:trust": {
-                            "description": "undocumented"
+                            "description": "undocumented",
+                            "type": "object",
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.jump_to_block": {
                             "description": "Allows an entity to jump to another random block.",
@@ -1580,7 +1586,8 @@
                                     "type": "boolean",
                                     "default": true
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.delayed_attack": {
                             "description": "Allows an entity to attack, while also delaying the damage-dealt until a specific time in the attack animation.",
@@ -2447,7 +2454,8 @@
                                     "type": "integer",
                                     "minimum": 0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:knockback_resistance": {
                             "description": "How much resistance the entity has agenst knockback",
@@ -2459,7 +2467,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.admire_item": {
                             "title": "AI GOALS",
@@ -2475,13 +2484,15 @@
                                     "description": "The range of time in seconds to randomly wait before playing the sound again.",
                                     "$ref": "#/definitions/sound_interval"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.barter": {
                             "title": "AI GOALS",
                             "description": "Enables the mob to barter for items that have been configured as barter currency. Must be used in combination with the barter component",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.beg": {
                             "title": "AI GOALS",
@@ -2514,13 +2525,15 @@
                                         "type": "integer"
                                     }
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.break_door": {
                             "title": "AI GOALS",
                             "description": "Allows this mob to break doors.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.breed": {
                             "title": "AI GOALS",
@@ -2533,7 +2546,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.celebrate": {
                             "title": "AI GOALS",
@@ -2583,7 +2597,8 @@
                                     "description": "The range of time in seconds to randomly wait before playing the sound again.",
                                     "$ref": "#/definitions/sound_interval"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.defend_trusted_target": {
                             "title": "AI GOALS",
@@ -2657,43 +2672,50 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.door_interact": {
                             "title": "AI GOALS",
                             "description": "Allows the mob to open and close doors.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.dragondeath": {
                             "title": "AI GOALS",
                             "description": "Allows the dragon to go out with glory. This controls the Ender Dragon's death animation and can't be used by other mobs.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.dragonholdingpattern": {
                             "title": "AI GOALS",
                             "description": "Allows the Dragon to fly around in a circle around the center podium. Can only be used by the Ender Dragon.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.dragonlanding": {
                             "title": "AI GOALS",
                             "description": "Allows the Dragon to stop flying and transition into perching mode. Can only be used by the Ender Dragon.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.dragonscanning": {
                             "title": "AI GOALS",
                             "description": "Allows the dragon to look around for a player to attack while in perch mode. Can only be used by the Ender Dragon.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.dragontakeoff": {
                             "title": "AI GOALS",
                             "description": "Allows the dragon to leave perch mode and go back to flying around. Can only be used by the Ender Dragon.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.drink_potion": {
                             "title": "AI GOALS",
@@ -2730,7 +2752,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.eat_carried_item": {
                             "title": "AI GOALS",
@@ -2742,18 +2765,21 @@
                                     "description": "Time in seconds the mob should wait before eating the item.",
                                     "type": "number"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.enderman_leave_block": {
                             "title": "AI GOALS",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.enderman_take_block": {
                             "title": "AI GOALS",
                             "description": "Allows the enderman to take a block and carry it around. Can only be used by Endermen.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.explore_outskirts": {
                             "title": "AI GOALS",
@@ -2776,7 +2802,8 @@
                                     "type": "integer",
                                     "default": 0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.find_cover": {
                             "title": "AI GOALS",
@@ -2794,7 +2821,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.find_mount": {
                             "title": "AI GOALS",
@@ -2827,7 +2855,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.find_underwater_treasure": {
                             "title": "AI GOALS",
@@ -2850,7 +2879,8 @@
                                     "type": "number",
                                     "default": 2.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.flee_sun": {
                             "title": "AI GOALS",
@@ -2863,13 +2893,15 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.float": {
                             "title": "AI GOALS",
                             "description": "Allows the mob to stay afloat while swimming.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.float_wander": {
                             "title": "AI GOALS",
@@ -2917,7 +2949,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.follow_caravan": {
                             "title": "AI GOALS",
@@ -2979,7 +3012,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.follow_mob": {
                             "title": "AI GOALS",
@@ -3002,7 +3036,8 @@
                                     "type": "number",
                                     "default": 2.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.follow_owner": {
                             "title": "AI GOALS",
@@ -3025,7 +3060,8 @@
                                     "type": "number",
                                     "default": 2.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.follow_parent": {
                             "title": "AI GOALS",
@@ -3038,7 +3074,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.follow_target_captain": {
                             "title": "AI GOALS",
@@ -3056,7 +3093,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.go_home": {
                             "title": "AI GOALS",
@@ -3083,7 +3121,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.hide": {
                             "title": "AI GOALS",
@@ -3110,7 +3149,8 @@
                                     "type": "number",
                                     "default": 8.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.hold_ground": {
                             "title": "AI GOALS",
@@ -3137,7 +3177,8 @@
                                     "description": "Event to run when target is within the radius. This event is broadcasted if broadcast is true.",
                                     "$ref": "#/definitions/events"
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.hurt_by_target": {
                             "title": "AI GOALS",
@@ -3192,7 +3233,8 @@
                                                 "type": "number",
                                                 "default": 1.0
                                             }
-                                        }
+                                        },
+                                        "additionalProperties": false
                                     },
                                     "properties": {
                                         "filters": {
@@ -3210,7 +3252,8 @@
                                     "type": "boolean",
                                     "default": false
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.inspect_bookshelf": {
                             "title": "AI GOALS",
@@ -3243,7 +3286,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.knockback_roar": {
                             "title": "AI GOALS",
@@ -3286,7 +3330,8 @@
                                     "type": "integer",
                                     "default": 4
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.lay_down": {
                             "title": "AI GOALS",
@@ -3304,7 +3349,8 @@
                                     "type": "integer",
                                     "default": 120
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.lay_egg": {
                             "title": "AI GOALS",
@@ -3336,7 +3382,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.leap_at_target": {
                             "title": "AI GOALS",
@@ -3359,7 +3406,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.look_at_entity": {
                             "title": "AI GOALS",
@@ -3404,7 +3452,8 @@
                                     "type": "number",
                                     "default": 0.02
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.look_at_player": {
                             "title": "AI GOALS",
@@ -3445,7 +3494,8 @@
                                     "type": "number",
                                     "default": 0.02
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.look_at_target": {
                             "title": "AI GOALS",
@@ -3486,7 +3536,8 @@
                                     "type": "number",
                                     "default": 0.02
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.look_at_trading_player": {
                             "title": "AI GOALS",
@@ -3527,13 +3578,15 @@
                                     "type": "number",
                                     "default": 0.02
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.make_love": {
                             "title": "AI GOALS",
                             "description": "Allows the villager to look for a mate to spawn other villagers with. Can only be used by Villagers.",
                             "type": "object",
-                            "default": {}
+                            "default": {},
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.mingle": {
                             "title": "AI GOALS",
@@ -3568,7 +3621,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.mount_pathing": {
                             "title": "AI GOALS",
@@ -3591,7 +3645,8 @@
                                     "type": "boolean",
                                     "default": false
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_indoors": {
                             "title": "AI GOALS",
@@ -3609,7 +3664,8 @@
                                     "type": "number",
                                     "default": 8.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_through_village": {
                             "title": "AI GOALS",
@@ -3627,7 +3683,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_block": {
                             "title": "AI GOALS",
@@ -3703,7 +3760,8 @@
                                     "type": "integer",
                                     "default": 20
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_land": {
                             "title": "AI GOALS",
@@ -3736,7 +3794,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_lava": {
                             "title": "AI GOALS",
@@ -3769,7 +3828,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_liquid": {
                             "title": "AI GOALS",
@@ -3813,7 +3873,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_poi": {
                             "title": "AI GOALS",
@@ -3830,7 +3891,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_random_block": {
                             "title": "AI GOALS",
@@ -3848,7 +3910,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_village": {
                             "title": "AI GOALS",
@@ -3876,7 +3939,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_to_water": {
                             "title": "AI GOALS",
@@ -3909,7 +3973,8 @@
                                     "type": "number",
                                     "default": 1.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.move_towards_target": {
                             "title": "AI GOALS",
@@ -3922,7 +3987,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.nap": {
                             "title": "AI GOALS",
@@ -3950,7 +4016,8 @@
                                     "type": "number",
                                     "default": 6.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.nearest_attackable_target": {
                             "title": "AI GOALS",
@@ -4006,7 +4073,8 @@
                                             ],
                                             "default": 3.0
                                         }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                 },
                                 "must_reach": {
                                     "description": "If true, this entity requires a path to the target.",
@@ -4063,7 +4131,8 @@
                                     "type": "number",
                                     "default": 0.0
                                 }
-                            }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:behavior.nearest_prioritized_attackable_target": {
                             "title": "AI GOALS",
@@ -10616,7 +10685,8 @@
                             }
                         },
                         "additionalProperties": false
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 "component_groups": {
                     "description": "Compoennts",
@@ -10746,7 +10816,8 @@
                         }
                     }
                 }
-            }
+            },
+            "additionalProperties": false
         }
     }
 }
