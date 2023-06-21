@@ -1227,22 +1227,6 @@
                         },
 
 
-                        "minecraft:render_offsets": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
-                            "type": "object",
-                            "properties": {
-                                "main_hand": {
-                                    "description": "Right hand transform data.",
-                                    "$ref": "#/definitions/RenderOffsets"
-                                },
-                                "off_hand": {
-                                    "description": "Left hand transform data.",
-                                    "$ref": "#/definitions/RenderOffsets"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:weapon": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
@@ -1594,6 +1578,22 @@
                             "title": "REMOVED (1.20.10)",
                             "type": "object",
                             "default": {}
+                        },
+                        "minecraft:render_offsets": {
+                            "title": "Deprecated  (1.20.10+)",
+                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
+                            "type": "object",
+                            "properties": {
+                                "main_hand": {
+                                    "description": "Right hand transform data.",
+                                    "$ref": "#/definitions/RenderOffsets"
+                                },
+                                "off_hand": {
+                                    "description": "Left hand transform data.",
+                                    "$ref": "#/definitions/RenderOffsets"
+                                }
+                            },
+                            "additionalProperties": false
                         },
                         "saddle": {}
                     }
