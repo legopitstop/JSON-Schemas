@@ -1020,12 +1020,6 @@
                             "type": "boolean",
                             "default": true
                         },
-                        "minecraft:foil": {
-                            "title": "STABLE",
-                            "description": "Gives the item an enchanted look. Example items; enchanted golden apple, experience bottle, end crystal, lodestone compass, nether star",
-                            "type": "boolean",
-                            "default": false
-                        },
                         "minecraft:frame_count": {
                             "description": "How many frame the item has. Example items; bow, clock, compass, crossbow, lodestone compass",
                             "title": "STABLE",
@@ -1154,11 +1148,6 @@
                             "type": "boolean",
                             "default": true
                         },
-                        "minecraft:stacked_by_data": {
-                            "title": "STABLE",
-                            "type": "boolean",
-                            "default": true
-                        },
                         "minecraft:portfolio": {
                             "title": "STABLE",
                             "type": "object",
@@ -1198,13 +1187,24 @@
                             "description": "What it will look like while your using the item.",
                             "$ref": "../common.json#/definitions/useAnimation"
                         },
+                        "minecraft:stacked_by_data": {
+                            "title": "STABLE 1.20.20",
+                            "type": "boolean",
+                            "default": true
+                        },
                         "minecraft:use_duration": {
-                            "title": "STABLE",
+                            "title": "STABLE 1.20.20",
                             "description": "How long it takes to use the item.",
                             "type": "number"
                         },
+                        "minecraft:foil": {
+                            "title": "STABLE 1.20.20",
+                            "description": "Gives the item an enchanted look. Example items; enchanted golden apple, experience bottle, end crystal, lodestone compass, nether star",
+                            "type": "boolean",
+                            "default": false
+                        },
                         "minecraft:creative_category": {
-                            "title": "STABLE",
+                            "title": "STABLE 1.20.20",
                             "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
                             "type": "object",
                             "required": [
@@ -1220,7 +1220,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:hand_equipped": {
-                            "title": "STABLE",
+                            "title": "STABLE 1.20.20",
                             "description": "Will rotate the texture to look like an equipped item. ex; stick, sword",
                             "type": "boolean",
                             "default": false

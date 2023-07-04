@@ -25,10 +25,6 @@
                             "record"
                         ]
                     },
-                    "max_distance": {
-                        "type": "number",
-                        "description": "The max amount of blocks the player can hear the sound."
-                    },
                     "sounds": {
                         "type": "array",
                         "description": "The sound location to use.",
@@ -80,6 +76,10 @@
                     "min_distance": {
                         "type": "number",
                         "description": "The min amount of blocks the player can hear the sound."
+                    },
+                    "max_distance": {
+                        "type": "number",
+                        "description": "The max amount of blocks the player can hear the sound."
                     }
                 }
             }
