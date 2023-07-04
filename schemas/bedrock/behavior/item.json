@@ -126,9 +126,34 @@
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                         },
                         "category": {
+                            "title": "Legacy",
                             "default": "item",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands.",
                             "$ref": "../common.json#/definitions/itemTab"
+                        },
+                        "menu_category": {
+                            "title": "v1.20.10",
+                            "description": "The creative group name and category for this item.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "category": {
+                                    "description": "The Creative Category that this item belongs to. Defaults to \"items\".",
+                                    "default": "items",
+                                    "$ref": "../common.json#/definitions/itemTab"
+                                },
+                                "group": {
+                                    "description": "The Creative Group that this item belongs to. Group name is limited to 256 characters.",
+                                    "$ref": "../common.json#/definitions/itemGroup"
+                                },
+                                "is_hidden_in_commands": {
+                                    "description": "Determines whether or not this item can be used with commands. Commands can use items by default.",
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                                
+                            },
+                            "additionalProperties": false
                         },
                         "is_experimental": {
                             "type": "boolean",
@@ -738,18 +763,18 @@
                         },
                         "minecraft:can_destroy_in_creative": {
                             "title": "STABLE 1.20.10",
-                            "description": "This means you cannot break blocks with it while in creative mode. Example items: diamond sword, golden sword, iron sword, netherite sword, stone sword, wooden sword, trident",
+                            "description": "The can destroy in creative component determines if the item will break blocks in creative when swinging.",
                             "type": "boolean",
                             "default": true
                         },
                         "minecraft:hover_text_color": {
                             "title": "STABLE 1.20.10",
-                            "description": "The color of the name.",
+                            "description": "The hover text color component determines the color of the item name when hovering over it.",
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
                         },
                         "minecraft:repairable": {
                             "title": "STABLE 1.20.10",
-                            "description": "Repairable item component: how much damage can this item repair, what items can repair it.",
+                            "description": "Repairable item component. Determines the items that can be used to repair this item along with how much durability they repair.",
                             "type": "object",
                             "required": [
                                 "repair_items"
@@ -804,7 +829,7 @@
                         },
                         "minecraft:display_name": {
                             "title": "STABLE 1.20.0",
-                            "description": "Display Name item component. Display Names display the name of an item.",
+                            "description": "Display Name item component. Determines the text shown whenever an item's name is displayed (ex. hover text).",
                             "type": "object",
                             "required": [
                                 "value"
@@ -819,7 +844,7 @@
                         },
                         "minecraft:durability": {
                             "title": "STABLE 1.20.0",
-                            "description": "Durability item component: how much damage can this item take before breaking.",
+                            "description": "Durability item component. Determines how much damage this item takes before breaking and allows the item to be combined in crafting.",
                             "type": "object",
                             "required": [
                                 "max_durability"
@@ -851,7 +876,7 @@
                         },
                         "minecraft:fuel": {
                             "title": "STABLE 1.20.0",
-                            "description": "Allows this item to be used as fuel in a furnace to 'cook' other items.",
+                            "description": "Fuel item component. Allows this item to be used as fuel in a furnace to 'cook' other items.",
                             "type": "object",
                             "required": [
                                 "duration"
@@ -893,7 +918,7 @@
                         },
                         "minecraft:icon": {
                             "title": "STABLE 1.20.0",
-                            "description": "The icon item componenent determines the icon to represent the item in the UI and elsewhere.",
+                            "description": "Icon item component. Determines the icon to represent the item in the UI and elsewhere.",
                             "type": [
                                 "object",
                                 "string"
@@ -920,23 +945,144 @@
                         },
                         "minecraft:max_stack_size": {
                             "title": "STABLE 1.20.10",
-                            "description": "THe max number of items that can be in one slot.",
+                            "description": "The max stack size component determines how many of the item can be stacked together.",
                             "type": "integer",
                             "minimum": 1,
                             "maximum": 64
                         },
-                        "minecraft:fertilizer": {
-                            "title": "STABLE",
-                            "description": "fertilizer item.",
+                        "minecraft:stacked_by_data": {
+                            "title": "STABLE 1.20.20",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "minecraft:use_duration": {
+                            "title": "STABLE 1.20.20",
+                            "description": "How long it takes to use the item.",
+                            "type": "number"
+                        },
+                        "minecraft:glint": {
+                            "title": "STABLE 1.20.20",
+                            "description": "The glint component determines whether the item has the enchanted glint render effect on it.",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "minecraft:creative_category": {
+                            "title": "STABLE 1.20.20",
+                            "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
+                            "type": "object",
+                            "required": [
+                                "parent"
+                            ],
                             "properties": {
-                                "type": {
+                                "parent": {
+                                    "default": "itemGroup.search",
+                                    "description": "Premade itemGroups.",
+                                    "$ref": "../common.json#/definitions/itemGroup"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:hand_equipped": {
+                            "title": "STABLE 1.20.20",
+                            "description": "This component determines if an item is rendered like a tool while in hand.",
+                            "type": "boolean",
+                            "default": false
+                        },
+                        
+                        "minecraft:seed": {
+                            "title": "STABLE",
+                            "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
+                            "type": "object",
+                            "required": [
+                                "crop_result"
+                            ],
+                            "properties": {
+                                "plant_at": {
+                                    "default": "minecraft:farmland",
+                                    "description": "Blocks that the crop can be placed on. common blocks are; farmland, soul_sand, grass, dirt, podzol",
+                                    "anyOf": [
+                                        {
+                                            "type": "string",
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "uniqueItems": true,
+                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "crop_result": {
+                                    "type": "string",
+                                    "description": "The name of the crop block to place.",
+                                    "uniqueItems": true,
+                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                },
+                                "plant_at_any_solid_surface": {
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "plant_at_face": {
                                     "enum": [
-                                        "bonemeal",
-                                        "rapid"
+                                        "DOWN"
                                     ]
                                 }
                             },
                             "additionalProperties": false
+                        },
+                        "minecraft:shears": {
+                            "title": "STABLE",
+                            "description": "A shear item. Example item; shears",
+                            "type": "object",
+                            "default": {}
+                        },
+                        "minecraft:should_despawn": {
+                            "title": "STABLE",
+                            "description": "Will the item not naturally despawn. Example item; nether star",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "minecraft:portfolio": {
+                            "title": "STABLE",
+                            "type": "object",
+                            "default": {}
+                        },
+                        "minecraft:camera": {
+                            "title": "STABLE",
+                            "type": "object",
+                            "required": [
+                                "black_bars_duration",
+                                "black_bars_screen_ratio",
+                                "shutter_duration",
+                                "picture_duration",
+                                "slide_away_duration"
+                            ],
+                            "properties": {
+                                "black_bars_duration": {
+                                    "type": "number"
+                                },
+                                "black_bars_screen_ratio": {
+                                    "type": "number"
+                                },
+                                "shutter_duration": {
+                                    "type": "number"
+                                },
+                                "picture_duration": {
+                                    "type": "number"
+                                },
+                                "slide_away_duration": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:use_animation": {
+                            "title": "STABLE",
+                            "description": "What it will look like while your using the item.",
+                            "$ref": "../common.json#/definitions/useAnimation"
                         },
                         "minecraft:enchantable": {
                             "title": "STABLE",
@@ -1092,140 +1238,19 @@
                             "description": "This means the item needs to be clicked. Example items; writable book, carrot on a stick, locator map, map, warped fungus on a stick",
                             "type": "boolean"
                         },
-                        "minecraft:seed": {
+                        "minecraft:fertilizer": {
                             "title": "STABLE",
-                            "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
-                            "type": "object",
-                            "required": [
-                                "crop_result"
-                            ],
+                            "description": "fertilizer item.",
                             "properties": {
-                                "plant_at": {
-                                    "default": "minecraft:farmland",
-                                    "description": "Blocks that the crop can be placed on. common blocks are; farmland, soul_sand, grass, dirt, podzol",
-                                    "anyOf": [
-                                        {
-                                            "type": "string",
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
-                                        },
-                                        {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string",
-                                                "uniqueItems": true,
-                                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
-                                            }
-                                        }
-                                    ]
-                                },
-                                "crop_result": {
-                                    "type": "string",
-                                    "description": "The name of the crop block to place.",
-                                    "uniqueItems": true,
-                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
-                                },
-                                "plant_at_any_solid_surface": {
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "plant_at_face": {
+                                "type": {
                                     "enum": [
-                                        "DOWN"
+                                        "bonemeal",
+                                        "rapid"
                                     ]
                                 }
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:shears": {
-                            "title": "STABLE",
-                            "description": "A shear item. Example item; shears",
-                            "type": "object",
-                            "default": {}
-                        },
-                        "minecraft:should_despawn": {
-                            "title": "STABLE",
-                            "description": "Will the item not naturally despawn. Example item; nether star",
-                            "type": "boolean",
-                            "default": true
-                        },
-                        "minecraft:portfolio": {
-                            "title": "STABLE",
-                            "type": "object",
-                            "default": {}
-                        },
-                        "minecraft:camera": {
-                            "title": "STABLE",
-                            "type": "object",
-                            "required": [
-                                "black_bars_duration",
-                                "black_bars_screen_ratio",
-                                "shutter_duration",
-                                "picture_duration",
-                                "slide_away_duration"
-                            ],
-                            "properties": {
-                                "black_bars_duration": {
-                                    "type": "number"
-                                },
-                                "black_bars_screen_ratio": {
-                                    "type": "number"
-                                },
-                                "shutter_duration": {
-                                    "type": "number"
-                                },
-                                "picture_duration": {
-                                    "type": "number"
-                                },
-                                "slide_away_duration": {
-                                    "type": "number"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:use_animation": {
-                            "title": "STABLE",
-                            "description": "What it will look like while your using the item.",
-                            "$ref": "../common.json#/definitions/useAnimation"
-                        },
-                        "minecraft:stacked_by_data": {
-                            "title": "STABLE 1.20.20",
-                            "type": "boolean",
-                            "default": true
-                        },
-                        "minecraft:use_duration": {
-                            "title": "STABLE 1.20.20",
-                            "description": "How long it takes to use the item.",
-                            "type": "number"
-                        },
-                        "minecraft:foil": {
-                            "title": "STABLE 1.20.20",
-                            "description": "Gives the item an enchanted look. Example items; enchanted golden apple, experience bottle, end crystal, lodestone compass, nether star",
-                            "type": "boolean",
-                            "default": false
-                        },
-                        "minecraft:creative_category": {
-                            "title": "STABLE 1.20.20",
-                            "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
-                            "type": "object",
-                            "required": [
-                                "parent"
-                            ],
-                            "properties": {
-                                "parent": {
-                                    "default": "itemGroup.search",
-                                    "description": "Premade itemGroups.",
-                                    "$ref": "../common.json#/definitions/itemGroup"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:hand_equipped": {
-                            "title": "STABLE 1.20.20",
-                            "description": "Will rotate the texture to look like an equipped item. ex; stick, sword",
-                            "type": "boolean",
-                            "default": false
-                        },
-
 
                         "minecraft:weapon": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
@@ -1581,7 +1606,7 @@
                         },
                         "minecraft:render_offsets": {
                             "title": "Deprecated  (1.20.10+)",
-                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered. Note this component should not be added to an attachable item",
+                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered.",
                             "type": "object",
                             "properties": {
                                 "main_hand": {
@@ -1594,6 +1619,11 @@
                                 }
                             },
                             "additionalProperties": false
+                        },
+                        "minecraft:foil": {
+                            "description": "Renamed to `minecraft:glint`",
+                            "type": "boolean",
+                            "default": false
                         },
                         "saddle": {}
                     }
