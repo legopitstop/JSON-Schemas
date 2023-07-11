@@ -151,7 +151,6 @@
                                     "type": "boolean",
                                     "default": false
                                 }
-                                
                             },
                             "additionalProperties": false
                         },
@@ -690,7 +689,7 @@
                                 "charge_on_draw": {
                                     "type": "boolean",
                                     "default": false,
-                                    "description": "Charge on draw? Default is set to false."
+                                    "description": "Charge on draw. Default is set to false."
                                 },
                                 "launch_power_scale": {
                                     "type": "integer",
@@ -710,7 +709,7 @@
                                 "scale_power_by_draw_duration": {
                                     "type": "boolean",
                                     "default": false,
-                                    "description": "Scale power by draw duration? Default is set to false."
+                                    "description": "Scale power by draw duration. Default is set to false."
                                 }
                             },
                             "additionalProperties": false
@@ -966,29 +965,12 @@
                             "type": "boolean",
                             "default": false
                         },
-                        "minecraft:creative_category": {
-                            "title": "STABLE 1.20.20",
-                            "description": "These are categories / itemGroups that some items are grouped in. ex; 'itemGroup.name.saplings' are where all that saplings are.",
-                            "type": "object",
-                            "required": [
-                                "parent"
-                            ],
-                            "properties": {
-                                "parent": {
-                                    "default": "itemGroup.search",
-                                    "description": "Premade itemGroups.",
-                                    "$ref": "../common.json#/definitions/itemGroup"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:hand_equipped": {
                             "title": "STABLE 1.20.20",
                             "description": "This component determines if an item is rendered like a tool while in hand.",
                             "type": "boolean",
                             "default": false
                         },
-                        
                         "minecraft:seed": {
                             "title": "STABLE",
                             "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
@@ -1171,12 +1153,6 @@
                             "title": "STABLE",
                             "type": "integer"
                         },
-                        "minecraft:ignores_permission": {
-                            "title": "STABLE",
-                            "description": "When true any player can have the item.",
-                            "type": "boolean",
-                            "default": true
-                        },
                         "minecraft:liquid_clipped": {
                             "title": "STABLE",
                             "description": "Example items; all boats, all spawn eggs",
@@ -1195,11 +1171,6 @@
                                 }
                             },
                             "additionalProperties": false
-                        },
-                        "minecraft:mirrored_art": {
-                            "title": "STABLE",
-                            "description": "Will mirror both sides of the item. Example items; carrot on a stick, warped fungus on a stick",
-                            "type": "boolean"
                         },
                         "minecraft:mob_spawner_placer": {
                             "title": "STABLE",
@@ -1251,7 +1222,6 @@
                             },
                             "additionalProperties": false
                         },
-
                         "minecraft:weapon": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
                             "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
@@ -1281,6 +1251,10 @@
                                 "slot"
                             ],
                             "properties": {
+                                "protection": {
+                                    "description": "How much protection does the armor item have.",
+                                    "type": "integer"
+                                },
                                 "dispensable": {
                                     "type": "boolean",
                                     "default": false
@@ -1288,20 +1262,14 @@
                                 "slot": {
                                     "description": "Slot where you can place the armor piece in/on.",
                                     "enum": [
-                                        "slot.weapon.mainhand",
                                         "none",
                                         "slot.weapon.offhand",
                                         "slot.armor.head",
                                         "slot.armor.chest",
                                         "slot.armor.legs",
                                         "slot.armor.feet",
-                                        "slot.hotbar",
-                                        "slot.inventory",
-                                        "slot.enderchest",
                                         "slot.saddle",
-                                        "slot.armor",
-                                        "slot.chest",
-                                        "slot.equippable"
+                                        "slot.armor"
                                     ]
                                 }
                             },
@@ -1347,35 +1315,6 @@
                                     "description": "The max capacity of the item. default is 64",
                                     "type": "integer",
                                     "default": 64
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:armor": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The armor item component determines the amount of protection you have in your armor item.",
-                            "type": "object",
-                            "required": [
-                                "protection"
-                            ],
-                            "properties": {
-                                "protection": {
-                                    "description": "How much protection does the armor item have.",
-                                    "type": "integer"
-                                },
-                                "texture_type": {
-                                    "description": "Texture Type to apply for the armor. Note that Horse armor is restricted to leather, iron, gold, or diamond.",
-                                    "enum": [
-                                        "leather",
-                                        "none",
-                                        "chain",
-                                        "iron",
-                                        "diamond",
-                                        "gold",
-                                        "elytra",
-                                        "turtle",
-                                        "netherite"
-                                    ]
                                 }
                             },
                             "additionalProperties": false
@@ -1450,7 +1389,7 @@
                                     "$ref": "../common.json#/definitions/EventTrigger"
                                 },
                                 "use_efficiency": {
-                                    "description": "Use efficiency enchantment? Default is set to false.",
+                                    "description": "Use efficiency enchantment. Default is set to false.",
                                     "type": "boolean",
                                     "default": false
                                 }
@@ -1482,9 +1421,9 @@
                                     "default": 0
                                 },
                                 "on_consume": {
-                                    "title": "DEPRECATED",
+                                    "title": "Format: ?",
                                     "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
-                                    "default": false
+                                    "deprecated": true
                                 },
                                 "saturation_modifier": {
                                     "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
@@ -1594,39 +1533,41 @@
                         "minecraft:mining_speed": {
                             "type": "integer"
                         },
-                        "minecraft:knockback_resistance": {
-                            "title": "REMOVED (1.20.10)",
-                            "type": "object",
-                            "default": {}
+                        "minecraft:render_offsets": {
+                            "title": "Format: 1.20.10",
+                            "deprecated": true
                         },
                         "minecraft:dye_powder": {
-                            "title": "REMOVED (1.20.10)",
-                            "type": "object",
-                            "default": {}
+                            "title": "Format: 1.20.10",
+                            "deprecated": true
                         },
-                        "minecraft:render_offsets": {
-                            "title": "Deprecated  (1.20.10+)",
-                            "description": "Render offsets component: optional values can be given to offset the way the item is rendered.",
-                            "type": "object",
-                            "properties": {
-                                "main_hand": {
-                                    "description": "Right hand transform data.",
-                                    "$ref": "#/definitions/RenderOffsets"
-                                },
-                                "off_hand": {
-                                    "description": "Left hand transform data.",
-                                    "$ref": "#/definitions/RenderOffsets"
-                                }
-                            },
-                            "additionalProperties": false
+                        "minecraft:knockback_resistance": {
+                            "title": "Format: 1.20.10",
+                            "deprecated": true
+                        },
+                        "minecraft:creative_category": {
+                            "title": "Format: 1.20.20",
+                            "deprecated": true
+                        },
+                        "minecraft:armor": {
+                            "title": "Format: 1.20.20",
+                            "deprecated": true
                         },
                         "minecraft:foil": {
+                            "title": "Format: 1.20.20",
                             "description": "Renamed to `minecraft:glint`",
-                            "type": "boolean",
-                            "default": false
+                            "deprecated": true
                         },
-                        "saddle": {}
-                    }
+                        "minecraft:ignores_permission": {
+                            "title": "Format: 1.20.20",
+                            "deprecated": true
+                        },
+                        "minecraft:mirrored_art": {
+                            "title": "Format: 1.20.20",
+                            "deprecated": true
+                        }
+                    },
+                    "additionalProperties": false
                 },
                 "events": {
                     "description": "A mapping to all events used by this block.",

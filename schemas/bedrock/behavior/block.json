@@ -75,9 +75,9 @@
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                         },
                         "properties": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'states' in 1.20.10.21",
-                            "$ref": "#/properties/minecraft:block/properties/description/properties/states"
+                            "title": "Format: 1.20.10.21",
+                            "description": "Replaced with 'states'",
+                            "deprecated": true
                         },
                         "states": {
                             "type": "object",
@@ -838,54 +838,54 @@
                             "$ref": "#/definitions/VanillaTags"
                         },
                         "minecraft:block_light_absorption": {
-                            "title": "DEPRECATED",
+                            "title": "Format: ?",
                             "description": "Replaced with 'light_dampening'",
-                            "default": false
+                            "deprecated": true
                         },
                         "minecraft:entity_collision": {
-                            "title": "DEPRECATED",
+                            "title": "Format: ?",
                             "description": "Replaced with 'collision_box'",
-                            "default": false
+                            "deprecated": true
                         },
                         "minecraft:block_collision": {
-                            "title": "DEPRECATED",
+                            "title": "Format: ?",
                             "description": "Replaced with 'collision_box'",
-                            "default": false
+                            "deprecated": true
                         },
                         "minecraft:pick_collision": {
-                            "title": "DEPRECATED",
+                            "title": "Format: ?",
                             "description": "Replaced with 'selection_box'",
-                            "default": false
+                            "deprecated": true
                         },
                         "minecraft:aim_collision": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'selection_box' in 1.19.20",
-                            "default": false
+                            "title": "Format: 1.19.20",
+                            "description": "Replaced with 'selection_box'",
+                            "deprecated": true
                         },
                         "minecraft:ticking": {
-                            "title": "DEPRECATED",
+                            "title": "Format: ?",
                             "description": "Replaced with 'queued_ticking'",
-                            "default": false
+                            "deprecated": true
                         },
                         "minecraft:block_light_emission": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'light_emission' in 1.19.20",
-                            "default": false
+                            "title": "Format: 1.19.20",
+                            "description": "Replaced with 'light_emission'",
+                            "deprecated": true
                         },
                         "minecraft:destroy_time": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'destructible_by_mining' in 1.19.20",
-                            "default": false
+                            "title": "Format: 1.19.20",
+                            "description": "Replaced with 'destructible_by_mining'",
+                            "deprecated": true
                         },
                         "minecraft:explosion_resistance": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'destructible_by_explosion' in 1.19.20",
-                            "default": false
+                            "title": "Format: 1.19.20",
+                            "description": "Replaced with 'destructible_by_explosion'",
+                            "deprecated": true
                         },
                         "minecraft:creative_category": {
-                            "title": "DEPRECATED",
-                            "description": "Replaced with 'menu_category' in 1.19.40",
-                            "default": false
+                            "title": "Format: 1.19.40",
+                            "description": "Replaced with 'menu_category'",
+                            "deprecated": true
                         }
                     },
                     "patternProperties": {
