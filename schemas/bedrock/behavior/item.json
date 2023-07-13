@@ -971,6 +971,33 @@
                             "type": "boolean",
                             "default": false
                         },
+                        "minecraft:use_animation": {
+                            "title": "STABLE 1.20.20",
+                            "description": "What it will look like while your using the item.",
+                            "$ref": "../common.json#/definitions/useAnimation"
+                        },
+                        "minecraft:allow_off_hand": {
+                            "title": "STABLE 1.20.20",
+                            "description": "This will allow the item to be held in the offhand slot. Example items; firework rocket, nautilus shell, shield, totem of undying",
+                            "type": "boolean"
+                        },
+                        "minecraft:should_despawn": {
+                            "title": "STABLE 1.20.20",
+                            "description": "Will the item not naturally despawn. Example item; nether star",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "minecraft:liquid_clipped": {
+                            "title": "STABLE 1.20.20",
+                            "description": "Example items; all boats, all spawn eggs",
+                            "type": "boolean"
+                        },
+                        "minecraft:damage": {
+                            "title": "STABLE 1.20.20",
+                            "description": "The amount of damage the item does.",
+                            "type": "integer"
+                        },
+
                         "minecraft:seed": {
                             "title": "STABLE",
                             "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
@@ -1021,12 +1048,6 @@
                             "type": "object",
                             "default": {}
                         },
-                        "minecraft:should_despawn": {
-                            "title": "STABLE",
-                            "description": "Will the item not naturally despawn. Example item; nether star",
-                            "type": "boolean",
-                            "default": true
-                        },
                         "minecraft:portfolio": {
                             "title": "STABLE",
                             "type": "object",
@@ -1061,11 +1082,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:use_animation": {
-                            "title": "STABLE",
-                            "description": "What it will look like while your using the item.",
-                            "$ref": "../common.json#/definitions/useAnimation"
-                        },
                         "minecraft:enchantable": {
                             "title": "STABLE",
                             "description": "Enchantable item.",
@@ -1095,16 +1111,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:allow_off_hand": {
-                            "title": "STABLE",
-                            "description": "This will allow the item to be held in the offhand slot. Example items; firework rocket, nautilus shell, shield, totem of undying",
-                            "type": "boolean"
-                        },
-                        "minecraft:animates_in_toolbar": {
-                            "title": "STABLE",
-                            "description": "This means this item has a animation. Example items; bow, clock, compass, crossbow, lodestone compass",
-                            "type": "boolean"
-                        },
                         "minecraft:bucket": {
                             "title": "STABLE",
                             "description": "This is a empty bucket item. Example item; bucket",
@@ -1123,11 +1129,6 @@
                             "type": "object",
                             "default": {}
                         },
-                        "minecraft:damage": {
-                            "title": "STABLE",
-                            "description": "The amount of damage the item does.",
-                            "type": "integer"
-                        },
                         "minecraft:dyeable": {
                             "title": "STABLE",
                             "description": "An item that can be dyed. Example items; leather boots, leather chestplate, firework star, leather helmet, leather horse armor, leather leggings",
@@ -1142,21 +1143,10 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:explodable": {
-                            "title": "STABLE",
-                            "description": "Will the item not survive explosions. Example item; nether star",
-                            "type": "boolean",
-                            "default": true
-                        },
                         "minecraft:frame_count": {
                             "description": "How many frame the item has. Example items; bow, clock, compass, crossbow, lodestone compass",
                             "title": "STABLE",
                             "type": "integer"
-                        },
-                        "minecraft:liquid_clipped": {
-                            "title": "STABLE",
-                            "description": "Example items; all boats, all spawn eggs",
-                            "type": "boolean"
                         },
                         "minecraft:map": {
                             "title": "STABLE",
@@ -1533,6 +1523,7 @@
                         "minecraft:mining_speed": {
                             "type": "integer"
                         },
+
                         "minecraft:render_offsets": {
                             "title": "Format: 1.20.10",
                             "deprecated": true
@@ -1569,6 +1560,14 @@
                         "minecraft:max_damage": {
                             "type": "integer",
                             "default": 0,
+                            "deprecated": true
+                        },
+                        "minecraft:animates_in_toolbar": {
+                            "title": "Format: 1.20.20",
+                            "deprecated": true
+                        },
+                        "minecraft:explodable": {
+                            "title": "Format: 1.20.20",
                             "deprecated": true
                         },
                         "minecraft:block": {
