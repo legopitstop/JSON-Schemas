@@ -23,19 +23,19 @@
                     }
                 },
                 "tags": {
-                    "type": "array",
                     "description": "Item used as input for the furnace recipe.",
+                    "type": "array",
                     "items": {
                         "$ref": "../common.json#/definitions/recipeTags"
                     }
                 },
                 "priority": {
-                    "type": "integer",
-                    "description": "Item used as output for the furnace recipe."
+                    "description": "Item used as output for the furnace recipe.",
+                    "type": "integer"
                 },
                 "input": {
-                    "$ref": "../common.json#/definitions/itemDataCount",
-                    "description": "Items used as input for the furnace recipe."
+                    "description": "Items used as input for the furnace recipe.",
+                    "$ref": "../common.json#/definitions/itemData"
                 },
                 "output": {
                     "description": "Items used as output for the furnace recipe.",

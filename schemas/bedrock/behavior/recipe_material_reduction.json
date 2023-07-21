@@ -23,11 +23,11 @@
                     }
                 },
                 "tags": {
+                    "description": "Item used as input for the furnace recipe.",
                     "type": [
                         "array",
                         "string"
                     ],
-                    "description": "Item used as input for the furnace recipe.",
                     "items": {
                         "$ref": "../common.json#/definitions/recipeTags"
                     }

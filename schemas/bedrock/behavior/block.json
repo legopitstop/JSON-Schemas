@@ -593,7 +593,7 @@
                                                             "properties": {
                                                                 "name": {
                                                                     "description": "The name of a block.",
-                                                                    "type": "string"
+                                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
                                                                 },
                                                                 "states": {
                                                                     "description": "The list of Vanilla block states and their values that the block can have, expressed in key/value pairs.",
@@ -899,11 +899,11 @@
                     "additionalProperties": false
                 },
                 "permutations": {
+                    "description": "Add multiple components with optional condition to create blockstates.",
                     "type": "array",
                     "default": [
                         {}
                     ],
-                    "description": "Add multiple components with optional condition to create blockstates.",
                     "items": {
                         "type": "object",
                         "required": [

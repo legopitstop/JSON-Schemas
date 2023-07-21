@@ -23,26 +23,28 @@
                     }
                 },
                 "tags": {
-                    "type": "array",
                     "description": "Item used as input for the furnace recipe.",
+                    "type": "array",
                     "items": {
                         "$ref": "../common.json#/definitions/recipeTags"
                     }
                 },
                 "priority": {
-                    "type": "integer",
-                    "description": "Item used as output for the furnace recipe."
+                    "description": "Item used as output for the furnace recipe.",
+                    "type": "integer"
                 },
                 "pattern": {
-                    "type": "array",
                     "description": "characters that represent a pattern to be defined by keys.",
+                    "type": "array",
                     "items": {
-                        "type": "string"
-                    }
+                        "type": "string",
+                        "maxLength": 3
+                    },
+                    "maxItems": 3
                 },
                 "key": {
-                    "type": "object",
                     "description": "patten key character mapped to item names.",
+                    "type": "object",
                     "patternProperties": {
                         "^[#0-9a-zA-Z-\\_/|~.]$": {
                             "$ref": "../common.json#/definitions/itemData"
