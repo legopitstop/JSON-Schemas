@@ -1,0 +1,1017 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "data.predicate",
+    "description": "",
+    "type": "object",
+    "default": {},
+    "definitions": {
+        "Location": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "biome": {
+                    "description": "The biome at this location, as a resource location (see Biome#Biome IDs for the ones used in vanilla).",
+                    "type": "string"
+                },
+                "block": {
+                    "description": "The block at the location. Test fails if the location is unloaded.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "blocks": {
+                            "description": "A list of block IDs.",
+                            "type": "array",
+                            "default": [],
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "tag": {
+                            "description": "The block tag.",
+                            "type": "string"
+                        },
+                        "nbt": {
+                            "description": "The block NBT.",
+                            "type": "string"
+                        },
+                        "state": {
+                            "description": "A map of block property names to values.",
+                            "type": [
+                                "object",
+                                "integer",
+                                "boolean"
+                            ],
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "type": [
+                                        "integer",
+                                        "boolean"
+                                    ],
+                                    "default": 0
+                                },
+                                "max": {
+                                    "type": [
+                                        "integer",
+                                        "boolean"
+                                    ],
+                                    "default": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "dimension": {
+                    "description": "A resource location for the dimension.",
+                    "type": "string"
+                },
+                "fluid": {
+                    "description": "The fluid at the location. Test fails if the location is unloaded.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "fluid": {
+                            "description": "The fluid ID.",
+                            "type": "string"
+                        },
+                        "tag": {
+                            "description": "The fluid tag.",
+                            "type": "string"
+                        },
+                        "state": {
+                            "description": "A map of fluid property names to values.",
+                            "type": "object",
+                            "default": {},
+                            "additionalProperties": {
+                                "type": [
+                                    "integer",
+                                    "boolean",
+                                    "object"
+                                ],
+                                "default": 0,
+                                "properties": {
+                                    "min": {
+                                        "type": [
+                                            "integer",
+                                            "boolean"
+                                        ],
+                                        "default": 0
+                                    },
+                                    "max": {
+                                        "type": [
+                                            "integer",
+                                            "boolean"
+                                        ],
+                                        "default": 0
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "light": {
+                    "description": "The light at the location. Test fails if the location is unloaded.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "light": {
+                            "description": " The light Level of visible light. Calculated using: (max(internal_sky_light,block_light)).",
+                            "type": [
+                                "integer",
+                                "object"
+                            ],
+                            "default": 0,
+                            "properties": {
+                                "min": {
+                                    "description": "A maximum value.",
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "max": {
+                                    "description": "A minimum value.",
+                                    "type": "integer",
+                                    "default": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "position": {
+                    "description": "The position.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "x": {
+                            "description": "The x position.",
+                            "type": [
+                                "object",
+                                "number"
+                            ],
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "description": "A maximum value.",
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "description": "A minimum value.",
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "y": {
+                            "description": "The y position.",
+                            "type": [
+                                "object",
+                                "number"
+                            ],
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "description": "A maximum value.",
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "description": "A minimum value.",
+                                    "type": "number"
+                                }
+                            }
+                        },
+                        "z": {
+                            "description": "The z position.",
+                            "type": [
+                                "object",
+                                "number"
+                            ],
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "description": "A maximum value.",
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "description": "A minimum value.",
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "smokey": {
+                    "description": "When true, success if the block is closely above a campfire or soul campfire. When false, success if not.",
+                    "type": "boolean",
+                    "default": true
+                },
+                "structure": {
+                    "description": "he structure the entity is currently in. This tag is a resource location for a structure feature (see Java Edition data values#Structures for the ones used in vanilla).",
+                    "type": "string"
+                }
+            }
+        },
+        "Entity": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "distance": {
+                    "description": "To test the distance to the entity this predicate is invoked upon. Passes if the calculated distance is between the entered min and max, inclusive.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "absolute": {
+                            "description": "Test the distance between the two points in 3D space.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "horizontal": {
+                            "description": "Test the distance between the two points, ignoring the Y value.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "x": {
+                            "description": "Test the absolute difference between the X-coordinates of the two points.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "y": {
+                            "description": "Test the absolute difference between the Y-coordinates of the two points.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "z": {
+                            "description": "Test the absolute difference between the Z-coordinates of the two points.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "min": {
+                                    "type": "number"
+                                },
+                                "max": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "effects": {
+                    "description": "For testing the active status effects on the entity.",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": {
+                        "description": "A status effect that must be present.",
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "ambient": {
+                                "description": "Test whether the effect is from a beacon.",
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "amplifier": {
+                                "description": "Test if the effect's amplifier matches an exact or range of values. Level I is represented by 0.",
+                                "type": [
+                                    "integer",
+                                    "object"
+                                ],
+                                "default": 0,
+                                "properties": {
+                                    "min": {
+                                        "type": "integer",
+                                        "default": 0
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "default": 0
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "duration": {
+                                "description": "Test if the effect's remaining time (in ticks) is between two numbers, inclusive.",
+                                "type": [
+                                    "integer",
+                                    "object"
+                                ],
+                                "default": 0,
+                                "properties": {
+                                    "min": {
+                                        "type": "integer",
+                                        "default": 0
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "default": 0
+                                    }
+                                },
+                                "additionalProperties": false
+                            },
+                            "visible": {
+                                "description": "Test if the effect has visible particles.",
+                                "type": "boolean",
+                                "default": true
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "equipment": {
+                    "description": "For testing the items that this entity holds in its equipment slots.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "mainhand": {
+                            "description": "Test the item in the entity's main hand.",
+                            "$ref": "#/definitions/Items"
+                        },
+                        "offhand": {
+                            "description": "Test the item in the entity's off hand.",
+                            "$ref": "#/definitions/Items"
+                        },
+                        "head": {
+                            "description": "Test the item in the entity's head armour slot.",
+                            "$ref": "#/definitions/Items"
+                        },
+                        "chest": {
+                            "description": "Test the item in the entity's chest armour slot.",
+                            "$ref": "#/definitions/Items"
+                        },
+                        "legs": {
+                            "description": "Test the item in the entity's legs armour slot.",
+                            "$ref": "#/definitions/Items"
+                        },
+                        "feet": {
+                            "description": "Test the item in the entity's feet armour slot.",
+                            "$ref": "#/definitions/Items"
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "flags": {
+                    "description": "To test flags of the entity.",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                        "is_baby": {
+                            "description": "Test whether the entity is or is not a baby variant.",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "is_on_fire": {
+                            "description": "Test whether the entity is or is not on fire.",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "is_sneaking": {
+                            "description": "Test whether the entity is or is not sneaking.",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "is_sprinting": {
+                            "description": "Test whether the entity is or is not sprinting.",
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "is_swimming": {
+                            "description": "Test whether the entity is or is not swimming.",
+                            "type": "boolean",
+                            "default": true
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "location": {
+                    "description": "Test properties of this entity's location.",
+                    "$ref": "#/definitions/Location"
+                },
+                "nbt": {
+                    "description": "Test NBT data of this entity. The outer braces { } of the NBT must be included within this string. Additional care is required if the NBT contains quotation marks \" \", as they must be escaped with a backslash before each: \"",
+                    "type": "string"
+                },
+                "passenger": {
+                    "description": "Test the entity directly riding this entity.",
+                    "$ref": "#/definitions/Entity"
+                },
+                "stepping_on": {
+                    "description": "Test properties of the block the entity is standing on, using a location predicate.",
+                    "$ref": "#/definitions/Location"
+                },
+                "team": {
+                    "description": "Passes if the team of this entity matches this string.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Test this entity's type. Accepts an entity ID.",
+                    "type": "string"
+                },
+                "targeted_entity": {
+                    "description": "Test properties of the entity which this entity is targeting for attacks.",
+                    "$ref": "#/definitions/Entity"
+                },
+                "vehicle": {
+                    "description": "Test properties of the vehicle entity that this entity is riding upon.",
+                    "$ref": "#/definitions/Entity"
+                },
+                "type_specific": {
+                    "description": "To test entity properties that can only be applied to certain entity types. Supersedes lightning_bolt, player, fishing_hook and catType.",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "type"
+                    ],
+                    "properties": {
+                        "type": {
+                            "description": "Dictates which type-specific properties to test for. The possible values for  type and associated extra contents",
+                            "enum": [
+                                "any",
+                                "cat",
+                                "fishing_hook",
+                                "frog",
+                                "lighting",
+                                "player",
+                                "slime"
+                            ]
+                        },
+                        "variant": {
+                            "title": "CAT, FROG",
+                            "description": "A resource location specifying a cat variant.",
+                            "type": "string"
+                        },
+                        "blocks_set_on_fire": {
+                            "title": "LIGHTNING",
+                            "description": " Test if the number of blocks set on fire by this lightning bolt matches an exact value.",
+                            "type": [
+                                "integer",
+                                "object"
+                            ],
+                            "default": 0,
+                            "properties": {
+                                "min": {
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "max": {
+                                    "type": "integer",
+                                    "default": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "entity_struck": {
+                            "description": " Test the properties of entities struck by this lightning bolt. Passes if at least one of the struck entities matches the entered conditions.",
+                            "$ref": "#/definitions/Entity"
+                        },
+                        "looking_at": {
+                            "title": "PLAYER",
+                            "description": "Test properties of the entity that this player is looking at, as long as it is visible and within a radius of 100 blocks. Visibility is defined through the line from the player's eyes to the entity's eyes, rather than the direction that the player is looking in.",
+                            "$ref": "#/definitions/Entity"
+                        },
+                        "advancement": {
+                            "title": "PLAYER",
+                            "description": "To test the player's advancements.",
+                            "type": [
+                                "object",
+                                "boolean"
+                            ],
+                            "default": {},
+                            "additionalProperties": {
+                                "type": "object",
+                                "default": {},
+                                "additionalProperties": {
+                                    "type": "boolean",
+                                    "default": true
+                                }
+                            }
+                        },
+                        "gamemode": {
+                            "title": "PLAYER",
+                            "description": "Test the game mode of this player. Valid values are survival, creative, adventure and spectator.",
+                            "enum": [
+                                "survival",
+                                "creative",
+                                "adventure",
+                                "spectator"
+                            ]
+                        },
+                        "level": {
+                            "title": "PLAYER",
+                            "description": "Test if the experience level of this player matches an exact value.",
+                            "type": [
+                                "object",
+                                "integer"
+                            ],
+                            "default": {},
+                            "properties": {
+                                "max": {
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "min": {
+                                    "type": "integer",
+                                    "default": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "recipes": {
+                            "title": "PLAYER",
+                            "description": "To test if recipes are known or unknown to this player.",
+                            "type": "object",
+                            "default": {},
+                            "additionalProperties": {
+                                "description": "Key is the recipe ID; value is true or false to test for known/unknown respectively.",
+                                "type": "boolean",
+                                "default": true
+                            }
+                        },
+                        "stats": {
+                            "title": "PLAYER",
+                            "description": "To test this player's statistics.",
+                            "type": "array",
+                            "default": [],
+                            "items": {
+                                "description": "A statistic to test.",
+                                "type": "object",
+                                "default": {},
+                                "required": [
+                                    "type"
+                                ],
+                                "properties": {
+                                    "type": {
+                                        "description": "The statistic type.",
+                                        "enum": [
+                                            "minecraft:custom",
+                                            "minecraft:crafted",
+                                            "minecraft:used",
+                                            "minecraft:broken",
+                                            "minecraft:mined",
+                                            "minecraft:killed",
+                                            "minecraft:picked_up",
+                                            "minecraft:dropped",
+                                            "minecraft:killed_by"
+                                        ]
+                                    },
+                                    "stat": {
+                                        "description": "The statistic ID to test.",
+                                        "type": "string"
+                                    },
+                                    "value": {
+                                        "description": "Test if the value of the statistic matches an exact number.",
+                                        "type": [
+                                            "object",
+                                            "integer"
+                                        ],
+                                        "default": 0,
+                                        "properties": {
+                                            "min": {
+                                                "type": "integer",
+                                                "default": 0
+                                            },
+                                            "max": {
+                                                "type": "integer",
+                                                "default": 0
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "size": {
+                            "title": "SLIME",
+                            "description": "Test if the size of this slime matches an exact value.",
+                            "type": [
+                                "object",
+                                "integer"
+                            ],
+                            "default": 0,
+                            "properties": {
+                                "min": {
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "max": {
+                                    "type": "integer",
+                                    "default": 0
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "source_entity": {
+                    "description": "Checks the entity that was the source of the damage (for example: The skeleton that shot the arrow).",
+                    "$ref": "#/definitions/Entity"
+                }
+            },
+            "additionalProperties": false
+        },
+        "Items": {
+            "type": "object",
+            "default": {},
+            "properties": {
+                "count": {
+                    "description": "Test the number of items in this item stack. Use an integer to test for a single value. Use an object with min and max keys to test for a range of values (inclusive).",
+                    "type": [
+                        "object",
+                        "integer"
+                    ],
+                    "default": {},
+                    "properties": {
+                        "min": {
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "max": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "durability": {
+                    "description": "Test the durability of the items in this stack, represented by the number of uses remaining (not number of uses consumed). Use an integer to test for a single value. Use an object with min and max keys to test for a range of values (inclusive).",
+                    "type": [
+                        "object",
+                        "integer"
+                    ],
+                    "default": {},
+                    "properties": {
+                        "min": {
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "max": {
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    "additionalProperties": false
+                },
+                "enchantments": {
+                    "description": "Test the enchantments on the items in this stack. To pass, all items within the list must be satisfied by at least one enchantment on the item that matches.",
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "description": "A single enchantment to test for.",
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "enchantment": {
+                                "description": "The enchantment ID to test for.",
+                                "type": "string"
+                            },
+                            "levels": {
+                                "description": "The level(s) of enchantments that can satisfy this condition. Use an integer to test for a single value. Use an object with min and max keys to test for a range of values (inclusive).",
+                                "type": [
+                                    "object",
+                                    "integer"
+                                ],
+                                "default": {},
+                                "properties": {
+                                    "min": {
+                                        "type": "integer",
+                                        "default": 0
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "default": 0
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                },
+                "stored_enchantments": {
+                    "description": "To test for stored enchantments on an enchanted book.",
+                    "$ref": "#/definitions/Items/properties/enchantments"
+                },
+                "items": {
+                    "description": "Test the type of item in the item stack. Accepts a list of item IDs. Passes if the item's ID matches any of the listed values.",
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "nbt": {
+                    "description": "Test for any other NBT tags that may be present on the item. The outer braces of the NBT { } must be present within this string. Additional care is required if the NBT contains quotation marks \" \", as they must be escaped with a backslash \\\".",
+                    "type": "string"
+                },
+                "potion": {
+                    "description": "Test the type of potion this item is. Uses minecraft:empty if the item is not a potion. Accepts a brewed potion ID.",
+                    "type": "string"
+                },
+                "tag": {
+                    "description": "Test if the item ID of this item is listed within a data pack item tag. Accepts the resource location of a valid item tag.",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "condition": {
+            "description": "The resource location of the condition type to check.",
+            "enumDescription": [
+                "Evaluates a list of predicates and passes if all of them pass. Invokable from any context.",
+                "Evaluates a list of predicates and passes if any one of them passes. Invokable from any context.",
+                "Checks the mined block and its block states. Requires block state provided by loot context, and always fails if not provided.",
+                "Checks properties of the damage source. Requires origin and damage source provided by loot context, and always fails if not provided.",
+                "Checks properties of an entity. Invokable from any context.",
+                "Checks the scoreboard scores of an entity. Requires the specified entity provided by loot context, and always fails if not provided.",
+                "Inverts another loot table condition. Invokable from any context.",
+                "Checks if there is a killer_player entity provided by loot context. Requires killer_player entity provided by loot context, and always fails if not provided.",
+                "Checks the current location against location criteria. Requires origin provided by loot context, and always fails if not provided.",
+                "Checks tool used to mine the block. Requires tool provided by loot context, and always fails if not provided.",
+                "Generates a random number between 0.0 and 1.0, and checks if it is less than a specified value. Invokable from any context.",
+                "Generates a random number between 0.0 and 1.0, and checks if it is less than a specified value which has been affected by the level of Looting on the killer entity. Requires killer entity provided by loot context, and if not provided, the looting level is regarded as 0.",
+                "Invokes a predicate file and returns its result. Invokable from any context.",
+                "Returns success with 1 ÷ explosion radius probability. Requires explosion radius provided by loot context, and always success if not provided.",
+                "Passes with probability picked from a list, indexed by enchantment power. Requires tool provided by loot context. If not provided, the enchantment level is regarded as 0.",
+                "Compares the current day time (or rather, 24000 * day count + day time) against given values. Invokable from any context.",
+                "Compares a number against another number or range of numbers. Invokable from any context.",
+                "Checks the current game weather. Invokable from any context."
+            ],
+            "enum": [
+                "minecraft:all_of",
+                "minecraft:any_of",
+                "minecraft:block_state_property",
+                "minecraft:damage_source_properties",
+                "minecraft:entity_properties",
+                "minecraft:entity_scores",
+                "minecraft:inverted",
+                "minecraft:killed_by_player",
+                "minecraft:location_check",
+                "minecraft:match_tool",
+                "minecraft:random_chance",
+                "minecraft:random_chance_with_looting",
+                "minecraft:reference",
+                "minecraft:survives_explosion",
+                "minecraft:table_bonus",
+                "minecraft:time_check",
+                "minecraft:value_check",
+                "minecraft:weather_check"
+            ]
+        },
+        "terms": {
+            "title": "ALL_OF, ANY_OF",
+            "description": "The list of predicates to evaluate. A predicate within this array must be a object.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "$ref": "#"
+            }
+        },
+        "block": {
+            "title": "BLOCK_STATE_PROPERTY",
+            "description": "A block ID. The test fails if the block doesn't match.",
+            "type": "string"
+        },
+        "properties": {
+            "title": "BLOCK_STATE_PROPERTY",
+            "description": "A map of block state names to values. Errors if the block doesn't have these properties.",
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+                "type": [
+                    "string",
+                    "integer",
+                    "object"
+                ],
+                "properties": {
+                    "min": {
+                        "type": [
+                            "string",
+                            "integer"
+                        ]
+                    },
+                    "max": {
+                        "type": [
+                            "string",
+                            "integer"
+                        ]
+                    }
+                }
+            }
+        },
+        "predicate": {
+            "title": "DAMAGE_SOURCE_PROPERTIES, ENTITY_PROPERTIES, LOCATION_CHECK< MATCH_TOOL",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "direct_entity": {
+                    "title": "DAMAGE_SOURCE_PROPERTIES",
+                    "description": "The entity that was the direct cause of the damage.",
+                    "$ref": "#/definitions/Entity"
+                },
+                "source_entity": {
+                    "title": "DAMAGE_SOURCE_PROPERTIES",
+                    "description": "Checks the entity that was the source of the damage (for example: The skeleton that shot the arrow).",
+                    "$ref": "#/definitions/Entity"
+                },
+                "tags": {
+                    "title": "DAMAGE_SOURCE_PROPERTIES",
+                    "description": "An array of objects containing damage type tags that the type of the damage should be included in.",
+                    "type": "array",
+                    "default": [],
+                    "items": {
+                        "description": "An object representing a damage type tag.",
+                        "type": "object",
+                        "default": {},
+                        "properties": {
+                            "id": {
+                                "description": "The resource location of the tag.",
+                                "type": "string"
+                            },
+                            "expected": {
+                                "description": "Whether this tag should be present on the damage type.",
+                                "type": "boolean",
+                                "default": true
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        },
+        "entity": {
+            "title": "ENTITY_PROPERTIES, ENTITY_SCORES",
+            "description": "The entity to check. Specifies an entity from loot context. Can be this, killer, direct_killer, or killer_player.",
+            "type": "string"
+        },
+        "scores": {
+            "title": "ENTITY_SCORES",
+            "description": "Scores to check. All specified scores must pass for the condition to pass.",
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+                "description": "Key name is the objective while the value specifies a range of score values required for the condition to pass.",
+                "type": [
+                    "object",
+                    "integer"
+                ],
+                "default": {},
+                "properties": {
+                    "min": {
+                        "description": "A number Provider. Minimum score.",
+                        "$ref": "../common.json#/definitions/NumberProvider"
+                    },
+                    "max": {
+                        "description": "A number Provider. Maximum score.",
+                        "$ref": "../common.json#/definitions/NumberProvider"
+                    }
+                }
+            }
+        },
+        "term": {
+            "title": "ALL_OF, ANY_OF",
+            "description": "The list of predicates to evaluate. A predicate within this array must be a object.",
+            "$ref": "#"
+        },
+        "offsetX": {
+            "title": "LOCATION_CHECK",
+            "description": "An optional x offset to the location.",
+            "type": "integer",
+            "default": 0
+        },
+        "offsetY": {
+            "title": "LOCATION_CHECK",
+            "description": "An optional y offset to the location.",
+            "type": "integer",
+            "default": 0
+        },
+        "offsetZ": {
+            "title": "LOCATION_CHECK",
+            "description": "An optional z offset to the location.",
+            "type": "integer",
+            "default": 0
+        },
+        "chance": {
+            "title": "RANDOM_CHANCE, RANDOM_CHANCE_WITH_LOOTING",
+            "description": "Success rate as a number 0.0-1.0.",
+            "type": "number"
+        },
+        "name": {
+            "title": "REFRANCE",
+            "description": "The resource location of the predicate to invoke. A cyclic reference causes a parsing failure.",
+            "type": "string"
+        },
+        "enchantment": {
+            "title": "TABLE_BONUS",
+            "description": "Resource location of enchantment.",
+            "type": "string"
+        },
+        "chances": {
+            "title": "TABLE_BONUS",
+            "description": "List of probabilities for enchantment power, indexed from 0.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "integer",
+                "default": 0
+            }
+        },
+        "value": {
+            "title": "TIME_CHECK, VALUE_CHECK",
+            "description": "The time to compare the day time against.",
+            "type": [
+                "object",
+                "integer"
+            ],
+            "default": 1,
+            "properties": {
+                "min": {
+                    "description": "A number Provider. The minimum value.",
+                    "$ref": "../common.json#/definitions/NumberProvider"
+                },
+                "max": {
+                    "description": "A number Provider. The maximum value.",
+                    "$ref": "../common.json#/definitions/NumberProvider"
+                }
+            },
+            "additionalProperties": false
+        },
+        "range": {
+            "title": "VALUE_CHECK",
+            "description": "The range of numbers to compare  value against.",
+            "type": [
+                "object",
+                "integer"
+            ],
+            "default": 0,
+            "properties": {
+                "min": {
+                    "description": "A number Provider. The minimum value.",
+                    "$ref": "../common.json#/definitions/NumberProvider"
+                },
+                "max": {
+                    "description": "A number Provider. The maximum value.",
+                    "$ref": "../common.json#/definitions/NumberProvider"
+                }
+            },
+            "additionalProperties": false
+        },
+        "raining": {
+            "title": "WEATHER_CHECK",
+            "description": "If true, the condition passes only if it is raining or thundering.",
+            "type": "boolean",
+            "default": true
+        },
+        "thundering": {
+            "title": "WEATHER_CHECK",
+            "description": "If true, the condition passes only if it is thundering.",
+            "type": "boolean",
+            "default": true
+        }
+    },
+    "additionalProperties": false
+}

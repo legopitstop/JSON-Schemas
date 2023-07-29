@@ -1,0 +1,7 @@
+{
+    "NumberProvider": {
+        "body": "\"\\$ref\": \"./common.json#/definitions/NumberProvider\"",
+        "prefix": "NumberProvider",
+        "scope": "json,jsonc"
+    }
+}

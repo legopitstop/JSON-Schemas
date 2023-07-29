@@ -1,0 +1,459 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "data.item_modifier",
+    "description": "",
+    "type": "object",
+    "default": {},
+    "properties": {
+        "$schema": true,
+        "function": {
+            "description": "Resource location of the function to apply. Valid functions are described below.",
+            "enumDescriptions": [
+                "Applies a predefined bonus formula to the count of the item stack.",
+                "Copies an entity's or a block entity's name tag into the item's display.Name tag.",
+                "Copies NBT values from a specified block entity or entity, or from command storage to the item's tag tag.",
+                "Copies block state properties provided by loot context to the item's BlockStateTag tag.",
+                "Enchants the item with one randomly-selected enchantment. The power of the enchantment, if applicable, is random. A book will convert to an enchanted book when enchanted.",
+                "Enchants the item, with the specified enchantment level (roughly equivalent to using an enchantment table at that level). A book will convert to an enchanted book.",
+                "If the origin is provided by loot context, converts an empty map into an explorer map leading to a nearby generated structure.",
+                "Removes some items from a stack, if the explosion ratius is provided by loot context. Each item in the item stack has a chance of 1/explosion radius to be lost.",
+                "Adds required item tags of a player head.",
+                "Smelts the item as it would be in a furnace without changing its count.",
+                "Limits the count of every item stack.",
+                "Adjusts the stack size based on the level of the Looting enchantment on the killer entity provided by loot context.",
+                "Call sub-functions",
+                "Add attribute modifiers to the item.",
+                "Adds or replaces banner patterns of a banner. Function successfully adds patterns into NBT tag even if invoked on a non-banner.",
+                "Sets the contents of a container block item to a list of entries.",
+                "Sets the stack size.",
+                "Sets the item's damage value (durability).",
+                "Modifies the item's enchantments. A book will convert to an enchanted book.",
+                "Sets the item tags for instrument items to a random value from a tag.",
+                "Sets the loot table for a container block when placed and opened.",
+                "Adds or changes the item's lore.",
+                "Adds or changes the item's custom name.",
+                "Adds or changes NBT data of the item.",
+                "Sets the Potion tag of an item.",
+                "Sets the status effects for suspicious stew. Fails if invoked on an item that is not suspicious stew."
+            ],
+            "enum": [
+                "minecraft:apply_bonus",
+                "minecraft:copy_name",
+                "minecraft:copy_nbt",
+                "minecraft:copy_state",
+                "minecraft:enchant_randomly",
+                "minecraft:enchant_with_levels",
+                "minecraft:exploration_map",
+                "minecraft:explosion_decay",
+                "minecraft:fill_player_head",
+                "minecraft:furnace_smelt",
+                "minecraft:limit_count",
+                "minecraft:looting_enchant",
+                "minecraft:reference",
+                "minecraft:set_attributes",
+                "minecraft:set_banner_pattern",
+                "minecraft:set_contents",
+                "minecraft:set_count",
+                "minecraft:set_damage",
+                "minecraft:set_enchantments",
+                "minecraft:set_instrument",
+                "minecraft:set_loot_table",
+                "minecraft:set_lore",
+                "minecraft:set_name",
+                "minecraft:set_nbt",
+                "minecraft:set_potion",
+                "minecraft:set_stew_effect"
+            ]
+        },
+        "conditions": {
+            "description": "A list of predicates, of which all must pass, for this function to be applied.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "$ref": "./predicate.json#"
+            }
+        },
+        "enchantment": {
+            "title": "ENCHANTMENT",
+            "description": "ID of an enchantment on the tool provided by loot context used for level calculation.",
+            "type": "string"
+        },
+        "formula": {
+            "title": "APPLY_BONUS",
+            "description": "A resource location. Can be binomial_with_bonus_count for a binomial distribution (with n=level + extra, p=probability), uniform_bonus_count for uniform distribution (from 0 to level * bonusMultiplier), or ore_drops for a special function used for ore drops in the vanilla game (Count *= (max(1; randomInt(0(inclusive) .. (Level + 2)(exclusive))))).",
+            "enum": [
+                "minecraft:binomial_with_bonus_count",
+                "minecraft:uniform_bonus_count",
+                "minecraft:ore_drops"
+            ]
+        },
+        "parameters": {
+            "title": "APPLY_BONUS",
+            "description": "Values required for the formula.",
+            "type": "object",
+            "default": {},
+            "properties": {
+                "extra": {
+                    "description": "For formula 'binomial_with_bonus_count', the extra value.",
+                    "type": "integer",
+                    "default": 0
+                },
+                "probability": {
+                    "description": "For formula 'binomial_with_bonus_count', the probability.",
+                    "type": "number"
+                },
+                "bonusMultiplier": {
+                    "description": "For formula 'uniform_bonus_count', the bonus multiplier.",
+                    "type": "number"
+                }
+            },
+            "additionalProperties": false
+        },
+        "source": {
+            "title": "COPY_NAME, COPY_NBT",
+            "description": "The target whose name will be copied. Specifies an entity or block entity from loot context. Can be block_entity, this, killer, or killer_player (cannot be direct_killer).",
+            "type": [
+                "string",
+                "object"
+            ],
+            "properties": {
+                "type": {
+                    "description": "Set to context to use a block entity or an entity as the source, or storage to use a command storage as the source.",
+                    "enum": [
+                        "context",
+                        "storage"
+                    ]
+                },
+                "target": {
+                    "description": "Included only if type is set to context. Specifies an entity or block entity from loot context to copy NBT from. Can be block_entity, this, killer, direct_killer, or killer_player.",
+                    "type": "string"
+                },
+                "source": {
+                    "description": "Included only if type is set to storage. A resource location specifying the storage ID to copy NBT from.",
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "ops": {
+            "title": "COPY_NBT",
+            "description": "A list of copy operations.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "description": "An NBT operation.",
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "source": {
+                        "description": "The NBT path to copy from.",
+                        "type": "string"
+                    },
+                    "target": {
+                        "description": "The NBT path to copy to, starting from the item's tag tag.",
+                        "type": "string"
+                    },
+                    "op": {
+                        "description": "Set to replace to replace any existing contents of the target NBT path, append to append to a list or array, or merge to merge into a compound tag.",
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "block": {
+            "title": "COPY_STATE",
+            "description": "A block ID. Function fails if the block doesn't match the  properties list.",
+            "type": "string"
+        },
+        "properties": {
+            "title": "COPY_STATE",
+            "description": "A list of properties to copy.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "description": "The name of a block state to copy.",
+                "type": "string"
+            }
+        },
+        "enchantments": {
+            "title": "ENCHANT_RANDOMLY, SET_ENCHANTMENTS",
+            "description": "List of enchantment IDs to choose from. If omitted, all discoverable enchantments (currently only Soul speed and Swift Sneak are undiscoverable) applicable to the item are possible.",
+            "type": [
+                "array",
+                "object"
+            ],
+            "default": [],
+            "items": {
+                "type": "string"
+            },
+            "additionalProperties": {
+                "description": "Key name is the enchantment ID. Value is a number provider specifying the enchantment power. Powers are clamped at a maximum of 255. Decreasing an enchantment power below 1 will remove the enchantment, through a relative negative add or through a direct value assignemnt.",
+                "type": "integer",
+                "default": 0,
+                "maximum": 255
+            }
+        },
+        "treasure": {
+            "title": "ENCHANT_WITH_LEVELS",
+            "description": "Determines whether treasure enchantments are allowed on this item. Defaults to false.",
+            "type": "boolean",
+            "default": true
+        },
+        "levels": {
+            "$ref": "../common.json#/definitions/NumberProvider"
+        },
+        "destination": {
+            "title": "EXPLORATION_MAP",
+            "description": "A tag of structure to locate. Defaults to on_treasure_maps.",
+            "type": "string"
+        },
+        "decoration": {
+            "title": "EXPLORATION_MAP",
+            "description": "The icon used to mark the destination on the map. Accepts any of the map icon text IDs (case insensitive). If mansion or monument is used, the color of the lines on the item texture changes to match the corresponding explorer map. Defaults to mansion.",
+            "type": "string"
+        },
+        "zoom": {
+            "title": "EXPLORATION_MAP",
+            "description": "The zoom level of the resulting map. Defaults to 2.",
+            "type": "integer",
+            "default": 0
+        },
+        "search_radius": {
+            "title": "EXPLORATION_MAP",
+            "description": "The size, in chunks, of the area to search for structures. The area checked is square, not circular. Radius 0 causes only the current chunk to be searched, radius 1 causes the current chunk and eight adjacent chunks to be searched, and so on. Defaults to 50.",
+            "type": "integer",
+            "default": 0
+        },
+        "skip_existing_chunks": {
+            "title": "EXPLORATION_MAP",
+            "description": "Don't search in chunks that have already been generated. Defaults to true.",
+            "type": "boolean",
+            "default": true
+        },
+        "entity": {
+            "title": "FILL_PLAYER_HEAD, SET_LORE, SET_NAME",
+            "description": "Specifies a player to be used for the player head. Specifies an entity from loot context. Can be this, killer, direct_killer, or killer_player.",
+            "type": "string"
+        },
+        "limit": {
+            "title": "LIMIT_COUNT",
+            "description": "An integer to specify the exact limit to use.",
+            "type": [
+                "object",
+                "integer"
+            ],
+            "default": 0,
+            "properties": {
+                "min": {
+                    "description": "A number provider. Minimum limit to use.",
+                    "$ref": "../common.json#/definitions/NumberProvider"
+                },
+                "max": {
+                    "description": "A number provider. Maximum limit to use.",
+                    "$ref": "../common.json#/definitions/NumberProvider"
+                }
+            },
+            "additionalProperties": false
+        },
+        "count": {
+            "title": "LOOTING_ENCHANT, SET_COUNT",
+            "description": "A number provider. Specifies the number of additional items per level of looting. Note the number may be fractional, rounded after multiplying by the looting level.",
+            "$ref": "../common.json#/definitions/NumberProvider"
+        },
+        "name": {
+            "title": "REFRANCE, SET_LOOT_TABLE, SET_NAME",
+            "description": "Location of function to call.",
+            "type": [
+                "array",
+                "string"
+            ],
+            "default": [],
+            "items": {
+                "type": "string"
+            }
+        },
+        "modifiers": {
+            "title": "SET_ATTRIBUTES",
+            "description": "An attribute modifier to add.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "name": {
+                        "description": "Name of the modifier.",
+                        "type": "string"
+                    },
+                    "attribute": {
+                        "description": "The resource location of the attribute this modifier is to act upon.",
+                        "type": "string"
+                    },
+                    "operation": {
+                        "description": "The operation of this attribute modifier. ",
+                        "enum": [
+                            "addition",
+                            "multiply_base",
+                            "multiply_total"
+                        ]
+                    },
+                    "amount": {
+                        "description": "A number provider. Specifies the amount of the modifier.",
+                        "$ref": "../common.json#/definitions/NumberProvider"
+                    },
+                    "id": {
+                        "description": "Optional. UUID to assign the modifier, in hyphenated hexadecimal format. If none specified, a new random UUID is generated.",
+                        "type": "string"
+                    },
+                    "slot": {
+                        "description": "Sets the slots the item must be in for the modifier to take effect.",
+                        "enum": [
+                            "mainhand",
+                            "offhand",
+                            "feet",
+                            "legs",
+                            "chest",
+                            "head"
+                        ],
+                        "type": [
+                            "array",
+                            "string"
+                        ],
+                        "default": [],
+                        "items": {
+                            "enum": [
+                                "mainhand",
+                                "offhand",
+                                "feet",
+                                "legs",
+                                "chest",
+                                "head"
+                            ]
+                        }
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "patterns": {
+            "title": "SET_BANNER_PATTERN",
+            "description": "List of patterns to add or replace with.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "description": "A pattern.",
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "pattern": {
+                        "description": "The pattern type.",
+                        "type": "string"
+                    },
+                    "color": {
+                        "description": "The color for this pattern.",
+                        "enum": [
+                            "white",
+                            "light_gray",
+                            "gray",
+                            "black",
+                            "brown",
+                            "red",
+                            "orange",
+                            "yellow",
+                            "lime",
+                            "green",
+                            "cyan",
+                            "light_blue",
+                            "blue",
+                            "purple",
+                            "magenta",
+                            "pink"
+                        ]
+                    }
+                },
+                "additionalProperties": false
+            }
+        },
+        "entries": {
+            "title": "SET_CONTENTS",
+            "description": "A list of loot table entry producer to provide item stacks.",
+            "type": "array",
+            "default": [],
+            "items": {}
+        },
+        "type": {
+            "title": "SET_CONTENTS, SET_LOOT_TABLE",
+            "description": "the block entity type to be written in BlockEntityTag.id.",
+            "type": "string"
+        },
+        "add": {
+            "title": "SET_COUNT, SET_DAMAGE, SET_ENCHANTMENTS",
+            "description": "If true, change will be relative to current count. Defaults to false.",
+            "type": "boolean",
+            "default": true
+        },
+        "damage": {
+            "title": "SET_DAMAGE",
+            "description": "A number provider. Specifies the damage fraction to set (1.0 is undamaged, 0.0 is zero durability left).",
+            "$ref": "../common.json#/definitions/NumberProvider"
+        },
+        "options": {
+            "title": "SET_INSTRUMENT",
+            "description": "The resource location started with # of an instrument tag, one of the listings is selected randomly.",
+            "type": "string"
+        },
+        "seed": {
+            "title": "SET_LOOT_TABLE",
+            "description": "Optional. Specifies the loot table seed. If absent or set to 0, the seed won't be put into the NBT, and a random seed will be used when opening the continer."
+        },
+        "lore": {
+            "title": "SET_LORE",
+            "description": "List of lines to append or replace on the item's lore.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "string"
+            }
+        },
+        "replace": {
+            "title": "SET_LORE",
+            "description": "Optional. Set to true to replace the existing item lore with only the lines in  lore. If false, the lines are appended to the list of existing lines of lore. Defaults to false.",
+            "type": "boolean",
+            "default": true
+        },
+        "tag": {
+            "title": "SET_NBT",
+            "description": "The NBT to merge onto the item's tag tag, within a JSON string. The outer braces { } of the NBT must be present within this JSON string. Additional care is required when the NBT contains quotation marks \", as they must be escaped from the JSON syntax with a backslash \\.",
+            "type": "string"
+        },
+        "id": {
+            "title": "SET_POTION",
+            "description": "The potion ID. Set to empty to remove the Potion tag.",
+            "type": "string"
+        },
+        "effects": {
+            "title": "SET_STEW_EFFECT",
+            "description": "The effects to apply.",
+            "type": "array",
+            "default": [],
+            "items": {
+                "description": "An effect.",
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "type": {
+                        "description": "The effect ID.",
+                        "type": "string"
+                    },
+                    "duration": {
+                        "description": " A number provider. The duration of the effect.",
+                        "$ref": "../common.json#/definitions/NumberProvider"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false
+}

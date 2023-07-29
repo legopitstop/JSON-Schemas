@@ -1,0 +1,9 @@
+{
+   "$schema": "http://json-schema.org/draft-07/schema",
+   "title": "data.loot_table",
+   "description": "",
+   "type": "object",
+   "default": {},
+   "properties": {},
+   "additionalProperties": false
+}
