@@ -1091,6 +1091,35 @@
                             },
                             "additionalProperties": false
                         },
+                        "minecraft:enchantable": {
+                            "title": "STABLE (1.20.30)",
+                            "description": "Enchantable item.",
+                            "properties": {
+                                "slot": {
+                                    "enum": [
+                                        "bow",
+                                        "armor_feet",
+                                        "armor_torso",
+                                        "armor_head",
+                                        "armor_legs",
+                                        "hoe",
+                                        "axe",
+                                        "pickaxe",
+                                        "shovel",
+                                        "sword",
+                                        "elytra",
+                                        "fishing_rod",
+                                        "flintsteel",
+                                        "shears",
+                                        "cosmetic_head"
+                                    ]
+                                },
+                                "value": {
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
 
                         "minecraft:seed": {
                             "title": "STABLE",
@@ -1171,35 +1200,6 @@
                                     "type": "number"
                                 },
                                 "slide_away_duration": {
-                                    "type": "number"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:enchantable": {
-                            "title": "STABLE",
-                            "description": "Enchantable item.",
-                            "properties": {
-                                "slot": {
-                                    "enum": [
-                                        "bow",
-                                        "armor_feet",
-                                        "armor_torso",
-                                        "armor_head",
-                                        "armor_legs",
-                                        "hoe",
-                                        "axe",
-                                        "pickaxe",
-                                        "shovel",
-                                        "sword",
-                                        "elytra",
-                                        "fishing_rod",
-                                        "flintsteel",
-                                        "shears",
-                                        "cosmetic_head"
-                                    ]
-                                },
-                                "value": {
                                     "type": "number"
                                 }
                             },
@@ -1287,11 +1287,6 @@
                                 }
                             },
                             "additionalProperties": false
-                        },
-                        "minecraft:requires_interact": {
-                            "title": "STABLE",
-                            "description": "This means the item needs to be clicked. Example items; writable book, carrot on a stick, locator map, map, warped fungus on a stick",
-                            "type": "boolean"
                         },
                         "minecraft:fertilizer": {
                             "title": "STABLE",
@@ -1525,10 +1520,17 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:mining_speed": {
-                            "type": "integer"
-                        },
 
+                        "minecraft:requires_interact": {
+                            "title": "Format: (1.20.30)",
+                           "type": "boolean",
+                            "deprecated": true
+                        },
+                        "minecraft:mining_speed": {
+                            "title": "Format: 1.20.30",
+                            "type": "integer",
+                            "deprecated": true
+                        },
                         "minecraft:render_offsets": {
                             "title": "Format: 1.20.10",
                             "deprecated": true
