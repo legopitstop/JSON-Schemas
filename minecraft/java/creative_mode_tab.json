@@ -1,0 +1,23 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/creative_mode_tab.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Creative Mode Tab (Java Edition)",
+    "examples": [
+        "minecraft:building_blocks",
+        "minecraft:colored_blocks",
+        "minecraft:combat",
+        "minecraft:food_and_drinks",
+        "minecraft:functional_blocks",
+        "minecraft:hotbar",
+        "minecraft:ingredients",
+        "minecraft:inventory",
+        "minecraft:natural_blocks",
+        "minecraft:op_blocks",
+        "minecraft:redstone_blocks",
+        "minecraft:search",
+        "minecraft:spawn_eggs",
+        "minecraft:tools_and_utilities"
+    ]
+}

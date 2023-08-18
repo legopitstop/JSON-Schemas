@@ -3,7 +3,7 @@ import os
 import json
 LOCAL = os.path.dirname(os.path.realpath(__file__))
 
-opn = open(LOCAL+'/#registries.json', 'r')
+opn = open(LOCAL+'/registries.json', 'r')
 registries = json.load(opn)
 opn.close()
 

@@ -5,7 +5,8 @@
     "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
     "description": "Any Minecraft Loot Condition Type (Java Edition)",
     "examples": [
-        "minecraft:alternative",
+        "minecraft:all_of",
+        "minecraft:any_of",
         "minecraft:block_state_property",
         "minecraft:damage_source_properties",
         "minecraft:entity_properties",

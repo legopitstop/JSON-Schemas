@@ -1,0 +1,13 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/rule_block_entity_modifier.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Rule Block Entity Modifier (Java Edition)",
+    "examples": [
+        "minecraft:append_loot",
+        "minecraft:append_static",
+        "minecraft:clear",
+        "minecraft:passthrough"
+    ]
+}
