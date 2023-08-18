@@ -261,21 +261,14 @@
                         },
                         "minecraft:bone_visibility": {
                             "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
-                            "description": "Sets conditions for when the block's different parts are visible.",
+                            "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
                             "type": "object",
-                            "properties": {
-                                "conditions": {
-                                    "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-                                    "type": "object",
-                                    "default": {},
-                                    "maxProperties": 64,
-                                    "additionalProperties": {
-                                        "$ref": "../common.json#/definitions/MoLang",
-                                        "default": "true"
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
+                            "default": {},
+                            "maxProperties": 64,
+                            "additionalProperties": {
+                                "$ref": "../common.json#/definitions/MoLang",
+                                "default": "true"
+                            }
                         },
                         "minecraft:part_visibility": {
                             "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
@@ -355,7 +348,11 @@
                         },
                         "minecraft:breathability": {
                             "title": "EXPERIMENTAL (Holiday Creator Features)",
-                            "description": "The breathing type of this block that affects the breathing state of mobs when they have their breathing points inside this block. Available values: solid, air",
+                            "description": "Determines whether the block is breathable by defining if the block is treated as a `solid` or as `air`",
+                            "enumDescriptions": [
+                                "Entities will sufficate when in this block",
+                                "Entities can breath while in this block"
+                            ],
                             "enum": [
                                 "solid",
                                 "air"

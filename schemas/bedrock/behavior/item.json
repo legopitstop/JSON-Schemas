@@ -126,10 +126,11 @@
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                         },
                         "category": {
-                            "title": "Legacy",
+                            "title": "Format: ?",
                             "default": "item",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands.",
-                            "$ref": "../common.json#/definitions/itemTab"
+                            "$ref": "../common.json#/definitions/itemTab",
+                            "deprecated": true
                         },
                         "menu_category": {
                             "title": "v1.20.10",
@@ -155,9 +156,11 @@
                             "additionalProperties": false
                         },
                         "is_experimental": {
+                            "title": "Format: ?",
+                            "description": "If this item is experimental, it will only be registered if the world is marked as experimental.",
                             "type": "boolean",
                             "default": false,
-                            "description": "If this item is experimental, it will only be registered if the world is marked as experimental."
+                            "deprecated": true
                         }
                     },
                     "additionalProperties": false
@@ -1120,6 +1123,152 @@
                             },
                             "additionalProperties": false
                         },
+                        "minecraft:food": {
+                            "title": "STABLE (1.20.30)",
+                            "description": "When an item has a food component, it becomes edible to the player.",
+                            "type": "object",
+                            "required": [
+                                "nutrition",
+                                "saturation_modifier"
+                            ],
+                            "properties": {
+                                "is_meat": {
+                                    "description": "If true the item is meat.",
+                                    "type": "boolean",
+                                    "default": true
+                                },
+                                "can_always_eat": {
+                                    "description": "If true you can always eat this item (even when not hungry). Default is set to false.",
+                                    "type": "boolean",
+                                    "default": false
+                                },
+                                "nutrition": {
+                                    "description": "The value that is added to the actor's nutrition when the item is used. Default is set to 0.",
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "on_consume": {
+                                    "title": "Format: ?",
+                                    "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
+                                    "$ref": "../common.json#/definitions/EventTrigger",
+                                    "deprecated": true
+                                },
+                                "saturation_modifier": {
+                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
+                                    "anyOf": [
+                                        {
+                                            "type": "number",
+                                            "minimum": 0.00,
+                                            "default": 0.6
+                                        },
+                                        {
+                                            "title": "Format: ?",
+                                            "enum": [
+                                                "low",
+                                                "supernatural",
+                                                "normal",
+                                                "poor",
+                                                "good"
+                                            ],
+                                            "deprecated": true
+                                        }
+                                    ]
+                                },
+                                "using_converts_to": {
+                                    "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
+                                    "anyOf": [
+                                        {
+                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "item": {
+                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
+                                                    "description": "The item that it will become."
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "on_use_action": {
+                                    "type": "string",
+                                    "examples": [
+                                        "chorus_teleport"
+                                    ]
+                                },
+                                "on_use_range": {
+                                    "type": "array",
+                                    "default": [
+                                        0,
+                                        0,
+                                        0
+                                    ],
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "minItems": 3,
+                                    "maxItems": 3
+                                },
+                                "cooldown_type": {
+                                    "type": "string",
+                                    "examples": [
+                                        "chorusfruit"
+                                    ]
+                                },
+                                "cooldown_time": {
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "remove_effects": {
+                                    "title": "Format: ?",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "deprecated": true
+                                },
+                                "effects": {
+                                    "title": "Format: ?",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "object",
+                                        "default": {},
+                                        "required": [
+                                            "name"
+                                        ],
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "chance": {
+                                                "type": "number",
+                                                "default": 1.0
+                                            },
+                                            "duration": {
+                                                "type": "integer",
+                                                "default": 0
+                                            },
+                                            "amplifier": {
+                                                "type": "integer",
+                                                "default": 0
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "deprecated": true
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:interact_button": {
+                            "title": "STABLE (1.20.30)",
+                            "description": "This component is a boolean or string that determines if the interact button is shown in touch controls and what text is displayed on the button. When set as true, default \"Use Item\" text will be used.",
+                            "type": ["string", "boolean"],
+                            "default": ""
+                        },
 
                         "minecraft:seed": {
                             "title": "STABLE",
@@ -1381,141 +1530,6 @@
                                 "on_complete": {
                                     "description": "Event trigger for when the item has completed its use duration.",
                                     "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:food": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "When an item has a food component, it becomes edible to the player.",
-                            "type": "object",
-                            "required": [
-                                "nutrition",
-                                "saturation_modifier"
-                            ],
-                            "properties": {
-                                "is_meat": {
-                                    "description": "If true the item is meat.",
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "can_always_eat": {
-                                    "description": "If true you can always eat this item (even when not hungry). Default is set to false.",
-                                    "type": "boolean",
-                                    "default": false
-                                },
-                                "nutrition": {
-                                    "description": "The value that is added to the actor's nutrition when the item is used. Default is set to 0.",
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "on_consume": {
-                                    "title": "Format: ?",
-                                    "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
-                                    "$ref": "../common.json#/definitions/EventTrigger",
-                                    "deprecated": true
-                                },
-                                "saturation_modifier": {
-                                    "description": "Saturation Modifier is used in this formula: (nutrition * saturation_modifier * 2) when applying the saturation buff. Default is set to 0.6.",
-                                    "anyOf": [
-                                        {
-                                            "type": "number",
-                                            "minimum": 0.00,
-                                            "default": 0.6
-                                        },
-                                        {
-                                            "enum": [
-                                                "low",
-                                                "supernatural",
-                                                "normal",
-                                                "poor",
-                                                "good"
-                                            ]
-                                        }
-                                    ]
-                                },
-                                "using_converts_to": {
-                                    "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
-                                    "anyOf": [
-                                        {
-                                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                                        },
-                                        {
-                                            "type": "object",
-                                            "properties": {
-                                                "item": {
-                                                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
-                                                    "description": "The item that it will become."
-                                                }
-                                            }
-                                        }
-                                    ]
-                                },
-                                "on_use_action": {
-                                    "type": "string",
-                                    "examples": [
-                                        "chorus_teleport"
-                                    ]
-                                },
-                                "on_use_range": {
-                                    "type": "array",
-                                    "default": [
-                                        0,
-                                        0,
-                                        0
-                                    ],
-                                    "items": {
-                                        "type": "integer"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                },
-                                "cooldown_type": {
-                                    "type": "string",
-                                    "examples": [
-                                        "chorusfruit"
-                                    ]
-                                },
-                                "cooldown_time": {
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "remove_effects": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "effects": {
-                                    "title": "OUTDATED",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "required": [
-                                            "name"
-                                        ],
-                                        "properties": {
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "chance": {
-                                                "type": "number",
-                                                "default": 1.0
-                                            },
-                                            "duration": {
-                                                "type": "integer",
-                                                "default": 0
-                                            },
-                                            "amplifier": {
-                                                "type": "integer",
-                                                "default": 0
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
                                 }
                             },
                             "additionalProperties": false

@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+      {
+        "type": "python",
+        "name": "Run Tests",
+        "request": "launch",
+        "console": "integratedTerminal",
+        "stopOnEntry": false,
+        "args": "-all",
+        "env": {},
+        "program": "'${workspaceFolder}/test.py'"
+      }
+    ]
+  }
