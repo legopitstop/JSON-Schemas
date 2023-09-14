@@ -1450,56 +1450,6 @@
                             },
                             "additionalProperties": false
                         },
-                        "minecraft:weapon": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
-                            "type": "object",
-                            "properties": {
-                                "on_hit_block": {
-                                    "description": "Trigger for letting you know when this item is used to hit a block",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                },
-                                "on_hurt_entity": {
-                                    "description": "Trigger for letting you know when this item is used to hurt another mob",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                },
-                                "on_not_hurt_entity": {
-                                    "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:on_use": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The on_use item component allows you to receive an event when the item is used.",
-                            "type": "object",
-                            "required": [
-                                "on_use"
-                            ],
-                            "properties": {
-                                "on_use": {
-                                    "description": "Triggers when the item is used.",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:on_use_on": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
-                            "type": "object",
-                            "required": [
-                                "on_use_on"
-                            ],
-                            "properties": {
-                                "on_use_on": {
-                                    "description": "Triggered when the item is used on a block",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
                         "minecraft:item_storage": {
                             "title": "EXPERIMENTAL (toggle: Holiday Creator Features or Caves and Cliffs internal)",
                             "description": "The Storage Item Component is used for storing Items within an Item's User Data",
@@ -1535,9 +1485,62 @@
                             "additionalProperties": false
                         },
 
+                        "minecraft:weapon": {
+                            "title": "Format: (1.20.30)",
+                            "deprecated": true,
+                            "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
+                            "type": "object",
+                            "properties": {
+                                "on_hit_block": {
+                                    "description": "Trigger for letting you know when this item is used to hit a block",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                },
+                                "on_hurt_entity": {
+                                    "description": "Trigger for letting you know when this item is used to hurt another mob",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                },
+                                "on_not_hurt_entity": {
+                                    "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:on_use": {
+                            "title": "Format: (1.20.30)",
+                            "deprecated": true,
+                            "description": "The on_use item component allows you to receive an event when the item is used.",
+                            "type": "object",
+                            "required": [
+                                "on_use"
+                            ],
+                            "properties": {
+                                "on_use": {
+                                    "description": "Triggers when the item is used.",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:on_use_on": {
+                            "title": "Format: (1.20.30)",
+                            "deprecated": true,
+                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
+                            "type": "object",
+                            "required": [
+                                "on_use_on"
+                            ],
+                            "properties": {
+                                "on_use_on": {
+                                    "description": "Triggered when the item is used on a block",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
                         "minecraft:requires_interact": {
                             "title": "Format: (1.20.30)",
-                           "type": "boolean",
+                            "type": "boolean",
                             "deprecated": true
                         },
                         "minecraft:mining_speed": {
