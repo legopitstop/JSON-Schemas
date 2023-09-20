@@ -136,6 +136,24 @@
                 },
                 "additionalProperties": false
             }
+        },
+        "animation_sources": {
+            "title": "resource.piece_meta",
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "animationFile": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": false
+            }
         }
     }
 }
