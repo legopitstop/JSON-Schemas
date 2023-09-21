@@ -126,14 +126,13 @@
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                         },
                         "category": {
-                            "title": "Format: ?",
                             "default": "item",
                             "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands.",
                             "$ref": "../common.json#/definitions/itemTab",
                             "deprecated": true
                         },
                         "menu_category": {
-                            "title": "v1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "The creative group name and category for this item.",
                             "type": "object",
                             "default": {},
@@ -156,7 +155,6 @@
                             "additionalProperties": false
                         },
                         "is_experimental": {
-                            "title": "Format: ?",
                             "description": "If this item is experimental, it will only be registered if the world is marked as experimental.",
                             "type": "boolean",
                             "default": false,
@@ -170,7 +168,7 @@
                     "type": "object",
                     "properties": {
                         "minecraft:block_placer": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Planter item component. planter items are items that can be planted.",
                             "type": "object",
                             "required": [
@@ -193,7 +191,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:projectile": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Projectile item component. projectile items shoot out, like an arrow.",
                             "type": "object",
                             "required": [
@@ -218,7 +216,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:record": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Can place inside a jukebox and play the sound track. Example items: all music discs",
                             "type": "object",
                             "required": [
@@ -648,7 +646,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:shooter": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Shooter Item Component.",
                             "type": "object",
                             "required": [
@@ -718,7 +716,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:throwable": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Throwable item component. Throwable items, such as a snowball.",
                             "type": "object",
                             "required": [
@@ -764,18 +762,18 @@
                             "additionalProperties": false
                         },
                         "minecraft:can_destroy_in_creative": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "The can destroy in creative component determines if the item will break blocks in creative when swinging.",
                             "type": "boolean",
                             "default": true
                         },
                         "minecraft:hover_text_color": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "The hover text color component determines the color of the item name when hovering over it.",
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/color.json#/definitions/text"
                         },
                         "minecraft:repairable": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Repairable item component. Determines the items that can be used to repair this item along with how much durability they repair.",
                             "type": "object",
                             "required": [
@@ -810,7 +808,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:cooldown": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "Cool down time for a component. After you use an item it becomes unusable for the duration specified by the 'cool down time' setting in this component.",
                             "type": "object",
                             "required": [
@@ -830,7 +828,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:display_name": {
-                            "title": "STABLE 1.20.0",
+                            "title": "Format 1.20.0",
                             "description": "Display Name item component. Determines the text shown whenever an item's name is displayed (ex. hover text).",
                             "type": "object",
                             "required": [
@@ -845,7 +843,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:durability": {
-                            "title": "STABLE 1.20.0",
+                            "title": "Format 1.20.0",
                             "description": "Durability item component. Determines how much damage this item takes before breaking and allows the item to be combined in crafting.",
                             "type": "object",
                             "required": [
@@ -877,7 +875,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:fuel": {
-                            "title": "STABLE 1.20.0",
+                            "title": "Format 1.20.0",
                             "description": "Fuel item component. Allows this item to be used as fuel in a furnace to 'cook' other items.",
                             "type": "object",
                             "required": [
@@ -893,7 +891,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:entity_placer": {
-                            "title": "STABLE 1.20.0",
+                            "title": "Format 1.20.0",
                             "description": "Entity placer item component. You can specifiy allowed blocks that the item is restricted to.",
                             "type": "object",
                             "required": [
@@ -919,7 +917,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:icon": {
-                            "title": "STABLE 1.20.0",
+                            "title": "Format 1.20.0",
                             "description": "Icon item component. Determines the icon to represent the item in the UI and elsewhere.",
                             "type": [
                                 "object",
@@ -946,62 +944,62 @@
                             "additionalProperties": false
                         },
                         "minecraft:max_stack_size": {
-                            "title": "STABLE 1.20.10",
+                            "title": "Format 1.20.10",
                             "description": "The max stack size component determines how many of the item can be stacked together.",
                             "type": "integer",
                             "minimum": 1,
                             "maximum": 64
                         },
                         "minecraft:stacked_by_data": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "type": "boolean",
                             "default": true
                         },
                         "minecraft:use_duration": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "How long it takes to use the item.",
                             "type": "number"
                         },
                         "minecraft:glint": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "The glint component determines whether the item has the enchanted glint render effect on it.",
                             "type": "boolean",
                             "default": false
                         },
                         "minecraft:hand_equipped": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "This component determines if an item is rendered like a tool while in hand.",
                             "type": "boolean",
                             "default": false
                         },
                         "minecraft:use_animation": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "What it will look like while your using the item.",
                             "$ref": "../common.json#/definitions/useAnimation"
                         },
                         "minecraft:allow_off_hand": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "This will allow the item to be held in the offhand slot. Example items; firework rocket, nautilus shell, shield, totem of undying",
                             "type": "boolean"
                         },
                         "minecraft:should_despawn": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "Will the item not naturally despawn. Example item; nether star",
                             "type": "boolean",
                             "default": true
                         },
                         "minecraft:liquid_clipped": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "Example items; all boats, all spawn eggs",
                             "type": "boolean"
                         },
                         "minecraft:damage": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "The amount of damage the item does.",
                             "type": "integer"
                         },
                         "minecraft:digger": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "Digger item compoent. Make this item dig up blocks at diffrent speeds.",
                             "type": "object",
                             "required": [
@@ -1038,6 +1036,7 @@
                                                 "type": "integer"
                                             },
                                             "on_dig": {
+                                                "title": "Format 1.20.20",
                                                 "description": "Trigger for when you dig up this block",
                                                 "$ref": "../common.json#/definitions/EventTrigger",
                                                 "deprecated": true
@@ -1048,7 +1047,7 @@
                                     }
                                 },
                                 "on_dig": {
-                                    "title": "Format: 1.20.20",
+                                    "title": "Format 1.20.20",
                                     "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
                                     "$ref": "../common.json#/definitions/EventTrigger",
                                     "deprecated": true
@@ -1062,7 +1061,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:wearable": {
-                            "title": "STABLE 1.20.20",
+                            "title": "Format 1.20.20",
                             "description": "Wearable item component.",
                             "type": "object",
                             "required": [
@@ -1072,7 +1071,8 @@
                             "properties": {
                                 "protection": {
                                     "description": "How much protection does the armor item have.",
-                                    "type": "integer"
+                                    "type": "integer",
+                                    "deprecated": true
                                 },
                                 "dispensable": {
                                     "type": "boolean",
@@ -1095,7 +1095,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:enchantable": {
-                            "title": "STABLE (1.20.30)",
+                            "title": "Format 1.20.30",
                             "description": "Enchantable item.",
                             "properties": {
                                 "slot": {
@@ -1124,7 +1124,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:food": {
-                            "title": "STABLE (1.20.30)",
+                            "title": "Format 1.20.30",
                             "description": "When an item has a food component, it becomes edible to the player.",
                             "type": "object",
                             "required": [
@@ -1148,7 +1148,7 @@
                                     "default": 0
                                 },
                                 "on_consume": {
-                                    "title": "Format: ?",
+                                    "title": "Format ?",
                                     "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
                                     "$ref": "../common.json#/definitions/EventTrigger",
                                     "deprecated": true
@@ -1162,7 +1162,7 @@
                                             "default": 0.6
                                         },
                                         {
-                                            "title": "Format: ?",
+                                            "title": "Format ?",
                                             "enum": [
                                                 "low",
                                                 "supernatural",
@@ -1221,7 +1221,7 @@
                                     "default": 0
                                 },
                                 "remove_effects": {
-                                    "title": "Format: ?",
+                                    "title": "Format ?",
                                     "type": "array",
                                     "default": [],
                                     "items": {
@@ -1230,7 +1230,7 @@
                                     "deprecated": true
                                 },
                                 "effects": {
-                                    "title": "Format: ?",
+                                    "title": "Format ?",
                                     "type": "array",
                                     "default": [],
                                     "items": {
@@ -1264,14 +1264,13 @@
                             "additionalProperties": false
                         },
                         "minecraft:interact_button": {
-                            "title": "STABLE (1.20.30)",
+                            "title": "Format 1.20.30",
                             "description": "This component is a boolean or string that determines if the interact button is shown in touch controls and what text is displayed on the button. When set as true, default \"Use Item\" text will be used.",
                             "type": ["string", "boolean"],
                             "default": ""
                         },
 
                         "minecraft:seed": {
-                            "title": "STABLE",
                             "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
                             "type": "object",
                             "required": [
@@ -1315,18 +1314,15 @@
                             "additionalProperties": false
                         },
                         "minecraft:shears": {
-                            "title": "STABLE",
                             "description": "A shear item. Example item; shears",
                             "type": "object",
                             "default": {}
                         },
                         "minecraft:portfolio": {
-                            "title": "STABLE",
                             "type": "object",
                             "default": {}
                         },
                         "minecraft:camera": {
-                            "title": "STABLE",
                             "type": "object",
                             "required": [
                                 "black_bars_duration",
@@ -1355,25 +1351,21 @@
                             "additionalProperties": false
                         },
                         "minecraft:bucket": {
-                            "title": "STABLE",
                             "description": "This is a empty bucket item. Example item; bucket",
                             "type": "object",
                             "default": {}
                         },
                         "minecraft:carrot_on_a_stick": {
-                            "title": "STABLE",
                             "description": "Carrot on a stick item. Example item; carrot on a stick",
                             "type": "object",
                             "default": {}
                         },
                         "minecraft:coal": {
-                            "title": "STABLE",
                             "description": "Coal item. Example item: coal",
                             "type": "object",
                             "default": {}
                         },
                         "minecraft:dyeable": {
-                            "title": "STABLE",
                             "description": "An item that can be dyed. Example items; leather boots, leather chestplate, firework star, leather helmet, leather horse armor, leather leggings",
                             "type": "object",
                             "required": [
@@ -1388,11 +1380,9 @@
                         },
                         "minecraft:frame_count": {
                             "description": "How many frame the item has. Example items; bow, clock, compass, crossbow, lodestone compass",
-                            "title": "STABLE",
                             "type": "integer"
                         },
                         "minecraft:map": {
-                            "title": "STABLE",
                             "description": "A map item. Example items; locator map, map",
                             "type": "object",
                             "required": [
@@ -1406,7 +1396,6 @@
                             "additionalProperties": false
                         },
                         "minecraft:mob_spawner_placer": {
-                            "title": "STABLE",
                             "description": "This will make the block. Example items; spawn eggs",
                             "type": "object",
                             "required": [
@@ -1438,7 +1427,6 @@
                             "additionalProperties": false
                         },
                         "minecraft:fertilizer": {
-                            "title": "STABLE",
                             "description": "fertilizer item.",
                             "properties": {
                                 "type": {
@@ -1486,7 +1474,7 @@
                         },
 
                         "minecraft:weapon": {
-                            "title": "Format: (1.20.30)",
+                            "title": "Format 1.20.30",
                             "deprecated": true,
                             "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
                             "type": "object",
@@ -1507,7 +1495,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:on_use": {
-                            "title": "Format: (1.20.30)",
+                            "title": "Format 1.20.30",
                             "deprecated": true,
                             "description": "The on_use item component allows you to receive an event when the item is used.",
                             "type": "object",
@@ -1523,7 +1511,7 @@
                             "additionalProperties": false
                         },
                         "minecraft:on_use_on": {
-                            "title": "Format: (1.20.30)",
+                            "title": "Format 1.20.30",
                             "deprecated": true,
                             "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
                             "type": "object",
@@ -1539,62 +1527,66 @@
                             "additionalProperties": false
                         },
                         "minecraft:requires_interact": {
-                            "title": "Format: (1.20.30)",
+                            "title": "REMOVED 1.20.30",
                             "type": "boolean",
                             "deprecated": true
                         },
                         "minecraft:mining_speed": {
-                            "title": "Format: 1.20.30",
+                            "title": "Format 1.20.30",
+                            "description": "Use 'minecraft:digger' unstead.",
                             "type": "integer",
                             "deprecated": true
                         },
                         "minecraft:render_offsets": {
-                            "title": "Format: 1.20.10",
+                            "title": "Format 1.20.10",
                             "deprecated": true
                         },
                         "minecraft:dye_powder": {
-                            "title": "Format: 1.20.10",
+                            "title": "Format 1.20.10",
                             "deprecated": true
                         },
                         "minecraft:knockback_resistance": {
-                            "title": "Format: 1.20.10",
+                            "title": "REMOVED 1.20.10",
                             "deprecated": true
                         },
                         "minecraft:creative_category": {
-                            "title": "Format: 1.20.20",
+                            "title": "REMOVED 1.20.20",
+                            "description": "Use 'menu_category' in 'destription' instead.",
                             "deprecated": true
                         },
                         "minecraft:armor": {
-                            "title": "Format: 1.20.20",
+                            "title": "REMOVED 1.20.20",
                             "deprecated": true
                         },
                         "minecraft:foil": {
-                            "title": "Format: 1.20.20",
+                            "title": "RENAMED 1.20.20",
                             "description": "Renamed to `minecraft:glint`",
                             "deprecated": true
                         },
                         "minecraft:ignores_permission": {
-                            "title": "Format: 1.20.20",
+                            "title": "REMOVED 1.20.20",
                             "deprecated": true
                         },
                         "minecraft:mirrored_art": {
-                            "title": "Format: 1.20.20",
+                            "title": "REMOVED 1.20.20",
                             "deprecated": true
                         },
                         "minecraft:max_damage": {
+                            "title": "REMOVED",
                             "type": "integer",
                             "default": 0,
                             "deprecated": true
                         },
                         "minecraft:animates_in_toolbar": {
-                            "title": "Format: 1.20.20",
+                            "title": "REMOVED 1.20.20",
                             "deprecated": true
                         },
                         "minecraft:explodable": {
-                            "title": "Format: 1.20.20",
+                            "title": "REMOVED 1.20.20",
                             "deprecated": true
                         },
                         "minecraft:block": {
+                            "title": "REMOVED ?",
                             "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
                             "deprecated": true
                         }
