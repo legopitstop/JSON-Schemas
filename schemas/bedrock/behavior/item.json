@@ -1269,6 +1269,24 @@
                             "type": ["string", "boolean"],
                             "default": ""
                         },
+                        "minecraft:tags": {
+                            "title": "Format 1.20.50",
+                            "description": "The tags component determines which tags an item has on it.",
+                            "type": "object",
+                            "default": {},
+                            "required": ["tags"],
+                            "properties": {
+                                "tags": {
+                                    "description": "An array that can contain multiple item tags.",
+                                    "type": "array",
+                                    "default": [],
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "additionalProperties": false
+                        },
 
                         "minecraft:seed": {
                             "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
@@ -1472,6 +1490,36 @@
                             },
                             "additionalProperties": false
                         },
+                        "minecraft:on_use": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The on_use item component allows you to receive an event when the item is used.",
+                            "type": "object",
+                            "required": [
+                                "on_use"
+                            ],
+                            "properties": {
+                                "on_use": {
+                                    "description": "Event trigger for when the item is used.",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
+                        "minecraft:on_use_on": {
+                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
+                            "type": "object",
+                            "required": [
+                                "on_use_on"
+                            ],
+                            "properties": {
+                                "on_use_on": {
+                                    "description": "Event trigger for when the item is used.",
+                                    "$ref": "../common.json#/definitions/EventTrigger"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
 
                         "minecraft:weapon": {
                             "title": "Format 1.20.30",
@@ -1489,38 +1537,6 @@
                                 },
                                 "on_not_hurt_entity": {
                                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:on_use": {
-                            "title": "Format 1.20.30",
-                            "deprecated": true,
-                            "description": "The on_use item component allows you to receive an event when the item is used.",
-                            "type": "object",
-                            "required": [
-                                "on_use"
-                            ],
-                            "properties": {
-                                "on_use": {
-                                    "description": "Triggers when the item is used.",
-                                    "$ref": "../common.json#/definitions/EventTrigger"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:on_use_on": {
-                            "title": "Format 1.20.30",
-                            "deprecated": true,
-                            "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
-                            "type": "object",
-                            "required": [
-                                "on_use_on"
-                            ],
-                            "properties": {
-                                "on_use_on": {
-                                    "description": "Triggered when the item is used on a block",
                                     "$ref": "../common.json#/definitions/EventTrigger"
                                 }
                             },

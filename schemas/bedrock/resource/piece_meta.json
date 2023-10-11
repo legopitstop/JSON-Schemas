@@ -1,159 +1,217 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/piece_meta.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "piece_id": {
-            "title": "resource.piece_meta",
-            "type": "string",
-            "format": "uuid"
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/piece_meta.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "piece_id": {
+      "title": "resource.piece_meta",
+      "type": "string",
+      "format": "uuid"
+    },
+    "piece_name": {
+      "title": "resource.piece_meta",
+      "type": "string"
+    },
+    "piece_type": {
+      "title": "resource.piece_meta",
+      "enum": [
+        "persona_hair",
+        "persona_skin",
+        "persona_feet",
+        "persona_top",
+        "persona_high_pants",
+        "persona_bottom",
+        "persona_body",
+        "persona_eyes",
+        "persona_outerwear",
+        "persona_skeleton",
+        "persona_head",
+        "persona_emote",
+        "persona_mouth",
+        "persona_facial_hair",
+        "persona_face_accessory",
+        "persona_hand"
+      ]
+    },
+    "zone": {
+      "title": "resource.piece_meta",
+      "type": "array",
+      "default": [],
+      "items": {
+        "enum": [
+          "right_leg_upper",
+          "left_leg_upper",
+          "right_leg_middle",
+          "left_leg_middle",
+          "right_leg_lower",
+          "left_leg_lower",
+          "right_arm_upper",
+          "left_arm_upper",
+          "right_arm_middle",
+          "left_arm_middle",
+          "right_arm_lower",
+          "left_arm_lower",
+          "body_front_upper",
+          "body_front_middle",
+          "body_front_lower",
+          "body_back_upper",
+          "body_back_middle",
+          "body_back_lower"
+        ]
+      }
+    },
+    "tint_base_color": {
+      "title": "resource.piece_meta",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "r_color": {
+          "type": "string",
+          "format": "color"
         },
-        "piece_name": {
-            "title": "resource.piece_meta",
-            "type": "string"
+        "g_color": {
+          "type": "string",
+          "format": "color"
         },
-        "piece_type": {
-            "title": "resource.piece_meta",
-            "enum": [
-                "persona_hair",
-                "persona_skin",
-                "persona_feet",
-                "persona_top",
-                "persona_high_pants",
-                "persona_bottom",
-                "persona_body",
-                "persona_eyes",
-                "persona_outerwear",
-                "persona_skeleton",
-                "persona_head",
-                "persona_emote",
-                "persona_mouth",
-                "persona_facial_hair",
-                "persona_face_accessory",
-                "persona_hand"
-            ]
+        "b_color": {
+          "type": "string",
+          "format": "color"
         },
-        "zone": {
-            "title": "resource.piece_meta",
-            "type": "array",
-            "default": [],
-            "items": {
-                "enum": [
-                    "right_leg_upper",
-                    "left_leg_upper",
-                    "right_leg_middle",
-                    "left_leg_middle",
-                    "right_leg_lower",
-                    "left_leg_lower",
-                    "right_arm_upper",
-                    "left_arm_upper",
-                    "right_arm_middle",
-                    "left_arm_middle",
-                    "right_arm_lower",
-                    "left_arm_lower",
-                    "body_front_upper",
-                    "body_front_middle",
-                    "body_front_lower",
-                    "body_back_upper",
-                    "body_back_middle",
-                    "body_back_lower"
-                ]
-            }
-        },
-        "tint_base_color": {
-            "title": "resource.piece_meta",
-            "type": "object",
-            "default": {},
-            "properties": {
-                "r_color": {
-                    "type": "string",
-                    "format": "color"
-                },
-                "g_color": {
-                    "type": "string",
-                    "format": "color"
-                },
-                "b_color": {
-                    "type": "string",
-                    "format": "color"
-                },
-                "a_color": {
-                    "type": "string",
-                    "format": "color"
-                }
-            },
-            "additionalProperties": false
-        },
-        "tint_color": {
-            "title": "resource.piece_meta",
-            "type": "object",
-            "default": {},
-            "properties": {
-                "r_color": {
-                    "type": "string",
-                    "format": "color"
-                },
-                "g_color": {
-                    "type": "string",
-                    "format": "color"
-                },
-                "b_color": {
-                    "type": "string",
-                    "format": "color"
-                },
-                "a_color": {
-                    "type": "string",
-                    "format": "color"
-                }
-            },
-            "additionalProperties": false
-        },
-        "texture_sources": {
-            "title": "resource.piece_meta",
-            "type": "array",
-            "default": [],
-            "items": {
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "texture": {
-                        "type": "string"
-                    },
-                    "tint_map": {
-                        "type": "string"
-                    },
-                    "use_face_uv": {
-                        "type": "boolean",
-                        "default": false
-                    },
-                    "animated": {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "frames": {
-                        "type": "integer",
-                        "default": 0
-                    }
-                },
-                "additionalProperties": false
-            }
-        },
-        "animation_sources": {
-            "title": "resource.piece_meta",
-            "type": "array",
-            "default": [],
-            "items": {
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "name": {
-                        "type": "string"
-                    },
-                    "animationFile": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": false
-            }
+        "a_color": {
+          "type": "string",
+          "format": "color"
         }
+      },
+      "additionalProperties": false
+    },
+    "tint_color": {
+      "title": "resource.piece_meta",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "r_color": {
+          "type": "string",
+          "format": "color"
+        },
+        "g_color": {
+          "type": "string",
+          "format": "color"
+        },
+        "b_color": {
+          "type": "string",
+          "format": "color"
+        },
+        "a_color": {
+          "type": "string",
+          "format": "color"
+        }
+      },
+      "additionalProperties": false
+    },
+    "clothing_map": {
+      "title": "resource.piece_meta",
+      "type": "string"
+    },
+    "body_variant": {
+      "title": "resource.piece_meta",
+      "enum": ["medium", "small", "smaller", "tall"]
+    },
+    "face_clothing_map": {
+      "title": "resource.piece_meta",
+      "type": "string"
+    },
+    "texture_sources": {
+      "title": "resource.piece_meta",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "properties": {
+          "texture": {
+            "type": "string"
+          },
+          "tint_map": {
+            "type": "string"
+          },
+          "use_face_uv": {
+            "type": "boolean",
+            "default": false
+          },
+          "animated": {
+            "type": "boolean",
+            "default": true
+          },
+          "frames": {
+            "type": "integer",
+            "default": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "geometry_sources": {
+      "title": "resource.piece_meta",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "properties": {
+          "zone": {
+            "enum": [
+                "head",
+                "head_clothing",
+                "body",
+                "body_clothing",
+                "left_arm",
+                "left_arm_clothing",
+                "right_arm",
+                "right_arm_clothing",
+                "left_leg",
+                "left_leg_clothing",
+                "right_leg",
+                "right_leg_clothing"
+            ]
+          },
+          "arm_size": {
+            "enum": [
+                "wide",
+                "slim",
+                ""
+            ]
+          },
+          "geometry": {
+            "type": "string"
+          },
+          "is_face": {
+            "enum": [
+              true,
+              false,
+              "true",
+              "false"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "animation_sources": {
+      "title": "resource.piece_meta",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "animationFile": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
     }
+  }
 }
