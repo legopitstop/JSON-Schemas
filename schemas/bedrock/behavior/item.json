@@ -1490,8 +1490,10 @@
                             },
                             "additionalProperties": false
                         },
+
                         "minecraft:on_use": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "Format 1.20.40",
+                            "deprecated": true,
                             "description": "The on_use item component allows you to receive an event when the item is used.",
                             "type": "object",
                             "required": [
@@ -1506,7 +1508,8 @@
                             "additionalProperties": false
                         },
                         "minecraft:on_use_on": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+                            "title": "Format 1.20.40",
+                            "deprecated": true,
                             "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
                             "type": "object",
                             "required": [
@@ -1520,9 +1523,8 @@
                             },
                             "additionalProperties": false
                         },
-
                         "minecraft:weapon": {
-                            "title": "Format 1.20.30",
+                            "title": "Format 1.20.40",
                             "deprecated": true,
                             "description": "Weapon Item Component. Added to every weapon item such as axe, sword, trident, bow, crossbow.",
                             "type": "object",
