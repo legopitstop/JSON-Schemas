@@ -952,13 +952,9 @@
                         },
                         "minecraft:stacked_by_data": {
                             "title": "Format 1.20.20",
+                            "description": "The stacked by data component determines if the same item with different aux values can stack. Also defines whether the item actors can merge while floating in the world.",
                             "type": "boolean",
                             "default": true
-                        },
-                        "minecraft:use_duration": {
-                            "title": "Format 1.20.20",
-                            "description": "How long it takes to use the item.",
-                            "type": "number"
                         },
                         "minecraft:glint": {
                             "title": "Format 1.20.20",
@@ -1287,6 +1283,23 @@
                             },
                             "additionalProperties": false
                         },
+                        "minecraft:use_modifiers": {
+                            "title": "Format 1.20.50",
+                            "description": "This component modifies use effects, including how long the item takes to use and the player's speed when used in combination with components like Shooter, Throwable or Food.",
+                            "type": "object",
+                            "default": {},
+                            "properties": {
+                                "movement_modifier": {
+                                    "description": "Modifier value to scale the players movement speed when item is in use.",
+                                    "type": "number"
+                                },
+                                "use_duration": {
+                                    "description": "How long the item takes to use in seconds.",
+                                    "type": "number"
+                                }
+                            },
+                            "additionalProperties": false
+                        },
 
                         "minecraft:seed": {
                             "description": "Will place the crop on the block. Similar to block_placer. Example items; carrot, nether_wart, potato, wheat seeds, beetroot seeds, melon seeds, pumpkin seeds, sweet berries",
@@ -1470,9 +1483,11 @@
                             },
                             "additionalProperties": false
                         },
+
                         "minecraft:chargeable": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Allows an item to be used over a duration. (Like apples or bows)",
+                            "title": "Format 1.20.50",
+                            "description": "Use \"minecraft:use_modifiers\" instead for \"movement_modifier\" behavior",
+                            "deprecated": true,
                             "type": "object",
                             "default": {},
                             "properties": {
@@ -1490,7 +1505,12 @@
                             },
                             "additionalProperties": false
                         },
-
+                        "minecraft:use_duration": {
+                            "title": "RENAMED 1.20.50",
+                            "description": "Renamed to `minecraft:use_modifiers`",
+                            "type": "number",
+                            "deprecated": true
+                        },
                         "minecraft:on_use": {
                             "title": "Format 1.20.40",
                             "deprecated": true,
