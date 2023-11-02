@@ -1032,7 +1032,7 @@
                                                 "type": "integer"
                                             },
                                             "on_dig": {
-                                                "title": "Format 1.20.20",
+                                                "title": "Format 1.20.50",
                                                 "description": "Trigger for when you dig up this block",
                                                 "$ref": "../common.json#/definitions/EventTrigger",
                                                 "deprecated": true
@@ -1043,7 +1043,7 @@
                                     }
                                 },
                                 "on_dig": {
-                                    "title": "Format 1.20.20",
+                                    "title": "Format 1.20.50",
                                     "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
                                     "$ref": "../common.json#/definitions/EventTrigger",
                                     "deprecated": true
