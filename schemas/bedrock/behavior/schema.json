@@ -4,6 +4,9 @@
     "description": "JSON schema for Minecraft Bedrock Edition.",
     "allOf": [
         {
+            "$ref": "./animation_controllers.json"
+        },
+        {
             "$ref": "./behavior_tree.json"
         },
         {

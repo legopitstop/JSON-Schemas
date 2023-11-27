@@ -28,9 +28,6 @@
             "$ref": "./camera_entity.json"
         },
         {
-            "$ref": "./animation_controllers.json"
-        },
-        {
             "$ref": "./animations.json"
         },
         {
