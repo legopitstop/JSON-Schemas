@@ -120,13 +120,16 @@
     "properties": {
         "animations": {
             "title": "resrouce.animations",
+            "description": "Mapping of each animation",
             "type": "object",
             "default": {},
             "additionalProperties": {
+                "description": "Animation name",
                 "type": "object",
                 "default": {},
                 "properties": {
                     "loop": {
+                        "description": "Looping mode for this animation",
                         "default": true,
                         "anyOf": [
                             {
@@ -140,6 +143,7 @@
                         ]
                     },
                     "animation_length": {
+                        "description": "Total length of this animation",
                         "type": "number",
                         "default": 1.0
                     },
@@ -151,6 +155,7 @@
                         "$ref": "../common.json#/definitions/MoLang"
                     },
                     "start_delay": {
+                        "description": "Delay before this animation starts",
                         "type": [
                             "number",
                             "string"
@@ -159,6 +164,7 @@
                         "$ref": "../common.json#/definitions/MoLang"
                     },
                     "bones": {
+                        "description": "A Mapping of each bones animation",
                         "type": "object",
                         "default": {},
                         "additionalProperties": {
