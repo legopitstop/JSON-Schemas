@@ -94,17 +94,6 @@
                             "items": {
                                 "type": "object",
                                 "default": {},
-                                "properties": {
-                                    "setup": {
-                                        "type": "string"
-                                    },
-                                    "move": {
-                                        "type": "string"
-                                    },
-                                    "baby": {
-                                        "type": "string"
-                                    }
-                                },
                                 "additionalProperties": {
                                     "type":"string"
                                 }
