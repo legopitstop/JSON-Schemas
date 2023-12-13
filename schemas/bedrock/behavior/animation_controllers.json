@@ -23,11 +23,29 @@
                             "type": "object",
                             "default": {},
                             "properties": {
+                                "variables": {
+                                    "description": "A mapping of each variable",
+                                    "type": "object",
+                                    "default": {},
+                                    "additionalProperties": {
+                                        "description": "The name of the variable",
+                                        "type": "object",
+                                        "default": {},
+                                        "properties": {
+                                            "input": {
+                                                "description": "The input value for this variable",
+                                                "$ref": "../common.json#/definitions/MoLang"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    }
+                                },
                                 "animations": {
                                     "description": "List of animations to play",
                                     "type": "array",
                                     "default": [],
                                     "items": {
+                                        "description": "Animation",
                                         "type": ["string", "object"],
                                         "additionalProperties": {
                                             "$ref": "../common.json#/definitions/MoLang"
@@ -43,6 +61,7 @@
                                     "type": "array",
                                     "default": [],
                                     "items": {
+                                        "description": "transition",
                                         "type": "object",
                                         "default": {},
                                         "additionalProperties": {
