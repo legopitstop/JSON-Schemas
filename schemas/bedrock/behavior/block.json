@@ -206,10 +206,7 @@
                                         }
                                     },
                                     "additionalProperties": false
-                                },
-
-                                "minecraft:cardinal_direction": {},
-                                "minecraft:facing_direction": {}
+                                }
                             },
                             "additionalProperties": false
                         }
@@ -338,13 +335,6 @@
                             },
                             "minItems": 3,
                             "maxItems": 3
-                        },
-                        "minecraft:unit_cube": {
-                            "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-                            "description": "Specifies that a unit cube is to be used with tessellation.",
-                            "type": "object",
-                            "default": {},
-                            "additionalProperties": false
                         },
                         "minecraft:breathability": {
                             "title": "EXPERIMENTAL (Holiday Creator Features)",
@@ -498,7 +488,11 @@
                         "minecraft:geometry": {
                             "title": "STABLE (format: 1.19.40+)",
                             "description": "The description identifier of the geometry file to use to render this block. This identifier must match an existing geometry identifier in any of the currently loaded resource packs.",
-                            "$ref": "../common.json#/definitions/MoLang"
+                            "type": "string",
+                            "examples": [
+                                "minecraft:geometry.full_block",
+                                "geometry.geo_name"
+                            ]
                         },
                         "minecraft:light_dampening": {
                             "title": "STABLE",
@@ -713,7 +707,31 @@
                         "minecraft:on_interact": {
                             "title": "STABLE",
                             "description": "Describes event for this block.",
-                            "$ref": "../common.json#/definitions/EventTrigger"
+                            "type": "object",
+                            "required": [
+                                "event"
+                            ],
+                            "properties": {
+                                "condition": {
+                                    "description": "The condition of event to be executed on the block.",
+                                    "$ref": "../common.json#/definitions/MoLang"
+                                },
+                                "event": {
+                                    "description": "The event executed on the block.",
+                                    "type": "string"
+                                },
+                                "drop_item_slot": {
+                                    "description": "allows to specify an inventory slot to remove and drop items from",
+                                    "type": "integer",
+                                    "default": 0
+                                },
+                                "target": {
+                                    "description": "The target of event executed on the block.",
+                                    "$ref": "../common.json#/definitions/eventTarget",
+                                    "default": "self"
+                                }
+                            },
+                            "additionalProperties": false
                         },
                         "minecraft:on_placed": {
                             "title": "STABLE",
@@ -837,6 +855,11 @@
                         "minecraft:block_light_absorption": {
                             "title": "Format: ?",
                             "description": "Replaced with 'light_dampening'",
+                            "deprecated": true
+                        },
+                        "minecraft:unit_cube": {
+                            "title": "Format: 1.20.60",
+                            "description": "Use \"minecraft:geometry\": \"minecraft:geometry.full_block\" instead",
                             "deprecated": true
                         },
                         "minecraft:entity_collision": {
