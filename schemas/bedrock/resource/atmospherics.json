@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+
+  "title": "resrouce.atmospherics",
+  "description": "lighting atmospherics",
+  "type": "object",
+  "default": {},
+  "definitions": {
+    "Lightning": {
+      "type": "object",
+      "default": {},
+      "patternProperties": {
+        "^([0-9]+)\\.([0-9]+)$": {
+          "type": ["number", "array"],
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "horizon_blend_stops": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "min": {
+          "$ref": "#/definitions/Lightning"
+        },
+        "start": {
+          "$ref": "#/definitions/Lightning"
+        },
+        "mie_start": {
+          "$ref": "#/definitions/Lightning"
+        },
+        "max": {
+          "$ref": "#/definitions/Lightning"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rayleigh_strength": {
+      "$ref": "#/definitions/Lightning"
+    },
+    "sun_mie_strength": {
+      "$ref": "#/definitions/Lightning"
+    },
+    "moon_mie_strength": {
+      "$ref": "#/definitions/Lightning"
+    },
+    "sun_glare_shape": {
+      "$ref": "#/definitions/Lightning"
+    },
+    "moon_glare_shape": {
+      "$ref": "#/definitions/Lightning"
+    },
+    "sky_zenith_color": {
+      "$ref": "#/definitions/Lightning"
+    },
+    "sky_horizon_color": {
+      "$ref": "#/definitions/Lightning"
+    }
+  }
+}

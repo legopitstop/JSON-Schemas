@@ -1,0 +1,114 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "resrouce.global",
+  "description": "lighting global",
+  "type": "object",
+  "default": {},
+  "definitions": {
+    "Color": {
+      "type": ["number", "array"],
+      "items": {
+        "type": "number"
+      }
+    },
+    "Lightning": {
+      "type": "object",
+      "default": {},
+      "patternProperties": {
+        "^([0-9]+)\\.([0-9]+)$": {
+          "$ref": "#/definitions/Color"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "directional_lights": {
+      "description": "directional_lights",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "sun": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "illuminance": {
+              "$ref": "#/definitions/Lightning"
+            },
+            "color": {
+              "$ref": "#/definitions/Lightning"
+            }
+          },
+          "additionalProperties": false
+        },
+        "moon": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "illuminance": {
+              "type": "number"
+            },
+            "color": {
+              "type": "array",
+              "default": [],
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "orbital_offset_degrees": {
+          "$ref": "#/definitions/Lightning"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pbr": {
+      "description": "pbr",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "blocks": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "global_metalness_emissive_roughness": {
+              "$ref": "#/definitions/Color"
+            }
+          },
+          "additionalProperties": false
+        },
+        "actors": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "global_metalness_emissive_roughness": {
+              "$ref": "#/definitions/Color"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "point_lights": {
+      "description": "point_lights",
+      "type": "object",
+      "default": {},
+      "properties": {
+        "colors": {
+          "description": "Mapping of each block's light color",
+          "type": "object",
+          "default": {},
+          "additionalProperties": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

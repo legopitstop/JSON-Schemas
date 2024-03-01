@@ -1541,7 +1541,6 @@
                   "description": "The entity's attack animation will play out over this duration (in seconds). Also controls attack cooldown.",
                   "type": "number",
                   "minimum": 0.0,
-                  "maximum": 1.0,
                   "default": 0.75
                 },
                 "attack_once": {
@@ -1685,7 +1684,8 @@
                   "minimum": 0.0,
                   "maximum": 1.0,
                   "default": 30
-                }
+                },
+                "sound_event": { "type": "string" }
               },
               "additionalProperties": false
             },
@@ -2788,9 +2788,17 @@
             },
             "minecraft:behavior.float": {
               "title": "AI GOALS",
-              "description": "Allows the mob to stay afloat while swimming.",
+              "description": "Allows the mob to stay afloat while swimming. Passengers will be kicked out the moment the mob's head goes underwater, which may not happen for tall mobs.",
               "type": "object",
               "default": {},
+              "properties": {
+                "priority": { "type": "integer", "default": 0 },
+                "sink_with_passengers": {
+                  "description": "If true, the mob will keep sinking as long as it has passengers.",
+                  "type": "boolean",
+                  "default": false
+                }
+              },
               "additionalProperties": false
             },
             "minecraft:behavior.float_wander": {
@@ -3067,6 +3075,7 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "alert_same_type": {
                   "description": "If true, nearby mobs of the same type will be alerted about the damage",
                   "type": "boolean",
@@ -3333,6 +3342,7 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "angle_of_view_horizontal": {
                   "description": "The angle in degrees that the mob can see in the Y-axis (up-down)",
                   "type": "integer",
@@ -3871,6 +3881,7 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "attack_interval": {
                   "description": "Time range (in seconds) between searching for an attack target, range is in (0, \"attack_interval\"]. Only used if \"attack_interval\" is greater than 0, otherwise \"scan_interval\" is used.",
                   "type": "integer",
@@ -7721,6 +7732,7 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "avoid_damage_blocks": {
                   "description": "Tells the pathfinder to avoid blocks that cause damage when finding a path",
                   "type": "boolean",
@@ -10119,7 +10131,10 @@
               "description": "undocumented",
               "type": ["object", "number"],
               "default": {},
-              "properties": {}
+              "properties": {
+                "value": { "type": "integer", "default": 0 },
+                "max": { "type": "integer", "default": 0 }
+              }
             },
             "minecraft:vibration_listener": {
               "description": "undocumented",

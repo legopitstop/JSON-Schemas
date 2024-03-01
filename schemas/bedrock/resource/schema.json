@@ -4,6 +4,12 @@
     "description": "JSON schema for Minecraft Bedrock Edition.",
     "allOf": [
         {
+            "$ref": "./global.json"
+        },
+        {
+            "$ref": "./atmospherics.json"
+        },
+        {
             "$ref": "./piece_meta.json"
         },
         {
