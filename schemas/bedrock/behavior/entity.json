@@ -1152,7 +1152,7 @@
             },
             "minecraft:bribeable": {
               "title": "COMPONENTS",
-              "description": "Defines the way an entity can get into the 'bribed' state.",
+              "description": "Defines the way an entity can get into the 'bribed' state. Animation: `query.is_bribed`",
               "type": "object",
               "default": {},
               "properties": {
@@ -2351,7 +2351,7 @@
             },
             "minecraft:leashable": {
               "title": "COMPONENTS",
-              "description": "Allows this entity to be leashed and defines the conditions and events for this entity when is leashed.",
+              "description": "Allows this entity to be leashed and defines the conditions and events for this entity when is leashed. Animation: `query.is_leashed`",
               "type": "object",
               "default": {},
               "properties": {
@@ -2861,7 +2861,7 @@
             },
             "minecraft:rideable": {
               "title": "COMPONENTS",
-              "description": "Determines whether this entity can be ridden. Allows specifying the different seat positions and quantity.",
+              "description": "Determines whether this entity can be ridden. Allows specifying the different seat positions and quantity. Animation: `query.is_riding`",
               "type": "object",
               "default": {},
               "properties": {
@@ -3102,7 +3102,7 @@
             },
             "minecraft:sittable": {
               "title": "COMPONENTS",
-              "description": "Defines the entity's 'sit' state.",
+              "description": "Defines the entity's 'sit' state. Animation: `query.is_sitting`",
               "type": "object",
               "default": {},
               "properties": {
@@ -3179,7 +3179,7 @@
             },
             "minecraft:tameable": {
               "title": "COMPONENTS",
-              "description": "Defines the rules for a mob to be tamed by the player.",
+              "description": "Defines the rules for a mob to be tamed by the player. Animation: `query.is_tamed`",
               "type": "object",
               "default": {},
               "properties": {
@@ -3488,7 +3488,7 @@
             },
             "minecraft:transformation": {
               "title": "COMPONENTS",
-              "description": "Defines an entity's transformation from the current definition into another",
+              "description": "Defines an entity's transformation from the current definition into another. Animation: `query.is_transforming`",
               "type": "object",
               "default": {},
               "properties": {
@@ -3761,7 +3761,7 @@
             },
             "minecraft:fire_immune": {
               "title": "PROPERTY",
-              "description": "Sets that this entity doesn't take damage from fire.",
+              "description": "Sets that this entity doesn't take damage from fire. Animation: `query.is_fire_immune`",
               "type": ["object", "boolean"],
               "default": {}
             },
@@ -3818,19 +3818,19 @@
             },
             "minecraft:is_baby": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is a baby.",
+              "description": "Sets that this entity is a baby. Animation: `query.is_baby`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_charged": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is charged.",
+              "description": "Sets that this entity is charged. Animation: `query.is_charged`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_chested": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently carrying a chest.",
+              "description": "Sets that this entity is currently carrying a chest. Animation: `query.is_chested`",
               "type": "object",
               "default": {}
             },
@@ -3854,51 +3854,58 @@
             },
             "minecraft:is_ignited": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently on fire.",
+              "description": "Sets that this entity is currently on fire. Animation: `query.is_ignited`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_illager_captain": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is an illager captain.",
+              "description": "Sets that this entity is an illager captain. Animation: `query.is_illager_captain`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_saddled": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently saddled.",
+              "description": "Sets that this entity is currently saddled. Animation: `query.is_saddled`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_shaking": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently shaking.",
+              "description": "Sets that this entity is currently shaking. Animation: `query.is_shaking`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_sheared": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently sheared.",
+              "description": "Sets that this entity is currently sheared. Animation: `query.is_sheared`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_stackable": {
               "title": "PROPERTY",
-              "description": "Sets that this entity can be stacked.",
+              "description": "Sets that this entity can be stacked. Animation: `query.is_stackable`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_stunned": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently stunned.",
+              "description": "Sets that this entity is currently stunned. Animation: `query.is_stunned`",
               "type": "object",
               "default": {}
             },
             "minecraft:is_tamed": {
               "title": "PROPERTY",
-              "description": "Sets that this entity is currently tamed.",
+              "description": "Sets that this entity is currently tamed. Animation: `query.is_tamed`",
               "type": "object",
               "default": {}
+            },
+            "minecraft:is_pregnant": {
+              "title": "COMPONENT",
+              "description": "Sets that this entity is currently pregnant. Animation: `query.is_pregnant`",
+              "type": "object",
+              "default": {},
+              "additionalProperties": false
             },
             "minecraft:item_controllable": {
               "title": "PROPERTY",
@@ -4010,13 +4017,6 @@
                   }
                 }
               }
-            },
-            "minecraft:is_pregnant": {
-              "title": "COMPONENT",
-              "description": "Sets that this entity is currently pregnant.",
-              "type": "object",
-              "default": {},
-              "additionalProperties": false
             },
             "minecraft:variant": {
               "title": "PROPERTY",
@@ -4285,7 +4285,7 @@
               "additionalProperties": false
             },
             "minecraft:movement": {
-              "description": "undocumented",
+              "description": "undocumented. Animation: `query.modified_move_speed`",
               "type": "object",
               "default": {},
               "properties": {}
@@ -4440,7 +4440,7 @@
             },
             "minecraft:jump.static": {
               "title": "JUMP",
-              "description": "Gives the entity the ability to jump.",
+              "description": "Gives the entity the ability to jump. Animation: `query.is_jumping`",
               "type": "object",
               "default": {},
               "properties": {
@@ -4454,7 +4454,7 @@
 
             "minecraft:movement.glide": {
               "title": "MOVEMENT",
-              "description": "undocumented",
+              "description": "undocumented. Animation: `query.is_gliding`",
               "type": "object",
               "default": {},
               "properties": {
@@ -4471,7 +4471,7 @@
             },
             "minecraft:movement.amphibious": {
               "title": "MOVEMENT",
-              "description": "This move control allows the mob to swim in water and walk on land.",
+              "description": "This move control allows the mob to swim in water and walk on land. `query.is_swimming`",
               "type": "object",
               "default": {},
               "properties": {
@@ -4595,10 +4595,9 @@
               }
             },
 
-
             "minecraft:navigation.climb": {
               "title": "NAVIGATION",
-              "description": "Allows this entity to generate paths that include vertical walls like the vanilla Spiders do.",
+              "description": "Allows this entity to generate paths that include vertical walls like the vanilla Spiders do. Animation: `query.is_wall_climbing`",
               "type": "object",
               "default": {},
               "properties": {
@@ -5339,7 +5338,6 @@
               }
             },
 
-
             "minecraft:player.saturation": {
               "title": "PLAYER",
               "description": "undocumented",
@@ -5408,7 +5406,6 @@
               },
               "additionalProperties": false
             },
-
 
             "minecraft:behavior.swim_with_entity": {
               "title": "AI GOAL",
@@ -5643,7 +5640,7 @@
             },
             "minecraft:behavior.ram_attack": {
               "title": "AI GOAL",
-              "description": "Allows this entity to damage a target by using a running attack.",
+              "description": "Allows this entity to damage a target by using a running attack. Animation: `query.is_ram_attacking`",
               "type": "object",
               "default": {},
               "properties": {
@@ -5725,7 +5722,7 @@
             },
             "minecraft:behavior.avoid_block": {
               "title": "AI GOAL",
-              "description": "Allows this entity to avoid certain blocks.",
+              "description": "Allows this entity to avoid certain blocks. Animation: `query.is_avoiding_block`",
               "type": "object",
               "default": {},
               "properties": {
@@ -6317,7 +6314,7 @@
             },
             "minecraft:behavior.sonic_boom": {
               "title": "AI GOAL",
-              "description": "Allows this entity to perform a 'sonic boom' ranged attack",
+              "description": "Allows this entity to perform a 'sonic boom' ranged attack. Animation: `query.is_sonic_boom`",
               "type": "object",
               "default": {},
               "properties": {
@@ -6411,7 +6408,7 @@
             },
             "minecraft:behavior.sniff": {
               "title": "AI GOAL",
-              "description": "Allows this entity to detect the nearest player within \"sniffing_radius\" and update its \"minecraft:suspect_tracking\" component state",
+              "description": "Allows this entity to detect the nearest player within \"sniffing_radius\" and update its \"minecraft:suspect_tracking\" component state. Animation: `query.is_sniffing`",
               "type": "object",
               "default": {},
               "properties": {
@@ -6454,7 +6451,7 @@
             },
             "minecraft:behavior.delayed_attack": {
               "title": "AI GOAL",
-              "description": "Allows an entity to attack, while also delaying the damage-dealt until a specific time in the attack animation.",
+              "description": "Allows an entity to attack, while also delaying the damage-dealt until a specific time in the attack animation. Animation: `query.is_delayed_attacking`",
               "type": "object",
               "default": {},
               "properties": {
@@ -6616,7 +6613,7 @@
             },
             "minecraft:behavior.croak": {
               "title": "AI GOAL",
-              "description": "Allows the entity to croak at a random time interval with configurable conditions.",
+              "description": "Allows the entity to croak at a random time interval with configurable conditions. Animation: `query.is_croaking`",
               "type": "object",
               "default": {},
               "properties": {
@@ -6849,7 +6846,7 @@
             },
             "minecraft:behavior.dig": {
               "title": "AI GOAL",
-              "description": "Allows this entity to dig into the ground before despawning.",
+              "description": "Allows this entity to dig into the ground before despawning. Animation: `query.is_digging`",
               "type": "object",
               "default": {},
               "properties": {
@@ -6895,7 +6892,7 @@
             },
             "minecraft:behavior.random_search_and_dig": {
               "title": "AI GOAL",
-              "description": "[EXPERIMENTAL] Allows this entity to locate a random target block that it can path find to. Once found, the entity will move towards it and dig up an item. [Valid target block type: Dirt, Grass, Podzol, DirtWithRoots, MossBlock, Mud, MuddyMangroveRoots].",
+              "description": "[EXPERIMENTAL] Allows this entity to locate a random target block that it can path find to. Once found, the entity will move towards it and dig up an item. [Valid target block type: Dirt, Grass, Podzol, DirtWithRoots, MossBlock, Mud, MuddyMangroveRoots]. Animation: `query.is_searching`",
               "type": "object",
               "default": {},
               "properties": {
@@ -7119,7 +7116,7 @@
             },
             "minecraft:behavior.eat_block": {
               "title": "AI GOAL",
-              "description": "Allows the entity to consume a block, replace the eaten block with another block, and trigger an event as a result.",
+              "description": "Allows the entity to consume a block, replace the eaten block with another block, and trigger an event as a result. Animation: `query.is_eating`",
               "type": "object",
               "default": {},
               "properties": {
@@ -7162,7 +7159,7 @@
             },
             "minecraft:behavior.eat_mob": {
               "title": "AI GOAL",
-              "description": "Allows the entity to eat a specified Mob.",
+              "description": "Allows the entity to eat a specified Mob. Animation: `query.is_eating_mob`",
               "type": "object",
               "default": {},
               "properties": {
@@ -7202,7 +7199,7 @@
             },
             "minecraft:behavior.emerge": {
               "title": "AI GOAL",
-              "description": "Allows this entity to emerge from the ground",
+              "description": "Allows this entity to emerge from the ground. Animation: `query.is_emerging`",
               "type": "object",
               "default": {},
               "properties": {
@@ -7286,7 +7283,7 @@
             },
             "minecraft:behavior.admire_item": {
               "title": "AI GOAL",
-              "description": "Enables the mob to admire items that have been configured as admirable. Must be used in combination with the admire_item component",
+              "description": "Enables the mob to admire items that have been configured as admirable. Must be used in combination with the admire_item component. Animation: `query.is_admiring`",
               "type": "object",
               "default": {},
               "properties": {
@@ -7372,7 +7369,7 @@
             },
             "minecraft:behavior.celebrate": {
               "title": "AI GOAL",
-              "description": "This allows the mob celebrate by jumping up and playing a sound periodically.",
+              "description": "This allows the mob celebrate by jumping up and playing a sound periodically. Animation `query.is_celebrating`",
               "type": "object",
               "default": {},
               "properties": {
@@ -7611,7 +7608,7 @@
             },
             "minecraft:behavior.enderman_take_block": {
               "title": "AI GOAL",
-              "description": "Allows the enderman to take a block and carry it around. Can only be used by Endermen.",
+              "description": "Allows the enderman to take a block and carry it around. Can only be used by Endermen. Animation: `query.is_carrying_block`",
               "type": "object",
               "default": {},
               "properties": { "priority": { "type": "integer", "default": 0 } },
@@ -8271,7 +8268,7 @@
             },
             "minecraft:behavior.feeling_happy": {
               "title": "AI GOAL",
-              "description": "undocumented",
+              "description": "undocumented. Animation: `query.is_feeling_happy`",
               "type": "object",
               "default": {},
               "properties": {
@@ -8295,7 +8292,7 @@
             },
             "minecraft:behavior.knockback_roar": {
               "title": "AI GOAL",
-              "description": "Allows the mob to perform a damaging knockback that affects all nearby entities.",
+              "description": "Allows the mob to perform a damaging knockback that affects all nearby entities. Animation: `query.is_roaring`",
               "type": "object",
               "default": {},
               "properties": {
@@ -8349,7 +8346,7 @@
             },
             "minecraft:behavior.lay_down": {
               "title": "AI GOAL",
-              "description": "Allows mobs to lay down at times",
+              "description": "Allows mobs to lay down at times. Animation: `query.is_laying_down`",
               "type": "object",
               "default": {},
               "properties": {
@@ -8369,7 +8366,7 @@
             },
             "minecraft:behavior.lay_egg": {
               "title": "AI GOAL",
-              "description": "Allows the mob to lay an egg block on a sand block if the mob is pregnant.",
+              "description": "Allows the mob to lay an egg block on a sand block if the mob is pregnant. Animation: `query.is_laying_egg`",
               "type": "object",
               "default": {},
               "properties": {
@@ -9481,7 +9478,7 @@
             },
             "minecraft:behavior.pet_sleep_with_owner": {
               "title": "AI GOAL",
-              "description": "Allows the pet mob to move onto a bed with its owner while sleeping.",
+              "description": "Allows the pet mob to move onto a bed with its owner while sleeping. Animation: `query.is_sleeping`",
               "type": "object",
               "default": {},
               "properties": {
@@ -10089,7 +10086,7 @@
             },
             "minecraft:behavior.sleep": {
               "title": "AI GOAL",
-              "description": "Allows mobs that own a bed to in a village to move to and sleep in it.",
+              "description": "Allows mobs that own a bed to in a village to move to and sleep in it. Animation: `query.is_sleeping`",
               "type": "object",
               "default": {},
               "properties": {
@@ -10172,7 +10169,7 @@
             },
             "minecraft:behavior.sneeze": {
               "title": "AI GOAL",
-              "description": "Allows the mob to stop and sneeze possibly startling nearby mobs and dropping an item.",
+              "description": "Allows the mob to stop and sneeze possibly startling nearby mobs and dropping an item. Animation: `query.is_sneezing`",
               "type": "object",
               "default": {},
               "properties": {
@@ -10288,7 +10285,7 @@
             },
             "minecraft:behavior.stalk_and_pounce_on_target": {
               "title": "AI GOAL",
-              "description": "Allows a mob to stalk a target, then once within range pounce onto a target, on success the target will be attacked dealing damage defined by the attack component. On failure, the mob will risk getting stuck",
+              "description": "Allows a mob to stalk a target, then once within range pounce onto a target, on success the target will be attacked dealing damage defined by the attack component. On failure, the mob will risk getting stuck. Animation: `query.is_stackable`",
               "type": "object",
               "default": {},
               "properties": {
@@ -10415,7 +10412,7 @@
             },
             "minecraft:behavior.summon_entity": {
               "title": "AI GOAL",
-              "description": "Allows the mob to attack the player by summoning other entities.",
+              "description": "Allows the mob to attack the player by summoning other entities. Animation: `query.is_casting`",
               "type": "object",
               "default": {},
               "properties": {
@@ -10829,7 +10826,7 @@
             },
             "minecraft:behavior.play_dead": {
               "title": "AI GOAL",
-              "description": "undocumented",
+              "description": "undocumented. Animation: `query.is_playing_dead`",
               "type": "object",
               "default": {},
               "properties": {}
@@ -10843,7 +10840,7 @@
             },
             "minecraft:behavior.swim_idle": {
               "title": "AI GOAL",
-              "description": "undocumented",
+              "description": "undocumented. Animation: `query.is_idling`",
               "type": "object",
               "default": {},
               "properties": {}
@@ -10863,7 +10860,7 @@
             },
             "minecraft:behavior.ranged_attack": {
               "title": "AI GOAL",
-              "description": "Allows an entity to attack by using ranged shots. \"charge_shoot_trigger\" must be greater than 0 to enable charged up burst-shot attacks. Requires minecraft:shooter to define projectile behaviour.",
+              "description": "Allows an entity to attack by using ranged shots. \"charge_shoot_trigger\" must be greater than 0 to enable charged up burst-shot attacks. Requires minecraft:shooter to define projectile behaviour. Animation: `query.facing_target_to_range_attack`",
               "type": "object",
               "default": {},
               "properties": {
@@ -10953,7 +10950,7 @@
             },
             "minecraft:behavior.avoid_mob_type": {
               "title": "AI GOAL",
-              "description": "undocumented",
+              "description": "undocumented. Animation: `query.is_avoiding_mobs`",
               "type": "object",
               "default": {},
               "properties": {}
@@ -10978,6 +10975,123 @@
               "type": "object",
               "default": {},
               "properties": {}
+            },
+            "minecraft:behavior.timer_flag_1": {
+              "title": "AI GOAL",
+              "description": "Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_1 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise. Animation: `query.timer_flag_1`",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "cooldown_range": {
+                  "description": "Goal cooldown range in seconds",
+                  "type": "array",
+                  "default": [10.0, 10.0],
+                  "items": {
+                    "type": "number",
+                    "default": 1.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "duration_range": {
+                  "description": "Goal duration range in seconds",
+                  "type": "array",
+                  "default": [2.0, 2.0],
+                  "items": {
+                    "type": "number",
+                    "default": 1.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "on_end": {
+                  "description": "Event(s) to run when the goal end.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                },
+                "on_start": {
+                  "description": "Event(s) to run when the goal starts.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:behavior.timer_flag_2": {
+              "title": "AI GOAL",
+              "description": "Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_2 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise. Animation: `query.timer_flag_2`",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "cooldown_range": {
+                  "description": "Goal cooldown range in seconds",
+                  "type": "array",
+                  "default": [10.0, 10.0],
+                  "items": {
+                    "type": "number",
+                    "default": 1.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "duration_range": {
+                  "description": "Goal duration range in seconds",
+                  "type": "array",
+                  "default": [2.0, 2.0],
+                  "items": {
+                    "type": "number",
+                    "default": 1.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "on_end": {
+                  "description": "Event(s) to run when the goal end.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                },
+                "on_start": {
+                  "description": "Event(s) to run when the goal starts.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:behavior.timer_flag_3": {
+              "title": "AI GOAL",
+              "description": "Fires an event when this behavior starts, then waits for a duration before stopping. When stopping due to that timeout or due to being interrupted by another behavior, fires another event. query.timer_flag_3 will return 1.0 on both the client and server when this behavior is running, and 0.0 otherwise. Animation: `query.timer_flag_3`",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "cooldown_range": {
+                  "description": "Goal cooldown range in seconds",
+                  "type": "array",
+                  "default": [10.0, 10.0],
+                  "items": {
+                    "type": "number",
+                    "default": 1.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "duration_range": {
+                  "description": "Goal duration range in seconds",
+                  "type": "array",
+                  "default": [2.0, 2.0],
+                  "items": {
+                    "type": "number",
+                    "default": 1.0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "on_end": {
+                  "description": "Event(s) to run when the goal end.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                },
+                "on_start": {
+                  "description": "Event(s) to run when the goal starts.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
