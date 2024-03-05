@@ -1107,6 +1107,7 @@
                 },
                 "test": {
                     "enumDescriptions": [
+                        "undocumented",
                         "Tests the health of an actor.",
                         "Returns true when the bool actor property matches the value provided.",
                         "Compares the current time with a float value in the range (0.0, 1.0). 0.0= Noon 0.25= Sunset 0.5= Midnight 0.75= Sunrise",
@@ -1190,6 +1191,7 @@
                         "Tests the current weather, at the actor's position, against a provided weather value."
                     ],
                     "enum": [
+                        "taking_fire_damage",
                         "actor_health",
                         "bool_property",
                         "clock_time",
