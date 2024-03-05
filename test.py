@@ -449,7 +449,7 @@ def callback32():
 
 def callback33():
     if args.all or args.behavior or args.entities:
-        # files = glob.glob(PATH + '/tests/vanilla_BP/entities/**', recursive=True)
+        # files = glob.glob(PATH + '/tests/vanilla_BP/entities/**/*.json', recursive=True)
         # if test('entities',files): logging.info('Entity: Passed')
         # else: logging.warning('Entity: Failed')
         print("entities")
@@ -463,7 +463,7 @@ def callback34():
 
 def callback35():
     if args.all or args.behavior or args.items:
-        files = glob.glob(PATH + "/tests/vanilla_BP/items/**", recursive=True)
+        files = glob.glob(PATH + "/tests/vanilla_BP/items/**/*.json", recursive=True)
         if test("items", files):
             logging.info("Items: Passed")
         else:
@@ -472,7 +472,7 @@ def callback35():
 
 def callback36():
     if args.all or args.behavior or args.loot_tables:
-        files = glob.glob(PATH + "/tests/vanilla_BP/loot_tables/**", recursive=True)
+        files = glob.glob(PATH + "/tests/vanilla_BP/loot_tables/**/*.json", recursive=True)
         if test("loot_tables", files):
             logging.info("Loot Tables: Passed")
         else:
@@ -487,7 +487,7 @@ def callback37():
 
 def callback38():
     if args.all or args.behavior or args.recipes:
-        files = glob.glob(PATH + "/tests/vanilla_BP/recipes/**", recursive=True)
+        files = glob.glob(PATH + "/tests/vanilla_BP/recipes/**/*.json", recursive=True)
         if test("recipes", files):
             logging.info("Recipes: Passed")
         else:
@@ -510,7 +510,7 @@ def callback40():
 
 def callback41():
     if args.all or args.behavior or args.trading:
-        files = glob.glob(PATH + "/tests/vanilla_BP/trading/**", recursive=True)
+        files = glob.glob(PATH + "/tests/vanilla_BP/trading/**/*.json", recursive=True)
         if test("trading", files):
             logging.info("Trading: Passed")
         else:
@@ -525,7 +525,7 @@ def callback42():
 
 def callback43():
     if args.all or args.behavior or args.cameras:
-        files = glob.glob(PATH + "/tests/vanilla_BP/cameras/**", recursive=True)
+        files = glob.glob(PATH + "/tests/vanilla_BP/cameras/**/*.json", recursive=True)
         if test("cameras", files):
             logging.info("CAMERAS: Passed")
         else:
@@ -534,7 +534,7 @@ def callback43():
 
 def callback44():
     if args.all or args.behavior or args.behavior_tree:
-        files = glob.glob(PATH + "/tests/vanilla_BP/behavior_tree/**", recursive=True)
+        files = glob.glob(PATH + "/tests/vanilla_BP/behavior_tree/**/*.json", recursive=True)
         if test("behavior_tree", files):
             logging.info("BEHAVIOR_TREE: Passed")
         else:
