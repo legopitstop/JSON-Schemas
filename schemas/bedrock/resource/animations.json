@@ -217,7 +217,7 @@
                         "additionalProperties": false
                     },
                     "particle_effects": {
-                        "type": "object",
+                        "type": ["object", "array"],
                         "default": {},
                         "patternProperties": {
                             "^(?:[0-9]+.)?[0-9]+$": {
@@ -230,12 +230,16 @@
                                     },
                                     "pre_effect_script": {
                                         "$ref": "../common.json#/definitions/MoLang"
-                                    }
+                                    },
+                                    "locator": {"type": "string"}
                                 },
                                 "additionalProperties": false
                             }
                         },
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "items": {
+                            "$ref": "#/properties/animations/additionalProperties/properties/particle_effects"
+                        }
                     }
                 },
                 "additionalProperties": false

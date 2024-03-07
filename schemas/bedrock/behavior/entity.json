@@ -6,21 +6,11 @@
       "$id": "#/definitions/events",
       "description": "Event",
       "type": ["object", "string", "array"],
-      "items": {
-        "$ref": "#/definitions/events"
-      },
+      "items": { "$ref": "#/definitions/events" },
       "properties": {
-        "filters": {
-          "$ref": "../common.json#/definitions/Filters"
-        },
-        "events": {
-          "description": "The event",
-          "type": "string"
-        },
-        "target": {
-          "description": "The target",
-          "type": "string"
-        }
+        "filters": { "$ref": "../common.json#/definitions/Filters" },
+        "events": { "description": "The event", "type": "string" },
+        "target": { "description": "The target", "type": "string" }
       }
     },
     "sound_interval": {
@@ -30,18 +20,10 @@
       "minItems": 2,
       "maxItems": 2,
       "default": 0,
-      "items": {
-        "type": "integer"
-      },
+      "items": { "type": "integer" },
       "properties": {
-        "range_min": {
-          "type": "number",
-          "default": 1.0
-        },
-        "range_max": {
-          "type": "number",
-          "default": 1.0
-        }
+        "range_min": { "type": "number", "default": 1.0 },
+        "range_max": { "type": "number", "default": 1.0 }
       },
       "additionalProperties": false
     }
@@ -119,13 +101,8 @@
                 "required": ["type"],
                 "properties": {
                   "type": { "description": "undocumented", "enum": ["bool"] },
-                  "client_sync": {
-                    "type": "boolean",
-                    "default": true
-                  },
-                  "default": {
-                    "$ref": "../common.json#/definitions/MoLang"
-                  }
+                  "client_sync": { "type": "boolean", "default": true },
+                  "default": { "$ref": "../common.json#/definitions/MoLang" }
                 },
                 "additionalProperties": false
               }
@@ -185,14 +162,8 @@
                   "type": ["number", "object"],
                   "default": 1.0,
                   "properties": {
-                    "range_min": {
-                      "type": "number",
-                      "default": 1.0
-                    },
-                    "range_max": {
-                      "type": "number",
-                      "default": 1.0
-                    }
+                    "range_min": { "type": "number", "default": 1.0 },
+                    "range_max": { "type": "number", "default": 1.0 }
                   },
                   "additionalProperties": false
                 }
@@ -316,12 +287,7 @@
               "description": "undocumented",
               "type": "object",
               "default": {},
-              "properties": {
-                "value": {
-                  "type": "number",
-                  "default": 0.32
-                }
-              },
+              "properties": { "value": { "type": "number", "default": 0.32 } },
               "additionalProperties": false
             },
             "minecraft:npc": {
@@ -340,18 +306,14 @@
                         "translate": {
                           "type": "array",
                           "default": [0.0, 0.0, 0.0],
-                          "items": {
-                            "type": "number"
-                          },
+                          "items": { "type": "number" },
                           "minItems": 3,
                           "maxItems": 3
                         },
                         "scale": {
                           "type": "array",
                           "default": [0.0, 0.0, 0.0],
-                          "items": {
-                            "type": "number"
-                          },
+                          "items": { "type": "number" },
                           "minItems": 3,
                           "maxItems": 3
                         }
@@ -365,18 +327,14 @@
                         "translate": {
                           "type": "array",
                           "default": [0.0, 0.0, 0.0],
-                          "items": {
-                            "type": "number"
-                          },
+                          "items": { "type": "number" },
                           "minItems": 3,
                           "maxItems": 3
                         },
                         "scale": {
                           "type": "array",
                           "default": [0.0, 0.0, 0.0],
-                          "items": {
-                            "type": "number"
-                          },
+                          "items": { "type": "number" },
                           "minItems": 3,
                           "maxItems": 3
                         }
@@ -391,10 +349,7 @@
                         "default": {},
                         "required": ["variant"],
                         "properties": {
-                          "variant": {
-                            "type": "integer",
-                            "default": 0
-                          }
+                          "variant": { "type": "integer", "default": 0 }
                         },
                         "additionalProperties": false
                       }
@@ -429,6 +384,7 @@
               "default": {},
               "properties": {
                 "default_projectile_annoyingness": {
+                  "description": "undocumented",
                   "type": "integer",
                   "default": 0
                 },
@@ -559,18 +515,10 @@
                   "type": ["array", "number", "object"],
                   "minItems": 2,
                   "maxItems": 2,
-                  "items": {
-                    "type": "integer"
-                  },
+                  "items": { "type": "integer" },
                   "properties": {
-                    "range_min": {
-                      "type": "integer",
-                      "default": 0
-                    },
-                    "range_max": {
-                      "type": "integer",
-                      "default": 0
-                    }
+                    "range_min": { "type": "integer", "default": 0 },
+                    "range_max": { "type": "integer", "default": 0 }
                   },
                   "additionalProperties": false
                 },
@@ -608,9 +556,7 @@
                 "remove_effects": {
                   "description": "List of identifiers of effects to be removed from this entity after adding this component",
                   "type": ["array", "string"],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               }
             },
@@ -732,9 +678,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [0.0, 1.0],
-                  "items": {
-                    "type": "number"
-                  }
+                  "items": { "type": "number" }
                 }
               }
             },
@@ -924,9 +868,7 @@
                 "breakable_blocks": {
                   "description": "A list of the blocks that can be broken as this entity moves around",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               }
             },
@@ -939,9 +881,7 @@
                 "breathe_blocks": {
                   "description": "List of blocks this entity can breathe in, in addition to the other \"breathes\" parameters.",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "breathes_air": {
                   "description": "If true, this entity can breathe in air.",
@@ -976,9 +916,7 @@
                 "non_breathe_blocks": {
                   "description": "List of blocks this entity can't breathe in, in addition to the other \"breathes\" parameters.",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "suffocate_time": {
                   "description": "Time in seconds between suffocation damage.",
@@ -1016,9 +954,7 @@
                 "breed_items": {
                   "description": "The list of items that can be used to get the entity into the 'love' state",
                   "type": ["array", "string"],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "breeds_with": {
                   "description": "The list of entity definitions that this entity can breed with.",
@@ -1164,9 +1100,7 @@
                 "bribe_items": {
                   "description": "The list of items that can be used to bribe the entity.",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               }
             },
@@ -1204,9 +1138,7 @@
                 "liquid_blocks": {
                   "description": "List of blocks this entity can float on. Must be a liquid block.",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "simulate_waves": {
                   "description": "Should the movement simulate waves going through.",
@@ -1296,12 +1228,8 @@
                     "conditional_values": {
                       "description": "Conditions that must be met for these optimization values to be used.",
                       "anyOf": [
-                        {
-                          "type": "integer"
-                        },
-                        {
-                          "$ref": "../common.json#/definitions/Filters"
-                        }
+                        { "type": "integer" },
+                        { "$ref": "../common.json#/definitions/Filters" }
                       ]
                     },
                     "max_dropped_ticks": {
@@ -1530,9 +1458,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [-5, -20],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "display_name": {
                   "description": "Name to be displayed while trading with this entity",
@@ -1549,9 +1475,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [-25, -63],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "max_nearby_cured_discount": {
                   "description": "The max the discount can be modified by when the player has cured a nearby Zombie Villager",
@@ -1647,10 +1571,7 @@
                       "description": "The filder",
                       "$ref": "../common.json#/definitions/Filters"
                     },
-                    "event": {
-                      "description": "The event",
-                      "type": "string"
-                    }
+                    "event": { "description": "The event", "type": "string" }
                   }
                 }
               }
@@ -1677,9 +1598,7 @@
                       "accepted_items": {
                         "description": "The list of items that can go in this slot.",
                         "type": "array",
-                        "items": {
-                          "type": "string"
-                        }
+                        "items": { "type": "string" }
                       },
                       "interact_text": {
                         "description": "Text to be displayed when the entity can be equipped with this item when playing with Touch-screen controls.",
@@ -1757,19 +1676,10 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number",
-                    "default": 0.0
-                  },
+                  "items": { "type": "number", "default": 0.0 },
                   "properties": {
-                    "range_min": {
-                      "type": "number",
-                      "default": 1.0
-                    },
-                    "range_max": {
-                      "type": "number",
-                      "default": 1.0
-                    }
+                    "range_min": { "type": "number", "default": 1.0 },
+                    "range_max": { "type": "number", "default": 1.0 }
                   },
                   "additionalProperties": false
                 },
@@ -1949,14 +1859,8 @@
                             "type": ["integer", "object"],
                             "default": -1,
                             "properties": {
-                              "range_min": {
-                                "type": "integer",
-                                "default": 0
-                              },
-                              "range_max": {
-                                "type": "integer",
-                                "default": 0
-                              }
+                              "range_min": { "type": "integer", "default": 0 },
+                              "range_max": { "type": "integer", "default": 0 }
                             },
                             "additionalProperties": false
                           }
@@ -1998,9 +1902,7 @@
                 "items": {
                   "description": "The list of items that can be given to the entity to place in their inventory.",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "on_give": {
                   "description": "Event to fire when the correct item is given.",
@@ -2088,9 +1990,7 @@
                 "home_block_list": {
                   "description": "Optional block list that the home position will be associated with. If any of the blocks no longer exist at that position, the home restriction is removed. Example syntax: minecraft:sand. Not supported: minecraft:sand:1",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "restriction_radius": {
                   "description": "The radius that the entity will be restricted to in relation to its home",
@@ -2260,16 +2160,12 @@
                 "play_sounds": {
                   "description": "List of sounds to play when the interaction occurs.",
                   "type": ["array", "string"],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "spawn_entities": {
                   "description": "List of entities to spawn when the interaction occurs.",
                   "type": ["array", "string"],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "spawn_items": {
                   "description": "Loot table with items to drop on the ground upon successful interaction.",
@@ -2406,9 +2302,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [0, 0],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "look_event": {
                   "description": "The event identifier to run when the entities specified in filters look at this entity.",
@@ -2486,9 +2380,7 @@
                     "name_filter": {
                       "description": "List of special names that will cause the events defined in 'on_named' to fire",
                       "type": ["array", "string"],
-                      "items": {
-                        "type": "string"
-                      }
+                      "items": { "type": "string" }
                     },
                     "on_named": {
                       "description": "Event to be called when this entity acquires the name specified in 'name_filter'",
@@ -2584,10 +2476,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "cost": {
-                            "type": "integer",
-                            "default": 0
-                          },
+                          "cost": { "type": "integer", "default": 0 },
                           "blocks": {
                             "type": "array",
                             "default": [],
@@ -2609,6 +2498,11 @@
               "type": "object",
               "default": {},
               "properties": {
+                "anchor": {
+                  "description": "undocumented",
+                  "type": "integer",
+                  "default": 1
+                },
                 "angle_offset": {
                   "description": "Determines the angle at which the projectile is thrown",
                   "type": "number",
@@ -2631,7 +2525,7 @@
                 },
                 "filter": {
                   "description": "Entity Definitions defined here can't be hurt by the projectile",
-                  "type": "string"
+                  "$ref": "../common.json#/definitions/Filters"
                 },
                 "fire_affected_by_griefing": {
                   "description": "If true, whether the projectile causes fire is affected by the mob griefing game rule",
@@ -2687,10 +2581,7 @@
                   "type": "array",
                   "minItems": 3,
                   "maxItems": 3,
-                  "items": {
-                    "type": "number",
-                    "default": 0.0
-                  }
+                  "items": { "type": "number", "default": 0.0 }
                 },
                 "on_fire_time": {
                   "description": "Time in seconds that the entity hit will be on fire for",
@@ -2751,12 +2642,246 @@
                   "type": "number",
                   "default": 0
                 },
+                "destroyOnHurt": {
+                  "description": "undocumented",
+                  "type": "boolean",
+                  "default": true
+                },
                 "uncertainty_multiplier": {
                   "description": "Determines how much difficulty affects accuracy. Accuracy is determined by the formula uncertaintyBase - difficultyLevel * uncertaintyMultiplier",
                   "type": "number",
                   "default": 0
+                },
+                "hit_water": {
+                  "description": "undocumented",
+                  "type": "boolean",
+                  "default": true
+                },
+                "hit_ground_sound": {
+                  "description": "undocumented",
+                  "type": "string"
+                },
+                "stop_on_hurt": {
+                  "description": "undocumented",
+                  "type": "boolean",
+                  "default": true
+                },
+                "on_hit": {
+                  "description": "undocumented",
+                  "type": "object",
+                  "default": {},
+                  "properties": {
+                    "thrown_potion_effect": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "additionalProperties": false
+                    },
+                    "grant_xp": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "minXP": { "type": "integer", "default": 0 },
+                        "maxXP": { "type": "integer", "default": 0 }
+                      },
+                      "additionalProperties": false
+                    },
+                    "douse_fire": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "additionalProperties": false
+                    },
+                    "spawn_aoe_cloud": {
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "radius": { "type": "number", "default": 1.0 },
+                        "radius_on_use": { "type": "number", "default": 0.0 },
+                        "potion": { "type": "integer", "default": 0 },
+                        "particle": { "type": "string" },
+                        "duration": { "type": "integer", "default": 0 },
+                        "color": {
+                          "type": "array",
+                          "default": [],
+                          "items": { "type": "integer", "default": 0 },
+                          "minItems": 3,
+                          "maxItems": 3
+                        },
+                        "affect_owner": { "type": "boolean", "default": true },
+                        "reapplication_delay": {
+                          "type": "integer",
+                          "default": 0
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "impact_damage": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "filter": { "type": "string" },
+                        "damage": {
+                          "type": ["integer", "array"],
+                          "default": 0,
+                          "items": { "type": "integer", "default": 0 },
+                          "minItems": 2,
+                          "maxItems": 2
+                        },
+                        "knockback": { "type": "boolean", "default": true },
+                        "should_bounce": { "type": "boolean", "default": true },
+                        "semi_random_diff_damage": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "destroy_on_hit": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "max_critical_damage": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "min_critical_damage": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "power_multiplier": {
+                          "type": "number",
+                          "default": 1.0
+                        },
+                        "catch_fire": { "type": "boolean", "default": true }
+                      },
+                      "additionalProperties": false
+                    },
+                    "remove_on_hit": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "additionalProperties": false
+                    },
+                    "mob_effect": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "required": ["effect"],
+                      "properties": {
+                        "effect": { "type": "string" },
+                        "durationeasy": { "type": "integer", "default": 0 },
+                        "durationnormal": { "type": "integer", "default": 0 },
+                        "durationhard": { "type": "integer", "default": 0 },
+                        "amplifier": { "type": "integer", "default": 1 }
+                      },
+                      "additionalProperties": false
+                    },
+                    "particle_on_hit": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "particle_type": { "type": "string" },
+                        "on_other_hit": { "type": "boolean", "default": true },
+                        "num_particles": { "type": "integer", "default": 0 },
+                        "on_entity_hit": { "type": "boolean", "default": true }
+                      },
+                      "additionalProperties": false
+                    },
+                    "teleport_owner": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "additionalProperties": false
+                    },
+                    "freeze_on_hit": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "size": { "type": "number", "default": 1.0 },
+                        "shape": { "enum": ["cube"] },
+                        "snap_to_block": { "type": "boolean", "default": true }
+                      },
+                      "additionalProperties": false
+                    },
+                    "definition_event": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "affect_projectile": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "event_trigger": {
+                          "$ref": "../common.json#/definitions/EventTrigger"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "spawn_chance": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "first_spawn_percent_chance": {
+                          "type": "number",
+                          "default": 1.0
+                        },
+                        "first_spawn_chance": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "second_spawn_chance": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "first_spawn_count": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "second_spawn_count": {
+                          "type": "integer",
+                          "default": 0
+                        },
+                        "spawn_definition": {
+                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                        },
+                        "spawn_baby": { "type": "boolean", "default": true }
+                      },
+                      "additionalProperties": false
+                    },
+                    "stick_in_ground": {
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "shake_time": { "type": "number", "default": 1.0 }
+                      },
+                      "additionalProperties": false
+                    },
+                    "arrow_effect": {
+                      "type": "object",
+                      "default": {},
+                      "additionalProperties": false
+                    },
+                    "catch_fire": {
+                      "description": "undocumented",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "fire_affected_by_griefing": {
+                          "type": "boolean",
+                          "default": true
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "minecraft:pushable": {
               "title": "COMPONENTS",
@@ -2879,9 +3004,7 @@
                   "description": "List of entities that can ride this entity",
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "interact_text": {
                   "description": "The text to display when the player can interact with the entity when playing with Touch-screen controls",
@@ -2941,9 +3064,7 @@
                       "minItems": 3,
                       "maxItems": 3,
                       "default": [0, 0, 0],
-                      "items": {
-                        "type": "number"
-                      }
+                      "items": { "type": "number" }
                     },
                     "rotate_rider_by": {
                       "description": "Offset to rotate riders by",
@@ -2987,9 +3108,7 @@
                       "filters": {
                         "$ref": "../common.json#/definitions/Filters"
                       },
-                      "event": {
-                        "type": "string"
-                      }
+                      "event": { "type": "string" }
                     },
                     "additionalProperties": false
                   }
@@ -3344,9 +3463,7 @@
                   "minItems": 3,
                   "maxItems": 3,
                   "default": [32, 16, 32],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "random_teleports": {
                   "description": "If true, the entity will teleport randomly",
@@ -3417,10 +3534,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number",
-                    "default": 0.0
-                  }
+                  "items": { "type": "number", "default": 0.0 }
                 },
                 "time_down_event": {
                   "description": "Event to fire when the time on the timer runs out.",
@@ -3480,9 +3594,7 @@
                   "minItems": 3,
                   "maxItems": 3,
                   "default": [0, 0, 0],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 }
               }
             },
@@ -3504,9 +3616,7 @@
                         "description": "Names of component groups to add",
                         "type": "array",
                         "default": [],
-                        "items": {
-                          "type": "string"
-                        }
+                        "items": { "type": "string" }
                       }
                     }
                   }
@@ -3546,9 +3656,7 @@
                       "description": "List of blocks that can help the transformation of this entity",
                       "type": "array",
                       "default": [],
-                      "items": {
-                        "type": "string"
-                      }
+                      "items": { "type": "string" }
                     },
                     "value": {
                       "description": "Time in seconds before the entity transforms",
@@ -3611,9 +3719,7 @@
                   "description": "The list of items that can be used to get the entity to trust players.",
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               }
             },
@@ -3742,13 +3848,8 @@
                   "items": {
                     "type": ["string", "object"],
                     "properties": {
-                      "slot": {
-                        "type": "string"
-                      },
-                      "drop_chance": {
-                        "type": "number",
-                        "default": 1.0
-                      }
+                      "slot": { "type": "string" },
+                      "drop_chance": { "type": "number", "default": 1.0 }
                     },
                     "additionalProperties": false
                   }
@@ -4012,9 +4113,7 @@
                   "description": "List of family names.",
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               }
             },
@@ -4274,10 +4373,7 @@
                 "lift_force": {
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "number",
-                    "default": 0.0
-                  },
+                  "items": { "type": "number", "default": 0.0 },
                   "maxItems": 3,
                   "minItems": 3
                 }
@@ -4348,9 +4444,7 @@
                 "broadcast_targets": {
                   "description": "A list of entity families to broadcast anger to",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "calm_event": {
                   "description": "Event to run after the number of seconds specified in duration expires (when the entity stops being 'angry')",
@@ -4385,9 +4479,7 @@
                 "drop_items": {
                   "description": "List of items that the entity drops when it grows up.",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "duration": {
                   "description": "Amount of time before the entity grows up, -1 for always a baby.",
@@ -4403,10 +4495,7 @@
                       "item": {
                         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
                       },
-                      "growth": {
-                        "type": "number",
-                        "default": 1.0
-                      },
+                      "growth": { "type": "number", "default": 1.0 },
                       "additionalProperties": false
                     }
                   },
@@ -4431,7 +4520,6 @@
                 }
               }
             },
-
             "minecraft:jump.dynamic": {
               "title": "JUMP",
               "description": "Defines a dynamic type jump control that will change jump properties based on the speed modifier of the mob.",
@@ -4451,21 +4539,14 @@
                 }
               }
             },
-
             "minecraft:movement.glide": {
               "title": "MOVEMENT",
               "description": "undocumented. Animation: `query.is_gliding`",
               "type": "object",
               "default": {},
               "properties": {
-                "start_speed": {
-                  "type": "number",
-                  "default": 0.1
-                },
-                "speed_when_turning": {
-                  "type": "number",
-                  "default": 0.2
-                }
+                "start_speed": { "type": "number", "default": 0.1 },
+                "speed_when_turning": { "type": "number", "default": 0.2 }
               },
               "additionalProperties": false
             },
@@ -4546,10 +4627,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number",
-                    "default": 0.0
-                  }
+                  "items": { "type": "number", "default": 0.0 }
                 },
                 "max_turn": {
                   "description": "The maximum number in degrees the mob can turn per tick.",
@@ -4594,7 +4672,6 @@
                 }
               }
             },
-
             "minecraft:navigation.climb": {
               "title": "NAVIGATION",
               "description": "Allows this entity to generate paths that include vertical walls like the vanilla Spiders do. Animation: `query.is_wall_climbing`",
@@ -4624,9 +4701,7 @@
                 "blocks_to_avoid": {
                   "description": "Tells the pathfinder which blocks to avoid when creating a path",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "can_breach": {
                   "description": "Tells the pathfinder whether or not it can jump out of water (like a dolphin)",
@@ -4730,9 +4805,7 @@
                 "blocks_to_avoid": {
                   "description": "Tells the pathfinder which blocks to avoid when creating a path",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "can_breach": {
                   "description": "Tells the pathfinder whether or not it can jump out of water (like a dolphin)",
@@ -4835,9 +4908,7 @@
                 "blocks_to_avoid": {
                   "description": "Tells the pathfinder which blocks to avoid when creating a path",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "can_breach": {
                   "description": "Tells the pathfinder whether or not it can jump out of water (like a dolphin)",
@@ -4940,9 +5011,7 @@
                 "blocks_to_avoid": {
                   "description": "Tells the pathfinder which blocks to avoid when creating a path",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "can_breach": {
                   "description": "Tells the pathfinder whether or not it can jump out of water (like a dolphin)",
@@ -5045,9 +5114,7 @@
                 "blocks_to_avoid": {
                   "description": "Tells the pathfinder which blocks to avoid when creating a path",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "can_breach": {
                   "description": "Tells the pathfinder whether or not it can jump out of water (like a dolphin)",
@@ -5150,9 +5217,7 @@
                 "blocks_to_avoid": {
                   "description": "Tells the pathfinder which blocks to avoid when creating a path",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "can_breach": {
                   "description": "Tells the pathfinder whether or not it can jump out of water (like a dolphin)",
@@ -5337,21 +5402,14 @@
                 }
               }
             },
-
             "minecraft:player.saturation": {
               "title": "PLAYER",
               "description": "undocumented",
               "type": "object",
               "default": {},
               "properties": {
-                "value": {
-                  "type": "integer",
-                  "default": 5
-                },
-                "max": {
-                  "type": "integer",
-                  "default": 20
-                }
+                "value": { "type": "integer", "default": 5 },
+                "max": { "type": "integer", "default": 20 }
               },
               "additionalProperties": false
             },
@@ -5361,14 +5419,8 @@
               "type": "object",
               "default": {},
               "properties": {
-                "value": {
-                  "type": "integer",
-                  "default": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "default": 20
-                }
+                "value": { "type": "integer", "default": 0 },
+                "max": { "type": "integer", "default": 20 }
               },
               "additionalProperties": false
             },
@@ -5378,14 +5430,8 @@
               "type": "object",
               "default": {},
               "properties": {
-                "value": {
-                  "type": "integer",
-                  "default": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "default": 24791
-                }
+                "value": { "type": "integer", "default": 0 },
+                "max": { "type": "integer", "default": 24791 }
               },
               "additionalProperties": false
             },
@@ -5395,28 +5441,18 @@
               "type": "object",
               "default": {},
               "properties": {
-                "value": {
-                  "type": "integer",
-                  "default": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "default": 1
-                }
+                "value": { "type": "integer", "default": 0 },
+                "max": { "type": "integer", "default": 1 }
               },
               "additionalProperties": false
             },
-
             "minecraft:behavior.swim_with_entity": {
               "title": "AI GOAL",
               "description": "Allows the entity follow another entity. Both entities must be swimming [ie, in water].",
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "catch_up_multiplier": {
                   "description": "The multiplier this entity's speed is modified by when matching another entity's direction.",
                   "type": "number",
@@ -5489,10 +5525,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "elder_extra_magic_damage": {
                   "description": "Amount of additional damage dealt from an elder guardian's magic attack.",
                   "type": "integer",
@@ -5537,10 +5570,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "interval": {
                   "description": "Percent chance to start wandering, when not path-finding. 1 = 100%",
                   "type": "number",
@@ -5570,17 +5600,12 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_range": {
                   "description": "Minimum and maximum cooldown time-range (positive, in seconds) between each attempted jump.",
                   "type": "array",
                   "default": [10, 20],
-                  "items": {
-                    "type": "integer"
-                  },
+                  "items": { "type": "integer" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -5644,10 +5669,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "baby_knockback_modifier": {
                   "description": "The modifier to knockback that babies have.",
                   "type": "number",
@@ -5657,9 +5679,7 @@
                   "description": "Minimum and maximum cooldown time-range (positive, in seconds) between each attempted ram attack.",
                   "type": "array",
                   "default": [10, 20],
-                  "items": {
-                    "type": "integer"
-                  },
+                  "items": { "type": "integer" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -5726,10 +5746,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "avoid_block_sound": {
                   "description": "The sound event to play when the mob is avoiding a block.",
                   "type": "string"
@@ -5800,10 +5817,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "attack_chance": {
                   "description": "The percentage chance that the entity has to attack aggressors of its village, where 1.0 = 100%.",
                   "type": "number",
@@ -5814,9 +5828,7 @@
                   "type": "object",
                   "default": {},
                   "properties": {
-                    "filters": {
-                      "$ref": "../common.json#/definitions/Filters"
-                    }
+                    "filters": { "$ref": "../common.json#/definitions/Filters" }
                   },
                   "additionalProperties": false
                 }
@@ -5829,14 +5841,8 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
-                "percent_chance": {
-                  "type": "number",
-                  "default": 5.0
-                },
+                "priority": { "type": "integer", "default": 0 },
+                "percent_chance": { "type": "number", "default": 5.0 },
                 "entity_types": {
                   "type": "array",
                   "default": [],
@@ -5860,10 +5866,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "jump_chance_percentage": {
                   "description": "Percent chance a slime or magma cube has to jump while in water / lava.",
                   "type": "number",
@@ -5883,10 +5886,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "add_random_time_range": {
                   "description": "Additional time (in whole seconds), chosen randomly in the range of [0, \"add_random_time_range\"], to add to \"min_change_direction_time\".",
                   "type": "integer",
@@ -5911,10 +5911,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "speed_multiplier": {
                   "description": "Determines the multiplier this entity's speed is modified by when jumping around.",
                   "type": "number",
@@ -5929,10 +5926,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "damage_reach": {
                   "description": "Added to the base size of the entity, to determine the target's maximum allowable distance, when trying to deal attack damage.",
                   "type": "number",
@@ -5942,9 +5936,7 @@
                   "description": "Minimum and maximum cooldown time-range (in seconds) between each attempted swoop attack.",
                   "type": "array",
                   "default": [10, 20],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -5966,17 +5958,12 @@
                 "cooldown_range": {
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
                 "duration_range": { "type": "number", "default": 1.0 },
-                "on_end": {
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
+                "on_end": { "$ref": "../common.json#/definitions/EventTrigger" }
               },
               "additionalProperties": false
             },
@@ -5986,10 +5973,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "attack_once": {
                   "description": "Allows the entity to use this attack behavior, only once EVER.",
                   "type": "boolean",
@@ -6117,10 +6101,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "goal_radius": {
                   "description": "The radius away from the target block to count as reaching the goal.",
                   "type": "number",
@@ -6160,10 +6141,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "goal_radius": {
                   "description": "Distance in blocks within the entity considers it has reached it's target position.",
                   "type": "number",
@@ -6213,10 +6191,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "active_time": {
                   "description": "The amount of ticks the NPC will stay in their the work location",
                   "type": "integer",
@@ -6300,10 +6275,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "duration": {
                   "description": "The amount of time to roar for.",
                   "type": "number",
@@ -6318,10 +6290,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "attack_cooldown": {
                   "description": "Cooldown in seconds required after using this attack until the entity can use sonic boom again.",
                   "type": "number",
@@ -6389,10 +6358,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "goal_radius": {
                   "description": "Distance in blocks within the entity considers it has reached it's target position.",
                   "type": "number",
@@ -6412,17 +6378,12 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_range": {
                   "description": "Cooldown range between sniffs in seconds",
                   "type": "array",
                   "default": [2.0, 10.0],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -6455,10 +6416,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "attack_duration": {
                   "description": "The entity's attack animation will play out over this duration (in seconds). Also controls attack cooldown.",
                   "type": "number",
@@ -6621,9 +6579,7 @@
                   "description": "Random range in seconds after which the croaking stops. Can also be a constant.",
                   "type": ["array", "number"],
                   "default": [4.5, 4.5],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -6635,15 +6591,11 @@
                   "description": "Random range in seconds between runs of this behavior. Can also be a constant.",
                   "type": "array",
                   "default": [10, 20],
-                  "items": {
-                    "type": "integer"
-                  },
+                  "items": { "type": "integer" },
                   "minItems": 2,
                   "maxItems": 2
                 },
-                "priority": {
-                  "type": "integer"
-                }
+                "priority": { "type": "integer" }
               },
               "additionalProperties": false
             },
@@ -6668,9 +6620,7 @@
                   "type": "number",
                   "default": 1.0
                 },
-                "priority": {
-                  "type": "integer"
-                }
+                "priority": { "type": "integer" }
               },
               "additionalProperties": false
             },
@@ -6694,9 +6644,7 @@
                   "description": "The number of blocks above the target that the next anchor point can be set. This value is used only when the entity is tracking a target.",
                   "type": "array",
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -6709,9 +6657,7 @@
                   "description": "Vertical distance from the anchor point this entity must stay within, upon a successful height adjustment.",
                   "type": "array",
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -6729,9 +6675,7 @@
                   "description": "Horizontal distance from the anchor point this entity must stay within upon a successful radius adjustment.",
                   "type": "array",
                   "default": [5.0, 15.0],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -6740,9 +6684,7 @@
                   "type": "number",
                   "default": 1.0
                 },
-                "priority": {
-                  "type": "integer"
-                }
+                "priority": { "type": "integer" }
               },
               "additionalProperties": false
             },
@@ -6752,17 +6694,12 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "items": {
                   "description": "The list of items that can be used to charge the held item. This list is required and must have at least one item in it.",
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 }
               },
               "additionalProperties": false
@@ -6773,10 +6710,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "max_distance": {
                   "description": "A charge attack cannot start if the entity is farther than this distance to the target.",
                   "type": "number",
@@ -6806,10 +6740,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "duration": {
                   "description": "The duration in seconds that the celebration lasts for.",
                   "type": "number",
@@ -6819,21 +6750,12 @@
                   "description": "The duration in seconds that the celebration lasts for.",
                   "type": ["array", "object"],
                   "default": [10, 20],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2,
                   "properties": {
-                    "range_min": {
-                      "type": "number",
-                      "default": 1.0
-                    },
-                    "range_max": {
-                      "type": "number",
-                      "default": 1.0
-                    }
+                    "range_min": { "type": "number", "default": 1.0 },
+                    "range_max": { "type": "number", "default": 1.0 }
                   },
                   "additionalProperties": false
                 },
@@ -6850,10 +6772,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "allow_dig_when_named": {
                   "description": "If true, this behavior can run when this entity is named. Otherwise not.",
                   "type": "boolean",
@@ -6896,17 +6815,12 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_range": {
                   "description": "Goal cooldown range in seconds.",
                   "type": ["array", "number"],
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -6929,9 +6843,7 @@
                   "description": "Digging duration in seconds.",
                   "type": "array",
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -7011,10 +6923,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "active_speed": {
                   "description": "The speed this entity moves when this behavior has started or while it's active.",
                   "type": "number",
@@ -7034,9 +6943,7 @@
                   "description": "Minimum and maximum distance, from the target, this entity can use this behavior.",
                   "type": "array",
                   "default": [10, 150],
-                  "items": {
-                    "type": "integer"
-                  },
+                  "items": { "type": "integer" },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -7074,9 +6981,7 @@
                   "type": "number",
                   "default": 2
                 },
-                "priority": {
-                  "type": "integer"
-                }
+                "priority": { "type": "integer" }
               },
               "additionalProperties": false
             },
@@ -7085,11 +6990,7 @@
               "description": "Allows the Dragon to fly around in a circle around the center podium. Can only be used by the Ender Dragon.",
               "type": "object",
               "default": {},
-              "properties": {
-                "priority": {
-                  "type": "integer"
-                }
-              },
+              "properties": { "priority": { "type": "integer" } },
               "additionalProperties": false
             },
             "minecraft:behavior.drink_milk": {
@@ -7098,10 +6999,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_seconds": {
                   "description": "Time (in seconds) that the goal is on cooldown before it can be used again.",
                   "type": "number",
@@ -7120,10 +7018,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "eat_and_replace_block_pairs": {
                   "description": "A collection of pairs of blocks; the first (\"eat_block\")is the block the entity should eat, the second (\"replace_block\") is the block that should replace the eaten block.",
                   "type": "array",
@@ -7191,9 +7086,7 @@
                   "type": "number",
                   "default": 1.0
                 },
-                "priority": {
-                  "type": "integer"
-                }
+                "priority": { "type": "integer" }
               },
               "additionalProperties": false
             },
@@ -7225,12 +7118,7 @@
               "description": "The entity puts on the desired equipment.",
               "type": "object",
               "default": {},
-              "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                }
-              },
+              "properties": { "priority": { "type": "integer", "default": 0 } },
               "additionalProperties": false
             },
             "minecraft:behavior.fertilize_farm_block": {
@@ -7239,10 +7127,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "goal_radius": {
                   "description": "Distance in blocks within the mob considers it has reached it's target position.",
                   "type": "number",
@@ -7323,9 +7208,7 @@
                 "items": {
                   "description": "List of items that this mob likes",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "look_distance": {
                   "description": "Distance in blocks the mob will beg from",
@@ -7338,9 +7221,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [1, 4],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 }
               },
               "additionalProperties": false
@@ -7389,18 +7270,10 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": 0,
-                  "items": {
-                    "type": "integer"
-                  },
+                  "items": { "type": "integer" },
                   "properties": {
-                    "range_min": {
-                      "type": "number",
-                      "default": 1.0
-                    },
-                    "range_max": {
-                      "type": "number",
-                      "default": 1.0
-                    }
+                    "range_min": { "type": "number", "default": 1.0 },
+                    "range_max": { "type": "number", "default": 1.0 }
                   },
                   "additionalProperties": false
                 },
@@ -7422,10 +7295,7 @@
               "default": {},
               "properties": {
                 "priority": { "type": "integer", "default": 0 },
-                "sound_chance": {
-                  "type": "number",
-                  "default": 1.0
-                },
+                "sound_chance": { "type": "number", "default": 1.0 },
                 "on_defend_start": {
                   "$ref": "../common.json#/definitions/EventTrigger"
                 },
@@ -7524,7 +7394,6 @@
               "type": "object",
               "default": {},
               "properties": { "priority": { "type": "integer", "default": 0 } },
-
               "additionalProperties": false
             },
             "minecraft:behavior.dragonscanning": {
@@ -7588,10 +7457,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "delay_before_eating": {
                   "description": "Time in seconds the mob should wait before eating the item.",
                   "type": "number"
@@ -7665,13 +7531,10 @@
                   "description": "The distance from the boundary the villager must be within in to explore the outskirts.",
                   "type": "array",
                   "default": [5, 0, 5],
-                  "items": {
-                    "type": "number"
-                  },
+                  "items": { "type": "number" },
                   "minItems": 3,
                   "maxItems": 3
                 },
-
                 "explore_dist": {
                   "description": "The distance in which the mob will proceed past the village bounds",
                   "type": "number",
@@ -7742,10 +7605,7 @@
                   "type": "number",
                   "default": 0.0
                 },
-                "max_failed_attempts": {
-                  "type": "integer",
-                  "default": 0
-                }
+                "max_failed_attempts": { "type": "integer", "default": 0 }
               },
               "additionalProperties": false
             },
@@ -7755,10 +7615,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "search_range": {
                   "description": "The range that the mob will search for a treasure chest within a ruin or shipwreck to move towards.",
                   "type": "integer",
@@ -7820,9 +7677,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [0.0, 0.0],
-                  "items": {
-                    "type": "number"
-                  }
+                  "items": { "type": "number" }
                 },
                 "must_reach": {
                   "description": "If true, the point has to be reachable to be a valid target",
@@ -7860,10 +7715,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "entity_count": {
                   "description": "Number of entities that can be in the caravan",
                   "type": "integer",
@@ -7921,10 +7773,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "search_range": {
                   "description": "The distance in blocks it will look for a mob to follow",
                   "type": "integer",
@@ -8004,14 +7853,8 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
-                "speed_multiplier": {
-                  "type": "number",
-                  "default": 1.0
-                },
+                "priority": { "type": "integer", "default": 0 },
+                "speed_multiplier": { "type": "number", "default": 1.0 },
                 "follow_distance": {
                   "description": "Defines the distance in blocks the mob will stay from its target while following.",
                   "type": "number",
@@ -8031,10 +7874,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "on_failed": {
                   "type": "array",
                   "default": [],
@@ -8108,10 +7948,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "broadcast": {
                   "description": "Whether to broadcast out the mob's target to other mobs of the same type.",
                   "type": "boolean",
@@ -8189,10 +8026,7 @@
                     "filters": {
                       "$ref": "../common.json#/definitions/Filters"
                     },
-                    "max_dist": {
-                      "type": "integer",
-                      "default": 0
-                    }
+                    "max_dist": { "type": "integer", "default": 0 }
                   },
                   "additionalProperties": false
                 },
@@ -8246,23 +8080,15 @@
               "default": {},
               "properties": {
                 "priority": { "type": "integer", "default": 0 },
-                "cooldown_range": {
-                  "type": "number",
-                  "default": 1.0
-                },
+                "cooldown_range": { "type": "number", "default": 1.0 },
                 "duration_range": {
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
-                "on_end": {
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
+                "on_end": { "$ref": "../common.json#/definitions/EventTrigger" }
               },
               "additionalProperties": false
             },
@@ -8277,16 +8103,11 @@
                 "duration_range": {
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "maxItems": 2,
                   "minItems": 2
                 },
-                "on_end": {
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
+                "on_end": { "$ref": "../common.json#/definitions/EventTrigger" }
               },
               "additionalProperties": false
             },
@@ -8392,9 +8213,7 @@
                   "description": "Types of materials that can exist above the target block. Valid types are Air, Water, and Lava.",
                   "type": "array",
                   "default": [],
-                  "items": {
-                    "enum": ["Air", "Water", "Lava"]
-                  }
+                  "items": { "enum": ["Air", "Water", "Lava"] }
                 },
                 "allow_laying_from_below": {
                   "description": "Allows the mob to lay its eggs from below the target if it can't get there. This is useful if the target block is water with air above, since mobs may not be able to get to the air block above water.",
@@ -8421,7 +8240,6 @@
                   "type": "string",
                   "default": "lay_egg"
                 },
-
                 "search_height": {
                   "description": "Height in blocks the mob will look for sand block to move towards",
                   "type": "integer",
@@ -8502,9 +8320,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [2, 4],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "probability": {
                   "description": "The probability of looking at the target. A value of 1.00 is 100%",
@@ -8546,9 +8362,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [2, 4],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "probability": {
                   "description": "The probability of looking at the target. A value of 1.00 is 100%",
@@ -8586,9 +8400,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [2, 4],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "probability": {
                   "description": "The probability of looking at the target. A value of 1.00 is 100%",
@@ -8626,9 +8438,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [2, 4],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "probability": {
                   "description": "The probability of looking at the target. A value of 1.00 is 100%",
@@ -8643,9 +8453,7 @@
               "description": "Allows the villager to look for a mate to spawn other villagers with. Can only be used by Villagers.",
               "type": "object",
               "default": {},
-              "properties": {
-                "priority": { "type": "integer", "default": 0 }
-              },
+              "properties": { "priority": { "type": "integer", "default": 0 } },
               "additionalProperties": false
             },
             "minecraft:behavior.mingle": {
@@ -8688,10 +8496,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "speed_multiplier": {
                   "description": "Movement speed multiplier of the mob when using this AI Goal",
                   "type": "number",
@@ -8716,10 +8521,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "speed_multiplier": {
                   "description": "Movement speed multiplier of the mob when using this AI Goal",
                   "type": "number",
@@ -8759,10 +8561,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "target_block_filters": {
                   "$ref": "../common.json#/definitions/Filters"
                 },
@@ -8814,9 +8613,7 @@
                   "minItems": 3,
                   "maxItems": 3,
                   "default": [0, 0, 0],
-                  "items": {
-                    "type": "number"
-                  }
+                  "items": { "type": "number" }
                 },
                 "target_selection_method": {
                   "description": "Kind of block to find fitting the specification. Valid values are \"random\" and \"nearest\".",
@@ -8836,10 +8633,7 @@
               "type": "object",
               "default": {},
               "properties": {
-                "priority": {
-                  "type": "integer",
-                  "default": 0
-                },
+                "priority": { "type": "integer", "default": 0 },
                 "goal_radius": {
                   "description": "Distance in blocks within the mob considers it has reached the goal. This is the \"wiggle room\" to stop the AI from bouncing back and forth trying to reach a specific spot",
                   "type": "number",
@@ -9057,10 +8851,7 @@
                   "type": "number",
                   "default": 0.0
                 },
-                "speed_multiplier": {
-                  "type": "number",
-                  "default": 1.0
-                }
+                "speed_multiplier": { "type": "number", "default": 1.0 }
               },
               "additionalProperties": false
             },
@@ -9444,9 +9235,7 @@
                 "damage_sources": {
                   "description": "The list of Entity Damage Sources that will cause this mob to panic",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "force": {
                   "description": "If true, this mob will not stop panicking until it can't move anymore or the goal is removed from it",
@@ -9523,9 +9312,7 @@
                 "excluded_items": {
                   "description": "List of items this mob will not pick up",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "goal_radius": {
                   "description": "Distance in blocks within the mob considers it has reached the goal. This is the \"wiggle room\" to stop the AI from bouncing back and forth trying to reach a specific spot",
@@ -9691,9 +9478,7 @@
                   "type": "array",
                   "minItems": 2,
                   "maxItems": 2,
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 },
                 "interval": {
                   "description": "A random value to determine when to randomly move somewhere. This has a 1/interval chance to choose this goal",
@@ -9736,9 +9521,7 @@
                   "minItems": 2,
                   "maxItems": 2,
                   "default": [2, 4],
-                  "items": {
-                    "type": "integer"
-                  }
+                  "items": { "type": "integer" }
                 }
               }
             },
@@ -10144,9 +9927,7 @@
                 "items": {
                   "description": "Items that we are interested in snacking on",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "snacking_cooldown": {
                   "description": "The cooldown time in seconds before the mob is able to snack again",
@@ -10580,9 +10361,7 @@
                 "items": {
                   "description": "List of items this mob is tempted by",
                   "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
+                  "items": { "type": "string" }
                 },
                 "sound_interval": {
                   "description": "Range of random ticks to wait between tempt sounds.",
@@ -10982,25 +10761,20 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_range": {
                   "description": "Goal cooldown range in seconds",
                   "type": "array",
                   "default": [10.0, 10.0],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
                 "duration_range": {
                   "description": "Goal duration range in seconds",
-                  "type": "array",
+                  "type": ["array", "number"],
                   "default": [2.0, 2.0],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -11021,14 +10795,12 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_range": {
                   "description": "Goal cooldown range in seconds",
-                  "type": "array",
+                  "type": ["array", "number"],
                   "default": [10.0, 10.0],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -11036,10 +10808,7 @@
                   "description": "Goal duration range in seconds",
                   "type": "array",
                   "default": [2.0, 2.0],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -11060,14 +10829,12 @@
               "type": "object",
               "default": {},
               "properties": {
+                "priority": { "type": "integer", "default": 0 },
                 "cooldown_range": {
                   "description": "Goal cooldown range in seconds",
-                  "type": "array",
+                  "type": ["array", "number"],
                   "default": [10.0, 10.0],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -11075,10 +10842,7 @@
                   "description": "Goal duration range in seconds",
                   "type": "array",
                   "default": [2.0, 2.0],
-                  "items": {
-                    "type": "number",
-                    "default": 1.0
-                  },
+                  "items": { "type": "number", "default": 1.0 },
                   "minItems": 2,
                   "maxItems": 2
                 },
@@ -11108,9 +10872,7 @@
             "type": "object",
             "default": {},
             "properties": {
-              "filters": {
-                "$ref": "../common.json#/definitions/Filters"
-              },
+              "filters": { "$ref": "../common.json#/definitions/Filters" },
               "add": {
                 "description": "Adds component groups to the current entity. These groups must be defined in the 'component_groups' section of the file. As entities can only have one component of each type active, any components in a group that is being added will replace previously added components. Additionally, adding a component group that is already active will cause those components to be re-initialized. For some types of components like minecraft:is_baby, re-initializing an already active component has no effect, but for other component types the associated logic will start over. For example, an already-added minecraft:timer that is added again will start its timing logic over.",
                 "type": "object",
@@ -11120,9 +10882,7 @@
                     "description": "List of component_groups to enable.",
                     "type": "array",
                     "default": [],
-                    "items": {
-                      "type": "string"
-                    }
+                    "items": { "type": "string" }
                   }
                 },
                 "additionalProperties": false
@@ -11136,9 +10896,7 @@
                     "description": "List of component_groups to disable.",
                     "type": "array",
                     "default": [],
-                    "items": {
-                      "type": "string"
-                    }
+                    "items": { "type": "string" }
                   },
                   "additionalProperties": false
                 }
@@ -11158,9 +10916,7 @@
                     "filters": {
                       "$ref": "../common.json#/definitions/Filters"
                     },
-                    "weight": {
-                      "type": "number"
-                    },
+                    "weight": { "type": "number" },
                     "add": {
                       "$ref": "#/properties/minecraft:entity/properties/events/additionalProperties/properties/add"
                     },
@@ -11210,10 +10966,7 @@
                 }
               },
               "set_property": {
-                "additionalProperties": {
-                  "type": "boolean",
-                  "default": false
-                }
+                "additionalProperties": { "type": "boolean", "default": false }
               }
             },
             "additionalProperties": false
