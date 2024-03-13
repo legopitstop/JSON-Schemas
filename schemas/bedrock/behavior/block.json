@@ -422,11 +422,19 @@
               "type": ["string", "object"],
               "examples": [
                 "minecraft:geometry.full_block",
+                "minecraft:geometry.cross",
                 "geometry.geo_name"
               ],
               "required": ["identifier"],
               "properties": {
-                "identifier": { "type": "string" },
+                "identifier": {
+                  "type": "string",
+                  "examples": [
+                    "minecraft:geometry.full_block",
+                    "minecraft:geometry.cross",
+                    "geometry.geo_name"
+                  ]
+                },
                 "bone_visibility": {
                   "type": "object",
                   "default": {},
