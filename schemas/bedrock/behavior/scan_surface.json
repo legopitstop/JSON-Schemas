@@ -1,32 +1,28 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/scan_surface.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:scan_surface": {
-            "title": "behavior.scan_surface",
-            "description": "scan_surface\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ascan_surface",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "scan_surface_feature": {
-                    "description": "Named reference of feature to be placed",
-                    "type": "string"
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/scan_surface.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:scan_surface": {
+      "title": "behavior.scan_surface",
+      "description": "scan_surface\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ascan_surface",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
             }
+          }
+        },
+        "scan_surface_feature": {
+          "description": "Named reference of feature to be placed",
+          "type": "string"
         }
+      }
     }
+  }
 }

@@ -1,1 +1,5 @@
-{"$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/camera_preset.json", "$schema": "http://json-schema.org/draft-07/schema#", "title": "Feature (1.20.70-beta.6)", "description": "Any Minecraft Feature", "type": "string", "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$", "examples": ["minecraft:ancient_city", "minecraft:bastion_remnant", "minecraft:buried_treasure", "minecraft:end_city", "minecraft:fortress", "minecraft:mansion", "minecraft:mineshaft", "minecraft:monument", "minecraft:pillager_outpost", "minecraft:ruined_portal", "minecraft:ruins", "minecraft:shipwreck", "minecraft:stronghold", "minecraft:temple", "minecraft:trail_ruins", "minecraft:trial_chambers", "minecraft:village"]}
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "deprecated": true
+  }
+  

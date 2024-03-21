@@ -1,1 +1,5 @@
-{"$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/camera_preset.json", "$schema": "http://json-schema.org/draft-07/schema#", "title": "Camerapresets (1.20.70-beta.6)", "description": "Any Minecraft Camera Preset", "type": "string", "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$", "examples": ["minecraft:first_person", "minecraft:free", "minecraft:third_person", "minecraft:third_person_front"]}
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "deprecated": true
+  }
+  

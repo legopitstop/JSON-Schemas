@@ -1,61 +1,57 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/camera_preset.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:camera_preset": {
-            "title": "behavior.camera_preset",
-            "type": "object",
-            "default": {},
-            "required": [
-                "identifier"
-            ],
-            "properties": {
-                "identifier": {
-                    "description": "ID of this cemera preset",
-                    "type": "string"
-                },
-                "inherit_from": {
-                    "description": "The parent camera preset.",
-                    "type": "string",
-                    "examples": [
-                        "minecraft:free",
-                        "minecraft:first_person",
-                        "minecraft:third_person_front",
-                        "minecraft:third_person"
-                    ]
-                },
-                "player_effects": {
-                    "description": "Causes game rendering to use player effect state (for example night vision) when this preset is active.",
-                    "type": "boolean",
-                    "default": true
-                },
-                "pos_y": {
-                    "type": "integer",
-                    "default": 0
-                },
-                "rot_x": {
-                    "type": "integer",
-                    "default": 0
-                },
-                "rot_y": {
-                    "type": "integer",
-                    "default": 0
-                },
-                "pos_x": {
-                    "type": "integer",
-                    "default": 0
-                },
-                "pos_z": {
-                    "type": "integer",
-                    "default": 0
-                },
-                "listener": {
-                    "enum": [
-                        "player"
-                    ]
-                }
-            },
-            "additionalProperties": false
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/camera_preset.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:camera_preset": {
+      "title": "behavior.camera_preset",
+      "type": "object",
+      "default": {},
+      "required": ["identifier"],
+      "properties": {
+        "identifier": {
+          "description": "ID of this cemera preset",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/cameraPresets"
+        },
+        "inherit_from": {
+          "description": "The parent camera preset.",
+          "type": "string",
+          "examples": [
+            "minecraft:free",
+            "minecraft:first_person",
+            "minecraft:third_person_front",
+            "minecraft:third_person"
+          ]
+        },
+        "player_effects": {
+          "description": "Causes game rendering to use player effect state (for example night vision) when this preset is active.",
+          "type": "boolean",
+          "default": true
+        },
+        "pos_y": {
+          "type": "integer",
+          "default": 0
+        },
+        "rot_x": {
+          "type": "integer",
+          "default": 0
+        },
+        "rot_y": {
+          "type": "integer",
+          "default": 0
+        },
+        "pos_x": {
+          "type": "integer",
+          "default": 0
+        },
+        "pos_z": {
+          "type": "integer",
+          "default": 0
+        },
+        "listener": {
+          "enum": ["player"]
         }
+      },
+      "additionalProperties": false
     }
+  }
 }

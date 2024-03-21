@@ -1,119 +1,118 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "animation_controllers": {
-            "title": "resrouce.animation_controllers",
-            "description": "Mapping of each animation controller",
-            "type": "object",
-            "default": {},
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "animation_controllers": {
+      "title": "resrouce.animation_controllers",
+      "description": "Mapping of each animation controller",
+      "type": "object",
+      "default": {},
+      "additionalProperties": {
+        "description": "Animation controller name",
+        "type": "object",
+        "default": {},
+        "properties": {
+          "initial_state": {
+            "description": "Default animation state",
+            "type": "string"
+          },
+          "states": {
+            "description": "Mapping of each animation state",
             "additionalProperties": {
-                "description": "Animation controller name",
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "initial_state": {
-                        "description": "Default animation state",
-                        "type": "string"
+              "description": "Animation state",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "variables": {
+                  "description": "A mapping of each variable",
+                  "type": "object",
+                  "default": {},
+                  "additionalProperties": {
+                    "description": "The name of the variable",
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                      "input": {
+                        "description": "The input value for this variable",
+                        "$ref": "../common.json#/definitions/MoLang"
+                      }
                     },
-                    "states": {
-                        "description": "Mapping of each animation state",
-                        "additionalProperties": {
-                            "description": "Animation state",
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "variables": {
-                                    "description": "A mapping of each variable",
-                                    "type": "object",
-                                    "default": {},
-                                    "additionalProperties": {
-                                        "description": "The name of the variable",
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "input": {
-                                                "description": "The input value for this variable",
-                                                "$ref": "../common.json#/definitions/MoLang"
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                },
-                                "animations": {
-                                    "description": "List of animations to play",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "description": "Animation",
-                                        "type": ["string", "object"],
-                                        "additionalProperties": {
-                                            "$ref": "../common.json#/definitions/MoLang"
-                                        }
-                                    }
-                                },
-                                "blend_via_shortest_path": {
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "transitions": {
-                                    "description": "transition to this state",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "description": "transition",
-                                        "type": "object",
-                                        "default": {},
-                                        "additionalProperties": {
-                                            "$ref": "../common.json#/definitions/MoLang"
-                                        }
-                                    }
-                                },
-                                "blend_transition": {
-                                    "type": "number",
-                                    "default": 1.0
-                                },
-                                "particle_effects": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "effect": {
-                                                "type": "string"
-                                            },
-                                            "locator": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                },
-                                "on_entry": {
-                                    "description": "List of events to run on entry",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "on_exit": {
-                                    "description": "List of events to run on exit",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
-                        }
-
-                    }
+                    "additionalProperties": false
+                  }
                 },
-                "additionalProperties": false
+                "animations": {
+                  "description": "List of animations to play",
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "description": "Animation",
+                    "type": ["string", "object"],
+                    "additionalProperties": {
+                      "$ref": "../common.json#/definitions/MoLang"
+                    }
+                  }
+                },
+                "blend_via_shortest_path": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "transitions": {
+                  "description": "transition to this state",
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "description": "transition",
+                    "type": "object",
+                    "default": {},
+                    "additionalProperties": {
+                      "$ref": "../common.json#/definitions/MoLang"
+                    }
+                  }
+                },
+                "blend_transition": {
+                  "type": "number",
+                  "default": 1.0
+                },
+                "particle_effects": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                      "effect": {
+                        "type": "string"
+                      },
+                      "locator": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                "on_entry": {
+                  "description": "List of events to run on entry",
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "on_exit": {
+                  "description": "List of events to run on exit",
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
             }
-        }
+          }
+        },
+        "additionalProperties": false
+      }
     }
+  }
 }

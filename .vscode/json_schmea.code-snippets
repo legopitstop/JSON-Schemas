@@ -24,7 +24,15 @@
 	"ref:supportedVersions": {"scope": "json,jsonu","prefix": "ref:supportedVersions","body": "\"\\$ref\": \"../common.json#/definitions/supportedVersions\""},
 	"ref:Filters": {"scope": "json,jsonu","prefix": "ref:Filters","body": "\"\\$ref\": \"../common.json#/definitions/Filters\""},
 	"ref:hex_color": {"scope": "json,jsonu","prefix": "ref:hex_color","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color\""},
-	"ref:bedrock_items": {"scope": "json,jsonu","prefix": "ref:bedrock_items","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json\""},
-	"ref:bedrock_blocks": {"scope": "json,jsonu","prefix": "ref:bedrock_blocks","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json\""},
-	"ref:bedrock_entity": {"scope": "json,jsonu","prefix": "ref:bedrock_entity","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json\""},
+	
+	"ref:bedrock_biome": {"scope": "json,jsonu","prefix": "ref:bedrock_biome","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/biome\""},
+	"ref:bedrock_block": {"scope": "json,jsonu","prefix": "ref:bedrock_block","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block\""},
+	"ref:bedrock_cameraPresets": {"scope": "json,jsonu","prefix": "ref:bedrock_cameraPresets","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/cameraPresets\""},
+	"ref:bedrock_cooldownCategory": {"scope": "json,jsonu","prefix": "ref:bedrock_cooldownCategory","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/cooldownCategory\""},
+	"ref:bedrock_dimension": {"scope": "json,jsonu","prefix": "ref:bedrock_dimension","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/dimension\""},
+	"ref:bedrock_effect": {"scope": "json,jsonu","prefix": "ref:bedrock_effect","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/effect\""},
+	"ref:bedrock_enchantment": {"scope": "json,jsonu","prefix": "ref:bedrock_enchantment","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/enchantment\""},
+	"ref:bedrock_entity": {"scope": "json,jsonu","prefix": "ref:bedrock_entity","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity\""},
+	"ref:bedrock_feature": {"scope": "json,jsonu","prefix": "ref:bedrock_feature","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature\""},
+	"ref:bedrock_item": {"scope": "json,jsonu","prefix": "ref:bedrock_item","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item\""},
 }

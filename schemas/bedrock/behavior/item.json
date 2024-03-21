@@ -95,7 +95,7 @@
           "required": ["identifier"],
           "properties": {
             "identifier": {
-              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
             },
             "category": {
               "default": "item",
@@ -139,6 +139,15 @@
           "description": "The properties of the item.",
           "type": "object",
           "properties": {
+            "minecraft:custom_components": {
+              "title": "EXPERIMENTAL (toggle: Beta APIs)",
+              "description": "Sets an ordered list of custom component names which are bound in script to be executed upon an item event.",
+              "type": "array",
+              "default": [],
+              "items": {
+                "type": "string"
+              }
+            },
             "minecraft:on_dig": {
               "title": "Format ?",
               "description": "undocumented",
@@ -199,14 +208,13 @@
               "properties": {
                 "block": {
                   "description": "block: Set the placement block name for the planter item.",
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                 },
                 "on_use": {
                   "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
                   "type": "array",
                   "items": {
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                   }
                 }
               },
@@ -224,7 +232,7 @@
                 },
                 "projectile_entity": {
                   "description": "The entity to be fired as a projectile.",
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
                 },
                 "lose_target": {
                   "description": "Specifys if an entity should unselect its target after shooting the projectile",
@@ -674,8 +682,7 @@
                   "description": "Ammunition.",
                   "anyOf": [
                     {
-                      "type": "string",
-                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                     },
                     {
                       "type": "array",
@@ -683,7 +690,7 @@
                         "type": "object",
                         "properties": {
                           "item": {
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                           },
                           "use_offhand": {
                             "description": "Can it be used in the offhand.",
@@ -804,7 +811,7 @@
                         "type": "array",
                         "uniqueItems": true,
                         "items": {
-                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                         }
                       },
                       "repair_amount": {
@@ -900,7 +907,7 @@
                 },
                 "entity": {
                   "description": "The entity to be placed in the world.",
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
                 },
                 "use_on": {
                   "description": "List of block descriptors that contain blocks that this item can be used on. If left empty, all blocks will be allowed.",
@@ -1001,7 +1008,7 @@
                     "properties": {
                       "block": {
                         "type": ["string", "object"],
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block",
                         "properties": {
                           "tags": {
                             "$ref": "../common.json#/definitions/MoLang"
@@ -1143,14 +1150,14 @@
                   "description": "When used, converts to the item specified by the string in this field. Default does not convert item.",
                   "anyOf": [
                     {
-                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                     },
                     {
                       "type": "object",
                       "properties": {
                         "item": {
-                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json",
-                          "description": "The item that it will become."
+                          "description": "The item that it will become.",
+                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                         }
                       }
                     }
@@ -1270,24 +1277,21 @@
                   "description": "Blocks that the crop can be placed on. common blocks are; farmland, soul_sand, grass, dirt, podzol",
                   "anyOf": [
                     {
-                      "type": "string",
-                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                     },
                     {
                       "type": "array",
                       "items": {
-                        "type": "string",
                         "uniqueItems": true,
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                       }
                     }
                   ]
                 },
                 "crop_result": {
-                  "type": "string",
                   "description": "The name of the crop block to place.",
                   "uniqueItems": true,
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                 },
                 "plant_at_any_solid_surface": {
                   "type": "boolean",
@@ -1384,8 +1388,7 @@
               "properties": {
                 "entity": {
                   "description": "The entity for the spawner to spawn.",
-                  "type": "string",
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
                 },
                 "block": {
                   "type": "object",
@@ -1395,8 +1398,7 @@
                       "type": "array",
                       "default": ["minecraft:mob_spawer"],
                       "items": {
-                        "type": "string",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
                       }
                     }
                   }
@@ -1565,7 +1567,7 @@
             },
             "minecraft:block": {
               "title": "REMOVED ?",
-              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block",
               "deprecated": true
             }
           },

@@ -1,99 +1,95 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/spawn_groups.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:spawn_groups": {
-            "title": "behavior.spawn_groups",
-            "description": "spawn_groups",
-            "type": "object",
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "conditions": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "minecraft:mob_event_filter": {
-                                "type": "object",
-                                "properties": {
-                                    "event": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "minecraft:distance_filter": {
-                                "type": "object",
-                                "properties": {
-                                    "min": {
-                                        "type": "number"
-                                    },
-                                    "max": {
-                                        "type": "number"
-                                    }
-                                }
-                            },
-                            "minecraft:spawns_on_surface": {
-                                "type": "object",
-                                "default": {}
-                            },
-                            "minecraft:difficulty_filter": {
-                                "type": "object",
-                                "properties": {
-                                    "min": {
-                                        "$ref": "../common.json#/definitions/difficulty",
-                                        "description": "This is the minimum difficulty level that a mob spawns"
-                                    },
-                                    "max": {
-                                        "$ref": "../common.json#/definitions/difficulty",
-                                        "description": "This is the maximum difficulty level that a mob spawns"
-                                    }
-                                }
-                            },
-                            "minecraft:herd": {
-                                "type": "object",
-                                "properties": {
-                                    "min_size": {
-                                        "type": "number"
-                                    },
-                                    "max_size": {
-                                        "type": "number"
-                                    },
-                                    "event": {
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "minecraft:permute_type": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "weight": {
-                                            "type": "number"
-                                        },
-                                        "entity_type": {
-                                            "type": "string"
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/spawn_groups.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:spawn_groups": {
+      "title": "behavior.spawn_groups",
+      "description": "spawn_groups",
+      "type": "object",
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "../common.json#/definitions/nameSpaceID"
             }
+          }
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "minecraft:mob_event_filter": {
+                "type": "object",
+                "properties": {
+                  "event": {
+                    "type": "string"
+                  }
+                }
+              },
+              "minecraft:distance_filter": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  }
+                }
+              },
+              "minecraft:spawns_on_surface": {
+                "type": "object",
+                "default": {}
+              },
+              "minecraft:difficulty_filter": {
+                "type": "object",
+                "properties": {
+                  "min": {
+                    "$ref": "../common.json#/definitions/difficulty",
+                    "description": "This is the minimum difficulty level that a mob spawns"
+                  },
+                  "max": {
+                    "$ref": "../common.json#/definitions/difficulty",
+                    "description": "This is the maximum difficulty level that a mob spawns"
+                  }
+                }
+              },
+              "minecraft:herd": {
+                "type": "object",
+                "properties": {
+                  "min_size": {
+                    "type": "number"
+                  },
+                  "max_size": {
+                    "type": "number"
+                  },
+                  "event": {
+                    "type": "string"
+                  }
+                }
+              },
+              "minecraft:permute_type": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "weight": {
+                      "type": "number"
+                    },
+                    "entity_type": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
+      }
     }
+  }
 }

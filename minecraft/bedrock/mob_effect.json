@@ -1,1 +1,5 @@
-{"$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/mob_effect.json", "$schema": "http://json-schema.org/draft-07/schema#", "title": "Effect (1.20.70-beta.6)", "description": "Any Minecraft Mob Effects", "type": "string", "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*$", "examples": ["absorption", "bad_omen", "blindness", "conduit_power", "darkness", "empty", "fatal_poison", "fire_resistance", "haste", "health_boost", "hunger", "instant_damage", "instant_health", "invisibility", "jump_boost", "levitation", "mining_fatigue", "nausea", "night_vision", "poison", "regeneration", "resistance", "saturation", "slow_falling", "slowness", "speed", "strength", "village_hero", "water_breathing", "weakness", "wither"]}
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "deprecated": true
+  }
+  

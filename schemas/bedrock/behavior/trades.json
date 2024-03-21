@@ -1,68 +1,68 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/trades.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "items": {
-        "description": "Trade tables represent the fundamental data behind trading item transactions for an entity. Trade tables are not standalone; they must be referenced from an entity component. Using the randomizing properties available to trade tables, trade offers, item counts, and cost calculations may vary across entity instances, even if all would point to the same trade table.\nSee https://wiki.bedrock.dev/loot/trade-tables.html",
-        "type": "object",
-        "properties": {
-            "trades": {
-                "title": "behavior.trades",
-                "type": "array",
-                "items": {
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/trades.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "items": {
+    "description": "Trade tables represent the fundamental data behind trading item transactions for an entity. Trade tables are not standalone; they must be referenced from an entity component. Using the randomizing properties available to trade tables, trade offers, item counts, and cost calculations may vary across entity instances, even if all would point to the same trade table.\nSee https://wiki.bedrock.dev/loot/trade-tables.html",
+    "type": "object",
+    "properties": {
+      "trades": {
+        "title": "behavior.trades",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "wants": {
+              "description": "Items that the trader wants.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "description": "The amount of items from min to max",
                     "type": "object",
                     "properties": {
-                        "wants": {
-                            "description": "Items that the trader wants.",
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "item": {
-                                        "type": "string"
-                                    },
-                                    "quantity": {
-                                        "description": "The amount of items from min to max",
-                                        "type": "object",
-                                        "properties": {
-                                            "min": {
-                                                "$ref": "../common.json#/definitions/itemCount"
-                                            },
-                                            "max": {
-                                                "$ref": "../common.json#/definitions/itemCount"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        },
-                        "gives": {
-                            "type": "array",
-                            "description": "Items that the trader will give after you give the trader the \"wants\" item.",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "item": {
-                                        "type": "string",
-                                        "description": "The item to get."
-                                    },
-                                    "quantity": {
-                                        "type": "object",
-                                        "description": "The amount of items from min to max",
-                                        "properties": {
-                                            "min": {
-                                                "$ref": "../common.json#/definitions/itemCount"
-                                            },
-                                            "max": {
-                                                "$ref": "../common.json#/definitions/itemCount"
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                      "min": {
+                        "$ref": "../common.json#/definitions/itemCount"
+                      },
+                      "max": {
+                        "$ref": "../common.json#/definitions/itemCount"
+                      }
                     }
+                  }
                 }
+              }
+            },
+            "gives": {
+              "type": "array",
+              "description": "Items that the trader will give after you give the trader the \"wants\" item.",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "type": "string",
+                    "description": "The item to get."
+                  },
+                  "quantity": {
+                    "type": "object",
+                    "description": "The amount of items from min to max",
+                    "properties": {
+                      "min": {
+                        "$ref": "../common.json#/definitions/itemCount"
+                      },
+                      "max": {
+                        "$ref": "../common.json#/definitions/itemCount"
+                      }
+                    }
+                  }
+                }
+              }
             }
+          }
         }
+      }
     }
+  }
 }

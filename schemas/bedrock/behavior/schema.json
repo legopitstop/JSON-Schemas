@@ -1,139 +1,139 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "description": "JSON schema for Minecraft Bedrock Edition.",
-    "allOf": [
-        {
-            "$ref": "./animation_controllers.json"
-        },
-        {
-            "$ref": "./behavior_tree.json"
-        },
-        {
-            "$ref": "./contents.json"
-        },
-        {
-            "$ref": "./camera_preset.json"
-        },
-        {
-            "$ref": "./camera_list.json"
-        },
-        {
-            "$ref": "./block.json"
-        },
-        {
-            "$ref": "./item.json"
-        },
-        {
-            "$ref": "./loot_table.json"
-        },
-        {
-            "$ref": "./npc_dialogue.json"
-        },
-        {
-            "$ref": "./entity.json"
-        },
-        {
-            "$ref": "./spawn_groups.json"
-        },
-        {
-            "$ref": "./spawn_rules.json"
-        },
-        {
-            "$ref": "./recipe_material_reduction.json"
-        },
-        {
-            "$ref": "./recipe_brewing_container.json"
-        },
-        {
-            "$ref": "./recipe_brewing_mix.json"
-        },
-        {
-            "$ref": "./recipe_furnace.json"
-        },
-        {
-            "$ref": "./recipe_shaped.json"
-        },
-        {
-            "$ref": "./recipe_shapeless.json"
-        },
-        {
-            "$ref": "./biome.json"
-        },
-        {
-            "$ref": "./aggregate_feature.json"
-        },
-        {
-            "$ref": "./beards_and_shavers.json"
-        },
-        {
-            "$ref": "./catalyst_feature.json"
-        },
-        {
-            "$ref": "./cave_carver_feature.json"
-        },
-        {
-            "$ref": "./conditional_list.json"
-        },
-        {
-            "$ref": "./feature_rules.json"
-        },
-        {
-            "$ref": "./geode_feature.json"
-        },
-        {
-            "$ref": "./growing_plant_feature.json"
-        },
-        {
-            "$ref": "./hell_cave_carver_feature.json"
-        },
-        {
-            "$ref": "./multiface_feature.json"
-        },
-        {
-            "$ref": "./ore_feature.json"
-        },
-        {
-            "$ref": "./rect_layout.json"
-        },
-        {
-            "$ref": "./scan_surface.json"
-        },
-        {
-            "$ref": "./scatter_feature.json"
-        },
-        {
-            "$ref": "./sculk_patch_feature.json"
-        },
-        {
-            "$ref": "./search_feature.json"
-        },
-        {
-            "$ref": "./sequence_feature.json"
-        },
-        {
-            "$ref": "./single_block_feature.json"
-        },
-        {
-            "$ref": "./snap_to_surface_feature.json"
-        },
-        {
-            "$ref": "./structure_template_feature.json"
-        },
-        {
-            "$ref": "./tree_feature.json"
-        },
-        {
-            "$ref": "./underwater_cave_carver_feature.json"
-        },
-        {
-            "$ref": "./vegetation_patch_feature.json"
-        },
-        {
-            "$ref": "./weighted_random_feature.json"
-        },
-        {
-            "$ref": "./volume.json"
-        }
-    ]
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "description": "JSON schema for Minecraft Bedrock Edition.",
+  "allOf": [
+    {
+      "$ref": "./animation_controllers.json"
+    },
+    {
+      "$ref": "./behavior_tree.json"
+    },
+    {
+      "$ref": "./contents.json"
+    },
+    {
+      "$ref": "./camera_preset.json"
+    },
+    {
+      "$ref": "./camera_list.json"
+    },
+    {
+      "$ref": "./block.json"
+    },
+    {
+      "$ref": "./item.json"
+    },
+    {
+      "$ref": "./loot_table.json"
+    },
+    {
+      "$ref": "./npc_dialogue.json"
+    },
+    {
+      "$ref": "./entity.json"
+    },
+    {
+      "$ref": "./spawn_groups.json"
+    },
+    {
+      "$ref": "./spawn_rules.json"
+    },
+    {
+      "$ref": "./recipe_material_reduction.json"
+    },
+    {
+      "$ref": "./recipe_brewing_container.json"
+    },
+    {
+      "$ref": "./recipe_brewing_mix.json"
+    },
+    {
+      "$ref": "./recipe_furnace.json"
+    },
+    {
+      "$ref": "./recipe_shaped.json"
+    },
+    {
+      "$ref": "./recipe_shapeless.json"
+    },
+    {
+      "$ref": "./biome.json"
+    },
+    {
+      "$ref": "./aggregate_feature.json"
+    },
+    {
+      "$ref": "./beards_and_shavers.json"
+    },
+    {
+      "$ref": "./catalyst_feature.json"
+    },
+    {
+      "$ref": "./cave_carver_feature.json"
+    },
+    {
+      "$ref": "./conditional_list.json"
+    },
+    {
+      "$ref": "./feature_rules.json"
+    },
+    {
+      "$ref": "./geode_feature.json"
+    },
+    {
+      "$ref": "./growing_plant_feature.json"
+    },
+    {
+      "$ref": "./hell_cave_carver_feature.json"
+    },
+    {
+      "$ref": "./multiface_feature.json"
+    },
+    {
+      "$ref": "./ore_feature.json"
+    },
+    {
+      "$ref": "./rect_layout.json"
+    },
+    {
+      "$ref": "./scan_surface.json"
+    },
+    {
+      "$ref": "./scatter_feature.json"
+    },
+    {
+      "$ref": "./sculk_patch_feature.json"
+    },
+    {
+      "$ref": "./search_feature.json"
+    },
+    {
+      "$ref": "./sequence_feature.json"
+    },
+    {
+      "$ref": "./single_block_feature.json"
+    },
+    {
+      "$ref": "./snap_to_surface_feature.json"
+    },
+    {
+      "$ref": "./structure_template_feature.json"
+    },
+    {
+      "$ref": "./tree_feature.json"
+    },
+    {
+      "$ref": "./underwater_cave_carver_feature.json"
+    },
+    {
+      "$ref": "./vegetation_patch_feature.json"
+    },
+    {
+      "$ref": "./weighted_random_feature.json"
+    },
+    {
+      "$ref": "./volume.json"
+    }
+  ]
 }

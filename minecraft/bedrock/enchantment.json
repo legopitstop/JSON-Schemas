@@ -1,1 +1,5 @@
-{"$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/enchantment.json", "$schema": "http://json-schema.org/draft-07/schema#", "title": "Enchantment (1.20.70-beta.6)", "description": "Any Minecraft Enchantment", "type": "string", "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$", "examples": ["aqua_affinity", "bane_of_arthropods", "binding", "blast_protection", "channeling", "depth_strider", "efficiency", "feather_falling", "fire_aspect", "fire_protection", "flame", "fortune", "frost_walker", "impaling", "infinity", "knockback", "looting", "loyalty", "luck_of_the_sea", "lure", "mending", "multishot", "piercing", "power", "projectile_protection", "protection", "punch", "quick_charge", "respiration", "riptide", "sharpness", "silk_touch", "smite", "soul_speed", "swift_sneak", "thorns", "unbreaking", "vanishing"]}
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "deprecated": true
+  }
+  

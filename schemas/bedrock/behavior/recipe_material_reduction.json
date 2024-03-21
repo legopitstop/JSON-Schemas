@@ -1,65 +1,56 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_material_reduction.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:recipe_material_reduction": {
-            "title": "behavior.recipe_material_reduction",
-            "description": "Represents a Material Reducer Recipe",
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_material_reduction.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:recipe_material_reduction": {
+      "title": "behavior.recipe_material_reduction",
+      "description": "Represents a Material Reducer Recipe",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "../common.json#/definitions/nameSpaceID"
+            }
+          }
+        },
+        "tags": {
+          "description": "Item used as input for the furnace recipe.",
+          "type": ["array", "string"],
+          "items": {
+            "$ref": "../common.json#/definitions/recipeTags"
+          }
+        },
+        "input": {
+          "description": "input potion used on the brewing stand.",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
+        },
+        "output": {
+          "description": "output item from reducing the input item.",
+          "type": "array",
+          "default": [],
+          "items": {
             "type": "object",
             "default": {},
-            "required": [
-                "description"
-            ],
             "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "tags": {
-                    "description": "Item used as input for the furnace recipe.",
-                    "type": [
-                        "array",
-                        "string"
-                    ],
-                    "items": {
-                        "$ref": "../common.json#/definitions/recipeTags"
-                    }
-                },
-                "input": {
-                    "description": "input potion used on the brewing stand.",
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                },
-                "output": {
-                    "description": "output item from reducing the input item.",
-                    "type": "array",
-                    "default": [],
-                    "items": {
-                        "type": "object",
-                        "default": {},
-                        "properties": {
-                            "count": {
-                                "description": "The number of items to output",
-                                "type": "integer",
-                                "default": 1
-                            },
-                            "item": {
-                                "description": "The output item",
-                                "type": "string",
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                            }
-                        },
-                        "additionalProperties": false
-                    }
-                }
-            }
+              "count": {
+                "description": "The number of items to output",
+                "type": "integer",
+                "default": 1
+              },
+              "item": {
+                "description": "The output item",
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
+              }
+            },
+            "additionalProperties": false
+          }
         }
+      }
     }
+  }
 }

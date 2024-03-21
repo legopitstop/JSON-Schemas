@@ -5,6 +5,7 @@ import os
 import sys
 import glob
 import json
+import commentjson
 import jsonschema
 import urllib
 from jsonschema.exceptions import RefResolutionError
@@ -47,7 +48,7 @@ class ExtendedRefResolver(jsonschema.RefResolver):
         schema = {}
         try:
             with open(realpath, encoding="utf8") as file:
-                schema = json.load(file)
+                schema = commentjson.load(file)
         except FileNotFoundError as err:
             print(f"FileNotFoundError {err}")
 
@@ -95,7 +96,7 @@ def _path(*args):
 schema_path = os.path.join(PATH, "schemas", "bedrock", "schema.json")
 with open(schema_path, "r") as r:
     try:
-        SCHEMA = json.load(r)
+        SCHEMA = commentjson.load(r)
         fix(SCHEMA)
     except json.decoder.JSONDecodeError as err:
         logging.error(f"Failed to load schema!: {err}")
@@ -110,11 +111,11 @@ def test(name: str, instance: list):
 
     for fp in list(instance):
         if os.path.isfile(fp):  # Only open if path is a file.
-            print(f"- {fp}")
+            # print(f"- {fp}")
             with open(fp, "r") as r:
                 filename = fp.replace("\\", "/")
                 try:
-                    data = json.load(r)
+                    data = commentjson.load(r)
                     jsonschema.validate(
                         data,
                         SCHEMA,

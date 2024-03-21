@@ -1,50 +1,43 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_brewing_container.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:recipe_brewing_container": {
-            "title": "behavior.recipe_brewing_container",
-            "description": "Represents a Potion Brewing Container Recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Potion%20Brewing%20Container%20Recipe",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "tags": {
-                    "type": "array",
-                    "description": "Item used as input for the furnace recipe.",
-                    "items": {
-                        "$ref": "../common.json#/definitions/recipeTags"
-                    }
-                },
-                "input": {
-                    "description": "input potion used on the brewing stand.",
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                },
-                "reagent": {
-                    "description": "item used to mix with the input potion.",
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                },
-                "output": {
-                    "description": "output potion from mixing the input potion with the reagent on the brewing stand.",
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_brewing_container.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:recipe_brewing_container": {
+      "title": "behavior.recipe_brewing_container",
+      "description": "Represents a Potion Brewing Container Recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Potion%20Brewing%20Container%20Recipe",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "../common.json#/definitions/nameSpaceID"
             }
+          }
+        },
+        "tags": {
+          "type": "array",
+          "description": "Item used as input for the furnace recipe.",
+          "items": {
+            "$ref": "../common.json#/definitions/recipeTags"
+          }
+        },
+        "input": {
+          "description": "input potion used on the brewing stand.",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
+        },
+        "reagent": {
+          "description": "item used to mix with the input potion.",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
+        },
+        "output": {
+          "description": "output potion from mixing the input potion with the reagent on the brewing stand.",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
         }
+      }
     }
+  }
 }

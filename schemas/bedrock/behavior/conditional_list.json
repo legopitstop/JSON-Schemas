@@ -1,52 +1,45 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/conditional_list.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:conditional_list": {
-            "title": "behavior.conditional_list",
-            "description": "Feature type 'minecraft:conditional_list' has not yet been documented.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aconditional_list",
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/conditional_list.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:conditional_list": {
+      "title": "behavior.conditional_list",
+      "description": "Feature type 'minecraft:conditional_list' has not yet been documented.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aconditional_list",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
+            }
+          }
+        },
+        "conditional_features": {
+          "description": "Array of Features, and their associated Conditions, for attempted placement. These features will be evaluated as ordered.",
+          "type": "array",
+          "items": {
             "type": "object",
             "default": {},
-            "required": [
-                "description"
-            ],
             "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "conditional_features": {
-                    "description": "Array of Features, and their associated Conditions, for attempted placement. These features will be evaluated as ordered.",
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "default": {},
-                        "properties": {
-                            "places_feature": {
-                                "description": "Feature to be placed.",
-                                "type": "string"
-                            },
-                            "condition": {
-                                "description": "Condition for placing associated Feature",
-                                "$ref": "../common.json#/definitions/MoLang"
-                            }
-                        }
-                    }
-                },
-                "early_out_scheme": {
-                    "enum": [
-                        "condition_success",
-                        "placement_success"
-                    ]
-                }
+              "places_feature": {
+                "description": "Feature to be placed.",
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
+              },
+              "condition": {
+                "description": "Condition for placing associated Feature",
+                "$ref": "../common.json#/definitions/MoLang"
+              }
             }
+          }
+        },
+        "early_out_scheme": {
+          "enum": ["condition_success", "placement_success"]
         }
+      }
     }
+  }
 }

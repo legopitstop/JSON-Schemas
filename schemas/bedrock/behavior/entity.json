@@ -44,7 +44,7 @@
           "properties": {
             "identifier": {
               "description": "Sets the name for this entity's description.",
-              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main//minecraft/bedrock/entity_type.json"
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
             },
             "is_spawnable": {
               "description": "Sets whether or not this entity has a spawn egg in the creative ui.",
@@ -757,14 +757,14 @@
                         "default": [],
                         "items": {
                           "type": ["string", "object"],
-                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
+                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block",
                           "default": {},
                           "properties": {
                             "block_list": {
                               "type": "array",
                               "default": [],
                               "items": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                               }
                             },
                             "on_block_broken": { "type": "string" }
@@ -1016,9 +1016,9 @@
                       "type": ["array", "string"],
                       "items": {
                         "type": "string",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                       },
-                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                     },
                     "count": {
                       "description": "The number of the required block types nearby for the entity to breed.",
@@ -2470,8 +2470,7 @@
                   "items": {
                     "anyOf": [
                       {
-                        "type": "string",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                       },
                       {
                         "type": "object",
@@ -2481,7 +2480,7 @@
                             "type": "array",
                             "default": [],
                             "items": {
-                              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                             }
                           }
                         },
@@ -2846,7 +2845,7 @@
                           "default": 0
                         },
                         "spawn_definition": {
-                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
                         },
                         "spawn_baby": { "type": "boolean", "default": true }
                       },
@@ -3318,13 +3317,11 @@
                     {
                       "type": "array",
                       "items": {
-                        "type": "string",
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                       }
                     },
                     {
-                      "type": "string",
-                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                     }
                   ]
                 }
@@ -4019,10 +4016,9 @@
                   "type": ["array", "string"],
                   "default": [],
                   "items": {
-                    "type": "string",
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                   },
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                 }
               }
             },
@@ -4493,7 +4489,7 @@
                     "type": ["string", "object"],
                     "properties": {
                       "item": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                       },
                       "growth": { "type": "number", "default": 1.0 },
                       "additionalProperties": false
@@ -5324,7 +5320,7 @@
                     "type": ["string", "object"],
                     "properties": {
                       "name": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                       }
                     },
                     "additionalProperties": false
@@ -5614,7 +5610,7 @@
                   "type": "array",
                   "default": [],
                   "items": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                   }
                 },
                 "max_velocity": {
@@ -5637,7 +5633,7 @@
                   "type": "array",
                   "default": [],
                   "items": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                   }
                 },
                 "preferred_blocks_chance": {
@@ -5790,7 +5786,7 @@
                   "type": "array",
                   "default": [],
                   "items": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                   }
                 },
                 "target_selection_method": {
@@ -6832,7 +6828,7 @@
                     "default": {},
                     "properties": {
                       "item": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                       },
                       "weight": { "type": "integer", "default": 0 }
                     },
@@ -6862,7 +6858,7 @@
                   "type": "array",
                   "default": [],
                   "items": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/item.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item"
                   }
                 },
                 "on_searching_start": {
@@ -7027,10 +7023,10 @@
                     "type": ["string", "object"],
                     "properties": {
                       "eat_block": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                       },
                       "replace_block": {
-                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                       }
                     },
                     "additionalProperties": false
@@ -8206,7 +8202,7 @@
                   "type": "array",
                   "default": ["minecraft:sand"],
                   "items": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                   }
                 },
                 "target_materials_above_block": {
@@ -8232,7 +8228,7 @@
                 },
                 "egg_type": {
                   "description": "Block type for the egg to lay. If this is a turtle egg, the number of eggs in the block is randomly set.",
-                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json",
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block",
                   "default": "minecraft:turtle_egg"
                 },
                 "lay_egg_sound": {

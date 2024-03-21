@@ -1,1 +1,5 @@
-{"$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/cooldown_category.json", "$schema": "http://json-schema.org/draft-07/schema#", "title": "Cooldowncategory (1.20.70-beta.6)", "description": "Any Minecraft Cooldown Category", "type": "string", "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$", "examples": ["minecraft:chorusfruit", "minecraft:ender_pearl", "minecraft:goat_horn", "minecraft:shield", "minecraft:wind_charge"]}
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "deprecated": true
+  }
+  

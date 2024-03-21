@@ -1,96 +1,92 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/single_block_feature.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:single_block_feature": {
-            "title": "behavior.single_block_feature",
-            "description": "'minecraft:single_block_feature' places a single block in the world. The 'may_place_on' and 'may_replace' fields are whitelists which specify where the block can be placed. If these fields are omitted, the block can be placed anywhere. The block's internal survivability and placement rules can optionally be enforced with the 'enforce_survivability_rules' and 'enforce_placement_rules' fields. These rules are specified per-block and are typically designed to produce high quality gameplay or natural behavior. However, enabling this enforcement may make it harder to debug placement failures.Succeeds if: The block is successfully placed in the world.Fails if: The block fails to be placed.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Asingle_block_feature",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "places_block": {
-                    "description": "Reference to the block to be placed.",
-                    "type": "string"
-                },
-                "enforce_placement_rules": {
-                    "description": "If true, enforce the block's canPlace check.",
-                    "type": "boolean"
-                },
-                "enforce_survivability_rules": {
-                    "description": "If true, enforce the block's canSurvive check.",
-                    "type": "boolean"
-                },
-                "may_attach_to": {
-                    "type": "object",
-                    "default": {},
-                    "properties": {
-                        "min_sides_must_attach": {
-                            "type": "integer",
-                            "minimum": 1,
-                            "maximum": 4,
-                            "default": 1
-                        },
-                        "auto_rotate": {
-                            "description": "Automatically rotate the block to attach sensibly.",
-                            "type": "boolean",
-                            "default": true
-                        },
-                        "top": {
-                            "type": "array"
-                        },
-                        "bottom": {
-                            "type": "array"
-                        },
-                        "north": {
-                            "type": "array"
-                        },
-                        "south": {
-                            "type": "array"
-                        },
-                        "east": {
-                            "type": "array"
-                        },
-                        "west": {
-                            "type": "array"
-                        },
-                        "all": {
-                            "type": "array"
-                        },
-                        "sides": {
-                            "type": "array"
-                        }
-                    }
-                },
-                "may_replace": {
-                    "description": "A list of blocks that may be replaced during placement. Omit this field to allow any block to be replaced.",
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "may_place_on": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/single_block_feature.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:single_block_feature": {
+      "title": "behavior.single_block_feature",
+      "description": "'minecraft:single_block_feature' places a single block in the world. The 'may_place_on' and 'may_replace' fields are whitelists which specify where the block can be placed. If these fields are omitted, the block can be placed anywhere. The block's internal survivability and placement rules can optionally be enforced with the 'enforce_survivability_rules' and 'enforce_placement_rules' fields. These rules are specified per-block and are typically designed to produce high quality gameplay or natural behavior. However, enabling this enforcement may make it harder to debug placement failures.Succeeds if: The block is successfully placed in the world.Fails if: The block fails to be placed.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Asingle_block_feature",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
             }
+          }
+        },
+        "places_block": {
+          "description": "Reference to the block to be placed.",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+        },
+        "enforce_placement_rules": {
+          "description": "If true, enforce the block's canPlace check.",
+          "type": "boolean"
+        },
+        "enforce_survivability_rules": {
+          "description": "If true, enforce the block's canSurvive check.",
+          "type": "boolean"
+        },
+        "may_attach_to": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "min_sides_must_attach": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4,
+              "default": 1
+            },
+            "auto_rotate": {
+              "description": "Automatically rotate the block to attach sensibly.",
+              "type": "boolean",
+              "default": true
+            },
+            "top": {
+              "type": "array"
+            },
+            "bottom": {
+              "type": "array"
+            },
+            "north": {
+              "type": "array"
+            },
+            "south": {
+              "type": "array"
+            },
+            "east": {
+              "type": "array"
+            },
+            "west": {
+              "type": "array"
+            },
+            "all": {
+              "type": "array"
+            },
+            "sides": {
+              "type": "array"
+            }
+          }
+        },
+        "may_replace": {
+          "description": "A list of blocks that may be replaced during placement. Omit this field to allow any block to be replaced.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "may_place_on": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
         }
+      }
     }
+  }
 }

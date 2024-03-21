@@ -58,7 +58,7 @@
           "required": ["identifier"],
           "properties": {
             "identifier": {
-              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
             },
             "properties": {
               "title": "Format: 1.20.10.21",
@@ -529,15 +529,14 @@
                         "items": {
                           "anyOf": [
                             {
-                              "type": "string",
-                              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                             },
                             {
                               "type": "object",
                               "properties": {
                                 "name": {
                                   "description": "The name of a block.",
-                                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                                 },
                                 "states": {
                                   "description": "The list of Vanilla block states and their values that the block can have, expressed in key/value pairs.",

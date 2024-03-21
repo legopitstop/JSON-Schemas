@@ -1,42 +1,34 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/aggregate_feature.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:aggregate_feature": {
-            "title": "behavior.aggregate_feature",
-            "description": "'minecraft:aggregate_feature' places a collection of features in an arbitary order. All features in the collection use the same input position. Features should not depend on each other, as there is no guarantee on the order the features will be placed.Succeeds if: At lease one feature is placed successfully.Fails if: All features fail to be placed.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aaggregate_feature",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "features": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "early_out": {
-                    "enum": [
-                        "none",
-                        "first_failure",
-                        "first_success"
-                    ]
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/aggregate_feature.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:aggregate_feature": {
+      "title": "behavior.aggregate_feature",
+      "description": "'minecraft:aggregate_feature' places a collection of features in an arbitary order. All features in the collection use the same input position. Features should not depend on each other, as there is no guarantee on the order the features will be placed.Succeeds if: At lease one feature is placed successfully.Fails if: All features fail to be placed.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Aaggregate_feature",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
             }
+          }
+        },
+        "features": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
+          }
+        },
+        "early_out": {
+          "enum": ["none", "first_failure", "first_success"]
         }
+      }
     }
+  }
 }

@@ -1,79 +1,72 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_shaped.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:recipe_shaped": {
-            "title": "behavior.recipe_shaped",
-            "description": "Represents a shaped crafting recipe for a crafting table. The key used in the pattern may be any single character except the 'space' character, which is reserved for empty slots in a recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Shaped%20Recipe",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "tags": {
-                    "description": "Item used as input for the furnace recipe.",
-                    "type": "array",
-                    "items": {
-                        "$ref": "../common.json#/definitions/recipeTags"
-                    }
-                },
-                "priority": {
-                    "description": "Item used as output for the furnace recipe.",
-                    "type": "integer"
-                },
-                "pattern": {
-                    "description": "characters that represent a pattern to be defined by keys.",
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "maxLength": 3
-                    },
-                    "maxItems": 3
-                },
-                "key": {
-                    "description": "patten key character mapped to item names.",
-                    "type": "object",
-                    "patternProperties": {
-                        "^[#0-9a-zA-Z-\\_/|~.]$": {
-                            "$ref": "../common.json#/definitions/itemData"
-                        }
-                    },
-                    "additionalProperties": false
-                },
-                "result": {
-                    "description": "when input items match the pattern then this item(s) are the result.",
-                    "anyOf": [
-                        {
-                            "type": [
-                                "string",
-                                "object"
-                            ],
-                            "$ref": "../common.json#/definitions/itemDataCount"
-                        },
-                        {
-                            "type": "array",
-                            "items": {
-                                "$ref": "../common.json#/definitions/itemDataCount"
-                            }
-                        }
-                    ]
-                },
-                "unlock": {
-                    "$ref": "../common.json#/definitions/UnlockRecipe"
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_shaped.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:recipe_shaped": {
+      "title": "behavior.recipe_shaped",
+      "description": "Represents a shaped crafting recipe for a crafting table. The key used in the pattern may be any single character except the 'space' character, which is reserved for empty slots in a recipe.\nSee https://bedrock.dev/docs/stable/Recipes#Shaped%20Recipe",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "../common.json#/definitions/nameSpaceID"
             }
+          }
+        },
+        "tags": {
+          "description": "Item used as input for the furnace recipe.",
+          "type": "array",
+          "items": {
+            "$ref": "../common.json#/definitions/recipeTags"
+          }
+        },
+        "priority": {
+          "description": "Item used as output for the furnace recipe.",
+          "type": "integer"
+        },
+        "pattern": {
+          "description": "characters that represent a pattern to be defined by keys.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 3
+          },
+          "maxItems": 3
+        },
+        "key": {
+          "description": "patten key character mapped to item names.",
+          "type": "object",
+          "patternProperties": {
+            "^[#0-9a-zA-Z-\\_/|~.]$": {
+              "$ref": "../common.json#/definitions/itemData"
+            }
+          },
+          "additionalProperties": false
+        },
+        "result": {
+          "description": "when input items match the pattern then this item(s) are the result.",
+          "anyOf": [
+            {
+              "type": ["string", "object"],
+              "$ref": "../common.json#/definitions/itemDataCount"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "../common.json#/definitions/itemDataCount"
+              }
+            }
+          ]
+        },
+        "unlock": {
+          "$ref": "../common.json#/definitions/UnlockRecipe"
         }
+      }
     }
+  }
 }

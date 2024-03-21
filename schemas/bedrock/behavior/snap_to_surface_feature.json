@@ -1,45 +1,41 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/snap_to_surface_feature.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:snap_to_surface_feature": {
-            "title": "behavior.snap_to_surface_feature",
-            "description": "'minecraft:snap_to_surface_feature' snaps the y-value of a feature placement pos to the floor or the ceiling within the provided 'vertical_search_range'. The placement biome is preserved. If the snap position goes outside of the placement biome, placement will fail.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Asnap_to_surface_feature",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        }
-                    }
-                },
-                "feature_to_snap": {
-                    "description": "Named reference of feature to be snapped",
-                    "type": "string"
-                },
-                "vertical_search_range": {
-                    "description": "Range to search for a floor or ceiling for snaping the feature.",
-                    "type": "integer"
-                },
-                "surface": {
-                    "description": "Defines the surface that the y-value of the placement position will be snapped to. Valid values: 'ceiling', 'floor' and 'random_horizontal'",
-                    "type": "string"
-                },
-                "allow_underwater_placement": {
-                    "description": "Features can be snapped through water as well as air.}",
-                    "type": "boolean",
-                    "default": true
-                }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/snap_to_surface_feature.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:snap_to_surface_feature": {
+      "title": "behavior.snap_to_surface_feature",
+      "description": "'minecraft:snap_to_surface_feature' snaps the y-value of a feature placement pos to the floor or the ceiling within the provided 'vertical_search_range'. The placement biome is preserved. If the snap position goes outside of the placement biome, placement will fail.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Asnap_to_surface_feature",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
             }
+          }
+        },
+        "feature_to_snap": {
+          "description": "Named reference of feature to be snapped",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"
+        },
+        "vertical_search_range": {
+          "description": "Range to search for a floor or ceiling for snaping the feature.",
+          "type": "integer"
+        },
+        "surface": {
+          "description": "Defines the surface that the y-value of the placement position will be snapped to. Valid values: 'ceiling', 'floor' and 'random_horizontal'",
+          "type": "string"
+        },
+        "allow_underwater_placement": {
+          "description": "Features can be snapped through water as well as air.}",
+          "type": "boolean",
+          "default": true
         }
+      }
     }
+  }
 }
