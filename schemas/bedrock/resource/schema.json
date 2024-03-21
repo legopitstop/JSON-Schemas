@@ -1,79 +1,82 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "description": "JSON schema for Minecraft Bedrock Edition.",
-    "allOf": [
-        {
-            "$ref": "./global.json"
-        },
-        {
-            "$ref": "./atmospherics.json"
-        },
-        {
-            "$ref": "./piece_meta.json"
-        },
-        {
-            "$ref": "./piece_store_info.json"
-        },
-        {
-            "$ref": "./music_definitions.json"
-        },
-        {
-            "$ref": "./sounds.json"
-        },
-        {
-            "$ref": "./material.json"
-        },
-        {
-            "$ref": "./font_metadata.json"
-        },
-        {
-            "$ref": "./biomes_client.json"
-        },
-        {
-            "$ref": "./camera_entity.json"
-        },
-        {
-            "$ref": "./animations.json"
-        },
-        {
-            "$ref": "./attachables.json"
-        },
-        {
-            "$ref": "./block_geometry.json"
-        },
-        {
-            "$ref": "./blocks.json"
-        },
-        {
-            "$ref": "./client_entity.json"
-        },
-        {
-            "$ref": "./flipbook_textures.json"
-        },
-        {
-            "$ref": "./fog_settings.json"
-        },
-        {
-            "$ref": "./geometry.json"
-        },
-        {
-            "$ref": "./particle_effect.json"
-        },
-        {
-            "$ref": "./render_controllers.json"
-        },
-        {
-            "$ref": "./sound_definitions.json"
-        },
-        {
-            "$ref": "./terrain_texture.json"
-        },
-        {
-            "$ref": "./texture_set.json"
-        },
-        {
-            "$ref": "./ui.json"
-        }
-    ]
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "description": "JSON schema for Minecraft Bedrock Edition.",
+  "allOf": [
+    {
+      "$ref": "./global.json"
+    },
+    {
+      "$ref": "./atmospherics.json"
+    },
+    {
+      "$ref": "./piece_meta.json"
+    },
+    {
+      "$ref": "./piece_store_info.json"
+    },
+    {
+      "$ref": "./music_definitions.json"
+    },
+    {
+      "$ref": "./sounds.json"
+    },
+    {
+      "$ref": "./material.json"
+    },
+    {
+      "$ref": "./font_metadata.json"
+    },
+    {
+      "$ref": "./biomes_client.json"
+    },
+    {
+      "$ref": "./camera_entity.json"
+    },
+    {
+      "$ref": "./animations.json"
+    },
+    {
+      "$ref": "./attachables.json"
+    },
+    {
+      "$ref": "./block_culling_rules.json"
+    },
+    {
+      "$ref": "./block_geometry.json"
+    },
+    {
+      "$ref": "./blocks.json"
+    },
+    {
+      "$ref": "./client_entity.json"
+    },
+    {
+      "$ref": "./flipbook_textures.json"
+    },
+    {
+      "$ref": "./fog_settings.json"
+    },
+    {
+      "$ref": "./geometry.json"
+    },
+    {
+      "$ref": "./particle_effect.json"
+    },
+    {
+      "$ref": "./render_controllers.json"
+    },
+    {
+      "$ref": "./sound_definitions.json"
+    },
+    {
+      "$ref": "./terrain_texture.json"
+    },
+    {
+      "$ref": "./texture_set.json"
+    },
+    {
+      "$ref": "./ui.json"
+    }
+  ]
 }

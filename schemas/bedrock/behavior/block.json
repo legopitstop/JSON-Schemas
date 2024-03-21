@@ -436,6 +436,7 @@
                   ]
                 },
                 "bone_visibility": {
+                  "description": "List of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_state', 'block_state', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
                   "type": "object",
                   "default": {},
                   "additionalProperties": {
@@ -443,7 +444,8 @@
                     "default": true,
                     "examples": ["q.block_state('STATE')=='VALUE'"]
                   }
-                }
+                },
+                "culling": { "type": "string" }
               },
               "additionalProperties": false
             },
