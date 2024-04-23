@@ -1,7 +1,7 @@
 import requests
 import commentjson
 
-tree = 'preview'
+tree = 'main' # preview or main
 def vanilla_bedrock():
     with open('minecraft/vanilla_bedrock.json', 'r') as fd:
         data = commentjson.load(fd)
