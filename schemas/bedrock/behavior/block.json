@@ -253,7 +253,7 @@
               },
               "additionalProperties": false
             },
-            "minecraft:queued_ticking": {
+            "minecraft:queued_ticking": {"deprecated": true,
               "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
               "description": "Triggers the specified event, either once, or at a regular interval equal to a number of ticks randomly chosen from the interval_range provided.",
               "type": "object",
@@ -565,7 +565,7 @@
               },
               "additionalProperties": false
             },
-            "minecraft:random_ticking": {
+            "minecraft:random_ticking": {"deprecated": true,
               "title": "STABLE",
               "description": "Triggers the specified event randomly based on the random tick speed gamerule. The random tick speed determines how often blocks are updated. Some other examples of game mechanics that use random ticking are crop growth and fire spreading.",
               "type": "object",
@@ -615,7 +615,7 @@
               "type": "boolean",
               "default": false
             },
-            "minecraft:on_fall_on": {
+            "minecraft:on_fall_on": {"deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "type": "object",
@@ -642,7 +642,7 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_interact": {
+            "minecraft:on_interact": {"deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "type": "object",
@@ -669,29 +669,29 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_placed": {
+            "minecraft:on_placed": {"deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
-            "minecraft:on_player_destroyed": {
+            "minecraft:on_player_destroyed": {"deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
-            "minecraft:on_player_placing": {
+            "minecraft:on_player_placing": {"deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
             "minecraft:on_step_off": {
-              "title": "STABLE",
+              "title": "STABLE","deprecated": true,
               "description": "Describes event for this block.",
               "type": "object",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
             "minecraft:on_step_on": {
-              "title": "STABLE",
+              "title": "STABLE","deprecated": true,
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },

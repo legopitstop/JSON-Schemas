@@ -148,7 +148,7 @@
                 "type": "string"
               }
             },
-            "minecraft:on_dig": {
+            "minecraft:on_dig": {"deprecated": true,
               "title": "Format ?",
               "description": "undocumented",
               "type": "object",
@@ -161,7 +161,7 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_use_duration_complete": {
+            "minecraft:on_use_duration_complete": {"deprecated": true,
               "title": "Format ?",
               "description": "undocumented",
               "type": "object",
@@ -174,7 +174,7 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_consumed": {
+            "minecraft:on_consumed": {"deprecated": true,
               "title": "Format ?",
               "description": "undocumented",
               "type": "object",
@@ -187,7 +187,7 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_hurt_entity": {
+            "minecraft:on_hurt_entity": {"deprecated": true,
               "title": "Format ?",
               "description": "undocumented",
               "type": "object",
@@ -1052,8 +1052,7 @@
               "properties": {
                 "protection": {
                   "description": "How much protection does the armor item have.",
-                  "type": "integer",
-                  "deprecated": true
+                  "type": "integer"
                 },
                 "dispensable": {
                   "type": "boolean",
