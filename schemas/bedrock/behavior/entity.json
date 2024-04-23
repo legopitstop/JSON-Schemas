@@ -10963,6 +10963,17 @@
               },
               "set_property": {
                 "additionalProperties": { "type": "boolean", "default": false }
+              },
+              "queue_command": {
+                "type": "object",
+                "default": {},
+                "properties": {
+                  "command": {
+                    "type": ["string", "array"],
+                    "items": { "type": "string" }
+                  }
+                },
+                "additionalProperties": false
               }
             },
             "additionalProperties": false
