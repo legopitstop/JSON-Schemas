@@ -3,3 +3,5 @@
 
 
 - Update all schemas to use new vanilla_bedrock.json
+
+- https://wiki.bedrock.dev/items/item-tags.html

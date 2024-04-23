@@ -1,159 +1,193 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/attachables.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:attachables": {
-            "title": "resrouce.attachables",
-            "description": "attachables\nSee https://wiki.bedrock.dev/items/attachables.html",
-            "type": "object",
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "properties": {
-                        "identifier": {
-                            "$ref": "../common.json#/definitions/nameSpaceID"
-                        },
-                        "item": {
-                            "type": "object",
-                            "description": "The item to apply this attachable to.",
-                            "additionalProperties": {
-                                "type": "string"
-                            }
-                        },
-                        "materials": {
-                            "type": "object",
-                            "properties": {
-                                "default": {
-                                    "type": "string",
-                                    "description": "The material to always use."
-                                },
-                                "enchanted": {
-                                    "type": "string",
-                                    "description": "The material to use when enchanted."
-                                }
-                            }
-                        },
-                        "textures": {
-                            "type": "object",
-                            "properties": {
-                                "default": {
-                                    "type": "string",
-                                    "description": "The texture to always use."
-                                },
-                                "enchanted": {
-                                    "type": "string",
-                                    "description": "The texture to use when enchanted."
-                                },
-                                "bow_pulling_0": {
-                                    "type": "string",
-                                    "description": "The texture to use when pulling the bow."
-                                },
-                                "bow_pulling_1": {
-                                    "type": "string",
-                                    "description": "The texture to use when pulling the bow."
-                                },
-                                "bow_pulling_3": {
-                                    "type": "string",
-                                    "description": "The texture to use when pulling the bow."
-                                }
-                            }
-                        },
-                        "geometry": {
-                            "type": "object",
-                            "properties": {
-                                "default": {
-                                    "type": "string",
-                                    "description": "The geometry to always use."
-                                },
-                                "enchanted": {
-                                    "type": "string",
-                                    "description": "The geometry to use when enchanted."
-                                },
-                                "bow_pulling_0": {
-                                    "type": "string",
-                                    "description": "The geometry to use when pulling the bow."
-                                },
-                                "bow_pulling_1": {
-                                    "type": "string",
-                                    "description": "The geometry to use when pulling the bow."
-                                },
-                                "bow_pulling_3": {
-                                    "type": "string",
-                                    "description": "The geometry to use when pulling the bow."
-                                }
-                            }
-                        },
-                        "scripts": {
-                            "type": "object",
-                            "properties": {
-                                "parent_setup": {
-                                    "anyOf": [
-                                        {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ]
-                                },
-                                "initialize": {
-                                    "anyOf": [
-                                        {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ]
-                                },
-                                "pre_animation": {
-                                    "anyOf": [
-                                        {
-                                            "type": "array",
-                                            "items": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        {
-                                            "type": "string"
-                                        }
-                                    ]
-                                },
-                                "animate": {
-                                    "type": "array",
-                                    "items": {
-                                        "enum": [
-                                            "offset"
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        "animations": {
-                            "type": "object",
-                            "description": "animations to use. requires script.",
-                            "properties": {
-                                "offset": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "render_controllers": {
-                            "type": "array",
-                            "description": "Render controllers to use.",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/attachables.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "minecraft:attachables": {
+      "title": "resrouce.attachables",
+      "description": "attachables\nSee https://wiki.bedrock.dev/items/attachables.html",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "description": "undocumented",
+          "type": "object",
+          "default": {},
+          "required": [
+            "identifier",
+            "materials",
+            "textures",
+            "geometry",
+            "render_controllers"
+          ],
+          "properties": {
+            "identifier": {
+              "$ref": "../common.json#/definitions/nameSpaceID"
+            },
+            "item": {
+              "description": "The item to apply this attachable to.",
+              "type": "object",
+              "default": {},
+              "additionalProperties": {
+                "$ref": "../common.json#/definitions/MoLang"
+              }
+            },
+            "materials": {
+              "description": "undocumented",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "default": {
+                  "description": "The material to always use.",
+                  "type": "string",
+                  "default": "entity",
+                  "examples": ["entity"]
+                },
+                "enchanted": {
+                  "description": "The material to use when enchanted.",
+                  "type": "string",
+                  "default": "entity_alphatest_glint",
+                  "examples": ["entity_alphatest_glint"]
                 }
+              },
+              "additionalProperties": {
+                "description": "undocumented",
+                "type": "string"
+              }
+            },
+            "textures": {
+              "description": "undocumented",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "default": {
+                  "description": "The texture to always use.",
+                  "type": "string"
+                },
+                "enchanted": {
+                  "description": "The texture to use when enchanted.",
+                  "type": "string",
+                  "default": "textures/misc/enchanted_item_glint",
+                  "examples": ["textures/misc/enchanted_item_glint"]
+                }
+              },
+              "additionalProperties": {
+                "description": "undocumented",
+                "type": "string"
+              }
+            },
+            "geometry": {
+              "description": "undocumented",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "default": {
+                  "description": "The geometry to always use.",
+                  "type": "string"
+                },
+                "enchanted": {
+                  "description": "The geometry to use when enchanted.",
+                  "type": "string"
+                },
+                "bow_pulling_0": {
+                  "description": "The geometry to use when pulling the bow.",
+                  "type": "string"
+                },
+                "bow_pulling_1": {
+                  "description": "The geometry to use when pulling the bow.",
+                  "type": "string"
+                },
+                "bow_pulling_3": {
+                  "description": "The geometry to use when pulling the bow.",
+                  "type": "string"
+                }
+              },
+              "additionalProperties": {
+                "description": "undocumented",
+                "type": "string"
+              }
+            },
+            "scripts": {
+              "description": "undocumented",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "parent_setup": {
+                  "description": "undocumented",
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../common.json#/definitions/MoLang"
+                      }
+                    },
+                    { "$ref": "../common.json#/definitions/MoLang" }
+                  ]
+                },
+                "initialize": {
+                  "description": "undocumented",
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../common.json#/definitions/MoLang"
+                      }
+                    },
+                    {
+                      "$ref": "../common.json#/definitions/MoLang"
+                    }
+                  ]
+                },
+                "pre_animation": {
+                  "description": "undocumented",
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "$ref": "../common.json#/definitions/MoLang"
+                      }
+                    },
+                    {
+                      "$ref": "../common.json#/definitions/MoLang"
+                    }
+                  ]
+                },
+                "animate": {
+                  "description": "undocumented",
+                  "type": "array",
+                  "items": {
+                    "type": ["object", "string"],
+                    "default": {},
+                    "additionalProperties": {
+                      "$ref": "../common.json#/definitions/MoLang"
+                    }
+                  }
+                }
+              }
+            },
+            "animations": {
+              "description": "animations to use. requires script.",
+              "type": "object",
+              "default": {},
+              "additionalProperties": {
+                "$ref": "../common.json#/definitions/MoLang"
+              }
+            },
+            "render_controllers": {
+              "description": "Render controllers to use.",
+              "type": "array",
+              "default": [],
+              "items": {
+                "type": "string",
+                "default": "controller.render.item_default",
+                "examples": ["controller.render.item_default"]
+              }
             }
+          },
+          "additionalProperties": false
         }
+      },
+      "additionalProperties": false
     }
+  }
 }

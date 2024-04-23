@@ -26,24 +26,24 @@
                         ]
                     },
                     "sounds": {
-                        "type": "array",
-                        "description": "The sound location to use.",
+                        "description": "List of sound files to use for this definition",
+                        "type": ["array", "string"],
                         "items": {
                             "anyOf": [
                                 {
                                     "type": "object",
                                     "properties": {
                                         "load_on_low_memory": {
-                                            "type": "boolean",
-                                            "description": "If the users device has limited memory it will force the sound to play when true."
+                                            "description": "If the users device has limited memory it will force the sound to play when true.",
+                                            "type": "boolean"
                                         },
                                         "name": {
-                                            "type": "string",
-                                            "description": "The location of the sound."
+                                            "description": "The location of the sound.",
+                                            "type": "string"
                                         },
                                         "volume": {
-                                            "type": "number",
-                                            "description": "The volume to play the sound."
+                                            "description": "The volume to play the sound.",
+                                            "type": "number"
                                         },
                                         "is3D": {
                                             "description": "True if this sound is 3D",
@@ -54,11 +54,12 @@
                                             "description": "The chance that it will play this sound.",
                                             "type":"integer"
                                         }
-                                    }
+                                    },
+                                    "additionalProperties": false
                                 },
                                 {
-                                    "type": "string",
-                                    "description": "The location of the sound."
+                                    "description": "The location of the sound.",
+                                    "type": "string"
                                 }
                             ]
                         }
