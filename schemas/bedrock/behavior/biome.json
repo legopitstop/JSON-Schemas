@@ -138,14 +138,14 @@
               "additionalProperties": false
             },
             "minecraft:forced_features": {
-              "description": "UNDOCUMENTED",
+              "deprecated": true,
               "type": "object",
               "default": {},
               "properties": {},
               "additionalProperties": false
             },
             "minecraft:ignore_automatic_features": {
-              "description": "UNDOCUMENTED",
+              "deprecated": true,
               "type": "object",
               "default": {},
               "properties": {},
