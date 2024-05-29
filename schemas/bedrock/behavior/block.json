@@ -187,6 +187,25 @@
         "components": {
           "type": "object",
           "properties": {
+            "minecraft:tick": {
+              "title": "EXPERIMENTAL (toggle: Beta APIs)",
+              "description": "Configures how this block should tick for custom components",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "interval_range": {
+                  "type": "array",
+                  "default": [0, 0],
+                  "items": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "additionalProperties": false
+            },
             "minecraft:custom_components": {
               "title": "EXPERIMENTAL (toggle: Beta APIs)",
               "description": "Sets an ordered list of custom component names which are bound in script to be executed upon a block event.",
@@ -253,7 +272,8 @@
               },
               "additionalProperties": false
             },
-            "minecraft:queued_ticking": {"deprecated": true,
+            "minecraft:queued_ticking": {
+              "deprecated": true,
               "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
               "description": "Triggers the specified event, either once, or at a regular interval equal to a number of ticks randomly chosen from the interval_range provided.",
               "type": "object",
@@ -565,7 +585,8 @@
               },
               "additionalProperties": false
             },
-            "minecraft:random_ticking": {"deprecated": true,
+            "minecraft:random_ticking": {
+              "deprecated": true,
               "title": "STABLE",
               "description": "Triggers the specified event randomly based on the random tick speed gamerule. The random tick speed determines how often blocks are updated. Some other examples of game mechanics that use random ticking are crop growth and fire spreading.",
               "type": "object",
@@ -615,7 +636,8 @@
               "type": "boolean",
               "default": false
             },
-            "minecraft:on_fall_on": {"deprecated": true,
+            "minecraft:on_fall_on": {
+              "deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "type": "object",
@@ -642,7 +664,8 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_interact": {"deprecated": true,
+            "minecraft:on_interact": {
+              "deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "type": "object",
@@ -669,29 +692,34 @@
               },
               "additionalProperties": false
             },
-            "minecraft:on_placed": {"deprecated": true,
+            "minecraft:on_placed": {
+              "deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
-            "minecraft:on_player_destroyed": {"deprecated": true,
+            "minecraft:on_player_destroyed": {
+              "deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
-            "minecraft:on_player_placing": {"deprecated": true,
+            "minecraft:on_player_placing": {
+              "deprecated": true,
               "title": "STABLE",
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
             "minecraft:on_step_off": {
-              "title": "STABLE","deprecated": true,
+              "title": "STABLE",
+              "deprecated": true,
               "description": "Describes event for this block.",
               "type": "object",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
             "minecraft:on_step_on": {
-              "title": "STABLE","deprecated": true,
+              "title": "STABLE",
+              "deprecated": true,
               "description": "Describes event for this block.",
               "$ref": "../common.json#/definitions/EventTrigger"
             },
