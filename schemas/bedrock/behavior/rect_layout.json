@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "properties": {
     "minecraft:rect_layout": {
-      "title": "behavior.rect_layout",
+      "title": "behavior.rect_layout (1.21.10)",
       "description": "'minecraft:rect_layout' scans the surface of a Chunk, calling place() on the surface of each block column.\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Arect_layout",
       "type": "object",
       "default": {},

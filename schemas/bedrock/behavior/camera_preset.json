@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "properties": {
     "minecraft:camera_preset": {
-      "title": "behavior.camera_preset",
+      "title": "behavior.camera_preset (1.19.50)",
       "type": "object",
       "default": {},
       "required": ["identifier"],

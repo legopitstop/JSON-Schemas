@@ -85,7 +85,7 @@
   },
   "properties": {
     "minecraft:item": {
-      "title": "behavior.item",
+      "title": "behavior.item (1.21.10)",
       "description": "item\nSee https://bedrock.dev/docs/stable/Item",
       "type": "object",
       "required": ["description"],
@@ -139,8 +139,42 @@
           "description": "The properties of the item.",
           "type": "object",
           "properties": {
+            "minecraft:damage_absorption": {
+              "title": "1.21.10+",
+              "description": "Absorbs damage intended for their wearer",
+              "type": "object",
+              "default": {},
+              "required": ["absorbable_causes"],
+              "properties": {
+                "absorbable_causes": {
+                  "description": "which damage causes to absorb",
+                  "type": "array",
+                  "default": ["all"],
+                  "items": {
+                    "$ref": "../common.json#/definitions/DamageSource"
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:durability_sensor": {
+              "title": "1.21.10+",
+              "description": "Emit sounds and particles when damage causes them to lose durability",
+              "type": "object",
+              "default": {},
+              "required": ["durability_thresholds"],
+              "properties": {
+                "durability_thresholds": {
+                  "description": "undocumented",
+                  "type": "array",
+                  "default": [],
+                  "items": {}
+                }
+              },
+              "additionalProperties": false
+            },
             "minecraft:custom_components": {
-              "title": "EXPERIMENTAL (toggle: Beta APIs)",
+              "title": "STABLE (1.21.10)",
               "description": "Sets an ordered list of custom component names which are bound in script to be executed upon an item event.",
               "type": "array",
               "default": [],
@@ -148,58 +182,7 @@
                 "type": "string"
               }
             },
-            "minecraft:on_dig": {"deprecated": true,
-              "title": "Format ?",
-              "description": "undocumented",
-              "type": "object",
-              "required": ["on_dig"],
-              "properties": {
-                "on_dig": {
-                  "description": "undocumented",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_use_duration_complete": {"deprecated": true,
-              "title": "Format ?",
-              "description": "undocumented",
-              "type": "object",
-              "required": ["on_use_duration_complete"],
-              "properties": {
-                "on_use_duration_complete": {
-                  "description": "undocumented",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_consumed": {"deprecated": true,
-              "title": "Format ?",
-              "description": "undocumented",
-              "type": "object",
-              "required": ["on_consumed"],
-              "properties": {
-                "on_consumed": {
-                  "description": "undocumented",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_hurt_entity": {"deprecated": true,
-              "title": "Format ?",
-              "description": "undocumented",
-              "type": "object",
-              "required": ["on_hurt_entity"],
-              "properties": {
-                "on_hurt_entity": {
-                  "description": "undocumented",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
+
             "minecraft:block_placer": {
               "title": "Format 1.20.10",
               "description": "Planter item component. planter items are items that can be planted.",
@@ -1021,20 +1004,20 @@
                         "type": "integer"
                       },
                       "on_dig": {
-                        "title": "Format 1.20.50",
-                        "description": "Trigger for when you dig up this block",
-                        "$ref": "../common.json#/definitions/EventTrigger",
-                        "deprecated": true
+                        "title": "Format: 1.21.10+",
+                        "description": "Use ItemCustomComponent.onMineBlock in scripting",
+                        "deprecated": true,
+                        "$ref": "../common.json#/definitions/EventTrigger"
                       }
                     },
                     "additionalProperties": false
                   }
                 },
                 "on_dig": {
-                  "title": "Format 1.20.50",
-                  "description": "Trigger for when you dig a block that isn't listed in destroy_speeds",
-                  "$ref": "../common.json#/definitions/EventTrigger",
-                  "deprecated": true
+                  "title": "Format: 1.21.10+",
+                  "description": "Use ItemCustomComponent.onMineBlock in scripting",
+                  "deprecated": true,
+                  "$ref": "../common.json#/definitions/EventTrigger"
                 },
                 "use_efficiency": {
                   "description": "Use efficiency enchantment. Default is set to false.",
@@ -1125,8 +1108,8 @@
                   "default": 0
                 },
                 "on_consume": {
-                  "title": "Format ?",
-                  "description": "Replaced with 'on_complete' in `minecraft:chargeable`",
+                  "title": "Format: 1.21.10+",
+                  "description": "Use ItemCustomComponent.onConsume in scripting",
                   "$ref": "../common.json#/definitions/EventTrigger",
                   "deprecated": true
                 },
@@ -1429,6 +1412,96 @@
               "additionalProperties": false
             },
 
+            "minecraft:on_dig": {
+              "title": "Format: 1.21.10+",
+              "description": "Use ItemCustomComponent.onMineBlock in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_dig"],
+              "properties": {
+                "on_dig": {
+                  "description": "undocumented",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_use_duration_complete": {
+              "title": "Format: 1.21.10+",
+              "description": "Use ItemCustomComponent.onCompleteUse in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_use_duration_complete"],
+              "properties": {
+                "on_use_duration_complete": {
+                  "description": "undocumented",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_consumed": {
+              "title": "Format: 1.21.10+",
+              "description": "Use ItemCustomComponent.onConsume in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_consumed"],
+              "properties": {
+                "on_consumed": {
+                  "description": "undocumented",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_hurt_entity": {
+              "title": "Format: 1.21.10+",
+              "description": "Use ItemCustomComponent.onHitEntity in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_hurt_entity"],
+              "properties": {
+                "on_hurt_entity": {
+                  "description": "undocumented",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_use": {
+              "title": "Format: 1.21.10+",
+              "description": "Use ItemCustomComponent.onUse in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_use"],
+              "properties": {
+                "on_use": {
+                  "description": "Event trigger for when the item is used.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_use_on": {
+              "title": "Format: 1.21.10+",
+              "description": "Use ItemCustomComponent.onUseOn in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_use_on"],
+              "properties": {
+                "on_use_on": {
+                  "description": "Event trigger for when the item is used.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:use_duration": {
+              "title": "RENAMED 1.20.50",
+              "description": "Renamed to `minecraft:use_modifiers`",
+              "type": "number",
+              "deprecated": true
+            },
             "minecraft:chargeable": {
               "title": "Format 1.20.50",
               "description": "Use \"minecraft:use_modifiers\" instead for \"movement_modifier\" behavior",
@@ -1445,40 +1518,6 @@
                 },
                 "on_complete": {
                   "description": "Event trigger for when the item has completed its use duration.",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:use_duration": {
-              "title": "RENAMED 1.20.50",
-              "description": "Renamed to `minecraft:use_modifiers`",
-              "type": "number",
-              "deprecated": true
-            },
-            "minecraft:on_use": {
-              "title": "Format 1.20.40",
-              "deprecated": true,
-              "description": "The on_use item component allows you to receive an event when the item is used.",
-              "type": "object",
-              "required": ["on_use"],
-              "properties": {
-                "on_use": {
-                  "description": "Event trigger for when the item is used.",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_use_on": {
-              "title": "Format 1.20.40",
-              "deprecated": true,
-              "description": "The on_use_on item component allows you to receive an event when the item is used on a block in the world.",
-              "type": "object",
-              "required": ["on_use_on"],
-              "properties": {
-                "on_use_on": {
-                  "description": "Event trigger for when the item is used.",
                   "$ref": "../common.json#/definitions/EventTrigger"
                 }
               },

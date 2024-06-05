@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "properties": {
     "minecraft:scan_surface": {
-      "title": "behavior.scan_surface",
+      "title": "behavior.scan_surface (1.21.10)",
       "description": "scan_surface\nSee https://bedrock.dev/docs/stable/Features#minecraft%3Ascan_surface",
       "type": "object",
       "default": {},

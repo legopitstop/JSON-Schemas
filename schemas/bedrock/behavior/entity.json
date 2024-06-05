@@ -10996,6 +10996,9 @@
                   "command": {
                     "type": ["string", "array"],
                     "items": { "type": "string" }
+                  },
+                  "target": {
+                    "$ref": "../common.json#/definitions/eventTarget"
                   }
                 },
                 "additionalProperties": false

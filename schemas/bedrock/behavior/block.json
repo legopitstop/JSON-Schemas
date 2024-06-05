@@ -48,7 +48,7 @@
   },
   "properties": {
     "minecraft:block": {
-      "title": "behavior.block",
+      "title": "behavior.block (1.21.10)",
       "description": "A data-driven block\nSee https://bedrock.dev/docs/stable/Blocks",
       "type": "object",
       "required": ["description"],
@@ -188,8 +188,8 @@
           "type": "object",
           "properties": {
             "minecraft:tick": {
-              "title": "EXPERIMENTAL (toggle: Beta APIs)",
-              "description": "Configures how this block should tick for custom components",
+              "title": "STABLE (Format: 1.21.10)",
+              "description": "Configures how this block should tick for BlockCustomComponent.onTick",
               "type": "object",
               "default": {},
               "properties": {
@@ -207,7 +207,7 @@
               "additionalProperties": false
             },
             "minecraft:custom_components": {
-              "title": "EXPERIMENTAL (toggle: Beta APIs)",
+              "title": "STABLE (1.21.10)",
               "description": "Sets an ordered list of custom component names which are bound in script to be executed upon a block event.",
               "type": "array",
               "default": [],
@@ -268,35 +268,6 @@
                     "$ref": "../common.json#/definitions/MoLang",
                     "default": "true"
                   }
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:queued_ticking": {
-              "deprecated": true,
-              "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
-              "description": "Triggers the specified event, either once, or at a regular interval equal to a number of ticks randomly chosen from the interval_range provided.",
-              "type": "object",
-              "required": ["looping", "interval_range", "on_tick"],
-              "properties": {
-                "interval_range": {
-                  "description": "A range of values, specified in ticks, that will be used to decide the interval between times this event triggers. Each interval will be chosen randomly from the range, so the times between this event triggering will differ given an interval_range of two different values. If the values in the interval_range are the same, the event will always be triggered after that number of ticks.",
-                  "type": "array",
-                  "default": [10, 10],
-                  "items": {
-                    "type": "integer"
-                  },
-                  "minItems": 2,
-                  "maxItems": 2
-                },
-                "looping": {
-                  "description": "Does the event loop? If false, the event will only be triggered once, after a delay equal to a number of ticks randomly chosen from the interval_range. If true, the event will loop, and each interval between events will be equal to a number of ticks randomly chosen from the interval_range.",
-                  "type": "boolean",
-                  "default": true
-                },
-                "on_tick": {
-                  "description": "The event that will be triggered once or on an interval.",
-                  "$ref": "../common.json#/definitions/EventTrigger"
                 }
               },
               "additionalProperties": false
@@ -585,20 +556,6 @@
               },
               "additionalProperties": false
             },
-            "minecraft:random_ticking": {
-              "deprecated": true,
-              "title": "STABLE",
-              "description": "Triggers the specified event randomly based on the random tick speed gamerule. The random tick speed determines how often blocks are updated. Some other examples of game mechanics that use random ticking are crop growth and fire spreading.",
-              "type": "object",
-              "required": ["on_tick"],
-              "properties": {
-                "on_tick": {
-                  "description": "The event that will be triggered on random ticks.",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
             "minecraft:selection_box": {
               "title": "STABLE (1.19.60)",
               "description": "Defines the area of the block that is selected by the player's cursor. If set to true, default values are used. If set to false, this block is not selectable by the player's cursor. If this component is omitted, default values are used.",
@@ -635,93 +592,6 @@
               "description": "Sets the block as unwalkable. Mobs would not attempt to path over top of it when the value is set to true.",
               "type": "boolean",
               "default": false
-            },
-            "minecraft:on_fall_on": {
-              "deprecated": true,
-              "title": "STABLE",
-              "description": "Describes event for this block.",
-              "type": "object",
-              "required": ["min_fall_distance", "event"],
-              "properties": {
-                "condition": {
-                  "description": "The condition of event to be executed on the block.",
-                  "$ref": "../common.json#/definitions/MoLang"
-                },
-                "event": {
-                  "description": "The event executed on the block.",
-                  "type": "string"
-                },
-                "min_fall_distance": {
-                  "description": "The minimum distance in blocks that an actor needs to fall to trigger this event.",
-                  "type": "integer",
-                  "default": 0.0
-                },
-                "target": {
-                  "description": "The target of event executed on the block.",
-                  "$ref": "../common.json#/definitions/eventTarget",
-                  "default": "self"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_interact": {
-              "deprecated": true,
-              "title": "STABLE",
-              "description": "Describes event for this block.",
-              "type": "object",
-              "required": ["event"],
-              "properties": {
-                "condition": {
-                  "description": "The condition of event to be executed on the block.",
-                  "$ref": "../common.json#/definitions/MoLang"
-                },
-                "event": {
-                  "description": "The event executed on the block.",
-                  "type": "string"
-                },
-                "drop_item_slot": {
-                  "description": "allows to specify an inventory slot to remove and drop items from",
-                  "type": "integer",
-                  "default": 0
-                },
-                "target": {
-                  "description": "The target of event executed on the block.",
-                  "$ref": "../common.json#/definitions/eventTarget",
-                  "default": "self"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_placed": {
-              "deprecated": true,
-              "title": "STABLE",
-              "description": "Describes event for this block.",
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_player_destroyed": {
-              "deprecated": true,
-              "title": "STABLE",
-              "description": "Describes event for this block.",
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_player_placing": {
-              "deprecated": true,
-              "title": "STABLE",
-              "description": "Describes event for this block.",
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_step_off": {
-              "title": "STABLE",
-              "deprecated": true,
-              "description": "Describes event for this block.",
-              "type": "object",
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_step_on": {
-              "title": "STABLE",
-              "deprecated": true,
-              "description": "Describes event for this block.",
-              "$ref": "../common.json#/definitions/EventTrigger"
             },
             "tag:wood": {
               "$ref": "#/definitions/VanillaTags"
@@ -815,6 +685,136 @@
             },
             "tag:fertilize_area": {
               "$ref": "#/definitions/VanillaTags"
+            },
+            "minecraft:random_ticking": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onRandomTick in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["on_tick"],
+              "properties": {
+                "on_tick": {
+                  "description": "The event that will be triggered on random ticks.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:queued_ticking": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onTick in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["looping", "interval_range", "on_tick"],
+              "properties": {
+                "interval_range": {
+                  "description": "A range of values, specified in ticks, that will be used to decide the interval between times this event triggers. Each interval will be chosen randomly from the range, so the times between this event triggering will differ given an interval_range of two different values. If the values in the interval_range are the same, the event will always be triggered after that number of ticks.",
+                  "type": "array",
+                  "default": [10, 10],
+                  "items": {
+                    "type": "integer"
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                },
+                "looping": {
+                  "description": "Does the event loop? If false, the event will only be triggered once, after a delay equal to a number of ticks randomly chosen from the interval_range. If true, the event will loop, and each interval between events will be equal to a number of ticks randomly chosen from the interval_range.",
+                  "type": "boolean",
+                  "default": true
+                },
+                "on_tick": {
+                  "description": "The event that will be triggered once or on an interval.",
+                  "$ref": "../common.json#/definitions/EventTrigger"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_fall_on": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onEntityFallOn in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["min_fall_distance", "event"],
+              "properties": {
+                "condition": {
+                  "description": "The condition of event to be executed on the block.",
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "event": {
+                  "description": "The event executed on the block.",
+                  "type": "string"
+                },
+                "min_fall_distance": {
+                  "description": "The minimum distance in blocks that an actor needs to fall to trigger this event.",
+                  "type": "integer",
+                  "default": 0.0
+                },
+                "target": {
+                  "description": "The target of event executed on the block.",
+                  "$ref": "../common.json#/definitions/eventTarget",
+                  "default": "self"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_interact": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onPlayerInteract in scripting",
+              "deprecated": true,
+              "type": "object",
+              "required": ["event"],
+              "properties": {
+                "condition": {
+                  "description": "The condition of event to be executed on the block.",
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "event": {
+                  "description": "The event executed on the block.",
+                  "type": "string"
+                },
+                "drop_item_slot": {
+                  "description": "allows to specify an inventory slot to remove and drop items from",
+                  "type": "integer",
+                  "default": 0
+                },
+                "target": {
+                  "description": "The target of event executed on the block.",
+                  "$ref": "../common.json#/definitions/eventTarget",
+                  "default": "self"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:on_placed": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onPlace in scripting",
+              "deprecated": true,
+              "$ref": "../common.json#/definitions/EventTrigger"
+            },
+            "minecraft:on_player_destroyed": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onPlayerDestroy in scripting",
+              "deprecated": true,
+              "$ref": "../common.json#/definitions/EventTrigger"
+            },
+            "minecraft:on_player_placing": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onPlayerPlace in scripting",
+              "deprecated": true,
+              "$ref": "../common.json#/definitions/EventTrigger"
+            },
+            "minecraft:on_step_off": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onStepOff in scripting",
+              "deprecated": true,
+              "type": "object",
+              "$ref": "../common.json#/definitions/EventTrigger"
+            },
+            "minecraft:on_step_on": {
+              "title": "Format: 1.21.10+",
+              "description": "Use BlockCustomComponent.onStepOn in scripting",
+              "deprecated": true,
+              "$ref": "../common.json#/definitions/EventTrigger"
             },
             "minecraft:block_light_absorption": {
               "title": "Format: ?",
