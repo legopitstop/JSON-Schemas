@@ -1,347 +1,330 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/geometry.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "definitions": {
-        "UV": {
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/geometry.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "UV": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "uv": {
+          "type": "array",
+          "default": [0.0, 0.0],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "uv_size": {
+          "type": "array",
+          "default": [0.0, 0.0],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "uv_rotation": {
+          "description": "Specifies an optional rotation for the specified UV rect in 90-degree clockwise increments before applying it to a geometry cube face. If not specified, no rotation will be applied.",
+          "enum": [0, 90, 180, 270, 360]
+        },
+        "material_instance": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "Locator": {
+      "type": "array",
+      "default": [0.0, 0.0, 0.0],
+      "items": {
+        "type": "number"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "DisplayTransforms": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "translation": {
+          "description": "Specifies the position of the model according to the scheme [x, y, z].",
+          "$ref": "../common.json#/definitions/Vector3"
+        },
+        "rotation": {
+          "description": "Specifies the rotation of the model according to the scheme [x, y, z].",
+          "$ref": "../common.json#/definitions/Vector3"
+        },
+        "scale": {
+          "description": "Specifies the scale of the model according to the scheme [x, y, z].",
+          "$ref": "../common.json#/definitions/Vector3"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "minecraft:geometry": {
+      "title": "resrouce.geometry (1.21.20)",
+      "description": "geometry\nSee https://bedrock.dev/docs/stable/Addons#Geometry",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "required": ["description"],
+        "properties": {
+          "description": {
             "type": "object",
             "default": {},
             "properties": {
-                "uv": {
-                    "type": "array",
-                    "default": [
-                        0.0,
-                        0.0
-                    ],
-                    "items": {
-                        "type": "number"
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
+              "identifier": {
+                "type": "string"
+              },
+              "texture_width": {
+                "type": "number",
+                "default": 1.0
+              },
+              "texture_height": {
+                "type": "number",
+                "default": 1.0
+              },
+              "visible_bounds_offset": {
+                "type": "array",
+                "default": [],
+                "items": {
+                  "type": "number",
+                  "default": 1.0
                 },
-                "uv_size": {
-                    "type": "array",
-                    "default": [
-                        0.0,
-                        0.0
-                    ],
-                    "items": {
-                        "type": "number"
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
-                }
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "visible_bounds_width": {
+                "type": "number",
+                "default": 1.0
+              },
+              "visible_bounds_height": {
+                "type": "number",
+                "default": 1.0
+              }
             },
             "additionalProperties": false
-        },
-        "Locator": {
-            "type": "array",
-            "default": [
-                0.0,
-                0.0,
-                0.0
-            ],
-            "items": {
-                "type": "number"
+          },
+          "item_display_transforms": {
+            "type": "object",
+            "default": {},
+            "properties": {
+              "gui": {
+                "$ref": "#/definitions/DisplayTransforms"
+              },
+              "firstperson_righthand": {
+                "$ref": "#/definitions/DisplayTransforms"
+              },
+              "firstperson_lefthand": {
+                "$ref": "#/definitions/DisplayTransforms"
+              },
+              "thirdperson_righthand": {
+                "$ref": "#/definitions/DisplayTransforms"
+              },
+              "thirdperson_lefthand": {
+                "$ref": "#/definitions/DisplayTransforms"
+              },
+              "ground": { "$ref": "#/definitions/DisplayTransforms" },
+              "fixed": { "$ref": "#/definitions/DisplayTransforms" },
+              "head": { "$ref": "#/definitions/DisplayTransforms" }
             },
-            "minItems": 3,
-            "maxItems": 3
-        }
-    },
-    "properties": {
-        "minecraft:geometry": {
-            "title": "resrouce.geometry",
-            "description": "geometry\nSee https://bedrock.dev/docs/stable/Addons#Geometry",
+            "additionalProperties": false
+          },
+          "bones": {
             "type": "array",
             "default": [],
             "items": {
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "description": {
-                        "type": "object",
-                        "default": {},
+              "type": "object",
+              "default": {},
+              "required": ["name"],
+              "properties": {
+                "binding": {
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "locators": {
+                  "type": "object",
+                  "default": {},
+                  "properties": {
+                    "lead_hold": {
+                      "$ref": "#/definitions/Locator"
+                    }
+                  },
+                  "additionalProperties": {
+                    "$ref": "#/definitions/Locator"
+                  }
+                },
+                "name": {
+                  "type": "string"
+                },
+                "inflate": {
+                  "type": "number",
+                  "default": 1.0
+                },
+                "rotation": {
+                  "type": "array",
+                  "default": [0.0, 0.0, 0.0],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "reset": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "cubes": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                      "mirror": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "inflate": {
+                        "type": "number",
+                        "default": 1.0
+                      },
+                      "origin": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "size": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "pivot": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "rotation": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "uv": {
+                        "type": ["array", "object"],
+                        "default": [0.0, 0.2],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 2,
+                        "maxItems": 2,
                         "properties": {
-                            "identifier": {
-                                "type": "string"
-                            },
-                            "texture_width": {
-                                "type": "number",
-                                "default": 1.0
-                            },
-                            "texture_height": {
-                                "type": "number",
-                                "default": 1.0
-                            },
-                            "visible_bounds_offset": {
-                                "type": "array",
-                                "default": [],
-                                "items": {
-                                    "type": "number",
-                                    "default": 1.0
-                                },
-                                "minItems": 3,
-                                "maxItems": 3
-                            },
-                            "visible_bounds_width": {
-                                "type": "number",
-                                "default": 1.0
-                            },
-                            "visible_bounds_height": {
-                                "type": "number",
-                                "default": 1.0
-                            }
+                          "north": {
+                            "$ref": "#/definitions/UV"
+                          },
+                          "south": {
+                            "$ref": "#/definitions/UV"
+                          },
+                          "east": {
+                            "$ref": "#/definitions/UV"
+                          },
+                          "west": {
+                            "$ref": "#/definitions/UV"
+                          },
+                          "up": {
+                            "$ref": "#/definitions/UV"
+                          },
+                          "down": {
+                            "$ref": "#/definitions/UV"
+                          }
                         },
                         "additionalProperties": false
+                      }
                     },
-                    "bones": {
-                        "type": "array",
-                        "default": [],
-                        "items": {
-                            "type": "object",
-                            "default": {},
-                            "required": [
-                                "name"
-                            ],
-                            "properties": {
-                                "binding": {
-                                    "$ref": "../common.json#/definitions/MoLang"
-                                },
-                                "locators": {
-                                    "type": "object",
-                                    "default": {},
-                                    "properties": {
-                                        "lead": {
-                                            "$ref": "#/definitions/Locator"
-                                        },
-                                        "root_sitting": {
-                                            "$ref": "#/definitions/Locator"
-                                        },
-                                        "root_standing": {
-                                            "$ref": "#/definitions/Locator"
-                                        },
-                                        "driver_seat": {
-                                            "$ref": "#/definitions/Locator"
-                                        },
-                                        "back_seat": {
-                                            "$ref": "#/definitions/Locator"
-                                        },
-                                        "lead_hold": {
-                                            "$ref": "#/definitions/Locator"
-                                        }
-                                    },
-                                    "additionalProperties": false
-                                },
-                                "name": {
-                                    "type": "string"
-                                },
-                                "inflate": {
-                                    "type": "number",
-                                    "default": 1.0
-                                },
-                                "rotation": {
-                                    "type": "array",
-                                    "default": [
-                                        0.0,
-                                        0.0,
-                                        0.0
-                                    ],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                },
-                                "reset": {
-                                    "type": "boolean",
-                                    "default": false
-                                },
-                                "cubes": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "mirror": {
-                                                "type": "boolean",
-                                                "default": false
-                                            },
-                                            "inflate": {
-                                                "type": "number",
-                                                "default": 1.0
-                                            },
-                                            "origin": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "size": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "pivot": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "rotation": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "uv": {
-                                                "type": [
-                                                    "array",
-                                                    "object"
-                                                ],
-                                                "default": [
-                                                    0.0,
-                                                    0.20
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 2,
-                                                "maxItems": 2,
-                                                "properties": {
-                                                    "north": {
-                                                        "$ref": "#/definitions/UV"
-                                                    },
-                                                    "south": {
-                                                        "$ref": "#/definitions/UV"
-                                                    },
-                                                    "east": {
-                                                        "$ref": "#/definitions/UV"
-                                                    },
-                                                    "west": {
-                                                        "$ref": "#/definitions/UV"
-                                                    },
-                                                    "up": {
-                                                        "$ref": "#/definitions/UV"
-                                                    },
-                                                    "down": {
-                                                        "$ref": "#/definitions/UV"
-                                                    }
-                                                },
-                                                "additionalProperties": false
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                },
-                                "parent": {
-                                    "type": "string"
-                                },
-                                "pivot": {
-                                    "type": "array",
-                                    "default": [
-                                        0.0,
-                                        0.0,
-                                        0.0
-                                    ],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                },
-                                "mirror": {
-                                    "type": "boolean",
-                                    "default": true
-                                },
-                                "texture_meshes": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "local_pivot": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "position": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "rotation": {
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    0.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 3,
-                                                "maxItems": 3
-                                            },
-                                            "texture": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    }
-                                }
-                            },
-                            "additionalProperties": false
-                        }
-                    }
+                    "additionalProperties": false
+                  }
                 },
-                "additionalProperties": false
+                "parent": {
+                  "type": "string"
+                },
+                "pivot": {
+                  "type": "array",
+                  "default": [0.0, 0.0, 0.0],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "mirror": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "texture_meshes": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                      "local_pivot": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "position": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "rotation": {
+                        "type": "array",
+                        "default": [0.0, 0.0, 0.0],
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "texture": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "additionalProperties": false
             }
-        }
+          }
+        },
+        "additionalProperties": false
+      }
     }
+  }
 }
