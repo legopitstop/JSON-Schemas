@@ -100,9 +100,21 @@
                 "default": {},
                 "required": ["type"],
                 "properties": {
-                  "type": { "description": "undocumented", "enum": ["bool"] },
+                  "type": {
+                    "description": "undocumented",
+                    "enum": ["bool", "int", "float", "enum"]
+                  },
                   "client_sync": { "type": "boolean", "default": true },
-                  "default": { "$ref": "../common.json#/definitions/MoLang" }
+                  "default": { "$ref": "../common.json#/definitions/MoLang" },
+                  "values": {
+                    "type": ["object", "array"],
+                    "default": {},
+                    "properties": {
+                      "min": { "type": "integer", "default": 0 },
+                      "max": { "type": "integer", "default": 0 }
+                    },
+                    "additionalProperties": false
+                  }
                 },
                 "additionalProperties": false
               }
@@ -1279,7 +1291,20 @@
               "properties": {
                 "hitboxes": {
                   "description": "Comma seperated list of hitboxes.",
-                  "type": "array"
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                      "width": { "type": "number", "default": 1 },
+                      "height": { "type": "number", "default": 1 },
+                      "pivot": {
+                        "$ref": "../common.json#/definitions/Vector3"
+                      }
+                    },
+                    "additionalProperties": false
+                  }
                 }
               }
             },
@@ -1336,17 +1361,11 @@
                     },
                     "on_damage": {
                       "description": "Specifies filters for entity definitions and events.",
-                      "type": "object",
-                      "default": {},
-                      "properties": {
-                        "filters": {
-                          "$ref": "../common.json#/definitions/Filters"
-                        }
-                      }
+                      "$ref": "#/definitions/events"
                     },
                     "on_damage_sound_event": {
                       "description": "Defines what sound to play, if any, when the on_damage filters are met.",
-                      "$ref": "#/definitions/events"
+                      "type": "string"
                     }
                   }
                 }

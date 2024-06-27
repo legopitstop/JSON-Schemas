@@ -28,11 +28,11 @@
               "default": {},
               "properties": {
                 "default": {
-                  "type": "string"
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/materal"
                 }
               },
               "additionalProperties": {
-                "type": "string"
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/materal"
               }
             },
             "textures": {

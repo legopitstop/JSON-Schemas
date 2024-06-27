@@ -1,89 +1,109 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/sound_definitions.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "description": "\nSee https://wiki.bedrock.dev/concepts/sounds.html#sound-definitions-json",
-    "properties": {
-        "sound_definitions": {
-            "title": "resrouce.sound_definitions",
-            "additionalProperties": {
-                "description": "sound_definitions",
-                "type": "object",
-                "properties": {
-                    "category": {
-                        "description": "The category to play the sound. This may effect where it is used in custom blocks or items.",
-                        "enum": [
-                            "ambient",
-                            "weather",
-                            "neutral",
-                            "block",
-                            "bottle",
-                            "bucket",
-                            "player",
-                            "ui",
-                            "hostile",
-                            "music",
-                            "record"
-                        ]
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/sound_definitions.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "\nSee https://wiki.bedrock.dev/concepts/sounds.html#sound-definitions-json",
+  "properties": {
+    "sound_definitions": {
+      "title": "resrouce.sound_definitions (1.20.20)",
+      "additionalProperties": {
+        "description": "sound definition",
+        "type": "object",
+        "required": ["sounds"],
+        "properties": {
+          "category": {
+            "description": "The category to play the sound. This may effect where it is used in custom blocks or items.",
+            "enum": [
+              "ambient",
+              "weather",
+              "neutral",
+              "block",
+              "bottle",
+              "bucket",
+              "player",
+              "ui",
+              "hostile",
+              "music",
+              "record"
+            ]
+          },
+          "sounds": {
+            "description": "List of sound files to use for this definition",
+            "type": ["array", "string"],
+            "items": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "required": ["name"],
+                  "properties": {
+                    "load_on_low_memory": {
+                      "description": "Forces the loading of the sound even when nearing low memory. \"load_on_low_memory\" is now deprecated as of 1.16.0",
+                      "type": "boolean",
+                      "default": true
                     },
-                    "sounds": {
-                        "description": "List of sound files to use for this definition",
-                        "type": ["array", "string"],
-                        "items": {
-                            "anyOf": [
-                                {
-                                    "type": "object",
-                                    "properties": {
-                                        "load_on_low_memory": {
-                                            "description": "If the users device has limited memory it will force the sound to play when true.",
-                                            "type": "boolean"
-                                        },
-                                        "name": {
-                                            "description": "The location of the sound.",
-                                            "type": "string"
-                                        },
-                                        "volume": {
-                                            "description": "The volume to play the sound.",
-                                            "type": "number"
-                                        },
-                                        "is3D": {
-                                            "description": "True if this sound is 3D",
-                                            "type":"boolean",
-                                            "default": true
-                                        },
-                                        "weight": {
-                                            "description": "The chance that it will play this sound.",
-                                            "type":"integer"
-                                        }
-                                    },
-                                    "additionalProperties": false
-                                },
-                                {
-                                    "description": "The location of the sound.",
-                                    "type": "string"
-                                }
-                            ]
-                        }
+                    "interruptible": {
+                      "description": "Set to true by default.",
+                      "type": "boolean",
+                      "default": true
                     },
-                    "__use_legacy_max_distance": {
-                        "description": "Use the built-in legacy max distance.",
-                        "default": true,
-                        "enum": [
-                            "true",
-                            "false",
-                            true,
-                            false
-                        ]
+                    "name": {
+                      "description": "The path to the file, such as: `\"sounds/music/game/creative/creative1\"`",
+                      "type": "string",
+                      "examples": ["sounds/"],
+                      "default": "sounds/"
                     },
-                    "min_distance": {
-                        "type": "number",
-                        "description": "The min amount of blocks the player can hear the sound."
+                    "pitch": {
+                      "description": "The pitch of the sound (how low/high it sounds). Should be a positive value. For example, 2.3 will let the sound play 2.3 times as quickly and thus at higher pitch. Set to 1.0 by default.",
+                      "type": "number",
+                      "minimum": 0.0
                     },
-                    "max_distance": {
-                        "type": "number",
-                        "description": "The max amount of blocks the player can hear the sound."
+                    "volume": {
+                      "description": "How loud the sound should play, from 0.0 to 1.0. Sounds cannot be made more audible than initially encoded. Set to 1.0 by default. Sounds in custom resource packs can have working values greater than 1.0.",
+                      "type": "number",
+                      "minimum": 0.0,
+                      "maximum": 1.0
+                    },
+                    "is3D": {
+                      "description": "`true` makes the sound directional. Set to `true` for all sounds by default. Ignored for `music` and `ui` sounds. Only sounds with `false` will play stereo sound.",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "weight": {
+                      "description": "If there is more than one sound in the list, the sound to be played is chosen randomly. `\"weight\"` (integer value like 5) will give the relative chance that this sound is chosen from the list. For example, if there are two sounds in the list, one with `\"weight\": 10` and the other with `\"weight\": 2`, the first will be played approximately 5 times more likely than the second (accurately: `10 / (10 + 2) = 83.3%` chance vs. `2 / (10 + 2) = 16.7%` chance) . Set to `1` by default.",
+                      "type": "integer",
+                      "default": 1
+                    },
+                    "stream": {
+                      "description": "Limits the sound only to be played a limited number of instances at a time. Will cause the game to not load the entire sound data into memory while playing, but rather in smaller parts while playing, thus using less memory. Good for improving performance on sound heavy worlds.",
+                      "type": "boolean",
+                      "default": true
                     }
+                  },
+                  "additionalProperties": false
+                },
+                {
+                  "description": "The location of the sound.",
+                  "type": "string"
                 }
+              ]
             }
+          },
+          "__use_legacy_max_distance": {
+            "description": "Use the built-in legacy max distance.",
+            "default": true,
+            "enum": ["true", "false", true, false]
+          },
+          "min_distance": {
+            "description": "The distance from the sound source after which sound volume is attenuated. Default value: 0.0. It must be a float (eg. 1.0), or the property will be ignored.",
+            "type": ["number", "null"],
+            "default": null
+          },
+          "max_distance": {
+            "description": "The distance from the sound source after which the sound volume is the quietest (if in range). It must be a float (eg. 1.0), or the property will be ignored.",
+            "type": ["number", "null"],
+            "default": null
+          }
         }
+      }
     }
+  }
 }

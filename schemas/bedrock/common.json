@@ -2,6 +2,15 @@
     "$id": "../common.json",
     "$schema": "http://json-schema.org/draft-07/schema#",
     "definitions": {
+        "Vector3": {
+            "type": "array",
+            "default": [0.0, 0.0, 0.0],
+            "items": {
+                "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+        },
         "UnlockRecipe": {
             "$id": "../common.json#/definitions/UnlockRecipe",
             "description": "Unlock this recipe",
