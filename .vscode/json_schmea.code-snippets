@@ -35,4 +35,11 @@
 	"ref:bedrock_entity": {"scope": "json,jsonu","prefix": "ref:bedrock_entity","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity\""},
 	"ref:bedrock_feature": {"scope": "json,jsonu","prefix": "ref:bedrock_feature","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature\""},
 	"ref:bedrock_item": {"scope": "json,jsonu","prefix": "ref:bedrock_item","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/item\""},
+	"ref:bedrock_materal": {"scope": "json,jsonu","prefix": "ref:bedrock_materal","body": "\"\\$ref\": \"https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/materal\""},
+	"Vector3": {
+		"scope": "json,jsonc",
+		"prefix": "type:Vector3",
+		"body": ["\"\\$ref\": \"../common.json#/definitions/Vector3\""
+		]
+	}
 }
