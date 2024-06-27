@@ -11,7 +11,7 @@
         },
         "TAG_Double": {
             "title": "TAG_Double",
-            "description": "https://minecraft.fandom.com/wiki/NBT_format",
+            "description": "https://minecraft.wiki/w/NBT_format",
             "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/TAG_Double",
             "type": "number",
             "minimum": 0.0,

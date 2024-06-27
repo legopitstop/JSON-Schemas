@@ -1,4 +1,5 @@
-# Generates all json lists using the registries.json from the built-in data generator: https://minecraft.fandom.com/wiki/Tutorials/Running_the_data_generator
+# Generates all json lists using the registries.json from the built-in data generator: https://minecraft.wiki/w/Tutorials/Running_the_data_generator
+# TODO: Use mcextract API
 import os
 import json
 

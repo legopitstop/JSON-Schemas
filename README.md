@@ -27,7 +27,7 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 }
 ```
 
-### [Minecraft Bedrock Edition](https://minecraft.fandom.com/wiki/Bedrock_Edition)
+### [Minecraft Bedrock Edition](https://minecraft.wiki/w/Bedrock_Edition)
 
 ```json
 {
