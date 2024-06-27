@@ -1,0 +1,23 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/item_sub_predicate_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Item Sub Predicate Type (Java Edition)",
+    "examples": [
+        "minecraft:attribute_modifiers",
+        "minecraft:bundle_contents",
+        "minecraft:container",
+        "minecraft:custom_data",
+        "minecraft:damage",
+        "minecraft:enchantments",
+        "minecraft:firework_explosion",
+        "minecraft:fireworks",
+        "minecraft:jukebox_playable",
+        "minecraft:potion_contents",
+        "minecraft:stored_enchantments",
+        "minecraft:trim",
+        "minecraft:writable_book_content",
+        "minecraft:written_book_content"
+    ]
+}

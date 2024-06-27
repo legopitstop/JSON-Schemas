@@ -1,17 +1,44 @@
+# !!! BEFORE RUNNING !!!
+# Download the latest server.jar and place it into the directory with this script. 
+
 # Generates all json lists using the registries.json from the built-in data generator: https://minecraft.wiki/w/Tutorials/Running_the_data_generator
-# TODO: Use mcextract API
+
 import os
 import json
+import mcextract
+import shutil
 
+MCVERSION = '1.21'
 LOCAL = os.path.dirname(os.path.realpath(__file__))
+TEMP = os.path.join(LOCAL, 'temp')
+
+# Get registry
+api = mcextract.MCExtractAPI()
+api.generate('server.jar', ['--reports'], TEMP, True)
+
+with open(os.path.join(TEMP, 'reports', 'registries.json'), 'r') as fd:
+    registries = json.load(fd)
+
+with open(os.path.join(LOCAL, 'registries.json'), 'w') as fd:
+    fd.write(json.dumps(registries))
+
+shutil.rmtree(TEMP)
 
 opn = open(LOCAL + "/registries.json", "r")
 registries = json.load(opn)
 opn.close()
 
-opn = open(LOCAL + "/README.md", "r")
-README = opn.read()
-opn.close()
+README = f"""# README
+
+Feel free to reference these for your schemas. They will contain up-to-date lists of items, blocks, effects, sounds, etc.
+
+Updated for `{ MCVERSION }`
+
+## References
+
+| Name | Raw URL |
+| -- | -- |
+"""
 
 for registry in registries:
     print(registry)
@@ -37,10 +64,8 @@ for registry in registries:
     dir = os.path.dirname(filename + ".json")
     os.makedirs(os.path.join(LOCAL, dir), exist_ok=True)
 
-    wrt = open(os.path.join(LOCAL, filename + ".json"), "w")
-    wrt.write(json.dumps(schema, indent=4))
-    wrt.close()
+    with open(os.path.join(LOCAL, filename + ".json"), "w") as fd:
+        fd.write(json.dumps(schema, indent=4))
 
-wrt = open(LOCAL + "/README.md", "w")
-wrt.write(README)
-wrt.close()
+with open(LOCAL + "/README.md", "w") as fd:
+    fd.write(README)

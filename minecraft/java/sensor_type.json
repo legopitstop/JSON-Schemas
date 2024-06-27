@@ -5,8 +5,11 @@
     "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
     "description": "Any Minecraft Sensor Type (Java Edition)",
     "examples": [
+        "minecraft:armadillo_scare_detected",
+        "minecraft:armadillo_temptations",
         "minecraft:axolotl_attackables",
         "minecraft:axolotl_temptations",
+        "minecraft:breeze_attack_entity_sensor",
         "minecraft:camel_temptations",
         "minecraft:dummy",
         "minecraft:frog_attackables",

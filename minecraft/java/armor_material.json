@@ -1,0 +1,17 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/armor_material.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Armor Material (Java Edition)",
+    "examples": [
+        "minecraft:armadillo",
+        "minecraft:chainmail",
+        "minecraft:diamond",
+        "minecraft:gold",
+        "minecraft:iron",
+        "minecraft:leather",
+        "minecraft:netherite",
+        "minecraft:turtle"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/entity_sub_predicate_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Entity Sub Predicate Type (Java Edition)",
+    "examples": [
+        "minecraft:axolotl",
+        "minecraft:boat",
+        "minecraft:cat",
+        "minecraft:fishing_hook",
+        "minecraft:fox",
+        "minecraft:frog",
+        "minecraft:horse",
+        "minecraft:lightning",
+        "minecraft:llama",
+        "minecraft:mooshroom",
+        "minecraft:painting",
+        "minecraft:parrot",
+        "minecraft:player",
+        "minecraft:rabbit",
+        "minecraft:raider",
+        "minecraft:slime",
+        "minecraft:tropical_fish",
+        "minecraft:villager",
+        "minecraft:wolf"
+    ]
+}

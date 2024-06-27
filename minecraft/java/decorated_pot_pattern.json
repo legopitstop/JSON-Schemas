@@ -1,0 +1,33 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/decorated_pot_pattern.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Decorated Pot Pattern (Java Edition)",
+    "examples": [
+        "minecraft:angler",
+        "minecraft:archer",
+        "minecraft:arms_up",
+        "minecraft:blade",
+        "minecraft:blank",
+        "minecraft:brewer",
+        "minecraft:burn",
+        "minecraft:danger",
+        "minecraft:explorer",
+        "minecraft:flow",
+        "minecraft:friend",
+        "minecraft:guster",
+        "minecraft:heart",
+        "minecraft:heartbreak",
+        "minecraft:howl",
+        "minecraft:miner",
+        "minecraft:mourner",
+        "minecraft:plenty",
+        "minecraft:prize",
+        "minecraft:scrape",
+        "minecraft:sheaf",
+        "minecraft:shelter",
+        "minecraft:skull",
+        "minecraft:snort"
+    ]
+}

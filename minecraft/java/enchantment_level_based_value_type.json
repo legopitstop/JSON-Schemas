@@ -1,0 +1,14 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/enchantment_level_based_value_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Enchantment Level Based Value Type (Java Edition)",
+    "examples": [
+        "minecraft:clamped",
+        "minecraft:fraction",
+        "minecraft:levels_squared",
+        "minecraft:linear",
+        "minecraft:lookup"
+    ]
+}

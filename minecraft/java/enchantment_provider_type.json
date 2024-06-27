@@ -1,0 +1,12 @@
+{
+    "$id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/enchantment_provider_type.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "string",
+    "pattern": "^[a-zA-Z0-9._]*.:.[a-zA-Z0-9._]*$",
+    "description": "Any Minecraft Enchantment Provider Type (Java Edition)",
+    "examples": [
+        "minecraft:by_cost",
+        "minecraft:by_cost_with_difficulty",
+        "minecraft:single"
+    ]
+}
