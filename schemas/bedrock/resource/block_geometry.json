@@ -1,153 +1,132 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/block_geometry.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "elements": {
-            "title": "resrouce.block_geometry",
-            "description": "List of elements that make up the geometry of this block",
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/block_geometry.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "elements": {
+      "title": "resrouce.block_geometry",
+      "description": "List of elements that make up the geometry of this block",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "properties": {
+          "boxes": {
+            "description": "List of cubes that make up the geometry of this element",
             "type": "array",
             "default": [],
             "items": {
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "boxes": {
-                        "description": "List of cubes that make up the geometry of this element",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "faces": {
+                  "description": "List of the 6 faces of the box. If specified, there MUST be 6 faces (front, back, left side, right side, top, bottom)",
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "object",
+                    "default": {},
+                    "properties": {
+                      "material": {
+                        "description": "The material of this face if different from the box's",
+                        "type": "string"
+                      },
+                      "rotation": {
+                        "description": "UV Rotation of this face. Only acceptable values are 0, 90 and 270 degrees. This allows reusing a texture and just rotating it for different faces",
+                        "type": "number",
+                        "default": 0.0
+                      },
+                      "uv": {
+                        "description": "Texture coordinates of this face, given as min x, min y, max x, max y withg values between 0.0 and 1.0",
                         "type": "array",
-                        "default": [],
+                        "default": [0.0, 0.0, 1.0, 1.0],
                         "items": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "faces": {
-                                    "description": "List of the 6 faces of the box. If specified, there MUST be 6 faces (front, back, left side, right side, top, bottom)",
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "object",
-                                        "default": {},
-                                        "properties": {
-                                            "material": {
-                                                "description": "The material of this face if different from the box's",
-                                                "type": "string"
-                                            },
-                                            "rotation": {
-                                                "description": "UV Rotation of this face. Only acceptable values are 0, 90 and 270 degrees. This allows reusing a texture and just rotating it for different faces",
-                                                "type": "number",
-                                                "default": 0.0
-                                            },
-                                            "uv": {
-                                                "description": "Texture coordinates of this face, given as min x, min y, max x, max y withg values between 0.0 and 1.0",
-                                                "type": "array",
-                                                "default": [
-                                                    0.0,
-                                                    0.0,
-                                                    1.0,
-                                                    1.0
-                                                ],
-                                                "items": {
-                                                    "type": "number"
-                                                },
-                                                "minItems": 4,
-                                                "maxItems": 4
-                                            }
-                                        },
-                                        "additionalProperties": false
-                                    },
-                                    "minItems": 6,
-                                    "maxItems": 6
-                                },
-                                "material": {
-                                    "description": "The material of this box if different from the element's",
-                                    "type": "string"
-                                },
-                                "origin": {
-                                    "description": "The position of the center of the box relative to the geometry",
-                                    "type": "array",
-                                    "default": [
-                                        0.0,
-                                        0.0,
-                                        0.0
-                                    ],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                },
-                                "size": {
-                                    "description": "Scale of the box in the x, y and z coordinates. A typical block is of scale 1, 1, 1",
-                                    "type": "array",
-                                    "default": [
-                                        0,
-                                        0,
-                                        0
-                                    ],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                }
-                            },
-                            "additionalProperties": false
-                        }
-                    },
-                    "material": {
-                        "description": "The material of this element if different from the block's",
-                        "type": "string"
-                    },
-                    "name": {
-                        "description": "Name of the element",
-                        "type": "string"
-                    },
-                    "parent": {
-                        "description": "Name of the parent element of this element. Pivot and box positions are made relative to the parent element's pivot",
-                        "type": "string"
-                    },
-                    "pivot": {
-                        "description": "Position in model space of the pivot point of the element. This is used as the \"center\" position of the element, as well as the point around which to rotate",
-                        "type": "array",
-                        "default": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "items": {
-                            "type": "number"
+                          "type": "number"
                         },
-                        "minItems": 3,
-                        "maxItems": 3
+                        "minItems": 4,
+                        "maxItems": 4
+                      }
                     },
-                    "rotation": {
-                        "description": "The rotation of this element about its pivot",
-                        "type": "array",
-                        "default": [
-                            0.0,
-                            0.0,
-                            0.0
-                        ],
-                        "items": {
-                            "type": "number"
-                        },
-                        "minItems": 3,
-                        "maxItems": 3
-                    }
+                    "additionalProperties": false
+                  },
+                  "minItems": 6,
+                  "maxItems": 6
                 },
-                "additionalProperties": false
+                "material": {
+                  "description": "The material of this box if different from the element's",
+                  "type": "string"
+                },
+                "origin": {
+                  "description": "The position of the center of the box relative to the geometry",
+                  "type": "array",
+                  "default": [0.0, 0.0, 0.0],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "size": {
+                  "description": "Scale of the box in the x, y and z coordinates. A typical block is of scale 1, 1, 1",
+                  "type": "array",
+                  "default": [0, 0, 0],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "additionalProperties": false
             }
-        },
-        "materials": {
-            "title": "resrouce.block_geometry",
-            "description": "List of materials used by this model",
-            "items": {
-                "type": "string"
-            }
-        },
-        "parent": {
-            "title": "resrouce.block_geometry",
-            "description": "Parent model of this model",
+          },
+          "material": {
+            "description": "The material of this element if different from the block's",
             "type": "string"
-        }
+          },
+          "name": {
+            "description": "Name of the element",
+            "type": "string"
+          },
+          "parent": {
+            "description": "Name of the parent element of this element. Pivot and box positions are made relative to the parent element's pivot",
+            "type": "string"
+          },
+          "pivot": {
+            "description": "Position in model space of the pivot point of the element. This is used as the \"center\" position of the element, as well as the point around which to rotate",
+            "type": "array",
+            "default": [0.0, 0.0, 0.0],
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "rotation": {
+            "description": "The rotation of this element about its pivot",
+            "type": "array",
+            "default": [0.0, 0.0, 0.0],
+            "items": {
+              "type": "number"
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "materials": {
+      "title": "resrouce.block_geometry",
+      "description": "List of materials used by this model",
+      "items": {
+        "type": "string"
+      }
+    },
+    "parent": {
+      "title": "resrouce.block_geometry",
+      "description": "Parent model of this model",
+      "type": "string"
     }
+  }
 }
