@@ -1,39 +1,36 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/blocks.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "format_version": {
-            "title": "resrouce.blocks",
-            "type": ["array", "string", "integer"],
-            "default": [],
-            "minItems": 3,
-            "maxItems": 3,
-            "items": {
-                "type": "integer"
-            }
-        }
-    },
-    "additionalProperties": {
-        "title": "resrouce.blocks",
-        "properties": {
-            "sound": {
-                "description": "Sound for the block",
-                "$ref": "../common.json#/definitions/sounds"
-            },
-            "textures": {
-                "description": "Textures for this block",
-                "type": [
-                    "string",
-                    "array"
-                ],
-                "items": {
-                    "type": "string"
-                }
-            },
-            "blockshape": {
-                "description": "The shape of the block.",
-                "$ref": "../common.json#/definitions/blockshape"
-            }
-        }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/blocks.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "format_version": {
+      "title": "resrouce.blocks",
+      "type": ["array", "string", "integer"],
+      "default": [],
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "integer"
+      }
     }
+  },
+  "additionalProperties": {
+    "title": "resrouce.blocks",
+    "properties": {
+      "sound": {
+        "description": "Sound for the block",
+        "$ref": "../common.json#/definitions/sounds"
+      },
+      "textures": {
+        "description": "Textures for this block",
+        "type": ["string", "array"],
+        "items": {
+          "type": "string"
+        }
+      },
+      "blockshape": {
+        "description": "The shape of the block.",
+        "$ref": "../common.json#/definitions/blockshape"
+      }
+    }
+  }
 }

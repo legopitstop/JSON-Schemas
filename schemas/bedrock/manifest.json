@@ -76,9 +76,9 @@
             "description": "The name of the built-in module to require",
             "type": "string",
             "examples": [
-                "@minecraft/common",
-                "@minecraft/server",
-                "@minecraft/server-ui"
+              "@minecraft/common",
+              "@minecraft/server",
+              "@minecraft/server-ui"
             ]
           },
           "version": {

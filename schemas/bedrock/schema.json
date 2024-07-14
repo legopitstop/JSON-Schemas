@@ -1,19 +1,19 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "description": "JSON schema for Minecraft Bedrock Edition.",
-    "allOf": [
-        {
-            "$ref": "./skins.json"
-        },
-        {
-            "$ref": "./manifest.json"
-        },
-        {
-            "$ref": "./behavior/schema.json"
-        },
-        {
-            "$ref": "./resource/schema.json"
-        }
-    ]
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "description": "JSON schema for Minecraft Bedrock Edition.",
+  "allOf": [
+    {
+      "$ref": "./skins.json"
+    },
+    {
+      "$ref": "./manifest.json"
+    },
+    {
+      "$ref": "./behavior/schema.json"
+    },
+    {
+      "$ref": "./resource/schema.json"
+    }
+  ]
 }
