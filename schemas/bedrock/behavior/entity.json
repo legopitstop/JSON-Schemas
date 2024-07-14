@@ -127,6 +127,23 @@
           "type": "object",
           "default": {},
           "properties": {
+            "minecraft:teleport_to_owner": {
+              "description": "allows an entity to teleport to its owner. This goal is designed for emergency situations where \"behavior.follow_owner\" could be too slow or too low priority",
+              "type": "object",
+              "default": {},
+              "properties": {
+                "cooldown": {
+                  "description": "How often the entity should attempt to teleport",
+                  "type": "integer",
+                  "default": 0
+                },
+                "filters": {
+                  "description": "The conditions for teleportation using entity filters",
+                  "$ref": "../common.json#/definitions/Filters"
+                }
+              },
+              "additionalProperties": false
+            },
             "minecraft:game_event_movement_tracking": {
               "description": "Allows an entity to emit `entityMove`, `swim` and `flap` game events, depending on the block the entity is moving through. It is added by default to every mob. Add it again to override its behavior.",
               "type": "object",

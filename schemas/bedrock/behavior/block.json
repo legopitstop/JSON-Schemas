@@ -593,6 +593,9 @@
               "type": "boolean",
               "default": false
             },
+            "tag:one_way_collidable": {
+              "$ref": "#/definitions/VanillaTags"
+            },
             "tag:wood": {
               "$ref": "#/definitions/VanillaTags"
             },
