@@ -1,6 +1,24 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/block_geometry.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "itemDisplayTransforms": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "translation": {
+          "$ref": "../common.json#/definitions/Vector3"
+        },
+        "rotation": {
+          "$ref": "../common.json#/definitions/Vector3"
+        },
+        "scale": {
+          "$ref": "../common.json#/definitions/Vector3"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
   "properties": {
     "elements": {
       "title": "resrouce.block_geometry",
@@ -122,6 +140,37 @@
       "items": {
         "type": "string"
       }
+    },
+    "item_display_transforms": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "gui": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "firstperson_righthand": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "firstperson_lefthand": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "thirdperson_righthand": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "thirdperson_lefthand": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "ground": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "fixed": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        },
+        "head": {
+          "$ref": "#/definitions/itemDisplayTransforms"
+        }
+      },
+      "additionalProperties": false
     },
     "parent": {
       "title": "resrouce.block_geometry",
