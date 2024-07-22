@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/block.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:block": ["format_version"]
+  },
   "definitions": {
     "VanillaTags": {
       "description": "Vanilla tags can be applied to custom blocks, and some vanilla blocks are tagged internally. This kind of tag doesn't give blocks vanilla features. The only usage of it is to tag blocks to make them have the same tags as the vanilla blocks for queries or tests. https://wiki.bedrock.dev/blocks/block-tags.html#vanilla-tags",
@@ -27,14 +30,7 @@
         },
         "render_method": {
           "description": "The render method to use. Must be one of these options:\n'opaque' - Used for a regular block texture without an alpha layer. Does not allow for transparency or translucency. (Allows redstone to pass through it, grass decay, and allow mobs to spawn on it)\n'double_sided' - Used for completely disabling backface culling.\n'blend' - Used for a block like stained glass. Allows for transparency and translucency (slightly transparent textures) (Allows redstone to pass through it, it won't make grass decay, and it won't allow mobs to spawn on it).\n'alpha_test' - Used for a block like the vanilla (unstained) glass. Does not allow for translucency, only fully opaque or fully transparent textures. Also disables backface culling. (Same props as blend)",
-          "enum": [
-            "double_sided",
-            "blend",
-            "opaque",
-            "alpha_test",
-            "alpha_test_single_sided"
-          ],
-          "default": "opaque"
+          "$ref": "../enum.json#/definitions/blockRenderMethod"
         },
         "texture": {
           "description": "Texture name for the material.",
@@ -43,12 +39,12 @@
       }
     },
     "allowedBlockFaces": {
-      "enum": ["all", "north", "south", "west", "east", "up", "down", "side"]
+      "$ref": "../enum.json#/definitions/blockFace"
     }
   },
   "properties": {
     "minecraft:block": {
-      "title": "behavior.block (1.21.10)",
+      "title": "behavior.block (1.21.0)",
       "description": "A data-driven block\nSee https://bedrock.dev/docs/stable/Blocks",
       "type": "object",
       "required": ["description"],
@@ -103,11 +99,11 @@
               "properties": {
                 "category": {
                   "description": "Determines which category this block will be placed under in the inventory and crafting table container screens. Options are \"construction\", \"nature\", \"equipment\",\"items\", and \"none\". If omitted or \"none\" is specified, the block will not appear in the inventory or crafting table container screens.",
-                  "$ref": "../common.json#/definitions/itemTab"
+                  "$ref": "../enum.json#/definitions/itemTab"
                 },
                 "group": {
                   "description": "Specifies the language file key that maps to which expandable/collapsible group this block will be a part of within a category. If this field is omitted, or there is no group whose name matches the loc string, this block will be placed standalone in the given category.",
-                  "$ref": "../common.json#/definitions/itemGroup"
+                  "$ref": "../enum.json#/definitions/itemGroup"
                 },
                 "is_hidden_in_commands": {
                   "type": "boolean",
@@ -133,22 +129,14 @@
                       "type": "array",
                       "default": [],
                       "items": {
-                        "enumDescriptions": [
-                          "is a four value string state [\"north\", \"south\", \"east\", \"west\"] that describes what cardinal direction the player was facing when they placed the block.",
-                          "is a six value string state [\"down\", \"up\", \"north\", \"south\", \"east\", \"west\"] that describes what direction the player was facing when they placed the block."
-                        ],
-                        "enum": [
-                          "minecraft:cardinal_direction",
-                          "minecraft:facing_direction"
-                        ]
+                        "$ref": "../enum.json#/definitions/blockDirectionState"
                       },
                       "minItems": 1,
                       "uniqueItems": true
                     },
                     "y_rotation_offset": {
                       "description": "The y rotation offset to apply to the block. Must be [0.0, 90.0, 180.0, 270.0]. Default is 0, meaning if the player is facing north, the \"minecraft:cardinal_direction\" and/or minecraft:facing_direction state will be north.",
-                      "enum": [0.0, 90.0, 180.0, 270.0],
-                      "default": 0.0
+                      "$ref": "../enum.json#/definitions/blockRotation"
                     }
                   },
                   "additionalProperties": false
@@ -163,14 +151,7 @@
                       "type": "array",
                       "default": [],
                       "items": {
-                        "enumDescriptions": [
-                          "is a six value string state [\"down\", \"up\", \"north\", \"south\", \"east\", \"west\"] that describes what face the block was placed on.",
-                          "is a two value string state [\"bottom\", \"top\"] that describes whether the block was placed in the upper or lower half of a block position."
-                        ],
-                        "enum": [
-                          "minecraft:block_face",
-                          "minecraft:vertical_half"
-                        ]
+                        "$ref": "../enum.json#/definitions/blockPositionState"
                       },
                       "minItems": 1,
                       "uniqueItems": true
@@ -217,28 +198,32 @@
             },
             "minecraft:transformation": {
               "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
-              "description": "Added a new Transformation component for blocks to support rotation, scaling and translation.",
+              "description": "The block's translation, rotation and scale with respect to the center of its world position",
               "properties": {
                 "translation": {
-                  "description": "Translate the block.",
-                  "type": "array",
-                  "default": [-8.0, 0.0, -8.0],
-                  "minimum": -8,
-                  "maximum": 16
+                  "description": "Amount the block should be translated along each axis. \"Translation\" is specified as [x, y, z] using floating point values.",
+                  "default": [0, 0, 0],
+                  "$ref": "../common.json#/definitions/Vector3"
                 },
                 "scale": {
-                  "description": "Scale the block.",
-                  "type": "array",
-                  "default": [-8.0, 0.0, -8.0],
-                  "minimum": -8,
-                  "maximum": 16
+                  "description": "Amount the block should be scaled along each axis. \"Scale\" is specified as [x, y, z] using floating point values.",
+                  "default": [1, 1, 1],
+                  "$ref": "../common.json#/definitions/Vector3"
+                },
+                "scale_pivot": {
+                  "description": "Offset to the pivot point around which to apply the scale. \"scale_pivot\" is specified as [x, y, z] using floating point values.",
+                  "default": [0, 0, 0],
+                  "$ref": "../common.json#/definitions/Vector3"
                 },
                 "rotation": {
-                  "description": "Rotate the block.",
-                  "type": "array",
-                  "default": [-8.0, 0.0, -8.0],
-                  "minimum": -8,
-                  "maximum": 16
+                  "description": "Amount in degrees the block should be rotated on each axis. \"rotation\" is specified as [x, y, z] using floating point values and must be axis aligned, otherwise the value will be rounded to the nearest axis-aligned value.",
+                  "default": [0, 0, 0],
+                  "$ref": "../common.json#/definitions/Vector3"
+                },
+                "rotation_pivot": {
+                  "description": "Offset to the pivot point around which to apply the rotation. \"rotation_pivot\" is specified as [x, y, z] using floating point values.",
+                  "default": [0, 0, 0],
+                  "$ref": "../common.json#/definitions/Vector3"
                 }
               },
               "additionalProperties": false
@@ -287,12 +272,7 @@
             "minecraft:breathability": {
               "title": "EXPERIMENTAL (Holiday Creator Features)",
               "description": "Determines whether the block is breathable by defining if the block is treated as a `solid` or as `air`",
-              "enumDescriptions": [
-                "Entities will sufficate when in this block",
-                "Entities can breath while in this block"
-              ],
-              "enum": ["solid", "air"],
-              "default": "solid"
+              "$ref": "../enum.json#/definitions/blockBreathability"
             },
             "minecraft:collision_box": {
               "title": "STABLE (1.19.50)",
@@ -754,7 +734,7 @@
                 },
                 "target": {
                   "description": "The target of event executed on the block.",
-                  "$ref": "../common.json#/definitions/eventTarget",
+                  "$ref": "../enum.json#/definitions/eventTarget",
                   "default": "self"
                 }
               },
@@ -782,7 +762,7 @@
                 },
                 "target": {
                   "description": "The target of event executed on the block.",
-                  "$ref": "../common.json#/definitions/eventTarget",
+                  "$ref": "../enum.json#/definitions/eventTarget",
                   "default": "self"
                 }
               },
