@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_shaped.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:recipe_shaped": ["format_version"]
+  },
   "properties": {
     "minecraft:recipe_shaped": {
       "title": "behavior.recipe_shaped (1.20.10)",
@@ -17,6 +20,11 @@
               "$ref": "../common.json#/definitions/nameSpaceID"
             }
           }
+        },
+        "assume_symmetry": {
+          "description": "Used to automatically assume a symmetrical recipe should return the same result.",
+          "type": "boolean",
+          "default": true
         },
         "tags": {
           "description": "Item used as input for the furnace recipe.",
