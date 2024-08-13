@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/recipe_brewing_mix.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:recipe_brewing_mix": ["format_version"]
+  },
   "properties": {
     "minecraft:recipe_brewing_mix": {
       "title": "behavior.recipe_brewing_mix (1.20.10)",

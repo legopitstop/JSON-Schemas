@@ -83,8 +83,7 @@
                         "default": {},
                         "properties": {
                           "block_name": {
-                            "type": "string",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/block.json"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
                           }
                         },
                         "additionalProperties": false
@@ -117,8 +116,7 @@
                         "default": {},
                         "properties": {
                           "entity_name": {
-                            "type": "string",
-                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/entity_type.json"
+                            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
                           }
                         },
                         "additionalProperties": false
@@ -129,7 +127,7 @@
                         "default": {},
                         "properties": {
                           "block_pos_id": {
-                            "enum": ["target_pos"]
+                            "$ref": "../enum.json#/definitions/behaviorMoveTo"
                           },
                           "distance_epsilon": {
                             "type": "number"
@@ -195,7 +193,7 @@
                           },
                           "desired_direction": {
                             "description": "The direction to move",
-                            "enum": ["forward"]
+                            "$ref": "../enum.json#/definitions/behaviorMove"
                           }
                         },
                         "additionalProperties": false

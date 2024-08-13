@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/feature_rules.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:feature_rules": ["format_version"]
+  },
   "properties": {
     "minecraft:feature_rules": {
       "title": "behavior.feature_rules",
@@ -26,56 +29,11 @@
           "properties": {
             "placement_pass": {
               "description": "When the feature should be placed relative to others. Earlier passes in the list are guaranteed to occur before later passes. Order is not guaranteed within each pass.",
-              "enum": [
-                "first_pass",
-                "before_underground_pass",
-                "underground_pass",
-                "after_underground_pass",
-                "before_surface_pass",
-                "surface_pass",
-                "after_surface_pass",
-                "before_sky_pass",
-                "sky_pass",
-                "after_sky_pass",
-                "final_pass"
-              ]
+              "$ref": "../enum.json#/definitions/featurePass"
             },
             "minecraft:biome_filter": {
               "description": "List of filter tests to determine which biomes this rule will attach to.",
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "test": {
-                    "$ref": "../common.json#/definitions/biomeFiltertest"
-                  },
-                  "operator": {
-                    "$ref": "../common.json#/definitions/operator"
-                  },
-                  "value": {
-                    "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/biome_tag.json",
-                    "type": "string"
-                  },
-                  "all_of": {
-                    "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "test": {
-                          "$ref": "../common.json#/definitions/biomeFiltertest"
-                        },
-                        "operator": {
-                          "$ref": "../common.json#/definitions/operator"
-                        },
-                        "value": {
-                          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/bedrock/biome_tag.json",
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
+              "$ref": "../common.json#/definitions/Filters"
             }
           }
         },
@@ -85,8 +43,7 @@
           "properties": {
             "coordinate_eval_order": {
               "description": "The order in which coordinates will be evaluated. Should be used when a coordinate depends on another. If omitted, defaults to \"xzy\".",
-              "default": "xzy",
-              "enum": ["xyz", "xzy", "yxz", "yzx", "zxy", "zyx"]
+              "$ref": "../enum.json#/definitions/coordinateEvalOrder"
             },
             "iterations": {
               "description": "Number of scattered positions to generate",
@@ -127,13 +84,7 @@
                   "properties": {
                     "distribution": {
                       "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
-                      "enum": [
-                        "uniform",
-                        "gaussian",
-                        "inverse_gaussian",
-                        "fixed_grid",
-                        "jittered_grid"
-                      ]
+                      "$ref": "../enum.json#/definitions/featureDistribution"
                     },
                     "step_size": {
                       "description": " When the distribution type is grid, defines the distance between steps along this axis",
@@ -178,13 +129,7 @@
                   "properties": {
                     "distribution": {
                       "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
-                      "enum": [
-                        "uniform",
-                        "gaussian",
-                        "inverse_gaussian",
-                        "fixed_grid",
-                        "jittered_grid"
-                      ]
+                      "$ref": "../enum.json#/definitions/featureDistribution"
                     },
                     "step_size": {
                       "description": " When the distribution type is grid, defines the distance between steps along this axis",
@@ -229,13 +174,7 @@
                   "properties": {
                     "distribution": {
                       "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
-                      "enum": [
-                        "uniform",
-                        "gaussian",
-                        "inverse_gaussian",
-                        "fixed_grid",
-                        "jittered_grid"
-                      ]
+                      "$ref": "../enum.json#/definitions/featureDistribution"
                     },
                     "step_size": {
                       "description": " When the distribution type is grid, defines the distance between steps along this axis",

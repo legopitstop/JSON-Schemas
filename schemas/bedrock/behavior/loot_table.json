@@ -16,12 +16,7 @@
           "properties": {
             "type": {
               "description": "The number provider type.",
-              "enum": [
-                "minecraft:constant",
-                "minecraft:uniform",
-                "minecraft:binomial",
-                "minecraft:score"
-              ]
+              "$ref": "../enum.json#/definitions/numberProviderType"
             },
             "value": {
               "description": "type=constant The exact value",
@@ -244,66 +239,11 @@
         "properties": {
           "function": {
             "description": "Namespaced ID of the function to apply.",
-            "enum": [
-              "apply_bonus",
-              "copy_name",
-              "copy_nbt",
-              "copy_state",
-              "enchant_randomly",
-              "enchant_with_levels",
-              "exploration_map",
-              "explosion_decay",
-              "furnace_smelt",
-              "fill_player_head",
-              "limit_count",
-              "looting_enchant",
-              "set_attributes",
-              "set_banner_pattern",
-              "set_contents",
-              "set_count",
-              "set_damage",
-              "set_enchantments",
-              "set_loot_table",
-              "set_lore",
-              "set_name",
-              "set_nbt",
-              "set_stew_effect",
-              "set_data",
-              "specific_enchants",
-              "random_aux_value",
-              "enchant_random_gear",
-              "set_data_from_color_index",
-              "set_banner_details",
-              "minecraft:apply_bonus",
-              "minecraft:copy_name",
-              "minecraft:copy_nbt",
-              "minecraft:copy_state",
-              "minecraft:enchant_randomly",
-              "minecraft:enchant_with_levels",
-              "minecraft:exploration_map",
-              "minecraft:explosion_decay",
-              "minecraft:furnace_smelt",
-              "minecraft:fill_player_head",
-              "minecraft:limit_count",
-              "minecraft:looting_enchant",
-              "minecraft:set_attributes",
-              "minecraft:set_banner_pattern",
-              "minecraft:set_contents",
-              "minecraft:set_count",
-              "minecraft:set_damage",
-              "minecraft:set_enchantments",
-              "minecraft:set_loot_table",
-              "minecraft:set_lore",
-              "minecraft:set_name",
-              "minecraft:set_nbt",
-              "minecraft:set_stew_effect",
-              "minecraft:set_data",
-              "minecraft:specific_enchants",
-              "minecraft:random_aux_value",
-              "minecraft:enchant_random_gear",
-              "minecraft:set_data_from_color_index",
-              "minecraft:set_banner_details"
-            ]
+            "$ref": "../enum.json#/definitions/lootFunctionType"
+          },
+          "id": {
+            "title": "SET_POTION",
+            "$ref": "../enum.json#/definitions/potionType"
           },
           "type": {
             "type": "integer",
@@ -318,32 +258,7 @@
               "properties": {
                 "condition": {
                   "description": "Namespaced ID of condition.",
-                  "enum": [
-                    "alternative",
-                    "block_state_property",
-                    "damage_source_properties",
-                    "entity_properties",
-                    "entity_scores",
-                    "inverted",
-                    "killed_by_player",
-                    "location_check",
-                    "match_tool",
-                    "random_chance",
-                    "random_chance_with_looting",
-                    "reference",
-                    "survives_explosion",
-                    "table_bonus",
-                    "time_check",
-                    "weather_check",
-                    "value_check",
-                    "has_mark_variant",
-                    "random_difficulty_chance",
-                    "killed_by_player_or_pets",
-                    "killed_by_entity",
-                    "entity_killed",
-                    "has_variant",
-                    "random_regional_difficulty_chance"
-                  ]
+                  "$ref": "../enum.json#/definitions/lootConditionType"
                 },
                 "easy": {
                   "type": "integer",
@@ -845,12 +760,7 @@
                             },
                             "gamemode": {
                               "description": "The game mode of the player. Must be survival, adventure, creative or spectator.",
-                              "enum": [
-                                "survival",
-                                "adventure",
-                                "creative",
-                                "spectator"
-                              ]
+                              "$ref": "../enum.json#/definitions/gamemode"
                             },
                             "level": {
                               "description": "The experience level of the player.",

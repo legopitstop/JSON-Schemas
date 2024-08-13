@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/beards_and_shavers.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:beards_and_shavers": ["format_version"]
+  },
   "properties": {
     "minecraft:beards_and_shavers": {
       "title": "behavior.beards_and_shavers (1.21.10)",
@@ -46,11 +49,11 @@
         },
         "surface_block_type": {
           "description": "Reference to the block to be placed.",
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "subsurface_block_type": {
           "description": "Reference to the block to be placed.",
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "beard_raggedness_min": {
           "description": "Y Delta for BAS",

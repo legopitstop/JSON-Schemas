@@ -1,6 +1,27 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/single_block_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:single_block_feature": ["format_version"]
+  },
+  "definitions": {
+    "attachToBlocks": {
+      "default": "minecraft:air",
+      "anyOf": [
+        {
+          "type": ["string", "object"],
+          "$ref": "../common.json#/definitions/blockstate"
+        },
+        {
+          "type": "array",
+          "default": [],
+          "items": {
+            "$ref": "../common.json#/definitions/blockstate"
+          }
+        }
+      ]
+    }
+  },
   "properties": {
     "minecraft:single_block_feature": {
       "title": "behavior.single_block_feature (1.21.10)",
@@ -20,7 +41,7 @@
         },
         "places_block": {
           "description": "Reference to the block to be placed.",
-          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "enforce_placement_rules": {
           "description": "If true, enforce the block's canPlace check.",
@@ -46,28 +67,28 @@
               "default": true
             },
             "top": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "bottom": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "north": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "south": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "east": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "west": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "all": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             },
             "sides": {
-              "type": "array"
+              "$ref": "#/definitions/attachToBlocks"
             }
           }
         },

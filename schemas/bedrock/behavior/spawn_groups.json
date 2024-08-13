@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/spawn_groups.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:spawn_groups": ["format_version"]
+  },
   "properties": {
     "minecraft:spawn_groups": {
       "title": "behavior.spawn_groups",
@@ -49,12 +52,12 @@
                 "type": "object",
                 "properties": {
                   "min": {
-                    "$ref": "../common.json#/definitions/difficulty",
-                    "description": "This is the minimum difficulty level that a mob spawns"
+                    "description": "This is the minimum difficulty level that a mob spawns",
+                    "$ref": "../enum.json#/definitions/difficulty"
                   },
                   "max": {
-                    "$ref": "../common.json#/definitions/difficulty",
-                    "description": "This is the maximum difficulty level that a mob spawns"
+                    "description": "This is the maximum difficulty level that a mob spawns",
+                    "$ref": "../enum.json#/definitions/difficulty"
                   }
                 }
               },

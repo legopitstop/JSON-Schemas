@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/spawn_rules.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:spawn_rules": ["format_version"]
+  },
   "properties": {
     "minecraft:spawn_rules": {
       "title": "behavior.spawn_rules (1.8.0)",
@@ -81,11 +84,11 @@
                 "properties": {
                   "min": {
                     "description": "This is the minimum difficulty level that a mob spawns",
-                    "$ref": "../common.json#/definitions/difficulty"
+                    "$ref": "../enum.json#/definitions/difficulty"
                   },
                   "max": {
                     "description": "This is the maximum difficulty level that a mob spawns",
-                    "$ref": "../common.json#/definitions/difficulty"
+                    "$ref": "../enum.json#/definitions/difficulty"
                   }
                 },
                 "additionalProperties": false

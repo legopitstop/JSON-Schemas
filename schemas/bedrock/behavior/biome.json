@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/biome.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:biome": ["format_version"]
+  },
   "definitions": {
     "ArbitraryTag": {
       "description": "An arbitrary tag",
@@ -55,23 +58,7 @@
               "properties": {
                 "noise_params": {},
                 "noise_type": {
-                  "enum": [
-                    "stone_beach",
-                    "deep_ocean",
-                    "default",
-                    "default_mutated",
-                    "lowlands",
-                    "river",
-                    "ocean",
-                    "taiga",
-                    "mountains",
-                    "highlands",
-                    "mushroom",
-                    "less_extreme",
-                    "extreme",
-                    "beach",
-                    "swamp"
-                  ]
+                  "$ref": "../enum.json#/definitions/biomeHeight"
                 }
               },
               "additionalProperties": false
@@ -155,7 +142,24 @@
               "description": "UNDOCUMENTED",
               "type": "object",
               "default": {},
-              "properties": {},
+              "properties": {
+                "sea_floor_depth": { "type": "integer", "default": 0 },
+                "sea_floor_material": {
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+                },
+                "foundation_material": {
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+                },
+                "mid_material": {
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+                },
+                "top_material": {
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+                },
+                "sea_material": {
+                  "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+                }
+              },
               "additionalProperties": false
             },
             "minecraft:surface_material_adjustments": {
@@ -220,11 +224,14 @@
                     "default": [],
                     "items": {
                       "type": ["integer"],
-                      "enum": ["cold"]
+                      "$ref": "../enum.json#/definitions/biomeClimate"
                     }
                   }
                 },
                 "hills_transformation": {
+                  "type": "string"
+                },
+                "mutate_transformation": {
                   "type": "string"
                 },
                 "shore_transformation": {

@@ -2,77 +2,57 @@
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/material.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
-    "state": {
-      "enum": [
-        "DisableDepthWrite",
-        "DisableColorWrite",
-        "DisableCulling",
-        "Blending",
-        "EnableStencilTest",
-        "StencilWrite",
-        "InvertCulling",
-        "DisableAlphaWrite"
-      ]
-    },
-    "define": {
-      "enum": [
-        "FANCY",
-        "USE_UV_ANIM",
-        "USE_EMISSIVE",
-        "ALPHA_TEST",
-        "USE_SKINNING",
-        "USE_OVERLAY"
-      ]
-    },
-    "vertexField": {
-      "enum": ["Position", "Normal", "UV0", "BoneId0", "Color"]
-    },
-    "textureFilter": {
-      "enum": ["Point", "Bilinear"]
-    },
-    "stencilFunc": {
-      "enum": ["Always", "NotEqual", "Greater", "Equal", "Less"]
-    },
-    "stencilOp": {
-      "enum": ["Replace", "Keep"]
-    },
     "material": {
       "type": "object",
       "default": {},
       "properties": {
         "+states": {
-          "description": "Include states",
-          "type": "array",
-          "default": [],
-          "items": {
-            "$ref": "#/definitions/state"
-          }
+          "description": "Add states",
+          "$ref": "#/definitions/material/properties/states"
         },
         "-states": {
-          "description": "Exclude states",
-          "type": "array",
-          "default": [],
-          "items": {
-            "$ref": "#/definitions/state"
-          }
+          "description": "Remove states",
+          "$ref": "#/definitions/material/properties/states"
         },
         "+defines": {
-          "description": "Include defines",
-          "type": "array",
-          "default": [],
-          "items": {
-            "$ref": "#/definitions/define"
-          }
+          "description": "Add defines",
+          "$ref": "#/definitions/material/properties/defines"
         },
         "-defines": {
-          "description": "Exclude defines",
+          "description": "Remove defines",
+          "$ref": "#/definitions/material/properties/defines"
+        },
+        "+variants": {
+          "description": "Add variants",
+          "$ref": "#/definitions/material/properties/variants"
+        },
+        "-variants": {
+          "description": "Remove variants",
+          "$ref": "#/definitions/material/properties/variants"
+        },
+        "+samplerStates": {
+          "description": "Add sampler states",
+          "$ref": "#/definitions/material/properties/samplerStates"
+        },
+        "-samplerStates": {
+          "description": "Remove sampler states",
+          "$ref": "#/definitions/material/properties/samplerStates"
+        },
+        "states": {
+          "description": "Set states",
+          "type": "array",
+          "default": [],
+          "items": { "$ref": "../enum.json#/definitions/materialState" }
+        },
+        "defines": {
+          "description": "Set defines",
           "type": "array",
           "default": [],
           "items": {
-            "$ref": "#/definitions/define"
+            "$ref": "../enum.json#/definitions/materialDefine"
           }
         },
-        "+samplerStates": {
+        "samplerStates": {
           "type": "array",
           "default": [],
           "items": {
@@ -85,14 +65,17 @@
                 "default": 0
               },
               "textureFilter": {
-                "$ref": "#/definitions/textureFilter"
+                "$ref": "../enum.json#/definitions/materialTextureFilter"
               },
               "textureWrap": {
-                "type": "string"
+                "$ref": "../enum.json#/definitions/materialTextureWrap"
               }
             },
             "additionalProperties": false
           }
+        },
+        "primitiveMode": {
+          "$ref": "../enum.json#/definitions/materialPrimitiveMode"
         },
         "stencilRef": {
           "type": "integer",
@@ -105,7 +88,8 @@
           "type": "string"
         },
         "depthFunc": {
-          "type": "string"
+          "$ref": "../enum.json#/definitions/materialFunc",
+          "default": "Less"
         },
         "vertexShader": {
           "description": "The vertex shader to use.",
@@ -132,13 +116,14 @@
             "required": ["field"],
             "properties": {
               "field": {
-                "$ref": "#/definitions/vertexField"
+                "$ref": "../enum.json#/definitions/materialVertexField"
               }
             },
             "additionalProperties": false
           }
         },
         "msaaSupport": {
+          "description": "Multisample anti-aliasing",
           "type": "string"
         },
         "depthBias": {
@@ -158,16 +143,19 @@
           "default": {},
           "properties": {
             "stencilFunc": {
-              "$ref": "#/definitions/stencilFunc"
+              "$ref": "../enum.json#/definitions/materialFunc"
             },
             "stencilFailOp": {
               "type": "string"
             },
             "stencilDepthFailOp": {
-              "$ref": "#/definitions/stencilOp"
+              "$ref": "../enum.json#/definitions/materialStencilOp"
             },
             "stencilPassOp": {
-              "$ref": "#/definitions/stencilOp"
+              "$ref": "../enum.json#/definitions/materialStencilOp"
+            },
+            "stencilPass": {
+              "$ref": "../enum.json#/definitions/materialStencilOp"
             }
           },
           "additionalProperties": false
@@ -177,16 +165,19 @@
           "default": {},
           "properties": {
             "stencilFunc": {
-              "$ref": "#/definitions/stencilFunc"
+              "$ref": "../enum.json#/definitions/materialFunc"
             },
             "stencilFailOp": {
-              "$ref": "#/definitions/stencilOp"
+              "$ref": "../enum.json#/definitions/materialStencilOp"
             },
             "stencilDepthFailOp": {
-              "$ref": "#/definitions/stencilOp"
+              "$ref": "../enum.json#/definitions/materialStencilOp"
             },
             "stencilPassOp": {
-              "$ref": "#/definitions/stencilOp"
+              "$ref": "../enum.json#/definitions/materialStencilOp"
+            },
+            "stencilPass": {
+              "$ref": "../enum.json#/definitions/materialStencilOp"
             }
           },
           "additionalProperties": false
@@ -242,7 +233,10 @@
         }
       },
       "patternProperties": {
-        "^[a-zA-Z0-9_]+(:[a-zA-Z0-9_]+)?$": { "$ref": "#/definitions/material" }
+        "^[a-zA-Z0-9_]+(:[a-zA-Z0-9_]+)?$": {
+          "description": "ID:PARENT of the material",
+          "$ref": "#/definitions/material"
+        }
       },
       "additionalProperties": false
     }

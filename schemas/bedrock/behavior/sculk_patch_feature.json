@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/sculk_patch_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:sculk_patch_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:sculk_patch_feature": {
       "title": "behavior.sculk_patch_feature (1.21.10)",
@@ -21,7 +24,7 @@
         "replaceable_blocks": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "../common.json#/definitions/blockstate"
           }
         },
         "cant_place_sculk_vein_on": {
@@ -31,7 +34,7 @@
           }
         },
         "ground_block": {
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "growth_feature": {
           "type": "string"

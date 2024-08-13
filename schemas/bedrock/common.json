@@ -1,5 +1,4 @@
 {
-  "$id": "../common.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "definitions": {
     "Vector3": {
@@ -266,115 +265,7 @@
         "wood"
       ]
     },
-    "itemGroup": {
-      "$id": "../common.json#/definitions/itemGroup",
-      "enum": [
-        "itemGroup.search",
-        "itemGroup.name.planks",
-        "itemGroup.name.walls",
-        "itemGroup.name.fence",
-        "itemGroup.name.fenceGate",
-        "itemGroup.name.stairs",
-        "itemGroup.name.door",
-        "itemGroup.name.glass",
-        "itemGroup.name.glassPane",
-        "itemGroup.name.permission",
-        "itemGroup.name.slab",
-        "itemGroup.name.stoneBrick",
-        "itemGroup.name.sandstone",
-        "itemGroup.name.wool",
-        "itemGroup.name.woolCarpet",
-        "itemGroup.name.concretePowder",
-        "itemGroup.name.concrete",
-        "itemGroup.name.stainedClay",
-        "itemGroup.name.glazedTerracotta",
-        "itemGroup.name.dye",
-        "itemGroup.name.ore",
-        "itemGroup.name.stone",
-        "itemGroup.name.log",
-        "itemGroup.name.leaves",
-        "itemGroup.name.sapling",
-        "itemGroup.name.seed",
-        "itemGroup.name.crop",
-        "itemGroup.name.grass",
-        "itemGroup.name.flower",
-        "itemGroup.name.rawFood",
-        "itemGroup.name.cookedFood",
-        "itemGroup.name.miscFood",
-        "itemGroup.name.mushroom",
-        "itemGroup.name.monsterStoneEgg",
-        "itemGroup.name.mobEgg",
-        "itemGroup.name.helmet",
-        "itemGroup.name.chestplate",
-        "itemGroup.name.leggings",
-        "itemGroup.name.boots",
-        "itemGroup.name.horseArmor",
-        "itemGroup.name.sword",
-        "itemGroup.name.axe",
-        "itemGroup.name.pickaxe",
-        "itemGroup.name.shovel",
-        "itemGroup.name.hoe",
-        "itemGroup.name.arrow",
-        "itemGroup.name.potion",
-        "itemGroup.name.splashPotion",
-        "itemGroup.name.lingeringPotion",
-        "itemGroup.name.bed",
-        "itemGroup.name.chalkboard",
-        "itemGroup.name.anvil",
-        "itemGroup.name.chest",
-        "itemGroup.name.shulkerBox",
-        "itemGroup.name.record",
-        "itemGroup.name.skull",
-        "itemGroup.name.boat",
-        "itemGroup.name.rail",
-        "itemGroup.name.minecart",
-        "itemGroup.name.pressurePlate",
-        "itemGroup.name.trapdoor",
-        "itemGroup.name.enchantedBook",
-        "itemGroup.name.banner",
-        "itemGroup.name.firework",
-        "itemGroup.name.fireworkStars",
-        "itemGroup.name.coral",
-        "itemGroup.name.coral_decorations",
-        "itemGroup.name.button",
-        "itemGroup.name.sign",
-        "itemGroup.name.wood",
-        "itemGroup.name.banner_pattern",
-        "itemGroup.name.netherWartBlock",
-        "itemGroup.name.candles"
-      ]
-    },
-    "itemTab": {
-      "$id": "../common.json#/definitions/itemTab",
-      "enum": [
-        "commands",
-        "construction",
-        "equipment",
-        "items",
-        "nature",
-        "Commands",
-        "Construction",
-        "Equipment",
-        "Items",
-        "Nature",
-        "none"
-      ]
-    },
-    "eventTarget": {
-      "$id": "../common.json#/definitions/eventTarget",
-      "enum": [
-        "self",
-        "holder",
-        "baby",
-        "other",
-        "player",
-        "target",
-        "parent",
-        "block",
-        "damager",
-        "item"
-      ]
-    },
+
     "Decimal": {
       "$id": "../common.json#/definitions/Decimal",
       "type": "number",
@@ -391,7 +282,7 @@
       "$id": "../common.json#/definitions/saturationModifier",
       "anyOf": [
         {
-          "enum": ["poor", "low", "normal", "good", "high", "supernatural"]
+          "$ref": "./enum.json#/definitions/saturationModifier"
         },
         {
           "type": "number",
@@ -399,10 +290,6 @@
           "default": 0.6
         }
       ]
-    },
-    "useAnimation": {
-      "$id": "../common.json#/definitions/useAnimation",
-      "enum": ["eat", "drink", "camera"]
     },
     "recipeTags": {
       "$id": "../common.json#/definitions/recipeTags",
@@ -497,20 +384,6 @@
       "pattern": "^(?:[a-zA-Z0-9._]*.:)?.[a-zA-Z0-9._]*(?::[0-9]{1,})?$",
       "description": "Namespace id. must not contain Minecraft namespace. example; custom:stone"
     },
-    "difficulty": {
-      "$id": "../common.json#/definitions/difficulty",
-      "type": "string",
-      "enum": ["easy", "hard", "normal", "peaceful"]
-    },
-    "biomeFiltertest": {
-      "$id": "../common.json#/definitions/biomeFiltertest",
-      "enum": ["has_biome_tag"]
-    },
-    "operator": {
-      "$id": "../common.json#/definitions/operator",
-      "default": "equals",
-      "enum": ["!=", "<", "<=", "<>", "=", "==", ">", ">=", "equals", "not"]
-    },
     "floatMolang": {
       "$id": "../common.json#/definitions/floatMolang",
       "anyOf": [
@@ -525,7 +398,7 @@
     },
     "MoLang": {
       "$id": "../common.json#/definitions/MoLang",
-      "type": ["string", "number"],
+      "type": ["string", "number", "boolean"],
       "description": "Molang can be quite complex, or simple. It depends on your needs. More Info: https://bedrock.dev/docs/stable/MoLang",
       "examples": [
         "q.block_neighbor_has_any_tag(X,Y,Z,'TAG')",
@@ -535,7 +408,9 @@
         "q.is_item_name_any('slot.weapon.mainhand','ITEM')",
         "q.max_damage * 0.25",
         "q.any_tag('TAG')",
-        "geometry.texture_name"
+        "Geometry.geometry_name",
+        "Texture.texture_name",
+        "Materal.materal_name"
       ]
     },
     "EventTrigger": {
@@ -554,7 +429,7 @@
         },
         "target": {
           "description": "The target to execute agenst.",
-          "$ref": "#/definitions/eventTarget",
+          "$ref": "./enum.json#/definitions/eventTarget",
           "default": "self"
         }
       }
@@ -566,44 +441,6 @@
       "items": {
         "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/block.json#/properties/components"
       }
-    },
-    "DamageSource": {
-      "description": "Damage source 1.17",
-      "$id": "../common.json#/definitions/DamageSource",
-      "enum": [
-        "all",
-        "anvil",
-        "block_explosion",
-        "charging",
-        "contact",
-        "drowning",
-        "entity_attack",
-        "entity_explosion",
-        "fall",
-        "falling_block",
-        "fire",
-        "fire_tick",
-        "fireworks",
-        "fly_into_wall",
-        "freezing",
-        "lava",
-        "lightning",
-        "magic",
-        "magma",
-        "none",
-        "override",
-        "piston",
-        "projectile",
-        "stalactite",
-        "stalagmite",
-        "starve",
-        "suffocation",
-        "suicide",
-        "temperature",
-        "thorns",
-        "void",
-        "wither"
-      ]
     },
     "Events": {
       "$id": "../common.json#/definitions/Events",
@@ -636,7 +473,7 @@
               "description": "The mob effect to apply."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -658,11 +495,11 @@
               "description": "The amount of damage to deal."
             },
             "type": {
-              "$ref": "#/definitions/DamageSource",
+              "$ref": "./enum.json#/definitions/damageSource",
               "description": "The type of damage to deal."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -688,7 +525,7 @@
           },
           "properties": {
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -714,7 +551,7 @@
               "description": "The name of the particle effect to create."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -734,7 +571,7 @@
               "description": "The name of the sound to play."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -754,7 +591,7 @@
               "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/effect"
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -782,7 +619,7 @@
               "description": "List of slash commands to run."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -890,7 +727,7 @@
               "description": "Max range the target can teleport relative to the origin destination."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target context to execute against."
             }
@@ -962,7 +799,7 @@
               "description": "The type of event executed on the block."
             },
             "target": {
-              "$ref": "#/definitions/eventTarget",
+              "$ref": "./enum.json#/definitions/eventTarget",
               "default": "self",
               "description": "The target of event executed on the block."
             }
@@ -991,176 +828,7 @@
           "$ref": "#/definitions/_filter"
         },
         "test": {
-          "enumDescriptions": [
-            "Checks the distance of an entity from its owner ",
-            "undocumented",
-            "Tests the health of an actor.",
-            "Returns true when the bool actor property matches the value provided.",
-            "Compares the current time with a float value in the range (0.0, 1.0). 0.0= Noon 0.25= Sunset 0.5= Midnight 0.75= Sunrise",
-            "Compares the distance to the nearest Player with a float value.",
-            "Returns true when the enum actor property matches the value provided.",
-            "Returns true when the float actor property matches the value provided.",
-            "Returns true when the subject entity has the named ability.",
-            "Tests whether the biome the subject is in has the specified tag.",
-            "Returns true when the subject entity contains the named component.",
-            "Returns true when the subject Player entity has opened a container.",
-            "Returns true when the subject entity receives the named damage type.",
-            "Tests for the presence of a named item in the designated slot of the subject entity.",
-            "Tests whether the Subject has the specified mob effect.",
-            "Tests if the subject has been given a custom name.",
-            "Tests for the presence of a property of the subject entity.",
-            "Returns true when the subject entity is holding a ranged weapon like a bow or crossbow.",
-            "Tests if the subject is holding an item with silk touch.",
-            "Returns true if the subject entity has the tag provided.",
-            "Returns true if the subject entity has a valid target.",
-            "Tests whether the target has any trade supply left. Will return false if the target cannot be traded with.",
-            "Compares the current 24 hour time with an int value in the range[0, 24000]",
-            "Returns true when the subject entity is inside a specified Block type.",
-            "Returns true if the subject entity is in a caravan.",
-            "Returns true when the subject entity is in the clouds.",
-            "Returns true when the subject entity in contact with any water: water, rain, splash water bottle.",
-            "Returns true when the subject entity is in lava.",
-            "Returns true when the subject entity is in Nether.",
-            "Returns true when the subject entity is in water.",
-            "Returns true when the subject entity is in water or rain.",
-            "Tests if the specified duration in seconds of inactivity for despawning has been reached.",
-            "Returns true when the int actor property matches the value provided.",
-            "Tests the current altitude against a provided value. 0= bedrock elevation.",
-            "Returns true if the subject entity is fleeing from other mobs.",
-            "Returns true when the subject entity is a baby.",
-            "Tests whether the Subject is currently in the named biome.",
-            "Returns true when the block has the given name.",
-            "Tests the current brightness against a provided value in the range (0.0f, 1.0f).",
-            "Returns true if the subject entity is climbing.",
-            "Returns true if the subject entity is the named color.",
-            "Returns true during the daylight hours.",
-            "Tests the current difficulty level of the game.",
-            "Returns true when the subject entity is a member of the named family.",
-            "Tests whether a named game rule is active.",
-            "Tests whether the Subject is in an area with humidity",
-            "Returns true if the subject entity is immobile. An entity is immobile if it lacks AI goals, has just changed dimensions or if it is a mob and has no health.",
-            "Tests whether the Subject is inside the bounds of a village.",
-            "Returns true if the subject entity is leashed.",
-            "Returns true if the subject entity leashed to the calling entity.",
-            "Returns true if the subject entity is the mark variant number provided.",
-            "Tests if the subject is not at full health.",
-            "Returns true if the subject entity is moving.",
-            "Returns true if the subject entity is the owner of the calling entity.",
-            "Tests if the subject's persistence matches the bool value passed in.",
-            "Returns true if the subject entity is riding on another entity.",
-            "Returns true if the subject entity is the skin id number provided.",
-            "Tests whether the Subject is sleeping.",
-            "Returns true if the subject entity is sneaking.",
-            "Tests whether the Subject is in an area with snow cover",
-            "Returns true if the subject entity is the target of the calling entity.",
-            "Tests whether the current temperature is a given type.",
-            "Tests the current temperature against a provided value in the range (0.0, 1.0) where 0.0f is the coldest temp and 1.0f is the hottest.",
-            "Returns true when the subject entity is underground. An entity is considered underground if there are non-solid blocks above it.",
-            "Returns true when the subject entity is under water. An entity is considered underwater if it is completely submerged in water blocks.",
-            "Returns true if the subject entity is the variant number provided.",
-            "Returns true if the subject entity is visible.",
-            "Tests if the subject block is submerged in water.",
-            "DEPRECATED",
-            "Tests is the mob is outside of the specified light level range (0, 16).",
-            "Compares the current moon intensity with a float value in the range (0.0, 1.0)",
-            "Compares the current moon phase with an integer value in the range (0, 7).",
-            "Tests if the subject is on fire.",
-            "Returns true when the subject entity is on ground.",
-            "Tests if the subject is on a hot block.",
-            "Returns true when the subject entity is on a ladder.",
-            "Returns true if the random chance rolls 0 out of a specified max range.",
-            "Returns the number of riders on this entity.",
-            "Tests if the subject is a surface mob.",
-            "Tests the distance between the calling entity and its target.",
-            "Returns true if the subject is trusted by entity.",
-            "Tests the current weather in the dimension against a provided weather value.",
-            "Tests the current weather, at the actor's position, against a provided weather value."
-          ],
-          "enum": [
-            "owner_distance",
-            "taking_fire_damage",
-            "actor_health",
-            "bool_property",
-            "clock_time",
-            "distance_to_nearest_player",
-            "enum_property",
-            "float_property",
-            "has_ability",
-            "has_biome_tag",
-            "has_component",
-            "has_container_open",
-            "has_damage",
-            "has_equipment",
-            "has_mob_effect",
-            "has_nametag",
-            "has_property",
-            "has_ranged_weapon",
-            "has_silk_touch",
-            "has_tag",
-            "has_target",
-            "has_trade_supply",
-            "hourly_clock_time",
-            "in_block",
-            "in_caravan",
-            "in_clouds",
-            "in_contact_with_water",
-            "in_lava",
-            "in_nether",
-            "in_water",
-            "in_water_or_rain",
-            "inactivity_timer",
-            "int_property",
-            "is_altitude",
-            "is_avoiding_mobs",
-            "is_baby",
-            "is_biome",
-            "is_block",
-            "is_brightness",
-            "is_climbing",
-            "is_color",
-            "is_daytime",
-            "is_difficulty",
-            "is_family",
-            "is_game_rule",
-            "is_humid",
-            "is_immobile",
-            "is_in_village",
-            "is_leashed",
-            "is_leashed_to",
-            "is_mark_variant",
-            "is_missing_health",
-            "is_moving",
-            "is_owner",
-            "is_persistent",
-            "is_riding",
-            "is_skin_id",
-            "is_sleeping",
-            "is_sneaking",
-            "is_snow_covered",
-            "is_target",
-            "is_temperature_type",
-            "is_temperature_value",
-            "is_underground",
-            "is_underwater",
-            "is_variant",
-            "is_visible",
-            "is_waterlogged",
-            "is_weather",
-            "light_level",
-            "moon_intensity",
-            "moon_phase",
-            "on_fire",
-            "on_ground",
-            "on_hot_block",
-            "on_ladder",
-            "random_chance",
-            "rider_count",
-            "surface_mob",
-            "target_distance",
-            "trusts",
-            "weather",
-            "weather_at_position"
-          ]
+          "$ref": "./enum.json#/definitions/filterTest"
         },
         "name": {
           "type": "string"
@@ -1181,40 +849,11 @@
         },
         "operator": {
           "description": "The comparison to apply with 'value'.",
-          "enumDescriptions": [
-            "Test for inequality.",
-            "Test for less-than the value.",
-            "Test for less-than the value.",
-            "Test for less-than the value.",
-            "Test for equality.",
-            "Test for equality.",
-            "Test for greater-than the value.",
-            "Test for greater-than the value.",
-            "Test for equality.",
-            "Test for inequality."
-          ],
-          "enum": ["!=", "<", "<=", "<>", "=", "==", ">", ">=", "equals", "not"]
+          "$ref": "./enum.json#/definitions/operator"
         },
         "subject": {
           "description": "The subject of this filter test.",
-          "enumDescriptions": [
-            "The block involved with the interaction.",
-            "The damaging actor involved with the interaction.",
-            "The other member of an interaction, not the caller.",
-            "The caller's current parent.",
-            "The player involved with the interaction.",
-            "The entity or object calling the test",
-            "The caller's current target."
-          ],
-          "enum": [
-            "block",
-            "damager",
-            "other",
-            "parent",
-            "player",
-            "self",
-            "target"
-          ]
+          "$ref": "./enum.json#/definitions/filterSubject"
         },
         "value": {
           "type": ["string", "boolean", "number"]
@@ -1269,6 +908,33 @@
         }
       },
       "additionalProperties": false
+    },
+    "blockstate": {
+      "default": "",
+      "anyOf": [
+        {
+          "type": "string",
+          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "ID of the block",
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+            },
+            "states": {
+              "description": "Key-value pair of this block states.",
+              "type": "object",
+              "default": {},
+              "additionalProperties": {
+                "type": ["string", "number", "boolean"]
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
     }
   }
 }

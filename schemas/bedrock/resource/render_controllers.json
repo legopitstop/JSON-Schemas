@@ -1,133 +1,205 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/render_controllers.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:render_controllers": {
-            "title": "resrouce.render_controllers",
-            "description": "render_controllers\nSee https://wiki.bedrock.dev/entities/render-controllers.html#top",
-            "type": "object",
-            "additionalProperties": {
-                "description": "The id of the render_controller",
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "geometry": {
-                        "$ref": "../common.json#/definitions/MoLang"
-                    },
-                    "materials": {
-                        "type": "array",
-                        "default": [],
-                        "items": {
-                            "type": "object",
-                            "default": {},
-                            "additionalProperties": {
-                                "$ref": "../common.json#/definitions/MoLang"
-                            }
-                        }
-                    },
-                    "textures": {
-                        "type": "array",
-                        "default": [],
-                        "items": {
-                            "$ref": "../common.json#/definitions/MoLang"
-                        }
-                    },
-                    "arrays": {
-                        "$ref": "#/properties/minecraft:render_controllers/additionalProperties"
-                    },
-                    "part_visibility": {
-                        "type": "array",
-                        "default": [],
-                        "items": {
-                            "type": "object",
-                            "default": {},
-                            "additionalProperties": {
-                                "$ref": "../common.json#/definitions/MoLang"
-                            }
-                        }
-                    },
-                    "overlay_color": {
-                        "type": [
-                            "string",
-                            "object"
-                        ],
-                        "required": [
-                            "r",
-                            "g",
-                            "b",
-                            "a"
-                        ],
-                        "properties": {
-                            "r": {
-                                "description": "red",
-                                "type": "number",
-                                "minium": 0.0,
-                                "maxium": 1.0,
-                                "default": 0.0
-                            },
-                            "g": {
-                                "description": "green",
-                                "type": "number",
-                                "minium": 0.0,
-                                "maxium": 1.0,
-                                "default": 0.0
-                            },
-                            "b": {
-                                "description": "blue",
-                                "type": "number",
-                                "minium": 0.0,
-                                "maxium": 1.0,
-                                "default": 0.0
-                            },
-                            "a": {
-                                "description": "alpha",
-                                "type": "number",
-                                "minium": 0.0,
-                                "maxium": 1.0,
-                                "default": 0.0
-                            }
-                        }
-                    },
-                    "uv_anim": {
-                        "type":"object",
-                        "default": {},
-                        "properties":{
-                            "offset": {
-                                "type":"array",
-                                "default":[],
-                                "items":{
-                                    "$ref": "../common.json#/definitions/MoLang"
-                                },
-                                "minItems": 2,
-                                "maxItems": 2
-                                
-                            },
-                            "scale": {
-                                "type":"array",
-                                "default":[],
-                                "items":{
-                                    "type":"number",
-                                    "minium": 0.0,
-                                    "maxium": 1.0,
-                                    "default": 0.0
-                                },
-                                "minItems": 2,
-                                "maxItems": 2
-                            }
-                        }
-                    },
-                    "light_color_multiplier": {
-                        "type":"number",
-                        "minium": 0.0,
-                        "maxium": 1.0,
-                        "default": 0.0
-                    },
-                    "ignore_lighting" : {
-                        "type":"boolean",
-                        "default": true
-                    }
-                }
-            }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/render_controllers.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "render_controllers": ["format_version"]
+  },
+  "definitions": {
+    "arrayDefinition": {
+      "description": "A molang array.",
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "../common.json#/definitions/MoLang"
+      }
+    },
+    "array": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "Array.geos": {
+          "$ref": "#/definitions/arrayDefinition"
+        },
+        "Array.skins": {
+          "$ref": "#/definitions/arrayDefinition"
+        },
+        "Array.materials": {
+          "$ref": "#/definitions/arrayDefinition"
         }
+      },
+      "patternProperties": {
+        "^[Aa][Rr][Rr][Aa][Yy]\\.[a-zA-Z_]*$": {
+          "$ref": "#/definitions/arrayDefinition"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rgba": {
+      "type": ["string", "object"],
+      "required": ["r", "g", "b", "a"],
+      "properties": {
+        "r": {
+          "description": "red",
+          "$ref": "../common.json#/definitions/MoLang",
+          "default": "this",
+          "examples": ["this"]
+        },
+        "g": {
+          "description": "green",
+          "$ref": "../common.json#/definitions/MoLang",
+          "default": "this",
+          "examples": ["this"]
+        },
+        "b": {
+          "description": "blue",
+          "$ref": "../common.json#/definitions/MoLang",
+          "default": "this",
+          "examples": ["this"]
+        },
+        "a": {
+          "description": "alpha",
+          "$ref": "../common.json#/definitions/MoLang",
+          "default": "0.0",
+          "examples": ["this"]
+        }
+      }
     }
+  },
+  "properties": {
+    "render_controllers": {
+      "title": "resrouce.render_controllers",
+      "description": "render_controllers\nSee https://wiki.bedrock.dev/entities/render-controllers.html#top",
+      "type": "object",
+      "additionalProperties": {
+        "description": "The id of the render_controller",
+        "type": "object",
+        "default": {},
+        "properties": {
+          "geometry": {
+            "description": "The short-name geometry to use.",
+            "$ref": "../common.json#/definitions/MoLang",
+            "default": "Geometry.default",
+            "examples": ["Geometry.default", "Array.geos[q.variant]"]
+          },
+          "materials": {
+            "description": "List of materals to use for each bone in the geometry.",
+            "type": "array",
+            "default": [{ "*": "Material.default" }],
+            "items": {
+              "type": "object",
+              "default": { "*": "Material.default" },
+              "additionalProperties": {
+                "description": "The short-name materal to use for this bone.",
+                "$ref": "../common.json#/definitions/MoLang",
+                "default": "Material.default",
+                "examples": ["Materal.default", "Array.materials[q.variant]"]
+              }
+            }
+          },
+          "textures": {
+            "description": "List of texture layers.",
+            "type": "array",
+            "default": ["Texture.default"],
+            "items": {
+              "description": "The short-name texture to use.",
+              "$ref": "../common.json#/definitions/MoLang",
+              "default": "Texture.default",
+              "examples": ["Texture.default", "Array.skins[q.variant]"]
+            }
+          },
+          "arrays": {
+            "description": "Define Molang arrays.",
+            "type": "object",
+            "default": {},
+            "properties": {
+              "geometries": {
+                "description": "Define geometry arrays.",
+                "$ref": "#/definitions/array"
+              },
+              "textures": {
+                "description": "Define texture arrays.",
+                "$ref": "#/definitions/array"
+              },
+              "materials": {
+                "description": "Define material arrays.",
+                "$ref": "#/definitions/array"
+              }
+            },
+            "additionalProperties": false
+          },
+          "part_visibility": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "object",
+              "default": {},
+              "additionalProperties": {
+                "$ref": "../common.json#/definitions/MoLang"
+              }
+            }
+          },
+          "overlay_color": {
+            "description": "The overlay color.",
+            "$ref": "#/definitions/rgba"
+          },
+          "color": {
+            "$ref": "#/definitions/rgba"
+          },
+          "is_hurt_color": {
+            "$ref": "#/definitions/rgba"
+          },
+          "on_fire_color": {
+            "$ref": "#/definitions/rgba"
+          },
+          "filter_lighting": {
+            "type": "boolean",
+            "default": true
+          },
+          "uv_anim": {
+            "type": "object",
+            "default": {},
+            "properties": {
+              "offset": {
+                "type": "array",
+                "default": [],
+                "items": {
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "scale": {
+                "type": "array",
+                "default": [],
+                "items": {
+                  "type": "number",
+                  "minium": 0.0,
+                  "maxium": 1.0,
+                  "default": 0.0
+                },
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          },
+          "light_color_multiplier": {
+            "type": "number",
+            "minium": 0.0,
+            "maxium": 1.0,
+            "default": 0.0
+          },
+          "ignore_lighting": {
+            "description": "Ignore lighting",
+            "type": "boolean",
+            "default": true
+          },
+          "rebuild_animation_matrices": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

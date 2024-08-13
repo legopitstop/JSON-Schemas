@@ -1,6 +1,9 @@
 {
   "id": "../behavior/entity.json",
   "$schema": "http://json-schema.org/draft-07/schema",
+  "dependentRequired": {
+    "minecraft:entity": ["format_version"]
+  },
   "definitions": {
     "events": {
       "$id": "#/definitions/events",
@@ -63,7 +66,7 @@
             },
             "runtime_identifier": {
               "description": "Sets the name for the Vanilla Minecraft identifier this entity will use to build itself from.",
-              "type": "string"
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/entity"
             },
             "animations": {
               "description": "Sets the mapping of internal animation references to actual animations. This is a JSON Object of name/animation pairs",
@@ -102,7 +105,7 @@
                 "properties": {
                   "type": {
                     "description": "undocumented",
-                    "enum": ["bool", "int", "float", "enum"]
+                    "$ref": "../enum.json#/definitions/entityPropertyType"
                   },
                   "client_sync": { "type": "boolean", "default": true },
                   "default": { "$ref": "../common.json#/definitions/MoLang" },
@@ -1358,8 +1361,8 @@
                   "properties": {
                     "cause": {
                       "description": "Type of damage that triggers the events.",
-                      "default": "none",
-                      "$ref": "../common.json#/definitions/DamageSource"
+                      "$ref": "../enum.json#/definitions/damageSource",
+                      "default": "none"
                     },
                     "damage_modifier": {
                       "description": "A modifier that adds to/removes from the base damage from the damage cause. It does not reduce damage to less than 0.",
@@ -2153,105 +2156,120 @@
               "properties": {
                 "interactions": {
                   "description": "List of interactions",
-                  "type": "array",
-                  "default": [],
+                  "type": ["array", "object"],
+                  "default": {},
                   "items": {
-                    "type": "object",
-                    "default": {},
-                    "properties": {
-                      "on_interact": {
-                        "description": "Event to fire when the interaction occurs.",
-                        "$ref": "#/definitions/events"
-                      },
-                      "cooldown": {
-                        "description": "Time in seconds before this entity can be interacted with again.",
-                        "type": "number",
-                        "default": 0
-                      },
-                      "use_item": {
-                        "description": "If true, the interaction will use an item.",
-                        "type": "boolean",
-                        "default": false
-                      },
-                      "transform_to_item": {
-                        "description": "The item used will transform to this item upon successful interaction. Format: itemName:auxValue",
-                        "type": "string"
-                      },
-                      "play_sounds": {
-                        "description": "List of sounds to play when the interaction occurs.",
-                        "type": "string",
-                        "items": { "type": "string" }
-                      },
-                      "interact_text": {
-                        "description": "Text to show when the player is able to interact in this way with this entity when playing with Touch-screen controls.",
-                        "type": "string",
-                        "examples": ["action.interact."]
-                      },
-                      "hurt_item": {
-                        "description": "The amount of damage the item will take when used to interact with this entity. A value of 0 means the item won't lose durability.",
-                        "type": "integer",
-                        "default": 0
-                      },
-                      "swing": {
-                        "description": "If true, the player will do the 'swing' animation when interacting with this entity.",
-                        "type": "boolean",
-                        "default": false
-                      },
-                      "add_items": {
-                        "description": "Loot table with items to add to the player's inventory upon successful interaction.",
-                        "type": "object",
-                        "default": {},
-                        "required": ["table"],
-                        "properties": {
-                          "table": {
-                            "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "cooldown_after_being_attacked": {
-                        "description": "Time in seconds before this entity can be interacted with after being attacked.",
-                        "type": "number",
-                        "default": 0
-                      },
-                      "particle_on_start": {
-                        "description": "Particle effect that will be triggered at the start of the interaction.",
-                        "type": "object",
-                        "default": {},
-                        "properties": {
-                          "particle_offset_towards_interactor": {
-                            "description": "Whether or not the particle will appear closer to who performed the interaction.",
-                            "type": "number"
-                          },
-                          "particle_type": {
-                            "description": "The type of particle that will be spawned.",
-                            "type": "string"
-                          },
-                          "particle_y_offset": {
-                            "description": "Will offset the particle this amount in the y direction.",
-                            "type": "number"
-                          }
-                        }
-                      },
-                      "spawn_entities": {
-                        "description": "List of entities to spawn when the interaction occurs.",
-                        "type": ["array", "string"],
-                        "items": { "type": "string" }
-                      },
-                      "spawn_items": {
-                        "description": "Loot table with items to drop on the ground upon successful interaction.",
-                        "type": "object",
-                        "default": {},
-                        "properties": {
-                          "table": {
-                            "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
-                            "type": "string"
-                          }
+                    "$ref": "#/properties/minecraft:entity/properties/components/properties/minecraft:interact/properties/interactions"
+                  },
+                  "properties": {
+                    "equip_item_slot": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "health_amount": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "give_item": { "type": "boolean", "default": true },
+                    "take_item": { "type": "boolean", "default": true },
+                    "barter": { "type": "boolean", "default": true },
+                    "admire": { "type": "boolean", "default": true },
+                    "vibration": {
+                      "description": "Vibration to trigger.",
+                      "$ref": "../enum.json#/definitions/vibration"
+                    },
+                    "on_interact": {
+                      "description": "Event to fire when the interaction occurs.",
+                      "$ref": "#/definitions/events"
+                    },
+                    "cooldown": {
+                      "description": "Time in seconds before this entity can be interacted with again.",
+                      "type": "number",
+                      "default": 0
+                    },
+                    "use_item": {
+                      "description": "If true, the interaction will use an item.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "transform_to_item": {
+                      "description": "The item used will transform to this item upon successful interaction. Format: itemName:auxValue",
+                      "type": "string"
+                    },
+                    "play_sounds": {
+                      "description": "List of sounds to play when the interaction occurs.",
+                      "type": "string",
+                      "items": { "type": "string" }
+                    },
+                    "interact_text": {
+                      "description": "Text to show when the player is able to interact in this way with this entity when playing with Touch-screen controls.",
+                      "type": "string",
+                      "examples": ["action.interact."]
+                    },
+                    "hurt_item": {
+                      "description": "The amount of damage the item will take when used to interact with this entity. A value of 0 means the item won't lose durability.",
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "swing": {
+                      "description": "If true, the player will do the 'swing' animation when interacting with this entity.",
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "add_items": {
+                      "description": "Loot table with items to add to the player's inventory upon successful interaction.",
+                      "type": "object",
+                      "default": {},
+                      "required": ["table"],
+                      "properties": {
+                        "table": {
+                          "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
+                          "type": "string"
                         }
                       }
                     },
-                    "additionalProperties": false
-                  }
+                    "cooldown_after_being_attacked": {
+                      "description": "Time in seconds before this entity can be interacted with after being attacked.",
+                      "type": "number",
+                      "default": 0
+                    },
+                    "particle_on_start": {
+                      "description": "Particle effect that will be triggered at the start of the interaction.",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "particle_offset_towards_interactor": {
+                          "description": "Whether or not the particle will appear closer to who performed the interaction.",
+                          "type": ["number", "boolean"]
+                        },
+                        "particle_type": {
+                          "description": "The type of particle that will be spawned.",
+                          "type": "string"
+                        },
+                        "particle_y_offset": {
+                          "description": "Will offset the particle this amount in the y direction.",
+                          "type": "number"
+                        }
+                      }
+                    },
+                    "spawn_entities": {
+                      "description": "List of entities to spawn when the interaction occurs.",
+                      "type": ["array", "string"],
+                      "items": { "type": "string" }
+                    },
+                    "spawn_items": {
+                      "description": "Loot table with items to drop on the ground upon successful interaction.",
+                      "type": "object",
+                      "default": {},
+                      "properties": {
+                        "table": {
+                          "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "additionalProperties": false
                 }
               }
             },
@@ -2273,15 +2291,7 @@
                 },
                 "container_type": {
                   "description": "Type of container this entity has. Can be horse, minecart_chest, minecart_hopper, inventory, chest_boat, container or hopper",
-                  "enum": [
-                    "horse",
-                    "minecart_chest",
-                    "minecart_hopper",
-                    "inventory",
-                    "container",
-                    "hopper",
-                    "chest_boat"
-                  ]
+                  "$ref": "../enum.json#/definitions/entityContainerType"
                 },
                 "inventory_size": {
                   "description": "Number of slots the container has",
@@ -2860,7 +2870,9 @@
                       "default": {},
                       "properties": {
                         "size": { "type": "number", "default": 1.0 },
-                        "shape": { "enum": ["cube"] },
+                        "shape": {
+                          "$ref": "../enum.json#/definitions/projectileShape"
+                        },
                         "snap_to_block": { "type": "boolean", "default": true }
                       },
                       "additionalProperties": false
@@ -7942,7 +7954,7 @@
                     "properties": {
                       "event": { "type": "string" },
                       "target": {
-                        "$ref": "../common.json#/definitions/eventTarget"
+                        "$ref": "../enum.json#/definitions/eventTarget"
                       }
                     },
                     "additionalProperties": false
@@ -8270,7 +8282,9 @@
                   "description": "Types of materials that can exist above the target block. Valid types are Air, Water, and Lava.",
                   "type": "array",
                   "default": [],
-                  "items": { "enum": ["Air", "Water", "Lava"] }
+                  "items": {
+                    "$ref": "../enum.json#/definitions/entityTargetMaterial"
+                  }
                 },
                 "allow_laying_from_below": {
                   "description": "Allows the mob to lay its eggs from below the target if it can't get there. This is useful if the target block is water with air above, since mobs may not be able to get to the air block above water.",
@@ -8674,7 +8688,7 @@
                 },
                 "target_selection_method": {
                   "description": "Kind of block to find fitting the specification. Valid values are \"random\" and \"nearest\".",
-                  "enum": ["random", "nearest"]
+                  "$ref": "../enum.json#/definitions/entitySelectionMethod"
                 },
                 "tick_interval": {
                   "description": "Average interval in ticks to try to run this behavior.",
@@ -8767,7 +8781,7 @@
                 },
                 "material_type": {
                   "description": "The material type of the liquid block to find. Valid values are \"Any\", \"Water\", and \"Lava\".",
-                  "enum": ["any", "water", "lava", "Lava", "Water", "Any"]
+                  "$ref": "../enum.json#/definitions/entityMaterialType"
                 },
                 "search_count": {
                   "description": "The number of blocks each tick that the mob will check within its search range and height for a valid block to move to. A value of 0 will have the mob check every block within range in one tick",
@@ -11034,7 +11048,7 @@
                     "items": { "type": "string" }
                   },
                   "target": {
-                    "$ref": "../common.json#/definitions/eventTarget"
+                    "$ref": "../enum.json#/definitions/eventTarget"
                   }
                 },
                 "additionalProperties": false

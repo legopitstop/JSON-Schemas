@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/scan_surface.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:scan_surface": ["format_version"]
+  },
   "properties": {
     "minecraft:scan_surface": {
       "title": "behavior.scan_surface (1.21.10)",

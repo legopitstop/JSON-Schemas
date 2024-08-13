@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/npc_dialogue.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:npc_dialogue": ["format_version"]
+  },
   "definitions": {
     "RawText": {
       "type": ["object", "string"],

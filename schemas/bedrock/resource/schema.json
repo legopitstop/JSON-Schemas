@@ -16,9 +16,6 @@
       "$ref": "./piece_store_info.json"
     },
     {
-      "$ref": "./music_definitions.json"
-    },
-    {
       "$ref": "./sounds.json"
     },
     {
@@ -44,9 +41,6 @@
     },
     {
       "$ref": "./block_geometry.json"
-    },
-    {
-      "$ref": "./blocks.json"
     },
     {
       "$ref": "./client_entity.json"
@@ -77,6 +71,13 @@
     },
     {
       "$ref": "./ui.json"
+    },
+    
+    {
+      "$ref": "./blocks.json"
+    },
+    {
+      "$ref": "./music_definitions.json"
     }
   ]
 }

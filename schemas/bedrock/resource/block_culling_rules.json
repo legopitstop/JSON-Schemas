@@ -1,7 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/block_culling.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "definitions": {},
+  "dependentRequired": {
+    "minecraft:block_culling_rules": ["format_version"]
+  },
   "properties": {
     "minecraft:block_culling_rules": {
       "title": "resource.block_culling_rules",
@@ -43,14 +45,14 @@
                     "default": 0
                   },
                   "face": {
-                    "enum": ["up", "down", "north", "south", "east", "west"]
+                    "$ref": "../enum.json#/definitions/face"
                   }
                 },
                 "additionalProperties": false
               },
               "direction": {
                 "description": "Specifies the direction of the neighbor block to check for culling. This direction rotates with a block's Transform component.",
-                "enum": ["up", "down", "north", "south", "east", "west"]
+                "$ref": "../enum.json#/definitions/direction"
               }
             },
             "additionalProperties": false

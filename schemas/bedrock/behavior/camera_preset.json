@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/camera_preset.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:camera_preset": ["format_version"]
+  },
   "properties": {
     "minecraft:camera_preset": {
       "title": "behavior.camera_preset (1.19.50)",
@@ -48,7 +51,7 @@
           "default": 0
         },
         "listener": {
-          "enum": ["player"]
+          "$ref": "../enum.json#/definitions/cameraListener"
         }
       },
       "additionalProperties": false

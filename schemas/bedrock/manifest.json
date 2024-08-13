@@ -20,13 +20,7 @@
       "type": ["object", "array"],
       "default": {},
       "items": {
-        "enum": [
-          "pbr",
-          "chemistry",
-          "editorExtension",
-          "experimental_custom_ui",
-          "raytraced"
-        ]
+        "$ref": "./enum.json#/definitions/manifestCapability"
       },
       "properties": {
         "chemistry": {
@@ -198,14 +192,7 @@
           },
           "type": {
             "description": "This is the type of the module. Can be any of the following: resources, data, client_data, interface, world_template",
-            "enum": [
-              "resources",
-              "data",
-              "client_data",
-              "interface",
-              "world_template",
-              "skin_pack"
-            ]
+            "$ref": "./enum.json#/definitions/manifestType"
           },
           "uuid": {
             "description": "This is a unique identifier for the module in the same format as the pack's UUID in the header. This should be different from the pack's UUID, and different for every module",

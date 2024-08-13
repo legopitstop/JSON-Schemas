@@ -1,9 +1,7 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/block.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "dependentRequired": {
-    "minecraft:block": ["format_version"]
-  },
+  "dependentRequired": { "minecraft:block": ["format_version"] },
   "definitions": {
     "VanillaTags": {
       "description": "Vanilla tags can be applied to custom blocks, and some vanilla blocks are tagged internally. This kind of tag doesn't give blocks vanilla features. The only usage of it is to tag blocks to make them have the same tags as the vanilla blocks for queries or tests. https://wiki.bedrock.dev/blocks/block-tags.html#vanilla-tags",
@@ -38,13 +36,11 @@
         }
       }
     },
-    "allowedBlockFaces": {
-      "$ref": "../enum.json#/definitions/blockFace"
-    }
+    "allowedBlockFaces": { "$ref": "../enum.json#/definitions/blockFace" }
   },
   "properties": {
     "minecraft:block": {
-      "title": "behavior.block (1.21.0)",
+      "title": "behavior.block (1.21.10)",
       "description": "A data-driven block\nSee https://bedrock.dev/docs/stable/Blocks",
       "type": "object",
       "required": ["description"],
@@ -55,11 +51,6 @@
           "properties": {
             "identifier": {
               "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
-            },
-            "properties": {
-              "title": "Format: 1.20.10.21",
-              "description": "Replaced with 'states'",
-              "deprecated": true
             },
             "states": {
               "type": "object",
@@ -79,12 +70,8 @@
                     "type": "object",
                     "default": {},
                     "properties": {
-                      "min": {
-                        "type": "number"
-                      },
-                      "max": {
-                        "type": "number"
-                      }
+                      "min": { "type": "number" },
+                      "max": { "type": "number" }
                     },
                     "additionalProperties": false
                   }
@@ -98,28 +85,25 @@
               "default": {},
               "properties": {
                 "category": {
-                  "description": "Determines which category this block will be placed under in the inventory and crafting table container screens. Options are \"construction\", \"nature\", \"equipment\",\"items\", and \"none\". If omitted or \"none\" is specified, the block will not appear in the inventory or crafting table container screens.",
+                  "description": "Determines which category this block will be placed under in the inventory and crafting table container screens. Options are \"construction\",\"nature\",\"equipment\",\"items\",and \"none\". If omitted or \"none\"is specified, the block will not appear in the inventory or crafting table container screens.",
                   "$ref": "../enum.json#/definitions/itemTab"
                 },
                 "group": {
                   "description": "Specifies the language file key that maps to which expandable/collapsible group this block will be a part of within a category. If this field is omitted, or there is no group whose name matches the loc string, this block will be placed standalone in the given category.",
                   "$ref": "../enum.json#/definitions/itemGroup"
                 },
-                "is_hidden_in_commands": {
-                  "type": "boolean",
-                  "default": true
-                }
+                "is_hidden_in_commands": { "type": "boolean", "default": true }
               },
               "additionalProperties": false
             },
             "traits": {
-              "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+              "title": "EXPERIMENTAL (toggle:Upcomming Creator Features)",
               "description": "List of all Block Traits and the BlockStates they include. https://bedrock.dev/docs/beta/Addons#BlockTraits",
               "type": "object",
               "default": {},
               "properties": {
                 "minecraft:placement_direction": {
-                  "description": "Can enable the \"minecraft:cardinal_direction\" and/or \"minecraft:facing_direction\" states on a block.",
+                  "description": "Can enable the \"minecraft:cardinal_direction\"and/or \"minecraft:facing_direction\"states on a block.",
                   "type": "object",
                   "default": {},
                   "required": ["enabled_states"],
@@ -135,14 +119,14 @@
                       "uniqueItems": true
                     },
                     "y_rotation_offset": {
-                      "description": "The y rotation offset to apply to the block. Must be [0.0, 90.0, 180.0, 270.0]. Default is 0, meaning if the player is facing north, the \"minecraft:cardinal_direction\" and/or minecraft:facing_direction state will be north.",
+                      "description": "The y rotation offset to apply to the block. Must be [0.0, 90.0, 180.0, 270.0]. Default is 0, meaning if the player is facing north, the \"minecraft:cardinal_direction\"and/or minecraft:facing_direction state will be north.",
                       "$ref": "../enum.json#/definitions/blockRotation"
                     }
                   },
                   "additionalProperties": false
                 },
                 "minecraft:placement_position": {
-                  "description": "Can enable the \"minecraft:block_face\" and/or \"minecraft:vertical_half\" states on a block.",
+                  "description": "Can enable the \"minecraft:block_face\"and/or \"minecraft:vertical_half\"states on a block.",
                   "type": "object",
                   "default": {},
                   "properties": {
@@ -168,8 +152,16 @@
         "components": {
           "type": "object",
           "properties": {
+            "minecraft:redstone_conductivity": {
+              "title": "STABLE (Format:1.21.10)",
+              "description": "Controls the basic Redstone properties of a custom block",
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
             "minecraft:tick": {
-              "title": "STABLE (Format: 1.21.10)",
+              "title": "STABLE (Format:1.21.10)",
               "description": "Configures how this block should tick for BlockCustomComponent.onTick",
               "type": "object",
               "default": {},
@@ -177,10 +169,7 @@
                 "interval_range": {
                   "type": "array",
                   "default": [0, 0],
-                  "items": {
-                    "type": "integer",
-                    "default": 0
-                  },
+                  "items": { "type": "integer", "default": 0 },
                   "minItems": 2,
                   "maxItems": 2
                 }
@@ -189,39 +178,37 @@
             },
             "minecraft:custom_components": {
               "title": "STABLE (1.21.10)",
-              "description": "Sets an ordered list of custom component names which are bound in script to be executed upon a block event.",
+              "description": "Sets an ordered list of custom component names which are bound in script to be executed upon a block event. https://learn.microsoft.com/en-us/minecraft/creator/documents/customcomponents",
               "type": "array",
               "default": [],
-              "items": {
-                "type": "string"
-              }
+              "items": { "type": "string" }
             },
             "minecraft:transformation": {
-              "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+              "title": "EXPERIMENTAL (toggle:Upcomming Creator Features)",
               "description": "The block's translation, rotation and scale with respect to the center of its world position",
               "properties": {
                 "translation": {
-                  "description": "Amount the block should be translated along each axis. \"Translation\" is specified as [x, y, z] using floating point values.",
+                  "description": "Amount the block should be translated along each axis. \"Translation\"is specified as [x, y, z] using floating point values.",
                   "default": [0, 0, 0],
                   "$ref": "../common.json#/definitions/Vector3"
                 },
                 "scale": {
-                  "description": "Amount the block should be scaled along each axis. \"Scale\" is specified as [x, y, z] using floating point values.",
+                  "description": "Amount the block should be scaled along each axis. \"Scale\"is specified as [x, y, z] using floating point values.",
                   "default": [1, 1, 1],
                   "$ref": "../common.json#/definitions/Vector3"
                 },
                 "scale_pivot": {
-                  "description": "Offset to the pivot point around which to apply the scale. \"scale_pivot\" is specified as [x, y, z] using floating point values.",
+                  "description": "Offset to the pivot point around which to apply the scale. \"scale_pivot\"is specified as [x, y, z] using floating point values.",
                   "default": [0, 0, 0],
                   "$ref": "../common.json#/definitions/Vector3"
                 },
                 "rotation": {
-                  "description": "Amount in degrees the block should be rotated on each axis. \"rotation\" is specified as [x, y, z] using floating point values and must be axis aligned, otherwise the value will be rounded to the nearest axis-aligned value.",
+                  "description": "Amount in degrees the block should be rotated on each axis. \"rotation\"is specified as [x, y, z] using floating point values and must be axis aligned, otherwise the value will be rounded to the nearest axis-aligned value.",
                   "default": [0, 0, 0],
                   "$ref": "../common.json#/definitions/Vector3"
                 },
                 "rotation_pivot": {
-                  "description": "Offset to the pivot point around which to apply the rotation. \"rotation_pivot\" is specified as [x, y, z] using floating point values.",
+                  "description": "Offset to the pivot point around which to apply the rotation. \"rotation_pivot\"is specified as [x, y, z] using floating point values.",
                   "default": [0, 0, 0],
                   "$ref": "../common.json#/definitions/Vector3"
                 }
@@ -229,7 +216,7 @@
               "additionalProperties": false
             },
             "minecraft:bone_visibility": {
-              "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+              "title": "EXPERIMENTAL (toggle:Upcomming Creator Features)",
               "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
               "type": "object",
               "default": {},
@@ -240,7 +227,7 @@
               }
             },
             "minecraft:part_visibility": {
-              "title": "EXPERIMENTAL (toggle: Upcomming Creator Features)",
+              "title": "EXPERIMENTAL (toggle:Upcomming Creator Features)",
               "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false.",
               "type": "object",
               "properties": {
@@ -258,14 +245,11 @@
               "additionalProperties": false
             },
             "minecraft:rotation": {
-              "title": "EXPERIMENTAL (toggle: Holiday Creator Features)",
+              "title": "EXPERIMENTAL (toggle:Holiday Creator Features)",
               "description": "The block's rotation around the center of the cube in degrees. The rotation is specified as [x, y, z]. Angles need to be in factors of 90.",
               "type": "array",
               "default": [0, 0, 0],
-              "items": {
-                "type": "integer",
-                "multipleOf": 90
-              },
+              "items": { "type": "integer", "multipleOf": 90 },
               "minItems": 3,
               "maxItems": 3
             },
@@ -279,22 +263,20 @@
               "description": "Defines the area of the block that collides with entities. If set to true, default values are used. If set to false, the block's collision with entities is disabled. If this component is omitted, default values are used.",
               "default": false,
               "anyOf": [
-                {
-                  "type": "boolean"
-                },
+                { "type": "boolean" },
                 {
                   "type": "object",
                   "required": ["origin", "size"],
                   "properties": {
                     "origin": {
-                      "description": "Minimal position of the bounds of the collision box. \"origin\" is specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
+                      "description": "Minimal position of the bounds of the collision box. \"origin\"is specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
                       "type": "array",
                       "default": [-8.0, 0.0, -8.0],
                       "minimum": -8,
                       "maximum": 16
                     },
                     "size": {
-                      "description": "Size of each side of the collision box. Size is specified as [x, y, z]. \"origin\" + \"size\" must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
+                      "description": "Size of each side of the collision box. Size is specified as [x, y, z]. \"origin\"+ \"size\"must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
                       "type": "array",
                       "default": [16.0, 16.0, 16.0],
                       "minimum": -8,
@@ -307,7 +289,7 @@
             },
             "minecraft:crafting_table": {
               "title": "STABLE (1.19.50)",
-              "description": "Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes. This component supports only \"recipe_shaped\" and \"recipe_shapeless\" typed recipes and not others like \"recipe_furnace\" or \"recipe_brewing_mix\". If there are two recipes for one item, the recipe book will pick the first that was parsed. If two input recipes are the same, crafting may assert and the resulting item may vary.",
+              "description": "Makes your block into a custom crafting table which enables the crafting table UI and the ability to craft recipes. This component supports only \"recipe_shaped\"and \"recipe_shapeless\"typed recipes and not others like \"recipe_furnace\"or \"recipe_brewing_mix\". If there are two recipes for one item, the recipe book will pick the first that was parsed. If two input recipes are the same, crafting may assert and the resulting item may vary.",
               "type": "object",
               "properties": {
                 "crafting_tags": {
@@ -320,7 +302,7 @@
                   "maxItems": 64
                 },
                 "table_name": {
-                  "description": "Specifies the language file key that maps to what text will be displayed in the UI of this table. If the string given can not be resolved as a loc string, the raw string given will be displayed. If this field is omitted, the name displayed will default to the name specified in the \"display_name\" component. If this block has no \"display_name\" component, the name displayed will default to the name of the block.",
+                  "description": "Specifies the language file key that maps to what text will be displayed in the UI of this table. If the string given can not be resolved as a loc string, the raw string given will be displayed. If this field is omitted, the name displayed will default to the name specified in the \"display_name\"component. If this block has no \"display_name\"component, the name displayed will default to the name of the block.",
                   "type": "string"
                 }
               },
@@ -368,12 +350,12 @@
               "required": ["burn_odds", "flame_odds"],
               "properties": {
                 "catch_chance_modifier": {
-                  "description": "A modifier affecting the chance that this block will catch flame when next to a fire. Values are greater than or equal to 0, with a higher number meaning more likely to catch on fire. For a \"catch_chance_modifier\" greater than 0, the fire will continue to burn until the block is destroyed (or it will burn forever if the \"destroy_chance_modifier\" is 0). If the \"catch_chance_modifier\" is 0, and the block is directly ignited, the fire will eventually burn out without destroying the block (or it will have a chance to be destroyed if \"destroy_chance_modifier\" is greater than 0). The default value of 5 is the same as that of Planks.",
+                  "description": "A modifier affecting the chance that this block will catch flame when next to a fire. Values are greater than or equal to 0, with a higher number meaning more likely to catch on fire. For a \"catch_chance_modifier\"greater than 0, the fire will continue to burn until the block is destroyed (or it will burn forever if the \"destroy_chance_modifier\"is 0). If the \"catch_chance_modifier\"is 0, and the block is directly ignited, the fire will eventually burn out without destroying the block (or it will have a chance to be destroyed if \"destroy_chance_modifier\"is greater than 0). The default value of 5 is the same as that of Planks.",
                   "type": "integer",
                   "default": 5
                 },
                 "destroy_chance_modifier": {
-                  "description": "A modifier affecting the chance that this block will be destroyed by flames when on fire. Values are greater than or equal to 0, with a higher number meaning more likely to be destroyed by fire. For a \"destroy_chance_modifier\" of 0, the block will never be destroyed by fire, and the fire will burn forever if the \"catch_chance_modifier\" is greater than 0. The default value of 20 is the same as that of Planks.",
+                  "description": "A modifier affecting the chance that this block will be destroyed by flames when on fire. Values are greater than or equal to 0, with a higher number meaning more likely to be destroyed by fire. For a \"destroy_chance_modifier\"of 0, the block will never be destroyed by fire, and the fire will burn forever if the \"catch_chance_modifier\"is greater than 0. The default value of 20 is the same as that of Planks.",
                   "type": "integer",
                   "default": 20
                 }
@@ -388,7 +370,7 @@
               "default": 0.4
             },
             "minecraft:geometry": {
-              "title": "STABLE (format: 1.19.40+)",
+              "title": "STABLE (format:1.19.40+)",
               "description": "The description identifier of the geometry file to use to render this block. This identifier must match an existing geometry identifier in any of the currently loaded resource packs.",
               "type": ["string", "object"],
               "examples": [
@@ -468,8 +450,8 @@
               ]
             },
             "minecraft:material_instances": {
-              "title": "STABLE (format: 1.19.40+)",
-              "description": "The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces: \"up\", \"down\", \"north\", \"south\", \"east\", \"west\", or \"*\". You can also give an instance the name of your choosing such as \"my_instance\", and then assign it to a face by doing \"north\":\"my_instance\".",
+              "title": "STABLE (format:1.19.40+)",
+              "description": "The material instances for a block. Maps face or material_instance names in a geometry file to an actual material instance. You can assign a material instance object to any of these faces:\"up\",\"down\",\"north\",\"south\",\"east\",\"west\",or \"*\". You can also give an instance the name of your choosing such as \"my_instance\",and then assign it to a face by doing \"north\":\"my_instance\".",
               "type": "object",
               "additionalProperties": {
                 "$ref": "#/definitions/materialInstances"
@@ -488,15 +470,13 @@
                     "default": {},
                     "properties": {
                       "allowed_faces": {
-                        "description": "List of any of the following strings describing which face(s) this block can be placed on: \"up\", \"down\", \"north\", \"south\", \"east\", \"west\", \"side\", \"all\". Limited to 6 faces.",
-                        "items": {
-                          "$ref": "#/definitions/allowedBlockFaces"
-                        },
+                        "description": "List of any of the following strings describing which face(s) this block can be placed on:\"up\",\"down\",\"north\",\"south\",\"east\",\"west\",\"side\",\"all\". Limited to 6 faces.",
+                        "items": { "$ref": "#/definitions/allowedBlockFaces" },
                         "uniqueItems": true,
                         "maxItems": 6
                       },
                       "block_filter": {
-                        "description": "List of blocks that this block can be placed against in the \"allowed_faces\" direction. Limited to 64 blocks. Each block in this list can either be specified as a String (block name) or as a BlockDescriptor. A BlockDescriptor is an object that allows you to reference a block (or multiple blocks) based on its tags, or based on its name and states. The fields of a BlockDescriptor are described below.",
+                        "description": "List of blocks that this block can be placed against in the \"allowed_faces\"direction. Limited to 64 blocks. Each block in this list can either be specified as a String (block name) or as a BlockDescriptor. A BlockDescriptor is an object that allows you to reference a block (or multiple blocks) based on its tags, or based on its name and states. The fields of a BlockDescriptor are described below.",
                         "type": "array",
                         "maxItems": 64,
                         "items": {
@@ -541,22 +521,20 @@
               "description": "Defines the area of the block that is selected by the player's cursor. If set to true, default values are used. If set to false, this block is not selectable by the player's cursor. If this component is omitted, default values are used.",
               "default": false,
               "anyOf": [
-                {
-                  "type": "boolean"
-                },
+                { "type": "boolean" },
                 {
                   "type": "object",
                   "required": ["origin", "size"],
                   "properties": {
                     "origin": {
-                      "description": "Minimal position of the bounds of the selection box. \"origin\" is specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
+                      "description": "Minimal position of the bounds of the selection box. \"origin\"is specified as [x, y, z] and must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
                       "type": "array",
                       "default": [-8.0, 0.0, -8.0],
                       "minimum": -8,
                       "maximum": 16
                     },
                     "size": {
-                      "description": "Size of each side of the selection box. Size is specified as [x, y, z]. \"origin\" + \"size\" must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
+                      "description": "Size of each side of the selection box. Size is specified as [x, y, z]. \"origin\"+ \"size\"must be in the range (-8, 0, -8) to (8, 16, 8), inclusive.",
                       "type": "array",
                       "default": [16.0, 16.0, 16.0],
                       "minimum": -8,
@@ -573,287 +551,46 @@
               "type": "boolean",
               "default": false
             },
-            "tag:one_way_collidable": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:wood": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:pumpkin": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:plant": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:stone": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:metal": {
-              "$ref": "#/definitions/VanillaTags"
-            },
+            "tag:one_way_collidable": { "$ref": "#/definitions/VanillaTags" },
+            "tag:wood": { "$ref": "#/definitions/VanillaTags" },
+            "tag:pumpkin": { "$ref": "#/definitions/VanillaTags" },
+            "tag:plant": { "$ref": "#/definitions/VanillaTags" },
+            "tag:stone": { "$ref": "#/definitions/VanillaTags" },
+            "tag:metal": { "$ref": "#/definitions/VanillaTags" },
             "tag:diamond_pick_diggable": {
               "$ref": "#/definitions/VanillaTags"
             },
-            "tag:gold_pick_diggable": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:iron_pick_diggable": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:stone_pick_diggable": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:wood_pick_diggable": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:dirt": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:sand": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:gravel": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:grass": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:snow": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:rail": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:water": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:mob_spawner": {
-              "$ref": "#/definitions/VanillaTags"
-            },
+            "tag:gold_pick_diggable": { "$ref": "#/definitions/VanillaTags" },
+            "tag:iron_pick_diggable": { "$ref": "#/definitions/VanillaTags" },
+            "tag:stone_pick_diggable": { "$ref": "#/definitions/VanillaTags" },
+            "tag:wood_pick_diggable": { "$ref": "#/definitions/VanillaTags" },
+            "tag:dirt": { "$ref": "#/definitions/VanillaTags" },
+            "tag:sand": { "$ref": "#/definitions/VanillaTags" },
+            "tag:gravel": { "$ref": "#/definitions/VanillaTags" },
+            "tag:grass": { "$ref": "#/definitions/VanillaTags" },
+            "tag:snow": { "$ref": "#/definitions/VanillaTags" },
+            "tag:rail": { "$ref": "#/definitions/VanillaTags" },
+            "tag:water": { "$ref": "#/definitions/VanillaTags" },
+            "tag:mob_spawner": { "$ref": "#/definitions/VanillaTags" },
             "tag:lush_plants_replaceable": {
               "$ref": "#/definitions/VanillaTags"
             },
             "tag:azalea_log_replaceable": {
               "$ref": "#/definitions/VanillaTags"
             },
-            "tag:acacia": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
-            "tag:birch": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
-            "tag:dark_oak": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
-            "tag:jungle": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
-            "tag:log": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
-            "tag:oak": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
-            "tag:spruce": {
-              "$ref": "#/definitions/VanillaBlockTags"
-            },
+            "tag:acacia": { "$ref": "#/definitions/VanillaBlockTags" },
+            "tag:birch": { "$ref": "#/definitions/VanillaBlockTags" },
+            "tag:dark_oak": { "$ref": "#/definitions/VanillaBlockTags" },
+            "tag:jungle": { "$ref": "#/definitions/VanillaBlockTags" },
+            "tag:log": { "$ref": "#/definitions/VanillaBlockTags" },
+            "tag:oak": { "$ref": "#/definitions/VanillaBlockTags" },
+            "tag:spruce": { "$ref": "#/definitions/VanillaBlockTags" },
             "tag:not_feature_replaceable": {
               "$ref": "#/definitions/VanillaTags"
             },
-            "tag:text_sign": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:minecraft:crop": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "tag:fertilize_area": {
-              "$ref": "#/definitions/VanillaTags"
-            },
-            "minecraft:random_ticking": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onRandomTick in scripting",
-              "deprecated": true,
-              "type": "object",
-              "required": ["on_tick"],
-              "properties": {
-                "on_tick": {
-                  "description": "The event that will be triggered on random ticks.",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:queued_ticking": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onTick in scripting",
-              "deprecated": true,
-              "type": "object",
-              "required": ["looping", "interval_range", "on_tick"],
-              "properties": {
-                "interval_range": {
-                  "description": "A range of values, specified in ticks, that will be used to decide the interval between times this event triggers. Each interval will be chosen randomly from the range, so the times between this event triggering will differ given an interval_range of two different values. If the values in the interval_range are the same, the event will always be triggered after that number of ticks.",
-                  "type": "array",
-                  "default": [10, 10],
-                  "items": {
-                    "type": "integer"
-                  },
-                  "minItems": 2,
-                  "maxItems": 2
-                },
-                "looping": {
-                  "description": "Does the event loop? If false, the event will only be triggered once, after a delay equal to a number of ticks randomly chosen from the interval_range. If true, the event will loop, and each interval between events will be equal to a number of ticks randomly chosen from the interval_range.",
-                  "type": "boolean",
-                  "default": true
-                },
-                "on_tick": {
-                  "description": "The event that will be triggered once or on an interval.",
-                  "$ref": "../common.json#/definitions/EventTrigger"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_fall_on": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onEntityFallOn in scripting",
-              "deprecated": true,
-              "type": "object",
-              "required": ["min_fall_distance", "event"],
-              "properties": {
-                "condition": {
-                  "description": "The condition of event to be executed on the block.",
-                  "$ref": "../common.json#/definitions/MoLang"
-                },
-                "event": {
-                  "description": "The event executed on the block.",
-                  "type": "string"
-                },
-                "min_fall_distance": {
-                  "description": "The minimum distance in blocks that an actor needs to fall to trigger this event.",
-                  "type": "integer",
-                  "default": 0.0
-                },
-                "target": {
-                  "description": "The target of event executed on the block.",
-                  "$ref": "../enum.json#/definitions/eventTarget",
-                  "default": "self"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_interact": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onPlayerInteract in scripting",
-              "deprecated": true,
-              "type": "object",
-              "required": ["event"],
-              "properties": {
-                "condition": {
-                  "description": "The condition of event to be executed on the block.",
-                  "$ref": "../common.json#/definitions/MoLang"
-                },
-                "event": {
-                  "description": "The event executed on the block.",
-                  "type": "string"
-                },
-                "drop_item_slot": {
-                  "description": "allows to specify an inventory slot to remove and drop items from",
-                  "type": "integer",
-                  "default": 0
-                },
-                "target": {
-                  "description": "The target of event executed on the block.",
-                  "$ref": "../enum.json#/definitions/eventTarget",
-                  "default": "self"
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:on_placed": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onPlace in scripting",
-              "deprecated": true,
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_player_destroyed": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onPlayerDestroy in scripting",
-              "deprecated": true,
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_player_placing": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onPlayerPlace in scripting",
-              "deprecated": true,
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_step_off": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onStepOff in scripting",
-              "deprecated": true,
-              "type": "object",
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:on_step_on": {
-              "title": "Format: 1.21.10+",
-              "description": "Use BlockCustomComponent.onStepOn in scripting",
-              "deprecated": true,
-              "$ref": "../common.json#/definitions/EventTrigger"
-            },
-            "minecraft:block_light_absorption": {
-              "title": "Format: ?",
-              "description": "Replaced with 'light_dampening'",
-              "deprecated": true
-            },
-            "minecraft:unit_cube": {
-              "title": "Format: 1.20.60",
-              "description": "Use \"minecraft:geometry\": \"minecraft:geometry.full_block\" instead",
-              "deprecated": true
-            },
-            "minecraft:entity_collision": {
-              "title": "Format: ?",
-              "description": "Replaced with 'collision_box'",
-              "deprecated": true
-            },
-            "minecraft:block_collision": {
-              "title": "Format: ?",
-              "description": "Replaced with 'collision_box'",
-              "deprecated": true
-            },
-            "minecraft:pick_collision": {
-              "title": "Format: ?",
-              "description": "Replaced with 'selection_box'",
-              "deprecated": true
-            },
-            "minecraft:aim_collision": {
-              "title": "Format: 1.19.20",
-              "description": "Replaced with 'selection_box'",
-              "deprecated": true
-            },
-            "minecraft:ticking": {
-              "title": "Format: ?",
-              "description": "Replaced with 'queued_ticking'",
-              "deprecated": true
-            },
-            "minecraft:block_light_emission": {
-              "title": "Format: 1.19.20",
-              "description": "Replaced with 'light_emission'",
-              "deprecated": true
-            },
-            "minecraft:destroy_time": {
-              "title": "Format: 1.19.20",
-              "description": "Replaced with 'destructible_by_mining'",
-              "deprecated": true
-            },
-            "minecraft:explosion_resistance": {
-              "title": "Format: 1.19.20",
-              "description": "Replaced with 'destructible_by_explosion'",
-              "deprecated": true
-            },
-            "minecraft:creative_category": {
-              "title": "Format: 1.19.40",
-              "description": "Replaced with 'menu_category'",
-              "deprecated": true
-            }
+            "tag:text_sign": { "$ref": "#/definitions/VanillaTags" },
+            "tag:minecraft:crop": { "$ref": "#/definitions/VanillaTags" },
+            "tag:fertilize_area": { "$ref": "#/definitions/VanillaTags" }
           },
           "patternProperties": {
             "tag:.*": {

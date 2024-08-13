@@ -2,6 +2,9 @@
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/sound_definitions.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "\nSee https://wiki.bedrock.dev/concepts/sounds.html#sound-definitions-json",
+  "dependentRequired": {
+    "minecraft:sound_definitions": ["format_version"]
+  },
   "properties": {
     "sound_definitions": {
       "title": "resrouce.sound_definitions (1.20.20)",
@@ -12,19 +15,7 @@
         "properties": {
           "category": {
             "description": "The category to play the sound. This may effect where it is used in custom blocks or items.",
-            "enum": [
-              "ambient",
-              "weather",
-              "neutral",
-              "block",
-              "bottle",
-              "bucket",
-              "player",
-              "ui",
-              "hostile",
-              "music",
-              "record"
-            ]
+            "$ref": "../enum.json#/definitions/soundCategory"
           },
           "sounds": {
             "description": "List of sound files to use for this definition",

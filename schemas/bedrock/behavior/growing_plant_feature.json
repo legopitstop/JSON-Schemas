@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/growing_plant_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:growing_plant_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:growing_plant_feature": {
       "title": "behavior.growing_plant_feature (1.21.10)",
@@ -47,7 +50,7 @@
         },
         "growth_direction": {
           "description": "Direction that the plant grows towards. Valid values: UP and DOWN",
-          "enum": ["DOWN", "UP", "NORTH", "SOUTH", "EAST", "WEST"]
+          "$ref": "../enum.json#/definitions/upperDirection"
         },
         "age": {
           "description": "Age of the head of the plant.",

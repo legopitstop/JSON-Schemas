@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/geode_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:geode_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:geode_feature": {
       "title": "behavior.geode_feature (1.21.10)",
@@ -20,44 +23,29 @@
         },
         "filler": {
           "description": "The block to fill the inside of the geode.",
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "inner_layer": {
           "description": "The block that forms the inside layer of the geode shell.",
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "alternate_inner_layer": {
           "description": "The block that has a chance of generating instead of inner_layer.",
-          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "middle_layer": {
           "description": "The block that forms the middle layer of the geode shell.",
-          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "outer_layer": {
           "description": "The block that forms the outer shell of the geode.",
-          "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/block"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "inner_placements": {
           "description": "A list of blocks that may be replaced during placement. Omit this field to allow any block to be replaced.",
           "type": "array",
           "items": {
-            "type": "object",
-            "default": {},
-            "properties": {
-              "name": {
-                "description": "The name of the block to place",
-                "type": "string"
-              },
-              "states": {
-                "description": "A map of block states to set",
-                "type": "object",
-                "default": {},
-                "additionalProperties": {
-                  "description": "The key and value of the blocksate to set."
-                }
-              }
-            }
+            "$ref": "../common.json#/definitions/blockstate"
           }
         },
         "min_outer_wall_distance": {

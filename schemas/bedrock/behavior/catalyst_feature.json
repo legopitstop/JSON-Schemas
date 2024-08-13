@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/catalyst_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:catalyst_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:catalyst_feature": {
       "title": "behavior.catalyst_feature (1.21.10)",
@@ -25,7 +28,7 @@
           }
         },
         "central_block": {
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "patch_feature": {
           "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/vanilla_bedrock.json#/definitions/feature"

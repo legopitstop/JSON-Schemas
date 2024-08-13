@@ -52,7 +52,7 @@
               "maxItems": 3
             },
             "lerp_mode": {
-              "enum": ["catmullrom"]
+              "$ref": "../enum.json#/definitions/animationLerpMode"
             }
           },
           "additionalProperties": false,
@@ -91,6 +91,9 @@
       "additionalProperties": false
     }
   },
+  "dependentRequired": {
+    "animations": ["format_version"]
+  },
   "properties": {
     "animations": {
       "title": "resrouce.animations",
@@ -110,7 +113,7 @@
                 "type": "boolean"
               },
               {
-                "enum": ["hold_on_last_frame"]
+                "$ref": "../enum.json#/definitions/animationLoop"
               }
             ]
           },

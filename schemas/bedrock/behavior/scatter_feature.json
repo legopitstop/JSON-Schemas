@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/scatter_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:scatter_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:scatter_feature": {
       "title": "behavior.scatter_feature (1.21.10)",
@@ -62,13 +65,7 @@
               "properties": {
                 "distribution": {
                   "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
-                  "enum": [
-                    "uniform",
-                    "gaussian",
-                    "inverse_gaussian",
-                    "fixed_grid",
-                    "jittered_grid"
-                  ]
+                  "$ref": "../enum.json#/definitions/featureDistribution"
                 },
                 "step_size": {
                   "description": "When the distribution type is grid, defines the distance between steps along this axis",
@@ -103,13 +100,7 @@
               "properties": {
                 "distribution": {
                   "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
-                  "enum": [
-                    "uniform",
-                    "gaussian",
-                    "inverse_gaussian",
-                    "fixed_grid",
-                    "jittered_grid"
-                  ]
+                  "$ref": "../enum.json#/definitions/featureDistribution"
                 },
                 "step_size": {
                   "description": "When the distribution type is grid, defines the distance between steps along this axis",
@@ -144,13 +135,7 @@
               "properties": {
                 "distribution": {
                   "description": "Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)",
-                  "enum": [
-                    "uniform",
-                    "gaussian",
-                    "inverse_gaussian",
-                    "fixed_grid",
-                    "jittered_grid"
-                  ]
+                  "$ref": "../enum.json#/definitions/featureDistribution"
                 },
                 "step_size": {
                   "description": "When the distribution type is grid, defines the distance between steps along this axis",

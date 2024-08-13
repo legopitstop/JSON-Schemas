@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/snap_to_surface_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:snap_to_surface_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:snap_to_surface_feature": {
       "title": "behavior.snap_to_surface_feature (1.21.10)",

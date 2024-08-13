@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/rect_layout.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:rect_layout": ["format_version"]
+  },
   "properties": {
     "minecraft:rect_layout": {
       "title": "behavior.rect_layout (1.21.10)",

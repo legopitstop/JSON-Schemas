@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/volume.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:volume": ["format_version"]
+  },
   "definitions": {
     "EventTrigger": {
       "description": "Required array that contains all the triggers.",

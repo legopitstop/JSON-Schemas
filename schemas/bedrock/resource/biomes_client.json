@@ -1,43 +1,43 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/biomes.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "biomes": {
-            "title": "resrouce.biomes_client",
-            "type": "object",
-            "default": {},
-            "additionalProperties": {
-                "type": "object",
-                "default": {},
-                "properties": {
-                    "fog_identifier": {
-                        "type": "string"
-                    },
-                    "fog_ids_to_merge": {
-                        "type": "array",
-                        "default": [],
-                        "items": {
-                            "type": "string"
-                        }
-                    },
-                    "inherit_from_prior_fog": {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "water_surface_color": {
-                        "type": "string",
-                        "format": "color"
-                    },
-                    "remove_all_prior_fog" : {
-                        "type": "boolean",
-                        "default": true
-                    },
-                    "water_surface_transparency" : {
-                        "$ref": "../common.json#/definitions/floatMolang"
-                    }
-                },
-                "additionalProperties": false
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/biomes.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "biomes": {
+      "title": "resrouce.biomes_client",
+      "type": "object",
+      "default": {},
+      "additionalProperties": {
+        "type": "object",
+        "default": {},
+        "properties": {
+          "fog_identifier": {
+            "type": "string"
+          },
+          "fog_ids_to_merge": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string"
             }
-        }
+          },
+          "inherit_from_prior_fog": {
+            "type": "boolean",
+            "default": true
+          },
+          "water_surface_color": {
+            "type": "string",
+            "format": "color"
+          },
+          "remove_all_prior_fog": {
+            "type": "boolean",
+            "default": true
+          },
+          "water_surface_transparency": {
+            "$ref": "../common.json#/definitions/floatMolang"
+          }
+        },
+        "additionalProperties": false
+      }
     }
+  }
 }

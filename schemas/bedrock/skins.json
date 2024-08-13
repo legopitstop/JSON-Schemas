@@ -29,7 +29,7 @@
         "properties": {
           "type": {
             "description": "Only accessible to marketplace partners, leave it as `free`, otherwise it will be locked.",
-            "enum": ["free", "paid", "custom"]
+            "$ref": "./enum.json#/definitions/skinType"
           },
           "geometry": {
             "description": "You can use geometry.humanoid.custom and geometry.humanoid.customSlim here.",

@@ -1,292 +1,284 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "minecraft:camera_entity": {
-            "title": "resrouce.camera_entity",
-            "type": "object",
-            "default": {},
-            "required": [
-                "description"
-            ],
-            "properties": {
-                "description": {
-                    "type": "object",
-                    "default": {},
-                    "required": [
-                        "identifier"
-                    ],
-                    "properties": {
-                        "identifier": {
-                            "type": "string"
-                        }
-                    },
-                    "additionalProperties": false
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:camera_entity": ["format_version"]
+  },
+  "properties": {
+    "minecraft:camera_entity": {
+      "title": "resrouce.camera_entity",
+      "type": "object",
+      "default": {},
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "type": "object",
+          "default": {},
+          "required": ["identifier"],
+          "properties": {
+            "identifier": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "components": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "minecraft:camera": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "field_of_view": {
+                  "type": "number"
                 },
-                "components": {
-                    "type": "object",
-                    "default": {},
-                    "properties": {
-                        "minecraft:camera": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "field_of_view": {
-                                    "type": "number"
-                                },
-                                "near_clipping_plane": {
-                                    "type": "number"
-                                },
-                                "far_clipping_plane": {
-                                    "type": "number"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_render_player_model": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_attach_to_player": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "offset": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_look_at_player": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "soft_bounds": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 4,
-                                    "maxItems": 4
-                                },
-                                "hard_bounds": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "number"
-                                    },
-                                    "minItems": 4,
-                                    "maxItems": 4
-                                },
-                                "soft_bounds_smoothing_spring": {
-                                    "type": "integer",
-                                    "default": 0
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:death_camera_component": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_orbit": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "azimuth_smoothing_spring": {
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "polar_angle_smoothing_spring": {
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "distance_smoothing_spring": {
-                                    "type": "integer",
-                                    "default": 0
-                                },
-                                "polar_angle_min": {
-                                    "type": "number"
-                                },
-                                "polar_angle_max": {
-                                    "type": "number"
-                                },
-                                "radius": {
-                                    "type": "number"
-                                },
-                                "invert_x_input": {
-                                    "type": "boolean",
-                                    "default": true
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_avoidance": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "relax_distance_smoothing_spring": {
-                                    "type": "number"
-                                },
-                                "distance_constraint_min": {
-                                    "type": "number"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:update_player_from_camera": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "look_mode": {
-                                    "enum": [
-                                        "along_camera",
-                                        "at_camera"
-                                    ]
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:gameplay_affects_fov": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_render_first_person_objects": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_direct_look": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "pitch_min": {
-                                    "type": "number"
-                                },
-                                "pitch_max": {
-                                    "type": "number"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_perspective_option": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "view_mode": {
-                                    "enum": [
-                                        "first_person",
-                                        "third_person",
-                                        "third_person_front"
-                                    ]
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_player_sleep_vignette": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_portal_distortion": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:vr_comfort_move": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_shake": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "frequency": {
-                                    "type": "number"
-                                },
-                                "amplitude": {
-                                    "type": "number"
-                                },
-                                "noise_multiplier": {
-                                    "type": "number"
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_liquid_offset": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:camera_player_bob": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:default_input_camera": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        },
-                        "minecraft:stationary_camera": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {
-                                "pos": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "integer",
-                                        "default": 0
-                                    },
-                                    "minItems": 3,
-                                    "maxItems": 3
-                                },
-                                "rot": {
-                                    "type": "array",
-                                    "default": [],
-                                    "items": {
-                                        "type": "integer",
-                                        "default": 0
-                                    },
-                                    "minItems": 2,
-                                    "maxItems": 2
-                                }
-                            },
-                            "additionalProperties": false
-                        },
-                        "minecraft:redirect_camera_input": {
-                            "type": "object",
-                            "default": {},
-                            "properties": {},
-                            "additionalProperties": false
-                        }
-                    },
-                    "additionalProperties": false
+                "near_clipping_plane": {
+                  "type": "number"
+                },
+                "far_clipping_plane": {
+                  "type": "number"
                 }
+              },
+              "additionalProperties": false
             },
-            "additionalProperties": false
+            "minecraft:camera_render_player_model": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_attach_to_player": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "offset": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:camera_look_at_player": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "soft_bounds": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "hard_bounds": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "number"
+                  },
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "soft_bounds_smoothing_spring": {
+                  "type": "integer",
+                  "default": 0
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:death_camera_component": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_orbit": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "azimuth_smoothing_spring": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "polar_angle_smoothing_spring": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "distance_smoothing_spring": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "polar_angle_min": {
+                  "type": "number"
+                },
+                "polar_angle_max": {
+                  "type": "number"
+                },
+                "radius": {
+                  "type": "number"
+                },
+                "invert_x_input": {
+                  "type": "boolean",
+                  "default": true
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:camera_avoidance": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "relax_distance_smoothing_spring": {
+                  "type": "number"
+                },
+                "distance_constraint_min": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:update_player_from_camera": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "look_mode": {
+                  "$ref": "../enum.json#/definitions/cameraLookMode"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:gameplay_affects_fov": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_render_first_person_objects": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_direct_look": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "pitch_min": {
+                  "type": "number"
+                },
+                "pitch_max": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:camera_perspective_option": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "view_mode": {
+                  "$ref": "../enum.json#/definitions/cameraViewMode"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:camera_player_sleep_vignette": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_portal_distortion": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:vr_comfort_move": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_shake": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "frequency": {
+                  "type": "number"
+                },
+                "amplitude": {
+                  "type": "number"
+                },
+                "noise_multiplier": {
+                  "type": "number"
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:camera_liquid_offset": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:camera_player_bob": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:default_input_camera": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            },
+            "minecraft:stationary_camera": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "pos": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "minItems": 3,
+                  "maxItems": 3
+                },
+                "rot": {
+                  "type": "array",
+                  "default": [],
+                  "items": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "minItems": 2,
+                  "maxItems": 2
+                }
+              },
+              "additionalProperties": false
+            },
+            "minecraft:redirect_camera_input": {
+              "type": "object",
+              "default": {},
+              "properties": {},
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
         }
+      },
+      "additionalProperties": false
     }
+  }
 }

@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/sequence_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:sequence_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:sequence_feature": {
       "title": "behavior.sequence_feature (1.21.10)",

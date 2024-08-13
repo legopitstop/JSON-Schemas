@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/hell_cave_carver_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:hell_cave_carver_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:hell_cave_carver_feature": {
       "title": "behavior.hell_cave_carver_feature (1.21.10)",
@@ -20,7 +23,7 @@
         },
         "fill_with": {
           "description": "Reference to the block to fill the cave with.",
-          "type": "string"
+          "$ref": "../common.json#/definitions/blockstate"
         },
         "width_modifier": {
           "description": "How many blocks to increase the cave radius by, from the center point of the cave.",

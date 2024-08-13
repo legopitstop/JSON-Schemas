@@ -1,84 +1,78 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/terrain_texture.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "num_mip_levels": {
-            "title": "resrouce.terrain_texture",
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/terrain_texture.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "num_mip_levels": {
+      "title": "resrouce.terrain_texture",
+      "type": "integer",
+      "default": 0
+    },
+    "padding": {
+      "title": "resrouce.terrain_texture",
+      "default": 0
+    },
+    "resource_pack_name": {
+      "title": "resrouce.terrain_texture",
+      "type": "string",
+      "default": "vanilla"
+    },
+    "texture_name": {
+      "title": "resrouce.terrain_texture",
+      "type": "string",
+      "default": "atlas.terrain"
+    },
+    "texture_data": {
+      "title": "resrouce.terrain_texture",
+      "type": "object",
+      "default": {},
+      "additionalProperties": {
+        "type": "object",
+        "default": {},
+        "required": ["textures"],
+        "properties": {
+          "quad": {
             "type": "integer",
             "default": 0
-        },
-        "padding": {
-            "title": "resrouce.terrain_texture",
-            "default": 0
-        },
-        "resource_pack_name": {
-            "title": "resrouce.terrain_texture",
-            "type": "string",
-            "default": "vanilla"
-        },
-        "texture_name": {
-            "title": "resrouce.terrain_texture",
-            "type": "string",
-            "default": "atlas.terrain"
-        },
-        "texture_data": {
-            "title": "resrouce.terrain_texture",
-            "type": "object",
+          },
+          "textures": {
+            "type": ["object", "string", "array"],
             "default": {},
-            "additionalProperties": {
-                "type": "object",
-                "default": {},
-                "required": [
-                    "textures"
-                ],
-                "properties": {
-                    "quad": {
-                        "type": "integer",
-                        "default": 0
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "tint_color": {
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+              },
+              "overlay_color": {
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
+              },
+              "variations": {
+                "type": "array",
+                "default": [],
+                "items": {
+                  "type": "object",
+                  "default": {},
+                  "properties": {
+                    "path": {
+                      "type": "string"
                     },
-                    "textures": {
-                        "type": [
-                            "object",
-                            "string",
-                            "array"
-                        ],
-                        "default": {},
-                        "properties": {
-                            "path": {
-                                "type": "string"
-                            },
-                            "tint_color": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
-                            },
-                            "overlay_color": {
-                                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/common_regex.json#/definitions/hex_color"
-                            },
-                            "variations": {
-                                "type": "array",
-                                "default": [],
-                                "items": {
-                                    "type": "object",
-                                    "default": {},
-                                    "properties": {
-                                        "path": {
-                                            "type": "string"
-                                        },
-                                        "weight": {
-                                            "type": "integer"
-                                        }
-                                    },
-                                    "additionalProperties": false
-                                }
-                            }
-                        },
-                        "items": {
-                            "$ref": "#/properties/texture_data/additionalProperties/properties/textures"
-                        },
-                        "additionalProperties": false
+                    "weight": {
+                      "type": "integer"
                     }
-                },
-                "additionalProperties": false
-            }
-        }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            },
+            "items": {
+              "$ref": "#/properties/texture_data/additionalProperties/properties/textures"
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
     }
+  }
 }

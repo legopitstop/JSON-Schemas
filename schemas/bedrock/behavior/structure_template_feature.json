@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/structure_template_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:structure_template_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:structure_template_feature": {
       "title": "behavior.structure_template_feature (1.21.10)",
@@ -30,7 +33,7 @@
         },
         "facing_direction": {
           "description": "Direction the structure will face when placed in the world. Defaults to \"random\" if omitted.",
-          "enum": ["north", "south", "east", "west", "random"]
+          "$ref": "../enum.json#/definitions/featureFacingDirection"
         },
         "constraints": {
           "description": "Specific constraints that must be satisfied when placing this structure.",

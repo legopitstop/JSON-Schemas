@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/animation_controllers.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:animation_controllers": ["format_version"]
+  },
   "properties": {
     "animation_controllers": {
       "title": "resrouce.animation_controllers (1.10.0)",

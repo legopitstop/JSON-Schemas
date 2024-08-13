@@ -1,14 +1,14 @@
 {
-    "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/piece_store_info.json",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "properties": {
-        "piece_store_name": {
-            "title": "resource.piece_store_info",
-            "type": "string"
-        },
-        "piece_thumbnail": {
-            "title": "resource.piece_store_info",
-            "type": "string"
-        }
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/piece_store_info.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "piece_store_name": {
+      "title": "resource.piece_store_info",
+      "type": "string"
+    },
+    "piece_thumbnail": {
+      "title": "resource.piece_store_info",
+      "type": "string"
     }
+  }
 }

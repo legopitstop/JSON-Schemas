@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/block_geometry.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:geometry": ["format_version"]
+  },
   "definitions": {
     "itemDisplayTransforms": {
       "type": "object",
@@ -13,6 +16,12 @@
           "$ref": "../common.json#/definitions/Vector3"
         },
         "scale": {
+          "$ref": "../common.json#/definitions/Vector3"
+        },
+        "rotation_pivot": {
+          "$ref": "../common.json#/definitions/Vector3"
+        },
+        "scale_pivot": {
           "$ref": "../common.json#/definitions/Vector3"
         }
       },
@@ -146,7 +155,17 @@
       "default": {},
       "properties": {
         "gui": {
-          "$ref": "#/definitions/itemDisplayTransforms"
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "fit_to_frame": { "type": "boolean", "default": true }
+              }
+            },
+            {
+              "$ref": "#/definitions/itemDisplayTransforms"
+            }
+          ]
         },
         "firstperson_righthand": {
           "$ref": "#/definitions/itemDisplayTransforms"

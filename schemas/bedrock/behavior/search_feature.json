@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/search_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:search_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:search_feature": {
       "title": "behavior.search_feature (1.21.10)",
@@ -42,7 +45,7 @@
         },
         "search_axis": {
           "description": "Axis that the search will sweep along through the 'search_volume'",
-          "enum": ["-x", "+x", "-y", "+y", "-z", "+z"]
+          "$ref": "../enum.json#/definitions/searchAxis"
         },
         "required_successes": {
           "description": "Number of valid positions the search must find in order to place the referenced feature",

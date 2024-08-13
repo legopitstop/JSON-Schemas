@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/behavior/tree_feature.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:tree_feature": ["format_version"]
+  },
   "properties": {
     "minecraft:tree_feature": {
       "title": "behavior.tree_feature (1.21.10)",
@@ -21,12 +24,13 @@
         "base_block": {
           "anyOf": [
             {
-              "type": "string"
+              "type": ["string", "object"],
+              "$ref": "../common.json#/definitions/blockstate"
             },
             {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "../common.json#/definitions/blockstate"
               }
             }
           ]
@@ -38,7 +42,7 @@
             "may_replace": {
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "../common.json#/definitions/blockstate"
               }
             },
             "num_clusters": {
@@ -55,19 +59,19 @@
         "may_grow_on": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "../common.json#/definitions/blockstate"
           }
         },
         "may_replace": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "../common.json#/definitions/blockstate"
           }
         },
         "may_grow_through": {
           "type": "array",
           "items": {
-            "type": "string"
+            "$ref": "../common.json#/definitions/blockstate"
           }
         },
         "acacia_trunk": {
@@ -115,7 +119,7 @@
               }
             },
             "trunk_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             },
             "branches": {
               "type": "object",
@@ -138,7 +142,7 @@
                           "default": 1
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         },
                         "simplify_canopy": {
                           "type": "boolean",
@@ -186,7 +190,7 @@
                           "type": ["array", "number"]
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         },
                         "canopy_decoration": {
                           "type": "object",
@@ -195,12 +199,14 @@
                             "decoration_chance": {
                               "type": "number"
                             },
-                            "decoration_block": {},
+                            "decoration_block": {
+                              "$ref": "../common.json#/definitions/blockstate"
+                            },
                             "num_steps": {
                               "type": "integer"
                             },
                             "step_direction": {
-                              "enum": ["down", "up", "out", "away"]
+                              "$ref": "../enum.json#/definitions/stepDirection"
                             }
                           }
                         }
@@ -220,7 +226,7 @@
                           "minimum": 0
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -243,7 +249,7 @@
                           "default": true
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -266,7 +272,7 @@
                           "default": 1
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -281,7 +287,7 @@
                           "default": 1
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -308,7 +314,7 @@
                           "minimum": 0
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -320,7 +326,7 @@
                         "upper_offset": {},
                         "max_radius": {},
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     }
@@ -335,12 +341,14 @@
                 "decoration_chance": {
                   "type": "number"
                 },
-                "decoration_block": {},
+                "decoration_block": {
+                  "$ref": "../common.json#/definitions/blockstate"
+                },
                 "num_steps": {
                   "type": "integer"
                 },
                 "step_direction": {
-                  "enum": ["down", "up", "out", "away"]
+                  "$ref": "../enum.json#/definitions/stepDirection"
                 }
               }
             }
@@ -353,7 +361,9 @@
             "log_length": {},
             "stump_height": {},
             "height_modifier": {},
-            "trunk_block": {},
+            "trunk_block": {
+              "$ref": "../common.json#/definitions/blockstate"
+            },
             "log_decoration_feature": {
               "type": "string"
             },
@@ -365,13 +375,13 @@
                   "type": "number"
                 },
                 "decoration_block": {
-                  "type": "string"
+                  "$ref": "../common.json#/definitions/blockstate"
                 },
                 "num_steps": {
                   "type": "integer"
                 },
                 "step_direction": {
-                  "enum": ["down", "up", "out", "away"]
+                  "$ref": "../enum.json#/definitions/stepDirection"
                 }
               }
             }
@@ -422,7 +432,7 @@
               }
             },
             "trunk_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             },
             "width_scale": {
               "type": "number",
@@ -462,7 +472,7 @@
               }
             },
             "trunk_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             },
             "trunk_decoration": {
               "type": "object",
@@ -472,13 +482,13 @@
                   "type": "number"
                 },
                 "decoration_block": {
-                  "type": "string"
+                  "$ref": "../common.json#/definitions/blockstate"
                 },
                 "num_steps": {
                   "type": "integer"
                 },
                 "step_direction": {
-                  "enum": ["down", "up", "out", "away"]
+                  "$ref": "../enum.json#/definitions/stepDirection"
                 }
               }
             },
@@ -525,7 +535,7 @@
                           "default": 1
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         },
                         "simplify_canopy": {
                           "type": "boolean",
@@ -583,7 +593,7 @@
                           ]
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         },
                         "canopy_decoration": {
                           "type": "object",
@@ -595,7 +605,7 @@
                               "type": "integer"
                             },
                             "step_direction": {
-                              "enum": ["down", "up", "out", "away"]
+                              "$ref": "../enum.json#/definitions/stepDirection"
                             }
                           }
                         }
@@ -637,7 +647,7 @@
                           "default": true
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -660,7 +670,7 @@
                           "default": 1
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -675,7 +685,7 @@
                           "default": 1
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -702,7 +712,7 @@
                           "minimum": 0
                         },
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     },
@@ -714,7 +724,7 @@
                         "upper_offset": {},
                         "max_radius": {},
                         "leaf_block": {
-                          "type": "string"
+                          "$ref": "../common.json#/definitions/blockstate"
                         }
                       }
                     }
@@ -750,7 +760,7 @@
               ]
             },
             "trunk_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             },
             "trunk_decoration": {
               "type": "object",
@@ -759,12 +769,14 @@
                 "decoration_chance": {
                   "type": "number"
                 },
-                "decoration_block": {},
+                "decoration_block": {
+                  "$ref": "../common.json#/definitions/blockstate"
+                },
                 "num_steps": {
                   "type": "integer"
                 },
                 "step_direction": {
-                  "enum": ["down", "up", "out", "away"]
+                  "$ref": "../enum.json#/definitions/stepDirection"
                 }
               }
             }
@@ -780,7 +792,7 @@
               "default": 1
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             },
             "simplify_canopy": {
               "type": "boolean",
@@ -831,7 +843,7 @@
               }
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             },
             "canopy_decoration": {
               "type": "object",
@@ -840,12 +852,14 @@
                 "decoration_chance": {
                   "type": "number"
                 },
-                "decoration_block": {},
+                "decoration_block": {
+                  "$ref": "../common.json#/definitions/blockstate"
+                },
                 "num_steps": {
                   "type": "integer"
                 },
                 "step_direction": {
-                  "enum": ["down", "up", "out", "away"]
+                  "$ref": "../enum.json#/definitions/stepDirection"
                 }
               }
             }
@@ -865,7 +879,7 @@
               "minimum": 0
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             }
           }
         },
@@ -888,7 +902,7 @@
               "default": true
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             }
           }
         },
@@ -911,7 +925,7 @@
               "default": 1
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             }
           }
         },
@@ -926,7 +940,7 @@
               "default": 1
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             }
           }
         },
@@ -952,7 +966,7 @@
               "minimum": 0
             },
             "leaf_block": {
-              "type": "string"
+              "$ref": "../common.json#/definitions/blockstate"
             }
           }
         },
@@ -963,7 +977,9 @@
             "lower_offset": {},
             "upper_offset": {},
             "max_radius": {},
-            "leaf_block": {}
+            "leaf_block": {
+              "$ref": "../common.json#/definitions/blockstate"
+            }
           }
         },
         "random_spread_canopy": {

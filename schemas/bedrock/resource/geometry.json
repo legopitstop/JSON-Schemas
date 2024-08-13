@@ -1,6 +1,9 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/geometry.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "dependentRequired": {
+    "minecraft:geometry": ["format_version"]
+  },
   "definitions": {
     "UV": {
       "type": "object",
@@ -26,7 +29,7 @@
         },
         "uv_rotation": {
           "description": "Specifies an optional rotation for the specified UV rect in 90-degree clockwise increments before applying it to a geometry cube face. If not specified, no rotation will be applied.",
-          "enum": [0, 90, 180, 270, 360]
+          "$ref": "../enum.json#/definitions/uvRotation"
         },
         "material_instance": { "type": "string" }
       },

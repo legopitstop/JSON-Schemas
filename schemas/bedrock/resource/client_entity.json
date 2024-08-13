@@ -1,7 +1,37 @@
 {
   "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/resource/client_entity.json",
-  "$schema": "http://json-schema.org/draft-07/schema",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "description": "JSON schema for data-driven entities",
+  "dependentRequired": {
+    "minecraft:client_entity": ["format_version"]
+  },
+  "dependentSchemas": {
+    "minecraft:client_entity": {
+      "if": {
+        "properties": {
+          "format_version": {
+            "const": "1.10.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "minecraft:client_entity": {
+            "properties": {
+              "description": {
+                "properties": {
+                  "animation_controllers": {
+                    "description": "desc",
+                    "deprecated": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
   "properties": {
     "minecraft:client_entity": {
       "title": "resrouce.client_entity",
@@ -66,6 +96,14 @@
               "description": "Scripts allow players to use MoLang to compute calculations once and store that value. This value than can be used over and over again without the need to constantly recompute the calculations. Scripts currently support pre - animation and scale.More script types will be added later.Pre-animation scripts are evaluated immediately before animations are processed.-Scale sets the scale of the mob's geometry.",
               "properties": {
                 "pre_animation": {
+                  "description": "Molang variables before running animations",
+                  "type": "array",
+                  "items": {
+                    "$ref": "../common.json#/definitions/MoLang"
+                  }
+                },
+                "initialize": {
+                  "description": "Init client molang variables",
                   "type": "array",
                   "items": {
                     "$ref": "../common.json#/definitions/MoLang"
@@ -88,11 +126,38 @@
                       "$ref": "../common.json#/definitions/MoLang"
                     }
                   }
+                },
+                "should_update_effects_offscreen": {
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "should_update_bones_and_effects_offscreen": {
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "scaleX": {
+                  "description": "Scale in the X axis.",
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "scaleY": {
+                  "description": "Scale in the Y axis.",
+                  "$ref": "../common.json#/definitions/MoLang"
+                },
+                "scaleZ": {
+                  "description": "Scale in the Z axis.",
+                  "$ref": "../common.json#/definitions/MoLang"
                 }
-              }
+              },
+              "additionalProperties": false
             },
             "sound_effects": {
               "description": "The shorthand name of all sound effects used in animations",
+              "type": "object",
+              "default": {},
+              "minProperties": 1,
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "particle_emitters": {
               "type": "object",
               "default": {},
               "minProperties": 1,
@@ -122,7 +187,6 @@
               "description": "Animation controllers decide which animations to play when. Each Controller contains a list of states that play one or more animations. Allows the player to assign names to reference the long names for animation controllers. Names are required and need to be unique from all other names in the animation controllers for that mob. Players can reference animation controllers from the vanilla Minecraft Resource Pack or create their own. Custom animation controllers should be in the animation_controllers folder at the root of the Resource Pack.",
               "type": "array",
               "default": [],
-              "deprecated": true,
               "items": {
                 "type": "object",
                 "default": {},
