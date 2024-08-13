@@ -11,9 +11,9 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 <br>
 [View Update Log](UPDATES.md)
 
-## How to Install schema for *Visual Studio Code*
+## How to Install schemas for _Visual Studio Code_
 
-1. Open VSC. 
+1. Open VSC.
 2. Go to your settings ( `CTRL` + `,` )
 3. At the top corner you should find a button that will open settings (JSON). Click it.
 4. Paste the below code into that JSON.
@@ -21,51 +21,31 @@ Join my discord to get live updates on schemas. [Discord](https://discord.gg/Jby
 
 ```json
 {
-    "json.schemas": [
-        // append below code here.
-    ]
+  "json.schemas": [
+    // append json.schemas code here.
+  ]
 }
 ```
 
-### [Minecraft Bedrock Edition](https://minecraft.wiki/w/Bedrock_Edition)
+### Available Schemas
 
-```json
-{
-    "name": "Bedrock Edition Schema",
-    "description": "Schema for Bedrock Edition behavior, and resourcepacks.",
-    "fileMatch": [
-        "com.mojang/**.json"
-    ],
-    "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/bedrock/schema.json"
-}
-```
-
-### [shields.io](https://shields.io/)
-
-```json
-{
-    "name": "Shields",
-    "description": "A schema for https://shields.io/",
-    "fileMatch": [
-        "shields.io/*.json"
-    ],
-    "url": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/shields.io/schema.json"
-}
-```
+- [Minecraft: Bedrock Edition](./bedrock/README.md)
+- [OptiFine](./optifine/README.md)
+- [shields.io](./shields.io/README.md)
+- [Spyglass](./spyglass/README.md)
+- [Json Things](./jsonthings/README.md)
 
 ### [Pack Update Schema](https://legopitstop.github.io/Update_Checker/)
 
 ```json
 {
-    "name": "Pack Update JSON",
-    "description": "A schema for https://legopitstop.github.io/Update_Checker/update-checker.html",
-    "fileMatch": [
-        "update.json"
-    ],
-    "url": "https://raw.githubusercontent.com/legopitstop/Update_Checker/main/schema.json"
+  "name": "Pack Update JSON",
+  "description": "A schema for https://legopitstop.github.io/Update_Checker/update-checker.html",
+  "fileMatch": ["update.json"],
+  "url": "https://raw.githubusercontent.com/legopitstop/Update_Checker/main/schema.json"
 }
 ```
 
 ## UPDATES
 
-Find the latest news about this schema via the [UPDATES](UPDATES.md) page
+Find the latest news about this schema via the [CHANGELOG](CHANGELOG.md) page

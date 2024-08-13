@@ -2,6 +2,15 @@
     "json.schemas": [
         {
             "name": "Bedrock Edition Schema",
+            "description": "Schema for spyglassmc",
+            "fileMatch": [
+                "spyglass.json",
+                "*.spyglassrc.material"
+            ],
+            "url": "/schemas/spyglass/schema.json"
+        },
+        {
+            "name": "Bedrock Edition Schema",
             "description": "Schema for Bedrock Edition behavior, and resourcepacks.",
             "fileMatch": [
                 "tests/**/*.json",

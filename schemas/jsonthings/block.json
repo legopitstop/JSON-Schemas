@@ -1,0 +1,306 @@
+{
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/jsonthings/block.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Block",
+  "description": "Define things that can exist in the world terrain grid.",
+  "definitions": {
+    "VoxelShape": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": ["object", "array"],
+        "default": {},
+        "properties": {
+          "when": {
+            "description": "A set of conditions to be applied to the block state using the shape.",
+            "type": "object",
+            "default": {},
+            "additionalProperties": {
+              "type": ["string", "integer", "boolean"]
+            }
+          },
+          "shape": {
+            "description": "A single shape to return when the condition is true.",
+            "$ref": "#/definitions/VoxelShape/items"
+          },
+          "shapes": {
+            "description": "Required. A json array ([]) containing the child shapes to combine.",
+            "$ref": "#/definitions/VoxelShape"
+          },
+          "op": {
+            "description": "Optional. Default: OR. A boolean operation name to be used when combining successive shapes. The operation is applied left to right.",
+            "enumDescriptions": [
+              "All shapes are ignored. The result is an empty shape.",
+              "The result includes only the parts that are outside all the child shapes",
+              "The result includes all areas present in the second shape, that are not present in the first shape.",
+              "The result ignores all but the first shape, and returns the inverse of the first shape.",
+              "The result includes all areas present in the first shape, that are not present in the second shape.",
+              "The result ignores all but the last shape, and returns the inverse of the last shape.",
+              "The result includes all areas that are present in one shape or the other, but not both",
+              "The result includes all areas that are outside any of the child shapes",
+              "The result includes only the areas that are present in all of the child shapes",
+              "The result includes all areas that are either outside all shapes, or inside all shapes",
+              "The result ignores all but the last shape.",
+              "The result includes the areas outside the first shape, combined with the areas inside the second shape.",
+              "The result ignores all but the first shape.",
+              "The result includes the areas inside the first shape, combined with the areas outside the second shape.",
+              "The result contains all areas present in any shape"
+            ],
+            "enum": [
+              "false",
+              "not_or",
+              "only_second",
+              "not_first",
+              "only_first",
+              "not_second",
+              "not_same",
+              "not_and",
+              "and",
+              "same",
+              "second",
+              "causes",
+              "first",
+              "caused_by",
+              "or"
+            ]
+          }
+        },
+        "additionalProperties": false,
+        "items": {
+          "type": "integer",
+          "default": 0
+        },
+        "minItems": 6,
+        "maxItems": 6
+      }
+    }
+  },
+  "properties": {
+    "parent": {
+      "description": "Defines another block to copy properties from.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/block.json"
+    },
+    "type": {
+      "description": "Defines the type of block to construct. Each type has additional properties.",
+      "enumDescriptions": [
+        "Default block type.",
+        "A block that can be placed in multiple cardinal directions, including up and down.",
+        "A block that can be placed in multiple cardinal directions, but only the horizontal ones.",
+        "A block that can be placed in axis directions, like logs and pillars, where opposing cardinal directions look the same.",
+        "A block that has the properties of a slab, including waterlogging.",
+        "A block that has the properties of a stair block, including waterlogging.",
+        "A block that has the properties of a wall, including waterlogging.",
+        "A block that has the properties of a fence, including waterlogging.",
+        "A block that has the properties of a fence gate.",
+        "A block that has the properties of leaves.",
+        "A block that has the properties of a wooden door.",
+        "A block that has the properties of a wooden trapdoor, including waterlogging."
+      ],
+      "enum": [
+        "plain",
+        "directional",
+        "horizontal_directional",
+        "rotated_pillar",
+        "slab",
+        "stairs",
+        "wall",
+        "fence",
+        "fence_gate",
+        "leaves",
+        "door",
+        "trapdoor"
+      ],
+      "default": "plain"
+    },
+    "material": {
+      "description": "Defines the base properties of the block, along with the color that will be used in maps.",
+      "type": "string"
+    },
+    "map_color": {
+      "description": "Defines the color displayed in a map, from the choices available in the map color palette.",
+      "type": ["integer", "string"],
+      "default": 0,
+      "minimum": 0
+    },
+    "properties": {
+      "description": "Defines the blockstate properties contained in the mod.",
+      "type": "object",
+      "default": {},
+      "additionalProperties": {
+        "type": ["object", "string"],
+        "default": {},
+        "required": ["type"],
+        "properties": {
+          "type": {
+            "description": "One of the property implementations available.",
+            "enumDescriptions": [
+              "The values will be false and true.",
+              "The values will be a set of integers. The valid range must be specified in the min and max keys.",
+              "The values will be a set of strings. The valid strings must be specified in the values list.",
+              "The values will be cardinal directions. A subset of the directions can be specified in the values list.",
+              "The values will be the values in the enum given by the class key. A subset of the directions can be specified in the values list."
+            ],
+            "enum": ["boolean", "int", "string", "direction", "enum"]
+          },
+          "values": {
+            "title": "STRING, DIRECTION, ENUM",
+            "description": "For string, direction and enum properties, a json array ([]) containing the strings corresponding to the allowed values.",
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string"
+            }
+          },
+          "min": {
+            "title": "INT",
+            "description": "For int properties, the range of integers available. Required for int properties.",
+            "type": "integer",
+            "default": 0
+          },
+          "max": {
+            "title": "INT",
+            "description": "For int properties, the range of integers available. Required for int properties.",
+            "type": "integer",
+            "default": 0
+          },
+          "class": {
+            "title": "ENUM",
+            "description": "For enum properties, the fully qualified name of the Enum class. Required for enum properties.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "default_state": {
+      "description": "Defines the default value of each property, when the value is not provided explicitly.",
+      "type": "object",
+      "default": {},
+      "additionalProperties": {
+        "type": ["string", "integer", "boolean"]
+      }
+    },
+    "shape_rotation": {
+      "description": "Defines the name of a property that is used to rotate the voxel shapes used in collision and hit checks.",
+      "type": "string"
+    },
+    "shape": {
+      "description": "Defines the general shape of the block, which should roughly match the model's shape.",
+      "$ref": "#/definitions/VoxelShape"
+    },
+    "collision_shape": {
+      "description": "Defines the collision shape of the block, used for entity and player movement collisions.",
+      "$ref": "#/definitions/VoxelShape"
+    },
+    "raytrace_shape": {
+      "description": "Defines the raytrace shape of the block, used for hit detection and line of sight detection.",
+      "$ref": "#/definitions/VoxelShape"
+    },
+    "render_shape": {
+      "description": "Defines the render shape of the block, used to decide when neighbouring block culling can be performed.",
+      "$ref": "#/definitions/VoxelShape"
+    },
+    "not_solid": {
+      "description": "Defines that the block is see-through and neighbour face culling should not be performed.",
+      "type": "boolean",
+      "default": true
+    },
+    "requires_tool_for_drops": {
+      "description": "Defines that the block requires using the right tool to drop loot.",
+      "type": "boolean",
+      "default": true
+    },
+    "is_air": {
+      "description": "Defines that the block is equivalent to air.",
+      "type": "boolean",
+      "default": true
+    },
+    "has_collision": {
+      "description": "Defines that the block prevents entities from passing through the collision box.",
+      "type": "boolean",
+      "default": true
+    },
+    "ticks_randomly": {
+      "description": "Defines that the block receives random ticks. Not relevant until the scripting system is in place.",
+      "type": "boolean",
+      "default": true
+    },
+    "light_emission": {
+      "description": "Defines the amount of light emitted by the block.",
+      "type": "integer",
+      "default": 0,
+      "minimum": 0,
+      "maximum": 15
+    },
+    "explosion_resistance": {
+      "description": "Defines the amount explosion power required to break the block.",
+      "type": "number",
+      "minimum": 0.0
+    },
+    "destroy_time": {
+      "description": "Defines the amount time needed to mine the block without a tool.",
+      "type": "number",
+      "minimum": 0.0
+    },
+    "friction": {
+      "description": "Defines the friction coeficient applied to changes in movement.",
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "speed_factor": {
+      "description": "Defines the speed factor applied to the maximum movement speed. A value of 1 means default speed.",
+      "type": "number",
+      "minimum": 0
+    },
+    "jump_factor": {
+      "description": "Defines the jump factor applied to the maximum jump height. A value of 1 means default jump height.",
+      "type": "number",
+      "minimum": 0
+    },
+    "color_handler": {
+      "description": "Defines a color handler for the block. Color handler provides tint values based on context.",
+      "enum": ["foliage", "tall_grass"]
+    },
+    "sound_type": {
+      "description": "Defines the sound type used to define the sound events that play when the block is placed, broken, or stepped on.",
+      "type": "string"
+    },
+    "item": {
+      "description": "Defines the block's item form.",
+      "anyOf": [
+        {
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "$ref": "./item.json"
+        }
+      ]
+    },
+    "ignited_by_lava": {
+      "description": "Defines that the block will be set on fire by nearby lava.",
+      "$ref": "../enum.json#/definitions/booleanString"
+    },
+    "force_solid": {
+      "description": "Defines that the block must be considered solid regardless of its voxel shape. If true, the \"blocks_motion\" option is not used.",
+      "type": "boolean",
+      "default": true
+    },
+    "blocks_motion": {
+      "description": "If false, defines that the block must be considered non-solid regardless of its voxel shape. This option is not used if force_solid is true.",
+      "type": "boolean",
+      "default": true
+    },
+    "replaceable": {
+      "description": "Defines that the block can be deleted when placing other blocks in the same space. By default, block placement is prevented.",
+      "type": "boolean",
+      "default": true
+    },
+    "push_reaction": {
+      "description": "Defines how the block reacts when pushed by a piston.",
+      "enum": ["normal", "block", "destroy", "push_only"]
+    }
+  },
+  "additionalProperties": false
+}

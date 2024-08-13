@@ -1,0 +1,273 @@
+{
+  "id": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/schemas/jsonthings/block.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Item",
+  "description": "Define things that can be in your inventory, and in your hands.",
+  "properties": {
+    "parent": {
+      "description": "Defines another item to copy properties from.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/item.json"
+    },
+    "type": {
+      "description": "Defines the type of item to construct. Each type has additional properties.",
+      "enumDescriptions": [
+        "Plain is the default item type. It has no special parameters",
+        "Block items are items that represent and place a block. They are normally used via the block json's \"item\" key, but can be defined separately.",
+        "Makes the item behave as a food bowl and return an empty bowl when eating.",
+        "Similar to \"food_bowl\", this item allows defining foods that come in bottles and other containers.",
+        "Makes the item into a bucket, with some contained fluid.",
+        "Armor items are equippable in the armor slots of the player and other entities. Armor items need special textures based on the armor material.",
+        "Tool items are good for digging things, and some also have advantages when used to attack.",
+        "Tool items are good for digging things, and some also have advantages when used to attack.",
+        "Tool items are good for digging things, and some also have advantages when used to attack.",
+        "Tool items are good for digging things, and some also have advantages when used to attack.",
+        "Tool items are good for digging things, and some also have advantages when used to attack.",
+        "Used to define a custom tool type.",
+        "Used for items that have tiers, but are not diggers or weapons."
+      ],
+      "enum": [
+        "plain",
+        "block",
+        "food_bowl",
+        "drinkable_bottle",
+        "bucket",
+        "armor",
+        "sword",
+        "shovel",
+        "axe",
+        "pickaxe",
+        "hoe",
+        "digger",
+        "tiered"
+      ],
+      "default": "plain"
+    },
+    "max_stack_size": {
+      "description": "Defines how much the item stacks.",
+      "type": "integer",
+      "default": 0,
+      "minimum": 1,
+      "maximum": 127
+    },
+    "max_damage": {
+      "description": "Defines how many uses (without Unbreaking) the item has before breaking.",
+      "type": "integer",
+      "default": 0,
+      "minimum": 0
+    },
+    "group": {
+      "description": "Defines which creative tab to have the item in.",
+      "type": "string"
+    },
+    "creative_menu_stacks": {
+      "description": "Defines which stacks of this item will be added to the creative menu. Each stack can be added to one or more tabs.",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "required": ["tabs"],
+        "properties": {
+          "tabs": {
+            "description": "Contains strings",
+            "type": "array",
+            "default": [],
+            "items": {
+              "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/creative_mode_tab.json"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "container": {
+      "description": "Defines the item that will be left behind in the crafting table after crafting, or in the furnace when the fuel is spent.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/item.json"
+    },
+    "food": {
+      "description": "Defines the item to be edible.",
+      "type": "object",
+      "default": {},
+      "required": ["nutrition", "saturation"],
+      "properties": {
+        "nutrition": {
+          "description": "Defines how much hunger this food restores.",
+          "type": "integer",
+          "default": 0,
+          "minimum": 0
+        },
+        "saturation": {
+          "description": "Defines how much saturation this food adds. Saturation is the delay until hunger restarts.",
+          "type": "integer",
+          "default": 0,
+          "minimum": 0
+        },
+        "meat": {
+          "description": "Defines if the food is considered meat. Meats are appealing to carnivores like wolves.",
+          "type": "boolean",
+          "default": true
+        },
+        "fast": {
+          "description": "Defines if the food can be eaten fast.",
+          "type": "boolean",
+          "default": true
+        },
+        "always_eat": {
+          "description": "Defines if the food can be eaten with a full stomach. Should only be used for snack foods and not big meals.",
+          "type": "boolean",
+          "default": true
+        },
+        "effects": {
+          "description": "Defines a list of effects that are applied when the food is eaten.",
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "object",
+            "default": {},
+            "required": ["effect", "duration"],
+            "properties": {
+              "effect": {
+                "description": "Defines which potion effect to apply.",
+                "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/potion.json"
+              },
+              "duration": {
+                "description": "Defines how long the effect lasts, in ingame ticks (20ths of a second).",
+                "type": "integer",
+                "default": 0,
+                "minimum": 0
+              },
+              "amplifier": {
+                "description": "Defines how strong the effect is. Higher numbers increase the potency of the effect further.",
+                "type": "integer",
+                "default": 0,
+                "minimum": 0
+              },
+              "ambient": {
+                "description": "Defines if the effect should be considered an ambient effect such as coming from a beacon. Ambient effects appear in a different color and without a countdown. It is advised not to set the \"ambient\" property to true for foods and other contextual effects.",
+                "type": "boolean",
+                "default": true
+              },
+              "show_particles": {
+                "description": "Defines if the effect produces particles around the player.",
+                "type": "boolean",
+                "default": true
+              },
+              "show_icon": {
+                "description": "Defines if the effect has an icon in the top right of the HUD.",
+                "type": "boolean",
+                "default": true
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "attribute_modifiers": {
+      "description": "Defines the attribute changes that are applied when this item is equipped. E.g.: +20% speed",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "default": {},
+        "required": ["attribute", "id", "amount", "operation"],
+        "properties": {
+          "attribute": {
+            "description": "Defines the attribute will have the modifier applied.",
+            "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/attribute.json"
+          },
+          "id": {
+            "description": "Defines the ID of the attribute modifier, used to avoid duplicates and to understand which attribute to remove when requested.",
+            "type": "string"
+          },
+          "amount": {
+            "description": "Defines the amount to modify the value by.",
+            "type": "number"
+          },
+          "operation": {
+            "description": "Defines the operation to use when applying the modifier.",
+            "enum": [0, "addition", 1, "multiply_base", 2, "multiply_total"]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "color_handler": {
+      "description": "Defines a color handler for the stack. Color handler provides tint values based on context.",
+      "enum": ["foliage", "tall_grass"]
+    },
+    "lore": {
+      "description": "Defines a list of lines of lore text to show in the tooltip box.",
+      "type": "array",
+      "default": [],
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/raw_text_format.json"
+      }
+    },
+    "tool_actions": {
+      "description": "Defines a list of tool actions to present to the game. This doesn't make an item able to perform those actions unless it's scripted to do so, without scripting it only declares the item as a kind of tool.",
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "burn_duration": {
+      "description": "Defines the amount of time this item can burn when used as fuel for a furnace.",
+      "type": "integer",
+      "default": 0
+    },
+    "fire_resistant": {
+      "description": "Defines if the item can survive fire and lava.",
+      "type": "boolean",
+      "default": true
+    },
+    "places": {
+      "title": "BLOCK",
+      "description": "The block registry name for the block that will be placed by this item.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/block.json"
+    },
+    "base_item": {
+      "title": "DRINKABLE_BOTTLE",
+      "description": "The item that will be returned when eating.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/item.json"
+    },
+    "fluid": {
+      "title": "BUCKET",
+      "description": "The registry name of the fluid.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/fluid.json"
+    },
+    "equipment_slot": {
+      "title": "ARMOR",
+      "description": "A string representing an equipment slot.",
+      "enum": ["head", "chest", "legs", "feet"]
+    },
+    "material": {
+      "title": "ARMOR",
+      "description": "The name of an armor material.",
+      "$ref": "https://raw.githubusercontent.com/legopitstop/JSON-Schemas/main/minecraft/java/armor_material.json"
+    },
+    "tier": {
+      "title": "SWORD, SHOVEL, AXE, PICKAXE, HOE, TIERED",
+      "description": "The name of an item tier.",
+      "type": "string"
+    },
+    "damage": {
+      "title": "SWORD, SHOVEL, AXE, PICKAXE, HOE",
+      "description": "A number added on top of the tier's base damage, used to adjust it. Can be negative.",
+      "type": "number"
+    },
+    "speed": {
+      "title": "SWORD, SHOVEL, AXE, PICKAXE, HOE",
+      "description": "A number added on top of the tier's base speed, used to adjust it. Can be negative.",
+      "type": "number"
+    },
+    "mineable": {
+      "title": "DIGGER",
+      "description": "A resource location of a block tag containing the list of blocks this tool is able to mine faster than an empty hand. If the block has the \"requires_tool_for_drops\" flag set, an empty hand or a tool that doesn't have the block in its tag would not be able to get loot.",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,3 +1,4 @@
 /tests
 /latest.log
+/.venv
 test2.py

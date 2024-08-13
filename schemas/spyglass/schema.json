@@ -1,0 +1,257 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "spyglassmc.json",
+  "description": "JSON Schema for https://spyglassmc.com/",
+  "type": "object",
+  "default": {},
+  "definitions": {
+    "category": {
+      "type": "string",
+      "examples": [
+        "block",
+        "entity_type",
+        "item",
+        "advancement",
+        "bossbar",
+        "objective",
+        "team"
+      ]
+    },
+    "severity": {
+      "enum": ["error", "warning", "information", "hint"]
+    },
+    "format": {
+      "type": ["object", "string", "boolean"],
+      "default": {},
+      "properties": {
+        "inside": { "type": "integer", "default": 0 },
+        "before": { "type": "integer", "default": 0 },
+        "after": { "type": "integer", "default": 0 }
+      },
+      "additionalProperties": false,
+      "examples": ["auto"]
+    },
+    "lint": {
+      "type": ["boolean", "null", "array", "string"],
+      "default": null,
+      "items": {
+        "$ref": "#/definitions/severity"
+      }
+    },
+    "action": {
+      "type": "object",
+      "default": {},
+      "anyOf": [{ "required": ["declare"] }, { "required": ["report"] }],
+      "properties": {
+        "declare": {
+          "description": "Declares the symbol at the specified scope.",
+          "enum": ["block", "file", "public"]
+        },
+        "report": {
+          "description": "Reports a diagnostic with the specified severity.",
+          "enum": ["inherit", "hint", "information", "warning", "error"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "complexIf": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "category": {
+          "default": [],
+          "anyOf": [
+            {
+              "type": "string",
+              "$ref": "#/definitions/category"
+            },
+            {
+              "type": "array",
+              "items": { "type": "string", "$ref": "#/definitions/category" }
+            }
+          ]
+        },
+        "pattern": {
+          "type": ["string", "array"],
+          "default": "",
+          "items": { "type": "string" }
+        },
+        "excludePattern": {
+          "type": ["string", "array"],
+          "default": "",
+          "items": { "type": "string" }
+        },
+        "namespace": {
+          "type": ["string", "array"],
+          "default": "minecraft",
+          "examples": ["minecraft"],
+          "items": { "type": "string", "examples": ["minecraft"] }
+        },
+        "excludeNamespace": {
+          "type": ["string", "array"],
+          "default": "",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "complex": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "if": {
+          "default": {},
+          "anyOf": [
+            {
+              "type": "object",
+              "$ref": "#/definitions/complexIf"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/complexIf"
+              }
+            }
+          ]
+        },
+        "then": { "$ref": "#/definitions/action" },
+        "override": {
+          "default": [],
+          "anyOf": [
+            {
+              "type": "object",
+              "$ref": "#/definitions/complex"
+            },
+            {
+              "type": "array",
+              "items": { "$ref": "#/definitions/complex" }
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "env": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "dataSource": { "type": "string" },
+        "dependencies": {
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" }
+        },
+        "feature": {},
+        "gameVersion": { "type": "string", "examples": ["Auto"] },
+        "language": { "type": "string", "examples": ["Default"] },
+        "permissionLevel": { "type": "integer", "default": 0 },
+        "plugins": { "type": "array", "default": [], "items": {} },
+        "mcmetaSummaryOverrides": {
+          "type": "object",
+          "default": {},
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "format": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "blockStateBracketSpacing": { "$ref": "#/definitions/format" },
+        "blockStateCommaSpacing": { "$ref": "#/definitions/format" },
+        "blockStateEqualSpacing": { "$ref": "#/definitions/format" },
+        "blockStateTrailingComma": { "$ref": "#/definitions/format" },
+        "eol": { "$ref": "#/definitions/format" },
+        "nbtArrayBracketSpacing": { "$ref": "#/definitions/format" },
+        "nbtArrayCommaSpacing": { "$ref": "#/definitions/format" },
+        "nbtArraySemicolonSpacing": { "$ref": "#/definitions/format" },
+        "nbtArrayTrailingComma": { "$ref": "#/definitions/format" },
+        "nbtByteSuffix": { "$ref": "#/definitions/format" },
+        "nbtCompoundBracketSpacing": { "$ref": "#/definitions/format" },
+        "nbtCompoundColonSpacing": { "$ref": "#/definitions/format" },
+        "nbtCompoundCommaSpacing": { "$ref": "#/definitions/format" },
+        "nbtCompoundTrailingComma": { "$ref": "#/definitions/format" },
+        "nbtDoubleOmitSuffix": { "$ref": "#/definitions/format" },
+        "nbtDoubleSuffix": { "$ref": "#/definitions/format" },
+        "nbtFloatSuffix": { "$ref": "#/definitions/format" },
+        "nbtListBracketSpacing": { "$ref": "#/definitions/format" },
+        "nbtListCommaSpacing": { "$ref": "#/definitions/format" },
+        "nbtListTrailingComma": { "$ref": "#/definitions/format" },
+        "nbtLongSuffix": { "$ref": "#/definitions/format" },
+        "nbtShortSuffix": { "$ref": "#/definitions/format" },
+        "selectorBracketSpacing": { "$ref": "#/definitions/format" },
+        "selectorCommaSpacing": { "$ref": "#/definitions/format" },
+        "selectorEqualSpacing": { "$ref": "#/definitions/format" },
+        "selectorTrailingComma": { "$ref": "#/definitions/format" },
+        "timeOmitTickUnit": { "$ref": "#/definitions/format" }
+      },
+      "additionalProperties": false
+    },
+    "lint": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "blockStateSortKeys": { "$ref": "#/definitions/lint" },
+        "nbtCompoundSortKeys": { "$ref": "#/definitions/lint" },
+        "selectorSortKeys": { "$ref": "#/definitions/lint" },
+        "commandStringQuote": { "$ref": "#/definitions/lint" },
+        "nbtKeyQuote": { "$ref": "#/definitions/lint" },
+        "nbtPathQuote": { "$ref": "#/definitions/lint" },
+        "nbtStringQuote": { "$ref": "#/definitions/lint" },
+        "selectorKeyQuote": { "$ref": "#/definitions/lint" },
+        "idOmitDefaultNamespace": { "$ref": "#/definitions/lint" },
+        "nameOfNbtKey": {
+          "description": "This rule enforces a consistent naming convention for keys in NBT compound tags and NBT paths.",
+          "$ref": "#/definitions/lint"
+        },
+        "nameOfObjective": {
+          "description": "This rule enforces a consistent naming convention for scoreboard objectives.",
+          "$ref": "#/definitions/lint"
+        },
+        "nameOfScoreHolder": {
+          "description": "This rule enforces a consistent naming convention for score holder names (fake names).",
+          "$ref": "#/definitions/lint"
+        },
+        "nameOfTag": {
+          "description": "This rule enforces a consistent naming convention for tags managed by the `/tag` command.",
+          "$ref": "#/definitions/lint"
+        },
+        "nameOfTeam2": {
+          "description": "This rule enforces a consistent naming convention for teams.",
+          "$ref": "#/definitions/lint"
+        },
+        "nameOfTeam": {
+          "description": "This rule enforces a consistent naming convention for teams.",
+          "$ref": "#/definitions/lint"
+        },
+        "nbtArrayLengthCheck": { "type": ["boolean"] },
+        "nbtBoolean": { "$ref": "#/definitions/lint" },
+        "nbtListLengthCheck": { "$ref": "#/definitions/lint" },
+        "nbtTypeCheck": { "enum": ["loosely"] },
+        "undeclaredSymbol": {
+          "description": "This rule specifies what actions should be done when there are undeclared symbols.",
+          "type": ["array", "null"],
+          "default": [],
+          "items": {
+            "anyOf": [
+              { "$ref": "#/definitions/action" },
+              { "$ref": "#/definitions/severity" },
+              { "$ref": "#/definitions/complex" }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "snippet": {
+      "type": "object",
+      "default": {},
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}
