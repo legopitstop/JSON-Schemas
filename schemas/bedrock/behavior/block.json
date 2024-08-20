@@ -215,44 +215,6 @@
               },
               "additionalProperties": false
             },
-            "minecraft:bone_visibility": {
-              "title": "EXPERIMENTAL (toggle:Upcomming Creator Features)",
-              "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-              "type": "object",
-              "default": {},
-              "maxProperties": 64,
-              "additionalProperties": {
-                "$ref": "../common.json#/definitions/MoLang",
-                "default": "true"
-              }
-            },
-            "minecraft:part_visibility": {
-              "title": "EXPERIMENTAL (toggle:Upcomming Creator Features)",
-              "description": "Maps bone names in a geometry file to a condition that turns their rendering on/off. The condition should be a Molang query that uses block properties to determine true/false.",
-              "type": "object",
-              "properties": {
-                "conditions": {
-                  "description": "A JSON object that contains a list of key/value pairs that map from bone name in a geometry file (key) to a condition that turns their rendering on/off (value). The condition should be a Molang query that uses block properties to determine true/false. Supported queries include 'has_block_property', 'block_property', and other queries that can evaluate without knowledge of the block's in-game positional or player affected data.",
-                  "type": "object",
-                  "default": {},
-                  "maxProperties": 64,
-                  "additionalProperties": {
-                    "$ref": "../common.json#/definitions/MoLang",
-                    "default": "true"
-                  }
-                }
-              },
-              "additionalProperties": false
-            },
-            "minecraft:rotation": {
-              "title": "EXPERIMENTAL (toggle:Holiday Creator Features)",
-              "description": "The block's rotation around the center of the cube in degrees. The rotation is specified as [x, y, z]. Angles need to be in factors of 90.",
-              "type": "array",
-              "default": [0, 0, 0],
-              "items": { "type": "integer", "multipleOf": 90 },
-              "minItems": 3,
-              "maxItems": 3
-            },
             "minecraft:breathability": {
               "title": "EXPERIMENTAL (Holiday Creator Features)",
               "description": "Determines whether the block is breathable by defining if the block is treated as a `solid` or as `air`",
