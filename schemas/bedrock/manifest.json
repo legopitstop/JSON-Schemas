@@ -57,10 +57,14 @@
       "items": {
         "type": "object",
         "default": {},
+        "required": ["version"],
+        "anyOf": [{ "required": ["uuid"] }, { "required": ["module_name"] }],
         "properties": {
           "description": {
             "description": "his is a short description of the module. This is not user-facing at the moment but is a good place to remind yourself why the module is defined",
-            "type": "string"
+            "type": "string",
+            "default": "pack.description",
+            "examples": ["pack.description"]
           },
           "uuid": {
             "description": "This is the unique identifier of the pack that this pack depends on. It needs to be the exact same UUID that the pack has defined in the header section of it's manifest file",
@@ -72,7 +76,12 @@
             "examples": [
               "@minecraft/common",
               "@minecraft/server",
-              "@minecraft/server-ui"
+              "@minecraft/server-ui",
+              "@minecraft/debug-utilities",
+              "@minecraft/server-admin",
+              "@minecraft/server-gametest",
+              "@minecraft/server-net",
+              "@minecraft/server-editor"
             ]
           },
           "version": {
@@ -94,6 +103,7 @@
       "description": "This is the heading of the manifest and is required for the manifest to be valid.",
       "type": "object",
       "default": {},
+      "required": ["uuid", "version", "name", "description"],
       "properties": {
         "allow_random_seed": {
           "description": "This option will generate a random seed every time a template is loaded and allow the player to change the seed before creating a new world.",
@@ -183,6 +193,7 @@
       "items": {
         "type": "object",
         "default": {},
+        "required": ["type", "uuid", "version"],
         "properties": {
           "description": {
             "description": "This is a short description of the module. This is not user-facing at the moment but is a good place to remind yourself why the module is defined",
