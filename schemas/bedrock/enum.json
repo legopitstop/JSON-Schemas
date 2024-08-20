@@ -398,6 +398,7 @@
       "enum": [
         "resources",
         "data",
+        "script",
         "client_data",
         "interface",
         "world_template",
